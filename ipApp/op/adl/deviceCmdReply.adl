@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=501
-		y=39
+		x=12
+		y=185
 		width=430
 		height=500
 	}
@@ -152,64 +152,6 @@ polyline {
 		(418,26)
 	}
 }
-rectangle {
-	object {
-		x=15
-		y=32
-		width=399
-		height=20
-	}
-	"basic attribute" {
-		clr=0
-	}
-}
-polyline {
-	object {
-		x=15
-		y=52
-		width=399
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,53)
-		(412,53)
-	}
-}
-text {
-	object {
-		x=15
-		y=32
-		width=399
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Format output string"
-	align="horiz. centered"
-}
-polyline {
-	object {
-		x=15
-		y=30
-		width=399
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,31)
-		(412,31)
-	}
-}
 text {
 	object {
 		x=15
@@ -238,22 +180,6 @@ text {
 	limits {
 	}
 }
-"related display" {
-	object {
-		x=340
-		y=35
-		width=40
-		height=16
-	}
-	display[0] {
-		label="more calc fields"
-		name="yysCalcoutRecord.adl"
-		args="P=$(P),C=cmdReply$(N)_formatCmd"
-	}
-	clr=0
-	bclr=17
-	label="-MORE"
-}
 rectangle {
 	object {
 		x=10
@@ -265,47 +191,6 @@ rectangle {
 		clr=5
 		width=2
 	}
-}
-rectangle {
-	object {
-		x=15
-		y=382
-		width=399
-		height=20
-	}
-	"basic attribute" {
-		clr=0
-	}
-}
-polyline {
-	object {
-		x=15
-		y=402
-		width=399
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,403)
-		(412,403)
-	}
-}
-text {
-	object {
-		x=15
-		y=382
-		width=399
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Parse reply string"
-	align="horiz. centered"
 }
 polyline {
 	object {
@@ -342,39 +227,6 @@ polyline {
 		(418,487)
 		(11,487)
 	}
-}
-polyline {
-	object {
-		x=15
-		y=380
-		width=399
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,381)
-		(412,381)
-	}
-}
-"related display" {
-	object {
-		x=340
-		y=385
-		width=40
-		height=16
-	}
-	display[0] {
-		label="more calc fields"
-		name="yysCalcoutRecord.adl"
-		args="P=$(P),C=cmdReply$(N)_parseReply"
-	}
-	clr=0
-	bclr=17
-	label="-MORE"
 }
 "text update" {
 	object {
@@ -906,63 +758,6 @@ menu {
 		bclr=51
 	}
 }
-rectangle {
-	object {
-		x=15
-		y=207
-		width=299
-		height=20
-	}
-	"basic attribute" {
-		clr=0
-	}
-}
-text {
-	object {
-		x=15
-		y=210
-		width=150
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Send/Receive"
-}
-polyline {
-	object {
-		x=15
-		y=227
-		width=301
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,228)
-		(314,228)
-	}
-}
-polyline {
-	object {
-		x=15
-		y=207
-		width=301
-		height=3
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=3
-	}
-	points {
-		(16,208)
-		(314,208)
-	}
-}
 composite {
 	object {
 		x=15
@@ -1326,11 +1121,99 @@ composite {
 	bclr=63
 	label="-?"
 }
+"message button" {
+	object {
+		x=15
+		y=32
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_formatCmd.PROC"
+		clr=14
+		bclr=51
+	}
+	label="*"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=15
+		y=210
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.PROC"
+		clr=14
+		bclr=51
+	}
+	label="*"
+	press_msg="1"
+}
+rectangle {
+	object {
+		x=35
+		y=207
+		width=278
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=35
+		y=210
+		width=135
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Send/Receive"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=35
+		y=227
+		width=281
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,228)
+		(314,228)
+	}
+}
+polyline {
+	object {
+		x=35
+		y=207
+		width=281
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,208)
+		(314,208)
+	}
+}
 "text update" {
 	object {
-		x=165
+		x=175
 		y=212
-		width=140
+		width=130
 		height=14
 	}
 	monitor {
@@ -1340,4 +1223,167 @@ composite {
 	}
 	limits {
 	}
+}
+rectangle {
+	object {
+		x=35
+		y=32
+		width=380
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+polyline {
+	object {
+		x=35
+		y=52
+		width=381
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,53)
+		(414,53)
+	}
+}
+text {
+	object {
+		x=35
+		y=32
+		width=310
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Format output string"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=35
+		y=30
+		width=381
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,31)
+		(414,31)
+	}
+}
+"related display" {
+	object {
+		x=345
+		y=35
+		width=38
+		height=16
+	}
+	display[0] {
+		label="more calc fields"
+		name="yysCalcoutRecord.adl"
+		args="P=$(P),C=cmdReply$(N)_formatCmd"
+	}
+	clr=0
+	bclr=17
+	label="-MORE"
+}
+rectangle {
+	object {
+		x=35
+		y=382
+		width=380
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+polyline {
+	object {
+		x=35
+		y=402
+		width=381
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,403)
+		(414,403)
+	}
+}
+text {
+	object {
+		x=35
+		y=382
+		width=310
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Parse reply string"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=35
+		y=380
+		width=381
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(36,381)
+		(414,381)
+	}
+}
+"related display" {
+	object {
+		x=346
+		y=385
+		width=38
+		height=16
+	}
+	display[0] {
+		label="more calc fields"
+		name="yysCalcoutRecord.adl"
+		args="P=$(P),C=cmdReply$(N)_parseReply"
+	}
+	clr=0
+	bclr=17
+	label="-MORE"
+}
+"message button" {
+	object {
+		x=14
+		y=382
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_parseReply.PROC"
+		clr=14
+		bclr=51
+	}
+	label="*"
+	press_msg="1"
 }
