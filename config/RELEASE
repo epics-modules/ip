@@ -9,13 +9,8 @@
 #
 # Add your declarations here
 
-include $(EPICS_SUPPORT_PATH)/config/IP330_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/LOVE_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/IPUNIDIG_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/DAC128V_RELEASE
 #Dependency note: devSerial.cc -> std/include/serialRecord.h
-include $(EPICS_SUPPORT_PATH)/config/STD_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/MPFGPIB_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/MPFSERIAL_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/MPF_RELEASE
-include $(EPICS_SUPPORT_PATH)/config/EPICS_BASE_RELEASE
+include $(TOP)/../config/STD_RELEASE
+include $(TOP)/../config/MPFSERIAL_RELEASE
+include $(TOP)/../config/MPF_RELEASE
+include $(TOP)/../config/EPICS_BASE_RELEASE
