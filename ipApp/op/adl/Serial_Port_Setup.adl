@@ -1,18 +1,21 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/ipApp/op/adl/Serial_Port_Setup.adl"
-	version=020205
+	name="i:\epics\synApps5-1\ip\ipApp\op\adl\Serial_Port_Setup.adl"
+	version=020306
 }
 display {
 	object {
 		x=10
-		y=10
+		y=26
 		width=289
-		height=314
+		height=220
 	}
 	clr=14
 	bclr=4
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -86,15 +89,151 @@ display {
 }
 text {
 	object {
-		x=9
+		x=12
 		y=8
-		width=239
+		width=264
 		height=25
 	}
 	"basic attribute" {
 		clr=14
 	}
 	textix="Serial Port Parameters"
+}
+rectangle {
+	object {
+		x=37
+		y=41
+		width=203
+		height=29
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+text {
+	object {
+		x=25
+		y=83
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Baud rate:"
+}
+menu {
+	object {
+		x=155
+		y=83
+		width=102
+		height=20
+	}
+	control {
+		chan="$(REC).BAUD"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=25
+		y=108
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Data bits:"
+}
+menu {
+	object {
+		x=155
+		y=108
+		width=102
+		height=20
+	}
+	control {
+		chan="$(REC).DBIT"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=25
+		y=133
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Stop bits:"
+}
+menu {
+	object {
+		x=155
+		y=133
+		width=102
+		height=20
+	}
+	control {
+		chan="$(REC).SBIT"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=25
+		y=158
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Parity:"
+}
+menu {
+	object {
+		x=155
+		y=158
+		width=102
+		height=20
+	}
+	control {
+		chan="$(REC).PRTY"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=25
+		y=183
+		width=125
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Flow control:"
+}
+menu {
+	object {
+		x=155
+		y=183
+		width=102
+		height=20
+	}
+	control {
+		chan="$(REC).FCTL"
+		clr=14
+		bclr=51
+	}
 }
 text {
 	object {
@@ -108,141 +247,4 @@ text {
 	}
 	textix="$(REC)"
 	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=37
-		y=41
-		width=203
-		height=29
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-}
-text {
-	object {
-		x=14
-		y=91
-		width=125
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Baud rate:"
-}
-menu {
-	object {
-		x=174
-		y=92
-		width=102
-		height=22
-	}
-	control {
-		chan="$(REC).BAUD"
-		clr=14
-		bclr=4
-	}
-}
-text {
-	object {
-		x=14
-		y=134
-		width=125
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Data bits:"
-}
-menu {
-	object {
-		x=174
-		y=135
-		width=102
-		height=22
-	}
-	control {
-		chan="$(REC).DBIT"
-		clr=14
-		bclr=4
-	}
-}
-text {
-	object {
-		x=14
-		y=175
-		width=125
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Stop bits:"
-}
-menu {
-	object {
-		x=174
-		y=176
-		width=102
-		height=22
-	}
-	control {
-		chan="$(REC).SBIT"
-		clr=14
-		bclr=4
-	}
-}
-text {
-	object {
-		x=14
-		y=220
-		width=125
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Parity:"
-}
-menu {
-	object {
-		x=174
-		y=221
-		width=102
-		height=22
-	}
-	control {
-		chan="$(REC).PRTY"
-		clr=14
-		bclr=4
-	}
-}
-text {
-	object {
-		x=14
-		y=264
-		width=125
-		height=24
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Flow control:"
-}
-menu {
-	object {
-		x=174
-		y=265
-		width=102
-		height=22
-	}
-	control {
-		chan="$(REC).FCTL"
-		clr=14
-		bclr=4
-	}
 }
