@@ -289,7 +289,7 @@ long DevSoMPC::dev_init(void* v)
 }
 
 
-DevMPC::DevMPC(dbCommon* pr,DBLINK* l)
+DevMPC::DevMPC(dbCommon* pr,link* l)
 : DevMpf(pr,l,false)
 {
     vmeio* io = (vmeio*)&(l->value);
@@ -318,37 +318,37 @@ DevMPC::DevMPC(dbCommon* pr,DBLINK* l)
 
 }
 
-DevAiMPC::DevAiMPC(dbCommon* pr,DBLINK* l)
+DevAiMPC::DevAiMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevAoMPC::DevAoMPC(dbCommon* pr,DBLINK* l)
+DevAoMPC::DevAoMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevBiMPC::DevBiMPC(dbCommon* pr,DBLINK* l)
+DevBiMPC::DevBiMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevBoMPC::DevBoMPC(dbCommon* pr,DBLINK* l)
+DevBoMPC::DevBoMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevMbboMPC::DevMbboMPC(dbCommon* pr,DBLINK* l)
+DevMbboMPC::DevMbboMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevSiMPC::DevSiMPC(dbCommon* pr,DBLINK* l)
+DevSiMPC::DevSiMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }
 
-DevSoMPC::DevSoMPC(dbCommon* pr,DBLINK* l)
+DevSoMPC::DevSoMPC(dbCommon* pr,link* l)
 : DevMPC(pr,l)
 {
 }

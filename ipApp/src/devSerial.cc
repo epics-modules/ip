@@ -52,15 +52,7 @@ extern "C"
 #ifdef NODEBUG
 #define DEBUG(l,f,v) ;
 #else
-#ifdef __GNUG__
 #define DEBUG(l,f,v...) { if(l<=devSerialDebug) printf(f,## v); }
-#else
-#ifdef __SUNPRO_CC
-#define DEBUG(l,...) { if(l<=devSerialDebug) printf(__VA_ARGS__); }
-#else
-#define DEBUG(l,f,v) { if(l<=devSerialDebug) printf(f,v); }
-#endif
-#endif
 #endif
 volatile int devSerialDebug = 0;
 }
