@@ -1,0 +1,832 @@
+
+file {
+	name="/home/oxygen10/GOETZE/epics/synApps_R3.13.1.1_R4.2/kag/kagApp/op/adl/LakeShore340.adl"
+	version=020306
+}
+display {
+	object {
+		x=185
+		y=205
+		width=480
+		height=210
+	}
+	clr=14
+	bclr=3
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+polyline {
+	object {
+		x=340
+		y=43
+		width=3
+		height=169
+	}
+	"basic attribute" {
+		clr=14
+		width=3
+	}
+	points {
+		(341,44)
+		(341,210)
+	}
+}
+rectangle {
+	object {
+		x=0
+		y=0
+		width=490
+		height=43
+	}
+	"basic attribute" {
+		clr=52
+		width=2
+	}
+}
+text {
+	object {
+		x=76
+		y=9
+		width=320
+		height=26
+	}
+	"basic attribute" {
+		clr=0
+		width=2
+	}
+	textix="LakeShore 340 Temperature Controller"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=360
+		y=135
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Read/Rate"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=80
+		y=185
+		width=90
+		height=26
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):Sample"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=80
+		y=85
+		width=90
+		height=26
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):Control"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=80
+		y=117
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):SetPoint"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=80
+		y=135
+		width=75
+		height=25
+	}
+	control {
+		chan="$(P)LS340:$(Q):SetSP.BB"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=5
+		y=68
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Control"
+}
+text {
+	object {
+		x=5
+		y=118
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix=" Set"
+}
+text {
+	object {
+		x=5
+		y=167
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Sample"
+}
+"text entry" {
+	object {
+		x=290
+		y=88
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)LS340:$(Q):setPID.AA"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=290
+		y=138
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)LS340:$(Q):setPID.BB"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=290
+		y=68
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):P"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=290
+		y=118
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):I"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=230
+		y=88
+		width=60
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gain(P)"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=230
+		y=138
+		width=60
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Reset(I)"
+	align="horiz. centered"
+}
+menu {
+	object {
+		x=399
+		y=108
+		width=70
+		height=18
+	}
+	control {
+		chan="$(P)LS340:$(Q):HeatRg"
+		clr=14
+		bclr=51
+	}
+}
+"text update" {
+	object {
+		x=400
+		y=88
+		width=70
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):Rg_rdbk"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=350
+		y=108
+		width=40
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Range"
+}
+"text update" {
+	object {
+		x=400
+		y=68
+		width=46
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):Heater"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=350
+		y=68
+		width=50
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Power"
+}
+text {
+	object {
+		x=0
+		y=46
+		width=210
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Temperature"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=230
+		y=46
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Control"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=350
+		y=46
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Heater Power"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=370
+		y=156
+		width=80
+		height=27
+	}
+	control {
+		chan="$(P)LS340:$(Q):read.PROC"
+		clr=14
+		bclr=51
+	}
+	label="READ"
+	press_msg="0"
+}
+menu {
+	object {
+		x=370
+		y=189
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)LS340:$(Q):read.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+polyline {
+	object {
+		x=220
+		y=43
+		width=3
+		height=169
+	}
+	"basic attribute" {
+		clr=14
+		width=3
+	}
+	points {
+		(221,44)
+		(221,210)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=64
+		width=481
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,65)
+		(480,65)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=43
+		width=481
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,44)
+		(480,44)
+	}
+}
+polyline {
+	object {
+		x=340
+		y=131
+		width=139
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(341,132)
+		(478,132)
+	}
+}
+text {
+	object {
+		x=5
+		y=138
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Point"
+}
+polyline {
+	object {
+		x=0
+		y=113
+		width=338
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(0,113)
+		(338,113)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=163
+		width=338
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(0,163)
+		(338,163)
+	}
+}
+"text update" {
+	object {
+		x=290
+		y=169
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):D"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=290
+		y=189
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)LS340:$(Q):setPID.CC"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=230
+		y=189
+		width=60
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Rate(D)"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=1
+		y=87
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)LS340:$(Q):SetCtl.BB"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=17
+		y=90
+		width=60
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(A or B)"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=1
+		y=187
+		width=20
+		height=20
+	}
+	control {
+		chan="$(P)LS340:$(Q):SetSpl.BB"
+		clr=14
+		bclr=51
+	}
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=17
+		y=190
+		width=60
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(A or B)"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=197
+		y=67
+		width=20
+		height=17
+	}
+	control {
+		chan="$(P)LS340:$(Q):Control.PREC"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=169
+		y=68
+		width=25
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Prec"
+}
+"text entry" {
+	object {
+		x=197
+		y=166
+		width=20
+		height=17
+	}
+	control {
+		chan="$(P)LS340:$(Q):Sample.PREC"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=169
+		y=167
+		width=25
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Prec"
+}
+oval {
+	object {
+		x=174
+		y=187
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
+}
+text {
+	object {
+		x=183
+		y=186
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
+	align="horiz. centered"
+}
+oval {
+	object {
+		x=174
+		y=87
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
+}
+text {
+	object {
+		x=183
+		y=86
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
+	align="horiz. centered"
+}
+oval {
+	object {
+		x=173
+		y=133
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
+}
+text {
+	object {
+		x=182
+		y=132
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=446
+		y=67
+		width=17
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="%"
+	align="horiz. centered"
+}

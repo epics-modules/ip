@@ -1,0 +1,1348 @@
+
+file {
+	name="/home/oxygen4/MOONEY/epics/3.13.0/tmm/tmmApp/op/adl/GPIB_OI_block.adl"
+	version=020305
+}
+display {
+	object {
+		x=8
+		y=424
+		width=430
+		height=500
+	}
+	clr=14
+	bclr=3
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+"related display" {
+	object {
+		x=380
+		y=2
+		width=40
+		height=20
+	}
+	display[0] {
+		label="GPIB O/I block (full)"
+		name="GPIB_OI_block_full.adl"
+		args="P=$(P),N=$(N)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=63
+	label="-More"
+}
+rectangle {
+	object {
+		x=10
+		y=25
+		width=409
+		height=167
+	}
+	"basic attribute" {
+		clr=5
+		width=2
+	}
+}
+polyline {
+	object {
+		x=10
+		y=25
+		width=409
+		height=169
+	}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=2
+	}
+	points {
+		(418,26)
+		(418,193)
+		(11,193)
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=32
+		width=399
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+text {
+	object {
+		x=15
+		y=32
+		width=399
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Make output string"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=15
+		y=30
+		width=399
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(16,31)
+		(412,31)
+	}
+}
+polyline {
+	object {
+		x=10
+		y=25
+		width=409
+		height=168
+	}
+	"basic attribute" {
+		clr=10
+		fill="outline"
+		width=2
+	}
+	points {
+		(11,192)
+		(11,26)
+		(418,26)
+	}
+}
+composite {
+	object {
+		x=14
+		y=55
+		width=399
+		height=130
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=21
+				y=70
+				width=15
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="A"
+		}
+		"text entry" {
+			object {
+				x=43
+				y=67
+				width=205
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N)_format.INPA"
+				clr=14
+				bclr=40
+			}
+			format="string"
+		}
+		rectangle {
+			object {
+				x=41
+				y=65
+				width=209
+				height=24
+			}
+			"basic attribute" {
+				clr=20
+				fill="outline"
+				width=2
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)gpibOI$(N)_format.INAV"
+			}
+		}
+		text {
+			object {
+				x=141
+				y=55
+				width=50
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="PV NAME"
+		}
+		text {
+			object {
+				x=21
+				y=55
+				width=100
+				height=10
+			}
+			"basic attribute" {
+				clr=0
+			}
+			textix="DOUBLE VARIABLES"
+		}
+		"text entry" {
+			object {
+				x=251
+				y=65
+				width=160
+				height=24
+			}
+			control {
+				chan="$(P)gpibOI$(N)_format.A"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
+				x=141
+				y=95
+				width=50
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="PV NAME"
+		}
+		text {
+			object {
+				x=21
+				y=95
+				width=100
+				height=10
+			}
+			"basic attribute" {
+				clr=0
+			}
+			textix="STRING VARIABLES"
+		}
+		polyline {
+			object {
+				x=15
+				y=93
+				width=398
+				height=1
+			}
+			"basic attribute" {
+				clr=54
+				fill="outline"
+				width=1
+			}
+			points {
+				(15,93)
+				(412,93)
+			}
+		}
+		text {
+			object {
+				x=21
+				y=110
+				width=15
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="AA"
+		}
+		"text entry" {
+			object {
+				x=43
+				y=107
+				width=205
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N)_format.INAA"
+				clr=14
+				bclr=40
+			}
+			format="string"
+		}
+		rectangle {
+			object {
+				x=41
+				y=105
+				width=209
+				height=24
+			}
+			"basic attribute" {
+				clr=20
+				fill="outline"
+				width=2
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)gpibOI$(N)_format.IAAV"
+			}
+		}
+		"text entry" {
+			object {
+				x=251
+				y=105
+				width=160
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N)_format.AA"
+				clr=14
+				bclr=51
+			}
+		}
+		composite {
+			object {
+				x=14
+				y=133
+				width=399
+				height=52
+			}
+			"composite name"=""
+			vis="static"
+			chan=""
+			children {
+				"text update" {
+					object {
+						x=298
+						y=148
+						width=110
+						height=20
+					}
+					monitor {
+						chan="$(P)gpibOI$(N)_format.VAL"
+						clr=54
+						bclr=5
+					}
+					align="horiz. centered"
+				}
+				polyline {
+					object {
+						x=14
+						y=133
+						width=399
+						height=3
+					}
+					"basic attribute" {
+						clr=54
+						fill="outline"
+						width=3
+					}
+					points {
+						(15,134)
+						(411,134)
+					}
+				}
+				"text entry" {
+					object {
+						x=41
+						y=148
+						width=255
+						height=20
+					}
+					control {
+						chan="$(P)gpibOI$(N)_format.CALC"
+						clr=14
+						bclr=51
+					}
+				}
+				text {
+					object {
+						x=91
+						y=138
+						width=200
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="CALC EXPRESSION"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=46
+						y=138
+						width=40
+						height=10
+					}
+					"basic attribute" {
+						clr=21
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)gpibOI$(N)_format.CLCV"
+					}
+					textix="INVALID"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=138
+						width=25
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="HELP"
+				}
+				"shell command" {
+					object {
+						x=20
+						y=148
+						width=20
+						height=20
+					}
+					command[0] {
+						label="Help With Calculation Expressions"
+						name="netURL http://www.aps.anl.gov/xfd/bcda/medm_help/sCalcoutRecord.html#Expressions"
+					}
+					clr=14
+					bclr=30
+				}
+				text {
+					object {
+						x=296
+						y=138
+						width=100
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="RESULT"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=174
+						width=80
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="STRING RESULT:"
+				}
+				"text update" {
+					object {
+						x=105
+						y=171
+						width=308
+						height=14
+					}
+					monitor {
+						chan="$(P)gpibOI$(N)_format.SVAL"
+						clr=54
+						bclr=1
+					}
+				}
+			}
+		}
+		text {
+			object {
+				x=251
+				y=55
+				width=160
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="NUMBER"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=251
+				y=95
+				width=160
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="STRING"
+			align="horiz. centered"
+		}
+	}
+}
+menu {
+	object {
+		x=315
+		y=208
+		width=100
+		height=16
+	}
+	control {
+		chan="$(P)gpibOI$(N).TMOD"
+		clr=14
+		bclr=51
+	}
+}
+composite {
+	object {
+		x=15
+		y=207
+		width=300
+		height=23
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		rectangle {
+			object {
+				x=15
+				y=207
+				width=299
+				height=20
+			}
+			"basic attribute" {
+				clr=0
+			}
+		}
+		text {
+			object {
+				x=15
+				y=210
+				width=299
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Send and/or Receive"
+			align="horiz. centered"
+		}
+		polyline {
+			object {
+				x=15
+				y=227
+				width=300
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+				fill="outline"
+				width=3
+			}
+			points {
+				(16,228)
+				(313,228)
+			}
+		}
+		polyline {
+			object {
+				x=15
+				y=207
+				width=300
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+				fill="outline"
+				width=3
+			}
+			points {
+				(16,208)
+				(313,208)
+			}
+		}
+	}
+}
+polyline {
+	object {
+		x=15
+		y=52
+		width=399
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(16,53)
+		(412,53)
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=232
+		width=400
+		height=37
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+text {
+	object {
+		x=20
+		y=244
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Output"
+}
+"text entry" {
+	object {
+		x=80
+		y=244
+		width=300
+		height=20
+	}
+	control {
+		chan="$(P)gpibOI$(N).AOUT"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=20
+		y=284
+		width=68
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Input"
+}
+"text update" {
+	object {
+		x=80
+		y=284
+		width=300
+		height=20
+	}
+	monitor {
+		chan="$(P)gpibOI$(N).AINP"
+		clr=53
+		bclr=1
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=272
+		width=400
+		height=65
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+composite {
+	object {
+		x=20
+		y=312
+		width=374
+		height=20
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=20
+				y=312
+				width=70
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Length:"
+		}
+		text {
+			object {
+				x=288
+				y=315
+				width=50
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Actual:"
+		}
+		"text update" {
+			object {
+				x=338
+				y=312
+				width=56
+				height=20
+			}
+			monitor {
+				chan="$(P)gpibOI$(N).NORD"
+				clr=53
+				bclr=1
+			}
+		}
+		text {
+			object {
+				x=103
+				y=315
+				width=70
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Requested:"
+		}
+		"text entry" {
+			object {
+				x=173
+				y=312
+				width=70
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N).NRRD"
+				clr=14
+				bclr=51
+			}
+		}
+	}
+}
+text {
+	object {
+		x=380
+		y=275
+		width=30
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TERM"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=380
+		y=284
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)gpibOI$(N).EOS"
+		clr=14
+		bclr=51
+	}
+}
+rectangle {
+	object {
+		x=10
+		y=375
+		width=409
+		height=111
+	}
+	"basic attribute" {
+		clr=5
+		width=2
+	}
+}
+text {
+	object {
+		x=125
+		y=345
+		width=25
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(ms)"
+}
+composite {
+	object {
+		x=170
+		y=345
+		width=103
+		height=14
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=170
+				y=345
+				width=50
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Status:"
+		}
+		text {
+			object {
+				x=223
+				y=345
+				width=50
+				height=14
+			}
+			"basic attribute" {
+				clr=63
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)gpibOI$(N).SEVR"
+			}
+			textix="OK"
+		}
+		text {
+			object {
+				x=223
+				y=345
+				width=50
+				height=14
+			}
+			"basic attribute" {
+				clr=20
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)gpibOI$(N).SEVR"
+			}
+			textix="Timeout"
+		}
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=382
+		width=399
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+}
+polyline {
+	object {
+		x=15
+		y=402
+		width=399
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(16,403)
+		(412,403)
+	}
+}
+text {
+	object {
+		x=15
+		y=382
+		width=399
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Parse reply string"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=10
+		y=375
+		width=409
+		height=114
+	}
+	"basic attribute" {
+		clr=10
+		fill="outline"
+		width=2
+	}
+	points {
+		(11,488)
+		(11,376)
+		(418,376)
+	}
+}
+polyline {
+	object {
+		x=10
+		y=375
+		width=409
+		height=114
+	}
+	"basic attribute" {
+		clr=0
+		fill="outline"
+		width=2
+	}
+	points {
+		(418,376)
+		(418,488)
+		(11,488)
+	}
+}
+polyline {
+	object {
+		x=15
+		y=380
+		width=399
+		height=3
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=3
+	}
+	points {
+		(16,381)
+		(412,381)
+	}
+}
+composite {
+	object {
+		x=15
+		y=407
+		width=399
+		height=72
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=40
+				y=412
+				width=80
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="(REPLY STRING)"
+		}
+		"text update" {
+			object {
+				x=125
+				y=409
+				width=287
+				height=14
+			}
+			monitor {
+				chan="$(P)gpibOI$(N)_parse.AA"
+				clr=54
+				bclr=1
+			}
+		}
+		text {
+			object {
+				x=21
+				y=407
+				width=15
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="AA"
+		}
+		composite {
+			object {
+				x=15
+				y=427
+				width=399
+				height=52
+			}
+			"composite name"=""
+			vis="static"
+			chan=""
+			children {
+				"text update" {
+					object {
+						x=298
+						y=442
+						width=110
+						height=20
+					}
+					monitor {
+						chan="$(P)gpibOI$(N)_parse.VAL"
+						clr=54
+						bclr=5
+					}
+					align="horiz. centered"
+				}
+				polyline {
+					object {
+						x=15
+						y=427
+						width=399
+						height=3
+					}
+					"basic attribute" {
+						clr=54
+						fill="outline"
+						width=3
+					}
+					points {
+						(16,428)
+						(412,428)
+					}
+				}
+				"text entry" {
+					object {
+						x=41
+						y=442
+						width=255
+						height=20
+					}
+					control {
+						chan="$(P)gpibOI$(N)_parse.CALC"
+						clr=14
+						bclr=51
+					}
+				}
+				text {
+					object {
+						x=91
+						y=432
+						width=200
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="CALC EXPRESSION"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=46
+						y=432
+						width=40
+						height=10
+					}
+					"basic attribute" {
+						clr=21
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)gpibOI$(N)_parse.CLCV"
+					}
+					textix="INVALID"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=432
+						width=25
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="HELP"
+				}
+				"shell command" {
+					object {
+						x=20
+						y=442
+						width=20
+						height=20
+					}
+					command[0] {
+						label="Help With Calculation Expressions"
+						name="netURL http://www.aps.anl.gov/xfd/bcda/medm_help/sCalcoutRecord.html#Expressions"
+					}
+					clr=14
+					bclr=30
+				}
+				text {
+					object {
+						x=296
+						y=432
+						width=100
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="RESULT"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=468
+						width=80
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="STRING RESULT:"
+				}
+				"text update" {
+					object {
+						x=105
+						y=465
+						width=308
+						height=14
+					}
+					monitor {
+						chan="$(P)gpibOI$(N)_parse.SVAL"
+						clr=54
+						bclr=1
+					}
+				}
+			}
+		}
+	}
+}
+text {
+	object {
+		x=15
+		y=4
+		width=210
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="GPIB O/I block $(N)"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=225
+		y=0
+		width=155
+		height=24
+	}
+	control {
+		chan="$(P)gpibOI$(N).DESC"
+		clr=14
+		bclr=0
+	}
+}
+composite {
+	object {
+		x=20
+		y=342
+		width=100
+		height=20
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=20
+				y=345
+				width=55
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Timeout:"
+		}
+		"text entry" {
+			object {
+				x=80
+				y=342
+				width=40
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N).TMOT"
+				clr=14
+				bclr=51
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=290
+		y=342
+		width=125
+		height=20
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		text {
+			object {
+				x=290
+				y=345
+				width=85
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="GPIB address"
+		}
+		"text entry" {
+			object {
+				x=380
+				y=342
+				width=35
+				height=20
+			}
+			control {
+				chan="$(P)gpibOI$(N).ADDR"
+				clr=14
+				bclr=51
+			}
+		}
+	}
+}
+"related display" {
+	object {
+		x=340
+		y=35
+		width=40
+		height=16
+	}
+	display[0] {
+		label="more calc fields"
+		name="yysCalcoutRecord.adl"
+		args="P=$(P),C=gpibOI$(N)_format"
+	}
+	clr=0
+	bclr=17
+	label="-MORE"
+}
+"related display" {
+	object {
+		x=340
+		y=385
+		width=40
+		height=16
+	}
+	display[0] {
+		label="more calc fields"
+		name="yysCalcoutRecord.adl"
+		args="P=$(P),C=gpibOI$(N)_parse"
+	}
+	clr=0
+	bclr=17
+	label="-MORE"
+}

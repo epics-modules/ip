@@ -1,0 +1,26 @@
+grecord(stringout,"$(P)$(Q)Init")
+{
+	field(PINI,"YES")
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)$(Q)echo1.PROC PP MS")
+	field(VAL,"echoon")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringin,"$(P)$(Q)echo1")
+{
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"$(P)$(Q)Remote.PROC PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=ok>")
+}
+grecord(stringout,"$(P)$(Q)Remote")
+{
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)$(Q)echo2.PROC PP MS")
+	field(VAL,"remote")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringin,"$(P)$(Q)echo2")
+{
+	field(DTYP,"Hideos si stringParm")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=ok>")
+}

@@ -1,0 +1,54 @@
+record(bo,"$(P)$(Q):Disable") {
+	field(ZNAM,"ENABLE")
+	field(ONAM,"DISABLE")
+}
+record(ai,"$(P)$(Q):Value") {
+	field(DESC,"$(DESC)")
+	field(SCAN,"5 second")
+	field(SDIS,"$(P)$(Q):Disable")
+	field(DISV,"1")
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S0 @$(PORT),$(ADDR)")
+	field(PREC,"1")
+	field(FLNK,"$(P)$(Q):AlarmEnable")
+}
+record(bi,"$(P)$(Q):AlarmEnable") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S7 @$(PORT),$(ADDR)")
+}
+
+record(ai,"$(P)$(Q):SetPt1") {
+	field(SCAN,"10 second")
+	field(SDIS,"$(P)$(Q):Disable")
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S1 @$(PORT),$(ADDR)")
+	field(PREC,"1")
+	field(FLNK,"$(P)$(Q):SetPt2")
+}
+record(ai,"$(P)$(Q):SetPt2") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S2 @$(PORT),$(ADDR)")
+	field(PREC,"1")
+	field(FLNK,"$(P)$(Q):AlarmLo")
+}
+record(ai,"$(P)$(Q):AlarmLo") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S3 @$(PORT),$(ADDR)")
+	field(PREC,"1")
+	field(FLNK,"$(P)$(Q):AlarmHi")
+}
+record(ai,"$(P)$(Q):AlarmHi") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S4 @$(PORT),$(ADDR)")
+	field(PREC,"1")
+	field(FLNK,"$(P)$(Q):SetPt1Enable")
+}
+record(bi,"$(P)$(Q):SetPt1Enable") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S5 @$(PORT),$(ADDR)")
+	field(FLNK,"$(P)$(Q):SetPt2Enable")
+}
+record(bi,"$(P)$(Q):SetPt2Enable") {
+	field(DTYP,"Love Controller via MPF")
+	field(INP,"#C$(C) S6 @$(PORT),$(ADDR)")
+}

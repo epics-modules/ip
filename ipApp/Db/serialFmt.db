@@ -1,0 +1,42 @@
+grecord(ai,"$(P)ai$(CHAN)") {
+	field(DESC,"$(AIFMT)")
+	field(DTYP,"Hideos ai stringParm")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(PREC,"6")
+}
+grecord(ao,"$(P)ao$(CHAN)") {
+	field(DESC,"$(AOFMT)")
+	field(DTYP,"Hideos ao stringParm")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(PREC,"6")
+}
+grecord(longin,"$(P)li$(CHAN)") {
+	field(DESC,"$(LIFMT)")
+	field(DTYP,"Hideos li stringParm")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(longout,"$(P)lo$(CHAN)") {
+	field(DESC,"$(LOFMT)")
+	field(DTYP,"Hideos lo stringParm")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(seq,"$(P)sertst$(CHAN)After") {
+	field(PREC,"2")
+	field(DLY1,".1")
+}
+grecord(stringin,"$(P)si$(CHAN)") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(VAL,"empty")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringout,"$(P)so$(CHAN)") {
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
+	field(VAL,"SOtest: hello!")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a")
+}

@@ -1,0 +1,22 @@
+grecord(calc,"$(P)serialOI$(N)_calc1") {
+	field(FLNK,"$(P)serialOI$(N)_parse.VAL  PP MS")
+	field(CALC,"A=0||a=2")
+	field(INPA,"$(P)serialOI$(N).TMOD  NPP MS")
+}
+grecord(serial,"$(P)serialOI$(N)") {
+	field(DESC,"Serial Out/In block $(N)")
+	field(DTYP,"Hideos/MPF Serial")
+	field(FLNK,"$(P)serialOI$(N)_calc1.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(scalcout,"$(P)serialOI$(N)_parse") {
+	field(DISV,"0")
+	field(SDIS,"$(P)serialOI$(N)_calc1.VAL  NPP MS")
+	field(INAA,"$(P)serialOI$(N).AINP  NPP MS")
+	field(PREC,"5")
+}
+grecord(scalcout,"$(P)serialOI$(N)_format") {
+	field(INAA,"0")
+	field(OUT,"$(P)serialOI$(N).AOUT  PP MS")
+	field(PREC,"5")
+}

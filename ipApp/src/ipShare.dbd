@@ -1,0 +1,49 @@
+################
+# RECORD SUPPORT
+################
+
+################
+# DEVICE SUPPORT
+################
+
+# stringin and stringout record from MPF
+include "devMpf.dbd"
+
+# from mpf
+include devLove.dbd
+
+device(ao,VME_IO,devAoStrParm,"Hideos ao stringParm")
+device(ai,VME_IO,devAiStrParm,"Hideos ai stringParm")
+#device(ai,VME_IO,devAiLove,"Hideos Love")
+
+device(longout,VME_IO,devLoStrParm,"Hideos lo stringParm")
+
+#device(stringin,VME_IO,devSiHuberDMC,"Huber DMC 9200")
+#device(ai,VME_IO,devAiHuberDMC,"Huber DMC 9200")
+#device(longin,VME_IO,devLiHuberDMC,"Huber DMC 9200")
+
+device(serial,VME_IO,devSerial,"Hideos/MPF Serial")
+
+device(bi,VME_IO,devBiStrParm,"Hideos bi stringParm")
+device(longin,VME_IO,devLiStrParm,"Hideos li stringParm")
+device(stringin,VME_IO,devSiStrParm,"Hideos si stringParm")
+device(stringout,VME_IO,devSoStrParm,"Hideos so stringParm")
+
+# Heidenhain ND261 and related serial interface boxes
+device(ai,VME_IO,devAiHeidND261,"Hideos ai HeidND261")
+
+# MKS vacuum gauge controller
+device(ai,VME_IO,devAiMKS,"HPS SensaVac 937")
+
+# Greenspring IP-Unidig digital I/O IP modules
+include "devIpUnidig.dbd"
+
+# EPID record
+device(epid,VME_IO,devEpidIp330,"MPF EPID")
+
+# Acromag IP-330 as scanning A/D converter
+device(ai,VME_IO,devAiIp330Scan,"ip330Scan")
+
+################
+# DRIVER SUPPORT
+################

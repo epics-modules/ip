@@ -1,0 +1,22 @@
+grecord(calc,"$(P)gpibOI$(N)_calc1") {
+	field(FLNK,"$(P)gpibOI$(N)_parse.VAL  PP MS")
+	field(CALC,"A=0||a=2")
+	field(INPA,"$(P)gpibOI$(N).TMOD  NPP MS")
+}
+grecord(gpib,"$(P)gpibOI$(N)") {
+	field(DESC,"GPIB O/I block $(N)")
+	field(DTYP,"GPIB (NI or HIDEOS)")
+	field(FLNK,"$(P)gpibOI$(N)_calc1.VAL  PP MS")
+	field(INP,"#L$(L) A0 @")
+}
+grecord(scalcout,"$(P)gpibOI$(N)_parse") {
+	field(DISV,"0")
+	field(SDIS,"$(P)gpibOI$(N)_calc1.VAL  NPP MS")
+	field(INAA,"$(P)gpibOI$(N).AINP  NPP MS")
+	field(PREC,"5")
+}
+grecord(scalcout,"$(P)gpibOI$(N)_format") {
+	field(INAA,"0")
+	field(OUT,"$(P)gpibOI$(N).AOUT  PP MS")
+	field(PREC,"5")
+}

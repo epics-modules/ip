@@ -1,0 +1,104 @@
+grecord(ai,"$(P)$(S)_ILM_level1_raw") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"$(P)$(S)_ILM_level1.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=%lf,IX=1,TO=3000,TERM=0d")
+	field(ASLO,"0.1")
+}
+grecord(ai,"$(P)$(S)_ILM_level2_raw") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"$(P)$(S)_ILM_level2.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=%lf,IX=1,TO=3000,TERM=0d")
+	field(ASLO,"0.1")
+}
+grecord(ai,"$(P)$(S)_ILM_relay_raw") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"$(P)$(S)_ILM_relay_calcs.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=%lf,IX=12,TO=3000,TERM=0d")
+}
+grecord(ai,"$(P)$(S)_ILM_usage_raw") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"$(P)$(S)_ILM_status_calcs.VAL  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=%lf,IX=1,TO=3000,TERM=0d")
+}
+grecord(bo,"$(P)$(S)_ILM_init") {
+	field(PINI,"YES")
+	field(DTYP,"Soft Channel")
+	field(OMSL,"closed_loop")
+	field(DOL,"1")
+	field(OUT,"$(P)$(S)_ILM_on_off.VAL  PP MS")
+}
+grecord(bo,"$(P)$(S)_ILM_on_off") {
+	field(DTYP,"Soft Channel")
+	field(ZNAM,"ON")
+	field(ONAM,"OFF")
+}
+grecord(calc,"$(P)$(S)_ILM_level1") {
+	field(FLNK,"$(P)$(S)_ILM_delay.VAL  PP MS")
+	field(CALC,"(B-(A/10))>5?B:(A/10)")
+	field(INPA,"$(P)$(S)_ILM_level1_raw.VAL  NPP NMS")
+	field(INPB,"$(P)$(S)_ILM_level1.VAL  NPP NMS")
+	field(PREC,"1")
+}
+grecord(calc,"$(P)$(S)_ILM_level2") {
+	field(FLNK,"$(P)$(S)_ILM_get_usage.VAL  PP MS")
+	field(CALC,"(B-(A/10))>5?B:(A/10)")
+	field(INPA,"$(P)$(S)_ILM_level2_raw.VAL  NPP NMS")
+	field(INPB,"$(P)$(S)_ILM_level2.VAL  NPP NMS")
+	field(PREC,"1")
+}
+grecord(calc,"$(P)$(S)_ILM_relay_ch1") {
+	field(CALC,"(A=10)|(A=30)?1:0")
+	field(INPA,"$(P)$(S)_ILM_relay_raw.VAL  NPP NMS")
+}
+grecord(calc,"$(P)$(S)_ILM_relay_ch2") {
+	field(CALC,"(A=20)|(A=30)?1:0")
+	field(INPA,"$(P)$(S)_ILM_relay_raw.VAL  NPP NMS")
+}
+grecord(calc,"$(P)$(S)_ILM_status_1") {
+	field(CALC,"(A=910)|(A=990)?1:0")
+	field(INPA,"$(P)$(S)_ILM_usage_raw.VAL  NPP NMS")
+}
+grecord(calc,"$(P)$(S)_ILM_status_2") {
+	field(CALC,"(A=190)|(A=990)?1:0")
+	field(INPA,"$(P)$(S)_ILM_usage_raw.VAL  NPP NMS")
+}
+grecord(fanout,"$(P)$(S)_ILM_relay_calcs") {
+	field(LNK1,"$(P)$(S)_ILM_relay_ch1.VAL  PP MS")
+	field(LNK2,"$(P)$(S)_ILM_relay_ch2.VAL  PP MS")
+}
+grecord(fanout,"$(P)$(S)_ILM_status_calcs") {
+	field(LNK1,"$(P)$(S)_ILM_status_1.VAL  PP MS")
+	field(LNK2,"$(P)$(S)_ILM_status_2.VAL  PP MS")
+	field(LNK3,"$(P)$(S)_ILM_get_relay.VAL  PP MS")
+}
+grecord(seq,"$(P)$(S)_ILM_delay") {
+	field(DLY1,"1.5")
+	field(DOL1,"1")
+	field(LNK1,"$(P)$(S)_ILM_send_rd_2.PROC  PP MS")
+}
+grecord(stringout,"$(P)$(S)_ILM_get_relay") {
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)$(S)_ILM_relay_raw.VAL  PP MS")
+	field(VAL,"X")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringout,"$(P)$(S)_ILM_get_usage") {
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)$(S)_ILM_usage_raw.VAL  PP MS")
+	field(VAL,"X")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringout,"$(P)$(S)_ILM_send_rd_1") {
+	field(SCAN,"5 second")
+	field(DTYP,"Hideos so stringParm")
+	field(SDIS,"$(P)$(S)_ILM_on_off.VAL  NPP NMS")
+	field(FLNK,"$(P)$(S)_ILM_level1_raw.VAL  PP MS")
+	field(VAL,"R1")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringout,"$(P)$(S)_ILM_send_rd_2") {
+	field(DTYP,"Hideos so stringParm")
+	field(FLNK,"$(P)$(S)_ILM_level2_raw.VAL  PP MS")
+	field(VAL,"R2")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}

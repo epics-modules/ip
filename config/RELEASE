@@ -1,0 +1,21 @@
+# RELEASE - Location of external products
+#
+# (Architecture dependent declarations should go into RELEASE.<arch>)
+#
+# Note: This file will be scanned to automatically generate
+#       include path definitions etc.
+#       The order of the following declarations will be retained
+#       within those definitions.
+#
+# Add your declarations here
+
+IP330=$(EPICS_SUPPORT_PATH)/ip330_1.02
+LOVE=$(EPICS_SUPPORT_PATH)/love1-1
+IPUNIDIG=$(EPICS_SUPPORT_PATH)/ipUnidig1-1
+DAC128V=$(EPICS_SUPPORT_PATH)/dac128V1-1
+#Dependency note: devSerial.cc -> std/include/serialRecord.h
+STD=$(EPICS_SUPPORT_PATH)/std1-1
+include $(EPICS_SUPPORT_PATH)/config/MPFGPIB_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/MPFSERIAL_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/MPF_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/EPICS_BASE_RELEASE

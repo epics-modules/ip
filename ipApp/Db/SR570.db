@@ -1,0 +1,489 @@
+grecord(ao,"$(P)$(A)offset_u_reput") {
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)off_cal_sav.VAL  NPP NMS")
+	field(OUT,"$(P)$(A)offset_u_tweak.VAL  PP MS")
+}
+grecord(bo,"$(P)$(A)offset_sign") {
+	field(DESC,"offset sign")
+	field(OUT,"$(P)$(A)off_sign_calc.A  PP MS")
+	field(ZNAM,"+")
+	field(ONAM,"-")
+}
+grecord(bo,"$(P)$(A)offset_on") {
+	field(DESC,"offset sign")
+	field(OUT,"$(P)$(A)offset_on_put.VAL  PP MS")
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+grecord(bo,"$(P)$(A)bias_on") {
+	field(DESC,"offset sign")
+	field(OUT,"$(P)$(A)bias_on_put.VAL  PP MS")
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+grecord(bo,"$(P)$(A)bias_dec") {
+	field(SCAN,".1 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)bias_dec.VAL  NPP NMS")
+	field(FLNK,"$(P)$(A)bias_tweak.PROC  PP MS")
+}
+grecord(bo,"$(P)$(A)bias_inc") {
+	field(SCAN,".1 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)bias_inc.VAL  NPP NMS")
+	field(FLNK,"$(P)$(A)bias_tweak.PROC  PP MS")
+}
+grecord(bo,"$(P)$(A)invert_on") {
+	field(DESC,"offset sign")
+	field(OUT,"$(P)$(A)invert_on_put.VAL  PP MS")
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+grecord(bo,"$(P)$(A)blank_on") {
+	field(DESC,"blank")
+	field(OUT,"$(P)$(A)blank_on_put.VAL  PP MS")
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+grecord(bo,"$(P)$(A)offset_cal") {
+	field(DESC,"offset calib mode")
+	field(FLNK,"$(P)$(A)off_uncal_set.PROC  PP MS")
+	field(OUT,"$(P)$(A)offset_cal_put.VAL  PP MS")
+	field(ZNAM,"CAL")
+	field(ONAM,"UNCAL")
+}
+grecord(bo,"$(P)$(A)offset_u_dec") {
+	field(SCAN,".1 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)offset_u_dec.VAL  NPP NMS")
+	field(FLNK,"$(P)$(A)offset_u_tweak.PROC  PP MS")
+}
+grecord(bo,"$(P)$(A)offset_u_inc") {
+	field(SCAN,".1 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)offset_u_inc.VAL  NPP NMS")
+	field(FLNK,"$(P)$(A)offset_u_tweak.PROC  PP MS")
+}
+grecord(bo,"$(P)$(A)off_cal_sav") {
+	field(DESC,"offset calib mode")
+	field(ZNAM,"CAL")
+	field(ONAM,"UNCAL")
+}
+grecord(bo,"$(P)$(A)off_sign_sav") {
+	field(DESC,"offset calib mode")
+	field(ZNAM,"CAL")
+	field(ONAM,"UNCAL")
+}
+grecord(bo,"$(P)$(A)off_cal_bput") {
+	field(SDIS,"$(P)$(A)offset_cal.PACT  NPP NMS")
+	field(OMSL,"closed_loop")
+	field(DOL,"1")
+	field(OUT,"$(P)$(A)offset_cal.VAL  PP MS")
+	field(ZNAM,"CAL")
+	field(ONAM,"UNCAL")
+}
+grecord(bo,"$(P)$(A)off_uncal_set") {
+	field(DISV,"0")
+	field(SDIS,"$(P)$(A)offset_cal.VAL  NPP NMS")
+	field(FLNK,"$(P)$(A)off_u_bput.PROC  PP MS")
+}
+grecord(calc,"$(P)$(A)off_u_bput_dis") {
+	field(CALC,"(a=1)||(b=0)")
+	field(INPA,"$(P)$(A)off_sign_bput.PACT  NPP NMS")
+	field(INPB,"$(P)$(A)offset_cal.VAL  NPP NMS")
+}
+grecord(calc,"$(P)$(A)off_u_initCalc") {
+	field(PINI,"YES")
+	field(FLNK,"$(P)$(A)off_u_init.PROC  PP MS")
+	field(CALC,"a=2000?1000:a")
+	field(INPA,"$(P)$(A)off_u_put.VAL  NPP MS")
+}
+grecord(fanout,"$(P)$(A)off_u_putFO") {
+	field(SDIS,"$(P)$(A)off_u_init.PACT  NPP MS")
+	field(LNK1,"$(P)$(A)off_sign_bput.PROC  PP MS")
+	field(LNK2,"$(P)$(A)off_u_put1.PROC  PP MS")
+}
+grecord(longout,"$(P)$(A)sens_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=SENS%d")
+}
+grecord(longout,"$(P)$(A)offset_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=IOLV%d")
+}
+grecord(longout,"$(P)$(A)off_sign_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=IOSN%d")
+}
+grecord(longout,"$(P)$(A)offset_on_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=IOON%d")
+}
+grecord(longout,"$(P)$(A)bias_on_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=BSON%d")
+}
+grecord(longout,"$(P)$(A)bias_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=BSLV%d")
+}
+grecord(longout,"$(P)$(A)filter_type_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(FLNK,"$(P)$(A)low_freq.PROC  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=FLTT%d")
+	field(DOL,"$(P)$(A)filter_type.RVAL  NPP NMS")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)$(A)low_freq_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=LFRQ%d")
+}
+grecord(longout,"$(P)$(A)high_freq_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=HFRQ%d")
+}
+grecord(longout,"$(P)$(A)gain_mode_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=GNMD%d")
+	field(DOL,"$(P)$(A)gain_mode.VAL  NPP NMS")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)$(A)invert_on_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=INVT%d")
+}
+grecord(longout,"$(P)$(A)blank_on_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=BLNK%d")
+}
+grecord(longout,"$(P)$(A)offset_cal_put") {
+	field(DTYP,"Hideos lo stringParm")
+	field(SDIS,"$(P)$(A)off_cal_bput.PACT  NPP NMS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=IOUC%d")
+}
+grecord(longout,"$(P)$(A)off_u_put") {
+	field(FLNK,"$(P)$(A)off_u_putFO.PROC  PP MS")
+	field(DOL,"2000")
+}
+grecord(longout,"$(P)$(A)off_u_put1") {
+	field(DTYP,"Hideos lo stringParm")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=IOUV%d")
+	field(DOL,"$(P)$(A)off_u_put.VAL  NPP NMS")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)$(A)off_u_init") {
+	field(OUT,"$(P)$(A)off_u_put.VAL  PP MS")
+	field(DOL,"$(P)$(A)off_u_initCalc.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+}
+grecord(mbbo,"$(P)$(A)sens_num") {
+	field(DESC,"sensitivity, numeric value")
+	field(FLNK,"$(P)$(A)sens_calc.PROC  PP MS")
+	field(NOBT,"3")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(ZRST,"1")
+	field(ONST,"2")
+	field(TWST,"5")
+	field(THST,"10")
+	field(FRST,"20")
+	field(FVST,"50")
+	field(SXST,"100")
+	field(SVST,"200")
+	field(EIST,"500")
+}
+grecord(mbbo,"$(P)$(A)sens_unit") {
+	field(DESC,"sensitivity, units")
+	field(FLNK,"$(P)$(A)sens_calc.PROC  PP MS")
+	field(NOBT,"2")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(ZRST,"pA/V")
+	field(ONST,"nA/V")
+	field(TWST,"uA/V")
+	field(THST,"mA/V")
+}
+grecord(mbbo,"$(P)$(A)offset_num") {
+	field(DESC,"offset, numeric value")
+	field(FLNK,"$(P)$(A)offset_calc.PROC  PP MS")
+	field(NOBT,"3")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(ZRST,"1")
+	field(ONST,"2")
+	field(TWST,"5")
+	field(THST,"10")
+	field(FRST,"20")
+	field(FVST,"50")
+	field(SXST,"100")
+	field(SVST,"200")
+	field(EIST,"500")
+}
+grecord(mbbo,"$(P)$(A)offset_unit") {
+	field(DESC,"offset units")
+	field(FLNK,"$(P)$(A)offset_calc.PROC  PP MS")
+	field(NOBT,"2")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(ZRST,"pA")
+	field(ONST,"nA")
+	field(TWST,"uA")
+	field(THST,"mA")
+}
+grecord(mbbo,"$(P)$(A)filter_type") {
+	field(DESC,"filter type")
+	field(FLNK,"$(P)$(A)filter_type_put.PROC  PP MS")
+	field(NOBT,"3")
+	field(ZRVL,"0x5")
+	field(TWVL,"0x1")
+	field(THVL,"0x2")
+	field(FRVL,"0x3")
+	field(FVVL,"0x4")
+	field(ZRST,"  No filter")
+	field(ONST," 6 dB highpass")
+	field(TWST,"12 dB highpass")
+	field(THST," 6 dB bandpass")
+	field(FRST," 6 dB lowpass")
+	field(FVST,"12 dB lowpass")
+}
+grecord(mbbo,"$(P)$(A)low_freq") {
+	field(DESC,"lowpass 3dB freq")
+	field(FLNK,"$(P)$(A)low_freq_calc.PROC  PP MS")
+	field(NOBT,"4")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(NIVL,"0x9")
+	field(TEVL,"0x10")
+	field(ELVL,"0x11")
+	field(TVVL,"0x12")
+	field(TTVL,"0x13")
+	field(FTVL,"0x14")
+	field(FFVL,"0x15")
+	field(ZRST,"  0.03 Hz")
+	field(ONST,"  0.1 Hz")
+	field(TWST,"  0.3 Hz")
+	field(THST,"  1   Hz")
+	field(FRST,"  3   Hz")
+	field(FVST," 10   Hz")
+	field(SXST," 30   Hz")
+	field(SVST,"100   Hz")
+	field(EIST,"300   Hz")
+	field(NIST,"  1   kHz")
+	field(TEST,"  3   kHz")
+	field(ELST," 10   kHz")
+	field(TVST," 30   kHz")
+	field(TTST,"100   kHz")
+	field(FTST,"300   kHz")
+	field(FFST,"  1   MHz")
+}
+grecord(mbbo,"$(P)$(A)high_freq") {
+	field(DESC,"lowpass 3dB freq")
+	field(FLNK,"$(P)$(A)high_freq_calc.PROC  PP MS")
+	field(NOBT,"4")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(NIVL,"0x9")
+	field(TEVL,"0x10")
+	field(ELVL,"0x11")
+	field(ZRST,"  0.03 Hz")
+	field(ONST,"  0.1 Hz")
+	field(TWST,"  0.3 Hz")
+	field(THST,"  1   Hz")
+	field(FRST,"  3   Hz")
+	field(FVST," 10   Hz")
+	field(SXST," 30   Hz")
+	field(SVST,"100   Hz")
+	field(EIST,"300   Hz")
+	field(NIST,"  1   kHz")
+	field(TEST,"  3   kHz")
+	field(ELST," 10   kHz")
+}
+grecord(mbbo,"$(P)$(A)gain_mode") {
+	field(DESC,"gain mode")
+	field(FLNK,"$(P)$(A)gain_mode_put.PROC  PP MS")
+	field(NOBT,"2")
+	field(ONVL,"0x1")
+	field(TWVL,"0x2")
+	field(THVL,"0x3")
+	field(FRVL,"0x4")
+	field(FVVL,"0x5")
+	field(SXVL,"0x6")
+	field(SVVL,"0x7")
+	field(EIVL,"0x8")
+	field(NIVL,"0x9")
+	field(TEVL,"0x10")
+	field(ELVL,"0x11")
+	field(TVVL,"0x12")
+	field(TTVL,"0x13")
+	field(FTVL,"0x14")
+	field(FFVL,"0x15")
+	field(ZRST,"LOW NOISE")
+	field(ONST,"HIGH BW")
+	field(TWST,"LOW DRIFT")
+}
+grecord(seq,"$(P)$(A)init") {
+	field(FLNK,"$(P)$(A)init1.PROC  PP MS")
+	field(DLY1,"0.02")
+	field(DOL1,"$(P)$(A)invert_on.VAL  NPP NMS")
+	field(LNK1,"$(P)$(A)invert_on.VAL  PP MS")
+	field(DLY2,"0.02")
+	field(DOL2,"$(P)$(A)blank_on.VAL  NPP NMS")
+	field(LNK2,"$(P)$(A)blank_on.VAL  PP MS")
+	field(DLY3,"0.02")
+	field(DOL3,"$(P)$(A)sens_num.VAL  NPP NMS")
+	field(LNK3,"$(P)$(A)sens_num.VAL  PP MS")
+	field(DLY4,"0.02")
+	field(DOL4,"$(P)$(A)gain_mode.VAL  NPP NMS")
+	field(LNK4,"$(P)$(A)gain_mode.VAL  PP MS")
+	field(DLY5,"0.02")
+	field(DLY6,"0.02")
+	field(DLY7,"0.02")
+	field(DOL7,"$(P)$(A)bias_on.VAL  NPP NMS")
+	field(LNK7,"$(P)$(A)bias_on.VAL  PP MS")
+	field(DLY8,"0.02")
+	field(DOL8,"$(P)$(A)bias_tweak.VAL  NPP NMS")
+	field(LNK8,"$(P)$(A)bias_tweak.VAL  PP MS")
+	field(DLY9,"0.02")
+	field(DOL9,"$(P)$(A)filter_type.VAL  NPP NMS")
+	field(LNK9,"$(P)$(A)filter_type.VAL  PP MS")
+}
+grecord(seq,"$(P)$(A)init1") {
+	field(DLY2,"0.02")
+	field(DOL2,"$(P)$(A)offset_sign.VAL  NPP NMS")
+	field(LNK2,"$(P)$(A)off_sign_sav.VAL  PP MS")
+	field(DLY3,"0.02")
+	field(DOL3,"$(P)$(A)offset_cal.VAL  NPP NMS")
+	field(LNK3,"$(P)$(A)off_cal_sav.VAL  PP MS")
+	field(DLY4,"0.02")
+	field(DOL4,"$(P)$(A)offset_u_tweak.VAL  NPP NMS")
+	field(LNK4,"$(P)$(A)offset_u_tweak.VAL  PP MS")
+	field(DLY5,"0.02")
+	field(DOL5,"$(P)$(A)off_sign_sav.VAL  NPP NMS")
+	field(LNK5,"$(P)$(A)offset_sign.VAL  PP MS")
+	field(DLY6,"0.02")
+	field(DOL6,"$(P)$(A)off_cal_sav.VAL  NPP NMS")
+	field(LNK6,"$(P)$(A)offset_cal.VAL  PP MS")
+	field(DLY7,"0.02")
+	field(DOL7,"$(P)$(A)offset_on.VAL  NPP NMS")
+	field(LNK7,"$(P)$(A)offset_on.VAL  PP MS")
+	field(DLY8,"0.02")
+	field(DOL8,"$(P)$(A)offset_num.VAL  NPP NMS")
+	field(LNK8,"$(P)$(A)offset_num.VAL  PP MS")
+	field(DLY9,"0.02")
+	field(DOL9,"$(P)$(A)offset_u_tweak.VAL  NPP NMS")
+	field(LNK9,"$(P)$(A)offset_u_reput.VAL  PP MS")
+}
+grecord(stringout,"$(P)$(A)reset") {
+	field(DTYP,"Hideos so stringParm")
+	field(VAL,"*RST")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(stringout,"$(P)$(A)filter_reset") {
+	field(DTYP,"Hideos so stringParm")
+	field(VAL,"ROLD")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(transform,"$(P)$(A)sens_calc") {
+	field(DESC,"sens calculation and limit")
+	field(CLCC,"min(27,max(0,a+b*9))")
+	field(CLCD,"b=3?0:a")
+	field(INPA,"$(P)$(A)sens_num.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)sens_unit.VAL  NPP NMS")
+	field(OUTC,"$(P)$(A)sens_put.VAL  PP MS")
+	field(OUTD,"$(P)$(A)sens_num.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)offset_calc") {
+	field(DESC,"offset calculation and limit")
+	field(CLCC,"min(29,max(0,a+b*9))")
+	field(CLCD,"(b=3 && a>2)?2:a")
+	field(INPA,"$(P)$(A)offset_num.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)offset_unit.VAL  NPP NMS")
+	field(OUTC,"$(P)$(A)offset_put.VAL  PP MS")
+	field(OUTD,"$(P)$(A)offset_num.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)off_sign_calc") {
+	field(DESC,"offset sign calculation")
+	field(SDIS,"$(P)$(A)off_sign_bput.PACT  NPP NMS")
+	field(FLNK,"$(P)$(A)off_u_bput.PROC  PP MS")
+	field(CLCB,"a?0:1")
+	field(OUTB,"$(P)$(A)off_sign_put.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)bias_tweak") {
+	field(CLCE,"min(g,max(h,a?c+d:b?c-d:c))")
+	field(CLCF,"e/1000.")
+	field(INPA,"$(P)$(A)bias_inc.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)bias_dec.VAL  NPP NMS")
+	field(INPC,"$(P)$(A)bias_put.VAL  NPP NMS")
+	field(INPD,"1")
+	field(INPG,"5000")
+	field(INPH,"-5000")
+	field(OUTE,"$(P)$(A)bias_put.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)low_freq_calc") {
+	field(CLCC,"a")
+	field(CLCD,"((E=2)&&(B>A))?A:B")
+	field(INPA,"$(P)$(A)low_freq.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)high_freq.VAL  NPP NMS")
+	field(INPE,"$(P)$(A)filter_type.RVAL  NPP NMS")
+	field(OUTC,"$(P)$(A)low_freq_put.VAL  PP MS")
+	field(OUTD,"$(P)$(A)high_freq.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)high_freq_calc") {
+	field(CLCC,"a")
+	field(CLCD,"((e=2)&&(b<a))?a:b")
+	field(INPA,"$(P)$(A)high_freq.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)low_freq.VAL  NPP NMS")
+	field(INPE,"$(P)$(A)filter_type.RVAL  NPP NMS")
+	field(OUTC,"$(P)$(A)high_freq_put.VAL  PP MS")
+	field(OUTD,"$(P)$(A)low_freq.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)offset_u_tweak") {
+	field(CLCE,"min(g,max(h,a?c+d:b?c-d:c))")
+	field(INPA,"$(P)$(A)offset_u_inc.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)offset_u_dec.VAL  NPP NMS")
+	field(INPC,"$(P)$(A)off_u_put.VAL  NPP NMS")
+	field(INPD,"1")
+	field(INPG,"1000")
+	field(INPH,"-1000")
+	field(OUTE,"$(P)$(A)off_u_put.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)off_sign_bput") {
+	field(SDIS,"$(P)$(A)offset_sign.PACT  NPP NMS")
+	field(FLNK,"$(P)$(A)off_cal_bput.PROC  PP MS")
+	field(CLCB,"a>=0?0:1")
+	field(INPA,"$(P)$(A)off_u_put.VAL  NPP NMS")
+	field(OUTB,"$(P)$(A)offset_sign.VAL  PP MS")
+}
+grecord(transform,"$(P)$(A)off_u_bput") {
+	field(SDIS,"$(P)$(A)off_u_bput_dis.VAL  PP MS")
+	field(CLCC,"((a>=0)=(b=1))?a:-a")
+	field(INPA,"$(P)$(A)off_u_put.VAL  NPP NMS")
+	field(INPB,"$(P)$(A)off_sign_put.VAL  NPP NMS")
+	field(OUTC,"$(P)$(A)off_u_put.VAL  PP MS")
+}
