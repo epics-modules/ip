@@ -110,7 +110,7 @@ static long initAi(aiRecord *pai)
     asynUser *pasynUser;
     asynStatus status;
     asynInterface *pasynInterface;
-    int nread, eomReason;
+    int nwrite, nread, eomReason;
     devAiMKSPvt *pPvt;
     char response[MAX_RESPONSE_LEN];
     char gauge_str[3];  /*String to hold gauge type */
@@ -164,19 +164,19 @@ static long initAi(aiRecord *pai)
                       
     /* Read the pressure units (Torr, Pascal, etc.) from the controller
      * Use synchronous I/O since we are in iocInit and it's much simpler */
-    nread = pasynOctetSyncIO->writeReadOnce(port, 0, "SU\r", 3,
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SU\r", 3,
                                   response, sizeof(response),
-                                  "\r", 1, TIMEOUT, &eomReason);
-    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
-              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
-              pai->name, nread, response);
-    if (nread != 8) {
+                                  "\r", 1, TIMEOUT, &nwrite, &nread, &eomReason);
+    if ((status != asynSuccess) || (nread != 8)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
                   pai->name, nread, response);
         recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
         goto bad;
     }
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
+              pai->name, nread, response);
     response[7]=0;
     strcpy(pai->egu, response);
            
@@ -185,19 +185,19 @@ static long initAi(aiRecord *pai)
      * slot is either empty or a cold-cathode controller.  The other two
      * slots can hold any type of controller board, and for all types 
      * except cold-cathode each board may control one or two gauges. */
-    nread = pasynOctetSyncIO->writeReadOnce(port, 0, "SG\r", 3,
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SG\r", 3,
                                   response, sizeof(response),
-                                  "\r", 1, TIMEOUT, &eomReason);
-    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
-              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
-              pai->name, nread, response);
-    if (nread != 8) {
+                                  "\r", 1, TIMEOUT, &nwrite, &nread, &eomReason);
+    if ((status != asynSuccess) || (nread != 8)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
                   pai->name, nread, response);
         recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
         goto bad;
     }
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
+              pai->name, nread, response);
     response[7]=0;
     gauge_str[2] = '\0';
     switch (pPvt->gaugeNumber) {
@@ -335,8 +335,8 @@ static void callbackAi(asynUser *pasynUser)
             recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
         } else {      /* Unexpected response from MKS */
             asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                      "devAiMKS record=%s, unknown response\n", 
-                      pai->name);
+                      "devAiMKS record=%s, unknown response len=%d response=%s\n", 
+                      pai->name, strlen(response), response);
             recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
         }
     }
