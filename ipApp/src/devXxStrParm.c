@@ -13,6 +13,7 @@
 #include <dbDefs.h>
 #include <dbAccess.h>
 #include <dbCommon.h>
+#include <epicsString.h>
 #include <alarm.h>
 #include <link.h>
 #include <recGbl.h>
@@ -118,6 +119,7 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    asynStatus status;
    asynInterface *pasynInterface;
    devStrParmPvt *pPvt=NULL;
+   char escapeBuff[20];
    
    /* Allocate private structure */
    pPvt = calloc(1, sizeof(devStrParmPvt));
@@ -137,7 +139,7 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
       goto bad;
    }
 
-   status = pasynManager->connectDevice(pasynUser,port,0);
+   status = pasynManager->connectDevice(pasynUser,port,signal);
    if(status!=asynSuccess) goto bad;
    pasynInterface = pasynManager->findInterface(pasynUser,asynOctetType,1);
    if(!pasynInterface) goto bad;
@@ -149,7 +151,11 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    /* Initialize parameters */
    strcpy(pPvt->term, "\r\n");
    pPvt->termlen=2;
-   pPvt->bufferStartIndex = signal;
+   /* NOTE: in the past the "signal" was used for the buffer start index.  This cannot be
+    * used any more, since GPIB will use this for actual address.  Must find another way to
+    * pass buffer start index
+    * pPvt->bufferStartIndex = signal; */
+   pPvt->bufferStartIndex = 0;
    pPvt->timeout=1.0;
    pPvt->nchar=100;
    if (pr->desc[0]) {
@@ -160,14 +166,10 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
 
    /* Get any configurable parameters from parm field */
    if (userParam) {
-      asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-               "XxStrParm::initCommon, userParam = '%s'\n", userParam);
       if ((p = strstr(userParam, "TERM="))) {
          pPvt->termlen = 0;
          for (p+=5,i=0; i<9 && isxdigit(p[0]) && isxdigit(p[1]); i++,p+=2) {
             pPvt->term[i] = HEXCHAR2INT(p[0])*16 + HEXCHAR2INT(p[1]);
-            asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-                      "XxStrParm::initCommon term[i] = 0x%x\n", pPvt->term[i]);
             pPvt->termlen++;
          }
       pPvt->term[i] = 0;
@@ -183,7 +185,8 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
       }
 
       if ((p = strstr(userParam, "TO="))) {
-         pPvt->timeout = atof(&p[3]);
+         /* Timeout is specified in msec, convert to sec */
+         pPvt->timeout = atof(&p[3])/1000.;
       }
 
       if ((p = strstr(userParam, "N="))) {
@@ -209,11 +212,15 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    }
 
    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-      "devXxStrParm %s term = '%s'\n", pr->name, pPvt->term);
+      "devXxStrParm::initCommon %s userParam = '%s'\n", pr->name, userParam);
+   epicsStrSnPrintEscaped(escapeBuff, sizeof(escapeBuff),
+                          pPvt->term, pPvt->termlen);
+   asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
+      "   term = %s\n", escapeBuff);
    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
       "   bufferStartIndex = %d\n", pPvt->bufferStartIndex);
    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-      "   timeout = %d\n", pPvt->timeout);
+      "   timeout = %f\n", pPvt->timeout);
    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
       "   format = %s\n", pPvt->format);
    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
@@ -372,19 +379,30 @@ static void devStrParmCallback(asynUser *pasynUser)
    devStrParmPvt *pPvt = (devStrParmPvt *)pr->dpvt;
    struct rset *prset = (struct rset *)(pr->rset);
    int eomReason;
+   asynStatus status;
 
    pPvt->pasynUser->timeout = pPvt->timeout;
    switch(pPvt->opType) {
       case opTypeInput:
-         pPvt->pasynOctet->setInputEos(pPvt->octetPvt, pasynUser, 
-                                       pPvt->term, pPvt->termlen);
+         status = pPvt->pasynOctet->setInputEos(pPvt->octetPvt, pasynUser, 
+                                                pPvt->term, pPvt->termlen);
+         if (status != asynSuccess) {
+            asynPrint(pasynUser, ASYN_TRACE_ERROR, 
+                      "devStrParmCallback, %s error calling setInputEos %s\n",
+                      pr->name, pasynUser->errorMessage);
+         }
          pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                                pPvt->buffer, pPvt->nchar, 
                                                &pPvt->nread, &eomReason);
          break;
       case opTypeOutput:
-         pPvt->pasynOctet->setOutputEos(pPvt->octetPvt, pasynUser, 
+         status = pPvt->pasynOctet->setOutputEos(pPvt->octetPvt, pasynUser, 
                                         pPvt->term, pPvt->termlen);
+         if (status != asynSuccess) {
+            asynPrint(pasynUser, ASYN_TRACE_ERROR, 
+                      "devStrParmCallback, %s error calling setOutputEos %s\n",
+                      pr->name, pasynUser->errorMessage);
+         }
          pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                                 pPvt->buffer, strlen(pPvt->buffer), 
                                                 &pPvt->nwrite);
