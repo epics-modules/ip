@@ -254,8 +254,6 @@ static long writeAo(aoRecord *pr)
 static long writeSo(stringoutRecord *pr)
 {
 	devEurothermPvt *pPvt = (devEurothermPvt *)pr->dpvt;
-	char checksum;
-	int i;
     
 	if (!pr->pact) {
 
@@ -268,7 +266,7 @@ static long writeSo(stringoutRecord *pr)
 		pPvt->buffer[5] = 0;
 
 		/* message payload */
-		strncat(pPvt->buffer, &(pr->val[buffer_start_index]),
+		strncat(pPvt->buffer, &(pr->val[pPvt->bufferStartIndex]),
 			sizeof(pPvt->buffer)-strlen(pPvt->buffer));
 
 		/* message terminator */
