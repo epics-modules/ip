@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.5  2003/08/03 17:37:50  rivers
+// Removed call to tickGet()
+//
 // Revision 1.4  2003/07/09 21:40:29  goetze
 // Merged Mark's and Tim's changes.
 //
@@ -52,7 +55,15 @@ extern "C"
 #ifdef NODEBUG
 #define DEBUG(l,f,v...) ;
 #else
-#define DEBUG(l,f,v...) { if(l<=devSoEurothermDebug) printf(f,## v); }
+#ifdef __GNUG__
+#define DEBUG(l,f,v...) { if(l<=devSoEurothermDebug) printf(f ,## v); }
+#else
+#ifdef __SUNPRO_CC
+#define DEBUG(l,...) { if(l<=devSoEurothermDebug) printf(__VA_ARGS__); }
+#else
+#define DEBUG(l,f,v) { if(l<=devSoEurothermDebug) printf(f,v); }
+#endif
+#endif
 #endif
 volatile int devSoEurothermDebug = 0;
 }

@@ -36,7 +36,11 @@
 #ifdef NODEBUG
 #define Debug(l,f,v...) ;
 #else
-#define Debug(l,f,v...) { if(l<=serialRecordDebug) printf(f,## v); }
+#ifdef __GNUG__
+#define Debug(l,f,v...) { if(l<=serialRecordDebug) printf(f ,## v); }
+#else
+#define Debug(l,f,v) { if(l<=serialRecordDebug) printf(f,v); }
+#endif
 #endif
 volatile int serialRecordDebug = 0;
 

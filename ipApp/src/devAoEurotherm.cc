@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.4  2003/07/09 21:40:29  goetze
+// Merged Mark's and Tim's changes.
+//
 // Revision 1.2.2.1  2003/07/09 18:32:59  goetze
 // kag- general version with bind call
 //
@@ -49,7 +52,15 @@ extern "C"
 #ifdef NODEBUG
 #define DEBUG(l,f,v...) ;
 #else
-#define DEBUG(l,f,v...) { if(l<=devAoEurothermDebug) printf(f,## v); }
+#ifdef __GNUG__
+#define DEBUG(l,f,v...) { if(l<=devAoEurothermDebug) printf(f ,## v); }
+#else
+#ifdef __SUNPRO_CC
+#define DEBUG(l,...) { if(l<=devAoEurothermDebug) printf(__VA_ARGS__); }
+#else
+#define DEBUG(l,f,v) { if(l<=devAoEurothermDebug) printf(f,v); }
+#endif
+#endif
 #endif
 volatile int devAoEurothermDebug = 0;
 }
