@@ -17,25 +17,17 @@ SRCS.c += ../devSerial.cc
 SRCS.c += ../devAiHeidND261.cc
 SRCS.c += ../devAiMKS.cc
 SRCS.c += ../devMPC.cc
-SRCS.c += ../mpfServer.cc
-
-# Allows mulitple instances of SNL programs - needed for Keithley2kDMM
-SNCFLAGS += +r
+SRCS.c += ../mpcServer.cc
 
 include ../ipMpfServerLIBOBJS    # define IPMPFSERVERLIBOBJS
 IP_BIN = .
 include ../ipLIBOBJS           #defines IPLIBOBJS
 
 PROD += ipLib
-# Note: we'd like to call this mpfServerLib, but that is the name of a library
-# in MPF itself, and it would conflict.
-PROD += mpfServLib
+PROD += ipServerLib
 
 BIN_INSTALLS += $(IPLIBOBJS)
 BIN_INSTALLS += $(IPMPFSERVERLIBOBJS)
-# We can't put mpfLib in mpfServLib or it will be loaded twice
-#  - once from ipLib and once from mpfServLib on single-board systems
-BIN_INSTALLS += $(MPF_BIN)/mpfLib
 
 include $(TOP)/config/RULES.Vx
 #----------------------------------------
@@ -44,6 +36,6 @@ include $(TOP)/config/RULES.Vx
 ipLib : $(IPLIBOBJS)
 	$(LINK.c) $@ $(IPLIBOBJS)
 
-mpfServLib : $(IPMPFSERVERLIBOBJS)
+ipServerLib : $(IPMPFSERVERLIBOBJS)
 	$(LINK.c) $@ $(IPMPFSERVERLIBOBJS)
 
