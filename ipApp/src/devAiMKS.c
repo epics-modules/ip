@@ -56,7 +56,7 @@
 #include <devSup.h>
 #include <alarm.h>
 #include <asynDriver.h>
-#include <asynUtils.h>
+#include <asynEpicsUtils.h>
 #include <asynOctet.h>
 #include <epicsExport.h>
 
@@ -112,7 +112,6 @@ epicsExportAddress(dset, devAiMKS);
 static long initAi(aiRecord *pai)
 {
     char *port, *userParam;
-    int card;
     asynUser *pasynUser;
     asynStatus status;
     asynInterface *pasynInterface;
@@ -125,9 +124,9 @@ static long initAi(aiRecord *pai)
     pasynUser = pasynManager->createAsynUser(callbackAi, 0);
     pasynUser->userPvt = pai;
 
-    status = pasynUtils->parseVmeIo(pasynUser, &pai->inp, 
-                                    &card, &pPvt->gaugeNumber,
-                                    &port, &userParam);
+    status = pasynEpicsUtils->parseLink(pasynUser, &pai->inp, 
+                                        &port, &pPvt->gaugeNumber,
+                                        &userParam);
     if(status != asynSuccess) {
         errlogPrintf("devAiMKS::initAi %s bad link %s \n",
                      pai->name, pasynUser->errorMessage);
@@ -219,7 +218,7 @@ static void callbackAi(asynUser *pasynUser)
                                      strlen(pPvt->readCommand), &nwrite);
     pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
     pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
-                           MAX_RESPONSE_LEN, &nread, eomReason);
+                           MAX_RESPONSE_LEN, &nread, &eomReason);
 
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
               "devAiMKS record=%s, len=%d, response=\n%s\n", 

@@ -2,7 +2,7 @@
 /*
  *      Author: Mark Rivers
  *      Date:   06-May-2004
- *      26-July-2004  MLR Convert to pasynUtils->parseVmeIo
+ *      26-July-2004  MLR Convert to pasynEpicsUtils->parseLink
 ***********************************************************************/
 #include <stdlib.h>
 #include <stdio.h>
@@ -19,7 +19,7 @@
 #include <recSup.h>
 #include <devSup.h>
 #include <asynDriver.h>
-#include <asynUtils.h>
+#include <asynEpicsUtils.h>
 #include <asynOctet.h>
 #include <aiRecord.h>
 #include <aoRecord.h>
@@ -113,7 +113,7 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
 {
    char *p, *port, *userParam;
    int i;
-   int card, signal;
+   int signal;
    asynUser *pasynUser=NULL;
    asynStatus status;
    asynInterface *pasynInterface;
@@ -129,15 +129,15 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    pasynUser->userPvt = pr;
 
    /* Parse link */
-   status = pasynUtils->parseVmeIo(pasynUser, plink, &card, &signal, 
-                                   &port, &userParam);
+   status = pasynEpicsUtils->parseLink(pasynUser, plink,
+                                       &port, &signal, &userParam);
    if (status != asynSuccess) {
       errlogPrintf("devXxStrParm::initCommon %s bad link %s\n",
                    pr->name, pasynUser->errorMessage);
       goto bad;
    }
 
-   status = pasynManager->connectDevice(pasynUser,port,card);
+   status = pasynManager->connectDevice(pasynUser,port,0);
    if(status!=asynSuccess) goto bad;
    pasynInterface = pasynManager->findInterface(pasynUser,asynOctetType,1);
    if(!pasynInterface) goto bad;
