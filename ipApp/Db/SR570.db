@@ -104,70 +104,70 @@ grecord(fanout,"$(P)$(A)off_u_putFO") {
 	field(LNK2,"$(P)$(A)off_u_put1.PROC  PP MS")
 }
 grecord(longout,"$(P)$(A)sens_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=SENS%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=SENS%d")
 }
 grecord(longout,"$(P)$(A)offset_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=IOLV%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=IOLV%d")
 }
 grecord(longout,"$(P)$(A)off_sign_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=IOSN%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=IOSN%d")
 }
 grecord(longout,"$(P)$(A)offset_on_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=IOON%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=IOON%d")
 }
 grecord(longout,"$(P)$(A)bias_on_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=BSON%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=BSON%d")
 }
 grecord(longout,"$(P)$(A)bias_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=BSLV%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=BSLV%d")
 }
 grecord(longout,"$(P)$(A)filter_type_put") {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(FLNK,"$(P)$(A)low_freq.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=FLTT%d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=FLTT%d")
 	field(DOL,"$(P)$(A)filter_type.RVAL  NPP NMS")
 	field(OMSL,"closed_loop")
 }
 grecord(longout,"$(P)$(A)low_freq_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=LFRQ%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=LFRQ%d")
 }
 grecord(longout,"$(P)$(A)high_freq_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=HFRQ%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=HFRQ%d")
 }
 grecord(longout,"$(P)$(A)gain_mode_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=GNMD%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=GNMD%d")
 	field(DOL,"$(P)$(A)gain_mode.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 }
 grecord(longout,"$(P)$(A)invert_on_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=INVT%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=INVT%d")
 }
 grecord(longout,"$(P)$(A)blank_on_put") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=BLNK%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=BLNK%d")
 }
 grecord(longout,"$(P)$(A)offset_cal_put") {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(SDIS,"$(P)$(A)off_cal_bput.PACT  NPP NMS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=IOUC%d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=IOUC%d")
 }
 grecord(longout,"$(P)$(A)off_u_put") {
 	field(FLNK,"$(P)$(A)off_u_putFO.PROC  PP MS")
 	field(DOL,"2000")
 }
 grecord(longout,"$(P)$(A)off_u_put1") {
-	field(DTYP,"MPF lo stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=IOUV%d")
+	field(DTYP,"asyn lo stringParm")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=IOUV%d")
 	field(DOL,"$(P)$(A)off_u_put.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 }
@@ -400,14 +400,14 @@ grecord(seq,"$(P)$(A)init1") {
 	field(LNK9,"$(P)$(A)offset_u_reput.VAL  PP MS")
 }
 grecord(stringout,"$(P)$(A)reset") {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(VAL,"*RST")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(A)filter_reset") {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(VAL,"ROLD")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(transform,"$(P)$(A)sens_calc") {
 	field(DESC,"sens calculation and limit")

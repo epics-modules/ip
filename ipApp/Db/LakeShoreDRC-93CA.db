@@ -1,21 +1,21 @@
 grecord(longout,"$(P)$(Q)LocRemPut")
 {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)LocRemNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)LocRemR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=M%1d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=M%1d")
 	field(DOL,"$(P)$(Q)LocalRemote.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(HOPR,"2")
 }
 grecord(longout,"$(P)$(Q)CtrlResPut")
 {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)CtrlResNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)CtrlResR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=F3C%1d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=F3C%1d")
 	field(DOL,"$(P)$(Q)CtrlRes.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(HOPR,"2")
@@ -26,10 +26,10 @@ grecord(stringout,"$(P)$(Q)Cycle")
 }
 grecord(stringout,"$(P)$(Q)CtrlUnitsPut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)CtrlUnitsR.PROC PP MS")
 	field(VAL,"F0K")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)CtrlUnitsK")
 {
@@ -70,10 +70,10 @@ grecord(fanout,"$(P)$(Q)CtrlUnitsFO")
 }
 grecord(stringout,"$(P)$(Q)SamplUnitsPut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)SamplUnitsR.PROC PP MS")
 	field(VAL,"F1K")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)SamplUnitsK")
 {
@@ -129,43 +129,43 @@ grecord(mbbo,"$(P)$(Q)CtrlRes")
 }
 grecord(stringout,"$(P)$(Q)ReadCtrl")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)CtrlReading.PROC PP MS")
 	field(VAL,"WC")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)ReadSampl")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)SamplReading.PROC PP MS")
 	field(VAL,"WS")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)ReadSetPt")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)SetPtReading.PROC PP MS")
 	field(VAL,"WP")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ao,"$(P)$(Q)SetPointPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)SetPointNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)SetPointR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=S%f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=S%f")
 	field(DOL,"$(P)$(Q)SetPoint.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"2")
 }
 grecord(longout,"$(P)$(Q)HeatRangePut")
 {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)HRNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)HRR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=R%1d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=R%1d")
 	field(DOL,"$(P)$(Q)HeatRange.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(HOPR,"2")
@@ -189,10 +189,10 @@ grecord(mbbo,"$(P)$(Q)HeatRange")
 }
 grecord(stringout,"$(P)$(Q)CtrlSensorPut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)CtrlSensR.PROC PP MS")
 	field(VAL,"F0K")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)CtrlSensorA")
 {
@@ -236,79 +236,79 @@ grecord(mbbo,"$(P)$(Q)LocalRemote")
 }
 grecord(ai,"$(P)$(Q)SetPtReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadGain.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf")
 	field(PREC,"2")
 }
 grecord(stringout,"$(P)$(Q)ReadPower")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)PowerReading.PROC PP MS")
 	field(VAL,"W3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)PowerReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadCUnits.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf,IX=14")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf,IX=14")
 	field(PREC,"2")
 }
 grecord(stringout,"$(P)$(Q)ReadGain")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)GainReading.PROC PP MS")
 	field(VAL,"W3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)GainReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadRate.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf")
 	field(PREC,"1")
 }
 grecord(stringout,"$(P)$(Q)ReadRate")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)RateReading.PROC PP MS")
 	field(VAL,"W3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)RateReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadReset.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf,IX=4")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf,IX=4")
 	field(PREC,"1")
 }
 grecord(stringout,"$(P)$(Q)ReadReset")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)ResetReading.PROC PP MS")
 	field(VAL,"W3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)ResetReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadHRange.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf,IX=8")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf,IX=8")
 	field(PREC,"1")
 }
 grecord(stringout,"$(P)$(Q)ReadHRange")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)HRangeAI.PROC PP MS")
 	field(VAL,"W3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)HRangeAI")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)HRangeReading.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf,IX=12")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf,IX=12")
 	field(PREC,"2")
 }
 grecord(bo,"$(P)$(Q)DoAll")
@@ -321,24 +321,24 @@ grecord(bo,"$(P)$(Q)DoAll")
 }
 grecord(ai,"$(P)$(Q)CtrlReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadSampl.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf")
 	field(PREC,"4")
 }
 grecord(ai,"$(P)$(Q)SamplReading")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)ReadSetPt.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),FMT=%lf")
 	field(PREC,"4")
 }
 grecord(stringout,"$(P)$(Q)SamplSensorPut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)SmplSensR.PROC PP MS")
 	field(VAL,"F2SA0")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)SamplSensorA")
 {
@@ -402,13 +402,13 @@ grecord(bo,"$(P)$(Q)CycleQ")
 grecord(bo,"$(P)$(Q)CycleNeed")
 grecord(stringout,"$(P)$(Q)CyclePut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)CycleNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)CycleR.PROC PP MS")
 	field(DOL,"$(P)$(Q)Cycle.VAL NPP NMS")
 	field(OMSL,"closed_loop")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(bo,"$(P)$(Q)CycleR")
 {
@@ -507,11 +507,11 @@ grecord(bo,"$(P)$(Q)CtrlResR")
 }
 grecord(longout,"$(P)$(Q)SamplResPut")
 {
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)SamplResNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)SamplResR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=F3S%1d")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=F3S%1d")
 	field(DOL,"$(P)$(Q)SamplRes.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(HOPR,"2")
@@ -563,11 +563,11 @@ grecord(bo,"$(P)$(Q)SetPointR")
 }
 grecord(ao,"$(P)$(Q)GainPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)GainNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)GainR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),P%f")
+	field(OUT,"#C$(C) S0 @$(PORT),P%f")
 	field(DOL,"$(P)$(Q)Gain.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"2")
@@ -595,11 +595,11 @@ grecord(bo,"$(P)$(Q)GainR")
 }
 grecord(ao,"$(P)$(Q)RatePut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)RateNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)RateR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),D%f")
+	field(OUT,"#C$(C) S0 @$(PORT),D%f")
 	field(DOL,"$(P)$(Q)Rate.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"2")
@@ -634,11 +634,11 @@ grecord(fanout,"$(P)$(Q)Do2FO_41")
 }
 grecord(ao,"$(P)$(Q)ResetPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(DISV,"0")
 	field(SDIS,"$(P)$(Q)ResetNeed.VAL NPP NMS")
 	field(FLNK,"$(P)$(Q)ResetR.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=I%f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=I%f")
 	field(DOL,"$(P)$(Q)Reset.VAL NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"2")
@@ -678,27 +678,27 @@ grecord(bo,"$(P)$(Q)HRR")
 }
 grecord(stringout,"$(P)$(Q)ReadCUnits")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)CtrlUnitsRd.PROC PP MS")
 	field(VAL,"WP")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)ReadSUnits")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)SmplUnitsRd.PROC PP MS")
 	field(VAL,"WS")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)CtrlUnitsRd")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)ReadSUnits.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),IX=7")
+	field(INP,"#C$(C) S0 @$(PORT),IX=7")
 }
 grecord(stringin,"$(P)$(Q)SmplUnitsRd")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)Done.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),IX=7")
+	field(INP,"#C$(C) S0 @$(PORT),IX=7")
 }

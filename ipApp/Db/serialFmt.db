@@ -1,42 +1,42 @@
 grecord(ai,"$(P)ai$(CHAN)") {
 	field(DESC,"$(AIFMT)")
-	field(DTYP,"MPF ai stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(DTYP,"asyn ai stringParm")
+	field(INP,"#C$(C) S0 @$(PORT)")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
 	field(PREC,"6")
 }
 grecord(ao,"$(P)ao$(CHAN)") {
 	field(DESC,"$(AOFMT)")
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 	field(PREC,"6")
 }
 grecord(longin,"$(P)li$(CHAN)") {
 	field(DESC,"$(LIFMT)")
-	field(DTYP,"MPF li stringParm")
+	field(DTYP,"asyn li stringParm")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(longout,"$(P)lo$(CHAN)") {
 	field(DESC,"$(LOFMT)")
-	field(DTYP,"MPF lo stringParm")
+	field(DTYP,"asyn lo stringParm")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(seq,"$(P)sertst$(CHAN)After") {
 	field(PREC,"2")
 	field(DLY1,".1")
 }
 grecord(stringin,"$(P)si$(CHAN)") {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
 	field(VAL,"empty")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)so$(CHAN)") {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)sertst$(CHAN)After.VAL  PP MS")
 	field(VAL,"SOtest: hello!")
-	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d0a")
+	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d0a")
 }

@@ -1,42 +1,42 @@
 grecord(stringout,"$(P)$(Q)1:PosQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)1:PosQuery1.PROC PP MS")
 	field(VAL,"?PA 1")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)1:Pos")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)1:PosDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%lf")
 	field(PREC,"2")
 }
 grecord(ao,"$(P)$(Q)1:PosPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(Q)1:PosPut1.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=PA 1 %f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=PA 1 %f")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)1:PosQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)1:Pos.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)1:StatusQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)1:StatusQuery1.PROC PP MS")
 	field(VAL,"?S 1")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)1:StatusQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)1:status.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(bi,"$(P)$(Q)1:DMOV")
 {
@@ -45,9 +45,9 @@ grecord(bi,"$(P)$(Q)1:DMOV")
 }
 grecord(stringin,"$(P)$(Q)1:PosPut1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)1:nDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(bo,"$(P)$(Q)1:nDone")
 {
@@ -67,9 +67,9 @@ grecord(bo,"$(P)$(Q)1:DMOV0")
 grecord(longin,"$(P)$(Q)1:status")
 {
 	field(DESC,"%d")
-	field(DTYP,"MPF li stringParm")
+	field(DTYP,"asyn li stringParm")
 	field(FLNK,"$(P)$(Q)1:Parse.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%d")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%d")
 }
 grecord(bo,"$(P)$(Q)1:TWF")
 {
@@ -107,16 +107,16 @@ grecord(calc,"$(P)$(Q)1:AskQ")
 }
 grecord(ao,"$(P)$(Q)2:PosPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(Q)2:PosPut1.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=PA 2 %f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=PA 2 %f")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)2:PosPut1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)2:nDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(bo,"$(P)$(Q)2:nDone")
 {
@@ -152,37 +152,37 @@ grecord(transform,"$(P)$(Q)2:tweak")
 }
 grecord(stringout,"$(P)$(Q)2:PosQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)2:PosQuery1.PROC PP MS")
 	field(VAL,"?PA 2")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)2:Pos")
 {
 	field(DESC,"%lf")
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)2:PosDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%lf")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)2:PosQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)2:Pos.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)2:StatusQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)2:StatusQuery1.PROC PP MS")
 	field(VAL,"?S 2")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)2:StatusQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)2:status.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(bi,"$(P)$(Q)2:DMOV")
 {
@@ -191,9 +191,9 @@ grecord(bi,"$(P)$(Q)2:DMOV")
 }
 grecord(longin,"$(P)$(Q)2:status")
 {
-	field(DTYP,"MPF li stringParm")
+	field(DTYP,"asyn li stringParm")
 	field(FLNK,"$(P)$(Q)2:Parse.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%d")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%d")
 }
 grecord(fanout,"$(P)$(Q)2:Ask1")
 {
@@ -209,16 +209,16 @@ grecord(calc,"$(P)$(Q)2:AskQ")
 }
 grecord(ao,"$(P)$(Q)3:PosPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(Q)3:PosPut1.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=PA 3 %f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=PA 3 %f")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)3:PosPut1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)3:nDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(bo,"$(P)$(Q)3:nDone")
 {
@@ -254,16 +254,16 @@ grecord(transform,"$(P)$(Q)3:tweak")
 }
 grecord(ao,"$(P)$(Q)4:PosPut")
 {
-	field(DTYP,"MPF ao stringParm")
+	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(Q)4:PosPut1.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(SERVER),FMT=PA 4 %f")
+	field(OUT,"#C$(C) S0 @$(PORT),FMT=PA 4 %f")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)4:PosPut1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)4:nDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(bo,"$(P)$(Q)4:nDone")
 {
@@ -299,37 +299,37 @@ grecord(transform,"$(P)$(Q)4:tweak")
 }
 grecord(stringout,"$(P)$(Q)3:PosQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)3:PosQuery1.PROC PP MS")
 	field(VAL,"?PA 3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)3:Pos")
 {
 	field(DESC,"%lf")
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)3:PosDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%lf")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)3:PosQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)3:Pos.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)3:StatusQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)3:StatusQuery1.PROC PP MS")
 	field(VAL,"?S 3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)3:StatusQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)3:status.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(bi,"$(P)$(Q)3:DMOV")
 {
@@ -338,9 +338,9 @@ grecord(bi,"$(P)$(Q)3:DMOV")
 }
 grecord(longin,"$(P)$(Q)3:status")
 {
-	field(DTYP,"MPF li stringParm")
+	field(DTYP,"asyn li stringParm")
 	field(FLNK,"$(P)$(Q)3:Parse.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%d")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%d")
 }
 grecord(fanout,"$(P)$(Q)3:Ask1")
 {
@@ -356,36 +356,36 @@ grecord(calc,"$(P)$(Q)3:AskQ")
 }
 grecord(stringout,"$(P)$(Q)4:PosQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)4:PosQuery1.PROC PP MS")
 	field(VAL,"?PA 4")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(ai,"$(P)$(Q)4:Pos")
 {
-	field(DTYP,"MPF ai stringParm")
+	field(DTYP,"asyn ai stringParm")
 	field(FLNK,"$(P)$(Q)4:PosDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%lf")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%lf")
 	field(PREC,"2")
 }
 grecord(stringin,"$(P)$(Q)4:PosQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)4:Pos.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)4:StatusQuery")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)4:StatusQuery1.PROC PP MS")
 	field(VAL,"?S 4")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)4:StatusQuery1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)4:status.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(INP,"#C$(C) S0 @$(PORT)")
 }
 grecord(bi,"$(P)$(Q)4:DMOV")
 {
@@ -394,9 +394,9 @@ grecord(bi,"$(P)$(Q)4:DMOV")
 }
 grecord(longin,"$(P)$(Q)4:status")
 {
-	field(DTYP,"MPF li stringParm")
+	field(DTYP,"asyn li stringParm")
 	field(FLNK,"$(P)$(Q)4:Parse.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>,FMT=%d")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>,FMT=%d")
 }
 grecord(calc,"$(P)$(Q)4:AskQ")
 {
@@ -412,51 +412,51 @@ grecord(fanout,"$(P)$(Q)4:Ask1")
 }
 grecord(stringout,"$(P)$(Q)Init")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)echo1.PROC PP MS")
 	field(VAL,"echoon")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)echo1")
 {
-	field(DTYP,"MPF si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Q)Remote.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringout,"$(P)$(Q)Remote")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)echo2.PROC PP MS")
 	field(VAL,"remote")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)echo2")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringout,"$(P)$(Q)Local")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)echo3.PROC PP MS")
 	field(VAL,"local")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)echo3")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringout,"$(P)$(Q)MsgOut")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(VAL,"local")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)MsgIn")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(transform,"$(P)$(Q)1:Parse")
 {
@@ -521,63 +521,63 @@ grecord(swait,"$(P)$(Q)alldone")
 }
 grecord(stringout,"$(P)$(Q)1:Stop")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)1:StopE.PROC PP MS")
 	field(VAL,"STOP 1")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)2:Stop")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)2:StopE.PROC PP MS")
 	field(VAL,"STOP 2")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)3:Stop")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)3:StopE.PROC PP MS")
 	field(VAL,"STOP 3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringout,"$(P)$(Q)4:Stop")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)4:StopE.PROC PP MS")
 	field(VAL,"STOP 3")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)1:StopE")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringin,"$(P)$(Q)2:StopE")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringin,"$(P)$(Q)3:StopE")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringin,"$(P)$(Q)4:StopE")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(stringout,"$(P)$(Q)Stop")
 {
-	field(DTYP,"MPF so stringParm")
+	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Q)StopE.PROC PP MS")
 	field(VAL,"STOP 0")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(PORT)")
 }
 grecord(stringin,"$(P)$(Q)StopE")
 {
-	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER),TERM=ok>")
+	field(DTYP,"asyn si stringParm")
+	field(INP,"#C$(C) S0 @$(PORT),TERM=ok>")
 }
 grecord(bo,"$(P)$(Q)Query")
 {

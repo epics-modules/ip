@@ -3,11 +3,10 @@ grecord(calc,"$(P)serialOI$(N)_calc1") {
 	field(CALC,"A=0||a=2")
 	field(INPA,"$(P)serialOI$(N).TMOD  NPP MS")
 }
-grecord(serial,"$(P)serialOI$(N)") {
+grecord(asyn,"$(P)serialOI$(N)") {
 	field(DESC,"Serial Out/In block $(N)")
-	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)serialOI$(N)_calc1.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(scalcout,"$(P)serialOI$(N)_parse") {
 	field(DISV,"0")

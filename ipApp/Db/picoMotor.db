@@ -88,40 +88,40 @@ grecord(asyn,"$(P)$(S):$(D):pM$(M)_go") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_eta.PROC  PP MS")
 	field(AOUT,"go")
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_jodo") {
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sav") {
 	field(AOUT,"sav")
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_ser") {
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndD") {
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndM") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_cmd.PROC  PP MS")
 	field(AOUT,"chl $(D)=$(M)")
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndp") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_go.VAL  PP MS")
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_stop") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_putS.PROC  PP MS")
 	field(AOUT,"hal")
 	field(IEOS,">")
-	field(PORT,"$(SERVER)")
+	field(PORT,"$(PORT)")
 }
 grecord(transform,"$(P)$(S):$(D):pM$(M)_eta") {
 	field(CLCE,"ABS(C)")

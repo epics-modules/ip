@@ -149,126 +149,74 @@ grecord(stringout,"$(P)LS330:$(Q):rd_Gain") {
 	field(VAL,"GAIN?")
 	field(OUT,"$(P)LS330:$(Q):wr_rd_Gain.AOUT  PP MS")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_Rset") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_Rset") {
 	field(FLNK,"$(P)LS330:$(Q):I.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_Rate") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_Rate") {
 	field(FLNK,"$(P)LS330:$(Q):D.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_Gain") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_Gain") {
 	field(FLNK,"$(P)LS330:$(Q):P.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_Ctl") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_Ctl") {
 	field(FLNK,"$(P)LS330:$(Q):Control.VAL  PP MS")
 	field(AOUT,"CDAT?")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_CtlChan") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_CtlChan") {
 	field(FLNK,"$(P)LS330:$(Q):CtlChan.PROC  PP MS")
 	field(AOUT,"CDAT?")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_Heater") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_Heater") {
 	field(FLNK,"$(P)LS330:$(Q):Heater.VAL  PP MS")
 	field(AOUT,"HEAT?")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_SP") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_SP") {
 	field(FLNK,"$(P)LS330:$(Q):SP.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_SamChan") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_SamChan") {
 	field(FLNK,"$(P)LS330:$(Q):SamChan.PROC  PP MS")
 	field(AOUT,"CDAT?")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):rd_Spl") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):rd_Spl") {
 	field(FLNK,"$(P)LS330:$(Q):Sample.VAL  PP MS")
 	field(AOUT,"SDAT?")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):serial") {
-	field(DTYP,"MPF Serial")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+grecord(asyn,"$(P)LS330:$(Q):serial") {
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_Htr") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_Htr") {
 	field(FLNK,"$(P)LS330:$(Q):Range.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_Ramp") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_Ramp") {
 	field(FLNK,"$(P)LS330:$(Q):Ramp_scalc.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
-grecord(serial,"$(P)LS330:$(Q):wr_rd_RampR") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)LS330:$(Q):wr_rd_RampR") {
 	field(FLNK,"$(P)LS330:$(Q):RampR.VAL  PP MS")
-	field(ODEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"1200")
-	field(PRTY,"Odd")
-	field(DBIT,"7")
+	field(OEOS,"\n")
+	field(PORT,"$(PORT)")
 }
 grecord(scalcout,"$(P)LS330:$(Q):setRset") {
 	field(DESC,"Format string for PID input")
