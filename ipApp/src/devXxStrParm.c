@@ -310,7 +310,6 @@ static long writeAo(aoRecord *pr)
     
    if (!pr->pact) {
       sprintf(pPvt->buffer, pPvt->format, pr->val);
-      strncat(pPvt->buffer, pPvt->term, pPvt->termlen);
       return(startIOCommon((dbCommon *)pr));
    } else {
       return(completeIOCommon((dbCommon *)pr));
@@ -323,7 +322,6 @@ static long writeBo(boRecord *pr)
     
    if (!pr->pact) {
       sprintf(pPvt->buffer, pPvt->format, pr->val);
-      strncat(pPvt->buffer, pPvt->term, pPvt->termlen);
       return(startIOCommon((dbCommon *)pr));
    } else {
       return(completeIOCommon((dbCommon *)pr));
@@ -336,7 +334,6 @@ static long writeLo(longoutRecord *pr)
     
    if (!pr->pact) {
       sprintf(pPvt->buffer, pPvt->format, pr->val);
-      strncat(pPvt->buffer, pPvt->term, pPvt->termlen);
       return(startIOCommon((dbCommon *)pr));
    } else { 
       return(completeIOCommon((dbCommon *)pr));
@@ -350,7 +347,6 @@ static long writeSo(stringoutRecord *pr)
    if (!pr->pact) {
       strncpy(pPvt->buffer, &(pr->val[pPvt->bufferStartIndex]), 
               sizeof(pr->val));
-      strncat(pPvt->buffer, pPvt->term, pPvt->termlen);
       return(startIOCommon((dbCommon *)pr));
    } else { 
       return(completeIOCommon((dbCommon *)pr));
@@ -380,13 +376,15 @@ static void devStrParmCallback(asynUser *pasynUser)
    pPvt->pasynUser->timeout = pPvt->timeout;
    switch(pPvt->opType) {
       case opTypeInput:
-         pPvt->pasynOctet->setEos(pPvt->octetPvt, pasynUser, 
-                                  pPvt->term, pPvt->termlen);
+         pPvt->pasynOctet->setInputEos(pPvt->octetPvt, pasynUser, 
+                                       pPvt->term, pPvt->termlen);
          pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                                pPvt->buffer, pPvt->nchar, 
                                                &pPvt->nread, &eomReason);
          break;
       case opTypeOutput:
+         pPvt->pasynOctet->setOutputEos(pPvt->octetPvt, pasynUser, 
+                                        pPvt->term, pPvt->termlen);
          pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                                 pPvt->buffer, strlen(pPvt->buffer), 
                                                 &pPvt->nwrite);
@@ -418,10 +416,6 @@ static long completeIOCommon(dbCommon *pr)
          /* Timeout is expected if no terminator */
          if (pPvt->termlen && pPvt->status) rc=-1;
          pPvt->buffer[pPvt->nread]='\0';
-         /* remove delimiter (of length termlen) unless timeout */
-         if (!pPvt->status && (pPvt->nread < sizeof(pPvt->buffer)) &&
-             (pPvt->nread >= pPvt->termlen))
-            pPvt->buffer[pPvt->nread - pPvt->termlen] = '\0';
          switch(pPvt->recType) {
             case recTypeAi: {
                aiRecord *pai = (aiRecord *)pr;

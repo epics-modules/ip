@@ -136,7 +136,7 @@ static long initAi(aiRecord *pai)
                      pPvt->gaugeNumber);
         goto bad;
     } else {
-      sprintf(pPvt->readCommand, "R%d\r", pPvt->gaugeNumber);
+      sprintf(pPvt->readCommand, "R%d", pPvt->gaugeNumber);
     }
 
     /* Connect to port */
@@ -164,9 +164,9 @@ static long initAi(aiRecord *pai)
                       
     /* Read the pressure units (Torr, Pascal, etc.) from the controller
      * Use synchronous I/O since we are in iocInit and it's much simpler */
-    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SU\r", 3,
-                                  response, sizeof(response),
-                                  "\r", 1, TIMEOUT, &nwrite, &nread, &eomReason);
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SU", 3,
+                                   response, sizeof(response),
+                                   TIMEOUT, &nwrite, &nread, &eomReason, NULL);
     if ((status != asynSuccess) || (nread != 8)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
@@ -185,9 +185,9 @@ static long initAi(aiRecord *pai)
      * slot is either empty or a cold-cathode controller.  The other two
      * slots can hold any type of controller board, and for all types 
      * except cold-cathode each board may control one or two gauges. */
-    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SG\r", 3,
-                                  response, sizeof(response),
-                                  "\r", 1, TIMEOUT, &nwrite, &nread, &eomReason);
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SG", 3,
+                                   response, sizeof(response),
+                                   TIMEOUT, &nwrite, &nread, &eomReason, NULL);
     if ((status != asynSuccess) || (nread != 8)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
@@ -297,7 +297,6 @@ static void callbackAi(asynUser *pasynUser)
     status = pPvt->pasynOctet->write(pPvt->asynOctetPvt, pasynUser,
                                      pPvt->readCommand, 
                                      strlen(pPvt->readCommand), &nwrite);
-    pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
     status = pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
                                     MAX_RESPONSE_LEN, &nread, &eomReason);
 

@@ -313,7 +313,7 @@ static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
     asynUser *pasynUser = pPvt->pasynUser;
     dbCommon *pr = (dbCommon *)pasynUser->userPvt;
 /*
-    The MPC commands are of the form :  "~  AA XX d cc\r"
+    The MPC commands are of the form :  "~  AA XX d cc"
     AA = Address from 00 - FF
     XX = 2 character Hex Command
     d  =  parameter or data comma seperated
@@ -340,7 +340,6 @@ static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
               "devMPC::buildCommand %s command 0x%X len=%d string=|%s|\n",
               pr->name, hexCmd, strlen(pPvt->sendBuf), pPvt->sendBuf);
 
-    strcat(pPvt->sendBuf,"\r");  /* command terminator */
     return(0);
 }
 
@@ -779,7 +778,6 @@ static void devMPCCallback(asynUser *pasynUser)
     int nread, nwrite, eomReason;
 
     pPvt->pasynUser->timeout = MPC_TIMEOUT;
-    pPvt->pasynOctet->setEos(pPvt->octetPvt, pasynUser, "\r", 1);
     pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                            pPvt->sendBuf, strlen(pPvt->sendBuf), 
                                            &nwrite);
@@ -804,12 +802,12 @@ static void devMPCCallback(asynUser *pasynUser)
               "devMPC: %s command (%d) received (before processing) len=%d, |%s|\n",
               pr->name, pPvt->command, nread, readBuffer);
     if(readBuffer[3]=='O' && readBuffer[4] == 'K') {
-        if (nread < 13 ) {
+        if (nread < 12 ) {
             strcpy(pPvt->recBuf, "OK");
         } else {
             char *pdata = &readBuffer[9]; /* strip off the header cmds */
-            /* strip off 4 trailing character (space, checksum \r) */
-            strncpy(pPvt->recBuf, pdata, nread-13);  
+            /* strip off 3 trailing character (space, checksum) */
+            strncpy(pPvt->recBuf, pdata, nread-12);  
         }
     }
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
