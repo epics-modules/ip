@@ -8,15 +8,11 @@ include $(TOP)/configure/CONFIG
 #==================================================
 # build a support library
 
-# tmm: couldn't get devMPC to compile for solaris
-LIBRARY_IOC_solaris = -nil-
-LIBRARY_IOC_DEFAULT += ip
+LIBRARY_IOC += ip
 
 DBDINC += serialRecord
 DBD += ipSupport.dbd
-DBD += ipVXSupport.dbd
 DBD += ip.dbd
-DBD += ipVX.dbd
 
 ip_SRCS += serialRecord.c
 ip_SRCS += devAiStrParm.cc
@@ -32,10 +28,9 @@ ip_SRCS += devSerial.cc
 ip_SRCS += devAiHeidND261.cc
 ip_SRCS += devAiMKS.cc
 ip_SRCS += Keithley2kDMM.st
-ip_SRCS += Federal.st
 ip_SRCS += devMPC.cc
+#ip_SRCS += mpcServer.cc
 ip_SRCS += ipRegister.c
-ip_SRCS_vxWorks += tyGSMPFInit.c
 
 ip_LIBS += mpf mpfEpics 
 ip_LIBS += seq pv
@@ -44,9 +39,7 @@ ip_LIBS += $(EPICS_BASE_IOC_LIBS)
 #=============================
 # build an ioc application for testing
 
-# tmm: couldn't get devMPC to compile for solaris
-PROD_IOC_solaris = -nil-
-PROD_IOC_DEFAULT = ipApp
+PROD_IOC = ipApp
 
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
 ipApp_SRCS += ip_registerRecordDeviceDriver.cpp
@@ -62,6 +55,8 @@ ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
+
+#BIN_INSTALLS += mpcServer.o
 
 #===========================
 

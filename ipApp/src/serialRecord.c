@@ -8,9 +8,6 @@
  * .01  10/28/99  MLR  Added debugging statements
  * .02  9/18/00   MLR  Added "hybrid" mode.  ASCII output but to binary buffer
  *                     Minor changes to avoid compiler warnings.
- * .xx  9/17/03   MLR  Removed code to initialize port settings (baud, parity, etc.) 
- *                     in init_record.  This was making databases and startup scripts too complex,
- *                     and in MPF2-4 at least one cannot set anything but baud on vxWorks.
  *
  */
 
@@ -36,11 +33,7 @@
 #ifdef NODEBUG
 #define Debug(l,f,v...) ;
 #else
-#ifdef __GNUG__
-#define Debug(l,f,v...) { if(l<=serialRecordDebug) printf(f ,## v); }
-#else
-#define Debug(l,f,v) { if(l<=serialRecordDebug) printf(f,v); }
-#endif
+#define Debug(l,f,v...) { if(l<=serialRecordDebug) printf(f,## v); }
 #endif
 volatile int serialRecordDebug = 0;
 
@@ -134,6 +127,14 @@ static long init_record(pserial,pass)
     pserial->optr = (char *)calloc(pserial->omax, sizeof(char));
     pserial->iptr = (char *)calloc(pserial->imax, sizeof(char));
 
+    /* Set up the serial port parameters */
+    (*pdset->port_setup) (pserial,
+		baud_choices[pserial->baud],
+		data_bit_choices[pserial->dbit],
+		stop_bit_choices[pserial->sbit],
+		parity_choices[pserial->prty],
+		flow_control_choices[pserial->fctl]);
+    
     return(0);
 }
 

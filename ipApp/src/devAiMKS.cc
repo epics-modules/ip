@@ -74,11 +74,7 @@ extern "C"
 #ifdef NODEBUG
 #define DEBUG(l,f,v) ;
 #else
-#ifdef __GNUG__
-#define DEBUG(l,f,v...) { if(l<=devAiMKSDebug) printf(f ,## v); }
-#else
-#define DEBUG(l,f,v) { if(l<=devAiMKSDebug) printf(f,v); }
-#endif
+#define DEBUG(l,f,v...) { if(l<=devAiMKSDebug) printf(f,## v); }
 #endif
 volatile int devAiMKSDebug = 0;
 }

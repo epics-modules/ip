@@ -1,7 +1,4 @@
 // $Log: not supported by cvs2svn $
-// Revision 1.3  2003/07/08 19:53:50  rivers
-// Removed vxWorks specific code
-//
 // Revision 1.2  2002/10/24 02:58:29  rivers
 // Added bind call for DevMpf
 //
@@ -43,15 +40,7 @@ extern "C"
 #ifdef NODEBUG
 #define DEBUG(l,f,v...) ;
 #else
-#ifdef __GNUG__
-#define DEBUG(l,f,v...) { if(l<=devAiHeidND261Debug) printf(f ,## v); }
-#else
-#ifdef __SUNPRO_CC
-#define DEBUG(l,...) { if(l<=devAiHeidND261Debug) printf(__VA_ARGS__); }
-#else
-#define DEBUG(l,f,v) { if(l<=devAiHeidND261Debug) printf(f,v); }
-#endif
-#endif
+#define DEBUG(l,f,v...) { if(l<=devAiHeidND261Debug) printf(f,## v); }
 #endif
 volatile int devAiHeidND261Debug = 0;
 }

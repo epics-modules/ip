@@ -370,14 +370,14 @@ ss read_meter {
         } state next_channel
     }
     state single_read_response {
-        when(efTestAndClear(read_complete_mon) && read_complete) {
+        when(efTestAndClear(read_complete_mon)) {
             pvPut(Dmm_raw);
             done_read = 0;
             pvPut(done_read);
         } state wait_read
     }
     state multi_read_response {
-        when(efTestAndClear(read_complete_mon) && read_complete) {
+        when(efTestAndClear(read_complete_mon)) {
             pvPut(ch_raw[scan_chan]);
         } state next_channel
     }
