@@ -57,7 +57,7 @@
 
 #include "dbAccess.h"
 #include "aiRecord.h"
-//#include "recGbl.h"
+#include "recGbl.h"
 #include "recSup.h"
 
 #include "Message.h"
