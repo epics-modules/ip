@@ -2,6 +2,7 @@
 /*
  *      Author: Mark Rivers
  *      Date:   06-May-2004
+ *      26-July-2004  MLR Convert to pasynUtils->parseVmeIo
 ***********************************************************************/
 #include <stdlib.h>
 #include <stdio.h>
