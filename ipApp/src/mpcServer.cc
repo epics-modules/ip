@@ -2,6 +2,8 @@
 
 // Author: Mohan Ramanathan
 // Date: 27 April 1999
+// Modified: Mark Rivers, 3-Oct-2001, increased stack size in taskSpawn 
+// because it was tight on PPC
 /*
  *****************************************************************
  *                         COPYRIGHT NOTIFICATION
@@ -113,7 +115,7 @@ int initMPCServer(char *serverName,char *portName,int queueSize)
 {
     MPC *pMPC = new MPC(serverName,portName,queueSize);
     if(!pMPC->getStartOk()) return(0);
-    int taskId = taskSpawn(taskname,100,VX_FP_TASK,2000,
+    int taskId = taskSpawn(taskname,100,VX_FP_TASK,4000,
 	(FUNCPTR)MPC::mpcServer,(int)pMPC,0,0,0,0,0,0,0,0,0);
     if(taskId==ERROR) 
 	printf("mpcServer taskSpawn Failure\n");
