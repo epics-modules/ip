@@ -129,73 +129,73 @@ record(fanout, "$(P)$(A)off_u_putFO") {
 
 record(longout, "$(P)$(A)sens_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=SENS%d")
+  field(OUT, "@asyn($(PORT))FMT=SENS%d")
 }
 
 record(longout, "$(P)$(A)offset_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=IOLV%d")
+  field(OUT, "@asyn($(PORT))FMT=IOLV%d")
 }
 
 record(longout, "$(P)$(A)off_sign_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=IOSN%d")
+  field(OUT, "@asyn($(PORT))FMT=IOSN%d")
 }
 
 record(longout, "$(P)$(A)offset_on_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=IOON%d")
+  field(OUT, "@asyn($(PORT))FMT=IOON%d")
 }
 
 record(longout, "$(P)$(A)bias_on_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=BSON%d")
+  field(OUT, "@asyn($(PORT))FMT=BSON%d")
 }
 
 record(longout, "$(P)$(A)bias_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=BSLV%d")
+  field(OUT, "@asyn($(PORT))FMT=BSLV%d")
 }
 
 record(longout, "$(P)$(A)filter_type_put") {
   field(DTYP, "asyn lo stringParm")
   field(FLNK, "$(P)$(A)low_freq.PROC  PP MS")
-  field(OUT, "#@asyn($(PORT))FMT=FLTT%d")
+  field(OUT, "@asyn($(PORT))FMT=FLTT%d")
   field(DOL, "$(P)$(A)filter_type.RVAL  NPP NMS")
   field(OMSL, "closed_loop")
 }
 
 record(longout, "$(P)$(A)low_freq_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=LFRQ%d")
+  field(OUT, "@asyn($(PORT))FMT=LFRQ%d")
 }
 
 record(longout, "$(P)$(A)high_freq_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=HFRQ%d")
+  field(OUT, "@asyn($(PORT))FMT=HFRQ%d")
 }
 
 record(longout, "$(P)$(A)gain_mode_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=GNMD%d")
+  field(OUT, "@asyn($(PORT))FMT=GNMD%d")
   field(DOL, "$(P)$(A)gain_mode.VAL  NPP NMS")
   field(OMSL, "closed_loop")
 }
 
 record(longout, "$(P)$(A)invert_on_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=INVT%d")
+  field(OUT, "@asyn($(PORT))FMT=INVT%d")
 }
 
 record(longout, "$(P)$(A)blank_on_put") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=BLNK%d")
+  field(OUT, "@asyn($(PORT))FMT=BLNK%d")
 }
 
 record(longout, "$(P)$(A)offset_cal_put") {
   field(DTYP, "asyn lo stringParm")
   field(SDIS, "$(P)$(A)off_cal_bput.PACT  NPP NMS")
-  field(OUT, "#@asyn($(PORT))FMT=IOUC%d")
+  field(OUT, "@asyn($(PORT))FMT=IOUC%d")
 }
 
 record(longout, "$(P)$(A)off_u_put") {
@@ -205,7 +205,7 @@ record(longout, "$(P)$(A)off_u_put") {
 
 record(longout, "$(P)$(A)off_u_put1") {
   field(DTYP, "asyn lo stringParm")
-  field(OUT, "#@asyn($(PORT))FMT=IOUV%d")
+  field(OUT, "@asyn($(PORT))FMT=IOUV%d")
   field(DOL, "$(P)$(A)off_u_put.VAL  NPP NMS")
   field(OMSL, "closed_loop")
 }
@@ -452,13 +452,13 @@ record(seq, "$(P)$(A)init1") {
 record(stringout, "$(P)$(A)reset") {
   field(DTYP, "asyn so stringParm")
   field(VAL, "*RST")
-  field(OUT, "#@asyn($(PORT))")
+  field(OUT, "@asyn($(PORT))")
 }
 
 record(stringout, "$(P)$(A)filter_reset") {
   field(DTYP, "asyn so stringParm")
   field(VAL, "ROLD")
-  field(OUT, "#@asyn($(PORT))")
+  field(OUT, "@asyn($(PORT))")
 }
 
 record(transform, "$(P)$(A)sens_calc") {
