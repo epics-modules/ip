@@ -12,7 +12,7 @@ New Focus 8750 Picomotor controller
   dbLoadTemplate("picoMotor.substitutions", top)
 
 - In st_mpfserver.cmd:
-  initOctalUARTPort("UART[4]","octalUart0",4, 19200,"N",1,8,"N") /*NF Picomotor*/
+  tyGSMPFInit("serial1",  0, 0, 19200,'N',1,8,'N',"") /* NF Picomotor */
 
 - In auto_positions.req:
   xxx:S1:A1:pM0_pos.VAL

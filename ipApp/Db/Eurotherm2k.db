@@ -1,45 +1,45 @@
 grecord(ai,"$(P)ET:RBV_P") {
 	field(DESC,"Process Description")
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"0")
 }
 grecord(ai,"$(P)ET:RBV_Output") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"1")
 }
 grecord(ai,"$(P)ET:RBV_RampRate") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"0")
 }
 grecord(ai,"$(P)ET:RBV_pvTemp") {
 	field(DESC,"Process Description")
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"1")
 }
 grecord(ai,"$(P)ET:RBV_spTemp") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"1")
 }
 grecord(ai,"$(P)ET:RBV_I") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"0")
 }
 grecord(ai,"$(P)ET:RBV_D") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,IX=3,FMT=%lf,N=10")
 	field(PREC,"0")
 }
 grecord(ao,"$(P)ET:P") {
@@ -48,10 +48,10 @@ grecord(ao,"$(P)ET:P") {
 	field(PREC,"0")
 }
 grecord(ao,"$(P)ET:P_write") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)ET:P_Ack.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=XP%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=XP%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:P.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -62,26 +62,26 @@ grecord(ao,"$(P)ET:RampRate") {
 	field(PREC,"0")
 }
 grecord(ao,"$(P)ET:RampRateWrite") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)ET:RRAck.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=RR%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=RR%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:RampRate.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
 }
 grecord(ao,"$(P)ET:SendProgNum") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=EP%1.0lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=EP%1.0lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:ProgNum.RVAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"0")
 }
 grecord(ao,"$(P)ET:SendProgState") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=PC%1.0lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=PC%1.0lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:ProgState.RVAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"0")
@@ -92,19 +92,19 @@ grecord(ao,"$(P)ET:Setpoint") {
 	field(PREC,"1")
 }
 grecord(ao,"$(P)ET:SetpointWrite") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)ET:SPAck.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=S1%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=S1%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:Setpoint.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"1")
 }
 grecord(ao,"$(P)ET:I_write") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)ET:I_Ack.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=TI%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=TI%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:I.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -115,10 +115,10 @@ grecord(ao,"$(P)ET:I") {
 	field(PREC,"0")
 }
 grecord(ao,"$(P)ET:D_write") {
-	field(DTYP,"Hideos ao Eurotherm")
+	field(DTYP,"MPF ao Eurotherm")
 	field(SDIS,"0")
 	field(FLNK,"$(P)ET:D_Ack.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=TD%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),FMT=TD%5.1lf,TERM=03,GAD=$(GAD),LAD=$(LAD)")
 	field(DOL,"$(P)ET:D.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -233,82 +233,82 @@ grecord(seq,"$(P)ET:D_seq") {
 	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
 }
 grecord(stringin,"$(P)ET:I_Ack") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+	field(INP,"#C$(C) S0 @$(SERVER),N=1")
 }
 grecord(stringin,"$(P)ET:D_Ack") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+	field(INP,"#C$(C) S0 @$(SERVER),N=1")
 }
 grecord(stringin,"$(P)ET:CleanInputBuffer") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=50,TO=20")
+	field(INP,"#C$(C) S0 @$(SERVER),N=50,TO=20")
 }
 grecord(stringin,"$(P)ET:P_Ack") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+	field(INP,"#C$(C) S0 @$(SERVER),N=1")
 }
 grecord(stringin,"$(P)ET:RRAck") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+	field(INP,"#C$(C) S0 @$(SERVER),N=1")
 }
 grecord(stringin,"$(P)ET:SPAck") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"0")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+	field(INP,"#C$(C) S0 @$(SERVER),N=1")
 }
 grecord(stringout,"$(P)ET:ReadP") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(FLNK,"$(P)ET:RBV_P.VAL  PP MS")
 	field(VAL,"XP")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadOutput") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(DISV,"0")
 	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
 	field(FLNK,"$(P)ET:RBV_Output.VAL  PP MS")
 	field(VAL,"OP")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadRampRate") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(DISV,"0")
 	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
 	field(FLNK,"$(P)ET:RBV_RampRate.VAL  PP MS")
 	field(VAL,"RR")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadSetpoint") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(DISV,"0")
 	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
 	field(FLNK,"$(P)ET:RBV_spTemp.VAL  PP MS")
 	field(VAL,"SP")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadTemperature") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(DISV,"0")
 	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
 	field(FLNK,"$(P)ET:RBV_pvTemp.VAL  PP MS")
 	field(VAL,"PV")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadI") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(FLNK,"$(P)ET:RBV_I.VAL  PP MS")
 	field(VAL,"TI")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }
 grecord(stringout,"$(P)ET:ReadD") {
-	field(DTYP,"Hideos so Eurotherm")
+	field(DTYP,"MPF so Eurotherm")
 	field(FLNK,"$(P)ET:RBV_D.VAL  PP MS")
 	field(VAL,"TD")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05,GAD=$(GAD),LAD=$(LAD)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=05,GAD=$(GAD),LAD=$(LAD)")
 }

@@ -14,10 +14,10 @@ Federal ERO-1071 Setup Info
 
 - In st.cmd:
 # Federal digital encoder readout
-dbLoadRecords("kagApp/Db/Federal.db","P=xxx:,S=s1,C=0,IPSLOT=a,CHAN=0",top)
+dbLoadRecords("kagApp/Db/Federal.db","P=xxx:,S=s1,C=0,SERVER=serial1",top)
 
 - In st_mpfserver.cmd:
-initOctalUARTPort("UART[0]","octalUart0",0, 19200,"E",2,7,"N") /* Federal */
+tyGSMPFInit("serial1",  0, 0, 19200,'E',2,7,'N',"") /* Federal */
 
 
 - RS-232 connection:

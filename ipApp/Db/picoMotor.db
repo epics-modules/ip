@@ -85,58 +85,58 @@ grecord(seq,"$(P)$(S):$(D):pM$(M)_seq") {
 	field(LNK2,"$(P)$(S):$(D):pM$(M)_movn.VAL  PP MS")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_go") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_eta.PROC  PP MS")
 	field(AOUT,"go")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_jodo") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_sav") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(AOUT,"sav")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_ser") {
-	field(DTYP,"Hideos/MPF Serial")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(DTYP,"MPF Serial")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_sndD") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_sndM") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_cmd.PROC  PP MS")
 	field(AOUT,"chl $(D)=$(M)")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_sndp") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_go.VAL  PP MS")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(serial,"$(P)$(S):$(D):pM$(M)_stop") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_putS.PROC  PP MS")
 	field(AOUT,"hal")
 	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 }
 grecord(transform,"$(P)$(S):$(D):pM$(M)_eta") {

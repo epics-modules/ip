@@ -110,10 +110,10 @@ grecord(dfanout,"$(P)Fed:$(S):dfan2") {
 	field(OMSL,"closed_loop")
 }
 grecord(serial,"$(P)Fed:$(S):serial") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)Fed:$(S):position.VAL  PP MS")
 	field(ODEL,"02")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"19200")
 	field(PRTY,"Even")
 	field(DBIT,"7")
