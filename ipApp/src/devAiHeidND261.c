@@ -146,7 +146,7 @@ static void devAiHeidND261Callback(asynUser *pasynUser)
 	pPvt->pasynUser->timeout = pPvt->timeout;
 	pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
 		pPvt->outbuf, 2, &pPvt->nwrite);
-	pPvt->pasynOctet->setEos(pPvt->octetPvt, pasynUser, pPvt->term, pPvt->termlen);
+	pPvt->pasynOctet->setInputEos(pPvt->octetPvt, pasynUser, pPvt->term, pPvt->termlen);
 	pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
 		pPvt->inbuf, pPvt->nchar, &pPvt->nread, &eomReason);
 
