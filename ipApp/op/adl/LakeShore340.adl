@@ -1,14 +1,14 @@
 
 file {
-	name="/home/oxygen10/GOETZE/epics/synApps_R3.13.1.1_R4.2/kag/kagApp/op/adl/LakeShore340.adl"
-	version=020306
+	name="/home/oxygen23/GOETZE/epics/synApps_R3.13.2_R4.3/kag/kagApp/op/adl/LakeShore340_1.0.adl"
+	version=030000
 }
 display {
 	object {
-		x=185
-		y=205
-		width=480
-		height=210
+		x=182
+		y=52
+		width=270
+		height=390
 	}
 	clr=14
 	bclr=3
@@ -87,28 +87,23 @@ display {
 		1a7309,
 	}
 }
-polyline {
+rectangle {
 	object {
-		x=340
-		y=43
-		width=3
-		height=169
+		x=0
+		y=79
+		width=270
+		height=45
 	}
 	"basic attribute" {
-		clr=14
-		width=3
-	}
-	points {
-		(341,44)
-		(341,210)
+		clr=2
 	}
 }
 rectangle {
 	object {
 		x=0
 		y=0
-		width=490
-		height=43
+		width=270
+		height=33
 	}
 	"basic attribute" {
 		clr=52
@@ -117,35 +112,387 @@ rectangle {
 }
 text {
 	object {
-		x=76
-		y=9
-		width=320
+		x=23
+		y=4
+		width=150
 		height=26
 	}
 	"basic attribute" {
 		clr=0
 		width=2
 	}
-	textix="LakeShore 340 Temperature Controller"
+	textix="LakeShore 340"
+}
+"text update" {
+	object {
+		x=124
+		y=80
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):SP1"
+		clr=54
+		bclr=2
+	}
 	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=124
+		y=98
+		width=75
+		height=25
+	}
+	control {
+		chan="$(P)LS340:$(Q):wr_SP1"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
 }
 text {
 	object {
-		x=360
-		y=135
+		x=71
+		y=82
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Set"
+}
+text {
+	object {
+		x=4
+		y=36
 		width=100
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Read/Rate"
+	textix="Temperature"
+}
+text {
+	object {
+		x=5
+		y=293
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Heater Power"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=124
+		y=43
+		width=50
+		height=27
+	}
+	control {
+		chan="$(P)LS340:$(Q):read.PROC"
+		clr=14
+		bclr=51
+	}
+	label="READ"
+	press_msg="0"
+}
+menu {
+	object {
+		x=184
+		y=49
+		width=80
+		height=18
+	}
+	control {
+		chan="$(P)LS340:$(Q):read.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=71
+		y=101
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Point"
+}
+oval {
+	object {
+		x=211
+		y=96
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
+}
+text {
+	object {
+		x=220
+		y=95
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
 	align="horiz. centered"
 }
 "text update" {
 	object {
-		x=80
-		y=185
+		x=124
+		y=128
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)LS340:$(Q):SP2"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=124
+		y=146
+		width=75
+		height=25
+	}
+	control {
+		chan="$(P)LS340:$(Q):wr_SP2"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=71
+		y=131
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Set"
+}
+text {
+	object {
+		x=71
+		y=151
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Point"
+}
+oval {
+	object {
+		x=211
+		y=144
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
+}
+text {
+	object {
+		x=220
+		y=143
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=7
+		y=80
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="LOOP"
+}
+text {
+	object {
+		x=28
+		y=98
+		width=15
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="1"
+}
+text {
+	object {
+		x=7
+		y=129
+		width=55
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="LOOP"
+}
+text {
+	object {
+		x=28
+		y=147
+		width=15
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="2"
+}
+polyline {
+	object {
+		x=0
+		y=284
+		width=269
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,285)
+		(268,285)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=32
+		width=270
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,33)
+		(269,33)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=76
+		width=270
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,77)
+		(269,77)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=125
+		width=270
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(0,125)
+		(270,125)
+	}
+}
+polyline {
+	object {
+		x=0
+		y=174
+		width=270
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,175)
+		(269,175)
+	}
+}
+"related display" {
+	object {
+		x=211
+		y=362
+		width=50
+		height=20
+	}
+	display[0] {
+		label="More information"
+		name="LakeShore340_more.adl"
+		args="P=$(P),Q=$(Q)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=17
+	label="-More"
+}
+"text update" {
+	object {
+		x=116
+		y=252
 		width=90
 		height=26
 	}
@@ -160,8 +507,8 @@ text {
 }
 "text update" {
 	object {
-		x=80
-		y=85
+		x=116
+		y=196
 		width=90
 		height=26
 	}
@@ -174,41 +521,10 @@ text {
 	limits {
 	}
 }
-"text update" {
-	object {
-		x=80
-		y=117
-		width=75
-		height=20
-	}
-	monitor {
-		chan="$(P)LS340:$(Q):SetPoint"
-		clr=54
-		bclr=3
-	}
-	align="horiz. centered"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=80
-		y=135
-		width=75
-		height=25
-	}
-	control {
-		chan="$(P)LS340:$(Q):SetSP.BB"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
 text {
 	object {
 		x=5
-		y=68
+		y=179
 		width=70
 		height=20
 	}
@@ -220,19 +536,7 @@ text {
 text {
 	object {
 		x=5
-		y=118
-		width=70
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix=" Set"
-}
-text {
-	object {
-		x=5
-		y=167
+		y=234
 		width=70
 		height=20
 	}
@@ -241,115 +545,139 @@ text {
 	}
 	textix="Sample"
 }
-"text entry" {
+oval {
 	object {
-		x=290
-		y=88
-		width=40
-		height=20
+		x=211
+		y=254
+		width=7
+		height=7
 	}
-	control {
-		chan="$(P)LS340:$(Q):setPID.AA"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=290
-		y=138
-		width=40
-		height=20
-	}
-	control {
-		chan="$(P)LS340:$(Q):setPID.BB"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=290
-		y=68
-		width=40
-		height=20
-	}
-	monitor {
-		chan="$(P)LS340:$(Q):P"
+	"basic attribute" {
 		clr=54
-		bclr=3
+		fill="outline"
+		width=2
 	}
-	align="horiz. centered"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=290
-		y=118
-		width=40
-		height=20
-	}
-	monitor {
-		chan="$(P)LS340:$(Q):I"
-		clr=54
-		bclr=3
-	}
-	align="horiz. centered"
-	limits {
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
 	}
 }
 text {
 	object {
-		x=230
-		y=88
-		width=60
-		height=18
+		x=220
+		y=253
+		width=17
+		height=26
 	}
 	"basic attribute" {
-		clr=14
+		clr=54
 	}
-	textix="Gain(P)"
+	textix="K"
 	align="horiz. centered"
+}
+oval {
+	object {
+		x=211
+		y=198
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)LS340:$(Q):Sample"
+	}
 }
 text {
 	object {
-		x=230
-		y=138
-		width=60
-		height=18
+		x=220
+		y=197
+		width=17
+		height=26
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="K"
+	align="horiz. centered"
+}
+"choice button" {
+	object {
+		x=36
+		y=202
+		width=75
+		height=17
+	}
+	control {
+		chan="$(P)LS340:$(Q):Ctl_sel"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+"choice button" {
+	object {
+		x=36
+		y=258
+		width=75
+		height=17
+	}
+	control {
+		chan="$(P)LS340:$(Q):Spl_sel"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+polyline {
+	object {
+		x=0
+		y=229
+		width=268
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	points {
+		(1,230)
+		(267,230)
+	}
+}
+text {
+	object {
+		x=6
+		y=55
+		width=100
+		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Reset(I)"
-	align="horiz. centered"
+	textix="Parameters"
 }
 menu {
 	object {
-		x=399
-		y=108
+		x=98
+		y=364
 		width=70
 		height=18
 	}
 	control {
 		chan="$(P)LS340:$(Q):HeatRg"
 		clr=14
-		bclr=51
+		bclr=4
 	}
 }
 "text update" {
 	object {
-		x=400
-		y=88
+		x=100
+		y=347
 		width=70
-		height=20
+		height=15
 	}
 	monitor {
 		chan="$(P)LS340:$(Q):Rg_rdbk"
@@ -362,21 +690,21 @@ menu {
 }
 text {
 	object {
-		x=350
-		y=108
+		x=40
+		y=364
 		width=40
 		height=18
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Range"
+	textix="Range:"
 }
 "text update" {
 	object {
-		x=400
-		y=68
-		width=46
+		x=92
+		y=314
+		width=66
 		height=20
 	}
 	monitor {
@@ -390,437 +718,20 @@ text {
 }
 text {
 	object {
-		x=350
-		y=68
+		x=40
+		y=315
 		width=50
 		height=18
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Power"
+	textix="Power:"
 }
 text {
 	object {
-		x=0
-		y=46
-		width=210
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Temperature"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=230
-		y=46
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Control"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=350
-		y=46
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Heater Power"
-	align="horiz. centered"
-}
-"message button" {
-	object {
-		x=370
-		y=156
-		width=80
-		height=27
-	}
-	control {
-		chan="$(P)LS340:$(Q):read.PROC"
-		clr=14
-		bclr=51
-	}
-	label="READ"
-	press_msg="0"
-}
-menu {
-	object {
-		x=370
-		y=189
-		width=80
-		height=18
-	}
-	control {
-		chan="$(P)LS340:$(Q):read.SCAN"
-		clr=14
-		bclr=51
-	}
-}
-polyline {
-	object {
-		x=220
-		y=43
-		width=3
-		height=169
-	}
-	"basic attribute" {
-		clr=14
-		width=3
-	}
-	points {
-		(221,44)
-		(221,210)
-	}
-}
-polyline {
-	object {
-		x=0
-		y=64
-		width=481
-		height=2
-	}
-	"basic attribute" {
-		clr=14
-		width=2
-	}
-	points {
-		(1,65)
-		(480,65)
-	}
-}
-polyline {
-	object {
-		x=0
-		y=43
-		width=481
-		height=2
-	}
-	"basic attribute" {
-		clr=14
-		width=2
-	}
-	points {
-		(1,44)
-		(480,44)
-	}
-}
-polyline {
-	object {
-		x=340
-		y=131
-		width=139
-		height=2
-	}
-	"basic attribute" {
-		clr=14
-		width=2
-	}
-	points {
-		(341,132)
-		(478,132)
-	}
-}
-text {
-	object {
-		x=5
-		y=138
-		width=70
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Point"
-}
-polyline {
-	object {
-		x=0
-		y=113
-		width=338
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(0,113)
-		(338,113)
-	}
-}
-polyline {
-	object {
-		x=0
-		y=163
-		width=338
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(0,163)
-		(338,163)
-	}
-}
-"text update" {
-	object {
-		x=290
-		y=169
-		width=40
-		height=20
-	}
-	monitor {
-		chan="$(P)LS340:$(Q):D"
-		clr=54
-		bclr=3
-	}
-	align="horiz. centered"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=290
-		y=189
-		width=40
-		height=20
-	}
-	control {
-		chan="$(P)LS340:$(Q):setPID.CC"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=230
-		y=189
-		width=60
-		height=18
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Rate(D)"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=1
-		y=87
-		width=20
-		height=20
-	}
-	control {
-		chan="$(P)LS340:$(Q):SetCtl.BB"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=17
-		y=90
-		width=60
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="(A or B)"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=1
-		y=187
-		width=20
-		height=20
-	}
-	control {
-		chan="$(P)LS340:$(Q):SetSpl.BB"
-		clr=14
-		bclr=51
-	}
-	format="string"
-	limits {
-	}
-}
-text {
-	object {
-		x=17
-		y=190
-		width=60
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="(A or B)"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=197
-		y=67
-		width=20
-		height=17
-	}
-	control {
-		chan="$(P)LS340:$(Q):Control.PREC"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=169
-		y=68
-		width=25
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Prec"
-}
-"text entry" {
-	object {
-		x=197
-		y=166
-		width=20
-		height=17
-	}
-	control {
-		chan="$(P)LS340:$(Q):Sample.PREC"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=169
-		y=167
-		width=25
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Prec"
-}
-oval {
-	object {
-		x=174
-		y=187
-		width=7
-		height=7
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=2
-	}
-	"dynamic attribute" {
-		chan="$(P)LS340:$(Q):Sample"
-	}
-}
-text {
-	object {
-		x=183
-		y=186
-		width=17
-		height=26
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="K"
-	align="horiz. centered"
-}
-oval {
-	object {
-		x=174
-		y=87
-		width=7
-		height=7
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=2
-	}
-	"dynamic attribute" {
-		chan="$(P)LS340:$(Q):Sample"
-	}
-}
-text {
-	object {
-		x=183
-		y=86
-		width=17
-		height=26
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="K"
-	align="horiz. centered"
-}
-oval {
-	object {
-		x=173
-		y=133
-		width=7
-		height=7
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-		width=2
-	}
-	"dynamic attribute" {
-		chan="$(P)LS340:$(Q):Sample"
-	}
-}
-text {
-	object {
-		x=182
-		y=132
-		width=17
-		height=26
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="K"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=446
-		y=67
+		x=160
+		y=314
 		width=17
 		height=20
 	}
@@ -829,4 +740,56 @@ text {
 	}
 	textix="%"
 	align="horiz. centered"
+}
+polyline {
+	object {
+		x=28
+		y=338
+		width=205
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(28,338)
+		(233,338)
+	}
+}
+text {
+	object {
+		x=237
+		y=14
+		width=30
+		height=15
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(Q)"
+}
+text {
+	object {
+		x=206
+		y=13
+		width=30
+		height=15
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="$(P)"
+	align="horiz. right"
+}
+text {
+	object {
+		x=208
+		y=1
+		width=42
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Vers. 1.0"
 }
