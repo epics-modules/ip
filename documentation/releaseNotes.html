@@ -11,7 +11,7 @@ Industry Pack Support</h1></center>
 <center>
 <h1>
 Release Notes<br>
-March 6, 2002</h1></center>
+Jan. 29, 2004</h1></center>
 
 <h2>
 Release 1-2</h2>
@@ -77,5 +77,22 @@ devMPC.cc - devSerial.cc - devSiStrParm.cc - devSoEurotherm.cc - devSoStrParm.cc
   <li>devMPC.cc - Fixed problem with reading AMPS on recent MPC controllers, they don't send AMPS in the response.</li>
 </ul>
 <br>
-<br>
+
+<center>
+<h1>
+Release Notes<br>
+January 29, 2004</h1></center>
+
+<h2>
+Release 1-4</h2>
+<ul>
+  <li>Keithley2kDMM_channelN_settings.req - <code>$(P)$(Dmm)$(Ch)_calc</code> to <code>$(P)$(Dmm)Ch$(Ch)_calc</code></li>
+  <li>Keithley2kDMM_mf.db - use scalcout instead of calc record</li>
+  <li>Keithley2kDMM_mf_channelN_settings.req - replaced list of PV's with command "<code>file "scalcout_settings.req", P=$(P)$(Dmm)Ch$(Ch)_calc</code>"</li>
+  <li>Keithley2kDMM_settings.req - replaced <code>$(P)$(Dmm)dmm_chan.VAL</code> with <code>$(P)$(Dmm)dmm_chan_input.VAL</code></li>
+  <li>Makefile.Vx - added dev*Elcomat.cc</li>
+  <li>ipLIBOBJS - added dev*Elcomat.o</li>
+  <li>ipShare.dbd - added <code>device(*,VME_IO,dev*Elcomat,"Elcomat autocollimator")</code></li>
+
+</ul>
 </body></html>
