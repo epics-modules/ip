@@ -1,14 +1,14 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/stdApp/op/adl/serialtest_2.0.adl"
+	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/ipApp/op/adl/serialtest_2.1.adl"
 	version=020205
 }
 display {
 	object {
 		x=10
 		y=10
-		width=420
-		height=105
+		width=580
+		height=155
 	}
 	clr=14
 	bclr=2
@@ -99,15 +99,173 @@ display {
 }
 menu {
 	object {
-		x=310
+		x=305
 		y=0
-		width=100
+		width=90
 		height=20
 	}
 	control {
 		chan="$(P)si$(CHAN).SCAN"
 		clr=14
 		bclr=51
+	}
+}
+menu {
+	object {
+		x=305
+		y=25
+		width=90
+		height=20
+	}
+	control {
+		chan="$(P)so$(CHAN).SCAN"
+		clr=14
+		bclr=51
+	}
+}
+menu {
+	object {
+		x=305
+		y=75
+		width=90
+		height=20
+	}
+	control {
+		chan="$(P)lo$(CHAN).SCAN"
+		clr=14
+		bclr=51
+	}
+}
+"text entry" {
+	object {
+		x=90
+		y=75
+		width=75
+		height=25
+	}
+	control {
+		chan="$(P)lo$(CHAN).VAL"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=0
+		y=75
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)lo$(CHAN)"
+}
+"message button" {
+	object {
+		x=240
+		y=75
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)lo$(CHAN).PROC"
+		clr=14
+		bclr=51
+	}
+	label="Send"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=165
+		y=75
+		width=75
+		height=25
+	}
+	control {
+		chan="$(P)lo$(CHAN).DESC"
+		clr=14
+		bclr=51
+	}
+}
+composite {
+	object {
+		x=0
+		y=125
+		width=395
+		height=25
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		menu {
+			object {
+				x=305
+				y=125
+				width=90
+				height=20
+			}
+			control {
+				chan="$(P)ao$(CHAN).SCAN"
+				clr=14
+				bclr=51
+			}
+		}
+		"text entry" {
+			object {
+				x=90
+				y=125
+				width=75
+				height=25
+			}
+			control {
+				chan="$(P)ao$(CHAN).VAL"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
+				x=0
+				y=125
+				width=80
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="$(P)ao$(CHAN)"
+		}
+		"message button" {
+			object {
+				x=240
+				y=125
+				width=60
+				height=20
+			}
+			control {
+				chan="$(P)ao$(CHAN).PROC"
+				clr=14
+				bclr=51
+			}
+			label="Send"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=165
+				y=125
+				width=75
+				height=25
+			}
+			control {
+				chan="$(P)ao$(CHAN).DESC"
+				clr=14
+				bclr=51
+			}
+		}
 	}
 }
 "text entry" {
@@ -119,19 +277,6 @@ menu {
 	}
 	control {
 		chan="$(P)so$(CHAN).VAL"
-		clr=14
-		bclr=51
-	}
-}
-menu {
-	object {
-		x=310
-		y=25
-		width=100
-		height=20
-	}
-	control {
-		chan="$(P)so$(CHAN).SCAN"
 		clr=14
 		bclr=51
 	}
@@ -158,7 +303,7 @@ text {
 	control {
 		chan="$(P)so$(CHAN).PROC"
 		clr=14
-		bclr=2
+		bclr=51
 	}
 	label="Send"
 	press_msg="1"
@@ -185,33 +330,195 @@ text {
 	control {
 		chan="$(P)si$(CHAN).PROC"
 		clr=14
-		bclr=2
+		bclr=51
+	}
+	label="Receive"
+	press_msg="1"
+}
+polyline {
+	object {
+		x=396
+		y=0
+		width=2
+		height=159
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)sertst$(CHAN)After.DOL1"
+	}
+	points {
+		(397,1)
+		(397,158)
+	}
+}
+composite {
+	object {
+		x=405
+		y=30
+		width=170
+		height=70
+	}
+	"composite name"=""
+	vis="static"
+	chan=""
+	children {
+		"text entry" {
+			object {
+				x=475
+				y=80
+				width=100
+				height=20
+			}
+			control {
+				chan="$(P)sertst$(CHAN)After.LNK1"
+				clr=14
+				bclr=40
+			}
+			format="string"
+		}
+		"text entry" {
+			object {
+				x=475
+				y=30
+				width=50
+				height=20
+			}
+			control {
+				chan="$(P)sertst$(CHAN)After.DLY1"
+				clr=14
+				bclr=51
+			}
+			format="string"
+		}
+		text {
+			object {
+				x=405
+				y=30
+				width=50
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Delay"
+		}
+		"text entry" {
+			object {
+				x=475
+				y=55
+				width=100
+				height=20
+			}
+			control {
+				chan="$(P)sertst$(CHAN)After.DOL1"
+				clr=14
+				bclr=40
+			}
+			format="string"
+		}
+		text {
+			object {
+				x=405
+				y=55
+				width=60
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="GetFrom"
+		}
+		text {
+			object {
+				x=405
+				y=80
+				width=60
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="PutTo"
+		}
+	}
+}
+text {
+	object {
+		x=405
+		y=5
+		width=130
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="After send/receive..."
+}
+menu {
+	object {
+		x=305
+		y=50
+		width=90
+		height=20
+	}
+	control {
+		chan="$(P)li$(CHAN).SCAN"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=0
+		y=50
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)li$(CHAN)"
+}
+"message button" {
+	object {
+		x=240
+		y=50
+		width=60
+		height=20
+	}
+	control {
+		chan="$(P)li$(CHAN).PROC"
+		clr=14
+		bclr=51
 	}
 	label="Receive"
 	press_msg="1"
 }
 "text entry" {
 	object {
-		x=90
+		x=165
 		y=50
 		width=75
 		height=25
 	}
 	control {
-		chan="$(P)lo$(CHAN).VAL"
+		chan="$(P)li$(CHAN).DESC"
 		clr=14
 		bclr=51
 	}
 }
 menu {
 	object {
-		x=310
-		y=50
-		width=100
+		x=305
+		y=100
+		width=90
 		height=20
 	}
 	control {
-		chan="$(P)lo$(CHAN).SCAN"
+		chan="$(P)ai$(CHAN).SCAN"
 		clr=14
 		bclr=51
 	}
@@ -219,106 +526,66 @@ menu {
 text {
 	object {
 		x=0
-		y=50
+		y=100
 		width=80
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="$(P)lo$(CHAN)"
+	textix="$(P)ai$(CHAN)"
 }
 "message button" {
 	object {
 		x=240
-		y=50
+		y=100
 		width=60
 		height=20
 	}
 	control {
-		chan="$(P)lo$(CHAN).PROC"
+		chan="$(P)ai$(CHAN).PROC"
 		clr=14
-		bclr=2
+		bclr=51
 	}
-	label="Send"
+	label="Receive"
 	press_msg="1"
 }
 "text entry" {
 	object {
 		x=165
-		y=50
+		y=100
 		width=75
 		height=25
 	}
 	control {
-		chan="$(P)lo$(CHAN).DESC"
+		chan="$(P)ai$(CHAN).DESC"
 		clr=14
 		bclr=51
 	}
 }
-"text entry" {
+"text update" {
 	object {
 		x=90
-		y=75
+		y=52
 		width=75
-		height=25
-	}
-	control {
-		chan="$(P)ao$(CHAN).VAL"
-		clr=14
-		bclr=51
-	}
-}
-menu {
-	object {
-		x=310
-		y=75
-		width=100
 		height=20
 	}
-	control {
-		chan="$(P)ao$(CHAN).SCAN"
-		clr=14
-		bclr=51
-	}
-}
-text {
-	object {
-		x=0
-		y=75
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(P)ao$(CHAN)"
-}
-"message button" {
-	object {
-		x=240
-		y=75
-		width=60
-		height=20
-	}
-	control {
-		chan="$(P)ao$(CHAN).PROC"
-		clr=14
+	monitor {
+		chan="$(P)li$(CHAN).VAL"
+		clr=53
 		bclr=2
 	}
-	label="Send"
-	press_msg="1"
 }
-"text entry" {
+"text update" {
 	object {
-		x=165
-		y=75
+		x=90
+		y=102
 		width=75
-		height=25
+		height=20
 	}
-	control {
-		chan="$(P)ao$(CHAN).DESC"
-		clr=14
-		bclr=51
+	monitor {
+		chan="$(P)ai$(CHAN).VAL"
+		clr=53
+		bclr=2
 	}
 }
