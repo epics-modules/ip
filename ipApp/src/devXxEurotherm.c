@@ -24,6 +24,17 @@
 #include <stringoutRecord.h>
 #include <epicsExport.h>
 
+#ifdef NODEBUG
+#define DEBUG(l,f,v...) ;
+#else
+#ifdef __GNUG__
+#define DEBUG(l,f,v...) { if(l<=devEurothermDebug) printf(f ,## v); }
+#else
+#define DEBUG(l,f,v) { if(l<=devEurothermDebug) printf(f,v); }
+#endif
+#endif
+volatile int devEurothermDebug = 0;
+ 
 #define HEXCHAR2INT(c) ((c)>'9' ? 10+tolower(c)-'a' : tolower(c)-'0')
 
 typedef enum {opTypeInput, opTypeOutput} opType;
