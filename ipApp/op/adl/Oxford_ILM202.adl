@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen10/GOETZE/epics/3.13.0/kag/kagApp/op/adl/Oxford_ILM202_1.0.adl"
-	version=020304
+	name="/home/oxygen10/GOETZE/epics/synApps_R3.13.1.1_R4.2/kag/kagApp/op/adl/Oxford_ILM202_1.3.adl"
+	version=020306
 }
 display {
 	object {
-		x=329
-		y=81
+		x=552
+		y=38
 		width=400
 		height=190
 	}
@@ -258,17 +258,16 @@ text {
 }
 "choice button" {
 	object {
-		x=260
-		y=167
-		width=75
-		height=15
+		x=258
+		y=158
+		width=40
+		height=30
 	}
 	control {
 		chan="$(P)$(S)_ILM_on_off.VAL"
-		clr=14
-		bclr=2
+		clr=50
+		bclr=54
 	}
-	stacking="column"
 }
 polyline {
 	object {
@@ -299,6 +298,8 @@ polyline {
 		clr=54
 		bclr=2
 	}
+	limits {
+	}
 }
 "text entry" {
 	object {
@@ -311,6 +312,8 @@ polyline {
 		chan="$(P)$(S)_ILM_level2.DESC"
 		clr=54
 		bclr=2
+	}
+	limits {
 	}
 }
 text {
@@ -446,36 +449,6 @@ polyline {
 		(340,175)
 	}
 }
-rectangle {
-	object {
-		x=296
-		y=162
-		width=43
-		height=25
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)_ILM_on_off.VAL"
-	}
-}
-rectangle {
-	object {
-		x=257
-		y=164
-		width=40
-		height=21
-	}
-	"basic attribute" {
-		clr=61
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)_ILM_on_off.VAL"
-	}
-}
 composite {
 	object {
 		x=95
@@ -484,8 +457,6 @@ composite {
 		height=18
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		rectangle {
 			object {
@@ -557,8 +528,6 @@ composite {
 		height=18
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		rectangle {
 			object {
@@ -646,6 +615,8 @@ rectangle {
 		bclr=14
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 text {
 	object {
@@ -684,6 +655,8 @@ rectangle {
 		bclr=14
 	}
 	align="horiz. centered"
+	limits {
+	}
 }
 text {
 	object {
@@ -742,4 +715,19 @@ text {
 	}
 	textix="($(S))"
 	align="horiz. right"
+}
+"message button" {
+	object {
+		x=301
+		y=165
+		width=37
+		height=20
+	}
+	control {
+		chan="$(P)$(S)_ILM_init.VAL"
+		clr=50
+		bclr=54
+	}
+	label="INIT"
+	press_msg="1"
 }
