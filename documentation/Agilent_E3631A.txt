@@ -1,4 +1,4 @@
-Agilent_E3631A.db:
+Agilent_E3631A Power Supply:
 
 - In st.cmd:
 # Agilent E3631A triple output power supply
@@ -6,6 +6,13 @@ dbLoadRecords("ipApp/Db/Agilent_E3631A.db","P=xxx:,S=ps1,C=0,IPSLOT=a,CHAN=7", i
 
 - In st_mpfserver.cmd:
 initOctalUARTPort("UART[7]","octalUart0",7, 9600,"N",2,8,"N") /* Agilent E3631A*/
+
+- In top level medm screen, related display button:
+     display[7] {
+             label="Agilent E3631A Power Supply"
+             name="Agilent_E3631A.adl"
+             args="P=3idd:,S=ps1"
+     }
 
 - RS-232 connection:
 Needs jumper tying pin 6 (DSR on instrument) to Space (+12V).  This
