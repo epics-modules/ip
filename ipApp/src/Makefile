@@ -32,6 +32,7 @@ ip_SRCS += devSerial.cc
 ip_SRCS += devAiHeidND261.cc
 ip_SRCS += devAiMKS.cc
 ip_SRCS += Keithley2kDMM.st
+ip_SRCS += Federal.st
 ip_SRCS += devMPC.cc
 ip_SRCS += ipRegister.c
 ip_SRCS_vxWorks += tyGSMPFInit.c
