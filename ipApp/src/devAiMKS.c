@@ -58,6 +58,7 @@
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
 #include <asynOctet.h>
+#include <asynOctetSyncIO.h>
 #include <epicsExport.h>
 
 #define TIMEOUT  2   /* Timeout in sec */
@@ -86,11 +87,6 @@ typedef struct {
 } devAiMKSPvt;
 
 typedef struct {
-   MKSCommand command;
-   char readCommand[4];
-} devAiMKSMsg;
-
-typedef struct {
         long      number;
         DEVSUPFUN report;
         DEVSUPFUN init;
@@ -104,7 +100,6 @@ static long initAi(aiRecord *pai);
 static long readAi(aiRecord *pai);
 static long convertAi(aiRecord *pai, int pass);
 static void callbackAi(asynUser *pasynUser);
-static void callbackAiSpecial(asynUser *pasynUser);
 dsetAiMKS devAiMKS = {6, 0, 0, initAi, 0, readAi, convertAi};
 
 epicsExportAddress(dset, devAiMKS);
@@ -115,14 +110,18 @@ static long initAi(aiRecord *pai)
     asynUser *pasynUser;
     asynStatus status;
     asynInterface *pasynInterface;
+    int nread, eomReason;
     devAiMKSPvt *pPvt;
-    devAiMKSMsg *pmsg;
+    char response[MAX_RESPONSE_LEN];
+    char gauge_str[3];  /*String to hold gauge type */
+    double mult;        /* Multiplier for different pressure units */
   
     /* Allocate private structure */
     pPvt = callocMustSucceed(1, sizeof(*pPvt), "devAiMKS::init_record");
     /* Create an asynUser */
     pasynUser = pasynManager->createAsynUser(callbackAi, 0);
-    pasynUser->userPvt = pai;
+    pasynUser->userPvt = pPvt;
+    pPvt->pai = pai;
 
     status = pasynEpicsUtils->parseLink(pasynUser, &pai->inp, 
                                         &port, &pPvt->gaugeNumber,
@@ -142,10 +141,18 @@ static long initAi(aiRecord *pai)
 
     /* Connect to port */
     status = pasynManager->connectDevice(pasynUser, port, 0);
-    if(status!=asynSuccess) goto bad;
+    if (status != asynSuccess) {
+        errlogPrintf("devAiMKS::initAi %s cannot connect to device %s\n",
+                     pai->name, port);
+        goto bad;
+    }
     /* Get asynOctet interface */
     pasynInterface = pasynManager->findInterface(pasynUser, asynOctetType, 1);
-    if(!pasynInterface) goto bad;
+    if (!pasynInterface) {
+        errlogPrintf("devAiMKS::initAi %s cannot find asynOctet interface\n",
+                     pai->name);
+        goto bad;
+    }
     pPvt->pasynOctet = (asynOctet *)pasynInterface->pinterface;
     pPvt->asynOctetPvt = pasynInterface->drvPvt;
     pPvt->pasynUser = pasynUser;
@@ -156,27 +163,101 @@ static long initAi(aiRecord *pai)
     if (pai->prec == 0) pai->prec = 1;
                       
     /* Read the pressure units (Torr, Pascal, etc.) from the controller
-     * Use the special callback.  */
-     pasynUser = pasynManager->duplicateAsynUser(pPvt->pasynUser, 
-                                                callbackAiSpecial, 0);
-     pmsg = pasynManager->memMalloc(sizeof(*pmsg));
-     pasynUser->userData = pmsg;
-     pmsg->command = readUnits;
-     strcpy(pmsg->readCommand, "SU\r");
-     pasynManager->queueRequest(pasynUser, 0, 0);
+     * Use synchronous I/O since we are in iocInit and it's much simpler */
+    nread = pasynOctetSyncIO->writeReadOnce(port, 0, "SU\r", 3,
+                                  response, sizeof(response),
+                                  "\r", 1, TIMEOUT, &eomReason);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
+              pai->name, nread, response);
+    if (nread != 8) {
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
+                  pai->name, nread, response);
+        recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
+        goto bad;
+    }
+    response[7]=0;
+    strcpy(pai->egu, response);
            
     /* Read the gauge type from the controller
      * Note that three values are output, one for each slot.  The first
      * slot is either empty or a cold-cathode controller.  The other two
      * slots can hold any type of controller board, and for all types 
      * except cold-cathode each board may control one or two gauges. */
-    pasynUser = pasynManager->duplicateAsynUser(pPvt->pasynUser, 
-                                                callbackAiSpecial, 0);
-    pmsg = pasynManager->memMalloc(sizeof(*pmsg));
-    pasynUser->userData = pmsg;
-    pmsg->command = readGaugeType;
-    strcpy(pmsg->readCommand, "SG\r");
-    pasynManager->queueRequest(pasynUser, 0, 0);
+    nread = pasynOctetSyncIO->writeReadOnce(port, 0, "SG\r", 3,
+                                  response, sizeof(response),
+                                  "\r", 1, TIMEOUT, &eomReason);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devAiMKS::initAi record=%s, nread=%d, response=\n%s\n",
+              pai->name, nread, response);
+    if (nread != 8) {
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
+                  pai->name, nread, response);
+        recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
+        goto bad;
+    }
+    response[7]=0;
+    gauge_str[2] = '\0';
+    switch (pPvt->gaugeNumber) {
+        case 1:
+            strncpy(gauge_str,&response[0],2);
+            break;
+        case 2:
+        case 3:
+            strncpy(gauge_str,&response[2],2);
+            break;
+        case 4:
+        case 5:
+            strncpy(gauge_str,&response[4],2);
+            break;
+    }
+    if (!strcmp(gauge_str, "Cc")) {
+        pPvt->gaugeType = TYPE_CC;
+        pPvt->gaugeLow = 1.0e-11;
+        pPvt->gaugeHigh = 1.0e-2;
+    } else if (!strcmp(gauge_str, "Pr")) {
+        pPvt->gaugeType = TYPE_PR;
+        pPvt->gaugeLow = 5.e-4;
+        pPvt->gaugeHigh = 760.;
+    } else if (!strcmp(gauge_str, "Cm")) {
+        pPvt->gaugeType = TYPE_CM;
+        pPvt->gaugeLow = 1.e-3;  /* These values depend on head model */
+        pPvt->gaugeHigh = 1.e0;
+    } else if (!strcmp(gauge_str, "Tc")) {
+        pPvt->gaugeType = TYPE_TC;
+        pPvt->gaugeLow = 1.e-3;
+        pPvt->gaugeHigh = 1.e0;
+    } else if (!strcmp(gauge_str, "Cv")) {
+        pPvt->gaugeType = TYPE_CV;
+        pPvt->gaugeLow = 1.e-3;
+        pPvt->gaugeHigh = 1.e+3;
+    } else {
+         asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "devAiMKS, unknown gauge type %s\n", gauge_str);
+        recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
+    }
+
+    /* The values for gaugeLow and guage_high assigned above are
+     * in Torr.  If the gauge is not reading in Torr then we need to
+     * convert to the appropriate units. */
+    mult = 1.0;
+    if (!strncmp(pai->egu, "mbar", 4)) mult=1.3;
+    else if (!strncmp(pai->egu, "Pascal", 6)) mult=130.;
+    else if (!strncmp(pai->egu, "micron", 6)) mult=1000.;
+    pPvt->gaugeLow = pPvt->gaugeLow * mult;
+    pPvt->gaugeHigh = pPvt->gaugeHigh * mult;
+    /* If LOPR and HOPR are both zero then set them to the gauge
+     * limits */
+    if ((pai->lopr==0.) && (pai->hopr==0.)) {
+        pai->lopr = pPvt->gaugeLow;
+        pai->hopr = pPvt->gaugeHigh;
+    }
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devAiMKS record=%s, gauge_str=%s, lopr=%f, hopr=%f\n",
+              pai->name, gauge_str, pai->lopr, pai->hopr);
+
     return 0;
 
     bad:
@@ -217,8 +298,8 @@ static void callbackAi(asynUser *pasynUser)
                                      pPvt->readCommand, 
                                      strlen(pPvt->readCommand), &nwrite);
     pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
-    pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
-                           MAX_RESPONSE_LEN, &nread, &eomReason);
+    status = pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
+                                    MAX_RESPONSE_LEN, &nread, &eomReason);
 
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
               "devAiMKS record=%s, len=%d, response=\n%s\n", 
@@ -248,7 +329,7 @@ static void callbackAi(asynUser *pasynUser)
         } else if (!strncmp(response,"MI",2)  ||  /* Misconnected */
                    !strncmp(response,"NO",2)  ||  /* No gauge */
                    !strncmp(response,"HV",2)) {   /* High voltage off */
-            asynPrint(pasynUser, ASYN_TRACE_ERROR,
+            asynPrint(pasynUser, ASYN_TRACE_FLOW,
                       "devAiMKS record=%s, no gauge, etc.\n", 
                       pai->name);
             recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
@@ -266,120 +347,6 @@ static void callbackAi(asynUser *pasynUser)
    dbScanLock((dbCommon *)pai);
    (*prset->process)(pai);
    dbScanUnlock((dbCommon *)pai);
-}
-
-static void callbackAiSpecial(asynUser *pasynUser)
-{
-    devAiMKSPvt *pPvt = (devAiMKSPvt *)pasynUser->userPvt;
-    aiRecord *pai = pPvt->pai;
-    devAiMKSMsg *pmsg = (devAiMKSMsg *)pasynUser->userData;
-    char gauge_str[3];  /*String to hold gauge type */
-    double mult;        /* Multiplier for different pressure units */
-    char response[MAX_RESPONSE_LEN];
-    asynStatus status;
-    int nwrite, nread, eomReason;
-
-    pasynUser->timeout = TIMEOUT;
-    status = pPvt->pasynOctet->write(pPvt->asynOctetPvt, pasynUser,
-                                     pmsg->readCommand,
-                                     strlen(pmsg->readCommand), &nwrite);
-    pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
-    pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
-                           MAX_RESPONSE_LEN, &nread, &eomReason);
-
-    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
-              "devAiMKS record=%s, nread=%d, response=\n%s\n", 
-              pai->name, nread, response);
-    if ((status != 0) || (nread != 8)) {
-        asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                  "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n", 
-                  pai->name, nread, response);
-        recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
-        goto finish;
-    }
-
-    switch (pmsg->command) {
-    case readUnits:
-        response[7]=0;
-        strcpy(pai->egu, response);
-        break;
-
-    case readGaugeType:
-        response[7]=0;
-        gauge_str[2] = '\0';
-        switch (pPvt->gaugeNumber) {
-        case 1:
-            strncpy(gauge_str,&response[0],2);
-            break;
-        case 2:
-        case 3:
-            strncpy(gauge_str,&response[2],2);
-            break;
-        case 4:
-        case 5:
-            strncpy(gauge_str,&response[4],2);
-            break;
-        }
-        if (!strcmp(gauge_str, "Cc")) 
-        {
-            pPvt->gaugeType = TYPE_CC;
-            pPvt->gaugeLow = 1.0e-11;
-            pPvt->gaugeHigh = 1.0e-2;
-        }
-        else if (!strcmp(gauge_str, "Pr")) 
-        {
-            pPvt->gaugeType = TYPE_PR;
-            pPvt->gaugeLow = 5.e-4;
-            pPvt->gaugeHigh = 760.;
-        }
-        else if (!strcmp(gauge_str, "Cm")) 
-        {
-            pPvt->gaugeType = TYPE_CM;
-            pPvt->gaugeLow = 1.e-3;  /* These values depend on head model */
-            pPvt->gaugeHigh = 1.e0;
-        }
-        else if (!strcmp(gauge_str, "Tc")) 
-        {
-            pPvt->gaugeType = TYPE_TC;
-            pPvt->gaugeLow = 1.e-3;
-            pPvt->gaugeHigh = 1.e0;
-        }
-        else if (!strcmp(gauge_str, "Cv")) 
-        {
-            pPvt->gaugeType = TYPE_CV;
-            pPvt->gaugeLow = 1.e-3;
-            pPvt->gaugeHigh = 1.e+3;
-        }
-        else {
-            asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                      "devAiMKS, unknown guage type %s\n", gauge_str);
-            recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
-        }
-
-        /* The values for gaugeLow and guage_high assigned above are 
-         * in Torr.  If the gauge is not reading in Torr then we need to
-         * convert to the appropriate units. */
-        mult = 1.0;
-        if (!strncmp(pai->egu, "mbar", 4)) mult=1.3;
-        else if (!strncmp(pai->egu, "Pascal", 6)) mult=130.;
-        else if (!strncmp(pai->egu, "micron", 6)) mult=1000.;
-        pPvt->gaugeLow = pPvt->gaugeLow * mult;
-        pPvt->gaugeHigh = pPvt->gaugeHigh * mult;
-        /* If LOPR and HOPR are both zero then set them to the gauge 
-         * limits */
-        if ((pai->lopr==0.) && (pai->hopr==0.))
-        {
-            pai->lopr = pPvt->gaugeLow;
-            pai->hopr = pPvt->gaugeHigh;
-        }
-        asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
-                  "devAiMKS record=%s, gauge_str=%s, lopr=%f, hopr=%f\n", 
-                  pai->name, gauge_str, pai->lopr, pai->hopr);
-        break;
-    }
-    finish:
-    pasynManager->memFree(pmsg, sizeof(*pmsg));
-    pasynManager->freeAsynUser(pasynUser);
 }
 
 static long convertAi(aiRecord *pai, int pass)
