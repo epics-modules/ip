@@ -12,6 +12,7 @@ LIBRARY_IOC += ip
 
 DBDINC += serialRecord
 DBD += ipSupport.dbd
+DBD += ipVXSupport.dbd
 DBD += ip.dbd
 DBD += ipVX.dbd
 
@@ -31,6 +32,7 @@ ip_SRCS += devAiMKS.cc
 ip_SRCS += Keithley2kDMM.st
 ip_SRCS += devMPC.cc
 ip_SRCS += ipRegister.c
+ip_SRCS_vxWorks += tyGSMPFInit.c
 
 ip_LIBS += mpf mpfEpics 
 ip_LIBS += seq pv
