@@ -13,12 +13,14 @@ LIBRARY_IOC_solaris = -nil-
 LIBRARY_IOC_DEFAULT += ip
 
 DBDINC += serialRecord
+DBDINC += gpibRecord
 DBD += ipSupport.dbd
 DBD += ipVXSupport.dbd
 DBD += ip.dbd
 DBD += ipVX.dbd
 
 ip_SRCS += serialRecord.c
+ip_SRCS += gpibRecord.c
 ip_SRCS += devAiStrParm.cc
 ip_SRCS += devAoStrParm.cc
 ip_SRCS += devBiStrParm.cc
@@ -37,7 +39,8 @@ ip_SRCS += devMPC.cc
 ip_SRCS += ipRegister.c
 ip_SRCS_vxWorks += tyGSMPFInit.c
 
-ip_LIBS += mpf mpfEpics 
+ip_LIBS += mpf 
+ip_LIBS += asyn
 ip_LIBS += seq pv
 ip_LIBS += $(EPICS_BASE_IOC_LIBS)
 
@@ -56,7 +59,8 @@ ipApp_SRCS_vxWorks += -nil-
 ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 
 ipApp_LIBS += ip
-ipApp_LIBS += mpf mpfEpics mpfSerial
+ipApp_LIBS += mpf
+ipApp_LIBS += asyn
 ipApp_LIBS += seq pv
 ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
 
