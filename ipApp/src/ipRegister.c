@@ -7,8 +7,8 @@ extern struct seqProgram Keithley2kDMM;
 
 void ipRegister(void)
 {
-    struct seqProgram junk;
-    junk = Keithley2kDMM;
+    seqRegisterSequencerProgram(&Keithley2kDMM);
+    seqRegisterSequencerCommands();
 }
 
 epicsExportRegistrar(ipRegister);
