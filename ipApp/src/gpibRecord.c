@@ -15,6 +15,7 @@
 #include        <stdlib.h>
 
 #include        <asynDriver.h>
+#include        <asynOctet.h>
 #include        <asynGpibDriver.h>
 #include        <alarm.h>
 #include        <dbDefs.h>

@@ -18,6 +18,7 @@
 #include <recSup.h>
 #include <devSup.h>
 #include <asynDriver.h>
+#include <asynOctet.h>
 #include <aiRecord.h>
 #include <aoRecord.h>
 #include <biRecord.h>
