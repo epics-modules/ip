@@ -9,12 +9,12 @@
 #
 # Add your declarations here
 
-IP330=$(EPICS_SUPPORT_PATH)/ip330_1.02
-LOVE=$(EPICS_SUPPORT_PATH)/love1-1
-IPUNIDIG=$(EPICS_SUPPORT_PATH)/ipUnidig1-1
-DAC128V=$(EPICS_SUPPORT_PATH)/dac128V1-1
+include $(EPICS_SUPPORT_PATH)/config/IP330_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/LOVE_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/IPUNIDIG_RELEASE
+include $(EPICS_SUPPORT_PATH)/config/DAC128V_RELEASE
 #Dependency note: devSerial.cc -> std/include/serialRecord.h
-STD=$(EPICS_SUPPORT_PATH)/std1-1
+include $(EPICS_SUPPORT_PATH)/config/STD_RELEASE
 include $(EPICS_SUPPORT_PATH)/config/MPFGPIB_RELEASE
 include $(EPICS_SUPPORT_PATH)/config/MPFSERIAL_RELEASE
 include $(EPICS_SUPPORT_PATH)/config/MPF_RELEASE
