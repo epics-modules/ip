@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps_5_1/support/ip/cvs/ipApp/op/adl/deviceCmdReply_full.adl"
+	name="/home/oxygen4/MOONEY/epics/synApps_5_1/support/ip/cvs/ipApp/op/adl/deviceCmdReply_full.adl"
 	version=030004
 }
 display {
@@ -739,14 +739,13 @@ text {
 	object {
 		x=15
 		y=335
-		width=400
+		width=200
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
 	textix="Send and/or Receive"
-	align="horiz. centered"
 }
 "message button" {
 	object {
@@ -1873,4 +1872,19 @@ text {
 	clr=0
 	bclr=63
 	label="-?"
+}
+"text update" {
+	object {
+		x=250
+		y=337
+		width=140
+		height=14
+	}
+	monitor {
+		chan="$(P)cmdReply$(N)_do_IO.PORT"
+		clr=54
+		bclr=0
+	}
+	limits {
+	}
 }
