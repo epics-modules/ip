@@ -30,7 +30,6 @@ ip_SRCS += devAiHeidND261.cc
 ip_SRCS += devAiMKS.cc
 ip_SRCS += Keithley2kDMM.st
 ip_SRCS += devMPC.cc
-#ip_SRCS += mpcServer.cc
 ip_SRCS += ipRegister.c
 
 ip_LIBS += mpf mpfEpics 
@@ -56,8 +55,6 @@ ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
 
 #===========================
 
-
-#BIN_INSTALLS += mpcServer.o
 
 #===========================
 

@@ -6,6 +6,8 @@
 // Mark Rivers  17-Feb-2001  Added support for TSP and auto-restart
 // Mark Rivers  26-Oct-2002  Fixed problem with reading AMPS on recent MPC
 //                           controllers, they don't send AMPS in the response
+// Mark Rivers  1-Sep-2003   Changed software to use normal mpfSerial server, 
+//                           rather than custom server
 /*
  *****************************************************************
  *                         COPYRIGHT NOTIFICATION
@@ -62,7 +64,7 @@
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
-#include "epicsPrint.h"
+#include "errlog.h"
 #include "dbCommon.h"
 #include "aiRecord.h"
 #include "aoRecord.h"
@@ -77,11 +79,14 @@
 #include "Message.h"
 #include "Char8ArrayMessage.h"
 #include "DevMpf.h"
+#include "serialServer.h"
 #include "devMPC.h"
 
 #ifndef vxWorks
 #define ERROR -1
 #endif
+
+#define READ_TIMEOUT 5;
 
 long devMPCDebug = 0;
 
@@ -290,7 +295,7 @@ DevMPC::DevMPC(dbCommon* pr,link* l)
     vmeio* io = (vmeio*)&(l->value);
     const char* pv = getUserParm();
     if(pv==0 ) {
-        epicsPrintf("%s DevMPC Illegal INP field\n",pr->name);
+        errlogPrintf("%s DevMPC Illegal INP field\n",pr->name);
         pr->pact = TRUE;
         return;
     }
@@ -300,13 +305,13 @@ DevMPC::DevMPC(dbCommon* pr,link* l)
     sprintf(parameter,"%d",var2);
 
     if (devMPCDebug)
-        printf(" name =%s; address =%s; parameter =%s;\n", 
+        errlogPrintf(" name =%s; address =%s; parameter =%s;\n", 
         	pr->name,address,parameter);
 
     command = io->signal;
     if (command<0 || (command >GetTSPStat && command < SetUnit) || 
         command>SetTSPDegas) {
-        epicsPrintf("%s DevMPC Illegal INP field\n",pr->name);
+        errlogPrintf("%s DevMPC Illegal INP field\n",pr->name);
         pr->pact = TRUE;
         return;
     }
@@ -375,7 +380,7 @@ long DevMPC::BuildCommand(int hexCmd, char *pvalue)
     ::strcat(sendBuf," 00"); // checksum is set to 00 now !!!!
 
     if (devMPCDebug)
-	printf("Command %x sent (%d) |%s|\n",hexCmd,::strlen(sendBuf),sendBuf);
+	errlogPrintf("Command %x sent (%d) |%s|\n",hexCmd,::strlen(sendBuf),sendBuf);
 
     ::strcat(sendBuf,"\r");  // command terminator
     return(0);
@@ -391,7 +396,10 @@ long DevMPC::startIO(dbCommon* )
     message->allocValue(lenSend);
     ::memcpy(message->value,sendBuf,lenSend);
     message->setSize(lenSend);
-
+    message->timeout = READ_TIMEOUT;
+    message->eomLen = 1;
+    message->eomString[0] = '\r';
+    message->cmd = cmdWriteRead | cmdFlush | cmdSetEom;
     int status = sendReply(message);
     return(status);
 }
@@ -436,7 +444,7 @@ long DevAiMPC::startIO(dbCommon*pr )
             ::strcpy(tempparameter,parameter);
             break;
         default:
-            epicsPrintf(" %s Wrong record type \n",record->name);
+            errlogPrintf(" %s Wrong record type \n",record->name);
             record->pact = TRUE;
             break;
     }
@@ -487,7 +495,7 @@ long DevAoMPC::startIO(dbCommon*pr )
             ::strcat(tempparameter,pvalue);  // for Off pressure
             break;
         default:
-            epicsPrintf(" %s Wrong record type \n",record->name);
+            errlogPrintf(" %s Wrong record type \n",record->name);
             record->pact = TRUE;
             break;
     }  
@@ -524,7 +532,7 @@ long DevBiMPC::startIO(dbCommon*pr )
             ::strcpy(tempparameter,"");
             break;
         default:
-            epicsPrintf(" %s Wrong record type \n",record->name);
+            errlogPrintf(" %s Wrong record type \n",record->name);
             record->pact = TRUE;
             break;
     }
@@ -588,7 +596,7 @@ long DevBoMPC::startIO(dbCommon*pr )
             DevMPC::BuildCommand(hexCmd,"");
             break;
         default:
-           epicsPrintf(" %s Wrong record type \n",record->name);
+           errlogPrintf(" %s Wrong record type \n",record->name);
            record->pact = TRUE;
            break;
     }
@@ -620,7 +628,7 @@ long DevMbboMPC::startIO(dbCommon*pr )
             ::sprintf(tempparameter,"%ld", record->rval);
             break;
         default:
-           epicsPrintf(" %s Wrong record type \n",record->name);
+           errlogPrintf(" %s Wrong record type \n",record->name);
            record->pact = TRUE;
            break;
     }
@@ -646,7 +654,7 @@ long DevSiMPC::startIO(dbCommon*pr )
             DevMPC::BuildCommand(hexCmd, "");
             break;
         default:
-           epicsPrintf(" %s Wrong record type \n",record->name);
+           errlogPrintf(" %s Wrong record type \n",record->name);
            record->pact = TRUE;
            break;
     }
@@ -669,7 +677,7 @@ long DevSoMPC::startIO(dbCommon*pr )
             hexCmd = 0x2e;
             break;
         default:
-           epicsPrintf(" %s Wrong record type \n",record->name);
+           errlogPrintf(" %s Wrong record type \n",record->name);
            record->pact = TRUE;
            break;
     }
@@ -687,10 +695,8 @@ long DevMPC::completeIO(dbCommon* pr, Message* m)
 */
     if(m->getType() != messageTypeChar8Array) {
 	if(m->getType() != messageTypeInt32)
-	    epicsPrintf("DevMPC::completeIO illegal message. %s\n",
+	    if (devMPCDebug) errlogPrintf("DevMPC::completeIO illegal message. %s\n",
 		pr->name);
-        if (devMPCDebug)
-	    printf("DevMPC::completeIO, error return from server\n");
 	recGblSetSevr(pr,READ_ALARM,INVALID_ALARM);
 	delete m;
 	return(ERROR);
@@ -698,20 +704,34 @@ long DevMPC::completeIO(dbCommon* pr, Message* m)
     Char8ArrayMessage *message = (Char8ArrayMessage *)m;
     int32 rtnSize = message->getSize();
     if(rtnSize>=BufferSize) {
-	epicsPrintf("DevMPC::completeIO message too big\n");
+	if (devMPCDebug) errlogPrintf("DevMPC::completeIO message too big=%d\n", rtnSize);
 	recGblSetSevr(pr,READ_ALARM,INVALID_ALARM);
 	delete m;
 	return(ERROR);
     }
+    if(rtnSize < 3) {
+	if (devMPCDebug) errlogPrintf("DevMPC::completeIO message too small=%d\n", rtnSize);
+	recGblSetSevr(pr,READ_ALARM,INVALID_ALARM);
+	delete m;
+	return(ERROR);
+    }
+
     ::memset(recBuf,0,BufferSize);
-    ::memcpy(recBuf,message->value,rtnSize);
-    recBuf[rtnSize] = 0;
     if (devMPCDebug)
-	printf("%s command (%d) received |%s|\n",pr->name,command,recBuf);
+	errlogPrintf("%s command (%d) received (before processing) |%s|\n",pr->name,command,message->value);
+    if(message->value[3]=='O' && message->value[4] == 'K') {
+        if (rtnSize < 9 ) {
+            ::strcpy(recBuf,"OK");
+        } else {
+            char *pdata = &message->value[9]; // strip off the header cmds.
+            ::strcpy(recBuf,pdata);
+        }
+    }
+    if (devMPCDebug)
+	errlogPrintf("%s command (%d) received (after processing) |%s|\n",pr->name,command,recBuf);
 
     delete m;
     return(0);
-
 }
 
 
@@ -775,7 +795,7 @@ long DevAiMPC::completeIO(dbCommon* pr, Message* m)
             break;
 
         default:
-           epicsPrintf(" %s Wrong record type \n",record->name);
+           errlogPrintf(" %s Wrong record type \n",record->name);
            record->pact = TRUE;
            break;
     }
@@ -795,7 +815,7 @@ long DevAoMPC::completeIO(dbCommon* pr, Message* m)
 
    if (rtnSize > 2) {
         recGblSetSevr(record,READ_ALARM,INVALID_ALARM);
-	epicsPrintf("DevAoMPC::completeIO message too big in %s\n",
+	errlogPrintf("DevAoMPC::completeIO message too big in %s\n",
 		record->name);
 	return(0);
     }
@@ -825,7 +845,7 @@ long DevBiMPC::completeIO(dbCommon* pr, Message* m)
             if (::strcmp(recBuf,"YES") == 0) value=1; else value=0;
             break;
         default:
-            epicsPrintf(" %s Wrong record type \n",record->name);
+            errlogPrintf(" %s Wrong record type \n",record->name);
             record->pact = TRUE;
             break;
     }
@@ -844,7 +864,7 @@ long DevBoMPC::completeIO(dbCommon* pr, Message* m)
     int rtnSize = strlen(recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(record,READ_ALARM,INVALID_ALARM);
-	epicsPrintf("DevBoMPC::completeIO message too big in %s\n",
+	errlogPrintf("DevBoMPC::completeIO message too big in %s\n",
 		record->name);
 	return(0);
     }
@@ -861,7 +881,7 @@ long DevMbboMPC::completeIO(dbCommon* pr, Message* m)
     int rtnSize = strlen(recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(record,READ_ALARM,INVALID_ALARM);
-	epicsPrintf("DevMbboMPC::completeIO message too big in %s\n",
+	errlogPrintf("DevMbboMPC::completeIO message too big in %s\n",
 		record->name);
 	return(0);
     }
@@ -879,13 +899,13 @@ long DevSiMPC::completeIO(dbCommon* pr, Message* m)
     int rtnSize = strlen(recBuf);        
     if (rtnSize > 39) {
         recGblSetSevr(record,READ_ALARM,INVALID_ALARM);
-	epicsPrintf("DevSiMPC::completeIO message too big in %s\n",
+	errlogPrintf("DevSiMPC::completeIO message too big in %s\n",
 		record->name);
 	return(0);
     }
 
     if (devMPCDebug)
-        printf("%s Value decoded as : %s \n\n", record->name,recBuf);
+        errlogPrintf("%s Value decoded as : %s \n\n", record->name,recBuf);
 
     ::strcpy(record->val,recBuf);
     record->udf=0;
@@ -901,7 +921,7 @@ long DevSoMPC::completeIO(dbCommon* pr, Message* m)
     int rtnSize = strlen(recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(record,READ_ALARM,INVALID_ALARM);
-	epicsPrintf("DevMbboMPC::completeIO message too big in %s\n",
+	errlogPrintf("DevMbboMPC::completeIO message too big in %s\n",
 		record->name);
 	return(0);
     }
