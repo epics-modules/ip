@@ -57,18 +57,11 @@ extern "C"
 volatile int devSerialDebug = 0;
 }
 
-static int baud_choices[]={300,600,1200,2400,4800,9600,19200,38400};
-static char parity_choices[]={'N','E','O'};
-static int data_bit_choices[]={5,6,7,8};
-static int stop_bit_choices[]={1,2};
-static char flow_control_choices[]={'N','H'};
-
 class Serial : public DevMpf
 {
 public:
         Serial(dbCommon*,DBLINK*);
 
-        virtual void connectIO(dbCommon *pr, Message *m);
         long startIO(dbCommon* pr);
         long completeIO(dbCommon* pr,Message* m);
         long cancelIO();
@@ -104,34 +97,11 @@ Serial::Serial(dbCommon* pr,DBLINK* l) : DevMpf(pr,l,false)
        DEBUG(1, "Serial::Serial, record=%s\n", pr->name);
 }
 
-void Serial::connectIO(dbCommon *pr, Message *message)
-{
-        // This connection routine is called whenever the server connects or
-        // disconnects.  When it connects we want to send the port setup
-	// information.
-
-	serialRecord* soi = (serialRecord*)pr;
-
-        ConnectMessage *pConnectMessage = (ConnectMessage *)message;
-        DEBUG(5,"Serial::connectIO, enter, record=%s, status=%d\n", 
-                            pr->name, pConnectMessage->status);
-
-        if (pConnectMessage->status == connectYes) {
-            port_setup(soi,
-		baud_choices[soi->baud],
-		data_bit_choices[soi->dbit],
-		stop_bit_choices[soi->sbit],
-		parity_choices[soi->prty],
-		flow_control_choices[soi->fctl]);
-        }
-        DevMpf::connectIO(pr, message);  // Call the base class method
-}
-
 long Serial::get_ioint_info(int cmd, struct dbCommon *pr, IOSCANPVT *ppvt)
 {
         DEBUG(1, "Entering get_ioint_info,cmd=%d\n", cmd);
-        serialRecord* soi = (serialRecord*)pr;
-        Serial* ser = (Serial*)pr->dpvt;
+        //serialRecord* soi = (serialRecord*)pr;
+        //Serial* ser = (Serial*)pr->dpvt;
         // If this record was just added to a scan list then send a message
         // However, only do this if the TMOD field is serialTMOD_Read. No other
         // transaction mode makes sense to be I/O Event scanned
