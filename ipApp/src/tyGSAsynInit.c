@@ -11,24 +11,31 @@
  * source files
  */
 
-int tyGSOctalDevCreate(char *, int, int, int, int);
-
+char * tyGSOctalDevCreate
+    (
+    char *       name,           /* name to use for this device          */
+    const char * moduleID,       /* IP module name                       */
+    int          port,           /* port on module for this device [0-7] */
+    int          rdBufSize,      /* read buffer size, in bytes           */
+    int          wrtBufSize      /* write buffer size, in bytes          */
+    );
+	
 int tyGSAsynInitBuffsize = 1000;
 epicsExportAddress(int, tyGSAsynInitBuffsize);
 
-int tyGSAsynInit(char *port, int uart, int channel, int baud, char parity, 
+int tyGSAsynInit(char *port, char *moduleName, int channel, int baud, char parity, 
                  int sbits, int dbits, char handshake, 
                  char *inputEos, char *outputEos)
 {
 
-   int index;
+   char *deviceName;
    int status;
    #define SIZE 80
    char buffer[SIZE];
 
-   index  = tyGSOctalDevCreate(port, uart, channel, tyGSAsynInitBuffsize, 
+   deviceName = tyGSOctalDevCreate(port, moduleName, channel, tyGSAsynInitBuffsize, 
                                tyGSAsynInitBuffsize);
-   if (index == ERROR) return(ERROR);
+   if (deviceName == NULL) return(ERROR);
    drvAsynSerialPortConfigure(port, port, 0, 0, 0);
 
    asynOctetConnect(port, port, 0, 0, 128, NULL);
@@ -62,8 +69,8 @@ int tyGSAsynInit(char *port, int uart, int channel, int baud, char parity,
 
 
 static const iocshArg tyGSAsynInitArg0 = { "portName",iocshArgString};
-static const iocshArg tyGSAsynInitArg1 = { "UART index",iocshArgInt};
-static const iocshArg tyGSAsynInitArg2 = { "UART channel",iocshArgInt};
+static const iocshArg tyGSAsynInitArg1 = { "module name",iocshArgString};
+static const iocshArg tyGSAsynInitArg2 = { "module channel",iocshArgInt};
 static const iocshArg tyGSAsynInitArg3 = { "baud",iocshArgInt};
 static const iocshArg tyGSAsynInitArg4 = { "parity('N'=none,'E'=even,'O'=odd)",
                                           iocshArgInt};
@@ -83,7 +90,7 @@ static const iocshFuncDef tyGSAsynInitFuncDef = {
 static void tyGSAsynInitCallFunc(const iocshArgBuf *args)
 {
     tyGSAsynInit(
-        args[0].sval,args[1].ival,args[2].ival,args[3].ival,
+        args[0].sval,args[1].sval,args[2].ival,args[3].ival,
         args[4].ival,args[5].ival,args[6].ival,args[7].ival,
         args[8].sval,args[9].sval);
 }
