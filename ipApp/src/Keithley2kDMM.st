@@ -282,7 +282,7 @@ ss mode_change {
             previous_chan = dmm_chan;
         } state monitor_mode_changes
 
-        when(efTestAndClear(dmm_chan2_mon)) {
+        when(efTestAndClear(dmm_chan2_mon) && (channels > 10)) {
             sprintf(ch_close, close_format, dmm_chan2+11);
             pvPut(ch_close);
             previous_chan = dmm_chan2+10;
