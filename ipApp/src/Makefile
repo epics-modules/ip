@@ -12,14 +12,12 @@ include $(TOP)/configure/CONFIG
 LIBRARY_IOC_solaris = -nil-
 LIBRARY_IOC_DEFAULT += ip
 
-DBDINC += serialRecord
 DBDINC += gpibRecord
 DBD += ipSupport.dbd
 DBD += ipVXSupport.dbd
 DBD += ip.dbd
 DBD += ipVX.dbd
 
-ip_SRCS += serialRecord.c
 ip_SRCS += gpibRecord.c
 ip_SRCS += devXxStrParm.c
 ip_SRCS += devAoEurotherm.cc
@@ -35,7 +33,7 @@ ip_SRCS += devGP307gpib.c
 ip_SRCS += devXxHeidenhainGpib.c      
 ip_SRCS += devXxAX301.c    
 ip_SRCS += devXxKeithleyDMM199Gpib.c 
-ip_SRCS_vxWorks += tyGSMPFInit.c
+ip_SRCS_vxWorks += tyGSAsynInit.c
 
 ip_LIBS += mpf 
 ip_LIBS += asyn
