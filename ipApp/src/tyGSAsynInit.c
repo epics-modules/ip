@@ -29,7 +29,7 @@ int tyGSAsynInit(char *port, int uart, int channel, int baud, char parity,
    index  = tyGSOctalDevCreate(port, uart, channel, tyGSAsynInitBuffsize, 
                                tyGSAsynInitBuffsize);
    if (index == ERROR) return(ERROR);
-   drvAsynSerialPortConfigure(port, port, 0, 0, 1, 1);
+   drvAsynSerialPortConfigure(port, port, 0, 0, 0);
 
    asynOctetConnect(port, port, 0, 0, 128, NULL);
    asynOctetSetInputEos(port, 0, inputEos, NULL);
