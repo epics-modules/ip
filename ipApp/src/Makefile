@@ -10,8 +10,10 @@ include $(TOP)/configure/CONFIG
 
 LIBRARY_IOC += ip
 
+DBDINC += serialRecord
 DBD += ipSupport.dbd
 
+ip_SRCS += serialRecord.c
 ip_SRCS += devAiStrParm.cc
 ip_SRCS += devAoStrParm.cc
 ip_SRCS += devBiStrParm.cc
