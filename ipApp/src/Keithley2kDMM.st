@@ -16,6 +16,10 @@ program Keithley2kDMM ("P=13LAB:, Dmm=DMM1")
  *                   one channel being used in multi-channel mode
 */
 
+/* This program must be compiled with the recursive option so that multiple copies
+ * can run at once */
+option +r;
+
 #define NUM_CHANNELS 10
 #define NUM_FRONT_MODES 10
 #define NUM_REAR_MODES 8
