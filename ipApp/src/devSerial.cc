@@ -91,7 +91,7 @@ private:
 extern "C" {DEVSERIAL_DSET devSerial =
   { 5,NULL,NULL,Serial::dev_init,Serial::get_ioint_info,
         DevMpf::read_write,NULL,Serial::setPortConfig };};
-epicsExportAddress(DEVSERIAL_DSET, devSerial);
+epicsExportAddress(dset, devSerial);
 
 long Serial::dev_init(void* v)
 {
