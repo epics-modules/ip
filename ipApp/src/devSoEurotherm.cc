@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.4  2003/07/09 21:40:29  goetze
+// Merged Mark's and Tim's changes.
+//
 // Revision 1.2.2.1  2003/07/09 18:33:15  goetze
 // kag- general version with bind call
 //
@@ -170,7 +173,7 @@ long SoEurotherm::completeIO(dbCommon* pr,Message* pm)
 	stringoutRecord* so = (stringoutRecord*)pr;
 	int rc=0;
 
-	DEBUG(2,"%.2f SoEurotherm::CompleteIO(%s)\n", tickGet()/60., pr->name);
+	DEBUG(2, "SoEurotherm::CompleteIO(%s)\n", pr->name);
         if((pm->getType()) != messageTypeChar8Array) {
             epicsPrintf("%s DevSoEurotherm::completeIO illegal message type %d\n",
                     so->name,pm->getType());
