@@ -76,7 +76,6 @@
 #include	<longinRecord.h>
 #include	<longoutRecord.h>
 
-#include	<drvGpibInterface.h>
 #include	<devCommonGpib.h>
 #include	<devGpib.h>	/* needed to exportAddress the DSETS defined above */
 
@@ -102,12 +101,10 @@ extern int ibSrqDebug;		/* declared in the GPIB driver */
  * Use the DMA_TIME to define how long you wish to wait for an I/O operation
  * to complete once started.
  *
- * These are to be declared in 60ths of a second.
- *
  ******************************************************************************/
 
-#define TIME_WINDOW	600		/* 10 seconds */
-#define	DMA_TIME	60		/* 1 second */
+#define TIME_WINDOW	10.		/* 10 seconds */
+#define	DMA_TIME	1.		/* 1 second */
 
 
 
@@ -148,64 +145,64 @@ static struct gpibCmd gpibCmds[] =
     /* Initialization sequence: Sets ports to be inputs */
     /* Param 0 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "*QT", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Select module 1 */ 
     /* Param 1 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "M!14", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Select module 2 */
     /* Param 2 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "M!24", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Put into Listen mode */
     /* Param 3 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "N!3", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Start Conversion */
     /* Param 4 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "N!4", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Talk Mode */
     /* Param 5 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "N!0", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Stop Conversion and read */
     /* Param 6 */
   {&DSET_AI, GPIBRAWREAD, IB_Q_HIGH, NULL, "%lf\n", 0, 32,
-  readconvert, 0, 0, NULL, NULL, -1},  
+  readconvert, 0, 0, NULL, NULL, 0},  
 
     /* Write Data */
     /* Param 7 */
   {&DSET_LO, GPIBWRITE, IB_Q_HIGH, NULL, "I!%4.4X", 0, 32,
-  writeconverta, 0, 0, NULL, NULL, -1},
+  writeconverta, 0, 0, NULL, NULL, 0},
 
     /* Read mod. 1 data in one message --- test */
     /* Param 8 */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "M!14\nN!4\nN!0\nN!4\n", "%lf\n", 0, 32,
-  readconvert, 0, 0, NULL, NULL, -1},
+  readconvert, 0, 0, NULL, NULL, 0},
 
     /* Write mod. 1 data in one message --- test */
     /* Param 9 */
   {&DSET_LO, GPIBWRITE, IB_Q_HIGH, "M!14\nN!3\nI!%4.4X", NULL,  0,
 32,
-  writeconverta, 0, 0, NULL, NULL, -1},
+  writeconverta, 0, 0, NULL, NULL, 0},
 
     /* Read mod. 2 data in one message --- test */
     /* Param 10 */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "M!24\nN!4\nN!0\nN!4\n", "%lf\n", 0, 32,
- readconvert, 0, 0, NULL, NULL, -1},
+ readconvert, 0, 0, NULL, NULL, 0},
 
     /* Write mod. 2 data in one message --- test */
     /* Param 11 */
   {&DSET_LO, GPIBWRITE, IB_Q_HIGH, "M!24\nN!3\nI!%4.4X", NULL, 0,
 32,
-  writeconvertb, 0, 0, NULL, NULL, -1},
+  writeconvertb, 0, 0, NULL, NULL, 0},
 
 };
 
@@ -304,17 +301,12 @@ static struct  devGpibParmBlock devSupParms;
 static long init_ai(int parm)
 {
 	if (parm==0)  {
-		devSupParms.debugFlag = &AX301Debug;
 		devSupParms.respond2Writes = -1;
 		devSupParms.timeWindow = TIME_WINDOW;
-		devSupParms.hwpvtHead = 0;
 		devSupParms.gpibCmds = gpibCmds;
 		devSupParms.numparams = NUMPARAMS;
-		devSupParms.magicSrq = 0;
 		devSupParms.name = "devXxAX301";
 		devSupParms.timeout = DMA_TIME;
-		devSupParms.srqHandler = devGpibLib_srqHandler;
-		devSupParms.wrConversion = 0;
 	}
-	return(devGpibLib_initDevSup(parm, &DSET_AI));
+        return(0);
 }

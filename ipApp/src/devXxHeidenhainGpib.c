@@ -79,7 +79,6 @@
 #include	<longinRecord.h>
 #include	<longoutRecord.h>
 
-#include	<drvGpibInterface.h>
 #include	<devCommonGpib.h>
 #include	<devGpib.h>	/* needed to exportAddress the DSETS defined above */
 
@@ -106,12 +105,10 @@ extern int ibSrqDebug;		/* declared in the GPIB driver */
  * Use the DMA_TIME to define how long you wish to wait for an I/O operation
  * to complete once started.
  *
- * These are to be declared in 60ths of a second.
- *
  ******************************************************************************/
 
-#define TIME_WINDOW	600		/* 10 seconds */
-#define	DMA_TIME	60		/* 1 second */
+#define TIME_WINDOW	10.		/* 10 seconds */
+#define	DMA_TIME	1.		/* 1 second */
 
 
 
@@ -154,17 +151,17 @@ static struct gpibCmd gpibCmds[] =
     /* Initialization sequence */
     /* Param 0 */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "R1F2T2X", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Read the encoder status */
     /* Param 1 */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "A0X","%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Read the encoder status */
     /* Param 2 */
   {&DSET_AI, GPIBRAWREAD, IB_Q_HIGH, NULL,"%lf", 0, 32,
-  convert, 0, 0, NULL, NULL, -1},
+  convert, 0, 0, NULL, NULL, 0},
 };
 
 /* The following is the number of elements in the command array above.  */
@@ -197,17 +194,12 @@ static struct  devGpibParmBlock devSupParms;
 static long init_ai(int parm)
 {
 	if (parm==0)  {
-		devSupParms.debugFlag = &devXxHeidenhainDebug;
 		devSupParms.respond2Writes = -1;
 		devSupParms.timeWindow = TIME_WINDOW;
-		devSupParms.hwpvtHead = 0;
 		devSupParms.gpibCmds = gpibCmds;
 		devSupParms.numparams = NUMPARAMS;
-		devSupParms.magicSrq = 0;
 		devSupParms.name = "devXxHeidenhainGpib";
 		devSupParms.timeout = DMA_TIME;
-		devSupParms.srqHandler = devGpibLib_srqHandler;
-		devSupParms.wrConversion = 0;
 	}
- 	return(devGpibLib_initDevSup(parm, &DSET_AI));
+        return(0);
 }

@@ -1,5 +1,5 @@
 /* devXxKeithleyDMM199Gpib.c */
-/* share/src/devOpt $Id: devXxKeithleyDMM199Gpib.c,v 1.1 2004-05-09 04:56:44 rivers Exp $ */
+/* share/src/devOpt $Id: devXxKeithleyDMM199Gpib.c,v 1.2 2004-05-09 18:57:33 rivers Exp $ */
 /*
  *      Author: John Winans
  *      Date:   02-18-92
@@ -80,7 +80,6 @@
 #include	<longinRecord.h>
 #include	<longoutRecord.h>
 
-#include	<drvGpibInterface.h>
 #include	<devCommonGpib.h>
 #include	<devGpib.h>	/* needed to exportAddress the DSETS defined above */
 
@@ -103,11 +102,9 @@ extern int ibSrqDebug;		/* declared in the GPIB driver */
  * Use the DMA_TIME to define how long you wish to wait for an I/O operation
  * to complete once started.
  *
- * These are to be declared in 60ths of a second.
- *
  ******************************************************************************/
-#define TIME_WINDOW	60		/* 1 seconds */
-#define	DMA_TIME	120		/* 2 second */
+#define TIME_WINDOW	1.0		/* 1 seconds */
+#define	DMA_TIME	2.0		/* 2 second */
 
 /******************************************************************************
  *
@@ -161,19 +158,19 @@ static struct gpibCmd gpibCmds[] =
 {
     /* Param 0 -- initialize: trigger on TALK; -1.234567E+0 format */
   {&DSET_BO, GPIBWRITE, IB_Q_HIGH, NULL, "F2R2Z0P1S1T1B0G1M0K0Y3A1O1W100X", 0, 50,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 1 -- get error string  */
   {&DSET_SI, GPIBREAD, IB_Q_HIGH, "U1X", "%s", 0, 50,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
    /* Param 2 -- read conversion (assumed data format "-1.234567E+0" */
   {&DSET_AI, GPIBREAD, IB_Q_LOW, NULL, "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
    /* Param 3 -- send command in stringout's VAL field */
   {&DSET_SO, GPIBWRITE, IB_Q_LOW, NULL, "%s", 0, 50,
-  NULL, 0, 0, NULL, NULL, -1}
+  NULL, 0, 0, NULL, NULL, 0}
 };
 
 /* The following is the number of elements in the command array above.  */
@@ -192,17 +189,12 @@ static struct  devGpibParmBlock devSupParms;
 static long init_ai(int parm)
 {
 	if (parm==0)  {
-		devSupParms.debugFlag = &KeithleyDMM199Debug;
 		devSupParms.respond2Writes = -1;
 		devSupParms.timeWindow = TIME_WINDOW;
-		devSupParms.hwpvtHead = 0;
 		devSupParms.gpibCmds = gpibCmds;
 		devSupParms.numparams = NUMPARAMS;
-		devSupParms.magicSrq = 0;
 		devSupParms.name = "devXxKeithleyDMM199Gpib";
 		devSupParms.timeout = DMA_TIME;
-		devSupParms.srqHandler = devGpibLib_srqHandler;
-		devSupParms.wrConversion = 0;
 	}
- 	return(devGpibLib_initDevSup(parm, &DSET_AI));
+        return(0);
 }

@@ -77,7 +77,6 @@
 #include	<longinRecord.h>
 #include	<longoutRecord.h>
 
-#include	<drvGpibInterface.h>
 #include	<devCommonGpib.h>
 #include	<devGpib.h>	/* needed to exportAddress the DSETS defined above */
 
@@ -102,8 +101,8 @@ extern int ibSrqDebug;		/* declared in the GPIB driver */
  * These are to be declared in 60ths of a second.
  *
  ******************************************************************************/
-#define TIME_WINDOW	600		/* 10 seconds */
-#define	DMA_TIME	60		/* 1 second */
+#define TIME_WINDOW	10.		/* 10 seconds */
+#define	DMA_TIME	1.		/* 1 second */
 
 /******************************************************************************
  *
@@ -195,75 +194,75 @@ static struct gpibCmd gpibCmds[] =
 {
     /* Param 0 : Degas ON*/
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL,20, 0, NULL,
-   0, 0, dgOnStrs, NULL, -1},
+   0, 0, dgOnStrs, NULL, 0},
 
     /* Param 1 : Degas OFF*/
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL, 20, 0, NULL,
-   0, 0, dgOffStrs, NULL, -1},
+   0, 0, dgOffStrs, NULL, 0},
 
     /* Param 2 : Degas status, 1=on 0=off*/
   {&DSET_BI, GPIBEFASTI, IB_Q_LOW, "DGS", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 3 : Ion Guage 1 pressure */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "DS IG1", "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 4 : Ion Guage 2 pressure */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "DS IG2", "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 5 : Active Ion Guage pressure */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "DS IG", "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 6 : Convectron Guage 1 pressure */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "DS CG1", "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 7 : Convectron Guage 2 pressure */
   {&DSET_AI, GPIBREAD, IB_Q_HIGH, "DS CG2", "%lf", 0, 32,
-  NULL, 0, 0, NULL, NULL, -1},
+  NULL, 0, 0, NULL, NULL, 0},
 
     /* Param 8 : Ion Guage 1 ON */
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL, 20, 0, NULL,
-   0, 0, ig1OnStrs, NULL, -1},
+   0, 0, ig1OnStrs, NULL, 0},
 
     /* Param 9 : Ion Guage 1 OFF */
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL, 20, 0, NULL,
-   0, 0, ig1OffStrs, NULL, -1},
+   0, 0, ig1OffStrs, NULL, 0},
 
     /* Param 10 : Ion Guage 2 ON */
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL, 20, 0, NULL,
-   0, 0, ig2OnStrs, NULL, -1},
+   0, 0, ig2OnStrs, NULL, 0},
 
     /* Param 11 : Ion Guage 2 OFF */
   {&DSET_BO, GPIBEFASTO, IB_Q_HIGH,NULL,NULL, 20, 0, NULL,
-   0, 0, ig2OffStrs, NULL, -1},
+   0, 0, ig2OffStrs, NULL, 0},
 
     /* Param 12 : PCS Relay 1 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 1", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 13 : PCS Relay 2 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 2", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 14 : PCS Relay 3 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 3", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 15 : PCS Relay 4 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 4", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 16 : PCS Relay 5 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 5", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 
     /* Param 17 : PCS Relay 6 status */
   {&DSET_BI, GPIBEFASTI, IB_Q_HIGH, "PCS 6", NULL, 0, 20,
-  NULL, 0, 0, zeroOneStrs, NULL, -1},
+  NULL, 0, 0, zeroOneStrs, NULL, 0},
 };
 
 /* The following is the number of elements in the command array above.  */
@@ -289,19 +288,14 @@ static struct  devGpibParmBlock devSupParms;
 static long init_ai(int parm)
 {
 	if (parm==0)  {
-		devSupParms.debugFlag = &GP307Debug;
 		devSupParms.respond2Writes = -1;
 		devSupParms.timeWindow = TIME_WINDOW;
-		devSupParms.hwpvtHead = 0;
 		devSupParms.gpibCmds = gpibCmds;
 		devSupParms.numparams = NUMPARAMS;
-		devSupParms.magicSrq = 0;
 		devSupParms.name = "devXxGP307Gpib";
 		devSupParms.timeout = DMA_TIME;
-		devSupParms.srqHandler = devGpibLib_srqHandler;
-		devSupParms.wrConversion = 0;
 	}
- 	return(devGpibLib_initDevSup(parm, &DSET_AI));
+        return(0);
 }
 
 /**********************************************
