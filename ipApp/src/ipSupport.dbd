@@ -1,7 +1,6 @@
 ################
 # RECORD SUPPORT
 ################
-include "serialRecord.dbd"
 include "gpibRecord.dbd"
 
 ################
@@ -21,27 +20,26 @@ device(stringout,VME_IO,devSoStrParm,"asyn so stringParm")
 #device(ai,VME_IO,devAiHuberDMC,"Huber DMC 9200")
 #device(longin,VME_IO,devLiHuberDMC,"Huber DMC 9200")
 
-device(serial,VME_IO,devSerial,"MPF Serial")
 device(gpib,GPIB_IO,devGenericGpib,"asyn GPIB")
 
 # Heidenhain ND261 and related serial interface boxes
-device(ai,VME_IO,devAiHeidND261,"MPF ai HeidND261")
+#device(ai,VME_IO,devAiHeidND261,"MPF ai HeidND261")
 
 # Eurotherm temp controller
-device(ao,VME_IO,devAoEurotherm,"MPF ao Eurotherm")
-device(stringout,VME_IO,devSoEurotherm,"MPF so Eurotherm")
+#device(ao,VME_IO,devAoEurotherm,"MPF ao Eurotherm")
+#device(stringout,VME_IO,devSoEurotherm,"MPF so Eurotherm")
 
 # MKS vacuum gauge controller
-device(ai,VME_IO,devAiMKS,"HPS SensaVac 937")
+#device(ai,VME_IO,devAiMKS,"HPS SensaVac 937")
 
 # MPC ion pump controller
-device(ai,VME_IO,devAiMPC,"MPC via MPF")
-device(ao,VME_IO,devAoMPC,"MPC via MPF")
-device(bi,VME_IO,devBiMPC,"MPC via MPF")
-device(bo,VME_IO,devBoMPC,"MPC via MPF")
-device(mbbo,VME_IO,devMbboMPC,"MPC via MPF")
-device(stringin,VME_IO,devSiMPC,"MPC via MPF")
-device(stringout,VME_IO,devSoMPC,"MPC via MPF")
+#device(ai,VME_IO,devAiMPC,"MPC via MPF")
+#device(ao,VME_IO,devAoMPC,"MPC via MPF")
+#device(bi,VME_IO,devBiMPC,"MPC via MPF")
+#device(bo,VME_IO,devBoMPC,"MPC via MPF")
+#device(mbbo,VME_IO,devMbboMPC,"MPC via MPF")
+#device(stringin,VME_IO,devSiMPC,"MPC via MPF")
+#device(stringout,VME_IO,devSoMPC,"MPC via MPF")
 
 # GP307 GPIB
 device(ai,GPIB_IO,devAiGP307Gpib,"Vg307 GPIB Instrument")

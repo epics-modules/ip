@@ -20,14 +20,13 @@ DBD += ipVX.dbd
 
 ip_SRCS += gpibRecord.c
 ip_SRCS += devXxStrParm.c
-ip_SRCS += devAoEurotherm.cc
-ip_SRCS += devSoEurotherm.cc
-ip_SRCS += devSerial.cc
-ip_SRCS += devAiHeidND261.cc
-ip_SRCS += devAiMKS.cc
+#ip_SRCS += devAoEurotherm.cc
+#ip_SRCS += devSoEurotherm.cc
+#ip_SRCS += devAiHeidND261.cc
+#ip_SRCS += devAiMKS.cc
 ip_SRCS += Keithley2kDMM.st
 ip_SRCS += Federal.st
-ip_SRCS += devMPC.cc
+#ip_SRCS += devMPC.cc
 ip_SRCS += ipRegister.c
 ip_SRCS += devGP307gpib.c  
 ip_SRCS += devXxHeidenhainGpib.c      
@@ -35,7 +34,6 @@ ip_SRCS += devXxAX301.c
 ip_SRCS += devXxKeithleyDMM199Gpib.c 
 ip_SRCS_vxWorks += tyGSAsynInit.c
 
-ip_LIBS += mpf 
 ip_LIBS += asyn
 ip_LIBS += seq pv
 ip_LIBS += $(EPICS_BASE_IOC_LIBS)
@@ -55,7 +53,6 @@ ipApp_SRCS_vxWorks += -nil-
 ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 
 ipApp_LIBS += ip
-ipApp_LIBS += mpf
 ipApp_LIBS += asyn
 ipApp_LIBS += seq pv
 ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
