@@ -6,15 +6,8 @@
 # DEVICE SUPPORT
 ################
 
-# stringin and stringout record from MPF_SERIAL
-include "devMpfString.dbd"
-
-# from mpf
-include devLove.dbd
-
 device(ao,VME_IO,devAoStrParm,"Hideos ao stringParm")
 device(ai,VME_IO,devAiStrParm,"Hideos ai stringParm")
-#device(ai,VME_IO,devAiLove,"Hideos Love")
 
 device(longout,VME_IO,devLoStrParm,"Hideos lo stringParm")
 
@@ -43,18 +36,6 @@ device(bo,VME_IO,devBoMPC,"MPC via MPF")
 device(mbbo,VME_IO,devMbboMPC,"MPC via MPF")
 device(stringin,VME_IO,devSiMPC,"MPC via MPF")
 device(stringout,VME_IO,devSoMPC,"MPC via MPF")
-
-# Greenspring IP-Unidig digital I/O IP modules
-include "devIpUnidig.dbd"
-
-# EPID record
-device(epid,VME_IO,devEpidIp330,"MPF EPID")
-
-# Acromag IP-330 as scanning A/D converter
-device(ai,VME_IO,devAiIp330Scan,"ip330Scan")
-
-# DAC128V D/A converter
-include "devAoDAC128V.dbd"
 
 ################
 # DRIVER SUPPORT
