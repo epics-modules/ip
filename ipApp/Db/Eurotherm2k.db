@@ -1,0 +1,314 @@
+grecord(ai,"$(P)ET:RBV_P") {
+	field(DESC,"Process Description")
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"0")
+}
+grecord(ai,"$(P)ET:RBV_Output") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"1")
+}
+grecord(ai,"$(P)ET:RBV_RampRate") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"0")
+}
+grecord(ai,"$(P)ET:RBV_pvTemp") {
+	field(DESC,"Process Description")
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"1")
+}
+grecord(ai,"$(P)ET:RBV_spTemp") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"1")
+}
+grecord(ai,"$(P)ET:RBV_I") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"0")
+}
+grecord(ai,"$(P)ET:RBV_D") {
+	field(DTYP,"Hideos ai stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,IX=3,FMT=%lf,N=10")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:P") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:P_seq.VAL  PP MS")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:P_write") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(FLNK,"$(P)ET:P_Ack.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=XP%5.1lf,TERM=03")
+	field(DOL,"$(P)ET:P.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"3")
+}
+grecord(ao,"$(P)ET:RampRate") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:RR_seq.VAL  PP MS")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:RampRateWrite") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(FLNK,"$(P)ET:RRAck.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=RR%5.1lf,TERM=03")
+	field(DOL,"$(P)ET:RampRate.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"3")
+}
+grecord(ao,"$(P)ET:SendProgNum") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=EP%1.0lf,TERM=03")
+	field(DOL,"$(P)ET:ProgNum.RVAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:SendProgState") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=PC%1.0lf,TERM=03")
+	field(DOL,"$(P)ET:ProgState.RVAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:Setpoint") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:SP_seq.VAL  PP MS")
+	field(PREC,"1")
+}
+grecord(ao,"$(P)ET:SetpointWrite") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(FLNK,"$(P)ET:SPAck.VAL  PP MS")
+	field(OUT,"#C$(P) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=S1%5.1lf,TERM=03")
+	field(DOL,"$(P)ET:Setpoint.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"1")
+}
+grecord(ao,"$(P)ET:I_write") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(FLNK,"$(P)ET:I_Ack.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=TI%5.1lf,TERM=03")
+	field(DOL,"$(P)ET:I.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"3")
+}
+grecord(ao,"$(P)ET:I") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:I_seq.VAL  PP MS")
+	field(PREC,"0")
+}
+grecord(ao,"$(P)ET:D_write") {
+	field(DTYP,"MPF ao Eurotherm 2k")
+	field(SDIS,"0")
+	field(FLNK,"$(P)ET:D_Ack.VAL  PP MS")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],FMT=TD%5.1lf,TERM=03")
+	field(DOL,"$(P)ET:D.VAL  NPP MS")
+	field(OMSL,"closed_loop")
+	field(PREC,"3")
+}
+grecord(ao,"$(P)ET:D") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:D_seq.VAL  PP MS")
+	field(PREC,"0")
+}
+grecord(bo,"$(P)ET:scanCtl") {
+	field(DTYP,"Soft Channel")
+	field(ZNAM,"Rdbk OFF")
+	field(ONAM,"Rdbk ON")
+}
+grecord(bo,"$(P)ET:setDIS") {
+	field(DTYP,"Soft Channel")
+	field(OMSL,"closed_loop")
+	field(DOL,"0")
+	field(OUT,"$(P)ET:scanCtl.VAL  PP MS")
+}
+grecord(bo,"$(P)ET:setEN") {
+	field(DTYP,"Soft Channel")
+	field(OMSL,"closed_loop")
+	field(DOL,"1")
+	field(OUT,"$(P)ET:scanCtl.VAL  PP MS")
+}
+grecord(mbbo,"$(P)ET:ProgNum") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:SendProgNum.VAL  PP MS")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"3")
+	field(THVL,"4")
+	field(ZRST,"Prog 1")
+	field(ONST,"Prog 2")
+	field(TWST,"Prog 3")
+	field(THST,"Prog 4")
+}
+grecord(mbbo,"$(P)ET:ProgState") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)ET:SendProgState.VAL  PP MS")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"4")
+	field(ZRST,"Reset")
+	field(ONST,"RUN")
+	field(TWST,"Hold")
+}
+grecord(seq,"$(P)ET:P_seq") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)ET:P_write.VAL  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:RR_seq") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)ET:RampRateWrite.VAL  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:ReadPID") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"1.0")
+	field(LNK2,"$(P)ET:ReadP.PROC  PP MS")
+	field(DLY3,"1.0")
+	field(LNK3,"$(P)ET:ReadI.PROC  PP MS")
+	field(DLY4,"1.0")
+	field(LNK4,"$(P)ET:ReadD.PROC  PP MS")
+	field(DLY5,"1.0")
+	field(LNK5,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:ReadSeq") {
+	field(SCAN,"5 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)ET:scanCtl.VAL  NPP MS")
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:ReadTemperature.PROC  PP MS")
+	field(DLY2,"1.0")
+	field(LNK2,"$(P)ET:ReadSetpoint.PROC  PP MS")
+	field(DLY3,"1.0")
+	field(LNK3,"$(P)ET:ReadRampRate.PROC  PP MS")
+	field(DLY4,"1.0")
+	field(LNK4,"$(P)ET:ReadOutput.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:SP_seq") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)ET:SetpointWrite.VAL  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:I_seq") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)ET:I_write.VAL  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(seq,"$(P)ET:D_seq") {
+	field(PREC,"1")
+	field(LNK1,"$(P)ET:setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)ET:D_write.VAL  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)ET:setEN.PROC  PP MS")
+}
+grecord(stringin,"$(P)ET:I_Ack") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+}
+grecord(stringin,"$(P)ET:D_Ack") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+}
+grecord(stringin,"$(P)ET:CleanInputBuffer") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=50,TO=20")
+}
+grecord(stringin,"$(P)ET:P_Ack") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+}
+grecord(stringin,"$(P)ET:RRAck") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+}
+grecord(stringin,"$(P)ET:SPAck") {
+	field(DTYP,"Hideos si stringParm")
+	field(FLNK,"0")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],N=1")
+}
+grecord(stringout,"$(P)ET:ReadP") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(FLNK,"$(P)ET:RBV_P.VAL  PP MS")
+	field(VAL,"XP")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadOutput") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(DISV,"0")
+	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)ET:RBV_Output.VAL  PP MS")
+	field(VAL,"OP")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadRampRate") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(DISV,"0")
+	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)ET:RBV_RampRate.VAL  PP MS")
+	field(VAL,"RR")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadSetpoint") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(DISV,"0")
+	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)ET:RBV_spTemp.VAL  PP MS")
+	field(VAL,"SP")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadTemperature") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(DISV,"0")
+	field(SDIS,"$(P)ET:scanCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)ET:RBV_pvTemp.VAL  PP MS")
+	field(VAL,"PV")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadI") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(FLNK,"$(P)ET:RBV_I.VAL  PP MS")
+	field(VAL,"TI")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
+grecord(stringout,"$(P)ET:ReadD") {
+	field(DTYP,"MPF so Eurotherm 2k")
+	field(FLNK,"$(P)ET:RBV_D.VAL  PP MS")
+	field(VAL,"TD")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=05")
+}
