@@ -21,13 +21,7 @@ DBD += ipVX.dbd
 
 ip_SRCS += serialRecord.c
 ip_SRCS += gpibRecord.c
-ip_SRCS += devAiStrParm.cc
-ip_SRCS += devAoStrParm.cc
-ip_SRCS += devBiStrParm.cc
-ip_SRCS += devLiStrParm.cc
-ip_SRCS += devLoStrParm.cc
-ip_SRCS += devSiStrParm.cc
-ip_SRCS += devSoStrParm.cc
+ip_SRCS += devXxStrParm.c
 ip_SRCS += devAoEurotherm.cc
 ip_SRCS += devSoEurotherm.cc
 ip_SRCS += devSerial.cc
