@@ -1,0 +1,367 @@
+grecord(ai,"$(P)E3631A:$(S):setV_P25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_P25V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"25.75")
+	field(LOPR,"0.0")
+}
+grecord(ai,"$(P)E3631A:$(S):setV_N25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_N25V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"0.0")
+	field(LOPR,"-25.75")
+}
+grecord(ai,"$(P)E3631A:$(S):setC_P25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_P25V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"1.03")
+	field(LOPR,"0.0")
+}
+grecord(ai,"$(P)E3631A:$(S):setC_N25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_N25V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"1.03")
+	field(LOPR,"0.0")
+}
+grecord(ai,"$(P)E3631A:$(S):C_N25V") {
+	field(DTYP,"Soft Channel")
+	field(INP,"$(P)E3631A:$(S):readC_N25V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"1.0")
+	field(HIHI,"0.9")
+	field(HIGH,"0.8")
+	field(HHSV,"MAJOR")
+	field(HSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):C_P25V") {
+	field(DTYP,"Soft Channel")
+	field(INP,"$(P)E3631A:$(S):readC_P25V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"1.0")
+	field(HIHI,"0.9")
+	field(HIGH,"0.8")
+	field(HHSV,"MAJOR")
+	field(HSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):C_P6V") {
+	field(DTYP,"Soft Channel")
+	field(INP,"$(P)E3631A:$(S):readC_P6V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"5.0")
+	field(HIHI,"4.5")
+	field(HIGH,"4.0")
+	field(HHSV,"MAJOR")
+	field(HSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):V_N25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"0")
+	field(INP,"$(P)E3631A:$(S):readV_N25V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"0")
+	field(LOPR,"-25.0")
+	field(LOLO,"-22.5")
+	field(LOW,"-20.0")
+	field(LLSV,"MAJOR")
+	field(LSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):V_P25V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"0")
+	field(INP,"$(P)E3631A:$(S):readV_P25V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"25.0")
+	field(HIHI,"22.50")
+	field(HIGH,"20.0")
+	field(HHSV,"MAJOR")
+	field(HSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):V_P6V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"0")
+	field(INP,"$(P)E3631A:$(S):readV_P6V.AINP  NPP NMS")
+	field(PREC,"4")
+	field(HOPR,"6.0")
+	field(HIHI,"5.4")
+	field(HIGH,"4.8")
+	field(HHSV,"MAJOR")
+	field(HSV,"MINOR")
+}
+grecord(ai,"$(P)E3631A:$(S):setC_P6V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_P6V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"5.15")
+	field(LOPR,"0.0")
+}
+grecord(ai,"$(P)E3631A:$(S):setV_P6V") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):str_P6V.PROC  PP MS")
+	field(PREC,"4")
+	field(HOPR,"6.18")
+	field(LOPR,"0.0")
+	field(HIGH,"0")
+}
+grecord(bo,"$(P)E3631A:$(S):locRem") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):seq_lr.PROC  PP MS")
+	field(ZNAM,"Local")
+	field(ONAM,"Remote")
+}
+grecord(bo,"$(P)E3631A:$(S):output") {
+	field(DTYP,"Soft Channel")
+	field(FLNK,"$(P)E3631A:$(S):seq_out.PROC  PP MS")
+	field(ZNAM,"Output OFF")
+	field(ONAM,"Output ON")
+}
+grecord(bo,"$(P)E3631A:$(S):scnCtl") {
+	field(DTYP,"Soft Channel")
+	field(ZNAM,"Rdbk OFF")
+	field(ONAM,"Rdbk ON")
+}
+grecord(bo,"$(P)E3631A:$(S):setDIS") {
+	field(DTYP,"Soft Channel")
+	field(OMSL,"closed_loop")
+	field(DOL,"0")
+	field(OUT,"$(P)E3631A:$(S):scnCtl.VAL  PP MS")
+}
+grecord(bo,"$(P)E3631A:$(S):setEN") {
+	field(DTYP,"Soft Channel")
+	field(OMSL,"closed_loop")
+	field(DOL,"1")
+	field(OUT,"$(P)E3631A:$(S):scnCtl.VAL  PP MS")
+}
+grecord(calc,"$(P)E3631A:$(S):lr_calc") {
+	field(CALC,"(A=0)?2:1")
+	field(INPA,"$(P)E3631A:$(S):locRem.VAL  NPP NMS")
+}
+grecord(calc,"$(P)E3631A:$(S):op_calc") {
+	field(CALC,"(A=0)?2:1")
+	field(INPA,"$(P)E3631A:$(S):output.VAL  NPP NMS")
+}
+grecord(fanout,"$(P)E3631A:$(S):lr_fan") {
+	field(SELM,"Specified")
+	field(SELL,"$(P)E3631A:$(S):lr_calc.VAL  PP MS")
+	field(LNK1,"$(P)E3631A:$(S):setRem.PROC  PP MS")
+	field(LNK2,"$(P)E3631A:$(S):setLoc.PROC  PP MS")
+}
+grecord(fanout,"$(P)E3631A:$(S):op_fan") {
+	field(SELM,"Specified")
+	field(SELL,"$(P)E3631A:$(S):op_calc.VAL  PP MS")
+	field(LNK1,"$(P)E3631A:$(S):setOn.PROC  PP MS")
+	field(LNK2,"$(P)E3631A:$(S):setOff.PROC  PP MS")
+}
+grecord(seq,"$(P)E3631A:$(S):seq_out") {
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)E3631A:$(S):op_fan.PROC  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)E3631A:$(S):setEN.PROC  PP MS")
+	field(DLY4,"0")
+	field(DLY5,"0")
+	field(DLY6,"0")
+}
+grecord(seq,"$(P)E3631A:$(S):seq_lr") {
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)E3631A:$(S):lr_fan.PROC  PP MS")
+	field(DLY3,"0")
+	field(DLY4,"0")
+	field(DLY5,"0")
+	field(DLY6,"0")
+}
+grecord(seq,"$(P)E3631A:$(S):seq_P25V") {
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)E3631A:$(S):set_P25V.PROC  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)E3631A:$(S):setEN.PROC  PP MS")
+	field(DLY4,"0")
+	field(DLY5,"0")
+	field(DLY6,"0")
+}
+grecord(seq,"$(P)E3631A:$(S):seq_N25V") {
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)E3631A:$(S):set_N25V.PROC  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)E3631A:$(S):setEN.PROC  PP MS")
+	field(DLY4,"0")
+	field(DLY5,"0")
+	field(DLY6,"0")
+}
+grecord(seq,"$(P)E3631A:$(S):seq") {
+	field(SCAN,"5 second")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):readV_P6V.PROC  PP MS")
+	field(DLY2,"0.75")
+	field(LNK2,"$(P)E3631A:$(S):readC_P6V.PROC  PP MS")
+	field(DLY3,"0.75")
+	field(LNK3,"$(P)E3631A:$(S):readV_P25V.PROC  PP MS")
+	field(DLY4,"0.75")
+	field(LNK4,"$(P)E3631A:$(S):readC_P25V.PROC  PP MS")
+	field(DLY5,"0.75")
+	field(LNK5,"$(P)E3631A:$(S):readV_N25V.PROC  PP MS")
+	field(DLY6,"0.75")
+	field(LNK6,"$(P)E3631A:$(S):readC_N25V.PROC  PP MS")
+}
+grecord(seq,"$(P)E3631A:$(S):seq_P6V") {
+	field(PREC,"2")
+	field(LNK1,"$(P)E3631A:$(S):setDIS.PROC  PP MS")
+	field(DLY2,"0.5")
+	field(LNK2,"$(P)E3631A:$(S):set_P6V.PROC  PP MS")
+	field(DLY3,"0.5")
+	field(LNK3,"$(P)E3631A:$(S):setEN.PROC  PP MS")
+	field(DLY4,"0")
+	field(DLY5,"0")
+	field(DLY6,"0")
+}
+grecord(serial,"$(P)E3631A:$(S):set_P25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):set_N25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readC_N25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):C_N25V.VAL  PP MS")
+	field(AOUT,"MEAS:CURR? N25V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readC_P25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):C_P25V.VAL  PP MS")
+	field(AOUT,"MEAS:CURR? P25V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readC_P6V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):C_P6V.VAL  PP MS")
+	field(AOUT,"MEAS:CURR? P6V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readV_N25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):V_N25V.VAL  PP MS")
+	field(AOUT,"MEAS:VOLT? N25V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readV_P25V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):V_P25V.VAL  PP MS")
+	field(AOUT,"MEAS:VOLT? P25V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):readV_P6V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(DISV,"0")
+	field(SDIS,"$(P)E3631A:$(S):scnCtl.VAL  NPP NMS")
+	field(FLNK,"$(P)E3631A:$(S):V_P6V.VAL  PP MS")
+	field(AOUT,"MEAS:VOLT? P6V")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):setLoc") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(AOUT,"SYST:LOC")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):setOff") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(AOUT,"OUTP OFF")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):setOn") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(AOUT,"OUTP ON")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):setRem") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(AOUT,"SYST:REM")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(serial,"$(P)E3631A:$(S):set_P6V") {
+	field(DTYP,"Hideos/MPF Serial")
+	field(TMOD,"Write")
+	field(ODEL,"10")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(SBIT,"2")
+}
+grecord(scalcout,"$(P)E3631A:$(S):str_P6V") {
+	field(FLNK,"$(P)E3631A:$(S):seq_P6V.PROC  PP MS")
+	field(CALC,"AA+STR(A)+BB+STR(B)")
+	field(INPA,"$(P)E3631A:$(S):setV_P6V.VAL  NPP NMS")
+	field(INPB,"$(P)E3631A:$(S):setC_P6V.VAL  NPP NMS")
+	field(OUT,"$(P)E3631A:$(S):set_P6V.AOUT  NPP NMS")
+	field(AA,"APPL P6V,")
+	field(BB,",")
+}
+grecord(scalcout,"$(P)E3631A:$(S):str_P25V") {
+	field(FLNK,"$(P)E3631A:$(S):seq_P25V.PROC  PP MS")
+	field(CALC,"AA+STR(A)+BB+STR(B)")
+	field(INPA,"$(P)E3631A:$(S):setV_P25V.VAL  NPP NMS")
+	field(INPB,"$(P)E3631A:$(S):setC_P25V.VAL  NPP NMS")
+	field(OUT,"$(P)E3631A:$(S):set_P25V.AOUT  NPP NMS")
+	field(AA,"APPL P25V,")
+	field(BB,",")
+}
+grecord(scalcout,"$(P)E3631A:$(S):str_N25V") {
+	field(FLNK,"$(P)E3631A:$(S):seq_N25V.PROC  PP MS")
+	field(CALC,"AA+STR(A)+BB+STR(B)")
+	field(INPA,"$(P)E3631A:$(S):setV_N25V.VAL  NPP NMS")
+	field(INPB,"$(P)E3631A:$(S):setC_N25V.VAL  NPP NMS")
+	field(OUT,"$(P)E3631A:$(S):set_N25V.AOUT  NPP NMS")
+	field(AA,"APPL N25V,")
+	field(BB,",")
+}
