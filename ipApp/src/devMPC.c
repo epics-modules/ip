@@ -66,6 +66,7 @@
 #include <recGbl.h>
 #include <recSup.h>
 #include <devSup.h>
+#include <epicsString.h>
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
 #include <asynOctet.h>
@@ -80,6 +81,49 @@
 
 #include "devMPC.h"
 
+typedef struct {
+    int command;
+    char *commandString;
+} mpcCommandStruct;
+
+static mpcCommandStruct mpcCommands[MAX_MPC_COMMANDS] = {
+    {GetStatus,         "GET_STATUS"},
+    {GetPres,           "GET_PRESSURE"},
+    {GetCur,            "GET_CURRENT"},
+    {GetVolt,           "GET_VOLT"},
+    {GetSize,           "GET_SIZE"},
+    {GetSpVal12,        "GET_SPVAL12"},
+    {GetSpS12,          "GET_SPS12"},
+    {GetSpVal34,        "GET_SPVAL34"},
+    {GetSpS34,          "GET_SPS34"},
+    {GetSpVal56,        "GET_SPVAL56"},
+    {GetSpS56,          "GET_SPS56"},
+    {GetSpVal78,        "GET_SPVAL78"},
+    {GetSpS78,          "GET_SPS78"},
+    {GetAutoRestart,    "GET_AUTO_RESTART"},
+    {GetTSPStat,        "GET_TSP_STATUS"},
+    {SetUnit,           "SET_UNIT"},
+    {SetDis,            "SET_DISPLAY"},
+    {SetSize,           "SET_SIZE"},
+    {SetSp12,           "SET_SP12"},
+    {SetSp34,           "SET_SP34"},
+    {SetSp56,           "SET_SP56"},
+    {SetSp78,           "SET_SP78"},
+    {SetStart,          "SET_START"},
+    {SetStop,           "SET_STOP"},
+    {SetLock,           "SET_LOCK"},
+    {SetUnlock,         "SET_UNLOCK"},
+    {SetAutoRestart,    "SET_AUTO_RESTART"},
+    {SetTSPTimed,       "SET_TSP_TIMED"},
+    {SetTSPOff,         "SET_TSP_OFF"},
+    {SetTSPFilament,    "SET_TSP_FILAMENT"},
+    {SetTSPClear,       "SET_TSP_CLEAR"},
+    {SetTSPAutoAdv,     "SET_TSP_AUTO_ADVANCE"},
+    {SetTSPContinuous,  "SET_TSP_CONTINUOUS"},
+    {SetTSPSublimation, "SET_TSP_SUBLIMATION"},
+    {SetTSPDegas,       "SET_TSP_DEGAS"}
+};
+ 
 typedef enum {opTypeInput, opTypeOutput} opType;
 typedef enum {recTypeAi, recTypeAo, recTypeBi, recTypeBo,
               recTypeMbbo, recTypeSi, recTypeSo} recType;
@@ -156,6 +200,8 @@ static long initCommon(dbCommon *pr, DBLINK *plink, opType ot, recType rt)
    asynStatus status;
    asynInterface *pasynInterface;
    devMPCPvt *pPvt=NULL;
+   char command[100];
+   char *pstring;
    
    /* Allocate private structure */
    pPvt = calloc(1, sizeof(devMPCPvt));
@@ -189,19 +235,32 @@ static long initCommon(dbCommon *pr, DBLINK *plink, opType ot, recType rt)
                    pr->name, userParam);
       goto bad;
    }
-   sscanf(userParam,"%d %d",&pPvt->command, &i);
+   sscanf(userParam,"%s %d",command, &i);
    sprintf(pPvt->address,"%02X",address);
    sprintf(pPvt->parameter,"%d",i);
+   for (i=0; i<MAX_MPC_COMMANDS; i++) {
+        pstring = mpcCommands[i].commandString;
+        if (epicsStrCaseCmp(command, pstring) == 0) {
+            pPvt->command = mpcCommands[i].command;
+            goto found;
+        }
+    }
+    asynPrint(pasynUser, ASYN_TRACE_ERROR,
+              "devMPC::init_common %s, unknown command=%s\n", 
+              pr->name, command);
+    goto bad;
 
+   found:
    asynPrint(pasynUser, ASYN_TRACE_FLOW,
-             "devMPC::initCommon name=%s; address=%s; parameter=%s;\n",
-             pr->name, pPvt->address, pPvt->parameter);
+             "devMPC::initCommon name=%s; command string=%s command=%d, address=%s; parameter=%s;\n",
+             pr->name, command, pPvt->command, pPvt->address, pPvt->parameter);
 
    if (pPvt->command<0 || 
       (pPvt->command >GetTSPStat && pPvt->command < SetUnit) ||
        pPvt->command>SetTSPDegas) {
-        errlogPrintf("devMPC::initCommon %s illegal command=%d\n",
-                     pr->name, pPvt->command);
+       asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                 "devMPC::initCommon %s illegal command=%d\n",
+                 pr->name, pPvt->command);
        goto bad;
    }
 
