@@ -1,14 +1,14 @@
 
 file {
-	name="C:\Program Files\EPICS\op\adl\ipApp\Keithley2kDMM_full_mf.adl"
+	name="j:\epics\devel\ip\ipApp\op\adl\Keithley2kDMM_11_22_mf.adl"
 	version=020306
 }
 display {
 	object {
-		x=189
-		y=170
-		width=400
-		height=426
+		x=808
+		y=278
+		width=401
+		height=497
 	}
 	clr=14
 	bclr=2
@@ -92,7 +92,7 @@ rectangle {
 		x=2
 		y=1
 		width=315
-		height=70
+		height=76
 	}
 	"basic attribute" {
 		clr=1
@@ -106,7 +106,7 @@ rectangle {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch1_on_off.VAL"
+		chan="$(P)$(Dmm)Ch11_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -119,7 +119,7 @@ rectangle {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch2_on_off.VAL"
+		chan="$(P)$(Dmm)Ch12_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -132,7 +132,7 @@ rectangle {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch3_on_off.VAL"
+		chan="$(P)$(Dmm)Ch13_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -145,7 +145,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch1_raw.VAL"
+		chan="$(P)$(Dmm)Ch11_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -162,7 +162,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch1_units.VAL"
+		chan="$(P)$(Dmm)ch11_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -177,7 +177,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch1_calc.VAL"
+		chan="$(P)$(Dmm)Ch11_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -194,7 +194,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch1_calc.DESC"
+		chan="$(P)$(Dmm)Ch11_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -209,9 +209,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch1 Units Conversion"
+		label="Ch11 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch1"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch11"
 	}
 	clr=14
 	bclr=51
@@ -280,7 +280,7 @@ polyline {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch4_on_off.VAL"
+		chan="$(P)$(Dmm)Ch14_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -293,7 +293,7 @@ polyline {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch5_on_off.VAL"
+		chan="$(P)$(Dmm)Ch15_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -306,7 +306,7 @@ polyline {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch6_on_off.VAL"
+		chan="$(P)$(Dmm)Ch16_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -319,46 +319,7 @@ polyline {
 		height=30
 	}
 	control {
-		chan="$(P)$(Dmm)Ch7_on_off.VAL"
-		clr=14
-		bclr=51
-	}
-}
-"choice button" {
-	object {
-		x=61
-		y=322
-		width=40
-		height=30
-	}
-	control {
-		chan="$(P)$(Dmm)Ch8_on_off.VAL"
-		clr=14
-		bclr=51
-	}
-}
-"choice button" {
-	object {
-		x=61
-		y=357
-		width=40
-		height=30
-	}
-	control {
-		chan="$(P)$(Dmm)Ch9_on_off.VAL"
-		clr=14
-		bclr=51
-	}
-}
-"choice button" {
-	object {
-		x=61
-		y=392
-		width=40
-		height=30
-	}
-	control {
-		chan="$(P)$(Dmm)Ch10_on_off.VAL"
+		chan="$(P)$(Dmm)Ch17_on_off.VAL"
 		clr=14
 		bclr=51
 	}
@@ -479,7 +440,7 @@ polyline {
 	object {
 		x=-1
 		y=318
-		width=403
+		width=402
 		height=3
 	}
 	"basic attribute" {
@@ -488,14 +449,14 @@ polyline {
 	}
 	points {
 		(0,319)
-		(400,319)
+		(399,319)
 	}
 }
 polyline {
 	object {
 		x=-1
 		y=353
-		width=405
+		width=402
 		height=3
 	}
 	"basic attribute" {
@@ -504,39 +465,7 @@ polyline {
 	}
 	points {
 		(0,354)
-		(402,354)
-	}
-}
-polyline {
-	object {
-		x=-1
-		y=388
-		width=405
-		height=3
-	}
-	"basic attribute" {
-		clr=14
-		width=3
-	}
-	points {
-		(0,389)
-		(402,389)
-	}
-}
-polyline {
-	object {
-		x=-1
-		y=423
-		width=374
-		height=2
-	}
-	"basic attribute" {
-		clr=14
-		width=2
-	}
-	points {
-		(0,424)
-		(372,424)
+		(399,354)
 	}
 }
 polyline {
@@ -544,7 +473,7 @@ polyline {
 		x=397
 		y=74
 		width=2
-		height=350
+		height=419
 	}
 	"basic attribute" {
 		clr=14
@@ -552,7 +481,7 @@ polyline {
 	}
 	points {
 		(398,75)
-		(398,423)
+		(398,492)
 	}
 }
 polyline {
@@ -782,7 +711,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 1"
+	textix="CH 11"
 	align="horiz. centered"
 }
 "text entry" {
@@ -793,7 +722,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch1_raw.DESC"
+		chan="$(P)$(Dmm)Ch11_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -810,7 +739,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 2"
+	textix="CH 12"
 	align="horiz. centered"
 }
 "text entry" {
@@ -821,7 +750,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch2_raw.DESC"
+		chan="$(P)$(Dmm)Ch12_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -838,7 +767,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 3"
+	textix="CH 13"
 	align="horiz. centered"
 }
 "text entry" {
@@ -849,7 +778,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch3_raw.DESC"
+		chan="$(P)$(Dmm)Ch13_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -866,7 +795,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 4"
+	textix="CH 14"
 	align="horiz. centered"
 }
 "text entry" {
@@ -877,7 +806,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch4_raw.DESC"
+		chan="$(P)$(Dmm)Ch14_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -894,7 +823,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 5"
+	textix="CH 15"
 	align="horiz. centered"
 }
 "text entry" {
@@ -905,7 +834,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch5_raw.DESC"
+		chan="$(P)$(Dmm)Ch15_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -922,7 +851,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 6"
+	textix="CH 16"
 	align="horiz. centered"
 }
 "text entry" {
@@ -933,7 +862,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch6_raw.DESC"
+		chan="$(P)$(Dmm)Ch16_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -950,7 +879,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="CH 7"
+	textix="CH 17"
 	align="horiz. centered"
 }
 "text entry" {
@@ -961,91 +890,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch7_raw.DESC"
-		clr=14
-		bclr=1
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=5
-		y=322
-		width=48
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CH 8"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=1
-		y=336
-		width=60
-		height=16
-	}
-	control {
-		chan="$(P)$(Dmm)Ch8_raw.DESC"
-		clr=14
-		bclr=1
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=5
-		y=357
-		width=48
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CH 9"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=1
-		y=371
-		width=60
-		height=16
-	}
-	control {
-		chan="$(P)$(Dmm)Ch9_raw.DESC"
-		clr=14
-		bclr=1
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=5
-		y=392
-		width=48
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CH 10"
-	align="horiz. centered"
-}
-"text entry" {
-	object {
-		x=1
-		y=406
-		width=60
-		height=16
-	}
-	control {
-		chan="$(P)$(Dmm)Ch10_raw.DESC"
+		chan="$(P)$(Dmm)Ch17_raw.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1060,7 +905,7 @@ text {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch2_raw.VAL"
+		chan="$(P)$(Dmm)Ch12_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1077,7 +922,7 @@ text {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch2_units.VAL"
+		chan="$(P)$(Dmm)ch12_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1092,7 +937,7 @@ text {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch2_calc.VAL"
+		chan="$(P)$(Dmm)Ch12_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1109,7 +954,7 @@ text {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch2_calc.DESC"
+		chan="$(P)$(Dmm)Ch12_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1124,9 +969,9 @@ text {
 		height=15
 	}
 	display[0] {
-		label="Ch2 Units Conversion"
+		label="Ch12 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch2"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch12"
 	}
 	clr=14
 	bclr=51
@@ -1195,7 +1040,7 @@ polyline {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch3_raw.VAL"
+		chan="$(P)$(Dmm)Ch13_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1212,7 +1057,7 @@ polyline {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch3_units.VAL"
+		chan="$(P)$(Dmm)ch13_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1227,7 +1072,7 @@ polyline {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch3_calc.VAL"
+		chan="$(P)$(Dmm)Ch13_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1244,7 +1089,7 @@ polyline {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch3_calc.DESC"
+		chan="$(P)$(Dmm)Ch13_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1259,9 +1104,9 @@ polyline {
 		height=15
 	}
 	display[0] {
-		label="Ch3 Units Conversion"
+		label="Ch13 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch3"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch13"
 	}
 	clr=14
 	bclr=51
@@ -1334,7 +1179,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch3_on_off.VAL"
+		chan="$(P)$(Dmm)Ch13_on_off.VAL"
 	}
 }
 "text update" {
@@ -1345,7 +1190,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch4_raw.VAL"
+		chan="$(P)$(Dmm)Ch14_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1362,7 +1207,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch4_units.VAL"
+		chan="$(P)$(Dmm)ch14_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1377,7 +1222,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch4_calc.VAL"
+		chan="$(P)$(Dmm)Ch14_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1394,7 +1239,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch4_calc.DESC"
+		chan="$(P)$(Dmm)Ch14_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1409,9 +1254,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch4 Units Conversion"
+		label="Ch14 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch4"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch14"
 	}
 	clr=14
 	bclr=51
@@ -1484,7 +1329,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch4_on_off.VAL"
+		chan="$(P)$(Dmm)Ch14_on_off.VAL"
 	}
 }
 "text update" {
@@ -1495,7 +1340,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch5_raw.VAL"
+		chan="$(P)$(Dmm)Ch15_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1512,7 +1357,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch5_units.VAL"
+		chan="$(P)$(Dmm)ch15_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1527,7 +1372,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch5_calc.VAL"
+		chan="$(P)$(Dmm)Ch15_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1544,7 +1389,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch5_calc.DESC"
+		chan="$(P)$(Dmm)Ch15_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1559,9 +1404,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch5 Units Conversion"
+		label="Ch15 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch5"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch15"
 	}
 	clr=14
 	bclr=51
@@ -1634,7 +1479,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch5_on_off.VAL"
+		chan="$(P)$(Dmm)Ch15_on_off.VAL"
 	}
 }
 "text update" {
@@ -1645,7 +1490,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch6_raw.VAL"
+		chan="$(P)$(Dmm)Ch16_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1662,7 +1507,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch6_units.VAL"
+		chan="$(P)$(Dmm)ch16_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1677,7 +1522,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch6_calc.VAL"
+		chan="$(P)$(Dmm)Ch16_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1694,7 +1539,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch6_calc.DESC"
+		chan="$(P)$(Dmm)Ch16_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1709,9 +1554,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch6 Units Conversion"
+		label="Ch16 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch6"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch16"
 	}
 	clr=14
 	bclr=51
@@ -1784,7 +1629,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch6_on_off.VAL"
+		chan="$(P)$(Dmm)Ch16_on_off.VAL"
 	}
 }
 "text update" {
@@ -1795,7 +1640,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch7_raw.VAL"
+		chan="$(P)$(Dmm)Ch17_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -1812,7 +1657,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch7_units.VAL"
+		chan="$(P)$(Dmm)ch17_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -1827,7 +1672,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch7_calc.VAL"
+		chan="$(P)$(Dmm)Ch17_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -1844,7 +1689,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch7_calc.DESC"
+		chan="$(P)$(Dmm)Ch17_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -1859,9 +1704,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch7 Units Conversion"
+		label="Ch17 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch7"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch17"
 	}
 	clr=14
 	bclr=51
@@ -1934,148 +1779,13 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch7_on_off.VAL"
-	}
-}
-"text update" {
-	object {
-		x=248
-		y=321
-		width=87
-		height=14
-	}
-	monitor {
-		chan="$(P)$(Dmm)Ch8_raw.VAL"
-		clr=50
-		bclr=14
-	}
-	align="horiz. centered"
-	format="compact"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=339
-		y=322
-		width=52
-		height=13
-	}
-	monitor {
-		chan="$(P)$(Dmm)ch8_units.VAL"
-		clr=24
-		bclr=2
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=248
-		y=338
-		width=87
-		height=14
-	}
-	monitor {
-		chan="$(P)$(Dmm)Ch8_calc.VAL"
-		clr=0
-		bclr=14
-	}
-	align="horiz. centered"
-	format="compact"
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=336
-		y=337
-		width=60
-		height=16
-	}
-	control {
-		chan="$(P)$(Dmm)Ch8_calc.DESC"
-		clr=14
-		bclr=1
-	}
-	limits {
-	}
-}
-"related display" {
-	object {
-		x=229
-		y=337
-		width=15
-		height=15
-	}
-	display[0] {
-		label="Ch8 Units Conversion"
-		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch8"
-	}
-	clr=14
-	bclr=51
-}
-text {
-	object {
-		x=190
-		y=322
-		width=40
-		height=13
-	}
-	"basic attribute" {
-		clr=24
-	}
-	textix="RAW:"
-}
-text {
-	object {
-		x=190
-		y=339
-		width=40
-		height=13
-	}
-	"basic attribute" {
-		clr=24
-	}
-	textix="CALC:"
-}
-polyline {
-	object {
-		x=185
-		y=320
-		width=1
-		height=34
-	}
-	"basic attribute" {
-		clr=14
-		width=1
-	}
-	points {
-		(185,320)
-		(185,353)
-	}
-}
-polyline {
-	object {
-		x=104
-		y=336
-		width=213
-		height=1
-	}
-	"basic attribute" {
-		clr=14
-		width=1
-	}
-	points {
-		(104,336)
-		(316,336)
+		chan="$(P)$(Dmm)Ch17_on_off.VAL"
 	}
 }
 rectangle {
 	object {
 		x=248
-		y=321
+		y=76
 		width=89
 		height=32
 	}
@@ -2084,7 +1794,200 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch8_on_off.VAL"
+		chan="$(P)$(Dmm)Ch11_on_off.VAL"
+	}
+}
+rectangle {
+	object {
+		x=248
+		y=111
+		width=89
+		height=32
+	}
+	"basic attribute" {
+		clr=3
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(Dmm)Ch12_on_off.VAL"
+	}
+}
+polyline {
+	object {
+		x=275
+		y=47
+		width=0
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(275,47)
+		(275,72)
+	}
+}
+"message button" {
+	object {
+		x=280
+		y=51
+		width=35
+		height=16
+	}
+	control {
+		chan="$(P)$(Dmm)init_dmm.VAL"
+		clr=0
+		bclr=9
+	}
+	label="INIT"
+	press_msg="1"
+}
+polyline {
+	object {
+		x=272
+		y=49
+		width=2
+		height=21
+	}
+	"basic attribute" {
+		clr=0
+		width=2
+	}
+	points {
+		(273,50)
+		(273,69)
+	}
+}
+menu {
+	object {
+		x=105
+		y=75
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch11_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=110
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch12_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=145
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch13_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=180
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch14_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=215
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch15_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=250
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch16_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+menu {
+	object {
+		x=105
+		y=285
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch17_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+"choice button" {
+	object {
+		x=61
+		y=357
+		width=40
+		height=30
+	}
+	control {
+		chan="$(P)$(Dmm)Ch19_on_off.VAL"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=5
+		y=357
+		width=48
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CH 19"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=1
+		y=371
+		width=60
+		height=16
+	}
+	control {
+		chan="$(P)$(Dmm)Ch19_raw.DESC"
+		clr=14
+		bclr=1
+	}
+	limits {
 	}
 }
 "text update" {
@@ -2095,7 +1998,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch9_raw.VAL"
+		chan="$(P)$(Dmm)Ch19_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -2112,7 +2015,7 @@ rectangle {
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch9_units.VAL"
+		chan="$(P)$(Dmm)ch19_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -2127,7 +2030,7 @@ rectangle {
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch9_calc.VAL"
+		chan="$(P)$(Dmm)Ch19_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -2144,7 +2047,7 @@ rectangle {
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch9_calc.DESC"
+		chan="$(P)$(Dmm)Ch19_calc.DESC"
 		clr=14
 		bclr=1
 	}
@@ -2159,9 +2062,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch9 Units Conversion"
+		label="Ch19 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch9"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch19"
 	}
 	clr=14
 	bclr=51
@@ -2234,18 +2137,72 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch9_on_off.VAL"
+		chan="$(P)$(Dmm)Ch19_on_off.VAL"
+	}
+}
+menu {
+	object {
+		x=105
+		y=355
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch19_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+"choice button" {
+	object {
+		x=61
+		y=322
+		width=40
+		height=30
+	}
+	control {
+		chan="$(P)$(Dmm)Ch18_on_off.VAL"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=5
+		y=322
+		width=48
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CH 18"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=1
+		y=336
+		width=60
+		height=16
+	}
+	control {
+		chan="$(P)$(Dmm)Ch18_raw.DESC"
+		clr=14
+		bclr=1
+	}
+	limits {
 	}
 }
 "text update" {
 	object {
 		x=248
-		y=391
+		y=321
 		width=87
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch10_raw.VAL"
+		chan="$(P)$(Dmm)Ch18_raw.VAL"
 		clr=50
 		bclr=14
 	}
@@ -2257,12 +2214,12 @@ rectangle {
 "text update" {
 	object {
 		x=339
-		y=392
+		y=322
 		width=52
 		height=13
 	}
 	monitor {
-		chan="$(P)$(Dmm)ch10_units.VAL"
+		chan="$(P)$(Dmm)ch18_units.VAL"
 		clr=24
 		bclr=2
 	}
@@ -2272,12 +2229,12 @@ rectangle {
 "text update" {
 	object {
 		x=248
-		y=408
+		y=338
 		width=87
 		height=14
 	}
 	monitor {
-		chan="$(P)$(Dmm)Ch10_calc.VAL"
+		chan="$(P)$(Dmm)Ch18_calc.VAL"
 		clr=0
 		bclr=14
 	}
@@ -2289,15 +2246,205 @@ rectangle {
 "text entry" {
 	object {
 		x=336
-		y=407
+		y=337
 		width=60
 		height=16
 	}
 	control {
-		chan="$(P)$(Dmm)Ch10_calc.DESC"
+		chan="$(P)$(Dmm)Ch18_calc.DESC"
 		clr=14
 		bclr=1
 	}
+	limits {
+	}
+}
+"related display" {
+	object {
+		x=229
+		y=337
+		width=15
+		height=15
+	}
+	display[0] {
+		label="Ch18 Units Conversion"
+		name="Keithley2kDMM_calc.adl"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch18"
+	}
+	clr=14
+	bclr=51
+}
+text {
+	object {
+		x=190
+		y=322
+		width=40
+		height=13
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="RAW:"
+}
+text {
+	object {
+		x=190
+		y=339
+		width=40
+		height=13
+	}
+	"basic attribute" {
+		clr=24
+	}
+	textix="CALC:"
+}
+polyline {
+	object {
+		x=185
+		y=320
+		width=1
+		height=34
+	}
+	"basic attribute" {
+		clr=14
+		width=1
+	}
+	points {
+		(185,320)
+		(185,353)
+	}
+}
+polyline {
+	object {
+		x=104
+		y=336
+		width=213
+		height=1
+	}
+	"basic attribute" {
+		clr=14
+		width=1
+	}
+	points {
+		(104,336)
+		(316,336)
+	}
+}
+rectangle {
+	object {
+		x=248
+		y=321
+		width=89
+		height=32
+	}
+	"basic attribute" {
+		clr=3
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(Dmm)Ch18_on_off.VAL"
+	}
+}
+menu {
+	object {
+		x=105
+		y=320
+		width=75
+		height=15
+	}
+	control {
+		chan="$(P)$(Dmm)ch18_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
+polyline {
+	object {
+		x=-1
+		y=388
+		width=402
+		height=3
+	}
+	"basic attribute" {
+		clr=14
+		width=3
+	}
+	points {
+		(0,389)
+		(399,389)
+	}
+}
+"text entry" {
+	object {
+		x=1
+		y=406
+		width=60
+		height=16
+	}
+	control {
+		chan="$(P)$(Dmm)Ch20_raw.DESC"
+		clr=14
+		bclr=1
+	}
+	limits {
+	}
+}
+"choice button" {
+	object {
+		x=61
+		y=392
+		width=40
+		height=30
+	}
+	control {
+		chan="$(P)$(Dmm)Ch20_on_off.VAL"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=5
+		y=392
+		width=48
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CH 20"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=248
+		y=391
+		width=87
+		height=14
+	}
+	monitor {
+		chan="$(P)$(Dmm)Ch20_raw.VAL"
+		clr=50
+		bclr=14
+	}
+	align="horiz. centered"
+	format="compact"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=248
+		y=408
+		width=87
+		height=14
+	}
+	monitor {
+		chan="$(P)$(Dmm)Ch20_calc.VAL"
+		clr=0
+		bclr=14
+	}
+	align="horiz. centered"
+	format="compact"
 	limits {
 	}
 }
@@ -2309,9 +2456,9 @@ rectangle {
 		height=15
 	}
 	display[0] {
-		label="Ch10 Units Conversion"
+		label="Ch20 Units Conversion"
 		name="Keithley2kDMM_calc.adl"
-		args="P=$(P),Dmm=$(Dmm),CH=Ch10"
+		args="P=$(P),Dmm=$(Dmm),CH=Ch20"
 	}
 	clr=14
 	bclr=51
@@ -2360,7 +2507,7 @@ polyline {
 	object {
 		x=104
 		y=406
-		width=213
+		width=212
 		height=1
 	}
 	"basic attribute" {
@@ -2369,7 +2516,7 @@ polyline {
 	}
 	points {
 		(104,406)
-		(316,406)
+		(315,406)
 	}
 }
 rectangle {
@@ -2384,200 +2531,7 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(Dmm)Ch10_on_off.VAL"
-	}
-}
-rectangle {
-	object {
-		x=248
-		y=76
-		width=89
-		height=32
-	}
-	"basic attribute" {
-		clr=3
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(Dmm)Ch1_on_off.VAL"
-	}
-}
-rectangle {
-	object {
-		x=248
-		y=111
-		width=89
-		height=32
-	}
-	"basic attribute" {
-		clr=3
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(Dmm)Ch2_on_off.VAL"
-	}
-}
-polyline {
-	object {
-		x=275
-		y=47
-		width=0
-		height=25
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(275,47)
-		(275,72)
-	}
-}
-"message button" {
-	object {
-		x=280
-		y=51
-		width=35
-		height=16
-	}
-	control {
-		chan="$(P)$(Dmm)init_dmm.VAL"
-		clr=0
-		bclr=9
-	}
-	label="INIT"
-	press_msg="1"
-}
-polyline {
-	object {
-		x=272
-		y=49
-		width=2
-		height=21
-	}
-	"basic attribute" {
-		clr=0
-		width=2
-	}
-	points {
-		(273,50)
-		(273,69)
-	}
-}
-menu {
-	object {
-		x=105
-		y=75
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch1_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=110
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch2_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=145
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch3_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=180
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch4_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=215
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch5_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=250
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch6_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=285
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch7_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=320
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch8_mode_sel.VAL"
-		clr=0
-		bclr=9
-	}
-}
-menu {
-	object {
-		x=105
-		y=355
-		width=75
-		height=15
-	}
-	control {
-		chan="$(P)$(Dmm)ch9_mode_sel.VAL"
-		clr=0
-		bclr=9
+		chan="$(P)$(Dmm)Ch20_on_off.VAL"
 	}
 }
 menu {
@@ -2588,8 +2542,548 @@ menu {
 		height=15
 	}
 	control {
-		chan="$(P)$(Dmm)ch10_mode_sel.VAL"
+		chan="$(P)$(Dmm)ch20_mode_sel.VAL"
 		clr=0
 		bclr=9
+	}
+}
+"text entry" {
+	object {
+		x=336
+		y=407
+		width=60
+		height=16
+	}
+	control {
+		chan="$(P)$(Dmm)Ch20_calc.DESC"
+		clr=14
+		bclr=1
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=339
+		y=392
+		width=52
+		height=13
+	}
+	monitor {
+		chan="$(P)$(Dmm)ch20_units.VAL"
+		clr=24
+		bclr=2
+	}
+	limits {
+	}
+}
+polyline {
+	object {
+		x=-1
+		y=423
+		width=402
+		height=3
+	}
+	"basic attribute" {
+		clr=14
+		width=3
+	}
+	points {
+		(0,424)
+		(399,424)
+	}
+}
+composite {
+	object {
+		x=-1
+		y=423
+		width=402
+		height=38
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=-1
+				y=423
+				width=402
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+				width=3
+			}
+			points {
+				(0,424)
+				(399,424)
+			}
+		}
+		"text entry" {
+			object {
+				x=1
+				y=441
+				width=60
+				height=16
+			}
+			control {
+				chan="$(P)$(Dmm)Ch21_raw.DESC"
+				clr=14
+				bclr=1
+			}
+			limits {
+			}
+		}
+		"choice button" {
+			object {
+				x=61
+				y=427
+				width=40
+				height=30
+			}
+			control {
+				chan="$(P)$(Dmm)Ch21_on_off.VAL"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
+				x=5
+				y=427
+				width=48
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="CH 21"
+			align="horiz. centered"
+		}
+		"text update" {
+			object {
+				x=248
+				y=426
+				width=87
+				height=14
+			}
+			monitor {
+				chan="$(P)$(Dmm)Ch21_raw.VAL"
+				clr=50
+				bclr=14
+			}
+			align="horiz. centered"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=248
+				y=443
+				width=87
+				height=14
+			}
+			monitor {
+				chan="$(P)$(Dmm)Ch21_calc.VAL"
+				clr=0
+				bclr=14
+			}
+			align="horiz. centered"
+			format="compact"
+			limits {
+			}
+		}
+		"related display" {
+			object {
+				x=229
+				y=442
+				width=15
+				height=15
+			}
+			display[0] {
+				label="Ch21 Units Conversion"
+				name="Keithley2kDMM_calc.adl"
+				args="P=$(P),Dmm=$(Dmm),CH=Ch21"
+			}
+			clr=14
+			bclr=51
+		}
+		text {
+			object {
+				x=190
+				y=427
+				width=40
+				height=13
+			}
+			"basic attribute" {
+				clr=24
+			}
+			textix="RAW:"
+		}
+		text {
+			object {
+				x=190
+				y=444
+				width=40
+				height=13
+			}
+			"basic attribute" {
+				clr=24
+			}
+			textix="CALC:"
+		}
+		polyline {
+			object {
+				x=185
+				y=425
+				width=1
+				height=34
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(185,425)
+				(185,458)
+			}
+		}
+		polyline {
+			object {
+				x=104
+				y=441
+				width=212
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(104,441)
+				(315,441)
+			}
+		}
+		rectangle {
+			object {
+				x=248
+				y=426
+				width=89
+				height=32
+			}
+			"basic attribute" {
+				clr=3
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(Dmm)Ch21_on_off.VAL"
+			}
+		}
+		menu {
+			object {
+				x=105
+				y=425
+				width=75
+				height=15
+			}
+			control {
+				chan="$(P)$(Dmm)ch21_mode_sel.VAL"
+				clr=0
+				bclr=9
+			}
+		}
+		"text entry" {
+			object {
+				x=336
+				y=442
+				width=60
+				height=16
+			}
+			control {
+				chan="$(P)$(Dmm)Ch21_calc.DESC"
+				clr=14
+				bclr=1
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=339
+				y=427
+				width=52
+				height=13
+			}
+			monitor {
+				chan="$(P)$(Dmm)ch21_units.VAL"
+				clr=24
+				bclr=2
+			}
+			limits {
+			}
+		}
+		polyline {
+			object {
+				x=-1
+				y=458
+				width=402
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+				width=3
+			}
+			points {
+				(0,459)
+				(399,459)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=-1
+		y=458
+		width=402
+		height=38
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=-1
+				y=458
+				width=402
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+				width=3
+			}
+			points {
+				(0,459)
+				(399,459)
+			}
+		}
+		"text entry" {
+			object {
+				x=1
+				y=476
+				width=60
+				height=16
+			}
+			control {
+				chan="$(P)$(Dmm)Ch22_raw.DESC"
+				clr=14
+				bclr=1
+			}
+			limits {
+			}
+		}
+		"choice button" {
+			object {
+				x=61
+				y=462
+				width=40
+				height=30
+			}
+			control {
+				chan="$(P)$(Dmm)Ch22_on_off.VAL"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
+				x=5
+				y=462
+				width=48
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="CH 22"
+			align="horiz. centered"
+		}
+		"text update" {
+			object {
+				x=248
+				y=461
+				width=87
+				height=14
+			}
+			monitor {
+				chan="$(P)$(Dmm)Ch22_raw.VAL"
+				clr=50
+				bclr=14
+			}
+			align="horiz. centered"
+			format="compact"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=248
+				y=478
+				width=87
+				height=14
+			}
+			monitor {
+				chan="$(P)$(Dmm)Ch22_calc.VAL"
+				clr=0
+				bclr=14
+			}
+			align="horiz. centered"
+			format="compact"
+			limits {
+			}
+		}
+		"related display" {
+			object {
+				x=229
+				y=477
+				width=15
+				height=15
+			}
+			display[0] {
+				label="Ch22 Units Conversion"
+				name="Keithley2kDMM_calc.adl"
+				args="P=$(P),Dmm=$(Dmm),CH=Ch22"
+			}
+			clr=14
+			bclr=51
+		}
+		text {
+			object {
+				x=190
+				y=462
+				width=40
+				height=13
+			}
+			"basic attribute" {
+				clr=24
+			}
+			textix="RAW:"
+		}
+		text {
+			object {
+				x=190
+				y=479
+				width=40
+				height=13
+			}
+			"basic attribute" {
+				clr=24
+			}
+			textix="CALC:"
+		}
+		polyline {
+			object {
+				x=185
+				y=460
+				width=1
+				height=34
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(185,460)
+				(185,493)
+			}
+		}
+		polyline {
+			object {
+				x=104
+				y=476
+				width=212
+				height=1
+			}
+			"basic attribute" {
+				clr=14
+				width=1
+			}
+			points {
+				(104,476)
+				(315,476)
+			}
+		}
+		rectangle {
+			object {
+				x=248
+				y=461
+				width=89
+				height=32
+			}
+			"basic attribute" {
+				clr=3
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(Dmm)Ch22_on_off.VAL"
+			}
+		}
+		menu {
+			object {
+				x=105
+				y=460
+				width=75
+				height=15
+			}
+			control {
+				chan="$(P)$(Dmm)ch22_mode_sel.VAL"
+				clr=0
+				bclr=9
+			}
+		}
+		"text entry" {
+			object {
+				x=336
+				y=477
+				width=60
+				height=16
+			}
+			control {
+				chan="$(P)$(Dmm)Ch22_calc.DESC"
+				clr=14
+				bclr=1
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=339
+				y=462
+				width=52
+				height=13
+			}
+			monitor {
+				chan="$(P)$(Dmm)ch22_units.VAL"
+				clr=24
+				bclr=2
+			}
+			limits {
+			}
+		}
+		polyline {
+			object {
+				x=-1
+				y=493
+				width=402
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+				width=3
+			}
+			points {
+				(0,494)
+				(399,494)
+			}
+		}
 	}
 }
