@@ -46,19 +46,14 @@
 //            convert the value, since we wrote directly to the VAL field.
 //      
 
-#include <stdlib.h>
-#include <alarm.h>
 #include <string.h>
 #include <stdio.h>
-
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
 
 #include "dbAccess.h"
 #include "aiRecord.h"
 #include "recGbl.h"
 #include "recSup.h"
+#include <alarm.h>
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -123,7 +118,7 @@ aiMKS::aiMKS(dbCommon* pr,DBLINK* l) : DevMpf(pr,l,false)
         DEBUG(5,"aiMKS::aiMKS, enter, record=%s\n", pr->name);
         // Parse the parm field to get the gauge number
 	gauge_number=getUserParm()[0];
-	if(gauge_number==NULL || gauge_number<'1' || gauge_number>'5')
+	if(gauge_number==0 || gauge_number<'1' || gauge_number>'5')
 	{
 		recGblRecordError(S_db_badField,(void *)pr,
 			"devAiMKS (init_record) Illegal INP parm field");

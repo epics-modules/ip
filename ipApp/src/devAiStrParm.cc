@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/29 23:12:30  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
 // Creating
 //
@@ -11,16 +14,9 @@
 // Revised: 10/28/95
 // Converted to MPF, Mark Rivers 9/5/99
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -28,7 +24,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "aiRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -209,6 +204,6 @@ long AiStrParm::convert(dbCommon* pr,int pass)
         aiRecord* ai = (aiRecord*)pr;
         ai->eslo=1.0;
         ai->roff=0;
-        DEBUG(5,"aiStrParm:Convert roff=%ld, eslo=%f\n",ai->roff,ai->eslo);
+        DEBUG(5,"aiStrParm:Convert roff=%d, eslo=%f\n",ai->roff,ai->eslo);
         return 0;
 }

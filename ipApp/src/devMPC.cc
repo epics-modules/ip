@@ -55,16 +55,9 @@
  *****************************************************************
 */
 
-extern "C" {
-#include <stdlib.h>
 #include <alarm.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
- 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
  
 #include "dbAccess.h"
 #include "dbDefs.h"
@@ -80,12 +73,15 @@ extern "C" {
 #include "stringoutRecord.h"
 #include "recGbl.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
 #include "DevMpf.h"
 #include "devMPC.h"
+
+#ifndef vxWorks
+#define ERROR -1
+#endif
 
 long devMPCDebug = 0;
 

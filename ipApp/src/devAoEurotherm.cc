@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/24 02:58:30  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1  2002/01/07 16:06:21  sluiter
 // Copied from synApps R4.3
 //
@@ -11,16 +14,9 @@
 // Revised: 09/08/97
 // Revised 09/05/01 Tim Mooney, converted to MPF
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -28,7 +24,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "aoRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"

@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1  2003/02/10 17:07:11  bcda
+// Add support for Eurotherm 2000 series temperature controllers -KAG
+//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -9,16 +12,9 @@
 // Revised 09/05/01 Tim Mooney, converted to MPF
 // Revised 12/17/02 Kurt Goetze, modified to work with model 2408
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -26,7 +22,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "aoRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"

@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/24 02:58:30  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
 // Creating
 //
@@ -9,16 +12,9 @@
 // Revised: 10/27/95
 //          09/14/99 Mark Rivers, converted to MPF
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -26,7 +22,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "aoRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"

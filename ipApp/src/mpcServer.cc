@@ -53,15 +53,10 @@
  *****************************************************************
 */
 
-extern "C" {
-#include <vxWorks.h>
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
-#include <taskLib.h>
-#include <semLib.h>
-}
+
+#include <epicsThread.h>
  
 #include "Message.h"
 #include "Int32Message.h"
@@ -109,16 +104,18 @@ private:
     char responseBuf[BufferSize];
 };
 
-static char taskname[] = "mpc";
 
 int initMPCServer(char *serverName,char *portName,int queueSize)
 {
     MPC *pMPC = new MPC(serverName,portName,queueSize);
     if(!pMPC->getStartOk()) return(0);
-    int taskId = taskSpawn(taskname,100,VX_FP_TASK,4000,
-	(FUNCPTR)MPC::mpcServer,(int)pMPC,0,0,0,0,0,0,0,0,0);
-    if(taskId==ERROR) 
-	printf("mpcServer taskSpawn Failure\n");
+
+    if (epicsThreadCreate(serverName, epicsThreadPriorityMedium, 10000,
+                         (EPICSTHREADFUNC)MPC::mpcServer,
+                         (void*) pMPC) == NULL) {
+       errlogPrintf("%s initMPCServer ThreadCreate Failure\n", serverName);
+       return(-1);
+    }
     return(0);
 }
 	

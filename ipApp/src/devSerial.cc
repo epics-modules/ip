@@ -8,17 +8,9 @@
 //                long binary buffer but uses ASCII conventions, i.e. output buffer
 //                size is determined with strlen().
 
-#include <stdlib.h>
-#include <alarm.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -28,7 +20,8 @@ extern "C" {
 #include "recGbl.h"
 #include "recSup.h"
 #include "menuScan.h"
-}
+#include "alarm.h"
+#include "epicsExport.h"
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -95,7 +88,7 @@ private:
 extern "C" {DEVSERIAL_DSET devSerial =
   { 5,NULL,NULL,Serial::dev_init,Serial::get_ioint_info,
         DevMpf::read_write,NULL,Serial::port_setup };};
-
+epicsExportAddress(DEVSERIAL_DSET, devSerial);
 
 long Serial::dev_init(void* v)
 {
@@ -263,7 +256,7 @@ long Serial::completeIO(dbCommon* pr,Message* pm)
             soi->nord = pcm->getSize();
             // Action depends upon input format (ASCII or binary)
             DEBUG(1,"devSerial::completeIO, status=%d\n", pcm->status)
-            DEBUG(1,"devSerial::completeIO, getSize()=%ld\n", soi->nord);
+            DEBUG(1,"devSerial::completeIO, getSize()=%d\n", soi->nord);
             switch (soi->ifmt)
             {
             case serialOFMT_ASCII:

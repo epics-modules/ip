@@ -1,4 +1,7 @@
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/24 02:58:29  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1.1.1  2001/07/04 20:04:04  sluiter
 // Creating
 //
@@ -14,16 +17,9 @@
 
 #define MAKE_DEBUG devAiHeidND261Debug
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
  
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
- 
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -31,7 +27,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "aiRecord.h"
 #include "recSup.h"
-}
  
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -152,8 +147,9 @@ long AiHeidND261::completeIO(dbCommon* pr,Message* pm)
 		DEBUG(2," - return code=%d\n",pcm->status);
 		DEBUG(3," - buffer=>%s<\n",inbuf);
 		DEBUG(2," - <"); 
-			for (i=0, p=inbuf; i<BUFSZ; p++, i++) { DEBUG(2,"%2.2x ", (unsigned int) *p); }
-		DEBUG(2,">\n",0); 
+		for (i=0, p=(unsigned char*)inbuf; i<BUFSZ; p++, i++) 
+                           { DEBUG(2,"%2.2x ", (unsigned int) *p); }
+		DEBUG(2,">\n"); 
  
 // if no delimiter, timeout is expected
 		if (dlen && (pcm->status!=0)) rc=-1;
@@ -194,7 +190,7 @@ long AiHeidND261::convert(dbCommon* pr,int pass)
 	aiRecord* ai = (aiRecord*)pr;
 	ai->eslo=1.0;
 	ai->roff=0;
-	DEBUG(5,"aiStrParm:Convert roff=%ld, eslo=%f\n",ai->roff,ai->eslo);
+	DEBUG(5,"aiStrParm:Convert roff=%d, eslo=%f\n",ai->roff,ai->eslo);
 	return 0;
 }
 

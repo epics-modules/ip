@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/24 02:58:30  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
 // Creating
 //
@@ -19,16 +22,9 @@
 // Author: Jim Kowalkowski
 // Revised: 2/15/95
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -36,7 +32,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "stringinRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -135,7 +130,7 @@ SiStrParm::SiStrParm(dbCommon* pr,DBLINK* l) : DevMpf(pr,l,false)
 
 long SiStrParm::startIO(dbCommon* pr)
 {
-	DEBUG(2,"%.2f SiStrParm::StartIO(%s)\n", tickGet()/60., pr->name);
+	DEBUG(2,"SiStrParm::StartIO(%s)\n", pr->name);
         Char8ArrayMessage *message = new Char8ArrayMessage;
 
         message->cmd = cmdRead | cmdSetEom;
@@ -163,8 +158,8 @@ long SiStrParm::completeIO(dbCommon* pr,Message* pm)
             sz = pcm->getSize();
             ::memcpy(buffer,pcm->value, sz);
       	    dlen = termlen;
-	    DEBUG(2,"%.2f SiStrParm::CompleteIO(%s), size=%d, status=%d\n",
-                         tickGet()/60., pr->name, sz, pcm->status);
+	    DEBUG(2,"SiStrParm::CompleteIO(%s), size=%d, status=%d\n",
+                        pr->name, sz, pcm->status);
 	    DEBUG(3," - buffer=>%s<\n",buffer);
 
 	    // if no delimiter, timeout is expected

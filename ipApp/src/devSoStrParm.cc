@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.2  2002/10/24 02:58:31  rivers
+// Added bind call for DevMpf
+//
 // Revision 1.1.1.1  2001/07/04 20:04:04  sluiter
 // Creating
 //
@@ -15,16 +18,9 @@
 // Mark Rivers 8/20/99
 // Converted to MPF
 
-#include <stdlib.h>
-#include <stddef.h>
 #include <string.h>
 #include <stdio.h>
 
-#include <semLib.h>
-#include <tickLib.h>
-#include <taskLib.h>
-
-extern "C" {
 #include "dbAccess.h"
 #include "dbDefs.h"
 #include "link.h"
@@ -32,7 +28,6 @@ extern "C" {
 #include "dbCommon.h"
 #include "stringoutRecord.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
@@ -123,7 +118,7 @@ long SoStrParm::startIO(dbCommon* pr)
 {
 	stringoutRecord* so = (stringoutRecord*)pr;
 
-	DEBUG(2,"%.2f SoStrParm::StartIO(%s)\n", tickGet()/60., pr->name);
+	DEBUG(2,"SoStrParm::StartIO(%s)\n", pr->name);
 
         Char8ArrayMessage *message = new Char8ArrayMessage;
 
@@ -147,7 +142,7 @@ long SoStrParm::completeIO(dbCommon* pr,Message* pm)
 	stringoutRecord* so = (stringoutRecord*)pr;
 	int rc=0;
 
-	DEBUG(2,"%.2f SoStrParm::CompleteIO(%s)\n", tickGet()/60., pr->name);
+	DEBUG(2,"SoStrParm::CompleteIO(%s)\n", pr->name);
         if((pm->getType()) != messageTypeChar8Array) {
             epicsPrintf("%s DevSoStrParm::completeIO illegal message type %d\n",
                     so->name,pm->getType());
