@@ -28,6 +28,7 @@
 #include "SerialConfigMessage.h"
 #include "DevMpf.h"
 #include "serialServer.h"
+#include "serialRecordDefs.h"
 
 // This device support module cannot use the standard MPF macros for creating
 // DSETS because we want to define additional functions which those macros do
@@ -41,7 +42,7 @@ typedef struct {
         long (*get_ioint_info)(int,dbCommon*,IOSCANPVT*);
         DEVSUPFUN   read_write;
         long (*conv)(void*,int);
-        long (*port_setup)(serialRecord *pr,
+        long (*setPortConfig)(serialRecord *pr,
                             int baud, int data_bits, int stop_bits,
                             char parity, char flow_control);
 } DEVSERIAL_DSET;
@@ -75,7 +76,7 @@ public:
         long cancelIO();
         virtual void receiveReply(dbCommon* pr, Message* m);
         static long dev_init(void*);
-        static long port_setup(serialRecord *pr,
+        static long setPortConfig(serialRecord *pr,
                                     int baud, int data_bits, int stop_bits,
                                     char parity, char flow_control);
         static long get_ioint_info(int cmd, struct dbCommon *pr,
@@ -83,20 +84,31 @@ public:
 private:
         char outbuff[100];
         char inbuff[100];
+        epicsEventId eventId;
         IOSCANPVT ioscanpvt;
 };
 
 extern "C" {DEVSERIAL_DSET devSerial =
   { 5,NULL,NULL,Serial::dev_init,Serial::get_ioint_info,
-        DevMpf::read_write,NULL,Serial::port_setup };};
+        DevMpf::read_write,NULL,Serial::setPortConfig };};
 epicsExportAddress(DEVSERIAL_DSET, devSerial);
 
 long Serial::dev_init(void* v)
 {
         serialRecord* pr = (serialRecord*)v;
+        int status;
         DEBUG(1, "Serial::dev_init, record=%s\n", pr->name);
         Serial *pSerial = new Serial((dbCommon*)pr,&(pr->inp));
         pSerial->bind();
+        // Read the current port configuration parameters so we can make the record agree with current settings
+        // Need to use epicsEvent to wait for reply.
+        pSerial->eventId = epicsEventMustCreate(epicsEventEmpty);
+        Int32Message *pi = new(Int32Message);
+        pi->cmd = cmdGetConfig;
+        pSerial->send(pi, replyTypeReceiveReply);
+        status = epicsEventWaitWithTimeout(pSerial->eventId, 5.0);
+        if (status) printf("Serial::dev_init, timeout waiting for cmdGetConfig\n");
+        
         return (0);
 }
 
@@ -295,11 +307,11 @@ long Serial::cancelIO()
 
 
 
-long Serial::port_setup(serialRecord *pr,
+long Serial::setPortConfig(serialRecord *pr,
                             int baud, int data_bits, int stop_bits,
                             char parity, char flow_control)
 {
-        DEBUG(5,"Entering Serial::port_setup\n");
+        DEBUG(5,"Entering Serial::setPortConfig\n");
         Serial* ser = (Serial*)pr->dpvt;
         SerialConfigMessage* sc=new SerialConfigMessage;
 
@@ -321,10 +333,31 @@ long Serial::port_setup(serialRecord *pr,
         return 0;
 }
 
-void Serial::receiveReply(dbCommon* pr,Message* pmessage)
+void Serial::receiveReply(dbCommon* pr,Message* pm)
 {
-        // This function is called in response to reply from
-        // SerialConfigMessage.  Nothing needs to be done.
+        int i;
+        serialRecord *sr = (serialRecord *)pr;
+
         DEBUG(1, "%s Serial::receiveReply, enter\n", pr->name);
-        delete pmessage;
+        DEBUG(1, "%s Serial::receiveReply, messageType=%d\n", pr->name, pm->getType());
+
+	// This could be a reply to either a serialConfigMessage setting the port parameters,
+        // or to an Int32Message with cmdGetConfig.  In the first case the returned message is a
+        // Int32Message, and we ignore it. In the latter case the returned message is a SerialConfigMessages and
+        // we set the record fields.
+        if (pm->getType() == messageTypeSerialConfig) {
+           SerialConfigMessage *sc = (SerialConfigMessage *)pm;
+           for (i=0; i<NUM_BAUD_CHOICES; i++)
+              if (sc->baud == baud_choices[i]) sr->baud = i;
+           for (i=0; i<NUM_SBIT_CHOICES; i++)
+              if (sc->stopBits == stop_bit_choices[i]) sr->sbit = i;
+           for (i=0; i<NUM_DBIT_CHOICES; i++)
+              if (sc->bitsPerChar == data_bit_choices[i]) sr->dbit = i;
+           for (i=0; i<NUM_PARITY_CHOICES; i++)
+              if (sc->parity == parity_choices[i]) sr->prty = i;
+           for (i=0; i<NUM_FLOW_CHOICES; i++)
+              if (sc->flowControl == flow_control_choices[i]) sr->fctl = i;
+           epicsEventSignal(eventId);
+        }
+        delete pm;
 }
