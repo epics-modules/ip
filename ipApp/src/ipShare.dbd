@@ -35,6 +35,15 @@ device(ai,VME_IO,devAiHeidND261,"Hideos ai HeidND261")
 # MKS vacuum gauge controller
 device(ai,VME_IO,devAiMKS,"HPS SensaVac 937")
 
+# MPC ion pump controller
+device(ai,VME_IO,devAiMPC,"MPC via MPF")
+device(ao,VME_IO,devAoMPC,"MPC via MPF")
+device(bi,VME_IO,devBiMPC,"MPC via MPF")
+device(bo,VME_IO,devBoMPC,"MPC via MPF")
+device(mbbo,VME_IO,devMbboMPC,"MPC via MPF")
+device(stringin,VME_IO,devSiMPC,"MPC via MPF")
+device(stringout,VME_IO,devSoMPC,"MPC via MPF")
+
 # Greenspring IP-Unidig digital I/O IP modules
 include "devIpUnidig.dbd"
 
@@ -43,6 +52,9 @@ device(epid,VME_IO,devEpidIp330,"MPF EPID")
 
 # Acromag IP-330 as scanning A/D converter
 device(ai,VME_IO,devAiIp330Scan,"ip330Scan")
+
+# DAC128V D/A converter
+include "devAoDAC128V.dbd"
 
 ################
 # DRIVER SUPPORT
