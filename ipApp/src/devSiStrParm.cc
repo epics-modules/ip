@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.4  2003/11/05 18:05:26  mooney
+// Fixed DEBUG macro to work w/SunPro compiler
+//
 // Revision 1.3  2003/07/08 19:53:52  rivers
 // Removed vxWorks specific code
 //
@@ -180,9 +183,9 @@ long SiStrParm::completeIO(dbCommon* pr,Message* pm)
 
 	if (sz && !rc && (buffer_start_index < sz)) {
 		buffer[sz]='\0';
-		// remove delimiter (of length dlen) unless timeout
+		// remove delimiter (of length dlen) if it is present unless timeout
 		if (!pcm->status && ((unsigned int)sz < sizeof(buffer)) && 
-                                                          (sz >= dlen))
+                   (sz >= dlen) && (strncmp(&buffer[sz-dlen], term, dlen)==0))
 			buffer[sz-dlen] = '\0';
 		strncpy(si->val,&buffer[buffer_start_index],sizeof(si->val));
 		si->udf=0;
