@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen23/GOETZE/epics/synApps_R3.13.2_R4.3/kag/kagApp/op/adl/PI500_4.0.adl"
-	version=030000
+	name="/home/oxygen10/GOETZE/epics/3.13.1/kag/kagApp/op/adl/PI500_3.0.adl"
+	version=020305
 }
 display {
 	object {
-		x=83
-		y=64
+		x=85
+		y=73
 		width=750
 		height=160
 	}
@@ -89,8 +89,8 @@ display {
 }
 rectangle {
 	object {
-		x=215
-		y=135
+		x=606
+		y=96
 		width=18
 		height=21
 	}
@@ -99,37 +99,22 @@ rectangle {
 	}
 	"dynamic attribute" {
 		vis="if not zero"
-		chan="$(P)$(S)p1_servo_select.VAL"
+		chan="$(P)$(S)p3_servo_select.VAL"
 	}
 }
 rectangle {
 	object {
-		x=214
-		y=113
-		width=23
-		height=18
+		x=358
+		y=96
+		width=18
+		height=21
 	}
 	"basic attribute" {
-		clr=60
+		clr=30
 	}
 	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p1_servo_select.VAL"
-	}
-}
-rectangle {
-	object {
-		x=105
-		y=95
-		width=23
-		height=18
-	}
-	"basic attribute" {
-		clr=60
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p1_servo_select.VAL"
+		vis="if not zero"
+		chan="$(P)$(S)p2_servo_select.VAL"
 	}
 }
 rectangle {
@@ -146,6 +131,24 @@ rectangle {
 		vis="if not zero"
 		chan="$(P)$(S)p1_servo_select.VAL"
 	}
+}
+text {
+	object {
+		x=354
+		y=98
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)$(S)p2_servo_select.VAL"
+	}
+	textix="V"
+	align="horiz. centered"
 }
 rectangle {
 	object {
@@ -192,7 +195,7 @@ text {
 text {
 	object {
 		x=23
-		y=73
+		y=74
 		width=65
 		height=20
 	}
@@ -211,12 +214,13 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(S)p1_tweak.A"
+		chan="$(P)$(S)p1_twkF.VAL"
 		clr=14
 		bclr=50
 	}
 	label=">"
 	press_msg="1"
+	release_msg="0"
 }
 "message button" {
 	object {
@@ -226,12 +230,13 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(S)p1_tweak.B"
+		chan="$(P)$(S)p1_twkR.VAL"
 		clr=14
 		bclr=50
 	}
 	label="<"
 	press_msg="1"
+	release_msg="0"
 }
 "text entry" {
 	object {
@@ -241,7 +246,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)$(S)p1_twkSet"
+		chan="$(P)$(S)p1_twkSet.VAL"
 		clr=14
 		bclr=50
 	}
@@ -257,7 +262,7 @@ text {
 	}
 	control {
 		chan="$(P)$(S)p1_drive.VAL"
-		clr=14
+		clr=21
 		bclr=50
 	}
 	limits {
@@ -265,13 +270,13 @@ text {
 }
 "text update" {
 	object {
-		x=133
-		y=113
+		x=136
+		y=99
 		width=75
 		height=20
 	}
 	monitor {
-		chan="$(P)$(S)p1_position"
+		chan="$(P)$(S)p1_readback_pos.VAL"
 		clr=54
 		bclr=3
 	}
@@ -307,13 +312,13 @@ text {
 }
 "text update" {
 	object {
-		x=138
-		y=137
+		x=141
+		y=127
 		width=69
 		height=20
 	}
 	monitor {
-		chan="$(P)$(S)p1_volts"
+		chan="$(P)$(S)p1_readback_volts.VAL"
 		clr=54
 		bclr=3
 	}
@@ -323,8 +328,8 @@ text {
 }
 text {
 	object {
-		x=145
-		y=35
+		x=148
+		y=40
 		width=85
 		height=20
 	}
@@ -351,6 +356,34 @@ text {
 		chan="$(P)$(S)p1_servo_select.VAL"
 	}
 	textix="um"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=216
+		y=97
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="um"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=215
+		y=127
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="V"
 	align="horiz. centered"
 }
 "text entry" {
@@ -454,6 +487,112 @@ polyline {
 		(498,31)
 	}
 }
+text {
+	object {
+		x=274
+		y=119
+		width=65
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Tweak"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=273
+		y=74
+		width=65
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Drive"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=334
+		y=136
+		width=25
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p2_twkF.VAL"
+		clr=14
+		bclr=50
+	}
+	label=">"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=252
+		y=136
+		width=25
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p2_twkR.VAL"
+		clr=14
+		bclr=50
+	}
+	label="<"
+	press_msg="1"
+	release_msg="0"
+}
+"text entry" {
+	object {
+		x=277
+		y=136
+		width=57
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p2_twkSet.VAL"
+		clr=14
+		bclr=50
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=253
+		y=91
+		width=100
+		height=27
+	}
+	control {
+		chan="$(P)$(S)p2_drive.VAL"
+		clr=21
+		bclr=50
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=386
+		y=99
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)$(S)p2_readback_pos.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
 "choice button" {
 	object {
 		x=255
@@ -479,6 +618,64 @@ polyline {
 		clr=0
 		bclr=8
 	}
+}
+"text update" {
+	object {
+		x=391
+		y=127
+		width=69
+		height=20
+	}
+	monitor {
+		chan="$(P)$(S)p2_readback_volts.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=397
+		y=40
+		width=85
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Readback"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=466
+		y=97
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="um"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=465
+		y=127
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="V"
+	align="horiz. centered"
 }
 "text entry" {
 	object {
@@ -581,6 +778,112 @@ polyline {
 		(749,31)
 	}
 }
+text {
+	object {
+		x=524
+		y=119
+		width=65
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Tweak"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=523
+		y=74
+		width=65
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Drive"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=584
+		y=136
+		width=25
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p3_twkF.VAL"
+		clr=14
+		bclr=50
+	}
+	label=">"
+	press_msg="1"
+	release_msg="0"
+}
+"message button" {
+	object {
+		x=502
+		y=136
+		width=25
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p3_twkR.VAL"
+		clr=14
+		bclr=50
+	}
+	label="<"
+	press_msg="1"
+	release_msg="0"
+}
+"text entry" {
+	object {
+		x=527
+		y=136
+		width=57
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p3_twkSet.VAL"
+		clr=14
+		bclr=50
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=503
+		y=91
+		width=100
+		height=27
+	}
+	control {
+		chan="$(P)$(S)p3_drive.VAL"
+		clr=21
+		bclr=50
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=636
+		y=99
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)$(S)p3_readback_pos.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
 "choice button" {
 	object {
 		x=505
@@ -606,6 +909,64 @@ polyline {
 		clr=0
 		bclr=8
 	}
+}
+"text update" {
+	object {
+		x=641
+		y=127
+		width=69
+		height=20
+	}
+	monitor {
+		chan="$(P)$(S)p3_readback_volts.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=647
+		y=40
+		width=85
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="Readback"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=716
+		y=97
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="um"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=715
+		y=127
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	textix="V"
+	align="horiz. centered"
 }
 "text entry" {
 	object {
@@ -714,15 +1075,45 @@ polyline {
 }
 "message button" {
 	object {
-		x=143
-		y=89
+		x=144
+		y=65
 		width=88
 		height=20
 	}
 	control {
 		chan="$(P)$(S)p1_rdbk.PROC"
-		clr=0
-		bclr=8
+		clr=55
+		bclr=54
+	}
+	label="Get Reading"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=395
+		y=65
+		width=88
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p2_rdbk.PROC"
+		clr=55
+		bclr=54
+	}
+	label="Get Reading"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=647
+		y=65
+		width=88
+		height=20
+	}
+	control {
+		chan="$(P)$(S)p3_rdbk.PROC"
+		clr=55
+		bclr=54
 	}
 	label="Get Reading"
 	press_msg="1"
@@ -745,451 +1136,10 @@ text {
 	textix="V"
 	align="horiz. centered"
 }
-"choice button" {
-	object {
-		x=143
-		y=57
-		width=88
-		height=28
-	}
-	control {
-		chan="$(P)$(S)p1_rdbk_enable"
-		clr=0
-		bclr=8
-	}
-}
 text {
 	object {
-		x=213
-		y=111
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p1_servo_select.VAL"
-	}
-	textix="um"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=212
-		y=137
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p1_servo_select.VAL"
-	}
-	textix="V"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=465
-		y=135
-		width=18
-		height=21
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-}
-rectangle {
-	object {
-		x=464
-		y=113
-		width=23
-		height=18
-	}
-	"basic attribute" {
-		clr=60
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-}
-"text update" {
-	object {
-		x=383
-		y=113
-		width=75
-		height=20
-	}
-	monitor {
-		chan="$(P)$(S)p2_position"
-		clr=54
-		bclr=3
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=388
-		y=137
-		width=69
-		height=20
-	}
-	monitor {
-		chan="$(P)$(S)p2_volts"
-		clr=54
-		bclr=3
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=395
-		y=35
-		width=85
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Readback"
-	align="horiz. centered"
-}
-"message button" {
-	object {
-		x=393
-		y=89
-		width=88
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p2_rdbk.PROC"
-		clr=0
-		bclr=8
-	}
-	label="Get Reading"
-	press_msg="1"
-}
-"choice button" {
-	object {
-		x=393
-		y=57
-		width=88
-		height=28
-	}
-	control {
-		chan="$(P)$(S)p2_rdbk_enable"
-		clr=0
-		bclr=8
-	}
-}
-text {
-	object {
-		x=463
-		y=111
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-	textix="um"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=462
-		y=137
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-	textix="V"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=717
-		y=135
-		width=18
-		height=21
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-}
-rectangle {
-	object {
-		x=716
-		y=113
-		width=23
-		height=18
-	}
-	"basic attribute" {
-		clr=60
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-}
-"text update" {
-	object {
-		x=635
-		y=113
-		width=75
-		height=20
-	}
-	monitor {
-		chan="$(P)$(S)p3_position"
-		clr=54
-		bclr=3
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=640
-		y=137
-		width=69
-		height=20
-	}
-	monitor {
-		chan="$(P)$(S)p3_volts"
-		clr=54
-		bclr=3
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=647
-		y=35
-		width=85
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Readback"
-	align="horiz. centered"
-}
-"message button" {
-	object {
-		x=645
-		y=89
-		width=88
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p3_rdbk.PROC"
-		clr=0
-		bclr=8
-	}
-	label="Get Reading"
-	press_msg="1"
-}
-"choice button" {
-	object {
-		x=645
-		y=57
-		width=88
-		height=28
-	}
-	control {
-		chan="$(P)$(S)p3_rdbk_enable"
-		clr=0
-		bclr=8
-	}
-}
-text {
-	object {
-		x=715
-		y=111
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-	textix="um"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=714
-		y=137
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-	textix="V"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=354
+		x=356
 		y=95
-		width=23
-		height=18
-	}
-	"basic attribute" {
-		clr=60
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-}
-rectangle {
-	object {
-		x=355
-		y=95
-		width=18
-		height=21
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-}
-text {
-	object {
-		x=273
-		y=119
-		width=65
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Tweak"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=272
-		y=73
-		width=65
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Drive"
-	align="horiz. centered"
-}
-"message button" {
-	object {
-		x=333
-		y=136
-		width=25
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p2_tweak.A"
-		clr=14
-		bclr=50
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=251
-		y=136
-		width=25
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p2_tweak.B"
-		clr=14
-		bclr=50
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=276
-		y=136
-		width=57
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p2_twkSet"
-		clr=14
-		bclr=50
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=252
-		y=91
-		width=100
-		height=27
-	}
-	control {
-		chan="$(P)$(S)p2_drive.VAL"
-		clr=14
-		bclr=50
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=354
-		y=93
 		width=25
 		height=20
 	}
@@ -1205,145 +1155,9 @@ text {
 	align="horiz. centered"
 }
 text {
-	object {
-		x=352
-		y=97
-		width=25
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)p2_servo_select.VAL"
-	}
-	textix="V"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=604
-		y=95
-		width=23
-		height=18
-	}
-	"basic attribute" {
-		clr=60
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-}
-rectangle {
 	object {
 		x=605
 		y=95
-		width=18
-		height=21
-	}
-	"basic attribute" {
-		clr=30
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(S)p3_servo_select.VAL"
-	}
-}
-text {
-	object {
-		x=523
-		y=119
-		width=65
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Tweak"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=522
-		y=73
-		width=65
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	textix="Drive"
-	align="horiz. centered"
-}
-"message button" {
-	object {
-		x=583
-		y=136
-		width=25
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p3_tweak.A"
-		clr=14
-		bclr=50
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=501
-		y=136
-		width=25
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p3_tweak.B"
-		clr=14
-		bclr=50
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=526
-		y=136
-		width=57
-		height=20
-	}
-	control {
-		chan="$(P)$(S)p3_twkSet"
-		clr=14
-		bclr=50
-	}
-	limits {
-	}
-}
-"text entry" {
-	object {
-		x=502
-		y=91
-		width=100
-		height=27
-	}
-	control {
-		chan="$(P)$(S)p3_drive.VAL"
-		clr=14
-		bclr=50
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=604
-		y=94
 		width=25
 		height=20
 	}
@@ -1360,8 +1174,8 @@ text {
 }
 text {
 	object {
-		x=602
-		y=97
+		x=603
+		y=98
 		width=25
 		height=20
 	}
