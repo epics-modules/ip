@@ -1,4 +1,4 @@
-program Keithley2kDMM ("P=13LAB:, Dmm=DMM1")
+program Keithley2kDMM ("P=13LAB:, Dmm=DMM1, channels=10, model=2000")
 
 /*  This sequencer program works with Keithley2kDMM.db.  This version of the
  *  Keithley2kDMM support has been significantly rearranged so that the database
@@ -14,22 +14,39 @@ program Keithley2kDMM ("P=13LAB:, Dmm=DMM1")
  *  22-APR-1999 MLR  Added logic to work around bug with AC volts on scanner
  *  31-MAY-1999 MLR  Fixed logic so it does not close relay repeated if only
  *                   one channel being used in multi-channel mode
+ *  27-OCT-2002 MLR  Modifications to:
+ *                   Fix bug which could cause channels to read incorrectly
+ *                   after an initialize
+ *                   Added support for Model 2700, which uses different syntax
+ *                   for selecting plugin channels
+ *                   Added support for 20 channels.
+ *                   Two new parameters in starting program:
+ *                      channels: default=10, maximum=20
+ *                      model:    default=2000, choices=2000 and 2700
+ * 28-OCT-2002 MLR   Changed the order of the mode select and close commands in
+ *                   multichannel mode.  Previously we were doing close first then
+ *                   mode select.  This did not work in 4-wire ohms mode, must do
+ *                   in the opposite order, because meter closes pairs of switches
+ *                   in this mode.
+ * 07-NOV-2002 MLR   Added support for single channel selection of channels 11-22.
 */
 
 /* This program must be compiled with the recursive option so that multiple copies
  * can run at once */
 option +r;
 
-#define NUM_CHANNELS 10
+#define MAX_CHANNELS 22
 #define NUM_FRONT_MODES 10
 #define NUM_REAR_MODES 8
+%% #include "stdlib.h"
+%% #include "string.h"
 
 int i;
 int scan_chan;
 long previous_mode;
 long previous_chan;
 
-long    ch_mode[NUM_CHANNELS];
+long    ch_mode[MAX_CHANNELS];
 assign  ch_mode to 
            {"{P}{Dmm}ch1_mode_sel.VAL",
             "{P}{Dmm}ch2_mode_sel.VAL",
@@ -40,25 +57,24 @@ assign  ch_mode to
             "{P}{Dmm}ch7_mode_sel.VAL",
             "{P}{Dmm}ch8_mode_sel.VAL",
             "{P}{Dmm}ch9_mode_sel.VAL",
-            "{P}{Dmm}ch10_mode_sel.VAL"};
+            "{P}{Dmm}ch10_mode_sel.VAL",
+            "{P}{Dmm}ch11_mode_sel.VAL",
+            "{P}{Dmm}ch12_mode_sel.VAL",
+            "{P}{Dmm}ch13_mode_sel.VAL",
+            "{P}{Dmm}ch14_mode_sel.VAL",
+            "{P}{Dmm}ch15_mode_sel.VAL",
+            "{P}{Dmm}ch16_mode_sel.VAL",
+            "{P}{Dmm}ch17_mode_sel.VAL",
+            "{P}{Dmm}ch18_mode_sel.VAL",
+            "{P}{Dmm}ch19_mode_sel.VAL",
+            "{P}{Dmm}ch20_mode_sel.VAL",
+            "{P}{Dmm}ch21_mode_sel.VAL",
+            "{P}{Dmm}ch22_mode_sel.VAL"};
 monitor ch_mode;
 evflag  ch_mode_mon;
 sync    ch_mode ch_mode_mon;
 
-long    ch_close[NUM_CHANNELS];
-assign  ch_close to 
-           {"{P}{Dmm}ch1_close.PROC",
-            "{P}{Dmm}ch2_close.PROC",
-            "{P}{Dmm}ch3_close.PROC",
-            "{P}{Dmm}ch4_close.PROC",
-            "{P}{Dmm}ch5_close.PROC",
-            "{P}{Dmm}ch6_close.PROC",
-            "{P}{Dmm}ch7_close.PROC",
-            "{P}{Dmm}ch8_close.PROC",
-            "{P}{Dmm}ch9_close.PROC",
-            "{P}{Dmm}ch10_close.PROC"};
-
-long    ch_on_off[NUM_CHANNELS];
+long    ch_on_off[MAX_CHANNELS];
 assign  ch_on_off to 
            {"{P}{Dmm}Ch1_on_off.VAL",
             "{P}{Dmm}Ch2_on_off.VAL",
@@ -69,10 +85,22 @@ assign  ch_on_off to
             "{P}{Dmm}Ch7_on_off.VAL",
             "{P}{Dmm}Ch8_on_off.VAL",
             "{P}{Dmm}Ch9_on_off.VAL",
-            "{P}{Dmm}Ch10_on_off.VAL"};
+            "{P}{Dmm}Ch10_on_off.VAL",
+            "{P}{Dmm}Ch11_on_off.VAL",
+            "{P}{Dmm}Ch12_on_off.VAL",
+            "{P}{Dmm}Ch13_on_off.VAL",
+            "{P}{Dmm}Ch14_on_off.VAL",
+            "{P}{Dmm}Ch15_on_off.VAL",
+            "{P}{Dmm}Ch16_on_off.VAL",
+            "{P}{Dmm}Ch17_on_off.VAL",
+            "{P}{Dmm}Ch18_on_off.VAL",
+            "{P}{Dmm}Ch19_on_off.VAL",
+            "{P}{Dmm}Ch20_on_off.VAL",
+            "{P}{Dmm}Ch21_on_off.VAL",
+            "{P}{Dmm}Ch22_on_off.VAL"};
 monitor ch_on_off;
 
-long    ch_raw[NUM_CHANNELS];
+long    ch_raw[MAX_CHANNELS];
 assign  ch_raw to 
            {"{P}{Dmm}Ch1_raw.PROC",
             "{P}{Dmm}Ch2_raw.PROC",
@@ -83,7 +111,19 @@ assign  ch_raw to
             "{P}{Dmm}Ch7_raw.PROC",
             "{P}{Dmm}Ch8_raw.PROC",
             "{P}{Dmm}Ch9_raw.PROC",
-            "{P}{Dmm}Ch10_raw.PROC"};
+            "{P}{Dmm}Ch10_raw.PROC",
+            "{P}{Dmm}Ch11_raw.PROC",
+            "{P}{Dmm}Ch12_raw.PROC",
+            "{P}{Dmm}Ch13_raw.PROC",
+            "{P}{Dmm}Ch14_raw.PROC",
+            "{P}{Dmm}Ch15_raw.PROC",
+            "{P}{Dmm}Ch16_raw.PROC",
+            "{P}{Dmm}Ch17_raw.PROC",
+            "{P}{Dmm}Ch18_raw.PROC",
+            "{P}{Dmm}Ch19_raw.PROC",
+            "{P}{Dmm}Ch20_raw.PROC",
+            "{P}{Dmm}Ch21_raw.PROC",
+            "{P}{Dmm}Ch22_raw.PROC"};
 
 /* Note:  dci and aci must be the last 2 modes.  These are defined for
    front panel use only. */
@@ -117,6 +157,16 @@ monitor dmm_chan;
 evflag  dmm_chan_mon;
 sync    dmm_chan dmm_chan_mon;
 
+long dmm_chan2;
+assign  dmm_chan2 to "{P}{Dmm}dmm_chan2.VAL";
+monitor dmm_chan2;
+evflag  dmm_chan2_mon;
+sync    dmm_chan2 dmm_chan2_mon;
+
+long dmm_ch_range;
+assign  dmm_ch_range to "{P}{Dmm}dmm_ch_range.VAL";
+monitor dmm_ch_range;
+
 long dmm_delay_read;
 assign  dmm_delay_read to "{P}{Dmm}dmm_delay_read.PROC";
 
@@ -137,15 +187,27 @@ assign  single_multi to "{P}{Dmm}single_multi.VAL";
 monitor single_multi;
 
 long init_dmm;
-assign init_dmm to "{P}{Dmm}init_dmm.PROC";
+assign init_dmm to "{P}{Dmm}init_dmm.VAL";
+monitor init_dmm;
+evflag  init_dmm_mon;
+sync    init_dmm init_dmm_mon;
+
+long do_init;
+assign do_init to "{P}{Dmm}init_string.PROC";
+
+string ch_close;  assign  ch_close to "{P}{Dmm}ch_close.VAL";
+string model; assign model to "{P}{Dmm}model.VAL";
+long channels; assign channels to "{P}{Dmm}channels.VAL";
+string dmm_units; assign dmm_units to "{P}{Dmm}units.VAL";
+string ch_units;  assign ch_units to "";
 
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
 string pvname;
-
-string dmm_units; assign dmm_units to "{P}{Dmm}units.VAL";
-string ch_units; assign ch_units to "";
+string close_format;
+long mode;
+long chan;
 
 ss mode_change {
     state init {
@@ -167,18 +229,34 @@ ss mode_change {
             unit_strings[9] = "AAC";
             P = macValueGet("P");
             Dmm = macValueGet("Dmm");
+            strcpy(model, macValueGet("model"));
+            pvPut(model);
+            channels = atoi(macValueGet("channels"));
+            pvPut(channels);
+            if (strcmp(model, "2000") == 0) {
+               strcpy(close_format, "rout:clos (@%d)");
+            } else {
+               strcpy(close_format, "rout:clos (@1%2.2d)");
+            }
         } state monitor_mode_changes
     }
     state monitor_mode_changes {
         when(efTestAndClear(ch_mode_mon)) {
-            for (i=0; i<NUM_CHANNELS; i++) {
+            for (i=0; i<channels; i++) {
                 /* Note: We have detected that one of the channel modes has
                    changed.  For now we update all the channel labels.
                    Although inefficient, it is done infrequently and the lack
                    of string arrays in SNC makes any other approach a real
                    mess. 
                 */
-                sprintf(ch_units, "%s", unit_strings[ch_mode[i]]);
+                mode = ch_mode[i];
+                /* Channels 21 and 22 on the model 2700 can only do DC and AC current, 
+                   and these are the first two choices, different from all other channels
+                */
+                if ((strcmp(model, "2700") == 0) && (i > 19)) {
+                    mode = mode + 8;
+                }
+                sprintf(ch_units, "%s", unit_strings[mode]);
                 sprintf(pvname, "%s%sch%d_units.VAL", P, Dmm, i+1);
                 pvAssign(ch_units, pvname);
                 pvPut(ch_units);
@@ -190,11 +268,35 @@ ss mode_change {
             pvPut(dmm_units);
             pvPut(dmm_modes[ch_mode_sel]);
             previous_mode = ch_mode_sel;
+            /* If 4-wire mode was selected open all channels */
+            if (ch_mode_sel == 3) {
+                sprintf(ch_close, "rout:open:all");
+                pvPut(ch_close);
+                previous_chan = -1;
+            }
         } state monitor_mode_changes
 
         when(efTestAndClear(dmm_chan_mon)) {
-            pvPut(ch_close[dmm_chan]);
+            sprintf(ch_close, close_format, dmm_chan+1);
+            pvPut(ch_close);
             previous_chan = dmm_chan;
+        } state monitor_mode_changes
+
+        when(efTestAndClear(dmm_chan2_mon)) {
+            sprintf(ch_close, close_format, dmm_chan2+11);
+            pvPut(ch_close);
+            previous_chan = dmm_chan2+10;
+        } state monitor_mode_changes
+
+        when(efTestAndClear(init_dmm_mon)) {
+            if (init_dmm == 1) {
+                scan_chan = 0;
+                previous_mode = -1;
+                previous_chan = -1;
+                init_dmm = 0;
+                pvPut(init_dmm);
+                pvPut(do_init);
+            }
         } state monitor_mode_changes
     }
 }
@@ -206,7 +308,7 @@ ss read_meter {
             previous_mode = -1;
             previous_chan = -1;
             efClear(read_complete_mon);
-            pvPut(init_dmm);
+            pvPut(do_init);
         } state wait_read
     }
     state wait_read {
@@ -215,30 +317,42 @@ ss read_meter {
     }
     state read_channel {
         when (single_multi == 0) {
-            if (dmm_chan != previous_chan) {
-                pvPut(ch_close[dmm_chan]);
-                previous_chan = dmm_chan;
-            }
             if (ch_mode_sel != previous_mode) {
                 sprintf(dmm_units, "%s", unit_strings[ch_mode_sel]);
                 pvPut(dmm_units);
                 pvPut(dmm_modes[ch_mode_sel]);
-                previous_mode = ch_mode_sel;
             }
+            /* Issue close channel if different */
+            chan = dmm_chan;
+            if (dmm_ch_range == 1) chan = dmm_chan2+10;
+            if (chan != previous_chan) {
+                sprintf(ch_close, close_format, chan+1);
+                pvPut(ch_close);
+                previous_chan = chan;
+            }
+            previous_mode = ch_mode_sel;
             read_complete=0;
             pvPut(read_complete);
             efClear(read_complete_mon);
             pvPut(dmm_read);
         } state single_read_response
 
-        when((single_multi != 0) && (ch_on_off[scan_chan] == 0)) {
-            if (scan_chan != previous_chan) {
-                pvPut(ch_close[scan_chan]);
-                previous_chan = scan_chan;
+       when((single_multi != 0) && (ch_on_off[scan_chan] == 0)) {
+            mode = ch_mode[scan_chan];
+            /* Channels 21 and 22 on the model 2700 can only do DC and AC current, and these
+               are the first two choices, different from all other channels
+            */
+            if ((strcmp(model, "2700") == 0) && (scan_chan > 19)) {
+                mode = mode + 8;
             }
-            if (ch_mode[scan_chan] != previous_mode) {
-                pvPut(dmm_modes[ch_mode[scan_chan]]);
-                previous_mode = ch_mode[scan_chan];
+            if (mode != previous_mode) {
+                pvPut(dmm_modes[mode]);
+                previous_mode = mode;
+            }
+            if (scan_chan != previous_chan) {
+                sprintf(ch_close, close_format, scan_chan+1);
+                pvPut(ch_close);
+                previous_chan = scan_chan;
             }
             read_complete=0;
             pvPut(read_complete);
@@ -246,7 +360,7 @@ ss read_meter {
             /* This logic adds a delay between the ch_clos and the
              * dmm_read if the function is AC volts, to work around bug in
              * Keithley 2000. */
-            if (ch_mode[scan_chan] == 1)
+            if (mode == 1)
                 pvPut(dmm_delay_read);
             else
                 pvPut(dmm_read);
@@ -268,10 +382,10 @@ ss read_meter {
         } state next_channel
     }
     state next_channel {
-        when (scan_chan < (NUM_CHANNELS-1)) {
+        when (scan_chan < (channels-1)) {
             scan_chan++;
         } state read_channel
-        when (scan_chan >= (NUM_CHANNELS-1)) {
+        when (scan_chan >= (channels-1)) {
             scan_chan = 0;
             done_read = 0;
             pvPut(done_read);
