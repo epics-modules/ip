@@ -94,8 +94,6 @@ typedef struct devMPCPvt {
     opType       opType;
     recType      recType;
     asynStatus   status;
-    int          nread;
-    int          nwrite;
     char         recBuf[MPC_BUFFER_SIZE];
     char         sendBuf[MPC_BUFFER_SIZE];
     char         address[3];
@@ -196,7 +194,7 @@ static long initCommon(dbCommon *pr, DBLINK *plink, opType ot, recType rt)
    sprintf(pPvt->parameter,"%d",i);
 
    asynPrint(pasynUser, ASYN_TRACE_FLOW,
-             "devMPC::initCommon name =%s; address =%s; parameter =%s;\n",
+             "devMPC::initCommon name=%s; address=%s; parameter=%s;\n",
              pr->name, pPvt->address, pPvt->parameter);
 
    if (pPvt->command<0 || 
@@ -253,6 +251,8 @@ static long initSo(stringoutRecord *pr)
 
 static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
 {
+    asynUser *pasynUser = pPvt->pasynUser;
+    dbCommon *pr = (dbCommon *)pasynUser->userPvt;
 /*
     The MPC commands are of the form :  "~  AA XX d cc\r"
     AA = Address from 00 - FF
@@ -278,8 +278,8 @@ static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
     strcat(pPvt->sendBuf, " 00"); /* checksum is set to 00 now !!!! */
 
     asynPrint(pPvt->pasynUser, ASYN_TRACEIO_DEVICE,
-              "devMPC::buildCommand command %x sent (%d) |%s|\n",
-              hexCmd, strlen(pPvt->sendBuf), pPvt->sendBuf);
+              "devMPC::buildCommand %s command 0x%X len=%d string=|%s|\n",
+              pr->name, hexCmd, strlen(pPvt->sendBuf), pPvt->sendBuf);
 
     strcat(pPvt->sendBuf,"\r");  /* command terminator */
     return(0);
@@ -329,7 +329,8 @@ static long readAi(aiRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::readAi %s Wrong record type \n",pr->name);
+                      "devMPC::readAi %s Wrong record type \n",
+                      pr->name);
             break;
         }
         buildCommand(pPvt, hexCmd, tempparameter);
@@ -377,7 +378,8 @@ static long readAi(aiRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::readAi %s Wrong record type \n",pr->name);
+                      "devMPC::readAi %s Wrong record type \n",
+                      pr->name);
            break;
     }
     pr->val = value;
@@ -415,7 +417,8 @@ static long readBi(biRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::readBi %s Wrong record type \n",pr->name);
+                      "devMPC::readBi %s Wrong record type \n",
+                      pr->name);
             break;
         }
         buildCommand(pPvt, hexCmd, tempparameter);
@@ -435,7 +438,8 @@ static long readBi(biRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::readBi %s Wrong record type \n",pr->name);
+                      "devMPC::readBi %s Wrong record type \n",
+                      pr->name);
             break;
     }
     pr->rval = value;
@@ -461,7 +465,8 @@ static long readSi(stringinRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::readSi %s Wrong record type \n",pr->name);
+                      "devMPC::readSi %s Wrong record type \n",
+                      pr->name);
             break;
         }
         return(startIOCommon((dbCommon *)pr));
@@ -470,7 +475,8 @@ static long readSi(stringinRecord *pr)
     if (rtnSize > 39) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
         asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                  "devMPC::readSi message too big in %s \n",pr->name);
+                  "devMPC::readSi message too big in %s \n",
+                  pr->name);
         return(0);
     }
 
@@ -520,7 +526,8 @@ static long writeAo(aoRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::writeAo %s Wrong record type \n",pr->name);
+                      "devMPC::writeAo %s Wrong record type \n",
+                      pr->name);
             break;
         }
         buildCommand(pPvt, hexCmd, tempparameter);
@@ -594,7 +601,8 @@ static long writeBo(boRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::writeBo %s Wrong record type \n",pr->name);
+                      "devMPC::writeBo %s Wrong record type \n",
+                      pr->name);
             break;
         }
         return(startIOCommon((dbCommon *)pr));
@@ -636,7 +644,8 @@ static long writeMbbo(mbboRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::writeMbbo %s Wrong record type \n",pr->name);
+                      "devMPC::writeMbbo %s Wrong record type \n",
+                      pr->name);
             break;
         }
         buildCommand(pPvt, hexCmd, tempparameter);
@@ -670,7 +679,8 @@ static long writeSo(stringoutRecord *pr)
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
-                      "devMPC::writeSo %s Wrong record type \n",pr->name);
+                      "devMPC::writeSo %s Wrong record type \n",
+                      pr->name);
             break;
         }
         buildCommand(pPvt, hexCmd, pr->val);
@@ -707,19 +717,26 @@ static void devMPCCallback(asynUser *pasynUser)
     devMPCPvt *pPvt = (devMPCPvt *)pr->dpvt;
     char readBuffer[MPC_BUFFER_SIZE];
     struct rset *prset = (struct rset *)(pr->rset);
-    int nread, eomReason;
+    int nread, nwrite, eomReason;
 
     pPvt->pasynUser->timeout = MPC_TIMEOUT;
     pPvt->pasynOctet->setEos(pPvt->octetPvt, pasynUser, "\r", 1);
     pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                            pPvt->sendBuf, strlen(pPvt->sendBuf), 
-                                           &pPvt->nwrite);
+                                           &nwrite);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devMPC::devMPCCallback %s nwrite=%d, output=%s\n",
+              pr->name, nwrite, pPvt->sendBuf);
     pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                           readBuffer, MPC_BUFFER_SIZE, 
                                           &nread, &eomReason);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
+              "devMPC::devMPCCallback %s nread=%d, input=%s\n",
+              pr->name, nwrite, readBuffer);
     if (nread < 4) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                  "devMPC::devMPCCallback message too small=%d\n", nread);
+                  "devMPC::devMPCCallback %s message too small=%d\n", 
+                  pr->name, nread);
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
     }
 
