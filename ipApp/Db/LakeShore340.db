@@ -1,27 +1,27 @@
 grecord(ai,"$(P)LS340:$(Q):Heater") {
-	field(DTYP,"Hideos ai stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(DTYP,"MPF ai stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 	field(PREC,"1")
 }
 grecord(ai,"$(P)LS340:$(Q):Control") {
-	field(DTYP,"Hideos ai stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(DTYP,"MPF ai stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 	field(PREC,"3")
 }
 grecord(ai,"$(P)LS340:$(Q):Range") {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"$(P)LS340:$(Q):Rg_rdbk.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 	field(PREC,"0")
 }
 grecord(ai,"$(P)LS340:$(Q):Sample") {
-	field(DTYP,"Hideos ai stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(DTYP,"MPF ai stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 	field(PREC,"3")
 }
 grecord(ai,"$(P)LS340:$(Q):SetPoint") {
-	field(DTYP,"Hideos ai stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(DTYP,"MPF ai stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 	field(PREC,"2")
 }
 grecord(fanout,"$(P)LS340:$(Q):fan1") {
@@ -64,40 +64,40 @@ grecord(seq,"$(P)LS340:$(Q):read") {
 	field(LNK3,"$(P)LS340:$(Q):rd_Htr.PROC  PP MS")
 }
 grecord(stringin,"$(P)LS340:$(Q):getPID") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)LS340:$(Q):fan1.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):rd_Htr") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):Heater.PROC  PP MS")
 	field(VAL,"HTR?")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):SendCtl") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):Control.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):SendSpl") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):Sample.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):wr_rd_Htr") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):Range.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):wr_rd_PID") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):getPID.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(stringout,"$(P)LS340:$(Q):wr_rd_SP") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)LS340:$(Q):SetPoint.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d")
 }
 grecord(scalcout,"$(P)LS340:$(Q):D") {
 	field(CALC,"DBL(AA[14,17])")

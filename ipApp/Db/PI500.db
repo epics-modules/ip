@@ -6,17 +6,17 @@ grecord(ao,"$(P)$(S)p1_drive") {
 	field(EGU,"um")
 }
 grecord(ao,"$(P)$(S)p1_sendPOS") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:POS %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p1_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
 }
 grecord(ao,"$(P)$(S)p1_sendVOLT") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:VOLT %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p1_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -33,17 +33,17 @@ grecord(ao,"$(P)$(S)p2_drive") {
 	field(EGU,"um")
 }
 grecord(ao,"$(P)$(S)p2_sendPOS") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:POS %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p2_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
 }
 grecord(ao,"$(P)$(S)p2_sendVOLT") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:VOLT %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p2_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -60,17 +60,17 @@ grecord(ao,"$(P)$(S)p3_drive") {
 	field(EGU,"um")
 }
 grecord(ao,"$(P)$(S)p3_sendPOS") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:POS %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p3_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
 }
 grecord(ao,"$(P)$(S)p3_sendVOLT") {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:VOLT %4.3lf")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p3_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -266,114 +266,114 @@ grecord(seq,"$(P)$(S)seq_servo_off") {
 	field(LNK3,"$(P)$(S)push_servo_off3.VAL  PP MS")
 }
 grecord(stringout,"$(P)$(S)local_mode") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(S)seq_servo_off.VAL  PP MS")
 	field(VAL,"dev:cont loc")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_select_ch1") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly0.PROC  PP MS")
 	field(VAL,"inst:sel ch1")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_servo_off") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch1;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_servo_on") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch1;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_select_ch2") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly0.VAL  PP MS")
 	field(VAL,"inst:sel ch2")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_servo_off") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch2;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_servo_on") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch2;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_select_ch3") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly0.VAL  PP MS")
 	field(VAL,"inst:sel ch3")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_servo_off") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch3;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_servo_on") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"inst:sel ch3;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)remote_mode") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"dev:cont rem")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=100")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
 grecord(serial,"$(P)$(S)p1_get_position") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(SDIS,"$(P)$(S)p1_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p1_position.PROC  PP MS")
 	field(AOUT,"meas:pos?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(serial,"$(P)$(S)p1_get_volts") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S)p1_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(serial,"$(P)$(S)p2_get_position") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(SDIS,"$(P)$(S)p2_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p2_position.VAL  PP MS")
 	field(AOUT,"meas:pos?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(serial,"$(P)$(S)p2_get_volts") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S)p2_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(serial,"$(P)$(S)p3_get_position") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(SDIS,"$(P)$(S)p3_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p3_position.VAL  PP MS")
 	field(AOUT,"meas:pos?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(serial,"$(P)$(S)p3_get_volts") {
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)$(S)p3_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
 	field(ODEL,"10")
 	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(transform,"$(P)$(S)p1_tweak") {
 	field(CLCE,"a?d+c:b?d-c:d")

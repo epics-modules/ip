@@ -1,17 +1,17 @@
 grecord(ai,"$(P)$(S)_X1k_in_testAI") {
-	field(DTYP,"Hideos ai stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,IX=1")
+	field(DTYP,"MPF ai stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0a,IX=1")
 }
 grecord(longin,"$(P)$(S)_X1k_in_testLI") {
-	field(DTYP,"Hideos li stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,IX=1")
+	field(DTYP,"MPF li stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0a,IX=1")
 }
 grecord(stringin,"$(P)$(S)_X1k_in") {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,IX=1")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0a,IX=1")
 }
 grecord(stringout,"$(P)$(S)_X1k_out") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(S)_X1k_in.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }

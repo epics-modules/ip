@@ -5,9 +5,9 @@ grecord(calc,"$(P)serialOI$(N)_calc1") {
 }
 grecord(serial,"$(P)serialOI$(N)") {
 	field(DESC,"Serial Out/In block $(N)")
-	field(DTYP,"Hideos/MPF Serial")
+	field(DTYP,"MPF Serial")
 	field(FLNK,"$(P)serialOI$(N)_calc1.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(scalcout,"$(P)serialOI$(N)_parse") {
 	field(DISV,"0")

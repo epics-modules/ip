@@ -1,21 +1,21 @@
 grecord(ao,"$(P)ao$(CHAN)") {
 	field(DESC,"%f")
-	field(DTYP,"Hideos ao stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(DTYP,"MPF ao stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER)")
 	field(PREC,"6")
 }
 grecord(longout,"$(P)lo$(CHAN)") {
 	field(DESC,"test%d")
-	field(DTYP,"Hideos lo stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(DTYP,"MPF lo stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER)")
 }
 grecord(stringin,"$(P)si$(CHAN)") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(VAL,"empty")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 }
 grecord(stringout,"$(P)so$(CHAN)") {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(VAL,"You are a pig!")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d0a")
 }

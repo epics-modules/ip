@@ -33,8 +33,8 @@ grecord(bo,"$(P)cyberAmp$(N)VltDisSeq")
 }
 grecord(stringout,"$(P)cyberAmp$(N)QueryVlt")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)VltRbv PP MS")
 }
           
@@ -45,8 +45,8 @@ grecord(ai,"$(P)cyberAmp$(N)VltRbv")
 	field(LOPR,"0")
 	field(PREC,"3")
 	field(DESC,"Voltage Input")
-	field(DTYP,"Hideos ai stringParm")
-    	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],IX=1,TERM=0a,FMT=%lf")
+	field(DTYP,"MPF ai stringParm")
+    	field(INP,"#C$(C) S0 @$(SERVER),IX=1,TERM=0a,FMT=%lf")
 	field(FLNK,"$(P)cyberAmp$(N)GainStr PP MS")
 }
 
@@ -63,8 +63,8 @@ grecord(stringout,"$(P)cyberAmp$(N)GainStr")
 
 grecord(stringout,"$(P)cyberAmp$(N)QueryGain")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)GainRbv PP MS")
 }
           
@@ -75,8 +75,8 @@ grecord(ai,"$(P)cyberAmp$(N)GainRbv")
 	field(LOPR,"0")
 	field(PREC,"3")
 	field(DESC,"Gain Setting")
-	field(DTYP,"Hideos ai stringParm")
-    	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],IX=1,TERM=0a,FMT=%lf")
+	field(DTYP,"MPF ai stringParm")
+    	field(INP,"#C$(C) S0 @$(SERVER),IX=1,TERM=0a,FMT=%lf")
 	field(FLNK,"$(P)cyberAmp$(N)ScaLLStr PP MS")
 }
 
@@ -93,8 +93,8 @@ grecord(stringout,"$(P)cyberAmp$(N)ScaLLStr")
 
 grecord(stringout,"$(P)cyberAmp$(N)QueryScaLL")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)ScaLLRbv PP MS")
 }
           
@@ -105,8 +105,8 @@ grecord(ai,"$(P)cyberAmp$(N)ScaLLRbv")
 	field(LOPR,"0")
 	field(PREC,"3")
 	field(DESC,"SCA Lower Level Setting")
-	field(DTYP,"Hideos ai stringParm")
-    	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],IX=1,TERM=0a,FMT=%lf")
+	field(DTYP,"MPF ai stringParm")
+    	field(INP,"#C$(C) S0 @$(SERVER),IX=1,TERM=0a,FMT=%lf")
 	field(FLNK,"$(P)cyberAmp$(N)ScaULStr PP MS")
 }
 
@@ -124,8 +124,8 @@ grecord(stringout,"$(P)cyberAmp$(N)ScaULStr")
 
 grecord(stringout,"$(P)cyberAmp$(N)QueryScaUL")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)ScaULRbv PP MS")
 }
           
@@ -136,8 +136,8 @@ grecord(ai,"$(P)cyberAmp$(N)ScaULRbv")
 	field(LOPR,"0")
 	field(PREC,"3")
 	field(DESC,"SCA Upper Level Setting")
-	field(DTYP,"Hideos ai stringParm")
-    	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],IX=1,TERM=0a,FMT=%lf")
+	field(DTYP,"MPF ai stringParm")
+    	field(INP,"#C$(C) S0 @$(SERVER),IX=1,TERM=0a,FMT=%lf")
 	field(FLNK,"$(P)cyberAmp$(N)PkTmStr PP MS")
 }
 
@@ -152,8 +152,8 @@ grecord(stringout,"$(P)cyberAmp$(N)PkTmStr")
 
 grecord(stringout,"$(P)cyberAmp$(N)QueryPkTm")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)PkTmRbv PP MS")
 }
           
@@ -164,8 +164,8 @@ grecord(ai,"$(P)cyberAmp$(N)PkTmRbv")
 	field(LOPR,"0")
 	field(PREC,"0")
 	field(DESC,"Peak Time Setting")
-	field(DTYP,"Hideos ai stringParm")
-    	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],IX=1,TERM=0a,FMT=%lf")
+	field(DTYP,"MPF ai stringParm")
+    	field(INP,"#C$(C) S0 @$(SERVER),IX=1,TERM=0a,FMT=%lf")
 	field(FLNK, "$(P)cyberAmp$(N)ScnClDis PP MS")
 }
 #Re-enable scan
@@ -206,15 +206,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)VltStCl")
 
 grecord(stringout,"$(P)cyberAmp$(N)SetVlt")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdVlt PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdVlt")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)VltClDis PP MS")
 }
 #Enable the Read scan
@@ -251,15 +251,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)GainStCl")
 grecord(stringout,"$(P)cyberAmp$(N)SetGain")
 {
 	field(DESC,"Oxford NaI Detector Control")
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdGain PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdGain")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)GainClDis PP MS")
 }
 
@@ -293,15 +293,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)ScaLLStCl")
 
 grecord(stringout,"$(P)cyberAmp$(N)SetScaLL")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdScaLL PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdScaLL")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)ScaLLClDis PP MS")
 }
 
@@ -335,15 +335,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)ScaULStCl")
 
 grecord(stringout,"$(P)cyberAmp$(N)SetScaUL")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdScaUL PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdScaUL")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)ScaULClDis PP MS")
 }
 
@@ -392,15 +392,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)RLStCl")
 
 grecord(stringout,"$(P)cyberAmp$(N)SetRL")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdRL PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdRL")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)RLClDis PP MS")
 }
 
@@ -449,15 +449,15 @@ grecord(scalcout,"$(P)cyberAmp$(N)PkTmStCl")
 
 grecord(stringout,"$(P)cyberAmp$(N)SetPkTm")
 {
-	field(DTYP,"Hideos so stringParm")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a")
+	field(DTYP,"MPF so stringParm")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 	field(FLNK,"$(P)cyberAmp$(N)RdPkTm PP MS")
 }
           
 grecord(stringin,"$(P)cyberAmp$(N)RdPkTm")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)], TERM=06")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER), TERM=06")
 	field(FLNK, "$(P)cyberAmp$(N)PkTmClDis PP MS")
 }
 

@@ -9,54 +9,53 @@
 #     the "read values" and "read status" scan rates can be easily set from
 #     medm screens.
 #
-#  MPF serial servers are assumed to be named $(IPSLOT)-Serial[$(CHAN)]
+#  MPF serial servers are assumed to be named $(SERVER)
 #  Parameters
 #   $(P)        PV name prefix (e.g. 13IDA:)
 #   $(PUMP)     PV name for this specific ion pump (e.g. ip1:)
 #   $(C)        MPF server number id (typically 0 for local, 1 for remote)
-#   $(IPSLOT)   IP slot number (typically A-D)
-#   $(CHAN)     Serial port number - (typically 0-7)
+#   $(SERVER)   MPF server name
 #   $(PA)       Pump address (0-255)
 #   $(PN)       Pump number (1 or 2)
 record(stringin,"$(P)$(PUMP):STAT") {
 	field(SCAN,"1 second")
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S0 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):PRES PP MS")
 }
 record(ai,"$(P)$(PUMP):PRES") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S1 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S1 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):CUR PP MS")
 }
 record(ai,"$(P)$(PUMP):CUR") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S2 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S2 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):VOLT PP MS")
 }
 record(ai,"$(P)$(PUMP):VOLT") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"0")
-	field(INP,"#C$(C) S3 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S3 @$(SERVER),$(PA),$(PN)")
 }
 record(ai,"$(P)$(PUMP):SIZE") {
 	field(SCAN,"5 second")
 	field(DTYP,"MPC via MPF")
 	field(PREC,"0")
-	field(INP,"#C$(C) S4 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S4 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):SP1V PP MS")
 }
 record(ai,"$(P)$(PUMP):SP1V") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S5 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S5 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):SP1S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP1S") {
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S6 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S6 @$(SERVER),$(PA),$(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -65,12 +64,12 @@ record(bi,"$(P)$(PUMP):SP1S") {
 record(ai,"$(P)$(PUMP):SP2V") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S7 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S7 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):SP2S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP2S") {
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S8 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S8 @$(SERVER),$(PA),$(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -79,12 +78,12 @@ record(bi,"$(P)$(PUMP):SP2S") {
 record(ai,"$(P)$(PUMP):SP3V") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S9 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S9 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):SP3S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP3S") {
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S10 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S10 @$(SERVER),$(PA),$(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -93,12 +92,12 @@ record(bi,"$(P)$(PUMP):SP3S") {
 record(ai,"$(P)$(PUMP):SP4V") {
 	field(DTYP,"MPC via MPF")
 	field(PREC,"1")
-	field(INP,"#C$(C) S11 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S11 @$(SERVER),$(PA),$(PN)")
         field(FLNK,"$(P)$(PUMP):SP4S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP4S") {
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S12 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S12 @$(SERVER),$(PA),$(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -106,14 +105,14 @@ record(bi,"$(P)$(PUMP):SP4S") {
 }
 record(bi,"$(P)$(PUMP):GAUTOS") {
 	field(DTYP,"MPC via MPF")
-	field(INP,"#C$(C) S13 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(INP,"#C$(C) S13 @$(SERVER),$(PA),$(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")
 }
 record(mbbo,"$(P)$(PUMP):DIS") {
 	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S21 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S21 @$(SERVER),$(PA),$(PN)")
         field(ZRVL,"0")
         field(ONVL,"1")
         field(TWVL,"2")
@@ -125,54 +124,54 @@ record(ao,"$(P)$(PUMP):SSIZE") {
 	field(DTYP,"MPC via MPF")
         field(OMSL,"supervisory")
 	field(PREC,"0")
-	field(OUT,"#C$(C) S22 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S22 @$(SERVER),$(PA),$(PN)")
 	field(VAL,"30")
 }
 record(ao,"$(P)$(PUMP):SET1") {
 	field(DTYP,"MPC via MPF")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"#C$(C) S23 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S23 @$(SERVER),$(PA),$(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET2") {
 	field(DTYP,"MPC via MPF")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"#C$(C) S24 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S24 @$(SERVER),$(PA),$(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET3") {
 	field(DTYP,"MPC via MPF")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"#C$(C) S25 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S25 @$(SERVER),$(PA),$(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET4") {
 	field(DTYP,"MPC via MPF")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"#C$(C) S26 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S26 @$(SERVER),$(PA),$(PN)")
 	field(VAL,"1.0E-06")
 }
 record(bo,"$(P)$(PUMP):STOP") {
 	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S27 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S27 @$(SERVER),$(PA),$(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"START")
         field(ONAM,"STOP")
 }
 record(bo,"$(P)$(PUMP):ULCK") {
 	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S29 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S29 @$(SERVER),$(PA),$(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"LOCK")
         field(ONAM,"UNLOCK")
 }
 record(bo,"$(P)$(PUMP):SAUTOS") {
 	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S31 @$(IPSLOT)-Serial[$(CHAN)],$(PA),$(PN)")
+	field(OUT,"#C$(C) S31 @$(SERVER),$(PA),$(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")

@@ -1,80 +1,80 @@
 grecord(stringout,"$(P)$(M):reqInfo")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(M):getSpeed.PROC PP MS")
 	field(VAL,"I")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(ai,"$(P)$(M):getSpeed")
 {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"$(P)$(M):speedRPut.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,FMT=%lf,IX=6,TO=3000")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,FMT=%lf,IX=6,TO=3000")
 	field(PREC,"2")
 	field(EGU,"um/s")
 }
 grecord(ai,"$(P)$(M):position")
 {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(SDIS,"$(P)$(M):speedRPut1.PACT NPP NMS")
 	field(FLNK,"$(P)$(M):initPos.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,FMT=%lf,IX=18")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,FMT=%lf,IX=18")
 	field(PREC,"2")
 	field(EGU,"um")
 }
 grecord(ai,"$(P)$(M):relPosition")
 {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"$(P)$(M):selectedMotor.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,FMT=%lf,IX=18")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,FMT=%lf,IX=18")
 	field(PREC,"2")
 	field(EGU,"um")
 }
 grecord(longin,"$(P)$(M):selectedMotor")
 {
-	field(DTYP,"Hideos li stringParm")
+	field(DTYP,"MPF li stringParm")
 	field(FLNK,"$(P)$(M):active1.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,FMT=%d,IX=15")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,FMT=%d,IX=15")
 }
 grecord(stringin,"$(P)$(M):status")
 {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)$(M):initSpeed.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a")
 }
 grecord(stringout,"$(P)$(M):stop")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(M):getReply.PROC PP MS")
 	field(VAL,"S")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(stringout,"$(P)$(M):local")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(M):localReply0.PROC PP MS")
 	field(VAL,"L")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(stringout,"$(P)$(M):remote")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(M):locRemReply.PROC PP MS")
 	field(VAL,"R")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(stringin,"$(P)$(M):getReply")
 {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)$(M):reqInfo.VAL PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,TO=100")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,TO=100")
 }
 grecord(ao,"$(P)$(M):go")
 {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(SDIS,"$(P)$(M):putPos.PACT NPP NMS")
 	field(FLNK,"$(P)$(M):goReply.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d,FMT=G%.1f")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d,FMT=G%.1f")
 	field(PREC,"1")
 }
 grecord(bo,"$(P)$(M):notDone")
@@ -89,16 +89,16 @@ grecord(bi,"$(P)$(M):done")
 }
 grecord(stringout,"$(P)$(M):reqRBV")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(M):getRBV.PROC PP MS")
 	field(VAL,"A")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(longin,"$(P)$(M):rawStatus")
 {
-	field(DTYP,"Hideos li stringParm")
+	field(DTYP,"MPF li stringParm")
 	field(FLNK,"$(P)$(M):HLS.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,FMT=%x,N=1,TO=50")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,FMT=%x,N=1,TO=50")
 }
 grecord(calc,"$(P)$(M):calcDone")
 {
@@ -116,16 +116,16 @@ grecord(bo,"$(P)$(M):putDone")
 }
 grecord(longout,"$(P)$(M):selectMotor")
 {
-	field(DTYP,"Hideos lo stringParm")
+	field(DTYP,"MPF lo stringParm")
 	field(FLNK,"$(P)$(M):getReply1.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d,FMT=M%d")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d,FMT=M%d")
 	field(DOL,"1")
 }
 grecord(stringin,"$(P)$(M):getReply1")
 {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)$(M):reqInfo.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0a,TO=1000")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0a,TO=1000")
 }
 grecord(bo,"$(P)$(M):initDone")
 {
@@ -137,24 +137,24 @@ grecord(bo,"$(P)$(M):initDone")
 grecord(serial,"$(P)$(M):setup")
 {
 	field(TMOD,"Read")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(INP,"#C$(C) S0 @$(SERVER)")
 	field(BAUD,"4800")
 }
 grecord(stringin,"$(P)$(M):localReply0")
 {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)$(M):locRemReply.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,TO=100")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,TO=100")
 }
 grecord(stringin,"$(P)$(M):locRemReply")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,TO=100,IX=1")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,TO=100,IX=1")
 }
 grecord(stringin,"$(P)$(M):flush")
 {
-	field(DTYP,"Hideos si stringParm")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,TO=100")
+	field(DTYP,"MPF si stringParm")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,TO=100")
 }
 grecord(calc,"$(P)$(M):HLS")
 {
@@ -164,33 +164,33 @@ grecord(calc,"$(P)$(M):HLS")
 }
 grecord(ai,"$(P)$(M):getRBV")
 {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"$(P)$(M):RBV.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0a,FMT=%lf")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0a,FMT=%lf")
 	field(PREC,"1")
 	field(EGU,"um")
 }
 grecord(stringout,"$(P)$(M):reqStatus")
 {
-	field(DTYP,"Hideos so stringParm")
+	field(DTYP,"MPF so stringParm")
 	field(SDIS,"$(P)$(M):putPos.PACT NPP NMS")
 	field(FLNK,"$(P)$(M):rawStatus.PROC PP MS")
 	field(VAL,"Z")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=,")
 }
 grecord(stringin,"$(P)$(M):goReply")
 {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(FLNK,"$(P)$(M):notDone.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0d0a,TO=1000")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0d0a,TO=1000")
 }
 grecord(stringin,"$(P)$(M):update")
 {
 	field(SCAN,".5 second")
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"MPF si stringParm")
 	field(SDIS,"$(P)$(M):done.VAL NPP NMS")
 	field(FLNK,"$(P)$(M):reqRBV.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=,TO=100")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=,TO=100")
 }
 grecord(transform,"$(P)$(M):tweak")
 {
@@ -246,9 +246,9 @@ grecord(ao,"$(P)$(M):putSpeed")
 }
 grecord(ai,"$(P)$(M):speedReply")
 {
-	field(DTYP,"Hideos ai stringParm")
+	field(DTYP,"MPF ai stringParm")
 	field(FLNK,"$(P)$(M):speedRPut1.PROC PP MS")
-	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d0d0a,FMT=%lf,IX=1")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0d0d0a,FMT=%lf,IX=1")
 	field(PREC,"2")
 	field(EGU,"um/s")
 }
@@ -317,25 +317,25 @@ grecord(ao,"$(P)$(M)")
 }
 grecord(ao,"$(P)$(M):putSpeed2")
 {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(M):speedReply.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d,FMT=V%.2f")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d,FMT=V%.2f")
 	field(PREC,"2")
 	field(EGU,"um/s")
 }
 grecord(ao,"$(P)$(M):putSpeed1")
 {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(M):speedReply.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d,FMT=V%.1f")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d,FMT=V%.1f")
 	field(PREC,"2")
 	field(EGU,"um/s")
 }
 grecord(ao,"$(P)$(M):putSpeed0")
 {
-	field(DTYP,"Hideos ao stringParm")
+	field(DTYP,"MPF ao stringParm")
 	field(FLNK,"$(P)$(M):speedReply.PROC PP MS")
-	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)],TERM=0d,FMT=V%.0f")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0d,FMT=V%.0f")
 	field(PREC,"2")
 	field(EGU,"um/s")
 }

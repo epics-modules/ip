@@ -13,7 +13,7 @@ grecord(ao,"$(P)DAC$(D)_$(N)") {
 grecord(ao,"$(P)DAC$(D)_$(N)_out") {
 	field(DTYP,"dac128V")
 	field(FLNK,"$(P)DAC$(D)_$(N)_need.VAL  PP MS")
-	field(OUT,"#C$(C) S$(S) @$(IPSLOT)-DAC")
+	field(OUT,"#C$(C) S$(S) @$(SERVER)")
 	field(PREC,"3")
 	field(DRVH,"4095")
 	field(HOPR,"4095")
@@ -23,7 +23,7 @@ grecord(ao,"$(P)DAC$(D)_$(N)_ROC") {
 }
 grecord(ao,"$(P)DAC$(D)_$(N)_rawOut") {
 	field(DTYP,"dac128V")
-	field(OUT,"#C$(C) S$(S) @$(IPSLOT)-DAC")
+	field(OUT,"#C$(C) S$(S) @$(SERVER)")
 	field(DRVH,"4095")
 	field(DRVL,"0")
 }
