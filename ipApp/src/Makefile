@@ -20,8 +20,7 @@ DBD += ipVX.dbd
 
 ip_SRCS += gpibRecord.c
 ip_SRCS += devXxStrParm.c
-#ip_SRCS += devAoEurotherm.cc
-#ip_SRCS += devSoEurotherm.cc
+ip_SRCS += devXxEurotherm.c
 #ip_SRCS += devAiHeidND261.cc
 ip_SRCS += devAiMKS.c
 ip_SRCS += Keithley2kDMM.st
