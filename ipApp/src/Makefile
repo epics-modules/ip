@@ -12,6 +12,7 @@ LIBRARY_IOC += ip
 
 DBDINC += serialRecord
 DBD += ipSupport.dbd
+DBD += ip.dbd
 
 ip_SRCS += serialRecord.c
 ip_SRCS += devAiStrParm.cc
@@ -34,6 +35,26 @@ ip_SRCS += ipRegister.c
 ip_LIBS += mpf mpfEpics 
 ip_LIBS += seq pv
 ip_LIBS += $(EPICS_BASE_IOC_LIBS)
+
+#=============================
+# build an ioc application for testing
+
+PROD_IOC = ipApp
+
+# <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
+ipApp_SRCS += ip_registerRecordDeviceDriver.cpp
+ipApp_SRCS_DEFAULT += ipMain.cpp
+ipApp_SRCS_vxWorks += -nil-
+#The following adds support from base/src/vxWorks
+ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
+
+ipApp_LIBS += ip
+ipApp_LIBS += mpf mpfEpics mpfSerial
+ipApp_LIBS += seq pv
+ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
+
+#===========================
+
 
 #BIN_INSTALLS += mpcServer.o
 
