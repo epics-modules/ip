@@ -1,13 +1,14 @@
-// devMPC.h
+/* devMPC.h
 
-// Author: Mohan Ramanathan
-// Date: 29 April 1999
-// Modifications:
-// Mark Rivers  17-Feb-2001  Added commands to support TSP and auto-restart
-// Change from enum to #define to make it easier to check signal definitions
-// in .db file against this file.  Note that the order of the GetSp* and SetSp*
-// commands must be preserved, although the absolute numbers can change.
-// Eliminated command string definition, moved into devMPC.cc
+ * Author: Mohan Ramanathan
+ * Date: 29 April 1999
+ * Modifications: 
+ * Mark Rivers  17-Feb-2001  Added commands to support TSP and auto-restart
+ * Change from enum to #define to make it easier to check signal definitions
+ * in .db file against this file.  Note that the order of the GetSp* and SetSp*
+ * commands must be preserved, although the absolute numbers can change.
+ * Eliminated command string definition, moved into devMPC.cc
+ */
 
 #define	GetStatus           0
 #define	GetPres             1
