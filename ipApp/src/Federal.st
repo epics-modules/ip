@@ -15,7 +15,7 @@ program Federal
 %%#include <stdio.h>
 %%#include <string.h>
 %%#include <math.h>
-%%#include <taskLib.h>
+%%#include <epicsThread.h>
 
 int i;
 
@@ -62,7 +62,7 @@ ss Federal_scan {
             {
                if (!run) break;
                pvPut(proc);         /* process the serial record */
-               %% taskDelay(20);    /* wait for database to parse strings */
+               epicsThreadSleep(.33);    /* wait for database to parse strings */
                pvGet(readback);     /* get the whole readback string */
                pvGet(position);     /* get the position as a float */
                pvGet(probe_num);    /* get the number of the probe (int) */
