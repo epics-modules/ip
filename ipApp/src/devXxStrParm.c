@@ -375,6 +375,7 @@ static void devStrParmCallback(asynUser *pasynUser)
    dbCommon *pr = (dbCommon *)pasynUser->userPvt;
    devStrParmPvt *pPvt = (devStrParmPvt *)pr->dpvt;
    struct rset *prset = (struct rset *)(pr->rset);
+   int eomReason;
 
    pPvt->pasynUser->timeout = pPvt->timeout;
    switch(pPvt->opType) {
@@ -383,7 +384,7 @@ static void devStrParmCallback(asynUser *pasynUser)
                                   pPvt->term, pPvt->termlen);
          pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                                pPvt->buffer, pPvt->nchar, 
-                                               &pPvt->nread);
+                                               &pPvt->nread, &eomReason);
          break;
       case opTypeOutput:
          pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 

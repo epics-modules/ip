@@ -210,7 +210,7 @@ static void callbackAi(asynUser *pasynUser)
     aiRecord *pai = pPvt->pai;
     char response[MAX_RESPONSE_LEN];
     asynStatus status;
-    int nwrite, nread;
+    int nwrite, nread, eomReason;
     struct rset *prset = (struct rset *)(pai->rset);
 
     pasynUser->timeout = TIMEOUT;
@@ -219,7 +219,7 @@ static void callbackAi(asynUser *pasynUser)
                                      strlen(pPvt->readCommand), &nwrite);
     pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
     pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
-                           MAX_RESPONSE_LEN, &nread);
+                           MAX_RESPONSE_LEN, &nread, eomReason);
 
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
               "devAiMKS record=%s, len=%d, response=\n%s\n", 
@@ -278,7 +278,7 @@ static void callbackAiSpecial(asynUser *pasynUser)
     double mult;        /* Multiplier for different pressure units */
     char response[MAX_RESPONSE_LEN];
     asynStatus status;
-    int nwrite, nread;
+    int nwrite, nread, eomReason;
 
     pasynUser->timeout = TIMEOUT;
     status = pPvt->pasynOctet->write(pPvt->asynOctetPvt, pasynUser,
@@ -286,7 +286,7 @@ static void callbackAiSpecial(asynUser *pasynUser)
                                      strlen(pmsg->readCommand), &nwrite);
     pPvt->pasynOctet->setEos(pPvt->asynOctetPvt, pasynUser, "\r", 1);
     pPvt->pasynOctet->read(pPvt->asynOctetPvt, pasynUser, response,
-                           MAX_RESPONSE_LEN, &nread);
+                           MAX_RESPONSE_LEN, &nread, &eomReason);
 
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devAiMKS record=%s, nread=%d, response=\n%s\n", 

@@ -350,6 +350,7 @@ static void gpibCallback(struct asynUser *pasynUser)
    int     inlen;
    int     outlen;
    char    eos;
+   int     eomReason;
 
    dbScanLock( (struct dbCommon*) pgpib);       /* Lock the record */
    timeout = pgpib->tmot / 1000.;
@@ -424,7 +425,7 @@ static void gpibCallback(struct asynUser *pasynUser)
                 recGblSetSevr(pgpib, WRITE_ALARM, MAJOR_ALARM);
             /* Read the response byte  */
             status = pPvt->pasynOctet->read(pPvt->asynGpibPvt, 
-                        pPvt->pasynUser, &pgpib->spr, 1, &ninp);
+                        pPvt->pasynUser, &pgpib->spr, 1, &ninp, &eomReason);
             if (ninp < 0) /* Is this right? */
                 /* Something is wrong if we couldn't read */
                 recGblSetSevr(pgpib, READ_ALARM, MAJOR_ALARM);
@@ -494,7 +495,7 @@ static void gpibCallback(struct asynUser *pasynUser)
          /* Something is wrong if we didn't get any response */
          recGblSetSevr(pgpib, READ_ALARM, MAJOR_ALARM);
       status = pPvt->pasynOctet->read(pPvt->asynOctetPvt, pPvt->pasynUser, 
-                                    inptr, inlen, &ninp);
+                                    inptr, inlen, &ninp, &eomReason);
       if (status) 
          /* Something is wrong if we didn't get any response */
          recGblSetSevr(pgpib, READ_ALARM, MAJOR_ALARM);
