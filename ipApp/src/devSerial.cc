@@ -9,6 +9,7 @@
 //                size is determined with strlen().
 
 #include <stdlib.h>
+#include <alarm.h>
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
@@ -24,6 +25,7 @@ extern "C" {
 #include "epicsPrint.h"
 #include "dbCommon.h"
 #include "serialRecord.h"
+#include "recGbl.h"
 #include "recSup.h"
 #include "menuScan.h"
 }

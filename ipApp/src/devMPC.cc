@@ -57,6 +57,7 @@
 
 extern "C" {
 #include <stdlib.h>
+#include <alarm.h>
 #include <stddef.h>
 #include <string.h>
 #include <stdio.h>
@@ -77,6 +78,7 @@ extern "C" {
 #include "mbboRecord.h"
 #include "stringinRecord.h"
 #include "stringoutRecord.h"
+#include "recGbl.h"
 #include "recSup.h"
 }
 

@@ -47,7 +47,7 @@
 //      
 
 #include <stdlib.h>
-#include <stddef.h>
+#include <alarm.h>
 #include <string.h>
 #include <stdio.h>
 
@@ -55,15 +55,10 @@
 #include <tickLib.h>
 #include <taskLib.h>
 
-extern "C" {
 #include "dbAccess.h"
-#include "dbDefs.h"
-#include "link.h"
-#include "epicsPrint.h"
-#include "dbCommon.h"
 #include "aiRecord.h"
+//#include "recGbl.h"
 #include "recSup.h"
-}
 
 #include "Message.h"
 #include "Char8ArrayMessage.h"
