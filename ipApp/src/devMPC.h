@@ -46,4 +46,5 @@
 #define	SetTSPSublimation   38
 #define	SetTSPDegas         39
 
+#define MAX_MPC_COMMANDS 35
 static char*  const DisplayStr[] = {",PRES", ",CUR", ",VOLT"};
