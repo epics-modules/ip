@@ -155,7 +155,7 @@ void aiMKS::connectIO(dbCommon *pr, Message *message)
         Char8ArrayMessage *pm;
 
         ConnectMessage *pConnectMessage = (ConnectMessage *)message;
-        DEBUG(5,"aiMKS::connectIO, enter, record=%s, status=%d\n", 
+        DEBUG(2,"aiMKS::connectIO, enter, record=%s, status=%d\n", 
                             pr->name, pConnectMessage->status);
 
         if (pConnectMessage->status != connectYes) goto finish;
