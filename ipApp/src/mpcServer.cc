@@ -202,7 +202,7 @@ byteHandlerRC MPC::byteHandler(void* v, unsigned char indata)
 
 void MPC::talk(Char8ArrayMessage* pinmessage)
 {
-    serialPortStatus ioStatus;
+    serialStatus ioStatus;
     
     ::memset(cmdBuf,0,BufferSize);
     ::memset(readBuf,0,BufferSize);
@@ -215,8 +215,10 @@ void MPC::talk(Char8ArrayMessage* pinmessage)
 
     if(mpcDebug>1) 
             printf("MPC::talk sending (%d): %s\n",cmdSize, cmdBuf);
-    ioStatus = pSerialPort->writeRead(cmdBuf,cmdSize,timeoutSeconds);
-    if(ioStatus==serialPortTimeout) status = readTimeout;
+
+    ioStatus = pSerialPort->write(cmdBuf,cmdSize,timeoutSeconds);
+    ioStatus = pSerialPort->read(timeoutSeconds);
+    if(ioStatus==serialTimeout) status = readTimeout;
 
     nextRead -=3;  // strip of the space and checksum
     readBuf[nextRead] = 0;
