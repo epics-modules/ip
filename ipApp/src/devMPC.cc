@@ -4,6 +4,8 @@
 // Date: 29 April 1999
 // Modifications:
 // Mark Rivers  17-Feb-2001  Added support for TSP and auto-restart
+// Mark Rivers  26-Oct-2002  Fixed problem with reading AMPS on recent MPC
+//                           controllers, they don't send AMPS in the response
 /*
  *****************************************************************
  *                         COPYRIGHT NOTIFICATION
@@ -733,13 +735,19 @@ long DevAiMPC::completeIO(dbCommon* pr, Message* m)
     switch (command)
     {
         case GetPres:
-        case GetCur:
             ::strncpy(pvalue,recBuf,7);
             pvalue[7] =0;
             value = strtod(pvalue,NULL);
             ploc=&recBuf[8];
             ::strncpy(pvalue,ploc,rtnSize-8);
             pvalue[::strlen(ploc)] =0;
+            break;
+
+        case GetCur:
+            ::strncpy(pvalue,recBuf,7);
+            pvalue[7] =0;
+            value = strtod(pvalue,NULL);
+            ::strcpy(pvalue,"AMPS");
             break;
 
         case GetVolt:
