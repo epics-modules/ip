@@ -30,16 +30,16 @@ device(ao,VME_IO,devAoEurotherm,"asyn ao Eurotherm")
 device(stringout,VME_IO,devSoEurotherm,"asyn so Eurotherm")
 
 # MKS vacuum gauge controller
-device(ai,VME_IO,devAiMKS,"HPS SensaVac 937")
+device(ai,INST_IO,devAiMKS,"HPS SensaVac 937")
 
 # MPC ion pump controller
-#device(ai,VME_IO,devAiMPC,"MPC via MPF")
-#device(ao,VME_IO,devAoMPC,"MPC via MPF")
-#device(bi,VME_IO,devBiMPC,"MPC via MPF")
-#device(bo,VME_IO,devBoMPC,"MPC via MPF")
-#device(mbbo,VME_IO,devMbboMPC,"MPC via MPF")
-#device(stringin,VME_IO,devSiMPC,"MPC via MPF")
-#device(stringout,VME_IO,devSoMPC,"MPC via MPF")
+device(ai,INST_IO,devAiMPC,"asyn MPC")
+device(ao,INST_IO,devAoMPC,"asyn MPC")
+device(bi,INST_IO,devBiMPC,"asyn MPC")
+device(bo,INST_IO,devBoMPC,"asyn MPC")
+device(mbbo,INST_IO,devMbboMPC,"asyn MPC")
+device(stringin,INST_IO,devSiMPC,"asyn MPC")
+device(stringout,INST_IO,devSoMPC,"asyn MPC")
 
 # GP307 GPIB
 device(ai,GPIB_IO,devAiGP307Gpib,"Vg307 GPIB Instrument")
