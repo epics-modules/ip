@@ -2,17 +2,15 @@
 #
 #  Written by Mark Rivers, 04-Mar-2001
 #
-#  MPF serial servers are assumed to be named $(SERVER)
 #  Parameters
 #   $(P)        PV name prefix (e.g. 13IDA:)
 #   $(TSP)      PV name for this specific TSP (e.g. tsp1:)
-#   $(C)        MPF server number id (typically 0 for local, 1 for remote)
-#   $(SERVER)   MPF server name
+#   $(PORT)     asyn PORT name
 #   $(PA)       Pump address (0-255)
 record(stringin,"$(P)$(TSP):TSP_STAT") {
-	field(DTYP,"MPC via MPF")
+	field(DTYP,"asyn MPC")
 	field(SCAN,"5 second")
-	field(INP,"#C$(C) S14 @$(SERVER),$(PA),1")
+        field(INP,"@asyn($(PORT) $(PA))14 1")
         field(FLNK,"$(P)$(TSP):TSP_REMAINING PP MS")
 }
 record(scalcout,"$(P)$(TSP):TSP_REMAINING") {
@@ -40,16 +38,16 @@ record(scalcout,"$(P)$(TSP):TSP_MIN4") {
         field(CALC,"$S(AA,'%*d,1-%*d,2-%*d,3-%*d,4-%d')")
 }
 record(stringout,"$(P)$(TSP):SEND_TIMED") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S32 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))32 1")
 }
 record(bo,"$(P)$(TSP):TSP_OFF") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S33 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))33 1")
 }
 record(mbbo,"$(P)$(TSP):TSP_FIL") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S34 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))34 1")
         field(ZRST,"1")
         field(ZRVL,"1")
         field(ONST,"2")
@@ -60,27 +58,27 @@ record(mbbo,"$(P)$(TSP):TSP_FIL") {
         field(THVL,"4")
 }
 record(bo,"$(P)$(TSP):TSP_CLEAR") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S35 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))35 1")
 }
 record(bo,"$(P)$(TSP):TSP_AUTO_ADV") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S36 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))36 1")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")
 }
 record(bo,"$(P)$(TSP):TSP_CONTINUOUS") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S37 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))37 1")
 }
 record(stringout,"$(P)$(TSP):SEND_SUBLIMATION") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S38 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))38 1")
 }
 record(bo,"$(P)$(TSP):TSP_DEGAS") {
-	field(DTYP,"MPC via MPF")
-	field(OUT,"#C$(C) S39 @$(SERVER),$(PA),1")
+	field(DTYP,"asyn MPC")
+        field(OUT,"@asyn($(PORT) $(PA))39 1")
 }
 record(mbbo,"$(P)$(TSP):TSP_MODE") {
         field(VAL,"2")
