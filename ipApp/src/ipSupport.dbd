@@ -2,6 +2,7 @@
 # RECORD SUPPORT
 ################
 include "serialRecord.dbd"
+include "gpibRecord.dbd"
 
 ################
 # DEVICE SUPPORT
@@ -17,6 +18,7 @@ device(longout,VME_IO,devLoStrParm,"MPF lo stringParm")
 #device(longin,VME_IO,devLiHuberDMC,"Huber DMC 9200")
 
 device(serial,VME_IO,devSerial,"MPF Serial")
+device(gpib,GPIB_IO,devGenericGpib,"asyn GPIB")
 
 device(bi,VME_IO,devBiStrParm,"MPF bi stringParm")
 device(longin,VME_IO,devLiStrParm,"MPF li stringParm")
