@@ -13,6 +13,7 @@ LIBRARY_IOC += ip
 DBDINC += serialRecord
 DBD += ipSupport.dbd
 DBD += ip.dbd
+DBD += ipVX.dbd
 
 ip_SRCS += serialRecord.c
 ip_SRCS += devAiStrParm.cc
