@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
+// Creating
+//
 //
 
 // Author: Tim Mooney (based on code written by Jim Kowalkowski)
@@ -68,7 +71,8 @@ MAKE_LINCONV_DSET(devAoStrParm,AoStrParm::dev_init)
 long AoStrParm::dev_init(void* v)
 {
 	aoRecord* pr = (aoRecord*)v;
-	new AoStrParm((dbCommon*)pr,&(pr->out));
+	AoStrParm *pAoStrParm = new AoStrParm((dbCommon*)pr,&(pr->out));
+	pAoStrParm->bind();
 	return 0;
 }
 

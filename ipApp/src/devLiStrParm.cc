@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
+// Creating
+//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -70,7 +73,8 @@ MAKE_DSET(devLiStrParm,LiStrParm::dev_init)
 long LiStrParm::dev_init(void* v)
 {
 	longinRecord* pr = (longinRecord*)v;
-	new LiStrParm((dbCommon*)pr,&(pr->inp));
+	LiStrParm *pLiStrParm = new LiStrParm((dbCommon*)pr,&(pr->inp));
+	pLiStrParm->bind();
 	return 0;
 }
 

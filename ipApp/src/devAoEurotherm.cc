@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1  2002/01/07 16:06:21  sluiter
+// Copied from synApps R4.3
+//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -69,8 +72,9 @@ MAKE_LINCONV_DSET(devAoEurotherm,AoEurotherm::dev_init)
 long AoEurotherm::dev_init(void* v)
 {
 	aoRecord* pr = (aoRecord*)v;
-	new AoEurotherm((dbCommon*)pr,&(pr->out));
-	return 0;
+	AoEurotherm *pAoEurotherm = new AoEurotherm((dbCommon*)pr,&(pr->out));
+	pAoEurotherm->bind();
+      return 0;
 }
 
 AoEurotherm::AoEurotherm(dbCommon* pr,DBLINK* l) : DevMpf(pr,l,false)

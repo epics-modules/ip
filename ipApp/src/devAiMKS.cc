@@ -116,7 +116,8 @@ MAKE_LINCONV_DSET(devAiMKS,aiMKS::dev_init)
 long aiMKS::dev_init(void* v)
 {
 	aiRecord* pr = (aiRecord*)v;
-	new aiMKS((dbCommon*)pr,&(pr->inp));
+	aiMKS *paiMKS = new aiMKS((dbCommon*)pr,&(pr->inp));
+      paiMKS->bind();
 	return(0);
 }
 

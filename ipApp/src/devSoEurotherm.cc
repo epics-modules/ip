@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1  2002/01/07 16:06:35  sluiter
+// Copied from synApps R4.3
+//
 // Revision 1.3  1995/04/12  16:23:45  jbk
 // new stuff added
 //
@@ -68,7 +71,8 @@ MAKE_DSET(devSoEurotherm,SoEurotherm::dev_init)
 long SoEurotherm::dev_init(void* v)
 {
 	stringoutRecord* pr = (stringoutRecord*)v;
-	new SoEurotherm((dbCommon*)pr,&(pr->out));
+	SoEurotherm *pSoEurotherm = new SoEurotherm((dbCommon*)pr,&(pr->out));
+	pSoEurotherm->bind();
 	return 0;
 }
 

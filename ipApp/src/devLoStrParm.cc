@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1.1.1  2001/07/04 20:04:04  sluiter
+// Creating
+//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -71,7 +74,8 @@ MAKE_DSET(devLoStrParm,Lo::dev_init)
 long Lo::dev_init(void* v)
 {
 	longoutRecord* pr = (longoutRecord*)v;
-	new Lo((dbCommon*)pr,&(pr->out));
+	Lo *pLo = new Lo((dbCommon*)pr,&(pr->out));
+	pLo->bind();
 	return(0);
 }
 

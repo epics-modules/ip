@@ -231,6 +231,7 @@ long DevAiMPC::dev_init(void* v)
 {
     aiRecord* pr = (aiRecord*)v;
     DevMPC* pDevMPC = new DevAiMPC((dbCommon*)pr,&(pr->inp));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -238,6 +239,7 @@ long DevAoMPC::dev_init(void* v)
 {
     aoRecord* pr = (aoRecord*)v;
     DevMPC* pDevMPC = new DevAoMPC((dbCommon*)pr,&(pr->out));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -245,6 +247,7 @@ long DevBiMPC::dev_init(void* v)
 {
     biRecord* pr = (biRecord*)v;
     DevMPC* pDevMPC = new DevBiMPC((dbCommon*)pr,&(pr->inp));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -252,6 +255,7 @@ long DevBoMPC::dev_init(void* v)
 {
     boRecord* pr = (boRecord*)v;
     DevMPC* pDevMPC = new DevBoMPC((dbCommon*)pr,&(pr->out));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -259,6 +263,7 @@ long DevMbboMPC::dev_init(void* v)
 {
     mbboRecord* pr = (mbboRecord*)v;
     DevMPC* pDevMPC = new DevMbboMPC((dbCommon*)pr,&(pr->out));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -266,6 +271,7 @@ long DevSiMPC::dev_init(void* v)
 {
     stringinRecord* pr = (stringinRecord*)v;
     DevMPC* pDevMPC = new DevSiMPC((dbCommon*)pr,&(pr->inp));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -273,6 +279,7 @@ long DevSoMPC::dev_init(void* v)
 {
     stringoutRecord* pr = (stringoutRecord*)v;
     DevMPC* pDevMPC = new DevSoMPC((dbCommon*)pr,&(pr->out));
+    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 

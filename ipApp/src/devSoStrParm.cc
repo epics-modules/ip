@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1.1.1  2001/07/04 20:04:04  sluiter
+// Creating
+//
 // Revision 1.3  1995/04/12  16:23:45  jbk
 // new stuff added
 //
@@ -72,7 +75,8 @@ MAKE_DSET(devSoStrParm,SoStrParm::dev_init)
 long SoStrParm::dev_init(void* v)
 {
 	stringoutRecord* pr = (stringoutRecord*)v;
-	new SoStrParm((dbCommon*)pr,&(pr->out));
+	SoStrParm *pSoStrParm = new SoStrParm((dbCommon*)pr,&(pr->out));
+	pSoStrParm->bind();
 	return(0);
 }
 
