@@ -18,6 +18,7 @@
 #include <recSup.h>
 #include <devSup.h>
 #include <asynDriver.h>
+#include <asynUtils.h>
 #include <asynOctet.h>
 #include <aiRecord.h>
 #include <aoRecord.h>
@@ -37,8 +38,6 @@ typedef enum {recTypeAi, recTypeAo, recTypeBi, recTypeBo,
 
 typedef struct devStrParmPvt {
     asynUser     *pasynUser;
-    asynCommon   *pasynCommon;
-    void         *commonPvt;
     asynOctet    *pasynOctet;
     void         *octetPvt;
     opType       opType;
@@ -67,7 +66,7 @@ typedef struct dsetStrParm{
         DEVSUPFUN convert;
 } dsetStrParm;
 
-static long initCommon(dbCommon *pr, DBLINK *plinki, 
+static long initCommon(dbCommon *pr, DBLINK *plink, 
                        opType ot, recType rt, char *format);
 static long startIOCommon(dbCommon *pr);
 static long completeIOCommon(dbCommon *pr);
@@ -111,29 +110,14 @@ epicsExportAddress(dset,devSoStrParm);
 static long initCommon(dbCommon *pr, DBLINK *plink, 
                        opType ot, recType rt, char *format)
 {
-   char port[100];
+   char *p, *port, *userParam;
    int i;
-   int addr;
-   char *p;
+   int card, signal;
    asynUser *pasynUser=NULL;
-   asynStatus status=asynSuccess;
+   asynStatus status;
    asynInterface *pasynInterface;
    devStrParmPvt *pPvt=NULL;
-   struct vmeio *pio=(struct vmeio*)&(plink->value);
    
-
-   /* Fetch the port field */
-   if(plink->type!=VME_IO) {
-      errlogPrintf("%s INP is not a vme link\n",pr->name);
-      goto bad;
-   }
-   /* first field of parm is always the port name */
-   for(i=0; pio->parm[i] && pio->parm[i]!=',' && pio->parm[i]!=' ' 
-                         && i<100; i++) 
-      port[i]=pio->parm[i];
-   port[i]='\0';
-   addr = pio->card;
-
    /* Allocate private structure */
    pPvt = calloc(1, sizeof(devStrParmPvt));
    pPvt->opType = ot;
@@ -142,12 +126,18 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    /* Create an asynUser */
    pasynUser = pasynManager->createAsynUser(devStrParmCallback, 0);
    pasynUser->userPvt = pr;
-   status = pasynManager->connectDevice(pasynUser,port,addr);
+
+   /* Parse link */
+   status = pasynUtils->parseVmeIo(pasynUser, plink, &card, &signal, 
+                                   &port, &userParam);
+   if (status != asynSuccess) {
+      errlogPrintf("devXxStrParm::initCommon %s bad link %s\n",
+                   pr->name, pasynUser->errorMessage);
+      goto bad;
+   }
+
+   status = pasynManager->connectDevice(pasynUser,port,card);
    if(status!=asynSuccess) goto bad;
-   pasynInterface = pasynManager->findInterface(pasynUser,asynCommonType,1);
-   if(!pasynInterface) goto bad;
-   pPvt->pasynCommon = (asynCommon *)pasynInterface->pinterface;
-   pPvt->commonPvt = pasynInterface->drvPvt;
    pasynInterface = pasynManager->findInterface(pasynUser,asynOctetType,1);
    if(!pasynInterface) goto bad;
    pPvt->pasynOctet = (asynOctet *)pasynInterface->pinterface;
@@ -158,7 +148,7 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    /* Initialize parameters */
    strcpy(pPvt->term, "\r\n");
    pPvt->termlen=2;
-   pPvt->bufferStartIndex = pio->signal;
+   pPvt->bufferStartIndex = signal;
    pPvt->timeout=1.0;
    pPvt->nchar=100;
    if (pr->desc[0]) {
@@ -168,10 +158,10 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
    }
 
    /* Get any configurable parameters from parm field */
-   if (pio) {
+   if (userParam) {
       asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-               "XxStrParm::initCommon, pr->parm = '%s'\n", pio->parm);
-      if ((p = strstr(pio->parm, "TERM="))) {
+               "XxStrParm::initCommon, userParam = '%s'\n", userParam);
+      if ((p = strstr(userParam, "TERM="))) {
          pPvt->termlen = 0;
          for (p+=5,i=0; i<9 && isxdigit(p[0]) && isxdigit(p[1]); i++,p+=2) {
             pPvt->term[i] = HEXCHAR2INT(p[0])*16 + HEXCHAR2INT(p[1]);
@@ -182,34 +172,34 @@ static long initCommon(dbCommon *pr, DBLINK *plink,
       pPvt->term[i] = 0;
       }
 
-      if ((p = strstr(pio->parm, "IX="))) {
+      if ((p = strstr(userParam, "IX="))) {
          pPvt->bufferStartIndex = atoi(&p[3]);
       }
 
-      if ((p = strstr(pio->parm, "FMT="))) {
+      if ((p = strstr(userParam, "FMT="))) {
          for (i=0, p+=4; i<31 && *p && *p != ','; i++, p++) pPvt->format[i] = *p;
          pPvt->format[i] = 0;
       }
 
-      if ((p = strstr(pio->parm, "TO="))) {
+      if ((p = strstr(userParam, "TO="))) {
          pPvt->timeout = atof(&p[3]);
       }
 
-      if ((p = strstr(pio->parm, "N="))) {
+      if ((p = strstr(userParam, "N="))) {
          pPvt->nchar = atoi(&p[2]);
       }
 
       pPvt->zerostring[0] = 0;
       pPvt->onestring[0] = 0;
 
-      if ((p = strstr(pio->parm, "0STR="))) {
+      if ((p = strstr(userParam, "0STR="))) {
          for (i=0, p+=5; i<31 && *p && *p != ','; i++, p++) {
             pPvt->zerostring[i] = *p;
          }
          pPvt->zerostring[i] = 0;
       }
  
-      if ((p = strstr(pio->parm, "1STR="))) {
+      if ((p = strstr(userParam, "1STR="))) {
          for (i=0, p+=5; i<31 && *p && *p != ','; i++, p++) {
             pPvt->onestring[i] = *p;
          }
@@ -238,7 +228,7 @@ bad:
    if(pasynUser) pasynManager->freeAsynUser(pasynUser);
    if(pPvt) free(pPvt);
    pr->pact = 1;
-   return -1;
+   return 0;
 }
 
 static long initAi(aiRecord *pr)
