@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen3/GOETZE/epics/synApps_4_5/ioc/kag/kagApp/op/adl/picoMotor_more.adl"
+	name="/home/epics/synApps5-1/ip/ipApp/op/adl/picoMotor_more.adl"
 	version=030000
 }
 display {
@@ -354,8 +354,8 @@ polyline {
 	}
 	display[1] {
 		label="generic serial comms"
-		name="Serial_IO.adl"
-		args="REC=$(P)$(S):$(D):p$(M)_ser"
+		name="asynRecord.adl"
+		args="P=$(P), R=$(S):$(D):p$(M)_ser"
 	}
 	clr=0
 	bclr=17
