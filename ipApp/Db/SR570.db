@@ -452,13 +452,13 @@ record(seq, "$(P)$(A)init1") {
 record(stringout, "$(P)$(A)reset") {
   field(DTYP, "asyn so stringParm")
   field(VAL, "*RST")
-  field(OUT, "#C$(C) S0 @$(PORT)")
+  field(OUT, "#@asyn($(PORT))")
 }
 
 record(stringout, "$(P)$(A)filter_reset") {
   field(DTYP, "asyn so stringParm")
   field(VAL, "ROLD")
-  field(OUT, "#C$(C) S0 @$(PORT)")
+  field(OUT, "#@asyn($(PORT))")
 }
 
 record(transform, "$(P)$(A)sens_calc") {
