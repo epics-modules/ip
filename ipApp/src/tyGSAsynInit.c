@@ -30,7 +30,7 @@ int tyGSAsynInit(char *port, int uart, int channel, int baud, char parity,
    if (index == ERROR) return(ERROR);
    drvAsynSerialPortConfigure(port, port, 0, 0, 0);
 
-   asynConnect(port, port, 0, eomstr, eomstr,  1, 128);
+   asynOctetConnect(port, port, 0, eomstr, eomstr,  1, 128);
 
    /* Port options */
    sprintf(buffer, "%d", baud);
