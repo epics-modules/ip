@@ -371,57 +371,57 @@ grecord(seq,"$(P)$(Dmm)mode_seq") {
 }
 grecord(stringin,"$(P)$(Dmm)general_out") {
 	field(DTYP,"asyn si stringParm")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)dmm_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Dmm_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch9_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch9_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch8_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch8_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch7_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch7_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch6_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch6_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch5_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch5_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch4_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch4_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch3_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch3_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch2_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch2_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)ch1_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch1_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)$(Dmm)units") {
 	field(VAL,"Ohms")
@@ -429,100 +429,100 @@ grecord(stringin,"$(P)$(Dmm)units") {
 grecord(stringin,"$(P)$(Dmm)ch10_get_str") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)$(Dmm)Ch10_raw.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)init_string") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)init_fanout.VAL  PP MS")
 	field(VAL,"*rst")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch1_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch1_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@1)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_dcv") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)vdc_label.PROC  PP MS")
 	field(VAL,":conf:volt:dc")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch1_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch1_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch2_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch2_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@2)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch2_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch2_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch3_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch3_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@3)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch3_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch3_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_acv") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)vac_label.PROC  PP MS")
 	field(VAL,":conf:volt:ac")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_dci") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)idc_label.PROC  PP MS")
 	field(VAL,":conf:curr:dc")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_aci") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)iac_label.PROC  PP MS")
 	field(VAL,":conf:curr:ac")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_ohm4w") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ohms_label.PROC  PP MS")
 	field(VAL,":conf:fres")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_ohm2w") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ohms_label.PROC  PP MS")
 	field(VAL,":conf:res")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch1") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@1)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch2") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@2)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch3") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@3)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_read") {
 	field(DTYP,"asyn so stringParm")
@@ -530,132 +530,132 @@ grecord(stringout,"$(P)$(Dmm)dmm_read") {
 	field(SDIS,"$(P)$(Dmm)done_read.VAL  NPP NMS")
 	field(FLNK,"$(P)$(Dmm)dmm_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)general_input") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)general_out.VAL PP MS")
 	field(VAL,"*rst")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch4") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@4)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch5") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@5)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch6") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@6)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch7") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@7)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch8") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@8)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch9") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@9)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)dmm_clos_ch10") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":rout:clos (@10)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch4_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch4_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@4)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch4_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch4_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch5_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch5_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@5)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch5_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch5_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch6_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch6_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@6)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch6_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch6_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch7_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch7_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@7)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch7_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch7_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch8_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch8_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@8)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch8_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch8_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch9_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch9_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@9)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch9_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch9_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch10_close") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch10_send_read.PROC  PP MS")
 	field(VAL,"rout:clos (@10)")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)ch10_send_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)ch10_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)vdc_label") {
 	field(VAL,"VDC")
@@ -669,25 +669,25 @@ grecord(stringout,"$(P)$(Dmm)conf_freq") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)freq_label.PROC  PP MS")
 	field(VAL,":conf:freq")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempj") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)temp_label.PROC  PP MS")
 	field(VAL,"conf:temp;:temp:tc:type j")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempk") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)temp_label.PROC  PP MS")
 	field(VAL,":conf:temp;:temp:tc:type k")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempt") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(Dmm)temp_label.PROC  PP MS")
 	field(VAL,":conf:temp;:temp:tc:type t")
-	field(OUT,"#C$(C) S0 @$(PORT)")
+	field(OUT,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)$(Dmm)idc_label") {
 	field(VAL,"ADC")

@@ -88,73 +88,73 @@ grecord(seq,"$(P)DP41:$(S):delayC") {
 grecord(stringin,"$(P)DP41:$(S):TempStr") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)DP41:$(S):temp.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(INP,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setK_ROM") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"*W0768")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setK") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayK.VAL  PP MS")
 	field(VAL,"*P0768")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setF_ROM") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"*W0758")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setF") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayF.VAL  PP MS")
 	field(VAL,"*P0758")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setC_ROM") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"*W0748")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):setC") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayC.VAL  PP MS")
 	field(VAL,"*P0748")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendOff_ROM") {
 	field(DTYP,"asyn so stringParm")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendOff_RAM") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayOff.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendHIHI_ROM") {
 	field(DTYP,"asyn so stringParm")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendHIHI_RAM") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayHIHI.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendHIGH_ROM") {
 	field(DTYP,"asyn so stringParm")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):sendHIGH_RAM") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):delayHIGH.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):getTemp_man") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)DP41:$(S):TempStr.VAL  PP MS")
 	field(VAL,"*X04")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)DP41:$(S):getTemp") {
 	field(SCAN,"5 second")
@@ -162,7 +162,7 @@ grecord(stringout,"$(P)DP41:$(S):getTemp") {
 	field(SDIS,"$(P)DP41:$(S):readMode.VAL  PP MS")
 	field(FLNK,"$(P)DP41:$(S):TempStr.VAL  PP MS")
 	field(VAL,"*X04")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(scalcout,"$(P)DP41:$(S):sp_HIHI3") {
 	field(CALC,"(A>=4096)&&(A<25536)?1:0")

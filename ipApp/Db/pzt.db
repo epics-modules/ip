@@ -188,45 +188,45 @@ grecord(calcout,"$(P)pzt2_rdconv2") {
 grecord(stringin,"$(P)pzt1_read_raw") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)pzt1_rdconv1.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringin,"$(P)pzt2_read_raw") {
 	field(DTYP,"asyn si stringParm")
 	field(FLNK,"$(P)pzt2_rdconv1.VAL  PP MS")
-	field(INP,"#C$(C) S0 @$(PORT)")
+	field(INP,"@asyn($(PORT))")
 }
 grecord(stringout,"$(P)pzt1_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)pzt1_read_raw.PROC  PP MS")
 	field(VAL,"N4\nM1\nN0\nN4\n?")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)pzt1_rs232_write") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)pzt1_read.VAL  PP MS")
 	field(DOL,"$(P)pzt1_scalc0.SVAL  PP MS")
 	field(OMSL,"closed_loop")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)pzt2_read") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)pzt2_read_raw.VAL  PP MS")
 	field(VAL,"N4\nM2\nN0\nN4\n?")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)pzt2_rs232_write") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)pzt2_read.VAL  PP MS")
 	field(DOL,"$(P)pzt2_scalc0.SVAL  PP MS")
 	field(OMSL,"closed_loop")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(stringout,"$(P)pzt_init") {
 	field(PINI,"YES")
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"0")
 	field(VAL,"#7\n!QT")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0d")
+	field(OUT,"@asyn($(PORT))TERM=0d")
 }
 grecord(transform,"$(P)pzt1_rdconv3") {
 	field(CLCB,"a*d")

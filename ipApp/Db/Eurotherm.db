@@ -7,38 +7,38 @@
 record(ai, "$(P)ET:trash2") {
   field(DTYP, "asyn ai stringParm")
   field(FLNK, "$(P)ET:RampRateRBV.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
 }
 
 record(ai, "$(P)ET:trash1") {
   field(DTYP, "asyn ai stringParm")
   field(FLNK, "$(P)ET:SetpointReadback.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
 }
 
 record(ai, "$(P)ET:Temperature") {
   field(DTYP, "asyn ai stringParm")
   field(FLNK, "$(P)ET:DoneReading.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
   field(PREC, "3")
 }
 
 record(ai, "$(P)ET:SetpointReadback") {
   field(DTYP, "asyn ai stringParm")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
   field(PREC, "3")
 }
 
 record(ai, "$(P)ET:RampRateRBV") {
   field(DTYP, "asyn ai stringParm")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
   field(PREC, "3")
 }
 
 record(ai, "$(P)ET:trash3") {
   field(DTYP, "asyn ai stringParm")
   field(FLNK, "$(P)ET:Temperature.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),TERM=,IX=3,FMT=%lf,N=10")
+  field(INP, "@asyn($(PORT))TERM=,IX=3,FMT=%lf,N=10")
 }
 
 record(ao, "$(P)ET:Setpoint") {
@@ -47,7 +47,7 @@ record(ao, "$(P)ET:Setpoint") {
   field(DTYP, "<none>")
   field(SDIS, "$(P)ET:ReadTemperature.VAL  NPP MS")
   field(FLNK, "$(P)ET:ack.VAL  PP MS")
-  field(OUT, "#C$(C) S0 @$(PORT),FMT=SL%4.0lf,TERM=03")
+  field(OUT, "@asyn($(PORT))FMT=SL%4.0lf,TERM=03")
   field(PREC, "3")
 }
 
@@ -57,7 +57,7 @@ record(ao, "$(P)ET:RampRate") {
   field(DTYP, "<none>")
   field(SDIS, "$(P)ET:ReadTemperature.VAL  NPP MS")
   field(FLNK, "$(P)ET:ack0.VAL  PP MS")
-  field(OUT, "#C$(C) S0 @$(PORT),FMT=SR%4.0lf,TERM=03")
+  field(OUT, "@asyn($(PORT))FMT=SR%4.0lf,TERM=03")
   field(PREC, "3")
 }
 
@@ -91,13 +91,13 @@ record(fanout, "$(P)ET:readAll") {
 record(stringin, "$(P)ET:ack") {
   field(DTYP, "asyn si stringParm")
   field(FLNK, "$(P)ET:ReadSetpoint.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),N=1")
+  field(INP, "@asyn($(PORT))N=1")
 }
 
 record(stringin, "$(P)ET:ack0") {
   field(DTYP, "asyn si stringParm")
   field(FLNK, "$(P)ET:ReadRampRate.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT),N=1")
+  field(INP, "@asyn($(PORT))N=1")
 }
 
 record(stringout, "$(P)ET:ReadSetpoint") {
@@ -107,7 +107,7 @@ record(stringout, "$(P)ET:ReadSetpoint") {
   field(SDIS, "0")
   field(FLNK, "$(P)ET:trash1.VAL  PP MS")
   field(VAL, "SP")
-  field(OUT, "#C$(C) S0 @$(PORT),TERM=05")
+  field(OUT, "@asyn($(PORT))TERM=05")
 }
 
 record(stringout, "$(P)ET:ReadRampRate") {
@@ -117,7 +117,7 @@ record(stringout, "$(P)ET:ReadRampRate") {
   field(SDIS, "0")
   field(FLNK, "$(P)ET:trash2.VAL  PP MS")
   field(VAL, "SR")
-  field(OUT, "#C$(C) S0 @$(PORT),TERM=05")
+  field(OUT, "@asyn($(PORT))TERM=05")
 }
 
 # Don't execute if processing was started by
@@ -131,7 +131,7 @@ record(stringout, "$(P)ET:QueryTemperature") {
   field(SDIS, "$(P)ET:DoneReading.PACT  NPP MS")
   field(FLNK, "$(P)ET:trash3.VAL  PP MS")
   field(VAL, "PV")
-  field(OUT, "#C$(C) S0 @$(PORT),TERM=05")
+  field(OUT, "@asyn($(PORT))TERM=05")
 }
 
 #! Further lines contain data used by VisualDCT

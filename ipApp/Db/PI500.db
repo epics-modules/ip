@@ -8,7 +8,7 @@ grecord(ao,"$(P)$(S)p1_drive") {
 grecord(ao,"$(P)$(S)p1_sendPOS") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:POS %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p1_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -16,7 +16,7 @@ grecord(ao,"$(P)$(S)p1_sendPOS") {
 grecord(ao,"$(P)$(S)p1_sendVOLT") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly.PROC  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:VOLT %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch1;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p1_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -35,7 +35,7 @@ grecord(ao,"$(P)$(S)p2_drive") {
 grecord(ao,"$(P)$(S)p2_sendPOS") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:POS %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p2_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -43,7 +43,7 @@ grecord(ao,"$(P)$(S)p2_sendPOS") {
 grecord(ao,"$(P)$(S)p2_sendVOLT") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:VOLT %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch2;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p2_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -62,7 +62,7 @@ grecord(ao,"$(P)$(S)p3_drive") {
 grecord(ao,"$(P)$(S)p3_sendPOS") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:POS %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:POS %4.3lf")
 	field(DOL,"$(P)$(S)p3_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -70,7 +70,7 @@ grecord(ao,"$(P)$(S)p3_sendPOS") {
 grecord(ao,"$(P)$(S)p3_sendVOLT") {
 	field(DTYP,"asyn ao stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly.VAL  PP MS")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:VOLT %4.3lf")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100,FMT=inst:sel ch3;SOUR:VOLT %4.3lf")
 	field(DOL,"$(P)$(S)p3_drive.VAL  NPP NMS")
 	field(OMSL,"closed_loop")
 	field(PREC,"3")
@@ -269,60 +269,60 @@ grecord(stringout,"$(P)$(S)local_mode") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)seq_servo_off.VAL  PP MS")
 	field(VAL,"dev:cont loc")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_select_ch1") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)p1_read_dly0.PROC  PP MS")
 	field(VAL,"inst:sel ch1")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_servo_off") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch1;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p1_servo_on") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch1;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_select_ch2") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)p2_read_dly0.VAL  PP MS")
 	field(VAL,"inst:sel ch2")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_servo_off") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch2;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p2_servo_on") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch2;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_select_ch3") {
 	field(DTYP,"asyn so stringParm")
 	field(FLNK,"$(P)$(S)p3_read_dly0.VAL  PP MS")
 	field(VAL,"inst:sel ch3")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_servo_off") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch3;dev:serv off")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)p3_servo_on") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"inst:sel ch3;dev:serv on")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(stringout,"$(P)$(S)remote_mode") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,"dev:cont rem")
-	field(OUT,"#C$(C) S0 @$(PORT),TERM=0a,TO=100")
+	field(OUT,"@asyn($(PORT))TERM=0a,TO=100")
 }
 grecord(asyn,"$(P)$(S)p1_get_position") {
 	field(SDIS,"$(P)$(S)p1_rdbk_enable.VAL  NPP NMS")

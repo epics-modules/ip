@@ -7,7 +7,7 @@
 record(ai, "$(P)ai$(CHAN)") {
   field(DESC, "$(AIFMT)")
   field(DTYP, "asyn ai stringParm")
-  field(INP, "#C$(C) S0 @$(PORT)")
+  field(INP, "@asyn($(PORT))")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
   field(PREC, "6")
 }
@@ -16,7 +16,7 @@ record(ao, "$(P)ao$(CHAN)") {
   field(DESC, "$(AOFMT)")
   field(DTYP, "asyn ao stringParm")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
-  field(OUT, "#C$(C) S0 @$(PORT)")
+  field(OUT, "@asyn($(PORT))")
   field(PREC, "6")
 }
 
@@ -24,14 +24,14 @@ record(longin, "$(P)li$(CHAN)") {
   field(DESC, "$(LIFMT)")
   field(DTYP, "asyn li stringParm")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
-  field(INP, "#C$(C) S0 @$(PORT)")
+  field(INP, "@asyn($(PORT))")
 }
 
 record(longout, "$(P)lo$(CHAN)") {
   field(DESC, "$(LOFMT)")
   field(DTYP, "asyn lo stringParm")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
-  field(OUT, "#C$(C) S0 @$(PORT)")
+  field(OUT, "@asyn($(PORT))")
 }
 
 record(seq, "$(P)sertst$(CHAN)After") {
@@ -43,14 +43,14 @@ record(stringin, "$(P)si$(CHAN)") {
   field(DTYP, "asyn si stringParm")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
   field(VAL, "empty")
-  field(INP, "#C$(C) S0 @$(PORT)")
+  field(INP, "@asyn($(PORT))")
 }
 
 record(stringout, "$(P)so$(CHAN)") {
   field(DTYP, "asyn so stringParm")
   field(FLNK, "$(P)sertst$(CHAN)After.VAL  PP MS")
   field(VAL, "SOtest: hello!")
-  field(OUT, "#C$(C) S0 @$(PORT),TERM=0d0a")
+  field(OUT, "@asyn($(PORT))TERM=0d0a")
 }
 
 #! Further lines contain data used by VisualDCT
