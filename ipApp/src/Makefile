@@ -37,6 +37,10 @@ ip_SRCS += Keithley2kDMM.st
 ip_SRCS += Federal.st
 ip_SRCS += devMPC.cc
 ip_SRCS += ipRegister.c
+ip_SRCS += devGP307gpib.c  
+ip_SRCS += devXxHeidenhainGpib.c      
+ip_SRCS += devXxAX301.c    
+ip_SRCS += devXxKeithleyDMM199Gpib.c 
 ip_SRCS_vxWorks += tyGSMPFInit.c
 
 ip_LIBS += mpf 
