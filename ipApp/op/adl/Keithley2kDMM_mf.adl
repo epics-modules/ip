@@ -1,14 +1,14 @@
 
 file {
-	name="j:\epics\devel\ip\ipApp\op\adl\Keithley2kDMM_mf.adl"
-	version=020306
+	name="C:\Program Files\EPICS\op\adl\ipApp\Keithley2kDMM_mf.adl"
+	version=020303
 }
 display {
 	object {
-		x=75
-		y=35
-		width=420
-		height=170
+		x=216
+		y=69
+		width=400
+		height=150
 	}
 	clr=14
 	bclr=2
@@ -184,13 +184,8 @@ text {
 		height=15
 	}
 	display[0] {
-		label="Multi-channel 1-10"
+		label="Multi-channel screen"
 		name="Keithley2kDMM_full_mf.adl"
-		args="P=$(P), Dmm=$(Dmm)"
-	}
-	display[1] {
-		label="Multi-channel 11-22"
-		name="Keithley2kDMM_11_22_mf.adl"
 		args="P=$(P), Dmm=$(Dmm)"
 	}
 	display[2] {
@@ -257,8 +252,6 @@ rectangle {
 	}
 	align="horiz. right"
 	format="compact"
-	limits {
-	}
 }
 "text update" {
 	object {
@@ -271,8 +264,6 @@ rectangle {
 		chan="$(P)$(Dmm)units.VAL"
 		clr=50
 		bclr=14
-	}
-	limits {
 	}
 }
 "text update" {
@@ -288,8 +279,6 @@ rectangle {
 		bclr=14
 	}
 	align="horiz. right"
-	limits {
-	}
 }
 text {
 	object {
@@ -303,6 +292,20 @@ text {
 	}
 	textix=":"
 	align="horiz. centered"
+}
+"choice button" {
+	object {
+		x=0
+		y=128
+		width=400
+		height=19
+	}
+	control {
+		chan="$(P)$(Dmm)dmm_chan.VAL"
+		clr=0
+		bclr=9
+	}
+	stacking="column"
 }
 polyline {
 	object {
@@ -424,13 +427,13 @@ text {
 	object {
 		x=64
 		y=5
-		width=30
+		width=62
 		height=11
 	}
 	"basic attribute" {
 		clr=0
 	}
-	textix="Model"
+	textix="Model 2000"
 }
 "text entry" {
 	object {
@@ -443,8 +446,6 @@ text {
 		chan="$(P)$(Dmm)Dmm_raw.DESC"
 		clr=14
 		bclr=1
-	}
-	limits {
 	}
 }
 text {
@@ -502,147 +503,4 @@ text {
 	}
 	label="INIT"
 	press_msg="1"
-}
-"text update" {
-	object {
-		x=98
-		y=5
-		width=30
-		height=11
-	}
-	monitor {
-		chan="$(P)$(Dmm)model.VAL"
-		clr=0
-		bclr=14
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=161
-		y=5
-		width=30
-		height=11
-	}
-	"basic attribute" {
-		clr=0
-	}
-	textix="channels"
-}
-"text update" {
-	object {
-		x=136
-		y=5
-		width=20
-		height=11
-	}
-	monitor {
-		chan="$(P)$(Dmm)channels.VAL"
-		clr=0
-		bclr=14
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-composite {
-	object {
-		x=0
-		y=148
-		width=420
-		height=17
-	}
-	"composite name"=""
-	children {
-		"choice button" {
-			object {
-				x=0
-				y=148
-				width=420
-				height=17
-			}
-			control {
-				chan="$(P)$(Dmm)dmm_chan2.VAL"
-				clr=0
-				bclr=9
-			}
-			stacking="column"
-		}
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(Dmm)dmm_ch_range.VAL"
-	}
-}
-composite {
-	object {
-		x=0
-		y=148
-		width=420
-		height=17
-	}
-	"composite name"=""
-	children {
-		"choice button" {
-			object {
-				x=0
-				y=148
-				width=420
-				height=17
-			}
-			control {
-				chan="$(P)$(Dmm)dmm_chan.VAL"
-				clr=0
-				bclr=9
-			}
-			stacking="column"
-		}
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(Dmm)dmm_ch_range.VAL"
-	}
-}
-composite {
-	object {
-		x=10
-		y=123
-		width=164
-		height=21
-	}
-	"composite name"=""
-	children {
-		menu {
-			object {
-				x=92
-				y=123
-				width=82
-				height=21
-			}
-			control {
-				chan="$(P)$(Dmm)dmm_ch_range.VAL"
-				clr=0
-				bclr=9
-			}
-		}
-		text {
-			object {
-				x=10
-				y=129
-				width=65
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="CHANNEL RANGE"
-			align="horiz. centered"
-		}
-	}
-	"dynamic attribute" {
-		vis="calc"
-		calc="A>10"
-		chan="$(P)$(Dmm)channels.VAL"
-	}
 }

@@ -1,6 +1,6 @@
 
 file {
-	name="C:\Program Files\EPICS\op\adl\ipApp\Keithley2kDMM_full_mf.adl"
+	name="j:\epics\R3.13.1\share\ipApp\op\adl\Keithley2kDMM_full_mf.adl"
 	version=020306
 }
 display {
@@ -687,7 +687,7 @@ text {
 }
 menu {
 	object {
-		x=35
+		x=72
 		y=17
 		width=90
 		height=19
@@ -698,9 +698,34 @@ menu {
 		bclr=9
 	}
 }
+menu {
+	object {
+		x=1
+		y=17
+		width=68
+		height=19
+	}
+	control {
+		chan="$(P)$(Dmm)ch_mode_sel.VAL"
+		clr=0
+		bclr=9
+	}
+}
 text {
 	object {
-		x=45
+		x=7
+		y=3
+		width=55
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="FUNCTION"
+}
+text {
+	object {
+		x=82
 		y=3
 		width=72
 		height=13

@@ -1,7 +1,4 @@
 // $Log: not supported by cvs2svn $
-// Revision 1.1.1.1  2001/07/04 20:04:04  sluiter
-// Creating
-//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -78,8 +75,7 @@ MAKE_LINCONV_DSET(devAiHeidND261,AiHeidND261::dev_init)
 long AiHeidND261::dev_init(void* v)
 {
 	aiRecord* pr = (aiRecord*)v;
-	AiHeidND261 *pAiHeidND261 = new AiHeidND261((dbCommon*)pr,&(pr->inp));
-      pAiHeidND261->bind();
+	new AiHeidND261((dbCommon*)pr,&(pr->inp));
 	return 0;
 }
 

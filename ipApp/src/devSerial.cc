@@ -99,8 +99,7 @@ long Serial::dev_init(void* v)
 {
         serialRecord* pr = (serialRecord*)v;
         DEBUG(1, "Serial::dev_init, record=%s\n", pr->name);
-        Serial *pSerial = new Serial((dbCommon*)pr,&(pr->inp));
-        pSerial->bind();
+        new Serial((dbCommon*)pr,&(pr->inp));
         return (0);
 }
 

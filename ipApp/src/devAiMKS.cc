@@ -116,8 +116,7 @@ MAKE_LINCONV_DSET(devAiMKS,aiMKS::dev_init)
 long aiMKS::dev_init(void* v)
 {
 	aiRecord* pr = (aiRecord*)v;
-	aiMKS *paiMKS = new aiMKS((dbCommon*)pr,&(pr->inp));
-      paiMKS->bind();
+	new aiMKS((dbCommon*)pr,&(pr->inp));
 	return(0);
 }
 
@@ -155,7 +154,7 @@ void aiMKS::connectIO(dbCommon *pr, Message *message)
         Char8ArrayMessage *pm;
 
         ConnectMessage *pConnectMessage = (ConnectMessage *)message;
-        DEBUG(2,"aiMKS::connectIO, enter, record=%s, status=%d\n", 
+        DEBUG(5,"aiMKS::connectIO, enter, record=%s, status=%d\n", 
                             pr->name, pConnectMessage->status);
 
         if (pConnectMessage->status != connectYes) goto finish;

@@ -4,8 +4,6 @@
 // Date: 29 April 1999
 // Modifications:
 // Mark Rivers  17-Feb-2001  Added support for TSP and auto-restart
-// Mark Rivers  26-Oct-2002  Fixed problem with reading AMPS on recent MPC
-//                           controllers, they don't send AMPS in the response
 /*
  *****************************************************************
  *                         COPYRIGHT NOTIFICATION
@@ -233,7 +231,6 @@ long DevAiMPC::dev_init(void* v)
 {
     aiRecord* pr = (aiRecord*)v;
     DevMPC* pDevMPC = new DevAiMPC((dbCommon*)pr,&(pr->inp));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -241,7 +238,6 @@ long DevAoMPC::dev_init(void* v)
 {
     aoRecord* pr = (aoRecord*)v;
     DevMPC* pDevMPC = new DevAoMPC((dbCommon*)pr,&(pr->out));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -249,7 +245,6 @@ long DevBiMPC::dev_init(void* v)
 {
     biRecord* pr = (biRecord*)v;
     DevMPC* pDevMPC = new DevBiMPC((dbCommon*)pr,&(pr->inp));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -257,7 +252,6 @@ long DevBoMPC::dev_init(void* v)
 {
     boRecord* pr = (boRecord*)v;
     DevMPC* pDevMPC = new DevBoMPC((dbCommon*)pr,&(pr->out));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -265,7 +259,6 @@ long DevMbboMPC::dev_init(void* v)
 {
     mbboRecord* pr = (mbboRecord*)v;
     DevMPC* pDevMPC = new DevMbboMPC((dbCommon*)pr,&(pr->out));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -273,7 +266,6 @@ long DevSiMPC::dev_init(void* v)
 {
     stringinRecord* pr = (stringinRecord*)v;
     DevMPC* pDevMPC = new DevSiMPC((dbCommon*)pr,&(pr->inp));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -281,7 +273,6 @@ long DevSoMPC::dev_init(void* v)
 {
     stringoutRecord* pr = (stringoutRecord*)v;
     DevMPC* pDevMPC = new DevSoMPC((dbCommon*)pr,&(pr->out));
-    pDevMPC->bind();
     return(pDevMPC->getStatus());
 }
 
@@ -735,19 +726,13 @@ long DevAiMPC::completeIO(dbCommon* pr, Message* m)
     switch (command)
     {
         case GetPres:
+        case GetCur:
             ::strncpy(pvalue,recBuf,7);
             pvalue[7] =0;
             value = strtod(pvalue,NULL);
             ploc=&recBuf[8];
             ::strncpy(pvalue,ploc,rtnSize-8);
             pvalue[::strlen(ploc)] =0;
-            break;
-
-        case GetCur:
-            ::strncpy(pvalue,recBuf,7);
-            pvalue[7] =0;
-            value = strtod(pvalue,NULL);
-            ::strcpy(pvalue,"AMPS");
             break;
 
         case GetVolt:

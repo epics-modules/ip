@@ -1,8 +1,5 @@
 
 // $Log: not supported by cvs2svn $
-// Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
-// Creating
-//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -75,8 +72,7 @@ MAKE_DSET(devBiStrParm,BiStrParm::dev_init)
 long BiStrParm::dev_init(void* v)
 {
 	biRecord* pr = (biRecord*)v;
-	BiStrParm *pBiStrParm = new BiStrParm((dbCommon*)pr,&(pr->inp));
-	pBiStrParm->bind();
+	new BiStrParm((dbCommon*)pr,&(pr->inp));
 	return 0;
 }
 

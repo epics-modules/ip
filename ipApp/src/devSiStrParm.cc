@@ -1,8 +1,5 @@
 
 // $Log: not supported by cvs2svn $
-// Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
-// Creating
-//
 // Revision 1.4  1995/04/12  16:23:44  jbk
 // new stuff added
 //
@@ -80,8 +77,7 @@ MAKE_DSET(devSiStrParm,SiStrParm::dev_init)
 long SiStrParm::dev_init(void* v)
 {
 	stringinRecord* pr = (stringinRecord*)v;
-	SiStrParm *pSiStrParm = new SiStrParm((dbCommon*)pr,&(pr->inp));
-	pSiStrParm->bind();
+	new SiStrParm((dbCommon*)pr,&(pr->inp));
 	return(0);
 }
 
