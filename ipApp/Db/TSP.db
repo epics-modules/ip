@@ -10,7 +10,7 @@
 record(stringin,"$(P)$(TSP):TSP_STAT") {
 	field(DTYP,"asyn MPC")
 	field(SCAN,"5 second")
-        field(INP,"@asyn($(PORT) $(PA))14 1")
+        field(INP,"@asyn($(PORT) $(PA))GET_TSP_STATUS 1")
         field(FLNK,"$(P)$(TSP):TSP_REMAINING PP MS")
 }
 record(scalcout,"$(P)$(TSP):TSP_REMAINING") {
@@ -39,15 +39,15 @@ record(scalcout,"$(P)$(TSP):TSP_MIN4") {
 }
 record(stringout,"$(P)$(TSP):SEND_TIMED") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))32 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_TIMED 1")
 }
 record(bo,"$(P)$(TSP):TSP_OFF") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))33 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_OFF 1")
 }
 record(mbbo,"$(P)$(TSP):TSP_FIL") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))34 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_FILAMENT 1")
         field(ZRST,"1")
         field(ZRVL,"1")
         field(ONST,"2")
@@ -59,26 +59,26 @@ record(mbbo,"$(P)$(TSP):TSP_FIL") {
 }
 record(bo,"$(P)$(TSP):TSP_CLEAR") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))35 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_CLEAR 1")
 }
 record(bo,"$(P)$(TSP):TSP_AUTO_ADV") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))36 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_AUTO_ADVANCE 1")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")
 }
 record(bo,"$(P)$(TSP):TSP_CONTINUOUS") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))37 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_CONTINUOUS 1")
 }
 record(stringout,"$(P)$(TSP):SEND_SUBLIMATION") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))38 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_SUBLIMATION 1")
 }
 record(bo,"$(P)$(TSP):TSP_DEGAS") {
 	field(DTYP,"asyn MPC")
-        field(OUT,"@asyn($(PORT) $(PA))39 1")
+        field(OUT,"@asyn($(PORT) $(PA))SET_TSP_DEGAS 1")
 }
 record(mbbo,"$(P)$(TSP):TSP_MODE") {
         field(VAL,"2")

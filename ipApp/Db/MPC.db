@@ -18,42 +18,42 @@
 record(stringin,"$(P)$(PUMP):STAT") {
 	field(SCAN,"1 second")
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))0 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_STATUS $(PN)")
         field(FLNK,"$(P)$(PUMP):PRES PP MS")
 }
 record(ai,"$(P)$(PUMP):PRES") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))1 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_PRESSURE $(PN)")
         field(FLNK,"$(P)$(PUMP):CUR PP MS")
 }
 record(ai,"$(P)$(PUMP):CUR") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))2 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_CURRENT $(PN)")
         field(FLNK,"$(P)$(PUMP):VOLT PP MS")
 }
 record(ai,"$(P)$(PUMP):VOLT") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"0")
-	field(INP,"@asyn($(PORT) $(PA))3 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_VOLT $(PN)")
 }
 record(ai,"$(P)$(PUMP):SIZE") {
 	field(SCAN,"5 second")
 	field(DTYP,"asyn MPC")
 	field(PREC,"0")
-	field(INP,"@asyn($(PORT) $(PA))4 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SIZE $(PN)")
         field(FLNK,"$(P)$(PUMP):SP1V PP MS")
 }
 record(ai,"$(P)$(PUMP):SP1V") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))5 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPVAL12 $(PN)")
         field(FLNK,"$(P)$(PUMP):SP1S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP1S") {
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))6 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPS12 $(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -62,12 +62,12 @@ record(bi,"$(P)$(PUMP):SP1S") {
 record(ai,"$(P)$(PUMP):SP2V") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))7 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPVAL34 $(PN)")
         field(FLNK,"$(P)$(PUMP):SP2S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP2S") {
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))8 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPS34 $(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -76,12 +76,12 @@ record(bi,"$(P)$(PUMP):SP2S") {
 record(ai,"$(P)$(PUMP):SP3V") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))9 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPVAL56 $(PN)")
         field(FLNK,"$(P)$(PUMP):SP3S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP3S") {
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))10 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPS56 $(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -90,12 +90,12 @@ record(bi,"$(P)$(PUMP):SP3S") {
 record(ai,"$(P)$(PUMP):SP4V") {
 	field(DTYP,"asyn MPC")
 	field(PREC,"1")
-	field(INP,"@asyn($(PORT) $(PA))11 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPVAL78 $(PN)")
         field(FLNK,"$(P)$(PUMP):SP4S PP MS")
 }
 record(bi,"$(P)$(PUMP):SP4S") {
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))12 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_SPS78 $(PN)")
         field(ZSV,"MAJOR")
         field(ZNAM,"Off")
         field(ONAM,"On")
@@ -103,14 +103,14 @@ record(bi,"$(P)$(PUMP):SP4S") {
 }
 record(bi,"$(P)$(PUMP):GAUTOS") {
 	field(DTYP,"asyn MPC")
-	field(INP,"@asyn($(PORT) $(PA))13 $(PN)")
+	field(INP,"@asyn($(PORT) $(PA))GET_AUTO_RESTART $(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")
 }
 record(mbbo,"$(P)$(PUMP):DIS") {
 	field(DTYP,"asyn MPC")
-	field(OUT,"@asyn($(PORT) $(PA))21 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_DISPLAY $(PN)")
         field(ZRVL,"0")
         field(ONVL,"1")
         field(TWVL,"2")
@@ -122,54 +122,54 @@ record(ao,"$(P)$(PUMP):SSIZE") {
 	field(DTYP,"asyn MPC")
         field(OMSL,"supervisory")
 	field(PREC,"0")
-	field(OUT,"@asyn($(PORT) $(PA))22 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_SIZE $(PN)")
 	field(VAL,"30")
 }
 record(ao,"$(P)$(PUMP):SET1") {
 	field(DTYP,"asyn MPC")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"@asyn($(PORT) $(PA))23 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_SP12 $(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET2") {
 	field(DTYP,"asyn MPC")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"@asyn($(PORT) $(PA))24 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_SP34 $(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET3") {
 	field(DTYP,"asyn MPC")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"@asyn($(PORT) $(PA))25 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_SP56 $(PN)")
 	field(VAL,"1.0E-06")
 }
 record(ao,"$(P)$(PUMP):SET4") {
 	field(DTYP,"asyn MPC")
         field(OMSL,"supervisory")
 	field(PREC,"1")
-	field(OUT,"@asyn($(PORT) $(PA))26 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_SP78 $(PN)")
 	field(VAL,"1.0E-06")
 }
 record(bo,"$(P)$(PUMP):STOP") {
 	field(DTYP,"asyn MPC")
-	field(OUT,"@asyn($(PORT) $(PA))27 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_STOP $(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"START")
         field(ONAM,"STOP")
 }
 record(bo,"$(P)$(PUMP):ULCK") {
 	field(DTYP,"asyn MPC")
-	field(OUT,"@asyn($(PORT) $(PA))29 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_UNLOCK $(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"LOCK")
         field(ONAM,"UNLOCK")
 }
 record(bo,"$(P)$(PUMP):SAUTOS") {
 	field(DTYP,"asyn MPC")
-	field(OUT,"@asyn($(PORT) $(PA))31 $(PN)")
+	field(OUT,"@asyn($(PORT) $(PA))SET_AUTO_RESTART $(PN)")
         field(OSV,"MAJOR")
         field(ZNAM,"No")
         field(ONAM,"Yes")
