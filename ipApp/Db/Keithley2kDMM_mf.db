@@ -10,7 +10,7 @@ grecord(bo,"$(P)$(Dmm)init_dmm") {
 grecord(stringout,"$(P)$(Dmm)init_string") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,"*rst")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(bo,"$(P)$(Dmm)done_read") {
 	field(ZNAM,"DONE")
@@ -750,11 +750,11 @@ grecord(stringout,"$(P)$(Dmm)dmm_read") {
 	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(Dmm)dmm_get_str.VAL  PP MS")
 	field(VAL,"read?")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringin,"$(P)$(Dmm)dmm_get_str") {
 	field(DTYP,"MPF si stringParm")
-	field(INP,"#C$(C) S0 @$(SERVER) TO=10000")
+	field(INP,"#C$(C) S0 @$(SERVER),TERM=0a,TO=10000")
 	field(FLNK,"$(P)$(Dmm)read_finished.VAL  PP MS")
 }
 grecord(bo,"$(P)$(Dmm)read_finished") {
@@ -769,59 +769,59 @@ grecord(stringout,"$(P)$(Dmm)general_input") {
 	field(DTYP,"MPF so stringParm")
 	field(FLNK,"$(P)$(Dmm)dmm_get_str.VAL  PP MS")
 	field(VAL,"*rst")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)ch_close") {
 	field(DTYP,"MPF so stringParm")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_dcv") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:volt:dc")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_acv") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:volt:ac")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_dci") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:curr:dc")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_aci") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:curr:ac")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_ohm4w") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:fres")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_ohm2w") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:res")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_freq") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:freq")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempj") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,"conf:temp;:temp:tc:type j")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempk") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:temp;:temp:tc:type k")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
 grecord(stringout,"$(P)$(Dmm)conf_tempt") {
 	field(DTYP,"MPF so stringParm")
 	field(VAL,":conf:temp;:temp:tc:type t")
-	field(OUT,"#C$(C) S0 @$(SERVER)")
+	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a")
 }
