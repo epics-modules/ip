@@ -11,11 +11,30 @@
 ip -Release Notes<br>
 &nbsp;</h1></center>
 
-<h2>Release 2-4, October 7, 2004</h2>
-Tested against base 3.14.6; asyn 3.3+; ipac 2.7a; seq 2.0.8
-<p>Everything converted to use asyn instead of MPF.
+<h2>Release 2-4 December 21, 2004</h2>
+Tested against base 3.14.7; asyn 4.1+; ipac 2.8; seq 2.0.8
+This version of ip will not work with ipac versions lower than 2.8, or asyn versions lower
+than 4.0.
+
+<P>Everything that used serial or GPIB records has been converted to use the
+asyn record.  Everything that used MPF has been converted to use asyn. 
+Some databases have been converted from gdct to VDCT.
+
+<p>st.cmd requires changes.  In ipac 2.8, the argument list for
+tyGSOctalDevCreate() changed.  tyGSAsynInit() is a wrapper around this and
+related calls, and its arg list must also change.  Here's an example of
+the correct syntax:
+
+<pre>tyGSAsynInit("serial1",  "GSIP_OCTAL232", 0, 9600,'N',2,8,'N',"")  /* SRS570 */
+</pre>
 
 
+
+<P>serial_OI_block and GPIB_OI_block have been replaced by deviceCmdReply.
+
+Several devices previously supported in the std module have been moved here,
+including Heidenhain VRZ460, Keithley 199 DMM, and the Queensgate Piezo
+controller.
 
 <h2>Release 2-3, March 3, 2004</h2>
 Tested against base 3.14.5; mpf 2.4.2; ipac 2.7a; seq 2.0.8
