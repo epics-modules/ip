@@ -29,6 +29,7 @@
 #include        <recSup.h>
 #include        <recGbl.h>
 #include        <epicsExport.h>
+#include        "serialRecordDefs.h" 
 #define GEN_SIZE_OFFSET
 #include        <serialRecord.h>
 #undef GEN_SIZE_OFFSET
@@ -95,13 +96,6 @@ struct serialdset { /* serial input dset */
 	DEVSUPFUN	conv; /* Unused */
 	DEVSUPFUN	port_setup; /* Sets port paramters */
 };
-
-static int baud_choices[]={300,600,1200,2400,4800,9600,19200,38400};
-static char parity_choices[]={'N','E','O'};
-static int data_bit_choices[]={5,6,7,8};
-static int stop_bit_choices[]={1,2};
-static char flow_control_choices[]={'N','H'};
-
 
 static void monitor();
 
