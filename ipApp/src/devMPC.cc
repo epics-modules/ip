@@ -709,7 +709,7 @@ long DevMPC::completeIO(dbCommon* pr, Message* m)
 	delete m;
 	return(ERROR);
     }
-    if(rtnSize < 3) {
+    if(rtnSize < 4) {
 	if (devMPCDebug) errlogPrintf("DevMPC::completeIO message too small=%d\n", rtnSize);
 	recGblSetSevr(pr,READ_ALARM,INVALID_ALARM);
 	delete m;
@@ -718,13 +718,14 @@ long DevMPC::completeIO(dbCommon* pr, Message* m)
 
     ::memset(recBuf,0,BufferSize);
     if (devMPCDebug)
-	errlogPrintf("%s command (%d) received (before processing) |%s|\n",pr->name,command,message->value);
+	errlogPrintf("%s command (%d) received (before processing) len=%d, |%s|\n",
+                     pr->name,command,rtnSize,message->value);
     if(message->value[3]=='O' && message->value[4] == 'K') {
-        if (rtnSize < 9 ) {
+        if (rtnSize < 13 ) {
             ::strcpy(recBuf,"OK");
         } else {
             char *pdata = &message->value[9]; // strip off the header cmds.
-            ::strcpy(recBuf,pdata);
+            ::strncpy(recBuf,pdata,rtnSize-13);  // strip off 4 trailing character (space, checksum \r)
         }
     }
     if (devMPCDebug)
