@@ -1,0 +1,115 @@
+grecord(ai,"$(P)ElcomatValues") {
+	field(DTYP,"Elcomat autocollimator")
+	field(FLNK,"$(P)Elcomat_x.PROC  PP MS")
+	field(INP,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(PREC,"2")
+	field(EGU,"arc sec")
+}
+grecord(ai,"$(P)Elcomat_x") {
+	field(DESC,"Y angle")
+	field(FLNK,"$(P)Elcomat_sigx.PROC  PP MS")
+	field(INP,"$(P)ElcomatValues.VAL  NPP NMS")
+	field(PREC,"2")
+	field(EGU,"arc sec")
+	field(HOPR,"1050")
+	field(LOPR,"-1050")
+}
+grecord(ai,"$(P)Elcomat_sigx") {
+	field(DESC,"Y angle")
+	field(FLNK,"$(P)Elcomat_sigy.PROC  PP MS")
+	field(INP,"$(P)ElcomatValues.HOPR  NPP NMS")
+	field(PREC,"4")
+	field(EGU,"arc sec")
+}
+grecord(ai,"$(P)Elcomat_sigy") {
+	field(DESC,"Y angle")
+	field(FLNK,"$(P)Elcomat_y.PROC  PP MS")
+	field(INP,"$(P)ElcomatValues.LOPR  NPP NMS")
+	field(PREC,"4")
+	field(EGU,"arc sec")
+}
+grecord(ai,"$(P)Elcomat_y") {
+	field(DESC,"Y angle")
+	field(FLNK,"$(P)Elcomat_n.PROC  PP MS")
+	field(INP,"$(P)ElcomatValues.SVAL  NPP NMS")
+	field(PREC,"2")
+	field(EGU,"arc sec")
+	field(HOPR,"1050")
+	field(LOPR,"-1050")
+}
+grecord(ai,"$(P)Elcomat_n") {
+	field(DESC,"Y angle")
+	field(INP,"$(P)ElcomatValues.RVAL  NPP NMS")
+	field(HOPR,"100")
+}
+grecord(ao,"$(P)ElcomatMeasTime") {
+	field(PINI,"YES")
+	field(OUT,"$(P)ElcomatSeq.DLY4  PP MS")
+	field(DOL,"1")
+	field(PREC,"3")
+	field(DRVH,"2.3")
+	field(DRVL,"0.35")
+}
+grecord(bo,"$(P)Elcomat") {
+	field(FLNK,"$(P)ElcomatSeq.PROC  PP MS")
+	field(ZNAM,"Done")
+	field(ONAM,"Read")
+}
+grecord(bo,"$(P)ElcomatScan") {
+	field(OMSL,"closed_loop")
+	field(DOL,"1")
+	field(OUT,"$(P)Elcomat.VAL  PP MS")
+	field(ZNAM,"One shot")
+	field(ONAM,"Continuous")
+}
+grecord(longout,"$(P)ElcomatStop") {
+	field(DTYP,"Elcomat autocollimator")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(DOL,"16")
+}
+grecord(longout,"$(P)ElcomatStart") {
+	field(DTYP,"Elcomat autocollimator")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(DOL,"64")
+}
+grecord(longout,"$(P)ElcomatStartVal") {
+	field(DOL,"64")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)ElcomatStopVal") {
+	field(DOL,"16")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)ElcomatReset") {
+	field(DTYP,"Elcomat autocollimator")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(OMSL,"closed_loop")
+}
+grecord(longout,"$(P)ElcomatDo") {
+	field(DTYP,"Elcomat autocollimator")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+}
+grecord(longout,"$(P)ElcomatReset1") {
+	field(DTYP,"Elcomat autocollimator")
+	field(OUT,"#C$(C) S0 @$(IPSLOT)-Serial[$(CHAN)]")
+	field(OMSL,"closed_loop")
+}
+grecord(seq,"$(P)ElcomatSeq") {
+	field(DISV,"0")
+	field(SDIS,"$(P)Elcomat.VAL  NPP NMS")
+	field(PREC,"3")
+	field(DLY1,"0.1")
+	field(LNK1,"$(P)ElcomatReset1.PROC  PP MS")
+	field(DLY2,"0.45")
+	field(DOL2,"$(P)ElcomatStartVal.VAL  NPP NMS")
+	field(DOL3,"$(P)ElcomatStartVal.VAL  NPP NMS")
+	field(LNK3,"$(P)ElcomatStart.VAL  PP MS")
+	field(DLY4,"1")
+	field(DOL4,"$(P)ElcomatStopVal.VAL  NPP NMS")
+	field(LNK4,"$(P)ElcomatStop.VAL  PP MS")
+	field(DLY5,"0.1")
+	field(DOL5,"$(P)ElcomatStopVal.VAL  NPP NMS")
+	field(LNK5,"$(P)ElcomatStop.VAL  PP MS")
+	field(LNK6,"$(P)ElcomatValues.PROC  PP MS")
+	field(LNK7,"$(P)Elcomat.VAL  PP MS")
+}
