@@ -1,5 +1,8 @@
 
 // $Log: not supported by cvs2svn $
+// Revision 1.1.1.1  2001/07/04 20:04:05  sluiter
+// Creating
+//
 // Revision 1.2  1995/03/21  19:44:08  jbk
 // added comments and such
 //
@@ -71,7 +74,8 @@ MAKE_LINCONV_DSET(devAiStrParm,AiStrParm::dev_init)
 long AiStrParm::dev_init(void* v)
 {
         aiRecord* pr = (aiRecord*)v;
-        new AiStrParm((dbCommon*)pr,&(pr->inp));
+        AiStrParm *pAiStrParm = new AiStrParm((dbCommon*)pr,&(pr->inp));
+        pAiStrParm->bind();
         return 0;
 }
 
