@@ -1,0 +1,7 @@
+grecord(gpib,"$(P)$(R)")
+{
+        field(DTYP,"asyn GPIB") 
+	field(IMAX,"$(SIZE)")
+        field(ADDR,"$(ADDR)")
+	field(INP,"#L0 A$(ADDR) @$(PORT)")
+}
