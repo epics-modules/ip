@@ -11,6 +11,14 @@
 ip -Release Notes<br>
 &nbsp;</h1></center>
 
+<h2>Release 2-5 March 29, 2005</h2>
+<p>Fixed bugs in devXxStrParm.c that prevented it working with the asyn address != 0. 
+This meant the previous version would not work with GPIB.  In previous versions the VME "signal"
+parameter was used to indicate a buffer start address for I/O.  No existing databases seem to use
+this feature, and it will no longer work, since the address field is needed for device addressing.</p>
+
+<p>Minor change to appearance of Keithley2kDMM_mf.adl.</p>
+
 <h2>Release 2-4 December 21, 2004</h2>
 Tested against base 3.14.7; asyn 4.1+; ipac 2.8; seq 2.0.8
 This version of ip will not work with ipac versions lower than 2.8, or asyn versions lower
