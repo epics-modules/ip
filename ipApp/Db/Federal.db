@@ -109,15 +109,10 @@ grecord(dfanout,"$(P)Fed:$(S):dfan2") {
 	field(DOL,"$(P)Fed:$(S):display_prec.VAL  NPP MS")
 	field(OMSL,"closed_loop")
 }
-grecord(serial,"$(P)Fed:$(S):serial") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)Fed:$(S):serial") {
 	field(FLNK,"$(P)Fed:$(S):position.VAL  PP MS")
-	field(ODEL,"02")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
-	field(PRTY,"Even")
-	field(DBIT,"7")
-	field(SBIT,"2")
+	field(ODEL,"\002")
+	field(PORT,"$(SERVER)")
 }
 grecord(scalcout,"$(P)Fed:$(S):position") {
 	field(SDIS,"0")

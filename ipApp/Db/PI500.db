@@ -324,56 +324,50 @@ grecord(stringout,"$(P)$(S)remote_mode") {
 	field(VAL,"dev:cont rem")
 	field(OUT,"#C$(C) S0 @$(SERVER),TERM=0a,TO=100")
 }
-grecord(serial,"$(P)$(S)p1_get_position") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p1_get_position") {
 	field(SDIS,"$(P)$(S)p1_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p1_position.PROC  PP MS")
 	field(AOUT,"meas:pos?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S)p1_get_volts") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p1_get_volts") {
 	field(FLNK,"$(P)$(S)p1_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S)p2_get_position") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p2_get_position") {
 	field(SDIS,"$(P)$(S)p2_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p2_position.VAL  PP MS")
 	field(AOUT,"meas:pos?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S)p2_get_volts") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p2_get_volts") {
 	field(FLNK,"$(P)$(S)p2_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S)p3_get_position") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p3_get_position") {
 	field(SDIS,"$(P)$(S)p3_rdbk_enable.VAL  NPP NMS")
 	field(FLNK,"$(P)$(S)p3_position.VAL  PP MS")
 	field(AOUT,"meas:pos?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S)p3_get_volts") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S)p3_get_volts") {
 	field(FLNK,"$(P)$(S)p3_volts.VAL  PP MS")
 	field(AOUT,"meas:volt?")
-	field(ODEL,"10")
-	field(IDEL,"10")
-	field(INP,"#C$(C) S0 @$(SERVER)")
+	field(OEOS,"\n")
+	field(IEOS,"\n")
+	field(PORT,"$(SERVER)")
 }
 grecord(transform,"$(P)$(S)p1_tweak") {
 	field(CLCE,"a?d+c:b?d-c:d")

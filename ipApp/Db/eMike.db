@@ -134,11 +134,10 @@ grecord(bo,"$(P)$(M):initDone")
 	field(DOL,"1")
 	field(OUT,"$(P)$(M):done.VAL PP MS")
 }
-grecord(serial,"$(P)$(M):setup")
+grecord(asyn,"$(P)$(M):setup")
 {
 	field(TMOD,"Read")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"4800")
+	field(PORT,"$(SERVER)")
 }
 grecord(stringin,"$(P)$(M):localReply0")
 {

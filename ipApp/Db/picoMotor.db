@@ -84,60 +84,44 @@ grecord(seq,"$(P)$(S):$(D):pM$(M)_seq") {
 	field(DOL2,"0")
 	field(LNK2,"$(P)$(S):$(D):pM$(M)_movn.VAL  PP MS")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_go") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_go") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_eta.PROC  PP MS")
 	field(AOUT,"go")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_jodo") {
-	field(DTYP,"MPF Serial")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_jodo") {
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_sav") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_sav") {
 	field(AOUT,"sav")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_ser") {
-	field(DTYP,"MPF Serial")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_ser") {
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_sndD") {
-	field(DTYP,"MPF Serial")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndD") {
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_sndM") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndM") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_cmd.PROC  PP MS")
 	field(AOUT,"chl $(D)=$(M)")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_sndp") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndp") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_go.VAL  PP MS")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
-grecord(serial,"$(P)$(S):$(D):pM$(M)_stop") {
-	field(DTYP,"MPF Serial")
+grecord(asyn,"$(P)$(S):$(D):pM$(M)_stop") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_putS.PROC  PP MS")
 	field(AOUT,"hal")
-	field(IDEL,"62")
-	field(INP,"#C$(C) S0 @$(SERVER)")
-	field(BAUD,"19200")
+	field(IEOS,">")
+	field(PORT,"$(SERVER)")
 }
 grecord(transform,"$(P)$(S):$(D):pM$(M)_eta") {
 	field(CLCE,"ABS(C)")
