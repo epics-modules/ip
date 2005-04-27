@@ -395,6 +395,11 @@ static long readAi(aiRecord *pr)
         return(startIOCommon((dbCommon *)pr));
     }
 
+    if (pPvt->status != asynSuccess) {
+        pr->val = 0.;
+        return(2);
+    }
+
     rtnSize = strlen(pPvt->recBuf);
     switch (pPvt->command) {
         case GetPres:
@@ -482,6 +487,12 @@ static long readBi(biRecord *pr)
         buildCommand(pPvt, hexCmd, tempparameter);
         return(startIOCommon((dbCommon *)pr));
     }
+
+    if (pPvt->status != asynSuccess) {
+        pr->rval = 0;
+        return(0);
+    }
+
     rtnSize = strlen(pPvt->recBuf);
     switch (pPvt->command) {
         case GetSpS12:
@@ -529,6 +540,12 @@ static long readSi(stringinRecord *pr)
         }
         return(startIOCommon((dbCommon *)pr));
     }
+
+    if (pPvt->status != asynSuccess) {
+        strcpy(pr->val, "");
+        return(0);
+    }
+
     rtnSize = strlen(pPvt->recBuf);
     if (rtnSize > 39) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
@@ -591,6 +608,7 @@ static long writeAo(aoRecord *pr)
         buildCommand(pPvt, hexCmd, tempparameter);
         return(startIOCommon((dbCommon *)pr));
     }
+    if (pPvt->status != asynSuccess) return(2);
     rtnSize = strlen(pPvt->recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
@@ -665,6 +683,7 @@ static long writeBo(boRecord *pr)
         }
         return(startIOCommon((dbCommon *)pr));
     }
+    if (pPvt->status != asynSuccess) return(0);
     rtnSize = strlen(pPvt->recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
@@ -709,6 +728,7 @@ static long writeMbbo(mbboRecord *pr)
         buildCommand(pPvt, hexCmd, tempparameter);
         return(startIOCommon((dbCommon *)pr));
     }
+    if (pPvt->status != asynSuccess) return(0);
     rtnSize = strlen(pPvt->recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
@@ -744,6 +764,7 @@ static long writeSo(stringoutRecord *pr)
         buildCommand(pPvt, hexCmd, pr->val);
         return(startIOCommon((dbCommon *)pr));
     }
+    if (pPvt->status != asynSuccess) return(0);
     rtnSize = strlen(pPvt->recBuf);
     if (rtnSize > 2) {
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
@@ -777,27 +798,43 @@ static void devMPCCallback(asynUser *pasynUser)
     struct rset *prset = (struct rset *)(pr->rset);
     int nread, nwrite, eomReason;
 
+    memset(pPvt->recBuf, 0, MPC_BUFFER_SIZE);
     pPvt->pasynUser->timeout = MPC_TIMEOUT;
     pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                            pPvt->sendBuf, strlen(pPvt->sendBuf), 
                                            &nwrite);
+    if (pPvt->status != asynSuccess) {
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "devMPC::devMPCCallback write error, status=%d error= %s\n",
+                  pPvt->status, pasynUser->errorMessage);
+        recGblSetSevr(pr, WRITE_ALARM, INVALID_ALARM);
+        goto done;
+    }
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC::devMPCCallback %s nwrite=%d, output=%s\n",
               pr->name, nwrite, pPvt->sendBuf);
     pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                           readBuffer, MPC_BUFFER_SIZE, 
                                           &nread, &eomReason);
+    if (pPvt->status != asynSuccess) {
+        asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                  "devMPC::devMPCCallback read error, status=%d error= %s\n",
+                  pPvt->status, pasynUser->errorMessage);
+        recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
+        goto done;
+    }
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC::devMPCCallback %s nread=%d, input=%s\n",
-              pr->name, nwrite, readBuffer);
+              pr->name, nread, readBuffer);
     if (nread < 4) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devMPC::devMPCCallback %s message too small=%d\n", 
                   pr->name, nread);
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
+        pPvt->status = asynError;
+        goto done;
     }
 
-    memset(pPvt->recBuf, 0, MPC_BUFFER_SIZE);
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC: %s command (%d) received (before processing) len=%d, |%s|\n",
               pr->name, pPvt->command, nread, readBuffer);
@@ -814,6 +851,7 @@ static void devMPCCallback(asynUser *pasynUser)
               "devMPC: %s command (%d) received (after processing) |%s|\n",
               pr->name, pPvt->command, pPvt->recBuf);
 
+    done:
     /* Process the record. This will result in the readX or writeX routine
        being called again, but with pact=1 */
     dbScanLock(pr);
