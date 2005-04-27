@@ -164,10 +164,10 @@ static long initAi(aiRecord *pai)
                       
     /* Read the pressure units (Torr, Pascal, etc.) from the controller
      * Use synchronous I/O since we are in iocInit and it's much simpler */
-    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SU", 3,
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SU", 2,
                                    response, sizeof(response),
                                    TIMEOUT, &nwrite, &nread, &eomReason, NULL);
-    if ((status != asynSuccess) || (nread != 8)) {
+    if ((status != asynSuccess) || (nread != 7)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
                   pai->name, nread, response);
@@ -185,10 +185,10 @@ static long initAi(aiRecord *pai)
      * slot is either empty or a cold-cathode controller.  The other two
      * slots can hold any type of controller board, and for all types 
      * except cold-cathode each board may control one or two gauges. */
-    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SG", 3,
+    status = pasynOctetSyncIO->writeReadOnce(port, 0, "SG", 2,
                                    response, sizeof(response),
                                    TIMEOUT, &nwrite, &nread, &eomReason, NULL);
-    if ((status != asynSuccess) || (nread != 8)) {
+    if ((status != asynSuccess) || (nread != 7)) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devAiMKS ERROR, record=%s, nread=%d, response=\n%s\n",
                   pai->name, nread, response);
@@ -303,7 +303,7 @@ static void callbackAi(asynUser *pasynUser)
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
               "devAiMKS record=%s, len=%d, response=\n%s\n", 
               pai->name, nread, response);
-    if ((status != asynSuccess) || nread != 8) {
+    if ((status != asynSuccess) || nread != 7) {
         recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
         goto finish;
     }
