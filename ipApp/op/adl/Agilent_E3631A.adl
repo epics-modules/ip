@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen23/GOETZE/epics/synApps_R3.13.2_R4.3/kag/kagApp/op/adl/Agilent_E3631A.adl"
-	version=030000
+	name="/home/oxygen3/GOETZE/epics/support_cvs/support/ip/ipApp/op/adl/Agilent_E3631A.adl"
+	version=030004
 }
 display {
 	object {
@@ -534,7 +534,7 @@ text {
 	object {
 		x=17
 		y=231
-		width=77
+		width=100
 		height=38
 	}
 	control {
@@ -545,26 +545,13 @@ text {
 }
 "choice button" {
 	object {
-		x=103
+		x=128
 		y=231
 		width=100
 		height=38
 	}
 	control {
 		chan="$(P)E3631A:$(S):output"
-		clr=0
-		bclr=7
-	}
-}
-"choice button" {
-	object {
-		x=212
-		y=231
-		width=100
-		height=38
-	}
-	control {
-		chan="$(P)E3631A:$(S):scnCtl"
 		clr=0
 		bclr=7
 	}
@@ -985,9 +972,9 @@ composite {
 }
 "related display" {
 	object {
-		x=321
-		y=239
-		width=90
+		x=301
+		y=240
+		width=115
 		height=22
 	}
 	display[0] {
@@ -996,8 +983,8 @@ composite {
 		policy="replace display"
 	}
 	clr=0
-	bclr=7
-	label="-Analog"
+	bclr=63
+	label="-Analog Disp"
 }
 text {
 	object {
