@@ -630,19 +630,13 @@ static long writeBo(boRecord *pr)
     if (!pr->pact) {
         switch (pPvt->command) {
         case SetStart:
+        case SetStop:
             if (pr->val == 0) hexCmd = 0x37; else hexCmd = 0x38;
             buildCommand(pPvt, hexCmd, pPvt->parameter);
             break;
-        case SetStop:
-            hexCmd = 0x38;
-            buildCommand(pPvt, hexCmd, pPvt->parameter);
-            break;
         case SetLock:
-            if (pr->val == 0) hexCmd = 0x44; else hexCmd = 0x45;
-            buildCommand(pPvt, hexCmd, pPvt->parameter);
-            break;
         case SetUnlock:
-            hexCmd = 0x45;
+            if (pr->val == 0) hexCmd = 0x44; else hexCmd = 0x45;
             buildCommand(pPvt, hexCmd, pPvt->parameter);
             break;
         case SetAutoRestart:
