@@ -11,11 +11,19 @@
 ip -Release Notes<br>
 &nbsp;</h1></center>
 
-<h2>Release 2-6 ????, 2005</h2>
+<h2>Release 2-6 Sept. 16, 2005</h2>
 <p>Fixed bugs in devAiMKS.c.  Number of characters to send and receive was incorrect
 since terminators no longer are counted.
-<p>Fixed bugs in devMPC.c.  The IOC was crashing if the MPC was not responding, i.e. powered off or disconnected.
+<p>Fixed bugs in devMPC.c.  
+<ul>
+<li>The IOC was crashing if the MPC was not responding, i.e. powered off or disconnected.
 It now handles write and read errors gracefully.
+<li>The Lock and Start commands had bugs and were not working.  Thanks to Mohan Ramanthan for
+fixing these
+</ul>
+<p>Added support for Pelco 6700 video switch.
+<p>Added support for Stanford Research Systems SR630 thermocouple scanner
+<p>Fixed support for Agilent E3631A
 
 <h2>Release 2-5 March 29, 2005</h2>
 <p>Fixed bugs in devXxStrParm.c that prevented it working with the asyn address != 0. 
