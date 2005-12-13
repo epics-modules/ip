@@ -1,3 +1,7 @@
+# Note: with the older serial record this database set the OEOS string to \002.
+# The asyn record ignores these fields at iocInit, so the terminator strings must be set
+# in the serial port configuration routines.
+
 grecord(ai,"$(P)Fed:$(S):probe_1") {
 	field(DESC,"probe 1 desc.")
 	field(DTYP,"Soft Channel")
@@ -111,7 +115,6 @@ grecord(dfanout,"$(P)Fed:$(S):dfan2") {
 }
 grecord(asyn,"$(P)Fed:$(S):serial") {
 	field(FLNK,"$(P)Fed:$(S):position.VAL  PP MS")
-	field(OEOS,"\002")
 	field(PORT,"$(PORT)")
 }
 grecord(scalcout,"$(P)Fed:$(S):position") {
