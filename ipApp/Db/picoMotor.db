@@ -1,3 +1,7 @@
+# Note: with the older serial record this database set the IEOS string to ">".
+# The asyn record ignores these fields at iocInit, so the terminator strings must be set
+# in the serial port configuration routines.
+
 grecord(ai,"$(P)$(S):$(D):pM$(M)_acc") {
 	field(DTYP,"Soft Channel")
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_clcA.PROC  PP MS")
@@ -87,40 +91,33 @@ grecord(seq,"$(P)$(S):$(D):pM$(M)_seq") {
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_go") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_eta.PROC  PP MS")
 	field(AOUT,"go")
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_jodo") {
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sav") {
 	field(AOUT,"sav")
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_ser") {
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndD") {
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndM") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_cmd.PROC  PP MS")
 	field(AOUT,"chl $(D)=$(M)")
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_sndp") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_go.VAL  PP MS")
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(asyn,"$(P)$(S):$(D):pM$(M)_stop") {
 	field(FLNK,"$(P)$(S):$(D):pM$(M)_putS.PROC  PP MS")
 	field(AOUT,"hal")
-	field(IEOS,">")
 	field(PORT,"$(PORT)")
 }
 grecord(transform,"$(P)$(S):$(D):pM$(M)_eta") {
