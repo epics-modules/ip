@@ -14,8 +14,12 @@ LIBRARY_IOC_DEFAULT += ip
 
 DBD += ipSupport.dbd
 DBD += ipVXSupport.dbd
+ifeq ($(OS_CLASS), WIN32)
+DBD += ipWin32.dbd
+else
 DBD += ip.dbd
 DBD += ipVX.dbd
+endif
 
 ip_SRCS += devXxStrParm.c
 ip_SRCS += devXxEurotherm.c
@@ -25,7 +29,7 @@ ip_SRCS += Keithley2kDMM.st
 ip_SRCS += Federal.st
 ip_SRCS += devMPC.c
 ip_SRCS += devGP307gpib.c  
-ip_SRCS += devXxHeidenhainGpib.c      
+ip_SRCS += devXxHeidenhainGpib.c
 ip_SRCS += devXxAX301.c    
 ip_SRCS += devXxKeithleyDMM199Gpib.c 
 ip_SRCS_vxWorks += tyGSAsynInit.c
@@ -42,9 +46,9 @@ PROD_IOC_solaris = -nil-
 PROD_IOC_DEFAULT = ipApp
 
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
-ipApp_SRCS += ip_registerRecordDeviceDriver.cpp
-ipApp_SRCS_DEFAULT += ipMain.cpp
-ipApp_SRCS_vxWorks += -nil-
+ipApp_SRCS_DEFAULT += ip_registerRecordDeviceDriver.cpp ipMain.cpp
+ipApp_SRCS_WIN32   += ipWin32_registerRecordDeviceDriver.cpp ipMain.cpp
+ipApp_SRCS_vxWorks += ipVX_registerRecordDeviceDriver.cpp
 #The following adds support from base/src/vxWorks
 ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
 
@@ -52,9 +56,6 @@ ipApp_LIBS += ip
 ipApp_LIBS += asyn
 ipApp_LIBS += seq pv
 ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
-
-#===========================
-
 
 #===========================
 
