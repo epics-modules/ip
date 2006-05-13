@@ -27,11 +27,7 @@
 #ifdef NODEBUG
 #define DEBUG(l,f,v...) ;
 #else
-#ifdef __GNUG__
-#define DEBUG(l,f,v...) { if(l<=devEurothermDebug) printf(f ,## v); }
-#else
 #define DEBUG(l,f,v) { if(l<=devEurothermDebug) printf(f,v); }
-#endif
 #endif
 volatile int devEurothermDebug = 0;
  

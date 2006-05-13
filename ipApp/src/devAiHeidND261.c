@@ -29,13 +29,9 @@ static long io(dbCommon* pr);
 static long completeIO(dbCommon* pr);
  
 #ifdef NODEBUG
-#define DEBUG(l,f,v...) ;
-#else
-#ifdef __GNUG__
-#define DEBUG(l,f,v...) { if (l<=devAiHeidND261Debug) printf(f ,## v);}
+#define DEBUG(l,f,v) ;
 #else
 #define DEBUG(l,f,v) { if(l<=devAiHeidND261Debug) printf(f,v); }
-#endif
 #endif
 volatile int devAiHeidND261Debug = 0;
  
