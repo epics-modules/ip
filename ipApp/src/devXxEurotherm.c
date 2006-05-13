@@ -25,7 +25,7 @@
 #include <epicsExport.h>
 
 #ifdef NODEBUG
-#define DEBUG(l,f,v...) ;
+#define DEBUG(l,f,v) ;
 #else
 #define DEBUG(l,f,v) { if(l<=devEurothermDebug) printf(f,v); }
 #endif
