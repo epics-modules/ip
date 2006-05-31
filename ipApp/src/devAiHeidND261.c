@@ -1,6 +1,19 @@
 /*
+FILENAME...	devAiHeidND261.c
+USAGE...	Heidenhain ND261 device support.
+
+Version:	$Revision: 1.4 $
+Modified By:	$Author: sluiter $
+Last Modified:	$Date: 2006-05-31 19:07:33 $
+*/
+
+/*
  * Author: Tim Mooney (based on code written by Mark Rivers)
  * 10/7/04
+ *
+ * Modification Log:
+ * -----------------
+ * .01 05/31/06 rls asyn R4-5 compatible; asyn allows only 2 character EOS.
  */
 
 #include <stdlib.h>
@@ -80,8 +93,8 @@ static long init_record(dbCommon *pr, DBLINK *plink)
 
 	/* initialize configurable parameters */
 	strcpy(pPvt->format, "%lf");  /* format string for sscanf */
-	strcpy(pPvt->term, "\r\n\n"); /* terminator appended by ND261 to return string */
-	pPvt->termlen=3;
+	strcpy(pPvt->term, "\n\n"); /* terminator appended by ND261 to return string */
+	pPvt->termlen=2;
 	pPvt->timeout=1; /* 1 sec */
 	pPvt->nchar=18;
  	pPvt->outbuf[0] = 2;	/* Character ^B to read out ND261 */
@@ -199,7 +212,7 @@ static long completeIO(dbCommon* pr)
 		{ DEBUG(2,"%2.2x ", (unsigned int) *p); }
 	DEBUG(2,"%c\n", '>'); 
  
-	if ((pPvt->status != asynSuccess) || (sz < 15)) {
+	if ((pPvt->status != asynSuccess) || (sz < 14)) {
 		pai->val = 99999.0;
 		pai->udf = 1;
 		return(-1); 
