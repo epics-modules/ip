@@ -1,18 +1,21 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/ipApp/op/adl/HeidEncoder.adl"
-	version=020205
+	name="/APSshare/epics/synApps_cvs/support/ip/ipApp/op/adl/HeidEncoder.adl"
+	version=030004
 }
 display {
 	object {
-		x=10
-		y=10
-		width=200
-		height=100
+		x=754
+		y=749
+		width=220
+		height=117
 	}
 	clr=14
 	bclr=4
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -86,84 +89,156 @@ display {
 }
 "text update" {
 	object {
-		x=30
-		y=20
-		width=100
-		height=20
+		x=5
+		y=50
+		width=170
+		height=30
 	}
 	monitor {
 		chan="$(P)HeidEncoderRead_A$(A).VAL"
-		clr=53
+		clr=54
 		bclr=4
+	}
+	align="horiz. right"
+	limits {
 	}
 }
 "text update" {
 	object {
-		x=30
-		y=46
-		width=100
+		x=194
+		y=23
+		width=25
 		height=20
 	}
 	monitor {
 		chan="$(P)HeidEncoderStatus_A$(A).VAL"
-		clr=53
+		clr=54
 		bclr=4
+	}
+	limits {
 	}
 }
 "message button" {
 	object {
-		x=0
-		y=75
-		width=50
+		x=10
+		y=94
+		width=45
 		height=20
 	}
 	control {
 		chan="$(P)HeidEncoderInit_A$(A).VAL"
 		clr=14
-		bclr=50
+		bclr=51
 	}
 	label="Init"
 	press_msg="1"
 	release_msg="0"
 }
-text {
-	object {
-		x=130
-		y=20
-		width=20
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="deg."
-}
 menu {
 	object {
-		x=100
-		y=70
+		x=124
+		y=94
 		width=90
 		height=20
 	}
 	control {
 		chan="$(P)HeidEncoderRead_A$(A).SCAN"
 		clr=14
-		bclr=50
+		bclr=51
 	}
 }
 "message button" {
 	object {
-		x=50
-		y=75
-		width=40
+		x=73
+		y=94
+		width=45
 		height=20
 	}
 	control {
 		chan="$(P)HeidEncoderRead_A$(A).PROC"
 		clr=14
-		bclr=50
+		bclr=51
 	}
 	label="Read"
 	press_msg="1"
 	release_msg="0"
+}
+text {
+	object {
+		x=194
+		y=2
+		width=22
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(A)"
+}
+text {
+	object {
+		x=143
+		y=7
+		width=47
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="addr:"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=3
+		y=19
+		width=135
+		height=20
+	}
+	control {
+		chan="$(P)HeidEncoderRead_A$(A).DESC"
+		clr=54
+		bclr=2
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=148
+		y=27
+		width=20
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="status:"
+}
+text {
+	object {
+		x=5
+		y=2
+		width=136
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Heid. AWE1024"
+}
+text {
+	object {
+		x=174
+		y=45
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	"dynamic attribute" {
+		chan="30ida:HeidEncoderRead_A1.VAL"
+	}
+	textix="o"
 }
