@@ -1,4 +1,5 @@
 # Modified by MLR 22-APR-1999 to add dmm_delay_read to handle AC volt bug
+# Modified by Arun 08-Feb-2006 to include R-type thermocouple
 grecord(stringin,"$(P)$(Dmm)model") {
 	field(VAL,"2000")
 }
@@ -428,9 +429,14 @@ grecord(mbbo,"$(P)$(Dmm)ch_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
-	field(EIST,"A DC")
-	field(NIST,"A AC")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+	field(TTST,"A DC")
+	field(FTST,"A AC")
 }
 grecord(mbbo,"$(P)$(Dmm)ch1_mode_sel") {
 	field(ZRST,"V DC")
@@ -440,7 +446,14 @@ grecord(mbbo,"$(P)$(Dmm)ch1_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch2_mode_sel") {
 	field(ZRST,"V DC")
@@ -450,7 +463,13 @@ grecord(mbbo,"$(P)$(Dmm)ch2_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch3_mode_sel") {
 	field(ZRST,"V DC")
@@ -460,7 +479,13 @@ grecord(mbbo,"$(P)$(Dmm)ch3_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch4_mode_sel") {
 	field(ZRST,"V DC")
@@ -470,7 +495,13 @@ grecord(mbbo,"$(P)$(Dmm)ch4_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch5_mode_sel") {
 	field(ZRST,"V DC")
@@ -480,7 +511,12 @@ grecord(mbbo,"$(P)$(Dmm)ch5_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
 }
 grecord(mbbo,"$(P)$(Dmm)ch6_mode_sel") {
 	field(ZRST,"V DC")
@@ -490,7 +526,13 @@ grecord(mbbo,"$(P)$(Dmm)ch6_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch7_mode_sel") {
 	field(ZRST,"V DC")
@@ -500,7 +542,13 @@ grecord(mbbo,"$(P)$(Dmm)ch7_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch8_mode_sel") {
 	field(ZRST,"V DC")
@@ -510,7 +558,12 @@ grecord(mbbo,"$(P)$(Dmm)ch8_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
 }
 grecord(mbbo,"$(P)$(Dmm)ch9_mode_sel") {
 	field(ZRST,"V DC")
@@ -520,7 +573,13 @@ grecord(mbbo,"$(P)$(Dmm)ch9_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch10_mode_sel") {
 	field(ZRST,"V DC")
@@ -530,7 +589,13 @@ grecord(mbbo,"$(P)$(Dmm)ch10_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch11_mode_sel") {
 	field(ZRST,"V DC")
@@ -540,7 +605,13 @@ grecord(mbbo,"$(P)$(Dmm)ch11_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch12_mode_sel") {
 	field(ZRST,"V DC")
@@ -550,7 +621,13 @@ grecord(mbbo,"$(P)$(Dmm)ch12_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch13_mode_sel") {
 	field(ZRST,"V DC")
@@ -560,7 +637,13 @@ grecord(mbbo,"$(P)$(Dmm)ch13_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch14_mode_sel") {
 	field(ZRST,"V DC")
@@ -570,7 +653,13 @@ grecord(mbbo,"$(P)$(Dmm)ch14_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch15_mode_sel") {
 	field(ZRST,"V DC")
@@ -580,7 +669,13 @@ grecord(mbbo,"$(P)$(Dmm)ch15_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch16_mode_sel") {
 	field(ZRST,"V DC")
@@ -590,7 +685,13 @@ grecord(mbbo,"$(P)$(Dmm)ch16_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch17_mode_sel") {
 	field(ZRST,"V DC")
@@ -600,7 +701,13 @@ grecord(mbbo,"$(P)$(Dmm)ch17_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch18_mode_sel") {
 	field(ZRST,"V DC")
@@ -610,7 +717,13 @@ grecord(mbbo,"$(P)$(Dmm)ch18_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch19_mode_sel") {
 	field(ZRST,"V DC")
@@ -620,7 +733,13 @@ grecord(mbbo,"$(P)$(Dmm)ch19_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch20_mode_sel") {
 	field(ZRST,"V DC")
@@ -630,7 +749,13 @@ grecord(mbbo,"$(P)$(Dmm)ch20_mode_sel") {
 	field(FRST,"FREQ")
 	field(FVST,"TEMP J")
 	field(SXST,"TEMP K")
-	field(SVST,"TEMP T")
+	field(SVST,"TEMP N")
+	field(EIST,"TEMP T")
+	field(NIST,"TEMP E")
+	field(TEST,"TEMP R")
+	field(ELST,"TEMP S")
+	field(TVST,"TEMP B")
+
 }
 grecord(mbbo,"$(P)$(Dmm)ch21_mode_sel") {
 	field(ZRST,"A DC")
@@ -820,8 +945,36 @@ grecord(stringout,"$(P)$(Dmm)conf_tempk") {
 	field(VAL,":conf:temp;:temp:tc:type k")
 	field(OUT,"@asyn($(PORT))TERM=0a")
 }
+grecord(stringout,"$(P)$(Dmm)conf_tempn") {
+	field(DTYP,"asyn so stringParm")
+	field(VAL,":conf:temp;:temp:tc:type n")
+	field(OUT,"@asyn($(PORT))TERM=0a")
+}
+
 grecord(stringout,"$(P)$(Dmm)conf_tempt") {
 	field(DTYP,"asyn so stringParm")
 	field(VAL,":conf:temp;:temp:tc:type t")
+	field(OUT,"@asyn($(PORT))TERM=0a")
+}
+
+grecord(stringout,"$(P)$(Dmm)conf_tempe") {
+	field(DTYP,"asyn so stringParm")
+	field(VAL,":conf:temp;:temp:tc:type e")
+	field(OUT,"@asyn($(PORT))TERM=0a")
+}
+
+grecord(stringout,"$(P)$(Dmm)conf_tempr") {
+	field(DTYP,"asyn so stringParm")
+	field(VAL,":conf:temp;:temp:tc:type r")
+	field(OUT,"@asyn($(PORT))TERM=0a")
+}
+grecord(stringout,"$(P)$(Dmm)conf_temps") {
+	field(DTYP,"asyn so stringParm")
+	field(VAL,":conf:temp;:temp:tc:type s")
+	field(OUT,"@asyn($(PORT))TERM=0a")
+}
+grecord(stringout,"$(P)$(Dmm)conf_tempb") {
+	field(DTYP,"asyn so stringParm")
+	field(VAL,":conf:temp;:temp:tc:type b")
 	field(OUT,"@asyn($(PORT))TERM=0a")
 }
