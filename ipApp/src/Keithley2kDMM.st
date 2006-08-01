@@ -29,6 +29,7 @@ program Keithley2kDMM ("P=13LAB:, Dmm=DMM1, channels=10, model=2000")
  *                   in the opposite order, because meter closes pairs of switches
  *                   in this mode.
  * 07-NOV-2002 MLR   Added support for single channel selection of channels 11-22.
+ * 18-JUL-2006 MLR   Added support for additional thermocouple types for 2700.
 */
 
 /* This program must be compiled with the recursive option so that multiple copies
@@ -36,7 +37,7 @@ program Keithley2kDMM ("P=13LAB:, Dmm=DMM1, channels=10, model=2000")
 option +r;
 
 #define MAX_CHANNELS 22
-#define NUM_FRONT_MODES 10
+#define NUM_FRONT_MODES 15
 #define NUM_REAR_MODES 8
 %% #include "stdlib.h"
 %% #include "string.h"
@@ -136,7 +137,12 @@ assign dmm_modes to
             "{P}{Dmm}conf_freq.PROC",
             "{P}{Dmm}conf_tempj.PROC",
             "{P}{Dmm}conf_tempk.PROC",
+            "{P}{Dmm}conf_tempn.PROC",
             "{P}{Dmm}conf_tempt.PROC",
+            "{P}{Dmm}conf_tempe.PROC",
+            "{P}{Dmm}conf_tempr.PROC",
+            "{P}{Dmm}conf_temps.PROC",
+            "{P}{Dmm}conf_tempb.PROC",
             "{P}{Dmm}conf_dci.PROC",
             "{P}{Dmm}conf_aci.PROC"};
 
@@ -225,8 +231,14 @@ ss mode_change {
             unit_strings[5] = "DegC";
             unit_strings[6] = "DegC";
             unit_strings[7] = "DegC";
-            unit_strings[8] = "ADC";
-            unit_strings[9] = "AAC";
+            unit_strings[8] = "DegC";
+            unit_strings[9] = "DegC";
+            unit_strings[10] = "DegC";
+            unit_strings[11] = "DegC";
+            unit_strings[12] = "DegC";
+            unit_strings[13] = "ADC";
+            unit_strings[14] = "AAC";
+            
             P = macValueGet("P");
             Dmm = macValueGet("Dmm");
             strcpy(model, macValueGet("model"));
@@ -254,7 +266,7 @@ ss mode_change {
                    and these are the first two choices, different from all other channels
                 */
                 if ((strcmp(model, "2700") == 0) && (i > 19)) {
-                    mode = mode + 8;
+                    mode = mode + 13;
                 }
                 sprintf(ch_units, "%s", unit_strings[mode]);
                 sprintf(pvname, "%s%sch%d_units.VAL", P, Dmm, i+1);
@@ -343,7 +355,7 @@ ss read_meter {
                are the first two choices, different from all other channels
             */
             if ((strcmp(model, "2700") == 0) && (scan_chan > 19)) {
-                mode = mode + 8;
+                mode = mode + 13;
             }
             if (mode != previous_mode) {
                 pvPut(dmm_modes[mode]);
