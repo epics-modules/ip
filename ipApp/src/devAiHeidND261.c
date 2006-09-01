@@ -2,9 +2,9 @@
 FILENAME...	devAiHeidND261.c
 USAGE...	Heidenhain ND261 device support.
 
-Version:	$Revision: 1.4 $
+Version:	$Revision: 1.5 $
 Modified By:	$Author: sluiter $
-Last Modified:	$Date: 2006-05-31 19:07:33 $
+Last Modified:	$Date: 2006-09-01 20:06:24 $
 */
 
 /*
@@ -14,6 +14,7 @@ Last Modified:	$Date: 2006-05-31 19:07:33 $
  * Modification Log:
  * -----------------
  * .01 05/31/06 rls asyn R4-5 compatible; asyn allows only 2 character EOS.
+ * .02 09/01/06 rls init_record() has only one input argument.
  */
 
 #include <stdlib.h>
@@ -36,7 +37,7 @@ Last Modified:	$Date: 2006-05-31 19:07:33 $
 #include <aiRecord.h>
 #include <epicsExport.h>
 
-static long init_record(dbCommon *pr, DBLINK *plink);
+static long init_record(void *);
 static void devAiHeidND261Callback(asynUser *pasynUser);
 static long io(dbCommon* pr);
 static long completeIO(dbCommon* pr);
@@ -79,68 +80,74 @@ typedef struct dsetAiHeidND261 {
 dsetAiHeidND261 devAiHeidND261 = {6,0,0,init_record,0,io,0};
 epicsExportAddress(dset,devAiHeidND261);
 
-static long init_record(dbCommon *pr, DBLINK *plink)
+static long init_record(void *pr)
 {
-	char *port, *userParam;
-	int signal;
-	asynUser *pasynUser=NULL;
-	asynStatus status;
-	asynInterface *pasynInterface;
-	devAiHeidND261Pvt *pPvt=NULL;
+    char *port, *userParam;
+    int signal;
+    asynUser *pasynUser=NULL;
+    asynStatus status;
+    asynInterface *pasynInterface;
+    devAiHeidND261Pvt *pPvt=NULL;
+    struct aiRecord *ai = (struct aiRecord *) pr;
 
-	pPvt = calloc(1, sizeof(devAiHeidND261Pvt));
-	pr->dpvt = pPvt;
+    pPvt = calloc(1, sizeof(devAiHeidND261Pvt));
+    ai->dpvt = pPvt;
 
-	/* initialize configurable parameters */
-	strcpy(pPvt->format, "%lf");  /* format string for sscanf */
-	strcpy(pPvt->term, "\n\n"); /* terminator appended by ND261 to return string */
-	pPvt->termlen=2;
-	pPvt->timeout=1; /* 1 sec */
-	pPvt->nchar=18;
- 	pPvt->outbuf[0] = 2;	/* Character ^B to read out ND261 */
-	pPvt->outbuf[1] = '\n'; /* Terminator for write to ND261 */
+    /* initialize configurable parameters */
+    strcpy(pPvt->format, "%lf");  /* format string for sscanf */
+    strcpy(pPvt->term, "\n\n"); /* terminator appended by ND261 to return string */
+    pPvt->termlen=2;
+    pPvt->timeout=1; /* 1 sec */
+    pPvt->nchar=18;
+    pPvt->outbuf[0] = 2;    /* Character ^B to read out ND261 */
+    pPvt->outbuf[1] = '\n'; /* Terminator for write to ND261 */
 
-	/* Create an asynUser */
-	pasynUser = pasynManager->createAsynUser(devAiHeidND261Callback, 0);
-	pasynUser->userPvt = pr;
+    /* Create an asynUser */
+    pasynUser = pasynManager->createAsynUser(devAiHeidND261Callback, 0);
+    pasynUser->userPvt = ai;
 
-	/* Parse link */
-	status = pasynEpicsUtils->parseLink(pasynUser, plink,
-		&port, &signal, &userParam);
-	if (status != asynSuccess) {
-		errlogPrintf("devAiHeidND261::init %s bad link %s\n",
-			pr->name, pasynUser->errorMessage);
-		goto bad;
-	}
+    /* Parse link */
+    status = pasynEpicsUtils->parseLink(pasynUser, &ai->inp,
+                                        &port, &signal, &userParam);
+    if (status != asynSuccess)
+    {
+        errlogPrintf("devAiHeidND261::init %s bad link %s\n",
+                     ai->name, pasynUser->errorMessage);
+        goto bad;
+    }
 
-	status = pasynManager->connectDevice(pasynUser,port,0);
-	if (status!=asynSuccess) goto bad;
-	pasynInterface = pasynManager->findInterface(pasynUser,asynOctetType,1);
-	if (!pasynInterface) goto bad;
-	pPvt->pasynOctet = (asynOctet *)pasynInterface->pinterface;
-	pPvt->octetPvt = pasynInterface->drvPvt;
-	pPvt->pasynUser = pasynUser;
+    status = pasynManager->connectDevice(pasynUser,port,0);
+    if (status!=asynSuccess)
+        goto bad;
+    pasynInterface = pasynManager->findInterface(pasynUser,asynOctetType,1);
+    if (!pasynInterface)
+        goto bad;
+    pPvt->pasynOctet = (asynOctet *)pasynInterface->pinterface;
+    pPvt->octetPvt = pasynInterface->drvPvt;
+    pPvt->pasynUser = pasynUser;
 
-	asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-		"devAiHeidND261 %s term = '%s'\n", pr->name, pPvt->term);
-	asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-		"   timeout = %d\n", pPvt->timeout);
-	asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-		"   format = %s\n", pPvt->format);
-	asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
-		"   nchar = %s\n", pPvt->nchar);
-	return 0;
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
+              "devAiHeidND261 %s term = '%s'\n", ai->name, pPvt->term);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
+              "   timeout = %d\n", pPvt->timeout);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
+              "   format = %s\n", pPvt->format);
+    asynPrint(pasynUser, ASYN_TRACEIO_DEVICE, 
+              "   nchar = %s\n", pPvt->nchar);
+    return(0);
 
 bad:
-	if (status!=asynSuccess) {
-		asynPrint(pasynUser,ASYN_TRACE_ERROR,
-			"%s asynManager error %s\n",
-			pr->name,pasynUser->errorMessage);
-	}
-	if (pasynUser) pasynManager->freeAsynUser(pasynUser);
-	if (pPvt) free(pPvt);
-	pr->pact = 1;
-	return 0;
+    if (status!=asynSuccess)
+    {
+        asynPrint(pasynUser,ASYN_TRACE_ERROR, "%s asynManager error %s\n",
+                  ai->name,pasynUser->errorMessage);
+    }
+    if (pasynUser)
+        pasynManager->freeAsynUser(pasynUser);
+    if (pPvt)
+        free(pPvt);
+    ai->pact = 1;
+    return(0);
 }
 
 
