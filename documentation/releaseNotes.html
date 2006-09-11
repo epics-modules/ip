@@ -11,10 +11,21 @@
 ip -Release Notes<br>
 &nbsp;</h1></center>
 
-<h2>Release 2-7 Sept. 5, 2006</h2>
-<p>Added support for Newport LAE500 autocollimator
-<p>Added support for additional thermocouple types for Keithley 2700 multimeter
-
+<h2>Release 2-7 Sept. 11, 2006</h2>
+<ul>
+<li>Added support for Newport LAE500 autocollimator
+<li>Added support for additional thermocouple types for Keithley 2700 multimeter
+<li>Databases using asyn serial support no longer set input/output terminator.
+This must now be done in asyn-record configuration.
+<li>HeidVRZ460_encoder.db converted to use asyn
+<li>Keithley2kDMM_mf.db  -- Modified by Arun 08-Feb-2006 to include R-type thermocouple
+<li>Keithley2kDMM_mf20_settings.req -- new file
+<li>Keithley2kDMM_mf_channelN_settings.req now just includes calcout_settings.req
+<li>pzt3.db, pzt_3id.db -- BitBus-based databases deleted.
+<li>Keithley2kDMM.st -- Added support for additional thermocouple types for 2700
+<li>devAiHeidND261.c -- converted to use asyn
+<li>devXxEurotherm.c -- converted to use asyn
+</ul>
 
 <h2>Release 2-6 Sept. 16, 2005</h2>
 <p>Fixed bugs in devAiMKS.c.  Number of characters to send and receive was incorrect
