@@ -1,17 +1,17 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/synApps_5_1/support/ip/cvs/ipApp/op/adl/deviceCmdReply_full.adl"
-	version=030004
+	name="/home/oxygen/MOONEY/epics/synApps/support/ip/ipApp/op/adl/deviceCmdReply_full.adl"
+	version=030101
 }
 display {
 	object {
-		x=459
-		y=41
+		x=320
+		y=39
 		width=430
-		height=750
+		height=740
 	}
 	clr=14
-	bclr=3
+	bclr=2
 	cmap=""
 	gridSpacing=5
 	gridOn=0
@@ -944,31 +944,32 @@ polyline {
 rectangle {
 	object {
 		x=15
-		y=382
+		y=386
 		width=400
 		height=37
 	}
 	"basic attribute" {
 		clr=14
 		fill="outline"
+		width=2
 	}
 }
 text {
 	object {
 		x=20
-		y=394
+		y=387
 		width=60
 		height=20
 	}
 	"basic attribute" {
-		clr=0
+		clr=14
 	}
 	textix="Output"
 }
 "text entry" {
 	object {
 		x=80
-		y=394
+		y=398
 		width=300
 		height=20
 	}
@@ -983,7 +984,7 @@ text {
 text {
 	object {
 		x=380
-		y=385
+		y=389
 		width=30
 		height=10
 	}
@@ -995,144 +996,12 @@ text {
 "text entry" {
 	object {
 		x=380
-		y=394
+		y=398
 		width=30
 		height=20
 	}
 	control {
 		chan="$(P)cmdReply$(N)_do_IO.OEOS"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=20
-		y=434
-		width=68
-		height=20
-	}
-	"basic attribute" {
-		clr=0
-	}
-	textix="Input"
-}
-"text update" {
-	object {
-		x=80
-		y=434
-		width=300
-		height=20
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.AINP"
-		clr=53
-		bclr=1
-	}
-	limits {
-	}
-}
-rectangle {
-	object {
-		x=15
-		y=422
-		width=400
-		height=85
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-}
-text {
-	object {
-		x=20
-		y=462
-		width=70
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Length:"
-}
-text {
-	object {
-		x=288
-		y=465
-		width=50
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Actual:"
-}
-"text update" {
-	object {
-		x=338
-		y=462
-		width=56
-		height=20
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.NORD"
-		clr=53
-		bclr=1
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=100
-		y=465
-		width=70
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Requested:"
-}
-"text entry" {
-	object {
-		x=170
-		y=462
-		width=70
-		height=20
-	}
-	control {
-		chan="$(P)cmdReply$(N)_do_IO.NRRD"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=380
-		y=425
-		width=30
-		height=10
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="TERM"
-}
-"text entry" {
-	object {
-		x=380
-		y=434
-		width=30
-		height=20
-	}
-	control {
-		chan="$(P)cmdReply$(N)_do_IO.IEOS"
 		clr=14
 		bclr=51
 	}
@@ -1241,10 +1110,52 @@ text {
 	bclr=17
 	label="-MORE"
 }
+"related display" {
+	object {
+		x=20
+		y=272
+		width=20
+		height=20
+	}
+	display[0] {
+		name="calcExamples.adl"
+	}
+	clr=0
+	bclr=63
+	label="-?"
+}
+"text update" {
+	object {
+		x=263
+		y=337
+		width=140
+		height=14
+	}
+	monitor {
+		chan="$(P)cmdReply$(N)_do_IO.PORT"
+		clr=54
+		bclr=0
+	}
+	limits {
+	}
+}
+menu {
+	object {
+		x=18
+		y=404
+		width=60
+		height=16
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.OFMT"
+		clr=14
+		bclr=51
+	}
+}
 rectangle {
 	object {
 		x=10
-		y=555
+		y=550
 		width=409
 		height=181
 	}
@@ -1256,7 +1167,7 @@ rectangle {
 menu {
 	object {
 		x=16
-		y=585
+		y=580
 		width=100
 		height=16
 	}
@@ -1269,7 +1180,7 @@ menu {
 "message button" {
 	object {
 		x=125
-		y=585
+		y=580
 		width=40
 		height=20
 	}
@@ -1284,7 +1195,7 @@ menu {
 composite {
 	object {
 		x=330
-		y=585
+		y=580
 		width=70
 		height=20
 	}
@@ -1293,7 +1204,7 @@ composite {
 		text {
 			object {
 				x=330
-				y=591
+				y=586
 				width=45
 				height=10
 			}
@@ -1305,7 +1216,7 @@ composite {
 		"text entry" {
 			object {
 				x=375
-				y=585
+				y=580
 				width=25
 				height=20
 			}
@@ -1322,7 +1233,7 @@ composite {
 rectangle {
 	object {
 		x=15
-		y=562
+		y=557
 		width=399
 		height=20
 	}
@@ -1333,7 +1244,7 @@ rectangle {
 polyline {
 	object {
 		x=15
-		y=582
+		y=577
 		width=399
 		height=3
 	}
@@ -1343,14 +1254,14 @@ polyline {
 		width=3
 	}
 	points {
-		(16,583)
-		(412,583)
+		(16,578)
+		(412,578)
 	}
 }
 text {
 	object {
 		x=15
-		y=562
+		y=557
 		width=399
 		height=20
 	}
@@ -1363,7 +1274,7 @@ text {
 polyline {
 	object {
 		x=10
-		y=555
+		y=550
 		width=409
 		height=182
 	}
@@ -1373,15 +1284,15 @@ polyline {
 		width=2
 	}
 	points {
-		(11,736)
-		(11,556)
-		(418,556)
+		(11,731)
+		(11,551)
+		(418,551)
 	}
 }
 polyline {
 	object {
 		x=10
-		y=555
+		y=550
 		width=409
 		height=182
 	}
@@ -1391,15 +1302,15 @@ polyline {
 		width=2
 	}
 	points {
-		(418,556)
-		(418,736)
-		(11,736)
+		(418,551)
+		(418,731)
+		(11,731)
 	}
 }
 polyline {
 	object {
 		x=15
-		y=560
+		y=555
 		width=399
 		height=3
 	}
@@ -1409,14 +1320,14 @@ polyline {
 		width=3
 	}
 	points {
-		(16,561)
-		(412,561)
+		(16,556)
+		(412,556)
 	}
 }
 text {
 	object {
 		x=21
-		y=612
+		y=607
 		width=100
 		height=10
 	}
@@ -1428,7 +1339,7 @@ text {
 polyline {
 	object {
 		x=15
-		y=610
+		y=605
 		width=399
 		height=1
 	}
@@ -1438,14 +1349,14 @@ polyline {
 		width=1
 	}
 	points {
-		(15,610)
-		(413,610)
+		(15,605)
+		(413,605)
 	}
 }
 text {
 	object {
 		x=40
-		y=632
+		y=627
 		width=80
 		height=10
 	}
@@ -1457,7 +1368,7 @@ text {
 text {
 	object {
 		x=21
-		y=652
+		y=647
 		width=15
 		height=20
 	}
@@ -1469,7 +1380,7 @@ text {
 "text entry" {
 	object {
 		x=43
-		y=649
+		y=644
 		width=205
 		height=20
 	}
@@ -1485,7 +1396,7 @@ text {
 rectangle {
 	object {
 		x=41
-		y=647
+		y=642
 		width=209
 		height=24
 	}
@@ -1502,7 +1413,7 @@ rectangle {
 "text update" {
 	object {
 		x=298
-		y=692
+		y=687
 		width=110
 		height=20
 	}
@@ -1518,7 +1429,7 @@ rectangle {
 polyline {
 	object {
 		x=15
-		y=677
+		y=672
 		width=399
 		height=3
 	}
@@ -1528,14 +1439,14 @@ polyline {
 		width=3
 	}
 	points {
-		(16,678)
-		(412,678)
+		(16,673)
+		(412,673)
 	}
 }
 "text entry" {
 	object {
 		x=41
-		y=692
+		y=687
 		width=255
 		height=20
 	}
@@ -1550,7 +1461,7 @@ polyline {
 text {
 	object {
 		x=91
-		y=682
+		y=677
 		width=200
 		height=10
 	}
@@ -1563,7 +1474,7 @@ text {
 text {
 	object {
 		x=46
-		y=682
+		y=677
 		width=40
 		height=10
 	}
@@ -1580,7 +1491,7 @@ text {
 text {
 	object {
 		x=20
-		y=682
+		y=677
 		width=25
 		height=10
 	}
@@ -1592,7 +1503,7 @@ text {
 text {
 	object {
 		x=296
-		y=682
+		y=677
 		width=100
 		height=10
 	}
@@ -1605,7 +1516,7 @@ text {
 text {
 	object {
 		x=20
-		y=718
+		y=713
 		width=80
 		height=10
 	}
@@ -1617,7 +1528,7 @@ text {
 "text update" {
 	object {
 		x=105
-		y=715
+		y=710
 		width=308
 		height=14
 	}
@@ -1632,7 +1543,7 @@ text {
 "text entry" {
 	object {
 		x=251
-		y=647
+		y=642
 		width=160
 		height=20
 	}
@@ -1647,7 +1558,7 @@ text {
 "text update" {
 	object {
 		x=125
-		y=629
+		y=624
 		width=287
 		height=14
 	}
@@ -1662,7 +1573,7 @@ text {
 text {
 	object {
 		x=21
-		y=627
+		y=622
 		width=15
 		height=20
 	}
@@ -1674,7 +1585,7 @@ text {
 "related display" {
 	object {
 		x=340
-		y=565
+		y=560
 		width=40
 		height=16
 	}
@@ -1690,7 +1601,7 @@ text {
 "related display" {
 	object {
 		x=297
-		y=531
+		y=526
 		width=120
 		height=20
 	}
@@ -1706,7 +1617,7 @@ text {
 text {
 	object {
 		x=25
-		y=515
+		y=510
 		width=55
 		height=14
 	}
@@ -1718,7 +1629,7 @@ text {
 "text entry" {
 	object {
 		x=85
-		y=512
+		y=507
 		width=40
 		height=20
 	}
@@ -1733,7 +1644,7 @@ text {
 text {
 	object {
 		x=125
-		y=515
+		y=510
 		width=25
 		height=14
 	}
@@ -1745,7 +1656,7 @@ text {
 text {
 	object {
 		x=290
-		y=514
+		y=509
 		width=62
 		height=14
 	}
@@ -1757,7 +1668,7 @@ text {
 "text update" {
 	object {
 		x=357
-		y=514
+		y=509
 		width=55
 		height=14
 	}
@@ -1772,7 +1683,7 @@ text {
 composite {
 	object {
 		x=170
-		y=515
+		y=510
 		width=108
 		height=14
 	}
@@ -1781,7 +1692,7 @@ composite {
 		composite {
 			object {
 				x=170
-				y=515
+				y=510
 				width=108
 				height=14
 			}
@@ -1790,7 +1701,7 @@ composite {
 				text {
 					object {
 						x=170
-						y=515
+						y=510
 						width=50
 						height=14
 					}
@@ -1802,7 +1713,7 @@ composite {
 				"text update" {
 					object {
 						x=222
-						y=515
+						y=510
 						width=56
 						height=14
 					}
@@ -1818,73 +1729,225 @@ composite {
 		}
 	}
 }
+"related display" {
+	object {
+		x=20
+		y=687
+		width=20
+		height=20
+	}
+	display[0] {
+		name="calcExamples.adl"
+	}
+	clr=0
+	bclr=63
+	label="-?"
+}
+composite {
+	object {
+		x=86
+		y=531
+		width=180
+		height=14
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=86
+				y=531
+				width=76
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="EOM reason:"
+		}
+		"text update" {
+			object {
+				x=166
+				y=531
+				width=100
+				height=14
+			}
+			monitor {
+				chan="$(P)cmdReply$(N)_do_IO.EOMR"
+				clr=53
+				bclr=1
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=15
+		y=432
+		width=400
+		height=65
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=20
+				y=433
+				width=68
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Input"
+		}
+		"text update" {
+			object {
+				x=80
+				y=444
+				width=300
+				height=20
+			}
+			monitor {
+				chan="$(P)cmdReply$(N)_do_IO.AINP"
+				clr=53
+				bclr=1
+			}
+			limits {
+			}
+		}
+		rectangle {
+			object {
+				x=15
+				y=432
+				width=400
+				height=65
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+				width=2
+			}
+		}
+		text {
+			object {
+				x=20
+				y=472
+				width=70
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Length:"
+		}
+		text {
+			object {
+				x=221
+				y=475
+				width=50
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Actual:"
+		}
+		"text update" {
+			object {
+				x=271
+				y=472
+				width=40
+				height=20
+			}
+			monitor {
+				chan="$(P)cmdReply$(N)_do_IO.NORD"
+				clr=53
+				bclr=1
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=92
+				y=475
+				width=70
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Requested:"
+		}
+		"text entry" {
+			object {
+				x=165
+				y=472
+				width=40
+				height=20
+			}
+			control {
+				chan="$(P)cmdReply$(N)_do_IO.NRRD"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=380
+				y=435
+				width=30
+				height=10
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="TERM"
+		}
+		"text entry" {
+			object {
+				x=380
+				y=444
+				width=30
+				height=20
+			}
+			control {
+				chan="$(P)cmdReply$(N)_do_IO.IEOS"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		menu {
+			object {
+				x=18
+				y=450
+				width=60
+				height=16
+			}
+			control {
+				chan="$(P)cmdReply$(N)_do_IO.IFMT"
+				clr=14
+				bclr=51
+			}
+		}
+	}
+}
 text {
 	object {
-		x=102
-		y=488
-		width=76
+		x=218
+		y=337
+		width=40
 		height=14
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="EOM reason:"
-}
-"text update" {
-	object {
-		x=182
-		y=488
-		width=100
-		height=14
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.EOMR"
-		clr=53
-		bclr=1
-	}
-	limits {
-	}
-}
-"related display" {
-	object {
-		x=20
-		y=272
-		width=20
-		height=20
-	}
-	display[0] {
-		name="calcExamples.adl"
-	}
-	clr=0
-	bclr=63
-	label="-?"
-}
-"related display" {
-	object {
-		x=20
-		y=692
-		width=20
-		height=20
-	}
-	display[0] {
-		name="calcExamples.adl"
-	}
-	clr=0
-	bclr=63
-	label="-?"
-}
-"text update" {
-	object {
-		x=250
-		y=337
-		width=140
-		height=14
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.PORT"
-		clr=54
-		bclr=0
-	}
-	limits {
-	}
+	textix="Port:"
+	align="horiz. right"
 }
