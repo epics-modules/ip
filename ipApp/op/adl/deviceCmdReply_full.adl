@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/ip/ipApp/op/adl/deviceCmdReply_full.adl"
+	name="/home/oxygen4/MOONEY/epics/synApps_T202_E3_14_7_R5_1/support/ip/ipApp/op/adl/deviceCmdReply_full.adl"
 	version=030101
 }
 display {
@@ -1598,22 +1598,6 @@ text {
 	bclr=17
 	label="-MORE"
 }
-"related display" {
-	object {
-		x=297
-		y=526
-		width=120
-		height=20
-	}
-	display[0] {
-		label="Port parameters"
-		name="asynSerialPortSetup.adl"
-		args="P=$(P),R=cmdReply$(N)_do_IO"
-	}
-	clr=0
-	bclr=17
-	label="-Baud rate, etc."
-}
 text {
 	object {
 		x=25
@@ -1950,4 +1934,45 @@ text {
 	}
 	textix="Port:"
 	align="horiz. right"
+}
+"related display" {
+	object {
+		x=324
+		y=527
+		width=90
+		height=20
+	}
+	display[0] {
+		label="asynOctet display"
+		name="asynOctet.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	display[1] {
+		label="Record parameters"
+		name="asynRecord.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	display[2] {
+		label="Register interfaces I/O"
+		name="asynRegister.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	display[3] {
+		label="Serial port parameters"
+		name="asynSerialPortSetup.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	display[4] {
+		label="GPIB parameters"
+		name="asynGPIBSetup.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	display[5] {
+		label="Socket parameters"
+		name="asynSocketSetup.adl"
+		args="P=$(P),R=cmdReply$(N)_do_IO"
+	}
+	clr=0
+	bclr=63
+	label="-I/O details"
 }
