@@ -25,6 +25,10 @@ This must now be done in asyn-record configuration.
 <li>Keithley2kDMM.st -- Added support for additional thermocouple types for 2700
 <li>devAiHeidND261.c -- converted to use asyn
 <li>devXxEurotherm.c -- converted to use asyn
+<li>deviceCmdReply.db -- Now is useable for binary data (i.e., strings that may
+contain unprintable characters, including the null character), and for devices
+that require CRC's or checksums that are implemented in the string-calc software
+(in the calc module).  However, the string-length limitation is still 39 bytes.
 </ul>
 
 <h2>Release 2-6 Sept. 16, 2005</h2>
