@@ -34,13 +34,12 @@ record(scalcout, "$(P)cmdReply$(N)_formatCmd") {
   field(PREC, "5")
 }
 
-
 record(scalcout, "$(P)cmdReply$(N)_chooseInput") {
   field(OUT, "$(P)cmdReply$(N)_parseReply.INAA CA")
   field(PREC, "5")
   field(CALC, "AA+(a?'BINP':'AINP')")
   field(INPA, "$(P)cmdReply$(N)_do_IO.IFMT CP")
-  field(AA, "$(P)cmdReply$(N)_parseReply.")
+  field(AA, "$(P)cmdReply$(N)_do_IO.")
 }
 
 #! Further lines contain data used by VisualDCT
@@ -51,8 +50,8 @@ record(scalcout, "$(P)cmdReply$(N)_chooseInput") {
 #! Field("$(P)cmdReply$(N)_do_IO.TMOD",16777215,1,"$(P)cmdReply$(N)_do_IO.TMOD")
 #! Field("$(P)cmdReply$(N)_do_IO.AINP",16777215,1,"$(P)cmdReply$(N)_do_IO.AINP")
 #! Field("$(P)cmdReply$(N)_do_IO.AOUT",26367,0,"$(P)cmdReply$(N)_do_IO.AOUT")
-#! Connector("$(P)asynOI$(N)/FLNK","$(P)cmdReply$(N)_didRead",560,380,16777215,"",0)
 #! Field("$(P)cmdReply$(N)_do_IO.IFMT",16777215,1,"$(P)cmdReply$(N)_do_IO.IFMT")
+#! Connector("$(P)asynOI$(N)/FLNK","$(P)cmdReply$(N)_didRead",560,380,16777215,"",0)
 #! Visibility("$(P)cmdReply$(N)_do_IO.FLNK",2)
 #! Record("$(P)cmdReply$(N)_didRead",640,281,0,0,"$(P)cmdReply$(N)_didRead")
 #! Field("$(P)cmdReply$(N)_didRead.FLNK",16777215,1,"$(P)cmdReply$(N)_didRead.FLNK")
@@ -84,5 +83,5 @@ record(scalcout, "$(P)cmdReply$(N)_chooseInput") {
 #! Link("$(P)cmdReply$(N)_chooseInput.OUT","$(P)cmdReply$(N)_chooseInput/OUT")
 #! Field("$(P)cmdReply$(N)_chooseInput.INPA",16777215,0,"$(P)cmdReply$(N)_chooseInput.INPA")
 #! Link("$(P)cmdReply$(N)_chooseInput.INPA","$(P)cmdReply$(N)_do_IO.IFMT")
-#! Connector("$(P)cmdReply$(N)_chooseInput/OUT",null,920,420,16777215,"",2)
+#! Connector("$(P)cmdReply$(N)_chooseInput/OUT","$(P)cmdReply$(N)_parseReply.INAA",920,510,16777215,"",2)
 #! Visibility("$(P)cmdReply$(N)_chooseInput.PREC",2)
