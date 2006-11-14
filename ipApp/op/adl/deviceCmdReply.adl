@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/MOONEY/epics/synApps/support/ip/ipApp/op/adl/deviceCmdReply.adl"
+	name="/home/oxygen4/MOONEY/epics/synApps_T202_E3_14_7_R5_1/support/ip/ipApp/op/adl/deviceCmdReply.adl"
 	version=030101
 }
 display {
 	object {
-		x=12
-		y=185
+		x=165
+		y=582
 		width=430
 		height=500
 	}
@@ -1166,7 +1166,7 @@ text {
 	object {
 		x=35
 		y=210
-		width=135
+		width=125
 		height=20
 	}
 	"basic attribute" {
@@ -1207,21 +1207,6 @@ polyline {
 	points {
 		(36,208)
 		(314,208)
-	}
-}
-"text update" {
-	object {
-		x=175
-		y=212
-		width=130
-		height=14
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.PORT"
-		clr=54
-		bclr=0
-	}
-	limits {
 	}
 }
 rectangle {
@@ -1386,4 +1371,32 @@ polyline {
 	}
 	label="*"
 	press_msg="1"
+}
+"text entry" {
+	object {
+		x=205
+		y=210
+		width=100
+		height=17
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.PORT"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=170
+		y=212
+		width=35
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Port:"
+	align="horiz. right"
 }

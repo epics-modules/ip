@@ -1,6 +1,6 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/synApps_T202_E3_14_7_R5_1/support/ip/ipApp/op/adl/deviceCmdReply_full.adl"
+	name="/home/oxygen/MOONEY/epics/synApps/support/ip/ipApp/op/adl/deviceCmdReply_full.adl"
 	version=030101
 }
 display {
@@ -1124,21 +1124,6 @@ text {
 	bclr=63
 	label="-?"
 }
-"text update" {
-	object {
-		x=263
-		y=337
-		width=140
-		height=14
-	}
-	monitor {
-		chan="$(P)cmdReply$(N)_do_IO.PORT"
-		clr=54
-		bclr=0
-	}
-	limits {
-	}
-}
 menu {
 	object {
 		x=18
@@ -1594,6 +1579,11 @@ text {
 		name="yysCalcoutRecord.adl"
 		args="P=$(P),C=cmdReply$(N)_parseReply"
 	}
+	display[1] {
+		label="input calc"
+		name="yysCalcoutRecord.adl"
+		args="P=$(P),C=cmdReply$(N)_chooseInput"
+	}
 	clr=0
 	bclr=17
 	label="-MORE"
@@ -1924,9 +1914,9 @@ composite {
 }
 text {
 	object {
-		x=218
+		x=225
 		y=337
-		width=40
+		width=35
 		height=14
 	}
 	"basic attribute" {
@@ -1975,4 +1965,19 @@ text {
 	clr=0
 	bclr=63
 	label="-I/O details"
+}
+"text entry" {
+	object {
+		x=263
+		y=335
+		width=130
+		height=17
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.PORT"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
 }
