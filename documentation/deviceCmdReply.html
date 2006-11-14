@@ -1,0 +1,264 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body text="#000000" bgcolor="#FFFFFF" link="#0000EE" vlink="#551A8B" alink="#FF0000">
+
+<style type="text/css">
+em {font-style: normal; color: blue }
+</style>
+
+<center><h1>deviceCmdReply</h1></center>
+
+<h2>Introduction</h2>
+
+deviceCmdReply is an EPICS database and associated MEDM display files that can
+be used to integrate, into EPICS, a <i>message based</i> device for which no
+EPICS support has been written.  In other words, it is a mechanism for writing
+and executing small pieces of device support at run time.  A single
+deviceCmdReply database can format and send one command string to a device and
+then, optionally, read and parse one reply string.  Strings are limited to 39
+characters, and may contain any ASCII characters, including the null character,
+They also may contain any checksum or CRC supported by the sCalcout record.
+
+<blockquote font>
+<P>A <i>message based</i> device is one that communicates with its user via
+sequences of bytes -- typically, ASCII character strings.  Message based
+devices typically communicate via serial, gpib, or socket (TCP/IP or UDP/IP)
+interfaces.
+</blockquote>
+
+<P>Another way to look at deviceCmdReply is to regard it as a thin wrapper
+around an EPICS <a
+href="http://www.aps.anl.gov/epics/modules/soft/asyn/R4-6/asynRecord.pdf">asyn
+record<a>. This record provides most of the raw capabilities of deviceCmdReply. 
+Among them are the following:
+
+<P><table border>
+
+<tr>
+<td>write to and read from serial, gpib, or socket interface
+<td>This allows deviceCmdReply to control a wide range of devices.
+
+<tr><td>connect several asyn records to a single port
+
+<td>This allows multiple instances of deviceCmdReply to work together to
+control different aspects of a single device.
+
+<tr>
+<td>disconnect from one port and connect to another port without interfering
+with ongoing port traffic
+
+<td>This permits one to load a small number of deviceCmdReply databases whose
+eventual use may not even be known at load time, and to target as many of those
+databases as are needed at a particular device, to support the required set of
+commands.
+
+<tr>
+<td>modify port configuration at run time
+<td>This allows the user to try, for example, different baud rates and
+handshaking arrangements, to find one that works.
+
+<tr>
+<td>show commands and replies as they actually are sent and received
+<td>This allows the user quickly and efficiently to debug command formatting,
+reply parsing, and interface configuration.
+
+<tr><td>
+<td>
+
+<tr><td><td>
+
+</table>
+
+
+
+<P>Thus, several instances of deviceCmdReply can be targeted at a single device, to
+implement different commands, or read different values.  For example, a
+single deviceCmdReply can periodically read the read-back temperature of a
+temperature controller, while another deviceCmdReply is used to write the
+set point.
+
+<P>deviceCmdReply is part of the synApps <a
+href="http://www.aps.anl.gov/aod/bcda/synApps/ip/ip.html">ip</a> module, and
+uses the EPICS <a href="http://www.aps.anl.gov/epics/modules/soft/asyn">asyn <a>
+module and the synApps <a
+href="http://www.aps.anl.gov/aod/bcda/synApps/calc/calc.html">calc</a> module.
+This documentation assumes version 2.7 of the ip module, version 4.6 or higher
+of asyn, and version 2.6.3 or higher of calc.
+
+<h2>How to deploy deviceCmdReply</h2>
+
+<h3>Building and installation</h3>
+
+The recommended way to build this software is to build synApps, which includes
+it, supports it, and provides an example ioc directory that deploys and uses it.
+It certainly is both possible and practical to build and install only the modules
+required for this particular piece of software, but we don't have the staff to
+write documentation that describes the building and installation of individual
+pieces of synApps.
+
+<h3>Loading into an ioc</h3>
+
+<P>The deviceCmdReply database consists essentially of two sCalcout
+(string-calc-and-output) records -- one to format the command, one to parse the
+reply -- and an asyn record, which performs the actual writing and reading.
+The database is loaded into an ioc with the following example command:
+
+<P><pre>dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db",
+    "P=xxx:,N=1,PORT=serial1,ADDR=0,OMAX=40,IMAX=40")</pre>
+
+<P>where the following macro arguments target or configure the database to a
+specific application:
+
+<dl>
+
+<dt>P=xxx:<dd> defines a short sequence of characters intended to
+distinguish record names in this ioc from the names of similar records
+loaded into some other ioc
+
+<dt>N=1<dd>defines another short sequence of characters intended to distinguish the
+different deviceCmdReply databases loaded into the same ioc from each other
+
+<dt>PORT=serial1<dd> defines the <i>port</i> to which the asyn record will
+connect initially.  (The port can be changed at run time.)
+
+<dt>ADDR=0<dd>ignored unless the port to which the asyn record connects can
+communicate with more than one device.  For example, if the port is a GPIB
+interface, or an RS485 serial interface, ADDR specifies which of several devices
+is to be ritten to or read from.  (The address can be changed at run time.)
+
+<dt>OMAX=40<dd>tells the asyn record how much space to allocate for its
+binary output array BOUT.  This matters only if BOUT is used, which happens
+only if the asyn record's OFMT field is set to "Binary" or "Hybrid".  If
+OFMT is set to "ASCII" (the default), then the AOUT field is used instead
+of BOUT.  AOUT is an EPICS string, with a fixed size of 40 bytes.
+
+<dt>IMAX=40<dd>tells the asyn record how much space to allocate for its
+binary input array BINP.  This matters only if BINP is used, which happens
+only if the asyn record's IFMT field is set to "Binary" or "Hybrid".  If
+IFMT is set to "ASCII" (the default), then the AINP field is used instead
+of BINP. AINP is an EPICS string, with a fixed size of 40 bytes.
+
+</dl>
+
+<P>This database will contain the following records by which the user programs
+the device:
+
+<P><table border>
+<tr><th>full name<th>record type<th>function
+<tr><td><em>xxx:</em>deviceCmdReply<em>n</em>_formatCmd<td>sCalcout<td>build the string to be written to the device
+<tr><td><em>xxx:</em>deviceCmdReply<em>n</em>_do_IO<td>asyn<td>send to/receive from hardware
+<tr><td><em>xxx:</em>deviceCmdReply<em>n</em>_parseReply<td>sCalcout<td>parse reply string
+</table>
+
+<P>where <em>xxx:</em> was specified by the <em>P</em> macro, and
+<em>n</em> was specified by the <em>N</em> macro.
+
+<h3>Arranging for save/restore </h3>
+
+It would be very inconvenient to have to reprogram a set of deviceCmdReply
+databases after every ioc reboot, and because they are designed to be
+programmed by users, on a running ioc, one would like to have the databases
+autosaved.  You can do this by adding the following line to an autosave request file:
+
+<P><pre>deviceCmdReply.req P=$(P),N=1</pre>
+
+<P>where <em>P</em> and <em>N</em> are the same as in the above dbLoadRecords
+command, for each database loaded.
+
+<h3>Loading the user interface</h3>
+
+Several MEDM display files are provided in the modules that together support
+deviceCmdReply.  The ip module contains displays like the one pictured below,
+which are the main user interface for a single instance of deviceCmdReply. 
+These displays contain buttons that call up related displays maintained by the
+calc and asyn modules, which provide detailed control and some user
+documentation for the sCalcout and asyn records used in deviceCmdReply.
+
+<P><center><img src="deviceCmdReply.adl.jpg"></center>
+
+<h2>Programming</h2>
+
+<ol>
+
+<P><li> The first choice to make in the programming of a deviceCmdReply instance is
+the port name that will get us connected to the device we want to control.  Near
+the center of the display, next to the words "Send/Receive", is a text field
+containing the name of the port to which the asyn record is connected.  You can
+change this to any port that supplies an asynOctet interface.
+
+<P><li>The next choice is what input/output operations are to be performed.  The
+asyn record's TMOD field controls this, and provides the following options:
+
+<P><table border>
+<tr><td>Write/Read<td>Send a command and wait for a reply
+<tr><td>Write<td>Send a command
+<tr><td>Read<td>Wait for a reply
+<tr><td>Flush<td>Not used in deviceCmdReply
+<tr><td>NoI/O<td>Useful for testing?
+</table>
+
+<P>When TMOD includes "Write", the first sCalcout record ("...formatCmd") is
+used to format the string to be written.  It places the formatted string into
+the asyn record's AOUT field, and causes the asyn record to process.
+
+<P>When TMOD includes "Read", the second sCalcout record ("...parseReply") is
+processed by the asyn record after the device read has completed.  It retrieves
+the string read by the asyn record from the asyn record's AINP or BINP field,
+depending on the asyn record's IFMT field.  If IFMT = ASCII, then the AINP
+field is used, otherwise the BINP field is used.
+
+<P><li>If the I/O operations include "Write", the next job is to program the
+"...formatCmd" sCalcout record to craft an output command string from the
+information available to it.  The information available to an sCalcout
+record includes any numeric or string value that has been written to one
+of its fields, and the values of any other EPICS PVs to which the sCalcout
+record can connect an input link.
+
+</ol>
+
+<h2>Examples</h2>
+
+<h3>formatting printable output strings</h3>
+
+<h3>formatting unprintable output</h3>
+
+When you get really frustrated with a device, you might be tempted to send it a
+command that would not be repeatable in polite company -- something you'd not
+expect to see printed in the newspaper, for example.  I've cussed out my share
+of devices too, and I understand completely, but that's not what I'm talking
+about here.  By "unprintable", I mean characters like Ctrl-G, and ASCII null,
+that don't show up on your keyboard, and for which there exists no one-character
+ASCII representation.  Null is a particular problem, because it indicates
+end-of-string to the string-parsing software we're using here.
+
+<P>EPICS provides an escape-translation service for strings containing such
+characters, to put their content into a form that can be transported in a
+normal EPICS string.  This allows us to load such strings into a database,
+send them via channel access, autosave them, etc.  For purposes here, the
+service is implemented by the pair of functions dbTranslateEscape(), which
+produces raw binary from a string containing escape sequences, and
+epicsStrSnPrintEscaped(), which does the opposite.  I mention the names only
+so that you will know what to search for in the Application Developer's Guide,
+should you want more information.
+
+
+
+<h3>parsing printable input strings</h3>
+
+<h3>parsing unprintable input</h3>
+
+<P>Parsing unprintable input poses a different sort of problem that formatting
+unprintable output.  Escape translation requires up to four printable
+chanacters to represent a single unprintable character.  Therefore we do not
+want to systematically convert everything to escape sequences, but only to
+convert those values that really need it.  This means we cannot tell parsing
+software how many bytes it should go, into an escaped string, to find an item of
+interest.  We don't know in advance how many characters will be ahead of the
+item, unless we know that all of the leading characters are printable.
+
+</body>
+
+</html>
