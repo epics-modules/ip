@@ -39,8 +39,7 @@ user via sequences of bytes -- typically, ASCII character strings.  Message
 based devices typically communicate via serial, GPIB, or socket (TCP/IP or
 UDP/IP) interfaces.</blockquote>
 
-<P>Another way to look at deviceCmdReply is to regard it as a thin wrapper
-around an EPICS <a
+<P>deviceCmdReply is essentially a wrapper around the EPICS <a
 href="http://www.aps.anl.gov/epics/modules/soft/asyn/R4-6/asynRecord.pdf">asyn
 record<a>.   The deviceCmdReply database consists essentially of two sCalcout
 (string-calc-and-output) records -- one to format the command, one to parse the
