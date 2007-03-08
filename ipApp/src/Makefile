@@ -33,6 +33,7 @@ ip_SRCS += devXxHeidenhainGpib.c
 ip_SRCS += devXxAX301.c    
 ip_SRCS += devXxKeithleyDMM199Gpib.c 
 ip_SRCS_vxWorks += tyGSAsynInit.c
+ip_SRCS += devTelevac.c
 
 ip_LIBS += asyn
 ip_LIBS += seq pv
