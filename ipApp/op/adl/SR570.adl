@@ -1,18 +1,21 @@
 
 file {
-	name="/tmp_mnt/home/sricat/BCDA/epics/3.13.0/baseR3.13.0.beta7_shareR1.0/ipApp/op/adl/SR570_1.2.adl"
-	version=020205
+	name="/APSshare/epics/synApps_cvs/support/ip/ipApp/op/adl/SR570.adl"
+	version=030003
 }
 display {
 	object {
-		x=10
-		y=10
+		x=501
+		y=126
 		width=510
-		height=190
+		height=197
 	}
 	clr=14
 	bclr=2
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -88,39 +91,77 @@ rectangle {
 	object {
 		x=0
 		y=0
-		width=30
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-rectangle {
-	object {
-		x=30
-		y=0
-		width=480
-		height=14
+		width=510
+		height=22
 	}
 	"basic attribute" {
 		clr=0
 	}
 }
+rectangle {
+	object {
+		x=0
+		y=0
+		width=30
+		height=21
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+text {
+	object {
+		x=260
+		y=5
+		width=250
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="SR570 CURRENT PREAMPLIFIER"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=0
+		y=5
+		width=30
+		height=14
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="#$(A)"
+}
+"text entry" {
+	object {
+		x=30
+		y=0
+		width=230
+		height=20
+	}
+	control {
+		chan="$(P)$(A)init.DESC"
+		clr=54
+		bclr=0
+	}
+	limits {
+	}
+}
 composite {
 	object {
 		x=110
-		y=55
+		y=62
 		width=195
 		height=75
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		rectangle {
 			object {
 				x=110
-				y=110
+				y=117
 				width=195
 				height=20
 			}
@@ -132,7 +173,7 @@ composite {
 		text {
 			object {
 				x=110
-				y=55
+				y=62
 				width=195
 				height=14
 			}
@@ -145,7 +186,7 @@ composite {
 		text {
 			object {
 				x=110
-				y=95
+				y=102
 				width=195
 				height=14
 			}
@@ -158,7 +199,7 @@ composite {
 		valuator {
 			object {
 				x=110
-				y=70
+				y=77
 				width=105
 				height=20
 			}
@@ -168,11 +209,13 @@ composite {
 				bclr=51
 			}
 			dPrecision=1.000000
+			limits {
+			}
 		}
 		menu {
 			object {
 				x=215
-				y=70
+				y=77
 				width=90
 				height=20
 			}
@@ -185,7 +228,7 @@ composite {
 		valuator {
 			object {
 				x=110
-				y=110
+				y=117
 				width=85
 				height=20
 			}
@@ -195,11 +238,13 @@ composite {
 				bclr=51
 			}
 			dPrecision=1.000000
+			limits {
+			}
 		}
 		menu {
 			object {
 				x=215
-				y=110
+				y=117
 				width=90
 				height=20
 			}
@@ -214,18 +259,16 @@ composite {
 composite {
 	object {
 		x=335
-		y=15
+		y=22
 		width=90
 		height=35
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		menu {
 			object {
 				x=335
-				y=30
+				y=37
 				width=90
 				height=20
 			}
@@ -238,7 +281,7 @@ composite {
 		text {
 			object {
 				x=335
-				y=15
+				y=22
 				width=90
 				height=14
 			}
@@ -253,7 +296,7 @@ composite {
 "message button" {
 	object {
 		x=345
-		y=109
+		y=116
 		width=65
 		height=20
 	}
@@ -268,7 +311,7 @@ composite {
 "message button" {
 	object {
 		x=345
-		y=85
+		y=92
 		width=65
 		height=20
 	}
@@ -282,19 +325,17 @@ composite {
 }
 composite {
 	object {
-		x=345
-		y=155
+		x=325
+		y=162
 		width=130
 		height=20
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		menu {
 			object {
-				x=405
-				y=155
+				x=385
+				y=162
 				width=70
 				height=20
 			}
@@ -306,8 +347,8 @@ composite {
 		}
 		menu {
 			object {
-				x=345
-				y=155
+				x=325
+				y=162
 				width=60
 				height=20
 			}
@@ -322,7 +363,7 @@ composite {
 menu {
 	object {
 		x=110
-		y=155
+		y=162
 		width=45
 		height=20
 	}
@@ -335,7 +376,7 @@ menu {
 menu {
 	object {
 		x=155
-		y=155
+		y=162
 		width=30
 		height=20
 	}
@@ -348,7 +389,7 @@ menu {
 menu {
 	object {
 		x=185
-		y=155
+		y=162
 		width=50
 		height=20
 	}
@@ -361,7 +402,7 @@ menu {
 menu {
 	object {
 		x=235
-		y=155
+		y=162
 		width=55
 		height=20
 	}
@@ -374,7 +415,7 @@ menu {
 menu {
 	object {
 		x=10
-		y=155
+		y=162
 		width=80
 		height=20
 	}
@@ -387,7 +428,7 @@ menu {
 text {
 	object {
 		x=325
-		y=135
+		y=142
 		width=130
 		height=14
 	}
@@ -400,7 +441,7 @@ text {
 polyline {
 	object {
 		x=440
-		y=15
+		y=22
 		width=5
 		height=135
 	}
@@ -409,14 +450,14 @@ polyline {
 		width=5
 	}
 	points {
-		(442,17)
-		(442,147)
+		(442,24)
+		(442,154)
 	}
 }
 polyline {
 	object {
 		x=315
-		y=15
+		y=22
 		width=5
 		height=174
 	}
@@ -425,14 +466,14 @@ polyline {
 		width=5
 	}
 	points {
-		(317,17)
-		(317,186)
+		(317,24)
+		(317,193)
 	}
 }
 polyline {
 	object {
 		x=409
-		y=17
+		y=24
 		width=46
 		height=10
 	}
@@ -441,14 +482,14 @@ polyline {
 		width=10
 	}
 	points {
-		(414,22)
-		(450,22)
+		(414,29)
+		(450,29)
 	}
 }
 polyline {
 	object {
 		x=310
-		y=67
+		y=74
 		width=151
 		height=10
 	}
@@ -457,14 +498,14 @@ polyline {
 		width=10
 	}
 	points {
-		(315,72)
-		(456,72)
+		(315,79)
+		(456,79)
 	}
 }
 polyline {
 	object {
 		x=440
-		y=67
+		y=74
 		width=19
 		height=10
 	}
@@ -473,14 +514,14 @@ polyline {
 		width=10
 	}
 	points {
-		(445,72)
-		(454,72)
+		(445,79)
+		(454,79)
 	}
 }
 polyline {
 	object {
 		x=425
-		y=137
+		y=144
 		width=79
 		height=10
 	}
@@ -489,30 +530,30 @@ polyline {
 		width=10
 	}
 	points {
-		(430,142)
-		(499,142)
+		(430,149)
+		(499,149)
 	}
 }
 polyline {
 	object {
 		x=0
-		y=15
+		y=22
 		width=5
-		height=179
+		height=178
 	}
 	"basic attribute" {
 		clr=8
 		width=5
 	}
 	points {
-		(2,17)
-		(2,191)
+		(2,24)
+		(2,197)
 	}
 }
 polyline {
 	object {
 		x=-4
-		y=101
+		y=108
 		width=104
 		height=8
 	}
@@ -521,14 +562,14 @@ polyline {
 		width=8
 	}
 	points {
-		(0,105)
-		(96,105)
+		(0,112)
+		(96,112)
 	}
 }
 text {
 	object {
 		x=105
-		y=135
+		y=142
 		width=140
 		height=14
 	}
@@ -541,18 +582,16 @@ text {
 composite {
 	object {
 		x=450
-		y=15
+		y=22
 		width=50
 		height=35
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		text {
 			object {
 				x=450
-				y=15
+				y=22
 				width=50
 				height=14
 			}
@@ -565,7 +604,7 @@ composite {
 		menu {
 			object {
 				x=450
-				y=30
+				y=37
 				width=50
 				height=20
 			}
@@ -580,18 +619,16 @@ composite {
 composite {
 	object {
 		x=450
-		y=65
+		y=72
 		width=50
 		height=35
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		text {
 			object {
 				x=450
-				y=65
+				y=72
 				width=50
 				height=14
 			}
@@ -604,7 +641,7 @@ composite {
 		menu {
 			object {
 				x=450
-				y=80
+				y=87
 				width=50
 				height=20
 			}
@@ -619,7 +656,7 @@ composite {
 text {
 	object {
 		x=10
-		y=15
+		y=22
 		width=80
 		height=14
 	}
@@ -632,7 +669,7 @@ text {
 menu {
 	object {
 		x=10
-		y=73
+		y=80
 		width=80
 		height=20
 	}
@@ -645,18 +682,16 @@ menu {
 composite {
 	object {
 		x=10
-		y=50
+		y=57
 		width=80
 		height=20
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		"message button" {
 			object {
 				x=10
-				y=50
+				y=57
 				width=20
 				height=20
 			}
@@ -672,7 +707,7 @@ composite {
 		"text entry" {
 			object {
 				x=30
-				y=50
+				y=57
 				width=40
 				height=20
 			}
@@ -681,11 +716,13 @@ composite {
 				clr=14
 				bclr=51
 			}
+			limits {
+			}
 		}
 		"message button" {
 			object {
 				x=70
-				y=50
+				y=57
 				width=20
 				height=20
 			}
@@ -703,7 +740,7 @@ composite {
 "text entry" {
 	object {
 		x=10
-		y=30
+		y=37
 		width=60
 		height=20
 	}
@@ -712,11 +749,13 @@ composite {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 text {
 	object {
 		x=70
-		y=33
+		y=40
 		width=15
 		height=14
 	}
@@ -728,7 +767,7 @@ text {
 text {
 	object {
 		x=125
-		y=15
+		y=22
 		width=125
 		height=14
 	}
@@ -741,7 +780,7 @@ text {
 menu {
 	object {
 		x=110
-		y=30
+		y=37
 		width=125
 		height=20
 	}
@@ -754,7 +793,7 @@ menu {
 polyline {
 	object {
 		x=-1
-		y=185
+		y=192
 		width=511
 		height=5
 	}
@@ -763,14 +802,14 @@ polyline {
 		width=5
 	}
 	points {
-		(1,187)
-		(507,187)
+		(1,194)
+		(507,194)
 	}
 }
 polyline {
 	object {
 		x=215
-		y=137
+		y=144
 		width=139
 		height=10
 	}
@@ -779,30 +818,30 @@ polyline {
 		width=10
 	}
 	points {
-		(220,142)
-		(349,142)
+		(220,149)
+		(349,149)
 	}
 }
 polyline {
 	object {
 		x=505
-		y=15
+		y=22
 		width=5
-		height=179
+		height=178
 	}
 	"basic attribute" {
 		clr=8
 		width=5
 	}
 	points {
-		(507,17)
-		(507,191)
+		(507,24)
+		(507,197)
 	}
 }
 polyline {
 	object {
 		x=95
-		y=15
+		y=22
 		width=5
 		height=135
 	}
@@ -811,59 +850,46 @@ polyline {
 		width=5
 	}
 	points {
-		(97,17)
-		(97,147)
+		(97,24)
+		(97,154)
 	}
 }
-composite {
+polyline {
 	object {
-		x=495
-		y=67
-		width=20
-		height=80
+		x=490
+		y=74
+		width=25
+		height=10
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		polyline {
-			object {
-				x=495
-				y=67
-				width=20
-				height=10
-			}
-			"basic attribute" {
-				clr=8
-				width=10
-			}
-			points {
-				(497,72)
-				(512,72)
-			}
-		}
-		polyline {
-			object {
-				x=495
-				y=137
-				width=19
-				height=10
-			}
-			"basic attribute" {
-				clr=8
-				width=10
-			}
-			points {
-				(497,142)
-				(511,142)
-			}
-		}
+	"basic attribute" {
+		clr=8
+		width=10
+	}
+	points {
+		(495,79)
+		(510,79)
+	}
+}
+polyline {
+	object {
+		x=491
+		y=144
+		width=24
+		height=10
+	}
+	"basic attribute" {
+		clr=8
+		width=10
+	}
+	points {
+		(496,149)
+		(510,149)
 	}
 }
 polyline {
 	object {
 		x=494
-		y=17
+		y=24
 		width=21
 		height=10
 	}
@@ -872,14 +898,14 @@ polyline {
 		width=10
 	}
 	points {
-		(499,22)
-		(510,22)
+		(499,29)
+		(510,29)
 	}
 }
 polyline {
 	object {
 		x=-2
-		y=17
+		y=24
 		width=14
 		height=10
 	}
@@ -888,14 +914,14 @@ polyline {
 		width=10
 	}
 	points {
-		(3,22)
-		(7,22)
+		(3,29)
+		(7,29)
 	}
 }
 polyline {
 	object {
 		x=88
-		y=17
+		y=24
 		width=77
 		height=10
 	}
@@ -904,14 +930,14 @@ polyline {
 		width=10
 	}
 	points {
-		(93,22)
-		(160,22)
+		(93,29)
+		(160,29)
 	}
 }
 polyline {
 	object {
 		x=209
-		y=17
+		y=24
 		width=139
 		height=10
 	}
@@ -920,27 +946,14 @@ polyline {
 		width=10
 	}
 	points {
-		(214,22)
-		(343,22)
+		(214,29)
+		(343,29)
 	}
-}
-text {
-	object {
-		x=30
-		y=0
-		width=480
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="STANFORD RESEARCH SYSTEMS MODEL SR570 LOW-NOISE CURRENT PREAMPLIFIER"
-	align="horiz. centered"
 }
 "message button" {
 	object {
 		x=10
-		y=132
+		y=139
 		width=20
 		height=20
 	}
@@ -956,7 +969,7 @@ text {
 "text entry" {
 	object {
 		x=30
-		y=132
+		y=139
 		width=40
 		height=20
 	}
@@ -965,11 +978,13 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "message button" {
 	object {
 		x=70
-		y=132
+		y=139
 		width=20
 		height=20
 	}
@@ -985,7 +1000,7 @@ text {
 "text entry" {
 	object {
 		x=10
-		y=112
+		y=119
 		width=60
 		height=20
 	}
@@ -994,11 +1009,13 @@ text {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 text {
 	object {
 		x=70
-		y=112
+		y=119
 		width=20
 		height=12
 	}
@@ -1011,7 +1028,7 @@ text {
 polyline {
 	object {
 		x=94
-		y=137
+		y=144
 		width=43
 		height=10
 	}
@@ -1020,14 +1037,14 @@ polyline {
 		width=10
 	}
 	points {
-		(99,142)
-		(132,142)
+		(99,149)
+		(132,149)
 	}
 }
 "message button" {
 	object {
 		x=255
-		y=30
+		y=37
 		width=50
 		height=20
 	}
@@ -1042,7 +1059,7 @@ polyline {
 rectangle {
 	object {
 		x=7
-		y=28
+		y=35
 		width=87
 		height=44
 	}
@@ -1059,7 +1076,7 @@ rectangle {
 rectangle {
 	object {
 		x=7
-		y=110
+		y=117
 		width=87
 		height=44
 	}
@@ -1075,20 +1092,8 @@ rectangle {
 }
 text {
 	object {
-		x=0
-		y=0
-		width=30
-		height=14
-	}
-	"basic attribute" {
-		clr=50
-	}
-	textix="#$(A)"
-}
-text {
-	object {
 		x=70
-		y=122
+		y=129
 		width=20
 		height=12
 	}
@@ -1101,7 +1106,7 @@ text {
 polyline {
 	object {
 		x=70
-		y=121
+		y=128
 		width=22
 		height=1
 	}
@@ -1110,7 +1115,24 @@ polyline {
 		width=1
 	}
 	points {
-		(70,121)
-		(91,121)
+		(70,128)
+		(91,128)
 	}
+}
+"related display" {
+	object {
+		x=468
+		y=175
+		width=40
+		height=20
+	}
+	display[0] {
+		label="Front-panel display"
+		name="SR570_tiny.adl"
+		args="P=$(P),A=$(A)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=64
+	label="-Less"
 }

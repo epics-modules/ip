@@ -1,7 +1,7 @@
 
 file {
-	name="/tmp_mnt/home/oxygen2/MOONEY/epics/3.12.2/ipApp/op/adl/SR570_tiny.adl"
-	version=020209
+	name="/APSshare/epics/synApps_cvs/support/ip/ipApp/op/adl/SR570_tiny.adl"
+	version=030003
 }
 display {
 	object {
@@ -13,6 +13,9 @@ display {
 	clr=14
 	bclr=2
 	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
 }
 "color map" {
 	ncolors=65
@@ -129,8 +132,6 @@ composite {
 		height=20
 	}
 	"composite name"=""
-	vis="static"
-	chan=""
 	children {
 		menu {
 			object {
@@ -295,6 +296,8 @@ menu {
 		clr=14
 		bclr=51
 	}
+	limits {
+	}
 }
 "message button" {
 	object {
@@ -323,6 +326,8 @@ menu {
 		chan="$(P)$(A)off_u_put.VAL"
 		clr=14
 		bclr=51
+	}
+	limits {
 	}
 }
 text {
@@ -400,45 +405,22 @@ polyline {
 		(185,171)
 	}
 }
-composite {
+"related display" {
 	object {
-		x=110
-		y=175
-		width=61
+		x=144
+		y=179
+		width=40
 		height=20
 	}
-	"composite name"=""
-	vis="static"
-	chan=""
-	children {
-		text {
-			object {
-				x=131
-				y=175
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="More"
-		}
-		"related display" {
-			object {
-				x=110
-				y=175
-				width=20
-				height=20
-			}
-			display[0] {
-				label="Front-panel display"
-				name="SR570.adl"
-				args="P=$(P),A=$(A)"
-			}
-			clr=14
-			bclr=51
-		}
+	display[0] {
+		label="Front-panel display"
+		name="SR570.adl"
+		args="P=$(P),A=$(A)"
+		policy="replace display"
 	}
+	clr=0
+	bclr=64
+	label="-More"
 }
 polyline {
 	object {
@@ -492,5 +474,7 @@ text {
 		chan="$(P)$(A)init.DESC"
 		clr=54
 		bclr=0
+	}
+	limits {
 	}
 }
