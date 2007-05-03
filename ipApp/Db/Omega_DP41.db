@@ -1,0 +1,291 @@
+record(bo,"$(P)$(R)ReadValues") {
+    field(SCAN, "$(SCAN)")
+    field(FLNK, "$(P)$(R)Unfiltered.PROC")
+}
+
+record(ai,"$(P)$(R)Unfiltered") {
+    field(DTYP, "stream")
+    field(INP, "@Omega_DP41.proto readUnfiltered $(PORT)")
+    field(HOPR, "$(HOPR)")
+    field(LOPR, "$(LOPR)")
+    field(PREC, "$(PREC)")
+    field(EGU,  "$(EGU)")
+    field(FLNK, "$(P)$(R)Filtered.PROC")
+}
+
+record(ai,"$(P)$(R)Filtered") {
+    field(DTYP, "stream")
+    field(INP, "@Omega_DP41.proto readFiltered $(PORT)")
+    field(HOPR, "$(HOPR)")
+    field(LOPR, "$(LOPR)")
+    field(PREC, "$(PREC)")
+    field(EGU,  "$(EGU)")
+    field(FLNK, "$(P)$(R)Peak.PROC")
+}
+
+record(ai,"$(P)$(R)Peak") {
+    field(DTYP, "stream")
+    field(INP, "@Omega_DP41.proto readPeak $(PORT)")
+    field(HOPR, "$(HOPR)")
+    field(LOPR, "$(LOPR)")
+    field(PREC, "$(PREC)")
+    field(EGU,  "$(EGU)")
+    field(FLNK, "$(P)$(R)Valley.PROC")
+}
+
+record(ai,"$(P)$(R)Valley") {
+    field(DTYP, "stream")
+    field(INP, "@Omega_DP41.proto readValley $(PORT)")
+    field(HOPR, "$(HOPR)")
+    field(LOPR, "$(LOPR)")
+    field(PREC, "$(PREC)")
+    field(EGU,  "$(EGU)")
+    field(FLNK, "$(P)$(R)SetpointStatus.PROC")
+}
+
+record(scalcout,"$(P)$(R)SetpointStatus") {
+    field(DTYP, "stream")
+    field(CALC, "byte(AA)-byte('@')")
+    field(OUT, "@Omega_DP41.proto readSetpointStatus $(PORT)")
+    field(FLNK, "$(P)$(R)SetpointMbbi.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)SetpointMbbi") {
+    field(INP, "$(P)$(R)SetpointStatus NPP MS")
+    field(FLNK, "$(P)$(R)SP1_Status.PROC")
+}
+
+record(bi, "$(P)$(R)SP1_Status") {
+    field(INP, "$(P)$(R)SetpointMbbi.B0 NPP MS")
+    field(ZNAM, "Below")
+    field(ONAM, "Above")
+    field(FLNK, "$(P)$(R)SP2_Status.PROC")
+}
+
+record(bi, "$(P)$(R)SP2_Status") {
+    field(INP, "$(P)$(R)SetpointMbbi.B1 NPP MS")
+    field(ZNAM, "Below")
+    field(ONAM, "Above")
+    field(FLNK, "$(P)$(R)SP3_Status.PROC")
+}
+
+record(bi, "$(P)$(R)SP3_Status") {
+    field(INP, "$(P)$(R)SetpointMbbi.B2 NPP MS")
+    field(ZNAM, "Below")
+    field(ONAM, "Above")
+    field(FLNK, "$(P)$(R)SP4_Status.PROC")
+}
+
+record(bi, "$(P)$(R)SP4_Status") {
+    field(INP, "$(P)$(R)SetpointMbbi.B3 NPP MS")
+    field(ZNAM, "Below")
+    field(ONAM, "Above")
+}
+
+record(bo,"$(P)$(R)ResetPeakValley") {
+    field(DTYP, "stream")
+    field(OUT, "@Omega_DP41.proto resetPeakValley $(PORT)")
+}
+
+# Read configuration
+record(bo,"$(P)$(R)ReadConfigScan") {
+    field(SCAN, "$(CONFIG_SCAN)")
+    field(FLNK, "$(P)$(R)ReadConfig.PROC")
+}
+
+record(bo,"$(P)$(R)ReadConfig") {
+    field(FLNK, "$(P)$(R)Lockout1.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)Lockout1") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readLockout1 $(PORT)")
+    field(FLNK, "$(P)$(R)Lockout2.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)Lockout2") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readLockout2 $(PORT)")
+    field(FLNK, "$(P)$(R)Lockout3.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)Lockout3") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readLockout3 $(PORT)")
+    field(FLNK, "$(P)$(R)Lockout4.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)Lockout4") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readLockout4 $(PORT)")
+    field(FLNK, "$(P)$(R)InputType.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)InputType") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readInputType $(PORT)")
+    field(FLNK, "$(P)$(R)ReadingConfig.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)ReadingConfig") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readReadConfig $(PORT)")
+    field(FLNK, "$(P)$(R)SPConfig.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)SPConfig") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readSPConfig $(PORT)")
+    field(FLNK, "$(P)$(R)ALConfig.PROC")
+}
+
+record(mbbiDirect,"$(P)$(R)ALConfig") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readALConfig $(PORT)")
+    field(FLNK, "$(P)$(R)SP1_ReadRaw.PROC")
+}
+
+record(ai,"$(P)$(R)SP1_ReadRaw") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readSP1Value $(PORT)")
+    field(FLNK, "$(P)$(R)SP1_Read.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(scalcout,"$(P)$(R)SP1_Read") {
+    field(INPA, "$(P)$(R)SP1_ReadRaw NPP MS")
+    field(CALC, "A>>23?-1:1*(A&1048575)/10^((A>>20)-1)")
+    field(FLNK, "$(P)$(R)SP2_ReadRaw.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)SP2_ReadRaw") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readSP2Value $(PORT)")
+    field(FLNK, "$(P)$(R)SP2_Read.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(scalcout,"$(P)$(R)SP2_Read") {
+    field(INPA, "$(P)$(R)SP2_ReadRaw NPP MS")
+    field(CALC, "A>>23?-1:1*(A&1048575)/10^((A>>20)-1)")
+    field(FLNK, "$(P)$(R)SP3_ReadRaw.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)SP3_ReadRaw") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readSP3Value $(PORT)")
+    field(FLNK, "$(P)$(R)SP3_Read.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(scalcout,"$(P)$(R)SP3_Read") {
+    field(INPA, "$(P)$(R)SP3_ReadRaw NPP MS")
+    field(CALC, "A>>23?-1:1*(A&1048575)/10^((A>>20)-1)")
+    field(FLNK, "$(P)$(R)SP4_ReadRaw.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)SP4_ReadRaw") {
+    field(DTYP, "stream")
+    field(INP,  "@Omega_DP41.proto readSP4Value $(PORT)")
+    field(FLNK, "$(P)$(R)SP4_Read.PROC")
+    field(PREC, "$(PREC)")
+}
+
+record(scalcout,"$(P)$(R)SP4_Read") {
+    field(INPA, "$(P)$(R)SP4_ReadRaw NPP MS")
+    field(CALC, "A>>23?-1:1*(A&1048575)/10^((A>>20)-1)")
+    field(PREC, "$(PREC)")
+}
+
+# Records to write new values to the setpoints in RAM
+record(scalcout,"$(P)$(R)SP1_Write") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto writeSP1Value $(PORT)")
+    field(CALC, "((B+1)<<20)|(A*10^B)|(A>=0?0:(1<<23))")
+    field(B,    "$(PREC)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)ReadConfig.PROC")
+}
+
+record(scalcout,"$(P)$(R)SP2_Write") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto writeSP2Value $(PORT)")
+    field(CALC, "((B+1)<<20)|(A*10^B)|(A>=0?0:(1<<23))")
+    field(B,    "$(PREC)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)ReadConfig.PROC")
+}
+
+record(scalcout,"$(P)$(R)SP3_Write") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto writeSP3Value $(PORT)")
+    field(CALC, "((B+1)<<20)|(A*10^B)|(A>=0?0:(1<<23))")
+    field(B,    "$(PREC)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)ReadConfig.PROC")
+}
+
+record(scalcout,"$(P)$(R)SP4_Write") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto writeSP4Value $(PORT)")
+    field(CALC, "((B+1)<<20)|(A*10^B)|(A>=0?0:(1<<23))")
+    field(B,    "$(PREC)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)ReadConfig.PROC")
+}
+
+# Records to copy the setpoints from RAM to EEPROM
+record(ao, "$(P)$(R)SP1_Put") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto putSP1Value $(PORT)")
+    field(OMSL, "closed_loop")
+    field(DOL,  "$(P)$(R)SP1_ReadRaw NPP NMS")
+    field(FLNK, "$(P)$(R)SP2_Put.PROC")
+}
+
+record(ao, "$(P)$(R)SP2_Put") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto putSP2Value $(PORT)")
+    field(OMSL, "closed_loop")
+    field(DOL,  "$(P)$(R)SP2_ReadRaw NPP NMS")
+    field(FLNK, "$(P)$(R)SP3_Put.PROC")
+}
+
+record(ao, "$(P)$(R)SP3_Put") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto putSP3Value $(PORT)")
+    field(OMSL, "closed_loop")
+    field(DOL,  "$(P)$(R)SP3_ReadRaw NPP NMS")
+    field(FLNK, "$(P)$(R)SP4_Put.PROC")
+}
+
+record(ao, "$(P)$(R)SP4_Put") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto putSP4Value $(PORT)")
+    field(OMSL, "closed_loop")
+    field(DOL,  "$(P)$(R)SP4_ReadRaw NPP NMS")
+}
+
+
+record(bo, "$(P)$(R)SoftReset") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto resetSoft $(PORT)")
+}
+
+record(bo, "$(P)$(R)HardReset") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto resetHard $(PORT)")
+}
+
+record(bo, "$(P)$(R)PeakValleyReset") {
+    field(DTYP, "stream")
+    field(OUT,  "@Omega_DP41.proto resetPeakValley $(PORT)")
+}
+
+record(asyn,"$(P)$(R)Asyn") {
+    field(PORT, "$(PORT)")
+}
+
