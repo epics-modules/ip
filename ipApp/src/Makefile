@@ -14,12 +14,8 @@ LIBRARY_IOC_DEFAULT += ip
 
 DBD += ipSupport.dbd
 DBD += ipVXSupport.dbd
-ifeq ($(OS_CLASS), WIN32)
-DBD += ipWin32.dbd
-else
 DBD += ip.dbd
 DBD += ipVX.dbd
-endif
 
 ip_SRCS += devXxStrParm.c
 ip_SRCS += devXxEurotherm.c
@@ -48,7 +44,6 @@ PROD_IOC_DEFAULT = ipApp
 
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
 ipApp_SRCS_DEFAULT += ip_registerRecordDeviceDriver.cpp ipMain.cpp
-ipApp_SRCS_WIN32   += ipWin32_registerRecordDeviceDriver.cpp ipMain.cpp
 ipApp_SRCS_vxWorks += ipVX_registerRecordDeviceDriver.cpp
 #The following adds support from base/src/vxWorks
 ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
