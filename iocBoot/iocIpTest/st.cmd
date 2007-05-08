@@ -4,9 +4,6 @@
 # etc. in this build from ipApp
 dbLoadDatabase("../../dbd/ip.dbd")
 ip_registerRecordDeviceDriver(pdbbase)
-# For WIN32 comment out the above lines and use these instead
-#dbLoadDatabase("../../dbd/ipWin32.dbd")
-#ipWin32_registerRecordDeviceDriver(pdbbase)
 
 # Load IP serial port stuff
 < ip_serial.cmd
