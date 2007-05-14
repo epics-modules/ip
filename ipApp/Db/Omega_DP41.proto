@@ -1,3 +1,10 @@
+# Omega_DP41.proto
+
+# stream protocol file for Omega DP41 series meters
+
+# Mark Rivers
+# May 4, 2007
+
 OutTerminator = CR;
 InTerminator = CR;
 PREFIX = *;
@@ -65,6 +72,35 @@ readInputType {
 readReadConfig {
    out "\${PREFIX}R07";
    in "R07%x";
+}
+
+readReadScale {
+   out "\${PREFIX}R08";
+   in "R08%x";
+}
+
+readReadOffset {
+   out "\${PREFIX}R09";
+   in "R09%x";
+}
+readInputConfig {
+   out "\${PREFIX}R0A";
+   in "R0A%x";
+}
+
+readInputScale {
+   out "\${PREFIX}R0B";
+   in "R0B%x";
+}
+
+readDecimalPoint {
+   out "\${PREFIX}R0C";
+   in "R0C%x";
+}
+
+readFilter {
+   out "\${PREFIX}R0E";
+   in "R0E%x";
 }
 
 readSPConfig {
@@ -179,60 +215,53 @@ readOutputOffset {
 
 resetLatchedAlarms {
    out "\${PREFIX}Z01";
+   in "Z01";
 }
 
 resetAveragingFilter {
    out "\${PREFIX}Z02";
+   in "Z02";
 }
 
 resetSoft {
    out "\${PREFIX}Z03";
+   in "Z03";
 }
 
 resetHard {
    out "\${PREFIX}Z04";
+   in "Z04";
 }
 
 resetPeakValley {
    out "\${PREFIX}Z05";
+   in "Z05";
 }
 
 writeSP1Value {
    out "\${PREFIX}W21%6.6X";
-   in "W21"
+   in "W21";
+   out "\${PREFIX}P21%6.6X";
+   in "P21";
 }
 
 writeSP2Value {
    out "\${PREFIX}W22%6.6X";
-   in "W22"
+   in "W22";
+   out "\${PREFIX}P22%6.6X";
+   in "P22";
 }
 
 writeSP3Value {
    out "\${PREFIX}W23%6.6X";
-   in "W23"
+   in "W23";
+   out "\${PREFIX}P23%6.6X";
+   in "P23";
 }
 
 writeSP4Value {
    out "\${PREFIX}W24%6.6X";
-   in "W24"
-}
-
-putSP1Value {
-   out "\${PREFIX}P21%6.6X";
-   in "P21"
-}
-
-putSP2Value {
-   out "\${PREFIX}P22%6.6X";
-   in "P22"
-}
-
-putSP3Value {
-   out "\${PREFIX}P23%6.6X";
-   in "P23"
-}
-
-putSP4Value {
+   in "W24";
    out "\${PREFIX}P24%6.6X";
-   in "P24"
+   in "P24";
 }
