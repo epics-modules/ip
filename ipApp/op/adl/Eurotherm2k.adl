@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen3/GOETZE/epics/synApps_R3.13.2_R4.3/kag/kagApp/op/adl/Eurotherm2k.adl"
-	version=030000
+	name="/home/oxygen/GOETZE/epics/synApps_5_2/ioc/kag/kagApp/op/adl/Eurotherm2k.adl"
+	version=030004
 }
 display {
 	object {
@@ -106,7 +106,7 @@ rectangle {
 		height=35
 	}
 	monitor {
-		chan="$(P)ET:RBV_pvTemp"
+		chan="$(P)ET$(TC):RBV_pvTemp"
 		clr=60
 		bclr=10
 	}
@@ -122,7 +122,7 @@ rectangle {
 		height=26
 	}
 	monitor {
-		chan="$(P)ET:RBV_spTemp"
+		chan="$(P)ET$(TC):RBV_spTemp"
 		clr=60
 		bclr=10
 	}
@@ -150,7 +150,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ET:Setpoint.VAL"
+		chan="$(P)ET$(TC):Setpoint.VAL"
 		clr=14
 		bclr=3
 	}
@@ -177,7 +177,7 @@ text {
 		height=20
 	}
 	control {
-		chan="$(P)ET:RampRate.VAL"
+		chan="$(P)ET$(TC):RampRate.VAL"
 		clr=14
 		bclr=3
 	}
@@ -192,7 +192,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)ET:RBV_RampRate"
+		chan="$(P)ET$(TC):RBV_RampRate"
 		clr=56
 		bclr=10
 	}
@@ -298,7 +298,7 @@ text {
 		height=35
 	}
 	control {
-		chan="$(P)ET:scanCtl"
+		chan="$(P)ET$(TC):scanCtl"
 		clr=1
 		bclr=7
 	}
@@ -311,7 +311,7 @@ text {
 		height=20
 	}
 	monitor {
-		chan="$(P)ET:RBV_Output"
+		chan="$(P)ET$(TC):RBV_Output"
 		clr=56
 		bclr=10
 	}
@@ -401,7 +401,7 @@ text {
 	display[0] {
 		label="Eurotherm 2408"
 		name="Eurotherm2k_more.adl"
-		args="P=$(P)"
+		args="P=$(P),TC=$(TC)"
 		policy="replace display"
 	}
 	clr=1
@@ -496,14 +496,39 @@ text {
 	object {
 		x=9
 		y=43
-		width=160
+		width=115
 		height=20
 	}
 	control {
-		chan="$(P)ET:RBV_pvTemp.DESC"
+		chan="$(P)ET$(TC):RBV_pvTemp.DESC"
 		clr=14
 		bclr=3
 	}
 	limits {
 	}
+}
+text {
+	object {
+		x=150
+		y=44
+		width=20
+		height=22
+	}
+	"basic attribute" {
+		clr=56
+	}
+	textix="$(TC)"
+}
+text {
+	object {
+		x=126
+		y=44
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=56
+	}
+	textix="#"
+	align="horiz. right"
 }
