@@ -1,7 +1,7 @@
 
 file {
-	name="/home/oxygen4/MOONEY/epics/synApps_T202_E3_14_7_R5_1/support/ip/ipApp/op/adl/deviceCmdReply.adl"
-	version=030101
+	name="/home/oxygen/MOONEY/epics/synApps/support/ip/ipApp/op/adl/deviceCmdReply.adl"
+	version=030102
 }
 display {
 	object {
@@ -758,335 +758,313 @@ menu {
 		bclr=51
 	}
 }
-composite {
+rectangle {
 	object {
 		x=15
 		y=237
 		width=400
-		height=130
+		height=37
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+text {
+	object {
+		x=20
+		y=249
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Output"
+}
+"text entry" {
+	object {
+		x=80
+		y=249
+		width=300
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.AOUT"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=380
+		y=240
+		width=30
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TERM"
+}
+"text entry" {
+	object {
+		x=380
+		y=249
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.OEOS"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=20
+		y=289
+		width=68
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Input"
+}
+"text update" {
+	object {
+		x=80
+		y=289
+		width=300
+		height=20
+	}
+	monitor {
+		chan="$(P)cmdReply$(N)_do_IO.AINP"
+		clr=53
+		bclr=1
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=15
+		y=277
+		width=400
+		height=65
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+text {
+	object {
+		x=20
+		y=317
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Length:"
+}
+text {
+	object {
+		x=288
+		y=320
+		width=50
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Actual:"
+}
+"text update" {
+	object {
+		x=338
+		y=317
+		width=56
+		height=20
+	}
+	monitor {
+		chan="$(P)cmdReply$(N)_do_IO.NORD"
+		clr=53
+		bclr=1
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=100
+		y=320
+		width=70
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Requested:"
+}
+"text entry" {
+	object {
+		x=170
+		y=317
+		width=70
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.NRRD"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=380
+		y=280
+		width=30
+		height=10
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="TERM"
+}
+"text entry" {
+	object {
+		x=380
+		y=289
+		width=30
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.IEOS"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=25
+		y=350
+		width=55
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Timeout:"
+}
+"text entry" {
+	object {
+		x=85
+		y=347
+		width=40
+		height=20
+	}
+	control {
+		chan="$(P)cmdReply$(N)_do_IO.TMOT"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=125
+		y=350
+		width=25
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(sec)"
+}
+text {
+	object {
+		x=290
+		y=349
+		width=62
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Severity:"
+}
+"text update" {
+	object {
+		x=357
+		y=349
+		width=55
+		height=14
+	}
+	monitor {
+		chan="$(P)cmdReply$(N)_do_IO.SEVR"
+		clr=53
+		bclr=1
+	}
+	limits {
+	}
+}
+composite {
+	object {
+		x=170
+		y=350
+		width=108
+		height=14
 	}
 	"composite name"=""
 	children {
-		rectangle {
-			object {
-				x=15
-				y=237
-				width=400
-				height=37
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		text {
-			object {
-				x=20
-				y=249
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=0
-			}
-			textix="Output"
-		}
-		"text entry" {
-			object {
-				x=80
-				y=249
-				width=300
-				height=20
-			}
-			control {
-				chan="$(P)cmdReply$(N)_do_IO.AOUT"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=380
-				y=240
-				width=30
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TERM"
-		}
-		"text entry" {
-			object {
-				x=380
-				y=249
-				width=30
-				height=20
-			}
-			control {
-				chan="$(P)cmdReply$(N)_do_IO.OEOS"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=20
-				y=289
-				width=68
-				height=20
-			}
-			"basic attribute" {
-				clr=0
-			}
-			textix="Input"
-		}
-		"text update" {
-			object {
-				x=80
-				y=289
-				width=300
-				height=20
-			}
-			monitor {
-				chan="$(P)cmdReply$(N)_do_IO.AINP"
-				clr=53
-				bclr=1
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=15
-				y=277
-				width=400
-				height=65
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		text {
-			object {
-				x=20
-				y=317
-				width=70
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Length:"
-		}
-		text {
-			object {
-				x=288
-				y=320
-				width=50
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Actual:"
-		}
-		"text update" {
-			object {
-				x=338
-				y=317
-				width=56
-				height=20
-			}
-			monitor {
-				chan="$(P)cmdReply$(N)_do_IO.NORD"
-				clr=53
-				bclr=1
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=100
-				y=320
-				width=70
-				height=14
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Requested:"
-		}
-		"text entry" {
-			object {
-				x=170
-				y=317
-				width=70
-				height=20
-			}
-			control {
-				chan="$(P)cmdReply$(N)_do_IO.NRRD"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=380
-				y=280
-				width=30
-				height=10
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="TERM"
-		}
-		"text entry" {
-			object {
-				x=380
-				y=289
-				width=30
-				height=20
-			}
-			control {
-				chan="$(P)cmdReply$(N)_do_IO.IEOS"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
 		composite {
 			object {
-				x=25
-				y=347
-				width=387
-				height=20
+				x=170
+				y=350
+				width=108
+				height=14
 			}
 			"composite name"=""
 			children {
 				text {
 					object {
-						x=25
+						x=170
 						y=350
-						width=55
+						width=50
 						height=14
 					}
 					"basic attribute" {
 						clr=14
 					}
-					textix="Timeout:"
-				}
-				"text entry" {
-					object {
-						x=85
-						y=347
-						width=40
-						height=20
-					}
-					control {
-						chan="$(P)cmdReply$(N)_do_IO.TMOT"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=125
-						y=350
-						width=25
-						height=14
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="(ms)"
-				}
-				text {
-					object {
-						x=290
-						y=349
-						width=62
-						height=14
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Severity:"
+					textix="Status:"
 				}
 				"text update" {
 					object {
-						x=357
-						y=349
-						width=55
+						x=222
+						y=350
+						width=56
 						height=14
 					}
 					monitor {
-						chan="$(P)cmdReply$(N)_do_IO.SEVR"
+						chan="$(P)cmdReply$(N)_do_IO.STAT"
 						clr=53
 						bclr=1
 					}
 					limits {
-					}
-				}
-				composite {
-					object {
-						x=170
-						y=350
-						width=108
-						height=14
-					}
-					"composite name"=""
-					children {
-						composite {
-							object {
-								x=170
-								y=350
-								width=108
-								height=14
-							}
-							"composite name"=""
-							children {
-								text {
-									object {
-										x=170
-										y=350
-										width=50
-										height=14
-									}
-									"basic attribute" {
-										clr=14
-									}
-									textix="Status:"
-								}
-								"text update" {
-									object {
-										x=222
-										y=350
-										width=56
-										height=14
-									}
-									monitor {
-										chan="$(P)cmdReply$(N)_do_IO.STAT"
-										clr=53
-										bclr=1
-									}
-									limits {
-									}
-								}
-							}
-						}
 					}
 				}
 			}
