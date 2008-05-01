@@ -407,7 +407,7 @@ grecord(stringout,"$(P)$(Dmm)dmm_read") {
 	field(OUT,"@asyn($(PORT))TERM=0a")
 }
 grecord(stringin,"$(P)$(Dmm)dmm_get_str") {
-	field(DTYP,"Hideos si stringParm")
+	field(DTYP,"asyn si stringParm")
 	field(INP,"@asyn($(PORT))TERM=0a TO=5000")
 	field(FLNK,"$(P)$(Dmm)read_finished.VAL  PP MS")
 }

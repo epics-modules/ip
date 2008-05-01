@@ -22,6 +22,7 @@ ip_SRCS += devXxEurotherm.c
 ip_SRCS += devAiHeidND261.c
 ip_SRCS += devAiMKS.c
 ip_SRCS += Keithley2kDMM.st
+ip_SRCS += Keithley65xxEM.st
 ip_SRCS += Federal.st
 ip_SRCS += devMPC.c
 ip_SRCS += devGP307gpib.c  
