@@ -129,7 +129,7 @@ typedef enum {recTypeAi, recTypeAo, recTypeBi, recTypeBo,
               recTypeMbbo, recTypeSi, recTypeSo} recType;
 
 #define MPC_BUFFER_SIZE 50
-#define MPC_TIMEOUT 2.0
+#define MPC_TIMEOUT 3.0
 
 typedef struct devMPCPvt {
     asynUser     *pasynUser;
