@@ -129,7 +129,7 @@ typedef enum {recTypeAi, recTypeAo, recTypeBi, recTypeBo,
               recTypeMbbo, recTypeSi, recTypeSo} recType;
 
 #define MPC_BUFFER_SIZE 50
-#define MPC_TIMEOUT 1.0
+#define MPC_TIMEOUT 2.0
 
 typedef struct devMPCPvt {
     asynUser     *pasynUser;
@@ -343,6 +343,19 @@ static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
     return(0);
 }
 
+static long checkRtnSize(dbCommon *pr, int rtnSize, int minSize)
+{
+    devMPCPvt *pPvt = (devMPCPvt *)pr->dpvt;
+    
+    if (rtnSize < minSize) { 
+        asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
+                  "devMPC, %s rtnSize=%d, should be >%d, response=%s\n",
+                  pr->name, rtnSize, minSize, pPvt->recBuf);
+        return -1;
+    } 
+    return 0;
+}
+
 static long readAi(aiRecord *pr)
 {
     devMPCPvt *pPvt = (devMPCPvt *)pr->dpvt;
@@ -395,14 +408,18 @@ static long readAi(aiRecord *pr)
         return(startIOCommon((dbCommon *)pr));
     }
 
+    /* Assume failure */
+    pr->val = 0;
+    strcpy(pr->egu, "");
+    
     if (pPvt->status != asynSuccess) {
-        pr->val = 0.;
         return(2);
     }
 
     rtnSize = strlen(pPvt->recBuf);
     switch (pPvt->command) {
         case GetPres:
+            if (checkRtnSize((dbCommon *)pr, rtnSize, 9)) return(2);
             strncpy(pvalue, pPvt->recBuf, 7);
             pvalue[7] = 0;
             value = strtod(pvalue, NULL);
@@ -411,12 +428,14 @@ static long readAi(aiRecord *pr)
             pvalue[strlen(ploc)] = 0;
             break;
         case GetCur:
+            if (checkRtnSize((dbCommon *)pr, rtnSize, 7)) return(2);
             strncpy(pvalue, pPvt->recBuf, 7);
             pvalue[7] = 0;
             value = strtod(pvalue, NULL);
             strcpy(pvalue, "AMPS");
             break;
         case GetVolt:
+            if (checkRtnSize((dbCommon *)pr, rtnSize, 4)) return(2);
             strncpy(pvalue, pPvt->recBuf, 4);
             pvalue[4] = 0;
             value = strtod(pvalue, NULL);
@@ -424,6 +443,12 @@ static long readAi(aiRecord *pr)
             break;
         case GetSize:
             llen = strchr(pdata, 'L');
+	        if (llen == NULL) {
+	            asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
+                    "devMPC::readAi, %s cannot find L, response=%s\n",
+                    pr->name, pdata);
+                return(2);
+            } 
             *llen = 0;
             strcpy(pvalue, pdata);
             value = strtod(pvalue, NULL);
@@ -433,6 +458,7 @@ static long readAi(aiRecord *pr)
         case GetSpVal34:
         case GetSpVal56:
         case GetSpVal78:
+            if (checkRtnSize((dbCommon *)pr, rtnSize, 11)) return(2);
             ploc=&pPvt->recBuf[4];
             strncpy(pvalue, ploc, 7);
             pvalue[7] = 0;
@@ -488,12 +514,13 @@ static long readBi(biRecord *pr)
         return(startIOCommon((dbCommon *)pr));
     }
 
+    pr->rval = 0;
     if (pPvt->status != asynSuccess) {
-        pr->rval = 0;
         return(0);
     }
 
     rtnSize = strlen(pPvt->recBuf);
+    if (checkRtnSize((dbCommon *)pr, rtnSize, 2)) return(0);
     switch (pPvt->command) {
         case GetSpS12:
         case GetSpS34:
@@ -541,8 +568,8 @@ static long readSi(stringinRecord *pr)
         return(startIOCommon((dbCommon *)pr));
     }
 
+    strcpy(pr->val, "");
     if (pPvt->status != asynSuccess) {
-        strcpy(pr->val, "");
         return(0);
     }
 
@@ -790,7 +817,8 @@ static void devMPCCallback(asynUser *pasynUser)
     devMPCPvt *pPvt = (devMPCPvt *)pr->dpvt;
     char readBuffer[MPC_BUFFER_SIZE];
     struct rset *prset = (struct rset *)(pr->rset);
-    int nread, nwrite, eomReason;
+    int eomReason;
+    size_t nread, nwrite;
 
     memset(pPvt->recBuf, 0, MPC_BUFFER_SIZE);
     pPvt->pasynUser->timeout = MPC_TIMEOUT;
@@ -812,8 +840,8 @@ static void devMPCCallback(asynUser *pasynUser)
                                           &nread, &eomReason);
     if (pPvt->status != asynSuccess) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                  "devMPC::devMPCCallback read error, status=%d error= %s\n",
-                  pPvt->status, pasynUser->errorMessage);
+                  "devMPC::devMPCCallback %s read error, status=%d error= %s\n",
+                  pr->name, pPvt->status, pasynUser->errorMessage);
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
         goto done;
     }
