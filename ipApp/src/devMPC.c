@@ -435,9 +435,9 @@ static long readAi(aiRecord *pr)
             strcpy(pvalue, "AMPS");
             break;
         case GetVolt:
-            if (checkRtnSize((dbCommon *)pr, rtnSize, 4)) return(2);
-            strncpy(pvalue, pPvt->recBuf, 4);
-            pvalue[4] = 0;
+            if (checkRtnSize((dbCommon *)pr, rtnSize, 1)) return(2);
+            strncpy(pvalue, pPvt->recBuf, rtnSize);
+            pvalue[rtnSize] = 0;
             value = strtod(pvalue, NULL);
             strcpy(pvalue, "VOLTS");
             break;
