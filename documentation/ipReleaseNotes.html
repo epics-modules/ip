@@ -8,8 +8,24 @@
 
 <center>
 <h1>
-ip -Release Notes<br>
+ip Release Notes<br>
 &nbsp;</h1></center>
+
+<h2>Release 2-8 Sept. 10, 2008</h2>
+<ul>
+<li>new device US Digital Serial Encoder
+<li>new device Keithley 8517 Electrometer
+<li>new device LakeShore 340 Temperature controller
+<li>new device Omega DP41 Digital Panel Meter
+<li>new device Pfeiffer TPG261 RS232 Vacuum Controller.
+<li>new file ip/ipApp/Db/asynRecord_settings.req  (Ideally, this would be in the asyn
+module, but settings files that correspond with database files is a synApps notion, and
+asyn is not part of synApps.)
+<li>ip/ipApp/Db/deviceCmdReply.req replaced by deviceCmdReply_settings.req,
+and modified to correctly include asynRecord_settings.req
+<li>Updated Eurotherm 2k support
+<li>ip/ipApp/op/adl/deviceCmdReply_full.adl: asynRecord TMOT is in seconds, not ms.
+</ul>
 
 <h2>Release 2-7 Sept. 11, 2006</h2>
 <ul>
