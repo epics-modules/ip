@@ -8,9 +8,7 @@ include $(TOP)/configure/CONFIG
 #==================================================
 # build a support library
 
-# tmm: couldn't get devMPC to compile for solaris
-LIBRARY_IOC_solaris = -nil-
-LIBRARY_IOC_DEFAULT += ip
+LIBRARY_IOC += ip
 
 DBD += ipSupport.dbd
 DBD += ipVXSupport.dbd
@@ -40,9 +38,7 @@ ip_LIBS += $(EPICS_BASE_IOC_LIBS)
 #=============================
 # build an ioc application for testing
 
-# tmm: couldn't get devMPC to compile for solaris
-PROD_IOC_solaris = -nil-
-PROD_IOC_DEFAULT = ipApp
+PROD_IOC = ipApp
 
 # <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
 ipApp_SRCS_DEFAULT += ip_registerRecordDeviceDriver.cpp ipMain.cpp
