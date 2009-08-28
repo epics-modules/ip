@@ -110,7 +110,8 @@ static long initAi(aiRecord *pai)
     asynUser *pasynUser;
     asynStatus status;
     asynInterface *pasynInterface;
-    int nwrite, nread, eomReason;
+    size_t nwrite, nread;
+    int eomReason;
     devAiMKSPvt *pPvt;
     char response[MAX_RESPONSE_LEN];
     char gauge_str[3];  /*String to hold gauge type */
@@ -290,7 +291,8 @@ static void callbackAi(asynUser *pasynUser)
     aiRecord *pai = pPvt->pai;
     char response[MAX_RESPONSE_LEN];
     asynStatus status;
-    int nwrite, nread, eomReason;
+    size_t nwrite, nread;
+    int eomReason;
     struct rset *prset = (struct rset *)(pai->rset);
 
     pasynUser->timeout = TIMEOUT;
@@ -332,6 +334,16 @@ static void callbackAi(asynUser *pasynUser)
                       "devAiMKS record=%s, no gauge, etc.\n", 
                       pai->name);
             recGblSetSevr(pai,READ_ALARM,MAJOR_ALARM);
+        /* There appears to be a problem with the MKS.  Every once in a while
+         * it will return a response "NotCMD!" or "SYNTAX!", even though I am
+         * quite certain it is only being sent valid commands.  For now
+         * we suppress error messages and alarms when this happens so that
+         * we don't fill up log files and put displays in alarm. */
+        } else if (!strncmp(response,"SYNTAX!",7)  ||
+                   !strncmp(response,"NotCMD!",7)) {
+            asynPrint(pasynUser, ASYN_TRACE_FLOW,
+                      "devAiMKS record=%s, SYNTAX or NotCMD response.\n", 
+                      pai->name);
         } else {      /* Unexpected response from MKS */
             asynPrint(pasynUser, ASYN_TRACE_ERROR,
                       "devAiMKS record=%s, unknown response len=%d response=%s\n", 
