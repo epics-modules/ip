@@ -28,43 +28,79 @@ int tyGSAsynInit(char *port, char *moduleName, int channel, int baud, char parit
                  char *inputEos, char *outputEos)
 {
 
-   char *deviceName;
-   int status;
-   #define SIZE 80
-   char buffer[SIZE];
+    char *deviceName;
+    int status;
+    #define SIZE 80
+    char buffer[SIZE];
 
-   deviceName = tyGSOctalDevCreate(port, moduleName, channel, tyGSAsynInitBuffsize, 
-                               tyGSAsynInitBuffsize);
-   if (deviceName == NULL) return(ERROR);
-   drvAsynSerialPortConfigure(port, port, 0, 0, 0);
+    deviceName = tyGSOctalDevCreate(port, moduleName, channel, tyGSAsynInitBuffsize, 
+                                tyGSAsynInitBuffsize);
+    if (deviceName == NULL) {
+        printf("tyGSAsynInit: error calling tyGSOctalDevCreate\n");
+        return(ERROR);
+    }
+    status = drvAsynSerialPortConfigure(port, port, 0, 0, 0);
+    if (status) {
+        printf("tyGSAsynInit: error calling drvAsynSerialPortConfigure\n");
+        return(ERROR);
+    }
 
-   asynOctetConnect(port, port, 0, 0, 128, NULL);
-   asynOctetSetInputEos(port, 0, inputEos, NULL);
-   asynOctetSetOutputEos(port, 0, outputEos, NULL);
+    status = asynOctetConnect(port, port, 0, 0, 128, NULL);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynOctetConnect\n");
+        return(ERROR);
+    }
+    status = asynOctetSetInputEos(port, 0, inputEos, NULL);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynOctetSetInputEos\n");
+        return(ERROR);
+    }
+    status = asynOctetSetOutputEos(port, 0, outputEos, NULL);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynOctetSetOutputEos\n");
+        return(ERROR);
+    }
 
-   /* Port options */
-   sprintf(buffer, "%d", baud);
-   status = asynSetOption(port, 0, "baud", buffer);
-   if (status != 0) return(status);
+    /* Port options */
+    sprintf(buffer, "%d", baud);
+    status = asynSetOption(port, 0, "baud", buffer);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynSetOption for baud\n");
+        return(ERROR);
+    }
 
-   if (parity == 'N') strcpy(buffer,"none");
-   if (parity == 'E') strcpy(buffer,"even");
-   if (parity == 'O') strcpy(buffer,"odd");
-   status = asynSetOption(port, 0, "parity", buffer);
-   if (status != 0) return(status);
+    if (parity == 'N') strcpy(buffer,"none");
+    if (parity == 'E') strcpy(buffer,"even");
+    if (parity == 'O') strcpy(buffer,"odd");
+    status = asynSetOption(port, 0, "parity", buffer);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynSetOption for parity\n");
+        return(ERROR);
+    }
 
-   sprintf(buffer, "%d", sbits);
-   status = asynSetOption(port, 0, "stop", buffer);
-   if (status != 0) return(status);
+    sprintf(buffer, "%d", sbits);
+    status = asynSetOption(port, 0, "stop", buffer);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynSetOption for stop bits\n");
+        return(ERROR);
+    }
 
-   sprintf(buffer, "%d", dbits);
-   status = asynSetOption(port, 0, "bits", buffer);
-   if (status != 0) return(status);
+    sprintf(buffer, "%d", dbits);
+    status = asynSetOption(port, 0, "bits", buffer);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynSetOption for data bits\n");
+        return(ERROR);
+    }
 
-   if (handshake == 'H') strcpy(buffer,"N");
-   if (handshake == 'N') strcpy(buffer,"Y");
-   status = asynSetOption(port, 0, "clocal", buffer);
-   return(status);
+    if (handshake == 'H') strcpy(buffer,"N");
+    if (handshake == 'N') strcpy(buffer,"Y");
+    status = asynSetOption(port, 0, "clocal", buffer);
+    if (status) {
+        printf("tyGSAsynInit: error calling asynSetOption for handshake\n");
+        return(ERROR);
+    }
+printf("tyGSAsynInit returning %d\n", status);
+    return(status);
 }
 
 
