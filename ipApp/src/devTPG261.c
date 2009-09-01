@@ -48,6 +48,7 @@
 #include <epicsString.h>
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
+#include <errlog.h>
 #include <asynOctet.h>
 #include <aiRecord.h>
 #include <biRecord.h>
@@ -593,7 +594,7 @@ static long writeMbbo(mbboRecord *pr)
     if (!pr->pact) {
         switch (pPvt->command) {
           case SetUnit:
-            sprintf(tempcmd, "UNI,%ld", pr->rval);
+            sprintf(tempcmd, "UNI,%d", pr->rval);
             break;
           default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
@@ -637,7 +638,7 @@ static void devTPG261Callback(asynUser *pasynUser)
     char readBuffer[TPG261_BUFFER_SIZE];
     struct rset *prset = (struct rset *)(pr->rset);
 
-    unsigned int nread, nwrite;
+    size_t nread, nwrite;
     int eomReason;
 
 
