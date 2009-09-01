@@ -14,6 +14,7 @@
 #include <dbAccess.h>
 #include <dbCommon.h>
 #include <epicsString.h>
+#include <errlog.h>
 #include <alarm.h>
 #include <link.h>
 #include <recGbl.h>
@@ -45,8 +46,8 @@ typedef struct devStrParmPvt {
     opType       opType;
     recType      recType;
     asynStatus   status;
-    int          nread;
-    int          nwrite;
+    size_t       nread;
+    size_t       nwrite;
     char         buffer[100];
     int          bufferStartIndex;
     char         term[10];

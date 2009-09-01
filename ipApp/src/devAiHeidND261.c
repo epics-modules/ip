@@ -2,9 +2,9 @@
 FILENAME...	devAiHeidND261.c
 USAGE...	Heidenhain ND261 device support.
 
-Version:	$Revision: 1.5 $
-Modified By:	$Author: sluiter $
-Last Modified:	$Date: 2006-09-01 20:06:24 $
+Version:	$Revision: 1.6 $
+Modified By:	$Author: rivers $
+Last Modified:	$Date: 2009-09-01 13:31:24 $
 */
 
 /*
@@ -26,6 +26,7 @@ Last Modified:	$Date: 2006-09-01 20:06:24 $
 #include <dbDefs.h>
 #include <dbAccess.h>
 #include <dbCommon.h>
+#include <errlog.h>
 #include <alarm.h>
 #include <link.h>
 #include <recGbl.h>
@@ -57,14 +58,14 @@ typedef struct devAiHeidND261Pvt {
 	asynOctet	*pasynOctet;
 	void		*octetPvt;
 	asynStatus	status;
-	int			nread;
-	int			nwrite;
+	size_t		nread;
+	size_t		nwrite;
 	char		outbuf[BUFSZ], inbuf[BUFSZ];
 	char		term[4];
 	char		format[10];
-	int			termlen;
+	int		termlen;
 	double		timeout;
-	int			nchar;
+	int		nchar;
 } devAiHeidND261Pvt;
 
 typedef struct dsetAiHeidND261 {

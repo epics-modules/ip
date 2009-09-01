@@ -16,6 +16,7 @@
 #include <link.h>
 #include <recGbl.h>
 #include <recSup.h>
+#include <errlog.h>
 #include <devSup.h>
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
@@ -43,10 +44,10 @@ typedef struct devEurothermPvt {
 	opType		opType;
 	recType		recType;
 	asynStatus	status;
-	int			nread;
-	int			nwrite;
+	size_t		nread;
+	size_t		nwrite;
 	char		buffer[100];
-	int			bufferStartIndex;
+	int		bufferStartIndex;
 	char		term[10];
 	char		format[32];
 	int			termlen;
