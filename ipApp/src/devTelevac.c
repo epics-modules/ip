@@ -30,6 +30,7 @@
 #include <recSup.h>
 #include <devSup.h>
 #include <epicsString.h>
+#include <errlog.h>
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
 #include <asynOctet.h>

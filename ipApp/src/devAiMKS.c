@@ -53,6 +53,7 @@
 #include <recSup.h>
 #include <link.h>
 #include <cantProceed.h>
+#include <errlog.h>
 #include <devSup.h>
 #include <alarm.h>
 #include <asynDriver.h>
