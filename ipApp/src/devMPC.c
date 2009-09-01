@@ -67,6 +67,7 @@
 #include <recSup.h>
 #include <devSup.h>
 #include <epicsString.h>
+#include <errlog.h>
 #include <asynDriver.h>
 #include <asynEpicsUtils.h>
 #include <asynOctet.h>
@@ -738,7 +739,7 @@ static long writeMbbo(mbboRecord *pr)
             break;
         case SetTSPFilament:
             hexCmd = 0x29;
-            sprintf(tempparameter, "%ld", pr->rval);
+            sprintf(tempparameter, "%d", pr->rval);
             break;
         default:
             asynPrint(pPvt->pasynUser, ASYN_TRACE_ERROR,
