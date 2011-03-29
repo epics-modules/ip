@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen18/GOETZE/epics/synAppsSVN/support/ip/ipApp/op/adl/USdigital_X3.adl"
+	name="/net/s30dserv/xorApps/epics/synApps_5_2_1/ioc/30Cmono/30CmonoApp/op/adl/USdigital_X3.adl"
 	version=030105
 }
 display {
 	object {
-		x=757
-		y=106
+		x=749
+		y=353
 		width=575
 		height=250
 	}
@@ -480,7 +480,7 @@ text {
 }
 text {
 	object {
-		x=480
+		x=478
 		y=21
 		width=60
 		height=20
@@ -492,9 +492,9 @@ text {
 }
 "related display" {
 	object {
-		x=468
+		x=514
 		y=226
-		width=100
+		width=45
 		height=16
 	}
 	display[0] {
@@ -504,7 +504,7 @@ text {
 	}
 	clr=0
 	bclr=63
-	label="-Orientation"
+	label="-More"
 }
 polyline {
 	object {
@@ -550,4 +550,57 @@ polyline {
 		(4,218)
 		(566,218)
 	}
+}
+menu {
+	object {
+		x=424
+		y=225
+		width=82
+		height=18
+	}
+	control {
+		chan="$(P)USdig_X3:$(S):get_all.SCAN"
+		clr=14
+		bclr=4
+	}
+}
+"text update" {
+	object {
+		x=305
+		y=224
+		width=75
+		height=20
+	}
+	monitor {
+		chan="$(P)USdig_X3:$(S):T"
+		clr=14
+		bclr=4
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=385
+		y=222
+		width=15
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="o"
+}
+text {
+	object {
+		x=393
+		y=224
+		width=15
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="C"
 }
