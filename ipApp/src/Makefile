@@ -51,6 +51,8 @@ ipApp_LIBS += asyn
 ipApp_LIBS += seq pv
 ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
 
+ipApp_SYS_LIBS_solaris += socket
+
 #===========================
 
 include $(TOP)/configure/RULES
