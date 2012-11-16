@@ -1,6 +1,6 @@
 
 file {
-	name="/home/epics/devel/ip/ipApp/op/adl/PACE5000.adl"
+	name="/home/epics/support/ip/ipApp/op/adl/PACE5000.adl"
 	version=030105
 }
 display {
@@ -8,7 +8,7 @@ display {
 		x=88
 		y=82
 		width=350
-		height=315
+		height=340
 	}
 	clr=14
 	bclr=4
@@ -144,97 +144,6 @@ text {
 }
 composite {
 	object {
-		x=55
-		y=235
-		width=260
-		height=20
-	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=195
-				y=235
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)Vent_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=55
-				y=235
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Vent"
-			align="horiz. right"
-		}
-		menu {
-			object {
-				x=100
-				y=235
-				width=90
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Vent"
-				clr=53
-				bclr=4
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=45
-		y=260
-		width=145
-		height=20
-	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=100
-				y=260
-				width=90
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)Error_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=45
-				y=260
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Error"
-			align="horiz. right"
-		}
-	}
-}
-composite {
-	object {
 		x=25
 		y=160
 		width=290
@@ -281,99 +190,6 @@ composite {
 				chan="$(P)$(R)Control"
 				clr=53
 				bclr=4
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=55
-		y=185
-		width=260
-		height=20
-	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=195
-				y=185
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)Slew_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=55
-				y=185
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Slew"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=100
-				y=185
-				width=90
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Slew"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=35
-		y=210
-		width=155
-		height=20
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=35
-				y=210
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Effort"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=100
-				y=210
-				width=90
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)Effort_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
 			}
 		}
 	}
@@ -570,8 +386,192 @@ menu {
 }
 composite {
 	object {
-		x=5
+		x=55
+		y=260
+		width=260
+		height=20
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=195
+				y=260
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)Vent_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=55
+				y=260
+				width=40
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Vent"
+			align="horiz. right"
+		}
+		menu {
+			object {
+				x=100
+				y=260
+				width=90
+				height=20
+			}
+			control {
+				chan="$(P)$(R)Vent"
+				clr=53
+				bclr=4
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=45
 		y=285
+		width=145
+		height=20
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=100
+				y=285
+				width=90
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)Error_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=45
+				y=285
+				width=50
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Error"
+			align="horiz. right"
+		}
+	}
+}
+composite {
+	object {
+		x=55
+		y=210
+		width=260
+		height=20
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=195
+				y=210
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)Slew_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=55
+				y=210
+				width=40
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Slew"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=100
+				y=210
+				width=90
+				height=20
+			}
+			control {
+				chan="$(P)$(R)Slew"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=35
+		y=235
+		width=155
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=35
+				y=235
+				width=60
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Effort"
+			align="horiz. right"
+		}
+		"text update" {
+			object {
+				x=100
+				y=235
+				width=90
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)Effort_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=5
+		y=310
 		width=288
 		height=20
 	}
@@ -580,7 +580,7 @@ composite {
 		"related display" {
 			object {
 				x=223
-				y=285
+				y=310
 				width=70
 				height=20
 			}
@@ -596,7 +596,7 @@ composite {
 		menu {
 			object {
 				x=100
-				y=285
+				y=310
 				width=90
 				height=20
 			}
@@ -609,7 +609,7 @@ composite {
 		text {
 			object {
 				x=5
-				y=285
+				y=310
 				width=90
 				height=20
 			}
@@ -618,5 +618,46 @@ composite {
 			}
 			textix="Read Rate"
 		}
+	}
+}
+"text update" {
+	object {
+		x=195
+		y=185
+		width=120
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SlewMode_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=5
+		y=185
+		width=90
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Slew Mode"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=100
+		y=185
+		width=90
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SlewMode"
+		clr=53
+		bclr=4
 	}
 }
