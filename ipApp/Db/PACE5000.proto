@@ -21,6 +21,14 @@ setControl {
    out ":OUTP:STAT %d";
 }
 
+getSlewMode {
+   out ":SOUR:PRES:SLEW:MODE?";
+   in  ":SOUR:PRES:SLEW:MODE %s";
+}
+setSlewMode {
+   out ":SOUR:PRES:SLEW:MODE %s";
+}
+
 getSlew {
    out ":SOUR:PRES:SLEW?";
    in  ":SOUR:PRES:SLEW %f";

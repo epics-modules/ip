@@ -47,6 +47,16 @@ record(bo,"$(P)$(R)Control") {
     field(ONAM, "On")
 }
 
+record(mbbo,"$(P)$(R)SlewMode") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@PACE5000.proto setSlewMode $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "MAX")
+    field(ONVL, "1")
+    field(ONST, "LIN")
+}
+
 record(ao,"$(P)$(R)Slew") {
     field(PINI, "YES")
     field(DTYP, "stream")
@@ -116,6 +126,16 @@ record(bi,"$(P)$(R)Control_RBV") {
     field(INP,  "@PACE5000.proto getControl $(PORT)")
     field(ZNAM, "Off")
     field(ONAM, "On")
+    field(FLNK, "$(P)$(R)SlewMode_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)SlewMode_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PACE5000.proto getSlewMode $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "MAX")
+    field(ONVL, "1")
+    field(ONST, "LIN")
     field(FLNK, "$(P)$(R)Slew_RBV.PROC")
 }
 
