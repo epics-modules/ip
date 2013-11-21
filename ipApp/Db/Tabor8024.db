@@ -1,9 +1,49 @@
 # Tabor8024.db
 
-# Database file for Tabor 8024 Arbitrary Waveform Generator
-
 # Mark Rivers
 # November 16, 2013
+
+# Database file for Tabor 8024 Arbitrary Waveform Generator
+#
+# The Tabor 8024 is an older device, and is no longer supported.  However, Tabor has newer models
+# that are very similar, and which use most of the same command set.  One could load this database
+# and then a small database for the new device that replaced some fields and added new records.
+# Or one could create a new database using this one as an example.  The newer devices have different
+# ranges for FREQUENCY, etc. so the DRVH and DRVL values need to change, etc.
+#
+# This support uses StreamDevice.
+# It supports nearly all features of the device except:
+#   Amplitude modulation (:AM command)
+#   Sequences of arbitrary waveforms (:SEQ command)
+#
+# For simplicity it provides access to only 4 user-defineable waveforms, rather than
+# all 99 user-defineable waveforms that the device supports.
+#
+# The device has 64536 channels of total user-defineable waveform memory.  This support
+# allows that memory to be split between the 4 waveforms in any manner, e.g. each with 15000
+# points, or one with 64000 points and the others with 100 each, etc.
+#
+# User-defineable waveforms are downloaded by selecting the desired waveform (1-4) with the
+# TraceSelect record and then writing the waveform to the UserWaveform waveform record.
+# 
+# The UserWaveform record has FTVL=SHORT, and the waveform values must be in the 
+# range -2048 to +2048, corresponding to -10V to +10V into 50 ohms.  The waveform record size
+# can be large enough to hold the maximum length waveform that the device supports (64536).
+# The actual number of values written to UserWaveform can be any length between 10 and the
+# value of NELM used when loading the database.  The time per user waveform point can be in
+# the range of 1e-2 to 1e-8 seconds.
+#
+# The only features which I could not seem to get to work were the Internal timebases for the Trigger
+# and Burst modes.  The External and Bus (software) settings do work for Trigger and Burst.
+#
+# Macro parameters required when loading this database:
+#  P = Record name prefix
+#  R = Base record name
+#  PORT = Name of asyn port for the GPIB or VXI-11 driver for the device
+#  ADDR = GPIB address of the device
+#  NELM = Maximum number of elements in the UserWaveform waveform record
+#
+
 
 ###
 ### Source control
