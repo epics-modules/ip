@@ -1,6 +1,6 @@
 
 file {
-	name="/home/epics/devel/CARS/CARSApp/op/adl/Tabor8024.adl"
+	name="/home/epics/support/ip-2-14/ipApp/op/adl/Tabor8024.adl"
 	version=030107
 }
 display {
@@ -848,431 +848,6 @@ menu {
 composite {
 	object {
 		x=430
-		y=250
-		width=420
-		height=155
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=594
-				y=255
-				width=143
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=495
-				y=305
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst source"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=505
-				y=355
-				width=110
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst state"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=515
-				y=380
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst once"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=515
-				y=330
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst rate"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=495
-				y=280
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Burst cycles"
-			align="horiz. right"
-		}
-		menu {
-			object {
-				x=622
-				y=305
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)BurstSource"
-				clr=14
-				bclr=51
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=305
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)BurstSource_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		menu {
-			object {
-				x=622
-				y=355
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)BurstState"
-				clr=14
-				bclr=51
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=355
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)BurstState_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=622
-				y=380
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)BurstOnce.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Burst"
-			press_msg="1"
-		}
-		"text entry" {
-			object {
-				x=621
-				y=330
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)BurstRate"
-				clr=14
-				bclr=51
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=330
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)BurstRate_RBV"
-				clr=53
-				bclr=4
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=621
-				y=280
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)BurstCycles"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=280
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)BurstCycles_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		rectangle {
-			object {
-				x=430
-				y=250
-				width=420
-				height=155
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=430
-		y=115
-		width=420
-		height=130
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=594
-				y=120
-				width=143
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Trigger"
-			align="horiz. centered"
-		}
-		text {
-			object {
-				x=475
-				y=145
-				width=140
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Trigger source"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=495
-				y=170
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Trigger rate"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=485
-				y=195
-				width=130
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Trigger state"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=495
-				y=220
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Trigger once"
-			align="horiz. right"
-		}
-		menu {
-			object {
-				x=622
-				y=145
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TriggerSource"
-				clr=14
-				bclr=51
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=145
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TriggerSource_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=170
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TriggerRate_RBV"
-				clr=53
-				bclr=4
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=621
-				y=170
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TriggerRate"
-				clr=14
-				bclr=51
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		menu {
-			object {
-				x=622
-				y=195
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TriggerState"
-				clr=14
-				bclr=51
-			}
-		}
-		"text update" {
-			object {
-				x=707
-				y=195
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TriggerState_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=622
-				y=220
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TriggerOnce.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Trigger"
-			press_msg="1"
-		}
-		rectangle {
-			object {
-				x=430
-				y=115
-				width=420
-				height=130
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=430
 		y=55
 		width=420
 		height=55
@@ -1458,7 +1033,7 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="Trigger/burst rate"
+	textix="Trig./burst period"
 	align="horiz. right"
 }
 composite {
@@ -1635,6 +1210,431 @@ composite {
 			}
 			format="exponential"
 			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=430
+		y=115
+		width=420
+		height=130
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=594
+				y=120
+				width=143
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Trigger"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=475
+				y=145
+				width=140
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Trigger source"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=495
+				y=170
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Trigger period"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=485
+				y=195
+				width=130
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Trigger state"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=495
+				y=220
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Trigger once"
+			align="horiz. right"
+		}
+		menu {
+			object {
+				x=622
+				y=145
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)TriggerSource"
+				clr=14
+				bclr=51
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=145
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)TriggerSource_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=170
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)TriggerRate_RBV"
+				clr=53
+				bclr=4
+			}
+			format="exponential"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=621
+				y=170
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)TriggerRate"
+				clr=14
+				bclr=51
+			}
+			format="exponential"
+			limits {
+			}
+		}
+		menu {
+			object {
+				x=622
+				y=195
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)TriggerState"
+				clr=14
+				bclr=51
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=195
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)TriggerState_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		"message button" {
+			object {
+				x=622
+				y=220
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)TriggerOnce.PROC"
+				clr=14
+				bclr=51
+			}
+			label="Trigger"
+			press_msg="1"
+		}
+		rectangle {
+			object {
+				x=430
+				y=115
+				width=420
+				height=130
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=430
+		y=250
+		width=420
+		height=155
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=594
+				y=255
+				width=143
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=495
+				y=305
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst source"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=505
+				y=355
+				width=110
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst state"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=515
+				y=380
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst once"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=515
+				y=330
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst period"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=495
+				y=280
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Burst cycles"
+			align="horiz. right"
+		}
+		menu {
+			object {
+				x=622
+				y=305
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BurstSource"
+				clr=14
+				bclr=51
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=305
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)BurstSource_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		menu {
+			object {
+				x=622
+				y=355
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BurstState"
+				clr=14
+				bclr=51
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=355
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)BurstState_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		"message button" {
+			object {
+				x=622
+				y=380
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BurstOnce.PROC"
+				clr=14
+				bclr=51
+			}
+			label="Burst"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=621
+				y=330
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BurstRate"
+				clr=14
+				bclr=51
+			}
+			format="exponential"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=330
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)BurstRate_RBV"
+				clr=53
+				bclr=4
+			}
+			format="exponential"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=621
+				y=280
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)BurstCycles"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=707
+				y=280
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)BurstCycles_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		rectangle {
+			object {
+				x=430
+				y=250
+				width=420
+				height=155
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
 			}
 		}
 	}
