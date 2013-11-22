@@ -33,9 +33,6 @@
 # value of NELM used when loading the database.  The time per user waveform point can be in
 # the range of 1e-2 to 1e-8 seconds.
 #
-# The only features which I could not seem to get to work were the Internal timebases for the Trigger
-# and Burst modes.  The External and Bus (software) settings do work for Trigger and Burst.
-#
 # Macro parameters required when loading this database:
 #  P = Record name prefix
 #  R = Base record name
@@ -755,7 +752,7 @@ record(mbbi,"$(P)$(R)TriggerSource_RBV") {
     field(TWST, "BUS")
 }
 
-record(ao,"$(P)$(R)TriggerRate") {
+record(ao,"$(P)$(R)TriggerPeriod") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Tabor8024.proto setFloat(:TRIG:INT:RATE) $(PORT) $(ADDR)")
@@ -765,10 +762,10 @@ record(ao,"$(P)$(R)TriggerRate") {
     field(HOPR, "999")
     field(PREC, "3")
     field(VAL,  "1")
-    field(FLNK, "$(P)$(R)TriggerRate_RBV.PROC")
+    field(FLNK, "$(P)$(R)TriggerPeriod_RBV.PROC")
 }
 
-record(ai,"$(P)$(R)TriggerRate_RBV") {
+record(ai,"$(P)$(R)TriggerPeriod_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Tabor8024.proto getFloat(:TRIG:INT:RATE) $(PORT) $(ADDR)")
     field(LOPR, "10.e-6")
@@ -840,7 +837,7 @@ record(mbbi,"$(P)$(R)BurstSource_RBV") {
     field(TWST, "BUS")
 }
 
-record(ao,"$(P)$(R)BurstRate") {
+record(ao,"$(P)$(R)BurstPeriod") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Tabor8024.proto setFloat(:BM:INT:RATE) $(PORT) $(ADDR)")
@@ -850,10 +847,10 @@ record(ao,"$(P)$(R)BurstRate") {
     field(HOPR, "999")
     field(PREC, "3")
     field(VAL,  "1")
-    field(FLNK, "$(P)$(R)BurstRate_RBV.PROC")
+    field(FLNK, "$(P)$(R)BurstPeriod_RBV.PROC")
 }
 
-record(ai,"$(P)$(R)BurstRate_RBV") {
+record(ai,"$(P)$(R)BurstPeriod_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Tabor8024.proto getFloat(:BM:INT:RATE) $(PORT) $(ADDR)")
     field(LOPR, "20.e-6")
