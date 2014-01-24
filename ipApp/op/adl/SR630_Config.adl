@@ -1,12 +1,12 @@
 
 file {
-	name="/home/oxygen/KLANG/Documents/Projects/Thermo1/Thermo1App/adl/SR630.adl"
+	name="/home/oxygen/KLANG/Documents/Projects/Thermo1/Thermo1App/adl/SR630_Config.adl"
 	version=030107
 }
 display {
 	object {
-		x=1023
-		y=60
+		x=974
+		y=305
 		width=325
 		height=180
 	}
@@ -104,170 +104,121 @@ rectangle {
 	object {
 		x=15
 		y=30
-		width=160
+		width=225
 		height=40
 	}
 	"basic attribute" {
 		clr=4
 	}
 }
-"text update" {
-	object {
-		x=100
-		y=95
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Measure"
-		clr=16
-		bclr=14
-	}
-	align="horiz. right"
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=100
-		y=120
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Nominal"
-		clr=16
-		bclr=14
-	}
-	align="horiz. right"
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=100
-		y=145
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Delta"
-		clr=16
-		bclr=14
-	}
-	align="horiz. right"
-	format="string"
-	limits {
-	}
-}
 text {
 	object {
 		x=20
-		y=97
-		width=75
-		height=16
+		y=30
+		width=215
+		height=40
 	}
 	"basic attribute" {
-		clr=14
+		clr=11
 	}
-	textix="Measured:"
+	textix="Configuration"
 }
 text {
 	object {
-		x=20
-		y=122
-		width=75
-		height=16
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Nominal:"
-}
-text {
-	object {
-		x=20
-		y=147
-		width=75
-		height=16
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Delta:"
-}
-"text update" {
-	object {
-		x=210
-		y=95
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Units"
-		clr=14
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=210
-		y=120
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Units"
-		clr=14
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=210
-		y=145
-		width=100
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)rCurr_Units"
-		clr=14
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-menu {
-	object {
-		x=210
+		x=15
 		y=70
-		width=100
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Channel:"
+}
+rectangle {
+	object {
+		x=105
+		y=70
+		width=35
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+text {
+	object {
+		x=110
+		y=70
+		width=25
+		height=20
+	}
+	"basic attribute" {
+		clr=16
+	}
+	textix="$(N)"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=255
+		y=60
+		width=55
 		height=20
 	}
 	control {
-		chan="$(P)$(R)wCurr_Chan"
+		chan="$(P)$(R)Channel$(N)_Sync.PROC"
 		clr=14
-		bclr=4
+		bclr=51
 	}
+	label="Sync"
+	press_msg="1"
+}
+text {
+	object {
+		x=25
+		y=95
+		width=100
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Units:"
+}
+text {
+	object {
+		x=25
+		y=120
+		width=100
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Therm Type:"
+}
+text {
+	object {
+		x=25
+		y=145
+		width=100
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Nominal Val:"
 }
 "text update" {
 	object {
-		x=100
-		y=70
-		width=100
+		x=225
+		y=95
+		width=85
 		height=20
 	}
 	monitor {
-		chan="$(P)$(R)rCurr_Chan"
+		chan="$(P)$(R)rChannel$(N)_Units"
 		clr=16
 		bclr=14
 	}
@@ -275,17 +226,78 @@ menu {
 	limits {
 	}
 }
-text {
+"text update" {
 	object {
-		x=20
-		y=72
-		width=75
-		height=16
+		x=225
+		y=120
+		width=85
+		height=20
 	}
-	"basic attribute" {
+	monitor {
+		chan="$(P)$(R)rChannel$(N)_Therm_Type"
+		clr=16
+		bclr=14
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=225
+		y=145
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)rChannel$(N)_Nominal_Value"
+		clr=16
+		bclr=14
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+menu {
+	object {
+		x=130
+		y=95
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)wChannel$(N)_Units"
 		clr=14
+		bclr=4
 	}
-	textix="Source:"
+}
+menu {
+	object {
+		x=130
+		y=120
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)wChannel$(N)_Therm_Type"
+		clr=14
+		bclr=4
+	}
+}
+"text entry" {
+	object {
+		x=130
+		y=145
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)wChannel$(N)_Nominal_Value"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
 }
 "related display" {
 	object {
@@ -378,19 +390,6 @@ text {
 	bclr=51
 	label=" More"
 }
-text {
-	object {
-		x=20
-		y=30
-		width=150
-		height=40
-	}
-	"basic attribute" {
-		clr=11
-	}
-	textix="Readings"
-	align="horiz. centered"
-}
 rectangle {
 	object {
 		x=0
@@ -400,6 +399,7 @@ rectangle {
 	}
 	"basic attribute" {
 		clr=29
+		width=3
 	}
 }
 text {
