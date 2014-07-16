@@ -1,0 +1,228 @@
+# PHD2000.db
+# Mark Rivers
+# July 15, 2014
+# Database file for Harvard Apparatus syringe pump
+
+record(bo,"$(P)$(R)ReadSettings") {
+    field(PINI, "YES")
+    field(ZNAM, "Done")
+    field(ONAM, "Read")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)ModeIn_RBV.PROC")
+}
+
+# We use a soft record here to get nicer menus
+record(mbbo,"$(P)$(R)Mode") {
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "Pump")
+    field(ONVL, "1")
+    field(ONST, "Volume")
+    field(TWVL, "2")
+    field(TWST, "Program")
+    field(OUT,  "$(P)$(R)ModeOut PP MS")
+}
+
+record(mbbo,"$(P)$(R)ModeOut") {
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setString(mod) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "PMP")
+    field(ONVL, "1")
+    field(ONST, "VOL")
+    field(TWVL, "2")
+    field(TWST, "PGM")
+}
+
+record(mbbi,"$(P)$(R)ModeIn_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getString(mod) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "PUMP  ")
+    field(ONVL, "1")
+    field(ONST, "VOLUME")
+    field(TWVL, "2")
+    field(TWST, "PRGRAM")
+    field(FLNK, "$(P)$(R)Mode_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)Mode_RBV") {
+    field(INP,  "$(P)$(R)ModeIn_RBV NPP MS")
+    field(ZRVL, "0")
+    field(ZRST, "Pump")
+    field(ONVL, "1")
+    field(ONST, "Volume")
+    field(TWVL, "2")
+    field(TWST, "Program")
+    field(FLNK, "$(P)$(R)DirectionIn_RBV.PROC")
+}
+
+record(mbbo,"$(P)$(R)Direction") {
+    field(ZRVL, "0")
+    field(ZRST, "Infuse")
+    field(ONVL, "1")
+    field(ONST, "Withdraw")
+    field(TWVL, "2")
+    field(TWST, "Reverse")
+    field(OUT,  "$(P)$(R)DirectionOut PP MS")
+}
+
+record(mbbo,"$(P)$(R)DirectionOut") {
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setString(dir) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "INF")
+    field(ONVL, "1")
+    field(ONST, "REF")
+    field(TWVL, "2")
+    field(TWST, "REV")
+}
+
+record(mbbi,"$(P)$(R)DirectionIn_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getString(dir) $(PORT)")
+    field(ZRST, "INFUSE")
+    field(ONST, "REFILL")
+    field(TWST, "NA")
+    field(FLNK, "$(P)$(R)Direction_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)Direction_RBV") {
+    field(INP,  "$(P)$(R)DirectionIn_RBV NPP MS")
+    field(ZRST, "Infuse")
+    field(ONST, "Withdraw")
+    field(TWST, "Not available")
+    field(FLNK, "$(P)$(R)RunIn_RBV.PROC")
+}
+
+record(bo,"$(P)$(R)Run") {
+    field(ZNAM, "Stop")
+    field(ONAM, "Run")
+    field(OUT, "$(P)$(R)RunOut PP MS")
+}
+
+record(bo,"$(P)$(R)RunOut") {
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setNoneString $(PORT)")
+    field(ZNAM, "Stp")
+    field(ONAM, "Run")
+}
+
+record(mbbi,"$(P)$(R)RunIn_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getRun $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, ":")
+    field(ONVL, "1")
+    field(ONST, ">")
+    field(TWVL, "2")
+    field(TWST, "<")
+    field(THVL, "3")
+    field(THST, "/")
+    field(FRVL, "4")
+    field(FRST, "*")
+    field(FVVL, "5")
+    field(FVST, "^")
+    field(FLNK, "$(P)$(R)State_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)State_RBV") {
+    field(INP,  "$(P)$(R)RunIn_RBV NPP MS")
+    field(ZRVL, "0")
+    field(ZRST, "Idle")
+    field(ZRSV, "NO_ALARM")
+    field(ONVL, "1")
+    field(ONST, "Infusing")
+    field(ONSV, "MINOR")
+    field(TWVL, "2")
+    field(TWST, "Withdrawing")
+    field(TWSV, "MINOR")
+    field(THVL, "3")
+    field(THST, "Paused")
+    field(THSV, "MINOR")
+    field(FRVL, "4")
+    field(FRST, "Interrupted")
+    field(FRSV, "MINOR")
+    field(FRVL, "5")
+    field(FVST, "Trigger wait")
+    field(FVSV, "MINOR")
+    field(FLNK, "$(P)$(R)Diameter_RBV.PROC")
+}
+
+record(calcout,"$(P)$(R)SetStop") {
+    field(INPA, "$(P)$(R)State_RBV CP MS")
+    field(CALC, "A")
+    field(OUT,  "$(P)$(R)Run PP MS")
+    field(OOPT, "Transition To Zero")
+}
+
+
+record(ao,"$(P)$(R)Diameter") {
+#    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setFloat(dia) $(PORT)")
+    field(EGU,  "mm")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)Diameter_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getFloat(dia) $(PORT)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)Delivered_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Delivered_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getFloat(del) $(PORT)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)InfusionRate_RBV.PROC")
+}
+
+record(ao,"$(P)$(R)InfusionRate") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setFloat(rat) $(PORT)")
+    field(EGU,  "ml/m")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)InfusionRate_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getFloatEGU(rat) $(PORT)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)WithdrawalRate_RBV.PROC")
+}
+
+record(ao,"$(P)$(R)WithdrawalRate") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setFloat(rfr) $(PORT)")
+    field(EGU,  "ml/m")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)WithdrawalRate_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getFloatEGU(rfr) $(PORT)")
+    field(PREC, "$(PREC)")
+    field(FLNK, "$(P)$(R)InfusionVolume_RBV.PROC")
+}
+
+record(ao,"$(P)$(R)InfusionVolume") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@PHD2000.proto setFloat(tgt) $(PORT)")
+    field(EGU,  "ml")
+    field(PREC, "$(PREC)")
+}
+
+record(ai,"$(P)$(R)InfusionVolume_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@PHD2000.proto getFloatEGU(tgt) $(PORT)")
+    field(PREC, "$(PREC)")
+}
+
+record(asyn, "$(P)$(R)Asyn") {
+    field(PORT, "$(PORT)")
+}
