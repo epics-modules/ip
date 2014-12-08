@@ -1,4 +1,5 @@
 TOP = ../..
 include $(TOP)/configure/CONFIG
-#nothing to do
+ARCH = linux-x86_64
+TARGETS = envPaths
 include $(TOP)/configure/RULES.ioc
