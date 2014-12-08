@@ -9,12 +9,16 @@ content="text/html; charset=iso-8859-1">
 <body bgcolor="#FFFFFF">
 
 <h1 align="center">ip module Documentation</h1>
-The ip module contains support for specific serial devices.
 
-<P>To use the support in this module, include <code>ipSupport.dbd</code> in
-the <code>.dbd</code> file that will be loaded into the ioc.  For a VME crate,
-also include <code>ipVXSupport.dbd</code>, and link with the library
-<code>libip</code>.
+The ip module contains support for specific message-based (e.g., serial)
+devices.
+
+<P>To use the support in this module, include either <code>ip.dbd</code> or
+<code>ipSupport.dbd</code> in the <code>.dbd</code> file that will be loaded
+into the ioc.  For a VME crate, also include either <code>ipVX.dbd</code> or
+<code>ipVXSupport.dbd</code>.  In either case, link with the library
+<code>libip</code>.  (EPICS has a separate lib directory for each target arch,
+but all target arches use the same dbd directory.)
 
 <P><a href="ipReleaseNotes.html">ipReleaseNotes.html</a>
 <dl>
