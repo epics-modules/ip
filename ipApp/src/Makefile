@@ -36,24 +36,6 @@ ip_LIBS += asyn
 ip_LIBS += seq pv
 ip_LIBS += $(EPICS_BASE_IOC_LIBS)
 
-#=============================
-# build an ioc application for testing
-
-PROD_IOC = ipApp
-
-# <name>_registerRecordDeviceDriver.cpp will be created from <name>.dbd
-ipApp_SRCS_DEFAULT += ip_registerRecordDeviceDriver.cpp ipMain.cpp
-ipApp_SRCS_vxWorks += ipVX_registerRecordDeviceDriver.cpp
-#The following adds support from base/src/vxWorks
-ipApp_OBJS_vxWorks += $(EPICS_BASE_BIN)/vxComLibrary
-
-ipApp_LIBS += ip
-ipApp_LIBS += asyn
-ipApp_LIBS += seq pv
-ipApp_LIBS += $(EPICS_BASE_IOC_LIBS)
-
-ipApp_SYS_LIBS_solaris += socket
-
 #===========================
 
 include $(TOP)/configure/RULES
