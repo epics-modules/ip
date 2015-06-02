@@ -80,6 +80,15 @@ getOUTMODE {
         in "%(\$2:OUT\$1:Mode_RBV.VAL)d,%(\$2:OUT\$1:Cntrl_RBV.VAL)d,%*d";
 	}
 
+setMODE {
+	out "MODE %d";
+        wait 100;
+	}
+
+getMODE {
+	out "MODE?";
+        in "%d";
+	}
 
 setPID {
 	out "PID \$1,%(\$2:P\$1.VAL)f,%(\$2:I\$1.VAL)f,%(\$2:D\$1.VAL)f";
@@ -91,13 +100,17 @@ getPID {
         in "%(\$2:P\$1_RBV.VAL)f,%(\$2:I\$1_RBV.VAL)f,%(\$2:D\$1_RBV.VAL)f";
 	}
 
+setInType {
+        out "INTYPE %(\$2:OUT\$1:Cntrl_RBV.VAL)s,%(\$2:IN\$1:Sensor_RBV.VAL)d,%(\$2:IN\$1:AutoRange_RBV.VAL)d,%(\$2:IN\$1:Range_RBV.VAL)d,%(\$2:IN\$1:Comp_RBV.VAL)d,%(\$2:IN\$1:Units.RVAL)d";
+	}
+
 getInType {
         out "INTYPE? %(\$2:OUT\$1:Cntrl_RBV.VAL)s";
-        in "%*d,%*d,%*d,%*d,%d";
+        in "%(\$2:IN\$1:Sensor_RBV.VAL)d,%(\$2:IN\$1:AutoRange_RBV.VAL)d,%(\$2:IN\$1:Range_RBV.VAL)d,%(\$2:IN\$1:Comp_RBV.VAL)d,%(\$2:IN\$1:Units_RBV.VAL)d";
 	}
 
 getInput {
-        out "%(\$2:IN\$1:Type_RBV.VAL)s","RDG? ","%(\$2:OUT\$1:Cntrl_RBV.VAL)s";
+        out "%(\$2:IN\$1:Units_RBV.VAL)s","RDG? ","%(\$2:OUT\$1:Cntrl_RBV.VAL)s";
         in "%f";
 	}
 

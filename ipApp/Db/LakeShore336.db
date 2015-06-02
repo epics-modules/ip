@@ -19,6 +19,7 @@ grecord(sseq,"$(P)LS336:$(Q):read") {
 	field(LNK6,"$(P)LS336:$(Q):HTR2  CA NMS")
 	field(LNK7,"$(P)LS336:$(Q):AOUT3  CA NMS")
 	field(LNK8,"$(P)LS336:$(Q):AOUT4  CA NMS")
+	field(LNK9,"$(P)LS336:$(Q):ModeRI_RBV  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -27,9 +28,11 @@ grecord(sseq,"$(P)LS336:$(Q):read") {
         field(WAIT6,"Wait")
         field(WAIT7,"Wait")
         field(WAIT8,"Wait")
+		field(WAIT9,"Wait")
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAll") {
+        field(DLY1,"1")
 	field(LNK1,"$(P)LS336:$(Q):readAllMode CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):readAllSetup CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):readAllPID CA NMS")
@@ -78,10 +81,10 @@ grecord(sseq,"$(P)LS336:$(Q):readAllRange") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllSetup") {
-	field(LNK1,"$(P)LS336:$(Q):IN1:Type_RBV  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):IN2:Type_RBV  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):IN3:Type_RBV  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):IN4:Type_RBV  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):IN1:getType  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):IN2:getType  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):IN3:getType  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):IN4:getType  CA NMS")
 	field(LNK5,"$(P)LS336:$(Q):IN1:Name_RBV  CA NMS")
 	field(LNK6,"$(P)LS336:$(Q):IN2:Name_RBV  CA NMS")
 	field(LNK7,"$(P)LS336:$(Q):IN3:Name_RBV  CA NMS")
@@ -332,45 +335,38 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT4:Mode_RBV") {
 	field(FVST,"Warmup Supply")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN1:Type_RBV") {
+grecord(stringin,"$(P)LS336:$(Q):IN1:getType") {
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInType(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN1:Sensor_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
 	field(THVL,"3")
-	field(ZRST,"UNDF")
-	field(ONST,"K")
-	field(TWST,"C")
-	field(THST,"S")
+	field(FRVL,"4")
+	field(ZRST,"Disabled")
+	field(ONST,"Diode")
+	field(TWST,"Platium RTD")
+	field(THST,"NTC RTD")
+	field(FRST,"Thermocouple")
 }
-grecord(mbbi,"$(P)LS336:$(Q):IN2:Type_RBV") {
-        field(DTYP, "stream")
-        field(INP, "@LakeShore336.proto getInType(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
-	field(ZRVL,"0")
-	field(ONVL,"1")
-	field(TWVL,"2")
-	field(THVL,"3")
-	field(ZRST,"UNDF")
-	field(ONST,"K")
-	field(TWST,"C")
-	field(THST,"S")
+
+grecord(bi,"$(P)LS336:$(Q):IN1:AutoRange_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
 }
-grecord(mbbi,"$(P)LS336:$(Q):IN3:Type_RBV") {
-        field(DTYP, "stream")
-        field(INP, "@LakeShore336.proto getInType(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
-	field(ZRVL,"0")
-	field(ONVL,"1")
-	field(TWVL,"2")
-	field(THVL,"3")
-	field(ZRST,"UNDF")
-	field(ONST,"K")
-	field(TWST,"C")
-	field(THST,"S")
+
+grecord(ai,"$(P)LS336:$(Q):IN1:Range_RBV") {
 }
-grecord(mbbi,"$(P)LS336:$(Q):IN4:Type_RBV") {
-        field(DTYP, "stream")
-        field(INP, "@LakeShore336.proto getInType(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+
+grecord(bi,"$(P)LS336:$(Q):IN1:Comp_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN1:Units_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -381,6 +377,180 @@ grecord(mbbi,"$(P)LS336:$(Q):IN4:Type_RBV") {
 	field(THST,"S")
 }
 
+grecord(mbbo,"$(P)LS336:$(Q):IN1:Units") {
+        field(DTYP, "stream")
+        field(OUT, "@LakeShore336.proto setInType(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"3")
+	field(ZRST,"K")
+	field(ONST,"C")
+	field(TWST,"S")
+        field(FLNK,"$(P)LS336:$(Q):readAll")
+}
+
+grecord(stringin,"$(P)LS336:$(Q):IN2:getType") {
+        field(DTYP, "stream")
+        field(INP, "@LakeShore336.proto getInType(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN2:Sensor_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(FRVL,"4")
+	field(ZRST,"Disabled")
+	field(ONST,"Diode")
+	field(TWST,"Platium RTD")
+	field(THST,"NTC RTD")
+	field(FRST,"Thermocouple")
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN2:AutoRange_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(ai,"$(P)LS336:$(Q):IN2:Range_RBV") {
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN2:Comp_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN2:Units_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(ZRST,"UNDF")
+	field(ONST,"K")
+	field(TWST,"C")
+	field(THST,"S")
+}
+
+grecord(mbbo,"$(P)LS336:$(Q):IN2:Units") {
+        field(DTYP, "stream")
+        field(OUT, "@LakeShore336.proto setInType(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"3")
+	field(ZRST,"K")
+	field(ONST,"C")
+	field(TWST,"S")
+        field(FLNK,"$(P)LS336:$(Q):readAll")
+}
+
+
+grecord(stringin,"$(P)LS336:$(Q):IN3:getType") {
+        field(DTYP, "stream")
+        field(INP, "@LakeShore336.proto getInType(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN3:Sensor_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(FRVL,"4")
+	field(ZRST,"Disabled")
+	field(ONST,"Diode")
+	field(TWST,"Platium RTD")
+	field(THST,"NTC RTD")
+	field(FRST,"Thermocouple")
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN3:AutoRange_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(ai,"$(P)LS336:$(Q):IN3:Range_RBV") {
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN3:Comp_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN3:Units_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(ZRST,"UNDF")
+	field(ONST,"K")
+	field(TWST,"C")
+	field(THST,"S")
+}
+
+grecord(mbbo,"$(P)LS336:$(Q):IN3:Units") {
+        field(DTYP, "stream")
+        field(OUT, "@LakeShore336.proto setInType(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"3")
+	field(ZRST,"K")
+	field(ONST,"C")
+	field(TWST,"S")
+        field(FLNK,"$(P)LS336:$(Q):readAll")
+}
+
+grecord(stringin,"$(P)LS336:$(Q):IN4:getType") {
+        field(DTYP, "stream")
+        field(INP, "@LakeShore336.proto getInType(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN4:Sensor_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(FRVL,"4")
+	field(ZRST,"Disabled")
+	field(ONST,"Diode")
+	field(TWST,"Platium RTD")
+	field(THST,"NTC RTD")
+	field(FRST,"Thermocouple")
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN4:AutoRange_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(ai,"$(P)LS336:$(Q):IN4:Range_RBV") {
+}
+
+grecord(bi,"$(P)LS336:$(Q):IN4:Comp_RBV") {
+	field(ZNAM,"OFF")
+	field(ONAM,"ON")
+}
+
+grecord(mbbi,"$(P)LS336:$(Q):IN4:Units_RBV") {
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(ZRST,"UNDF")
+	field(ONST,"K")
+	field(TWST,"C")
+	field(THST,"S")
+}
+
+grecord(mbbo,"$(P)LS336:$(Q):IN4:Units") {
+        field(DTYP, "stream")
+        field(OUT, "@LakeShore336.proto setInType(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
+	field(ZRVL,"1")
+	field(ONVL,"2")
+	field(TWVL,"3")
+	field(ZRST,"K")
+	field(ONST,"C")
+	field(TWST,"S")
+        field(FLNK,"$(P)LS336:$(Q):readAll")
+}
 
 grecord (stringin, "$(P)LS336:$(Q):IN1:Name_RBV") {
   field (DTYP, "stream")
@@ -826,4 +996,22 @@ grecord (stringin, "$(P)LS336:$(Q):getOutMode4") {
   field (INP, "@LakeShore336.proto getOUTMODE(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
+grecord(mbbi,"$(P)LS336:$(Q):ModeRI_RBV") {
+  field(DTYP, "stream")
+  field(INP, "@LakeShore336.proto getMODE $(PORT) $(ADDR)")
+  field(ZRST,"Local")
+  field(ONST,"Remote")
+  field(TWST,"Rem/Lockout")
+}
 
+grecord(mbbo,"$(P)LS336:$(Q):ModeRI") {
+  field(DTYP, "stream")
+  field(OUT, "@LakeShore336.proto setMODE $(PORT) $(ADDR)")
+  field(ZRVL,"0")
+  field(ONVL,"1")
+  field(TWVL,"2")
+  field(ZRST,"Local")
+  field(ONST,"Remote")
+  field(TWST,"Rem/Lockout")
+  field(FLNK,"$(P)LS336:$(Q):ModeRI_RBV")
+}
