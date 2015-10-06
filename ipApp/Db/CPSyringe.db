@@ -4,81 +4,19 @@
 # November 22, 2013
 
 # Database file for Cole-Palmer Syringe Pump
-record(bo,"$(P)$(R)ReadSettings") {
-    field(PINI, "YES")
-    field(ZNAM, "Done")
-    field(ONAM, "Read")
-    field(SCAN, "1 second")
-    field(FLNK, "$(P)$(R)ModeIn_RBV.PROC")
-}
-
-# We use a soft record here to get nicer menus
-record(mbbo,"$(P)$(R)Mode") {
-    field(PINI, "YES")
-    field(ZRVL, "0")
-    field(ZRST, "Infusion")
-    field(ONVL, "1")
-    field(ONST, "Withdrawal")
-    field(TWVL, "2")
-    field(TWST, "Infus./With.")
-    field(THVL, "3")
-    field(THST, "With./Infus.")
-    field(FRVL, "4")
-    field(FRST, "Continuous")
-    field(OUT,  "$(P)$(R)ModeOut PP MS")
-}
-
-record(mbbo,"$(P)$(R)ModeOut") {
-    field(DTYP, "stream")
-    field(OUT,  "@CPSyringe.proto setString(mode) $(PORT)")
-    field(ZRVL, "0")
-    field(ZRST, "I")
-    field(ONVL, "1")
-    field(ONST, "W")
-    field(TWVL, "2")
-    field(TWST, "I/W")
-    field(THVL, "3")
-    field(THST, "W/I")
-    field(FRVL, "4")
-    field(FRST, "CON")
-}
-
-record(mbbi,"$(P)$(R)ModeIn_RBV") {
-    field(DTYP, "stream")
-    field(INP,  "@CPSyringe.proto getString(mode) $(PORT)")
-    field(ZRVL, "0")
-    field(ZRST, "I")
-    field(ONVL, "1")
-    field(ONST, "W")
-    field(TWVL, "2")
-    field(TWST, "IW")
-    field(THVL, "3")
-    field(THST, "WI")
-    field(FRVL, "4")
-    field(FRST, "CON")
-    field(FLNK, "$(P)$(R)Mode_RBV.PROC")
-}
-
-record(mbbi,"$(P)$(R)Mode_RBV") {
-    field(INP,  "$(P)$(R)ModeIn_RBV NPP MS")
-    field(ZRVL, "0")
-    field(ZRST, "Infusion")
-    field(ONVL, "1")
-    field(ONST, "Withdrawal")
-    field(TWVL, "2")
-    field(TWST, "Infus./With.")
-    field(THVL, "3")
-    field(THST, "With./Infus.")
-    field(FRVL, "4")
-    field(FRST, "Continuous")
-    field(FLNK, "$(P)$(R)RunIn_RBV.PROC")
-}
-
 record(bo,"$(P)$(R)Run") {
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setNoneString $(PORT)")
     field(ZNAM, "Stop")
     field(ONAM, "Run")
+}
+
+record(bo,"$(P)$(R)ReadStatus") {
+    field(PINI, "YES")
+    field(ZNAM, "Done")
+    field(ONAM, "Read")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)RunIn_RBV.PROC")
 }
 
 record(mbbi,"$(P)$(R)RunIn_RBV") {
@@ -122,6 +60,84 @@ record(calcout,"$(P)$(R)SetStop") {
     field(CALC, "A")
     field(OUT,  "$(P)$(R)Run PP MS")
     field(OOPT, "Transition To Zero")
+    field(FLNK, "$(P)$(R)Delivered_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Delivered_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@CPSyringe.proto getFloatEGU(del) $(PORT)")
+    field(PREC, "3")
+}
+
+
+record(bo,"$(P)$(R)ReadSettings") {
+    field(PINI, "YES")
+    field(ZNAM, "Done")
+    field(ONAM, "Read")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)ModeIn_RBV.PROC")
+}
+
+# We use a soft record here to get nicer menus
+record(mbbo,"$(P)$(R)Mode") {
+    field(PINI, "YES")
+    field(ZRVL, "0")
+    field(ZRST, "Infusion")
+    field(ONVL, "1")
+    field(ONST, "Withdrawal")
+    field(TWVL, "2")
+    field(TWST, "Infus./With.")
+    field(THVL, "3")
+    field(THST, "With./Infus.")
+    field(FRVL, "4")
+    field(FRST, "Continuous")
+    field(OUT,  "$(P)$(R)ModeOut PP MS")
+}
+
+record(mbbo,"$(P)$(R)ModeOut") {
+    field(DTYP, "stream")
+    field(OUT,  "@CPSyringe.proto setString(mode) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "I")
+    field(ONVL, "1")
+    field(ONST, "W")
+    field(TWVL, "2")
+    field(TWST, "I/W")
+    field(THVL, "3")
+    field(THST, "W/I")
+    field(FRVL, "4")
+    field(FRST, "CON")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
+}
+
+record(mbbi,"$(P)$(R)ModeIn_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@CPSyringe.proto getString(mode) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "I")
+    field(ONVL, "1")
+    field(ONST, "W")
+    field(TWVL, "2")
+    field(TWST, "IW")
+    field(THVL, "3")
+    field(THST, "WI")
+    field(FRVL, "4")
+    field(FRST, "CON")
+    field(FLNK, "$(P)$(R)Mode_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)Mode_RBV") {
+    field(INP,  "$(P)$(R)ModeIn_RBV NPP MS")
+    field(ZRVL, "0")
+    field(ZRST, "Infusion")
+    field(ONVL, "1")
+    field(ONST, "Withdrawal")
+    field(TWVL, "2")
+    field(TWST, "Infus./With.")
+    field(THVL, "3")
+    field(THST, "With./Infus.")
+    field(FRVL, "4")
+    field(FRST, "Continuous")
     field(FLNK, "$(P)$(R)Diameter_RBV.PROC")
 }
 
@@ -131,18 +147,12 @@ record(ao,"$(P)$(R)Diameter") {
     field(OUT,  "@CPSyringe.proto setFloat(dia) $(PORT)")
     field(EGU,  "mm")
     field(PREC, "3")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
 
 record(ai,"$(P)$(R)Diameter_RBV") {
     field(DTYP, "stream")
     field(INP,  "@CPSyringe.proto getFloat(dia) $(PORT)")
-    field(PREC, "3")
-    field(FLNK, "$(P)$(R)Delivered_RBV.PROC")
-}
-
-record(ai,"$(P)$(R)Delivered_RBV") {
-    field(DTYP, "stream")
-    field(INP,  "@CPSyringe.proto getFloatEGU(del) $(PORT)")
     field(PREC, "3")
     field(FLNK, "$(P)$(R)InfusionRate_RBV.PROC")
 }
@@ -165,6 +175,7 @@ record(scalcout,"$(P)$(R)InfusionRateCalc") {
     field(INPA, "$(P)$(R)InfusionRate.VAL NPP NMS")
     field(INBB, "$(P)$(R)InfusionRate.EGU NPP NMS")
     field(CALC, "'ratei '+$P('%5.5s ',STR(A))+BB")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
 
 record(ai,"$(P)$(R)InfusionRate_RBV") {
@@ -187,8 +198,8 @@ record(scalcout,"$(P)$(R)WithdrawalRateCalc") {
     field(INPA, "$(P)$(R)WithdrawalRate.VAL NPP NMS")
     field(INBB, "$(P)$(R)WithdrawalRate.EGU NPP NMS")
     field(CALC, "'ratew '+$P('%5.5s ',STR(A))+BB")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
-
 
 record(ai,"$(P)$(R)WithdrawalRate_RBV") {
     field(DTYP, "stream")
@@ -210,6 +221,7 @@ record(scalcout,"$(P)$(R)InfusionVolumeCalc") {
     field(INPA, "$(P)$(R)InfusionVolume.VAL NPP NMS")
     field(INBB, "$(P)$(R)InfusionVolume.EGU NPP NMS")
     field(CALC, "'voli '+$P('%5.5s ',STR(A))+BB")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
 
 record(ai,"$(P)$(R)InfusionVolume_RBV") {
@@ -232,6 +244,7 @@ record(scalcout,"$(P)$(R)WithdrawalVolumeCalc") {
     field(INPA, "$(P)$(R)WithdrawalVolume.VAL NPP NMS")
     field(INBB, "$(P)$(R)WithdrawalVolume.EGU NPP NMS")
     field(CALC, "'volw '+$P('%5.5s ',STR(A))+BB")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
 
 record(ai,"$(P)$(R)WithdrawalVolume_RBV") {
@@ -246,6 +259,7 @@ record(bo,"$(P)$(R)ReverseDirection") {
     field(OUT,  "@CPSyringe.proto reverseDirection $(PORT)")
     field(ZNAM, "Done")
     field(ONAM, "Reverse")
+    field(FLNK, "$(P)$(R)ReadSetttings.PROC")
 }
 
 record(mbbi,"$(P)$(R)DirectionIn_RBV") {
