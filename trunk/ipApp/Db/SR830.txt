@@ -1,0 +1,47 @@
+
+24-Feb-2015  K. Goetze :
+
+New Features added to the SR830 EPICS support:
+ - 4 channels DAC output
+ - 4 channels 16-bit ADC input
+ - All front-panel modes supported for channels 1 and 2.
+ - Added support for filter selection, output selection, expand and ratio.
+ - User-controllable fast and slow read loops, Fast for readings, Slow for parameters.
+
+
+To run the SR830 with EPICS (RS232):
+====================================
+
+RS232 Comms:
+  Baud: 9600
+     - The device can run at 19.2K, I tested at 9600.
+  Parity: No
+     - The device can be set to Odd, Even, or No Parity.
+  Stop bits: 2
+  Data bits: 8
+  Handshaking: No
+  inputEos: CR
+  outputEos: CR
+
+Cable:
+  db9 DTE   SR830 db25
+  -------   ----------
+     3         2
+     2         3
+     5         7
+
+Loading the databases, for example:
+  # Stanford SR830 Lock-in Amp
+  dbLoadRecords("$(IP)/ipApp/Db/SR830.vdb","P=xyz:,N=1,PORT=serial9")
+  dbLoadRecords("$(IP)/ipApp/Db/SR830.vdb","P=xyz:,N=2,PORT=serial10")
+  dbLoadRecords("$(IP)/ipApp/Db/SR830.vdb","P=xyx:,N=3,PORT=serial11")
+
+StreamDevice:
+  SR830.proto must be in "STREAM_PROTOCOL_PATH"
+
+Autosave:
+  SR830_settings.req  (can be used with "configMenu" to save instrument setups)
+
+The arguments for the medm display are simply:
+  P=xyz:, N=1
+

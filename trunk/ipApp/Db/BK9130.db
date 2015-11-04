@@ -1,0 +1,242 @@
+# BK9130.db - support for BK Precision 9130 triple-output power supply
+#           - streamDevice support, uses BK9130.proto
+#
+
+record (stringin, "$(P)BK9130:$(PS):IDN") {
+  field(DTYP, "stream")
+  field(INP, "@BK9130.proto getIDN $(PORT)")
+}
+
+record (stringin, "$(P)BK9130:$(PS):Error") {
+  field(DTYP, "stream")
+  field(INP, "@BK9130.proto getError $(PORT)")
+}
+
+record(longin, "$(P)BK9130:$(PS):get_Vmeas") {
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(FLNK, "$(P)BK9130:$(PS):CH1_Vmeas")
+  field(INP, "@BK9130.proto getVmeas($(P)BK9130:$(PS)) $(PORT)")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH1_Vmeas") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH2_Vmeas")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH2_Vmeas") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH3_Vmeas")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH3_Vmeas") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):get_Imeas")
+}
+
+record(longin, "$(P)BK9130:$(PS):get_Imeas") {
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(FLNK, "$(P)BK9130:$(PS):CH1_Imeas")
+  field(INP, "@BK9130.proto getImeas($(P)BK9130:$(PS)) $(PORT)")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH1_Imeas") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH2_Imeas")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH2_Imeas") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH3_Imeas")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH3_Imeas") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):get_Vset")
+}
+
+record(longin, "$(P)BK9130:$(PS):get_Vset") {
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(FLNK, "$(P)BK9130:$(PS):CH1_Vset_rbk")
+  field(INP, "@BK9130.proto getVset($(P)BK9130:$(PS)) $(PORT)")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH1_Vset_rbk") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH2_Vset_rbk")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH2_Vset_rbk") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH3_Vset_rbk")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH3_Vset_rbk") {
+  field (PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):get_Iset")
+}
+
+record(longin, "$(P)BK9130:$(PS):get_Iset") {
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(FLNK, "$(P)BK9130:$(PS):CH1_Iset_rbk")
+  field(INP, "@BK9130.proto getIset($(P)BK9130:$(PS)) $(PORT)")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH1_Iset_rbk") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH2_Iset_rbk")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH2_Iset_rbk") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):CH3_Iset_rbk")
+}
+
+record (ai, "$(P)BK9130:$(PS):CH3_Iset_rbk") {
+  field(PREC, "3")
+  field(FLNK, "$(P)BK9130:$(PS):get_State")
+}
+
+record(longin, "$(P)BK9130:$(PS):get_State") {
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(FLNK, "$(P)BK9130:$(PS):CH1_State")
+  field(INP, "@BK9130.proto getOutState($(P)BK9130:$(PS)) $(PORT)")
+}
+
+record (longin, "$(P)BK9130:$(PS):CH1_State") {
+  field(FLNK, "$(P)BK9130:$(PS):CH2_State")
+}
+
+record (longin, "$(P)BK9130:$(PS):CH2_State") {
+  field(FLNK, "$(P)BK9130:$(PS):CH3_State")
+}
+
+record (longin, "$(P)BK9130:$(PS):CH3_State") {
+#  field(FLNK, "$(P)BK9130:$(PS):LOSS_U")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH1_On") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH1_On $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH1_Off") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH1_Off $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH2_On") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH2_On $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH2_Off") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH2_Off $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH3_On") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH3_On $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):CH3_Off") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH3_Off $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):Local") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setLocal $(PORT)")
+}
+
+record(bo, "$(P)BK9130:$(PS):Remote") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setRemote $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH1_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH1_V $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH2_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH2_V $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH3_Vset") {
+  field(PREC, "3")
+  field(HOPR, "5")
+  field(LOPR, "0")
+  field(DRVH, "5")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH3_V $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH1_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH1_I $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH2_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH2_I $(PORT)")
+}
+
+record(ao, "$(P)BK9130:$(PS):CH3_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9130.proto setCH3_I $(PORT)")
+}
+
+record(scalcout, "$(P)BK9130:$(PS):CH1_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)BK9130:$(PS):CH1_Vmeas CP NMS")
+  field(INPB, "$(P)BK9130:$(PS):CH1_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)BK9130:$(PS):CH2_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)BK9130:$(PS):CH2_Vmeas CP NMS")
+  field(INPB, "$(P)BK9130:$(PS):CH2_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)BK9130:$(PS):CH3_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)BK9130:$(PS):CH3_Vmeas CP NMS")
+  field(INPB, "$(P)BK9130:$(PS):CH3_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+

@@ -1,0 +1,46 @@
+BK Precision 9130 Triple Output Power Supply
+
+   17-Apr-2015  K. Goetze
+
+
+To run the BK9130 with EPICS (RS232):
+====================================
+
+RS232 Comms:
+  Baud: 9600
+     - The device can be set to 4800, 9600, 19.2K, or 38.4K.  I tested at 9600.
+  Parity: No
+     - The device can be set to Odd, Even, or No Parity.
+  Stop bits: 1
+  Data bits: 8
+  Handshaking: No
+  inputEos: LF
+  outputEos: LF
+
+Cable:
+  db9 DTE   BK9130 db9*
+  -------   ----------
+     2         2
+     3         3
+     5         5
+
+* Notes Re. Serial connection:
+  1.) This device's db9 connector is NOT RS232.  It is a TTL interface.  
+      An adapter needs to be purchased from BK Precision that translates 
+      the TTL to RS232.  This adapter is port-powered.  This means that, 
+      for a low-power UART like the IP-Octal, +12VDC needs to be connected 
+      on the RS232 side of the adapter to db9 pins 4 (+), and 5 (-).
+	    
+Loading the database, for example:
+  # BK Precision 9130 Power Supply
+  dbLoadRecords("$(IP)/ipApp/Db/BK9130.db","P=xyz:,PS=1,PORT=serial2")
+
+StreamDevice:
+  BK9130.proto must be in "STREAM_PROTOCOL_PATH"
+
+Autosave:
+  BK9130_settings.req  (can be used with "configMenu" to save instrument setups)
+
+The arguments for the medm display are simply:
+  P=xyz:, PS=1
+
