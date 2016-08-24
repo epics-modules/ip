@@ -7,7 +7,7 @@
 #- IP             - Location of IP module
 #- ###################################################
 
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=1200, BITS=7, STOP=1, PARITY=odd")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=1200, BITS=7, STOP=1, PARITY=odd")
 
 asynOctetSetInputEos( "$(PORT)", -1, "\r")
 asynOctetSetOutputEos("$(PORT)", -1, "\n")

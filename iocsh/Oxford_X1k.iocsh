@@ -8,7 +8,7 @@
 #- ###################################################
 
 #- Oxford Cyberstar X1000 Scintillation detector and pulse processing unit
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=8, STOP=1, PARITY=none")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=1, PARITY=none")
 
 asynOctetSetInputEos( "$(PORT)", -1, "\n")
 asynOctetSetOutputEos("$(PORT)", -1, "\n")

@@ -7,7 +7,7 @@
 #- ###################################################
 
 # Queensgate piezo driver
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=7, STOP=2, PARITY=odd")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=7, STOP=2, PARITY=odd")
 
 asynOctetSetInputEos( "$(PORT)", -1, "")
 asynOctetSetOutputEos("$(PORT)", -1, "")

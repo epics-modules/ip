@@ -8,7 +8,7 @@
 #- ###################################################
 
 #- Stanford Research Systems SR570 Current Preamplifier
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=8, STOP=2, PARITY=none")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=2, PARITY=none")
 
 asynOctetSetInputEos( "$(PORT)", -1, "\r")
 asynOctetSetOutputEos("$(PORT)", -1, "\r")

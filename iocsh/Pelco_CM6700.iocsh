@@ -10,7 +10,7 @@
 #-                  Default: $(IP)/iocsh/Pelco_CM6700_default.substitutions
 #- ###################################################
 
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=8, STOP=1, PARITY=odd")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=1, PARITY=odd")
 
 asynOctetSetInputEos( "$(PORT)", -1, "")
 asynOctetSetOutputEos("$(PORT)", -1, "")

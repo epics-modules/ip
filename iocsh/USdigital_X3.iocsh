@@ -8,7 +8,7 @@
 #- ###################################################
 
 #- US Digital X3 Inclinometer
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=19200, BITS=8, STOP=1, PARITY=none")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=19200, BITS=8, STOP=1, PARITY=none")
 
 asynOctetSetInputEos( "$(PORT)", -1, "")
 asynOctetSetOutputEos("$(PORT)", -1, "")
