@@ -7,14 +7,8 @@
 #- IP             - Location of IP module
 #- ###################################################
 
-
 #- US Digital X3 Inclinometer
-asynSetOption("$(PORT)", -1, "baud",    "19200")
-asynSetOption("$(PORT)", -1, "bits",    "8")
-asynSetOption("$(PORT)", -1, "stop",    "1")
-asynSetOption("$(PORT)", -1, "parity",  "none")
-asynSetOption("$(PORT)", -1, "clocal",  "Y")
-asynSetOption("$(PORT)", -1, "crtscts", "N")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=19200, BITS=8, STOP=1, PARITY=none")
 
 asynOctetSetInputEos( "$(PORT)", -1, "")
 asynOctetSetOutputEos("$(PORT)", -1, "")

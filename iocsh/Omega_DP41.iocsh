@@ -7,12 +7,7 @@
 #- IP             - Location of IP module
 #- ###################################################
 
-asynSetOption("$(PORT)", -1, "baud",    "9600")
-asynSetOption("$(PORT)", -1, "bits",    "8")
-asynSetOption("$(PORT)", -1, "stop",    "1")
-asynSetOption("$(PORT)", -1, "parity",  "odd")
-asynSetOption("$(PORT)", -1, "clocal",  "Y")
-asynSetOption("$(PORT)", -1, "crtscts", "N")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=8, STOP=1, PARITY=odd")
 
 asynOctetSetInputEos( "$(PORT)", -1, "\r")
 asynOctetSetOutputEos("$(PORT)", -1, "\r")

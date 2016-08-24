@@ -12,12 +12,7 @@
 #-                  Default: 1
 #- ###################################################
 
-asynSetOption("$(PORT)", -1, "baud",    "9600")
-asynSetOption("$(PORT)", -1, "bits",    "7")
-asynSetOption("$(PORT)", -1, "stop",    "1")
-asynSetOption("$(PORT)", -1, "parity",  "even")
-asynSetOption("$(PORT)", -1, "clocal",  "Y")
-asynSetOption("$(PORT)", -1, "crtscts", "N")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "BAUD=9600, BITS=7, STOP=1, PARITY=even")
 
 asynOctetSetInputEos( "$(PORT)", -1, "")
 asynOctetSetOutputEos("$(PORT)", -1, "")
