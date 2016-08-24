@@ -1,0 +1,20 @@
+# ### Eurotherm2k.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- GAD            - Optional: GAD Value
+#-                  Default: 0
+#-
+#- LAD            - Optional: LAD Value
+#-                  Default: 1
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=7, STOP=1, PARITY=even")
+
+asynOctetSetInputEos( "$(PORT)", -1, "")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/Eurotherm2k.db", "P=$(PREFIX),TC=$(INSTANCE),PORT=$(PORT),GAD=$(GAD=0),LAD=$(LAD=1)")

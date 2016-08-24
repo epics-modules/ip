@@ -1,0 +1,17 @@
+# ### Keithley_2k_gpib.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - gpib port name
+#- ADDR           - gpib address
+#- NUM_CHANNELS   - Number of channels (10, 20, 22)
+#- MODEL          - Keithley model number (2700, 2000)
+#- IP             - Location of IP module
+#- ###################################################
+
+asynOctetSetInputEos("$(PORT)", $(ADDR), "\n")
+asynOctetConnect("$(PORT):$(ADDR)", "$(PORT)", $(ADDR), 1, 80)
+
+dbLoadRecords("$(IP)/ipApp/Db/Keithley2kDMM_mf.db","P=$(PREFIX),Dmm=$(INSTANCE),PORT=$(PORT):$(ADDR)")
+doAfterIocInit("seq &Keithley2kDMM,('P=$(PREFIX), Dmm=$(INSTANCE), channels=$(NUM_CHANNELS), model=$(MODEL)')")
