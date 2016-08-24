@@ -1,0 +1,24 @@
+# ### Pelco_CM6700.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- SUB            - Optional: Names substitution file (Pelco_CM6700_names.db)
+#-                            Macros P and R will be set automatically.
+#-                  Default: $(IP)/iocsh/Pelco_CM6700_default.substitutions
+#- ###################################################
+
+asynSetOption("$(PORT)", -1, "baud",    "9600")
+asynSetOption("$(PORT)", -1, "bits",    "8")
+asynSetOption("$(PORT)", -1, "stop",    "1")
+asynSetOption("$(PORT)", -1, "parity",  "odd")
+asynSetOption("$(PORT)", -1, "clocal",  "Y")
+asynSetOption("$(PORT)", -1, "crtscts", "N")
+
+asynOctetSetInputEos( "$(PORT)", -1, "")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/Pelco_CM6700.db", "P=$(PREFIX),R=$(INSTANCE),PORT=$(PORT)")
+dbLoadTemplate("$(SUB=$(IP)/iocsh/Pelco_CM6700_default.substitutions)", "P=$(PREFIX),R=$(INSTANCE)")

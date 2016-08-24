@@ -1,0 +1,27 @@
+# ### Eurotherm2k.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- GAD            - Optional: GAD Value
+#-                  Default: 0
+#-
+#- LAD            - Optional: LAD Value
+#-                  Default: 1
+#- ###################################################
+
+
+#- Oxford ILM202 Cryogen Level Meter
+asynSetOption("$(PORT)", -1, "baud",    "9600")
+asynSetOption("$(PORT)", -1, "bits",    "7")
+asynSetOption("$(PORT)", -1, "stop",    "1")
+asynSetOption("$(PORT)", -1, "parity",  "even")
+asynSetOption("$(PORT)", -1, "clocal",  "Y")
+asynSetOption("$(PORT)", -1, "crtscts", "N")
+
+asynOctetSetInputEos( "$(PORT)", -1, "")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/Eurotherm2k.db", "P=$(PREFIX),TC=$(INSTANCE),PORT=$(PORT),GAD=$(GAD=0),LAD=$(LAD=1)")

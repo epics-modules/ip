@@ -1,0 +1,21 @@
+# ### Heidenhain_ND261.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+
+asynSetOption("$(PORT)", -1, "baud",    "9600")
+asynSetOption("$(PORT)", -1, "bits",    "7")
+asynSetOption("$(PORT)", -1, "stop",    "2")
+asynSetOption("$(PORT)", -1, "parity",  "even")
+asynSetOption("$(PORT)", -1, "clocal",  "Y")
+asynSetOption("$(PORT)", -1, "crtscts", "N")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/heidND261.db", "P=$(PREFIX),PORT=$(PORT)")
