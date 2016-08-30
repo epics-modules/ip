@@ -1,0 +1,24 @@
+#- ###################################################
+#- PREFIX   = IOC prefix, 
+#- PORT     = Port prefix used to initialize Octal module, 
+#- IN_BUFF  = Input buffer size (Default: 1000), 
+#- OUT_BUFF = Output buffer size (Default:1000)
+#- ###################################################
+
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)0, PORT=$(PORT)0, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)1, PORT=$(PORT)1, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)2, PORT=$(PORT)2, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)3, PORT=$(PORT)3, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)4, PORT=$(PORT)4, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)5, PORT=$(PORT)5, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)6, PORT=$(PORT)6, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=asyn_$(PORT)7, PORT=$(PORT)7, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)0, PORT=$(PORT)0, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)1, PORT=$(PORT)1, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)2, PORT=$(PORT)2, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)3, PORT=$(PORT)3, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)4, PORT=$(PORT)4, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)5, PORT=$(PORT)5, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)6, PORT=$(PORT)6, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
+dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db","P=$(PREFIX), N=asyn_$(PORT)7, PORT=$(PORT)7, ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
