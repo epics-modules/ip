@@ -12,7 +12,7 @@
 #-                  Default: 9600
 #- ###################################################
 
-iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD), BITS=8, STOP=1, PARITY=none")
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD=9600), BITS=8, STOP=1, PARITY=none")
 
 asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
 asynOctetSetOutputEos("$(PORT)", -1, "\r")
