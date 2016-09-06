@@ -1,0 +1,17 @@
+# ### Lakeshore_DRC93CA.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- BAUD           - Optional: What the baud rate is set to
+#-                  Default: 300
+#- IP             - Location of IP module
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD=300), BITS=7, STOP=1, PARITY=odd")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\r\n")
+
+dbLoadRecords("$(IP)/ipApp/Db/LakeShoreDRC-93CA.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=$(PORT)")
