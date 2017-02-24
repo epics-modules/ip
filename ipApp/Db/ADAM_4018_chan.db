@@ -1,0 +1,44 @@
+# Database for a single channel of the ADAM 4018 thermocouple module
+
+record(ai, "$(P)$(R):ai$(C)") {
+  field(DESC, "Analog input $(C)")
+  field(PREC, "3")
+}
+
+record(mbbo, "$(P)$(R):unit$(C)") {
+  field(DTYP, "Raw Soft Channel")
+  field(DESC, "Input $(C) unit")
+  field(ZRVL, 0)
+  field(ZRST, "Celsius")
+  field(ONVL, 1)
+  field(ONST, "Kelvin")
+  field(TWVL, 2)
+  field(TWST, "Fahrenheit")
+  field(VAL,  0)
+}
+
+record(calcout, "$(P)$(R):unitCalc$(C)") {
+  field(DESC, "Unit calc")
+  field(INPA, "$(P)$(R):input_RBV.VAL CP")
+  field(INPB, "$(P)$(R):unit$(C).RVAL CP")
+  field(CALC, "(A>6)?B:0")
+  field(OOPT, "On Change")
+  field(DOPT, "Use CALC")
+}
+
+record(calcout, "$(P)$(R):calc$(C)") {
+  field(DESC, "Input calc")
+  field(INPA, "$(P)$(R):ai$(C).VAL CP")
+  field(INPB, "$(P)$(R):unitCalc$(C).VAL CP")
+  field(CALC, "A")
+  field(OCAL, "(B)?(B=1)?A+273.15:((A*9/5)+32):A")
+  field(OOPT, "Every Time")
+  field(DOPT, "Use OCAL")
+  field(OUT, "$(P)$(R):temp$(C).VAL PP")
+  field(PREC, "3")
+}
+
+record(ao, "$(P)$(R):temp$(C)") {
+  field(DESC, "Input $(C) temperature")
+  field(PREC, "3")
+}
