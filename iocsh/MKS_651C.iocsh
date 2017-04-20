@@ -1,0 +1,18 @@
+# ### MKS_651C.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- BAUD           - Optional: Baud rate you have set the 
+#-                            MKS to operate at.
+#-                  Default: 9600
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD=9600), BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\r\n")
+
+dbLoadRecords("$(IP)/ipApp/Db/MKS651C.db","P=$(PREFIX),R=$(INSTANCE),PORT=$(PORT)")
