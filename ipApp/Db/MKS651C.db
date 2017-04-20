@@ -1,0 +1,562 @@
+#Database for MKS 651C Valve System
+
+record(stringout, "$(P)$(R)DescA") {}
+
+record(ao, "$(P)$(R)wSetpointA")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_level(1) $(PORT)")
+}
+
+record(ai, "$(P)$(R)rSetpointA")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")	
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_value(1) $(PORT)")
+}
+
+record(ao, "$(P)$(R)SelectSetpointA")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto select_setpoint(1) $(PORT)")
+}
+
+record(bo, "$(P)$(R)wTypeA")
+{
+	field(DTYP, "stream")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(OUT, "@MKS651C.proto set_type(1) $(PORT)")
+	field(FLNK, "$(P)$(R)rTypeA")
+}
+
+record(bi, "$(P)$(R)rTypeA")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(INP, "@MKS651C.proto get_type_A $(PORT)")
+}
+
+record(ao, "$(P)$(R)wSpeedA")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_speed(1) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rSpeedA")
+}
+
+record(ai, "$(P)$(R)rSpeedA")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_speed_A $(PORT)")
+}
+
+record(ao, "$(P)$(R)wLeadA")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_lead(1) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rLeadA")
+}
+
+record(ai, "$(P)$(R)rLeadA")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_lead(1) $(PORT)")
+}
+
+record(ao, "$(P)$(R)wGainA")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_gain(1) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rGainA")
+}
+
+record(ai, "$(P)$(R)rGainA")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_gain_A $(PORT)")
+}
+	
+
+
+
+record(stringout, "$(P)$(R)DescB") {}
+record(ao, "$(P)$(R)wSetpointB")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_level(2) $(PORT)")
+}
+
+record(ai, "$(P)$(R)rSetpointB")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(PREC, 2)
+	field(INP, "@MKS651C.proto get_value(2) $(PORT)")
+}
+
+record(ao, "$(P)$(R)SelectSetpointB")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto select_setpoint(2) $(PORT)")
+}
+
+record(bo, "$(P)$(R)wTypeB")
+{
+	field(DTYP, "stream")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(OUT, "@MKS651C.proto set_type(2) $(PORT)")
+	field(FLNK, "$(P)$(R)rTypeB")
+}
+
+record(bi, "$(P)$(R)rTypeB")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(INP, "@MKS651C.proto get_type_B $(PORT)")
+}
+
+record(ao, "$(P)$(R)wSpeedB")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_speed(2) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rSpeedB")
+}
+
+record(ai, "$(P)$(R)rSpeedB")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_speed_B $(PORT)")
+}
+
+record(ao, "$(P)$(R)wLeadB")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_lead(2) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rLeadB")
+}
+
+record(ai, "$(P)$(R)rLeadB")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_lead(2) $(PORT)")
+}
+
+record(ao, "$(P)$(R)wGainB")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_gain(2) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rGainB")
+}
+
+record(ai, "$(P)$(R)rGainB")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_gain_B $(PORT)")
+}
+
+
+
+
+record(stringout, "$(P)$(R)DescC") {}
+record(ao, "$(P)$(R)wSetpointC")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_level(3) $(PORT)")
+}
+
+record(ai, "$(P)$(R)rSetpointC")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_value(3) $(PORT)")
+}
+
+record(ao, "$(P)$(R)SelectSetpointC")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto select_setpoint(3) $(PORT)")
+}
+
+record(bo, "$(P)$(R)wTypeC")
+{
+	field(DTYP, "stream")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(OUT, "@MKS651C.proto set_type(3) $(PORT)")
+	field(FLNK, "$(P)$(R)rTypeC")
+}
+
+record(bi, "$(P)$(R)rTypeC")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(INP, "@MKS651C.proto get_type_C $(PORT)")
+}
+
+record(ao, "$(P)$(R)wSpeedC")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_speed(3) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rSpeedC")
+}
+
+record(ai, "$(P)$(R)rSpeedC")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_speed_C $(PORT)")
+}
+
+record(ao, "$(P)$(R)wLeadC")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_lead(3) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rLeadC")
+}
+
+record(ai, "$(P)$(R)rLeadC")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_lead(3) $(PORT)")
+}
+
+record(ao, "$(P)$(R)wGainC")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_gain(3) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rGainC")
+}
+
+record(ai, "$(P)$(R)rGainC")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_gain_C $(PORT)")
+}
+
+
+
+
+record(stringout, "$(P)$(R)DescD") {}
+record(ao, "$(P)$(R)wSetpointD")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_level(4) $(PORT)")
+}
+
+record(ai, "$(P)$(R)rSetpointD")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(PREC, 2)
+	field(INP, "@MKS651C.proto get_value(4) $(PORT)")
+}
+
+record(ao, "$(P)$(R)SelectSetpointD")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto select_setpoint(4) $(PORT)")
+}
+
+record(bo, "$(P)$(R)wTypeD")
+{
+	field(DTYP, "stream")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(OUT, "@MKS651C.proto set_type(4) $(PORT)")
+	field(FLNK, "$(P)$(R)rTypeD")
+}
+
+record(bi, "$(P)$(R)rTypeD")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(INP, "@MKS651C.proto get_type_D $(PORT)")
+}
+
+record(ao, "$(P)$(R)wSpeedD")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_speed(4) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rSpeedD")
+}
+
+record(ai, "$(P)$(R)rSpeedD")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_speed_D $(PORT)")
+}
+
+record(ao, "$(P)$(R)wLeadD")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_lead(4) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rLeadD")
+}
+
+record(ai, "$(P)$(R)rLeadD")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_lead(4) $(PORT)")
+}
+
+record(ao, "$(P)$(R)wGainD")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_gain(4) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rGainD")
+}
+
+record(ai, "$(P)$(R)rGainD")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_gain_D $(PORT)")
+}
+
+
+
+
+
+record(stringout, "$(P)$(R)DescE") {}
+
+record(ao, "$(P)$(R)wSetpointE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_level(5) $(PORT)")
+}
+
+record(ai, "$(P)$(R)rSetpointE")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(PREC, 2)
+	field(INP, "@MKS651C.proto get_value_E $(PORT)")
+}
+
+record(ao, "$(P)$(R)SelectSetpointE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto select_setpoint(5) $(PORT)")
+}
+
+record(bo, "$(P)$(R)wTypeE")
+{
+	field(DTYP, "stream")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(OUT, "@MKS651C.proto set_type(5) $(PORT)")
+	field(FLNK, "$(P)$(R)rTypeE")
+}
+
+record(bi, "$(P)$(R)rTypeE")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	
+	field(ZNAM, "Position")
+	field(ONAM, "Pressure")
+	
+	field(INP, "@MKS651C.proto get_type_E $(PORT)")
+}
+
+record(ao, "$(P)$(R)wSpeedE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_speed(5) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rSpeedE")
+}
+
+record(ai, "$(P)$(R)rSpeedE")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_speed_E $(PORT)")
+}
+
+record(ao, "$(P)$(R)wLeadE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_lead(5) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rLeadE")
+}
+
+record(ai, "$(P)$(R)rLeadE")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_lead(5) $(PORT)")
+}
+
+record(ao, "$(P)$(R)wGainE")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto set_gain(5) $(PORT)")
+	
+	field(FLNK, "$(P)$(R)rGainE")
+}
+
+record(ai, "$(P)$(R)rGainE")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_gain_E $(PORT)")
+}
+
+
+
+
+
+
+
+record(ao, "$(P)$(R)OpenValve")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto open_valve $(PORT)")
+}
+
+record(ao, "$(P)$(R)CloseValve")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto close_valve $(PORT)")
+}
+
+record(ao, "$(P)$(R)HaltMotion")
+{
+	field(DTYP, "stream")
+	field(OUT, "@MKS651C.proto halt_motion $(PORT)")
+}
+
+record(ai, "$(P)$(R)rValvePosition")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(SCAN, ".1 second")
+	
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_position $(PORT)")
+	field(FLNK, "$(P)$(R)rErrorChecksum")
+}
+
+record(ai, "$(P)$(R)rPressure")
+{
+	field(DTYP, "stream")
+	field(PINI, "YES")
+	field(SCAN, ".1 second")
+	
+	field(PREC, 2)
+	
+	field(INP, "@MKS651C.proto get_pressure $(PORT)")
+}
+
+record(bi, "$(P)$(R)rErrorChecksum")
+{
+	field(DTYP, "stream")
+	field(INP, "@MKS651C.proto get_error $(PORT)")
+}
+
+record(mbbi, "$(P)$(R)rStatus")
+{
+	field(DTYP, "stream")
+	field(INP, "@MKS651C.proto get_status $(PORT)")
+	field(PINI, "YES")
+	field(SCAN, ".1 second")
+	
+	field(ZRST, "Open")
+	field(ONST, "Close")
+	field(TWST, "Stop")
+	field(THST, "Setpoint A")
+	field(FRST, "Setpoint B")
+	field(FVST, "Setpoint C")
+	field(SXST, "Setpoint D")
+	field(SVST, "Setpoint E")
+	field(ELST, "Analog Setpoint")
+}
