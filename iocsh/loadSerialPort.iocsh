@@ -1,0 +1,11 @@
+#- ###################################################
+#- PREFIX    - IOC prefix
+#- PORT      - IPAC Dev Port
+#- IN_BUFF   - Input buffer size (Default: 1000), 
+#- OUT_BUFF  - Output buffer size (Default:1000)
+#- INSTANCE  - Instance name for asyn record (Default: asyn_$(PORT))
+#- ###################################################
+
+drvAsynSerialPortConfigure("$(PORT)", "$(PORT)", 0, 0, 0)
+asynOctetConnect("$(PORT)", "$(PORT)")
+dbLoadRecords("$(ASYN)/db/asynRecord.db", "P=$(PREFIX), R=$(INSTANCE=asyn_$(PORT)), PORT=$(PORT), ADDR=0, OMAX=$(OUT_BUFF=1000), IMAX=$(IN_BUFF=1000)")
