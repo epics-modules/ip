@@ -1,0 +1,212 @@
+# Database for the ADAM 4018 thermocouple module
+
+record(bo, "$(P)$(R):mode") {
+  field(DESC, "Mode")
+  field(ZNAM, "Operation")
+  field(ONAM, "Setup")
+  field(VAL,  0)
+}
+
+record(calcout, "$(P)$(R):inputCalc") {
+  field(DESC, "Sync on Setup Calc")
+  field(INPA, "$(P)$(R):mode CP NMS")
+  field(CALC, "A")
+  field(OOPT, "Transition To Non-zero")
+  field(DOPT, "Use CALC")
+  field(OUT,  "$(P)$(R):inputSync.PROC PP")
+}
+
+record(longout, "$(P)$(R):inputSync") {
+  field(DESC, "Sync Input")
+  field(DOL,  "$(P)$(R):input_RBV")
+  field(OMSL, "closed_loop")
+  field(OUT,  "$(P)$(R):input PP NMS")
+  field(DRVH, 13)
+  field(DRVL, 0)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 0)
+}
+
+record(mbbo, "$(P)$(R):input") {
+  field(DTYP, "Raw Soft Channel")
+  field(DESC, "Desired input type")
+  field(ZRVL, 0)
+  field(ZRST, "+/- 15 mV")
+  field(ONVL, 1)
+  field(ONST, "+/- 50 mV")
+  field(TWVL, 2)
+  field(TWST, "+/- 100 mV")
+  field(THVL, 3)
+  field(THST, "+/- 500 mV")
+  field(FRVL, 4)
+  field(FRST, "+/- 1 V")
+  field(FVVL, 5)
+  field(FVST, "+/- 2.5 V")
+  field(SXVL, 6)
+  field(SXST, "+/- 20 mA")
+  field(SVVL, 7)
+  field(SVST, "Type J TC")
+  field(EIVL, 8)
+  field(EIST, "Type K TC")
+  field(NIVL, 9)
+  field(NIST, "Type T TC")
+  field(TEVL, 10)
+  field(TEST, "Type E TC")
+  field(ELVL, 11)
+  field(ELST, "Type R TC")
+  field(TVVL, 12)
+  field(TVST, "Type S TC")
+  field(TTVL, 13)
+  field(TTST, "Type B TC")
+  field(VAL,  1)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 0)
+}
+
+record(stringout, "$(P)$(R):status") {
+  field(DESC, "Status string")
+}
+
+record(sseq, "$(P)$(R):apply") {
+  field(DESC, "Config apply seq")
+  field(DLY1, 0.0)
+  field(STR1, "Sending config command")
+  field(LNK1, "$(P)$(R):status PP NMS")
+  
+  # Testing
+  #!field(DOL2, "$(P)$(R):input NPP NMS")
+  #!field(DLY2, 1.0)
+  #!field(LNK2, "$(P)$(R):status PP NMS")
+  # Production
+  field(DLY2, 1.0)
+  field(STR2, "1")
+  field(LNK2, "$(P)$(R):setInput.PROC PP")
+  
+  field(DLY3, 1.0)
+  field(STR3, "Waiting 7 seconds")
+  field(LNK3, "$(P)$(R):status PP NMS")
+  field(DLY4, 7.0)
+  field(STR4, "Returning to Operations")
+  field(LNK4, "$(P)$(R):status PP NMS")
+  field(DLY5, 1.0)
+  field(STR5, "0")
+  field(LNK5, "$(P)$(R):mode PP NMS")
+  field(DLY6, 1.0)
+  field(STR6, " ")
+  field(LNK6, "$(P)$(R):status PP NMS")
+  field(DLY7, 0.0)
+  field(STR7, "1")
+  field(LNK7, "$(P)$(R):input_RBV.PROC PP NMS")
+  
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 0)
+}
+
+record(longout, "$(P)$(R):setInput") {
+  field(DTYP, "stream")
+  field(DESC, "Set input")
+  field(DOL,  "$(P)$(R):input.RVAL")
+  field(OMSL, "closed_loop")
+  field(OUT,  "@ADAM_4018.proto setInput($(A),$(P)$(R)) $(PORT)")
+  field(DRVH, 13)
+  field(DRVL, 0)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 0)
+}
+
+record(bo, "$(P)$(R):read") {
+  field(DTYP, "stream")
+  field(DESC, "Read thermocouples")
+  field(ZNAM, "Done")
+  field(ONAM, "Read")
+  field(OUT, "@ADAM_4018.proto queryAll($(A),$(P)$(R)) $(PORT)")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(stringin, "$(P)$(R):model") {
+  field(DTYP, "stream")
+  field(DESC, "Model")
+  field(INP, "@ADAM_4018.proto queryModel($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(stringin, "$(P)$(R):firmware") {
+  field(DTYP, "stream")
+  field(DESC, "Firmware version")
+  field(INP, "@ADAM_4018.proto queryFW($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(mbbi, "$(P)$(R):input_RBV") {
+  field(DTYP, "stream")
+  field(DESC, "Input type")
+  field(INP, "@ADAM_4018.proto queryInput($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(ZRVL, 0)
+  field(ZRST, "+/- 15 mV")
+  field(ONVL, 1)
+  field(ONST, "+/- 50 mV")
+  field(TWVL, 2)
+  field(TWST, "+/- 100 mV")
+  field(THVL, 3)
+  field(THST, "+/- 500 mV")
+  field(FRVL, 4)
+  field(FRST, "+/- 1 V")
+  field(FVVL, 5)
+  field(FVST, "+/- 2.5 V")
+  field(SXVL, 6)
+  field(SXST, "+/- 20 mA")
+  field(SVVL, 7)
+  field(SVST, "Type J TC")
+  field(EIVL, 8)
+  field(EIST, "Type K TC")
+  field(NIVL, 9)
+  field(NIST, "Type T TC")
+  field(TEVL, 10)
+  field(TEST, "Type E TC")
+  field(ELVL, 11)
+  field(ELST, "Type R TC")
+  field(TVVL, 12)
+  field(TVST, "Type S TC")
+  field(TTVL, 13)
+  field(TTST, "Type B TC")
+  field(VAL, 1)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(mbbi, "$(P)$(R):baud") {
+  field(DTYP, "stream")
+  field(DESC, "Baud rate (bps)")
+  field(INP, "@ADAM_4018.proto queryBaud($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(ZRVL, 0)
+  field(ZRST, "1200")
+  field(ONVL, 1)
+  field(ONST, "2400")
+  field(TWVL, 2)
+  field(TWST, "4800")
+  field(THVL, 3)
+  field(THST, "9600")
+  field(FRVL, 4)
+  field(FRST, "19200")
+  field(FVVL, 5)
+  field(FVST, "38400")
+  field(VAL, 0)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(fanout, "$(P)$(R):readSettings") {
+  field(DESC, "Read settings")
+  field(LNK1, "$(P)$(R):model")
+  field(LNK2, "$(P)$(R):firmware")
+  field(LNK3, "$(P)$(R):baud")
+  field(LNK4, "$(P)$(R):input_RBV")
+  field(SCAN, "Passive")
+}
