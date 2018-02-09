@@ -1,0 +1,790 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 440
+y 232
+w 299
+h 490
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 54
+bgColor index 55
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 74
+y 5
+w 150
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "$(P)$(TSP) TSP"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 122
+y 43
+w 72
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "TSP Mode"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 59
+y 91
+w 135
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament select"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 116
+w 189
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament auto-advance"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 149
+y 190
+w 45
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Units"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 41
+y 215
+w 153
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "On time (seconds)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 50
+y 151
+w 144
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Power or current"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 14
+y 240
+w 180
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Cycle time (minutes)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 50
+y 265
+w 144
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Number of cycles"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 50
+y 290
+w 144
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Minimum pressure"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 213
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_SECONDS"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 138
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_VALUE"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 238
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MINUTES"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 288
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MIN_PRESS"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+editable
+autoHeight
+format "exponential"
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 263
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_NCYCLES"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Motif Slider)
+object activeMotifSliderClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 163
+w 90
+h 20
+fgColor index 14
+bgColor index 51
+2ndBgColor index 4
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_VALUE"
+controlLabelType "pvName"
+font "helvetica-medium-r-10.0"
+limitsFromDb
+increment 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 50
+y 340
+w 144
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Cycles remaining"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 338
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_REMAINING.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 365
+w 189
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament #1 (minutes)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 363
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MIN1.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 390
+w 189
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament #2 (minutes)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 388
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MIN2.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 415
+w 189
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament #3 (minutes)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 413
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MIN3.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 440
+w 189
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Filament #4 (minutes)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 438
+w 90
+h 20
+controlPv "$(P)$(TSP):TSP_MIN4.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 50
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 15
+y 315
+w 180
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Reset filament times"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 118
+y 465
+w 72
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Read rate"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 14
+y 67
+w 180
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor index 54
+useDisplayBg
+value {
+ "Send mode"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 40
+w 90
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_MODE"
+indicatorPv "$(P)$(TSP):TSP_MODE"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 88
+w 90
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_FIL"
+indicatorPv "$(P)$(TSP):TSP_FIL"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 113
+w 90
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_AUTO_ADV"
+indicatorPv "$(P)$(TSP):TSP_AUTO_ADV"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 188
+w 90
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_UNITS"
+indicatorPv "$(P)$(TSP):TSP_UNITS"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 313
+w 90
+h 20
+fgColor index 54
+onColor index 31
+offColor index 31
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(TSP):TSP_CLEAR.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Reset"
+offLabel "Reset"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 463
+w 90
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(TSP):TSP_STAT.SCAN"
+indicatorPv "$(P)$(TSP):TSP_STAT.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 200
+y 65
+w 90
+h 20
+fgColor index 54
+onColor index 31
+offColor index 31
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(TSP):TSP_SETMODE.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Send mode"
+offLabel "Send mode"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

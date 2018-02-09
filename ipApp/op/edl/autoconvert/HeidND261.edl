@@ -1,0 +1,245 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 150
+h 90
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 149
+h 24
+lineColor index 0
+fill
+fillColor index 0
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 150
+h 18
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Heidenhain ND261"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 25
+w 130
+h 20
+controlPv "$(P)HeidND261.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 53
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 15
+w 150
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "(PSL encoder)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 25
+w 20
+h 10
+controlPv "$(P)HeidND261.EGU"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 53
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 50
+y 40
+w 100
+h 14
+controlPv "$(P)HeidND261_ave.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 53
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 43
+w 50
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "avg_10:"
+}
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 65
+w 40
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)HeidND261_read.PROC"
+pressValue "1"
+releaseValue "0"
+onLabel "Read"
+offLabel "Read"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 40
+y 65
+w 90
+h 16
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)HeidND261_read.SCAN"
+indicatorPv "$(P)HeidND261_read.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 65
+w 20
+h 20
+fgColor index 14
+bgColor index 51
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+icon
+numPvs 2
+numDsps 1
+displayFileName {
+  0 PSL_calibration.edl
+}
+menuLabel {
+  0 Calibration data & equation
+}
+symbols {
+  0 "P=$(P),C=HeidND261"
+}
+endObjectProperties
+

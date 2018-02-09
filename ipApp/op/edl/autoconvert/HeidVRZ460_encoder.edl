@@ -1,0 +1,124 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 150
+h 150
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 2
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 1
+w 149
+h 28
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 7
+w 100
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 0
+useDisplayBg
+value {
+ "Theta Encoder"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 45
+w 130
+h 37
+controlPv "$(P)enc_read_val.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+fgAlarm
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 25
+y 86
+w 100
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Scan Rate"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 25
+y 103
+w 100
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)enc_read_val.SCAN"
+indicatorPv "$(P)enc_read_val.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

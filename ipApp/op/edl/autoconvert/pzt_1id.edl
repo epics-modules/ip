@@ -1,0 +1,703 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 280
+h 185
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 2
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 30
+w 280
+h 158
+
+beginGroup
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 64
+y 32
+w 115
+h 17
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 190
+y 122
+w 90
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "ReadRate"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 191
+y 31
+w 90
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "AutoRead"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 92
+y 49
+w 90
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Volts"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 48
+w 90
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Arc Sec"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 121
+y 78
+w 60
+h 20
+controlPv "$(P)pzt2_read_tran.B"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+fgAlarm
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 78
+w 70
+h 20
+controlPv "$(P)pzt2_read_tran.C"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+fgAlarm
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 123
+w 60
+h 20
+controlPv "$(P)pzt2_tweak_arcsec.D"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 51
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 106
+y 123
+w 60
+h 20
+controlPv "$(P)pzt2_tweak.D"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 51
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 98
+w 90
+h 25
+controlPv "$(P)pzt2_arcsec.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 51
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 91
+y 98
+w 90
+h 25
+controlPv "$(P)pzt2_volts.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 51
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 11
+y 31
+w 200
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 0
+useDisplayBg
+value {
+ "Channel B"
+}
+endObjectProperties
+
+# (Motif Slider)
+object activeMotifSliderClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 146
+w 180
+h 20
+fgColor index 14
+bgColor index 51
+2ndBgColor index 4
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)pzt2_arcsec.VAL"
+controlLabelType "pvName"
+font "helvetica-medium-r-10.0"
+limitsFromDb
+increment 1
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 121
+y 63
+w 60
+h 15
+controlPv "$(P)pzt2_avg.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 26
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 63
+w 70
+h 15
+controlPv "$(P)pzt2_avg_arcsec.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 26
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 76
+y 63
+w 40
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "avg"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 33
+w 54
+h 15
+controlPv "$(P)pzt2_move.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 180
+y 30
+w 4
+h 156
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 274
+h 27
+lineColor index 54
+fill
+fillColor index 54
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 0
+w 475
+h 25
+font "helvetica-medium-r-8.0"
+fgColor index 0
+useDisplayBg
+value {
+ "Queensgate PZT"
+}
+endObjectProperties
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 30
+w 280
+h 158
+
+beginGroup
+
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 191
+y 138
+w 90
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)pzt_AutoRead.SCAN"
+indicatorPv "$(P)pzt_AutoRead.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 191
+y 48
+w 90
+h 70
+fgColor index 14
+bgColor index 51
+selectColor index 51
+inconsistentColor index 14
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt_ReadCtrl.VAL"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 191
+y 168
+w 90
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt_init.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Initialize"
+offLabel "Initialize"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 76
+y 123
+w 15
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_twf_arcsec.VAL"
+pressValue "1"
+releaseValue "0"
+onLabel ">"
+offLabel ">"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 123
+w 15
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_twr_arcsec.VAL"
+pressValue "1"
+releaseValue "0"
+onLabel "<"
+offLabel "<"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 91
+y 123
+w 15
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_twr.VAL"
+pressValue "1"
+releaseValue "0"
+onLabel "<"
+offLabel "<"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 166
+y 123
+w 15
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_twf.VAL"
+pressValue "1"
+releaseValue "0"
+onLabel ">"
+offLabel ">"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 76
+y 78
+w 40
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_read.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Read"
+offLabel "Read"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 168
+w 180
+h 20
+fgColor index 14
+bgColor index 51
+selectColor index 51
+inconsistentColor index 14
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)pzt2_enable.VAL"
+font "helvetica-medium-r-10.0"
+orientation "horizontal"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+

@@ -1,0 +1,583 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 1093
+y 716
+w 280
+h 300
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 54
+bgColor index 55
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 79
+y 85
+w 130
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Pump Pressure (Torr)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 79
+y 129
+w 130
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Pump Unit"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 5
+w 250
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "$(P)$(GAUGE)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 79
+y 53
+w 130
+h 30
+controlPv "$(P)$(GAUGE):PRES"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 20
+fgAlarm
+bgColor index 56
+autoHeight
+format "exponential"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 79
+y 97
+w 130
+h 30
+controlPv "$(P)$(GAUGE):UNIT"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 20
+fgAlarm
+bgColor index 56
+autoHeight
+format "exponential"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 54
+w 63
+h 13
+lineColor index 20
+fill
+fillColor index 20
+lineWidth 0
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):STATUS)"
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 54
+w 64
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "STANDBY"
+}
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):STATUS)"
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 8
+y 72
+w 63
+h 13
+lineColor index 15
+fill
+fillColor index 15
+lineWidth 0
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):STATUS)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 225
+y 145
+w 45
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Units"
+}
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 244
+y 197
+w 9
+h 9
+lineColor index 20
+fill
+fillColor index 20
+lineWidth 0
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):SP1S)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 16
+y 217
+w 120
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 54
+useDisplayBg
+value {
+ "setpoint 1"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 125
+y 190
+w 100
+h 25
+controlPv "$(P)$(GAUGE):SP1V"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 57
+autoHeight
+format "exponential"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 11
+y 191
+w 100
+h 25
+controlPv "$(P)$(GAUGE):SET1"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 57
+editable
+autoHeight
+format "exponential"
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 245
+y 241
+w 9
+h 9
+lineColor index 20
+fill
+fillColor index 20
+lineWidth 0
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):SP2S)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 14
+y 262
+w 120
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 54
+useDisplayBg
+value {
+ "setpoint 2"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 126
+y 234
+w 100
+h 25
+controlPv "$(P)$(GAUGE):SP2V"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 57
+autoHeight
+format "exponential"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 12
+y 235
+w 100
+h 25
+controlPv "$(P)$(GAUGE):SET2"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 57
+editable
+autoHeight
+format "exponential"
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 73
+w 64
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "OPERATE"
+}
+visPv "CALC\\\{(A)\}($(P)$(GAUGE):STATUS)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 124
+y 31
+w 100
+h 20
+controlPv "$(P)$(GAUGE):ID"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 37
+bgColor index 55
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 31
+w 112
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Gauge Type:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 142
+w 72
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Read rate"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 134
+y 146
+w 72
+h 15
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "Spt rate"
+}
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 216
+y 83
+w 60
+h 55
+fgColor index 54
+bgColor index 30
+selectColor index 30
+inconsistentColor index 54
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(GAUGE):SUNIT"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 15
+y 160
+w 80
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(GAUGE):PRES.SCAN"
+indicatorPv "$(P)$(GAUGE):PRES.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 134
+y 164
+w 80
+h 20
+fgColor index 54
+bgColor index 31
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(GAUGE):SP1V.SCAN"
+indicatorPv "$(P)$(GAUGE):SP1V.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 222
+y 53
+w 48
+h 20
+fgColor index 54
+onColor index 25
+offColor index 25
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(GAUGE):ID.PROC"
+pressValue "1"
+releaseValue 
+onLabel "ID"
+offLabel "ID"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

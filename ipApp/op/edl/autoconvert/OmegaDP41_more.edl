@@ -1,0 +1,1099 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 421
+y 166
+w 250
+h 385
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 4
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 1
+w 248
+h 27
+lineColor index 1
+fill
+fillColor index 1
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 31
+y 95
+w 58
+h 11
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "5 sec/rdg"
+}
+visPv "CALC\\\{(A)\}($(P)DP41:$(S):readMode.VAL)"
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 32
+y 39
+w 177
+h 30
+lineColor index 14
+fill
+fillColor index 14
+lineWidth 4
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 97
+y 95
+w 100
+h 11
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Manual rdg ---^"
+}
+visPv "CALC\\\{(A)\}($(P)DP41:$(S):readMode.VAL)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 5
+w 125
+h 20
+controlPv "$(P)DP41:$(S):temp.DESC"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+# Geometry
+x 7
+y 111
+w 237
+h 110
+# Appearance
+border
+plotAreaBorder
+graphTitle "Temperature"
+xLabel "minutes"
+yLabel "Temp"
+fgColor index 14
+bgColor index 2
+gridColor index 14
+font "helvetica-medium-r-18.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 200
+#  X axis properties
+xAxisSrc "AutoScale"
+xMax 1
+xLablePrecision 1
+#  Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMax 1
+#  Y2 axis properties
+showY2Axis
+y2AxisSrc "AutoScale"
+y2Max 1
+#  Trace Properties
+numTraces 1
+yPv {
+  0 "$(P)DP41:$(S):temp.VAL"
+}
+plotUpdateMode {
+  0 "y"
+}
+opMode {
+  0 "plot"
+}
+plotColor {
+  0 index 54
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 36
+y 37
+w 105
+h 35
+controlPv "$(P)DP41:$(S):temp.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+smartRefresh
+fastUpdate
+fgColor index 15
+fgAlarm
+bgColor index 14
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 27
+y 72
+w 186
+h 2
+lineColor index 0
+fillColor index 0
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 28
+1 212
+}
+yPoints  {
+0 73
+1 73
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 211
+y 35
+w 2
+h 40
+lineColor index 0
+fillColor index 0
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 212
+1 212
+}
+yPoints  {
+0 36
+1 74
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 28
+y 35
+w 2
+h 38
+lineColor index 11
+fillColor index 11
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 29
+1 29
+}
+yPoints  {
+0 36
+1 72
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 27
+y 35
+w 188
+h 2
+lineColor index 11
+fillColor index 11
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 28
+1 214
+}
+yPoints  {
+0 36
+1 36
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 79
+y 227
+w 146
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor index 14
+useDisplayBg
+value {
+ "More Strip Chart"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 113
+y 249
+w 110
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor index 14
+useDisplayBg
+value {
+ "Monitor Alarms"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 134
+y 359
+w 55
+h 20
+controlPv "$(P)DP41:$(S):spHIGH.A"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 136
+y 350
+w 25
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 30
+useDisplayBg
+value {
+ "HIGH"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 134
+y 326
+w 55
+h 20
+controlPv "$(P)DP41:$(S):spHIHI.A"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 136
+y 317
+w 25
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 20
+useDisplayBg
+value {
+ "HIHI"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 193
+y 361
+w 24
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Deg"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 193
+y 327
+w 24
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Deg"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 326
+w 55
+h 20
+controlPv "$(P)DP41:$(S):temp.HOPR"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 6
+y 317
+w 85
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "HI Oper. Range"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 359
+w 55
+h 20
+controlPv "$(P)DP41:$(S):temp.LOPR"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 6
+y 350
+w 95
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "LO Oper. Range"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 63
+y 328
+w 24
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Deg"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 63
+y 360
+w 24
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Deg"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 163
+y 38
+w 33
+h 33
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 15
+bgColor index 14
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 96
+y 328
+w 20
+h 20
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 96
+y 360
+w 20
+h 20
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 226
+y 361
+w 20
+h 20
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 227
+y 329
+w 20
+h 20
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Circle)
+object activeCircleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 150
+y 40
+w 9
+h 9
+lineColor index 15
+fillColor index 15
+lineWidth 3
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 283
+w 55
+h 20
+controlPv "$(P)DP41:$(S):offset.A"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 6
+y 274
+w 95
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Offset"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 63
+y 283
+w 24
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Deg"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 97
+y 284
+w 20
+h 20
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 23
+y 226
+w 55
+h 14
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "UNITS"
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 125
+y 313
+w 0
+h 71
+lineColor index 14
+fillColor index 14
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 125
+1 125
+}
+yPoints  {
+0 384
+1 313
+}
+endObjectProperties
+
+# (Lines)
+object activeLineClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x -1
+y 311
+w 252
+h 2
+lineColor index 14
+fillColor index 14
+lineWidth 2
+numPoints 2 {
+xPoints  {
+0 0
+1 250
+}
+yPoints  {
+0 312
+1 312
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 317
+w 65
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 20
+useDisplayBg
+value {
+ "Alarm Level"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 164
+y 350
+w 65
+h 12
+font "helvetica-medium-r-8.0"
+fgColor index 30
+useDisplayBg
+value {
+ "Alarm Level"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 160
+y 6
+w 55
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Omega "
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 213
+y 6
+w 30
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "$(S)"
+}
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 26
+y 78
+w 135
+h 16
+fgColor index 14
+bgColor index 51
+selectColor index 51
+inconsistentColor index 14
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)DP41:$(S):readMode.VAL"
+font "helvetica-medium-r-10.0"
+orientation "horizontal"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 166
+y 77
+w 49
+h 18
+fgColor index 21
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)DP41:$(S):manRead.VAL"
+pressValue "1"
+releaseValue 
+onLabel "READ"
+offLabel "READ"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 228
+y 227
+w 15
+h 15
+fgColor index 14
+bgColor index 56
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "!"
+numCmds 1
+commandLabel {
+  0 "Strip Tool"
+}
+command {
+  0 "/usr/local/epics/extensions/bin/solaris/StripTool $(P)DP41_chart &"
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 188
+y 279
+w 57
+h 22
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "Less"
+numPvs 2
+numDsps 1
+displayFileName {
+  0 OmegaDP41.edl
+}
+menuLabel {
+  0 
+}
+symbols {
+  0 "P=$(P),S=$(S)"
+}
+endObjectProperties
+
+# (Shell Command)
+object shellCmdClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 228
+y 249
+w 15
+h 15
+fgColor index 14
+bgColor index 56
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "!"
+numCmds 1
+commandLabel {
+  0 "Start Alarm Handler"
+}
+command {
+  0 "cd ../alh; alh DP41.alhConfig & "
+}
+endObjectProperties
+
+# (Choice Button)
+object activeChoiceButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 241
+w 100
+h 26
+fgColor index 14
+bgColor index 56
+selectColor index 56
+inconsistentColor index 14
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)DP41:$(S):units.VAL"
+font "helvetica-medium-r-10.0"
+orientation "horizontal"
+endObjectProperties
+

@@ -1,0 +1,413 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 213
+y 487
+w 425
+h 170
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 4
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 110
+y 46
+w 100
+h 18
+controlPv "$(P)$(R):model"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 110
+y 71
+w 100
+h 18
+controlPv "$(P)$(R):firmware"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 110
+y 96
+w 100
+h 18
+controlPv "$(P)$(R):baud"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 145
+w 310
+h 20
+controlPv "$(P)$(R):status"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 45
+w 100
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Model"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 70
+w 100
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Firmware"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 95
+w 100
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Baud"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 5
+w 415
+h 40
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "ADAM 4018 Setup"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 110
+y 121
+w 100
+h 18
+controlPv "$(P)$(R):input_RBV"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 120
+w 100
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Input Type"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 215
+y 120
+w 205
+h 20
+
+beginGroup
+
+
+endGroup
+
+visPv "CALC\\\{(A=1)\}($(P)$(R):mode)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 268
+y 82
+w 100
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(R):mode"
+indicatorPv "$(P)$(R):mode"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 268
+y 57
+w 100
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(R):readSettings.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Read Settings"
+offLabel "Read Settings"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 320
+y 145
+w 100
+h 20
+fgColor index 14
+bgColor index 51
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "More"
+numPvs 4
+numDsps 2
+displayFileName {
+  0 ADAM_4018.edl
+  1 ADAM_4018_temp.edl
+}
+menuLabel {
+  0 ADAM 4018
+  1 ADAM 4018 Temperature
+}
+symbols {
+  0 "P=$(P),R=$(R)"
+  1 "P=$(P),R=$(R)"
+}
+endObjectProperties
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 215
+y 120
+w 205
+h 20
+
+beginGroup
+
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 215
+y 120
+w 100
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)$(R):input"
+indicatorPv "$(P)$(R):input"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 320
+y 120
+w 100
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)$(R):apply.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Apply"
+offLabel "Apply"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+endGroup
+
+visPv "CALC\\\{(A=1)\}($(P)$(R):mode)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+
