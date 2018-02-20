@@ -1,0 +1,377 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 158
+y 184
+w 200
+h 209
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 3
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 1
+y 1
+w 196
+h 21
+lineColor index 1
+fill
+fillColor index 1
+lineWidth 3
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 91
+y 127
+w 100
+h 25
+controlPv "$(P)AD4enc$(N):count"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 51
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 129
+w 70
+h 19
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Set Count:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 3
+y 2
+w 130
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 54
+useDisplayBg
+value {
+ "USDigital AD4"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 148
+y 7
+w 45
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor index 14
+useDisplayBg
+value {
+ "$(P)$(N)"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 60
+y 32
+w 130
+h 20
+controlPv "$(P)AD4enc$(N):count"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+bgColor index 3
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 6
+y 70
+w 75
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Read Rate:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 163
+w 75
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Multiplier:"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 56
+y 190
+w 48
+h 12
+controlPv "$(P)AD4enc$(N):ping.SEVR"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 14
+fgAlarm
+bgColor index 3
+autoHeight
+format "string"
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 54
+y 187
+w 53
+h 15
+lineColor index 15
+fillColor index 15
+lineWidth 2
+visPv "CALC\\\{(A)\}($(P)AD4enc$(N):ping)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 54
+y 187
+w 53
+h 15
+lineColor index 20
+fillColor index 20
+lineWidth 2
+visPv "CALC\\\{(A)\}($(P)AD4enc$(N):ping)"
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 103
+y 69
+w 75
+h 18
+fgColor index 14
+bgColor index 3
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)AD4enc$(N):read.SCAN"
+indicatorPv "$(P)AD4enc$(N):read.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 4
+y 31
+w 45
+h 20
+fgColor index 0
+onColor index 53
+offColor index 53
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)AD4enc$(N):read"
+pressValue "1"
+releaseValue 
+onLabel "Read"
+offLabel "Read"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 153
+y 184
+w 43
+h 18
+fgColor index 0
+bgColor index 17
+topShadowColor index 2
+botShadowColor index 12
+font "helvetica-medium-r-10.0"
+buttonLabel "Detail"
+numPvs 10
+numDsps 5
+displayFileName {
+  0 asynOctet.adl
+  1 yyTransform_full.adl
+  2 yyCalcoutRecord.adl
+  3 yyCalcoutRecord.adl
+  4 yySseq_full.adl
+}
+menuLabel {
+  0 AD4 Serial Port
+  1 Count Calc
+  2 Set Mode
+  3 Ping Test
+  4 Init Seq
+}
+symbols {
+  0 "P=$(P),R=AD4enc$(N):serial"
+  1 "P=$(P),T=AD4enc$(N):countCalc"
+  2 "P=$(P),C=AD4enc$(N):setCntMode"
+  3 "P=$(P),C=AD4enc$(N):ping"
+  4 "P=$(P),S=AD4enc$(N):Init"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 110
+y 163
+w 50
+h 18
+fgColor index 0
+bgColor index 53
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)AD4enc$(N):setMode"
+indicatorPv "$(P)AD4enc$(N):setMode"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 185
+w 43
+h 18
+fgColor index 0
+onColor index 53
+offColor index 53
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)AD4enc$(N):getPing"
+pressValue "1"
+releaseValue 
+onLabel "Test"
+offLabel "Test"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

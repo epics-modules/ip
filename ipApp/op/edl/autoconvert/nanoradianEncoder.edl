@@ -1,0 +1,163 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 249
+y 446
+w 210
+h 75
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 2
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 20
+w 150
+h 25
+controlPv "$(P)nano$(CHAN)Read.VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+smartRefresh
+fastUpdate
+fgColor index 53
+bgColor index 2
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 0
+w 210
+h 20
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor index 14
+useDisplayBg
+value {
+ "Nanoradian Encoder $(CHAN)"
+}
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 120
+y 50
+w 85
+h 16
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)nano$(CHAN)Ask.SCAN"
+indicatorPv "$(P)nano$(CHAN)Ask.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 80
+y 50
+w 40
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)nano$(CHAN)Ask.PROC"
+pressValue "1"
+releaseValue 
+onLabel "Read"
+offLabel "Read"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 0
+y 52
+w 40
+h 18
+fgColor index 14
+onColor index 32
+offColor index 32
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)nano$(CHAN)Cmd.VAL"
+pressValue "ED"
+releaseValue 
+onLabel "Init"
+offLabel "Init"
+3d
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 40
+y 52
+w 40
+h 18
+fgColor index 14
+onColor index 32
+offColor index 32
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)nano$(CHAN)Cmd.VAL"
+pressValue "R"
+releaseValue 
+onLabel "Zero"
+offLabel "Zero"
+3d
+font "helvetica-medium-r-10.0"
+endObjectProperties
+

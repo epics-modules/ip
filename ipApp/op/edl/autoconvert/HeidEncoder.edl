@@ -1,0 +1,262 @@
+4 0 0
+beginScreenProperties
+major 4
+minor 0
+release 0
+x 754
+y 749
+w 220
+h 117
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-medium-r-8.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor index 14
+bgColor index 4
+textColor index 14
+ctlFgColor1 index 30
+ctlFgColor2 index 32
+ctlBgColor1 index 34
+ctlBgColor2 index 35
+topShadowColor index 37
+botShadowColor index 44
+snapToGrid
+gridSize 5
+endScreenProperties
+
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 50
+w 170
+h 30
+controlPv "$(P)HeidEncoderRead_A$(A).VAL"
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 194
+y 23
+w 25
+h 20
+controlPv "$(P)HeidEncoderStatus_A$(A).VAL"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 4
+autoHeight
+format decimal
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 194
+y 2
+w 22
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "$(A)"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 143
+y 7
+w 47
+h 12
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor index 14
+useDisplayBg
+value {
+ "addr:"
+}
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 3
+y 19
+w 135
+h 20
+controlPv "$(P)HeidEncoderRead_A$(A).DESC"
+font "helvetica-medium-r-8.0"
+smartRefresh
+fastUpdate
+fgColor index 54
+bgColor index 2
+editable
+autoHeight
+format decimal
+motifWidget
+nullColor index 32
+useHexPrefix
+objType "controls"
+newPos
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 148
+y 27
+w 20
+h 10
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "status:"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 2
+w 136
+h 15
+font "helvetica-medium-r-8.0"
+fgColor index 14
+useDisplayBg
+value {
+ "Heid. AWE1024"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 174
+y 45
+w 20
+h 20
+font "helvetica-medium-r-8.0"
+fgColor index 54
+useDisplayBg
+value {
+ "o"
+}
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 94
+w 45
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)HeidEncoderInit_A$(A).VAL"
+pressValue "1"
+releaseValue "0"
+onLabel "Init"
+offLabel "Init"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 124
+y 94
+w 90
+h 20
+fgColor index 14
+bgColor index 51
+inconsistentColor index 12
+topShadowColor index 2
+botShadowColor index 12
+controlPv "$(P)HeidEncoderRead_A$(A).SCAN"
+indicatorPv "$(P)HeidEncoderRead_A$(A).SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 73
+y 94
+w 45
+h 20
+fgColor index 14
+onColor index 51
+offColor index 51
+topShadowColor index 0
+botShadowColor index 14
+controlPv "$(P)HeidEncoderRead_A$(A).PROC"
+pressValue "1"
+releaseValue "0"
+onLabel "Read"
+offLabel "Read"
+3d
+useEnumNumeric
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
