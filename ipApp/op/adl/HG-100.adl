@@ -226,21 +226,6 @@ text {
 	textix="Offset"
 	align="horiz. right"
 }
-"text entry" {
-	object {
-		x=154
-		y=167
-		width=90
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SetSetpoint"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
 text {
 	object {
 		x=89
@@ -253,4 +238,19 @@ text {
 	}
 	textix="Output"
 	align="horiz. right"
+}
+"text update" {
+	object {
+		x=154
+		y=166
+		width=90
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SetSetpoint"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
 }
