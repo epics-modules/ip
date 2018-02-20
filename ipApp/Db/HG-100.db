@@ -1,0 +1,38 @@
+# HG-100.db
+
+# Database file for L&C HG-100 humidity controller
+# It actually is communicating with the CAL 3300 temperature controller inside the HG-100.
+
+# Mark Rivers
+# February 19, 2018
+
+
+record(ao,"$(P)$(R)Temperature") {
+    field(PREC, "1")
+    field(VAL, "25")
+    field(FLNK, "$(P)$(R)TempCalc")
+}
+
+record(ao,"$(P)$(R)Slope") {
+    field(VAL, "1")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)Offset") {
+    field(VAL, "0")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)TempCalc") {
+    field(INPA,"$(P)$(R)Temperature NPP NMS")
+    field(INPB,"$(P)$(R)Slope NPP NMS")
+    field(INPC,"$(P)$(R)Offset NPP NMS")
+    field(CALC,"(A*B+C)*10.+0.5")
+    field(OUT, "$(P)$(R)SetSetpoint.VAL PP NMS")
+}
+
+record(longout,"$(P)$(R)SetSetpoint") {
+    field(DTYP, "stream")
+    field(OUT,  "@HG-100.proto setSetPoint $(PORT)")
+}
+
