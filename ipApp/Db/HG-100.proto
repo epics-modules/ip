@@ -12,10 +12,7 @@ setSetPoint {
    out "\x01\x06\x15\x00\x00\x00%#<modbus>";
     in "\x01\x06\x15\x00\x00\x00%#<modbus>";
    out "\x01\x06\x00\x7f%.2r%#<modbus>";
-# We want to use this, but StreamDevice complains. 
-#    in "\x01\x06\x00\x7f%.2r%#<modbus>";
-# Instead ignore last 4 characters
-    in "\x01\x06\x00\x7f%*4c";
+    in "\x01\x06\x00\x7f%2r%#<modbus>";
    out "\x01\x06\x03\x00\x00\x06%#<modbus>";
     in "\x01\x06\x03\x00\x00\x06%#<modbus>";
    out "\x01\x06\x16\x00\x00\x00%#<modbus>";
