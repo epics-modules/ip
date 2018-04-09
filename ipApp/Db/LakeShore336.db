@@ -5,21 +5,21 @@ grecord(asyn,"$(P)LS336:$(Q):serial") {
 
 grecord(sseq,"$(P)LS336:$(Q):init") {
 	field(SCAN, "1 second")
-	field(LNK1,"$(P)LS336:$(Q):readAll  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):readAll.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):init.SCAN NPP NMS")
 	field(STR2,"Passive")
 	}
 
 grecord(sseq,"$(P)LS336:$(Q):read") {
-	field(LNK1,"$(P)LS336:$(Q):IN1  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):IN2  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):IN3  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):IN4  CA NMS")
-	field(LNK5,"$(P)LS336:$(Q):HTR1  CA NMS")
-	field(LNK6,"$(P)LS336:$(Q):HTR2  CA NMS")
-	field(LNK7,"$(P)LS336:$(Q):AOUT3  CA NMS")
-	field(LNK8,"$(P)LS336:$(Q):AOUT4  CA NMS")
-	field(LNK9,"$(P)LS336:$(Q):ModeRI_RBV  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):IN1.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):IN2.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):IN3.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):IN4.PROC  CA NMS")
+	field(LNK5,"$(P)LS336:$(Q):HTR1.PROC  CA NMS")
+	field(LNK6,"$(P)LS336:$(Q):HTR2.PROC  CA NMS")
+	field(LNK7,"$(P)LS336:$(Q):AOUT3.PROC  CA NMS")
+	field(LNK8,"$(P)LS336:$(Q):AOUT4.PROC  CA NMS")
+	field(LNK9,"$(P)LS336:$(Q):ModeRI_RBV.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -33,12 +33,12 @@ grecord(sseq,"$(P)LS336:$(Q):read") {
 
 grecord(sseq,"$(P)LS336:$(Q):readAll") {
         field(DLY1,"1")
-	field(LNK1,"$(P)LS336:$(Q):readAllMode CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):readAllSetup CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):readAllPID CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):readAllSP CA NMS")
-	field(LNK5,"$(P)LS336:$(Q):readAllRange CA NMS")
-	field(LNK6,"$(P)LS336:$(Q):read CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):readAllMode.PROC CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):readAllSetup.PROC CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):readAllPID.PROC CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):readAllSP.PROC CA NMS")
+	field(LNK5,"$(P)LS336:$(Q):readAllRange.PROC CA NMS")
+	field(LNK6,"$(P)LS336:$(Q):read.PROC CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -48,10 +48,10 @@ grecord(sseq,"$(P)LS336:$(Q):readAll") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllPID") {
-	field(LNK1,"$(P)LS336:$(Q):getPID1  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):getPID2  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):getRamp1  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):getRamp2  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):getPID1.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):getPID2.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):getRamp1.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):getRamp2.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -59,10 +59,10 @@ grecord(sseq,"$(P)LS336:$(Q):readAllPID") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllMode") {
-	field(LNK1,"$(P)LS336:$(Q):getOutMode1  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):getOutMode2  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):getOutMode3  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):getOutMode4  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):getOutMode1.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):getOutMode2.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):getOutMode3.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):getOutMode4.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -70,10 +70,10 @@ grecord(sseq,"$(P)LS336:$(Q):readAllMode") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllRange") {
-	field(LNK1,"$(P)LS336:$(Q):HTR1:Range_RBV  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):HTR2:Range_RBV  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):AOUT3:Range_RBV  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):AOUT4:Range_RBV  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):HTR1:Range_RBV.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):HTR2:Range_RBV.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):AOUT3:Range_RBV.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):AOUT4:Range_RBV.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -81,14 +81,14 @@ grecord(sseq,"$(P)LS336:$(Q):readAllRange") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllSetup") {
-	field(LNK1,"$(P)LS336:$(Q):IN1:getType  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):IN2:getType  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):IN3:getType  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):IN4:getType  CA NMS")
-	field(LNK5,"$(P)LS336:$(Q):IN1:Name_RBV  CA NMS")
-	field(LNK6,"$(P)LS336:$(Q):IN2:Name_RBV  CA NMS")
-	field(LNK7,"$(P)LS336:$(Q):IN3:Name_RBV  CA NMS")
-	field(LNK8,"$(P)LS336:$(Q):IN4:Name_RBV  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):IN1:getType.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):IN2:getType.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):IN3:getType.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):IN4:getType.PROC  CA NMS")
+	field(LNK5,"$(P)LS336:$(Q):IN1:Name_RBV.PROC  CA NMS")
+	field(LNK6,"$(P)LS336:$(Q):IN2:Name_RBV.PROC  CA NMS")
+	field(LNK7,"$(P)LS336:$(Q):IN3:Name_RBV.PROC  CA NMS")
+	field(LNK8,"$(P)LS336:$(Q):IN4:Name_RBV.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -100,14 +100,14 @@ grecord(sseq,"$(P)LS336:$(Q):readAllSetup") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllSP") {
-	field(LNK1,"$(P)LS336:$(Q):OUT1:SP_RBV  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):OUT2:SP_RBV  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):OUT3:SP_RBV  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):OUT4:SP_RBV  CA NMS")
-	field(LNK5,"$(P)LS336:$(Q):OUT1:MOUT_RBV  CA NMS")
-	field(LNK6,"$(P)LS336:$(Q):OUT2:MOUT_RBV  CA NMS")
-	field(LNK7,"$(P)LS336:$(Q):OUT3:MOUT_RBV  CA NMS")
-	field(LNK8,"$(P)LS336:$(Q):OUT4:MOUT_RBV  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):OUT1:SP_RBV.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):OUT2:SP_RBV.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):OUT3:SP_RBV.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):OUT4:SP_RBV.PROC  CA NMS")
+	field(LNK5,"$(P)LS336:$(Q):OUT1:MOUT_RBV.PROC  CA NMS")
+	field(LNK6,"$(P)LS336:$(Q):OUT2:MOUT_RBV.PROC  CA NMS")
+	field(LNK7,"$(P)LS336:$(Q):OUT3:MOUT_RBV.PROC  CA NMS")
+	field(LNK8,"$(P)LS336:$(Q):OUT4:MOUT_RBV.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
@@ -119,10 +119,10 @@ grecord(sseq,"$(P)LS336:$(Q):readAllSP") {
 }
 
 grecord(sseq,"$(P)LS336:$(Q):readAllSelect") {
-	field(LNK1,"$(P)LS336:$(Q):OUT1:Select  CA NMS")
-	field(LNK2,"$(P)LS336:$(Q):OUT2:Select  CA NMS")
-	field(LNK3,"$(P)LS336:$(Q):OUT3:Select  CA NMS")
-	field(LNK4,"$(P)LS336:$(Q):OUT4:Select  CA NMS")
+	field(LNK1,"$(P)LS336:$(Q):OUT1:Select.PROC  CA NMS")
+	field(LNK2,"$(P)LS336:$(Q):OUT2:Select.PROC  CA NMS")
+	field(LNK3,"$(P)LS336:$(Q):OUT3:Select.PROC  CA NMS")
+	field(LNK4,"$(P)LS336:$(Q):OUT4:Select.PROC  CA NMS")
         field(WAIT1,"Wait")
         field(WAIT2,"Wait")
         field(WAIT3,"Wait")
