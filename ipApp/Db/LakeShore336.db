@@ -1,16 +1,16 @@
 
-grecord(asyn,"$(P)LS336:$(Q):serial") {
+record(asyn,"$(P)LS336:$(Q):serial") {
 	field(PORT,"$(PORT)")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):init") {
+record(sseq,"$(P)LS336:$(Q):init") {
 	field(SCAN, "1 second")
 	field(LNK1,"$(P)LS336:$(Q):readAll.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):init.SCAN NPP NMS")
 	field(STR2,"Passive")
 	}
 
-grecord(sseq,"$(P)LS336:$(Q):read") {
+record(sseq,"$(P)LS336:$(Q):read") {
 	field(LNK1,"$(P)LS336:$(Q):IN1.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):IN2.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):IN3.PROC  CA NMS")
@@ -31,7 +31,7 @@ grecord(sseq,"$(P)LS336:$(Q):read") {
 		field(WAIT9,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAll") {
+record(sseq,"$(P)LS336:$(Q):readAll") {
         field(DLY1,"1")
 	field(LNK1,"$(P)LS336:$(Q):readAllMode.PROC CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):readAllSetup.PROC CA NMS")
@@ -47,7 +47,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAll") {
         field(WAIT6,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllPID") {
+record(sseq,"$(P)LS336:$(Q):readAllPID") {
 	field(LNK1,"$(P)LS336:$(Q):getPID1.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):getPID2.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):getRamp1.PROC  CA NMS")
@@ -58,7 +58,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllPID") {
         field(WAIT4,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllMode") {
+record(sseq,"$(P)LS336:$(Q):readAllMode") {
 	field(LNK1,"$(P)LS336:$(Q):getOutMode1.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):getOutMode2.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):getOutMode3.PROC  CA NMS")
@@ -69,7 +69,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllMode") {
         field(WAIT4,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllRange") {
+record(sseq,"$(P)LS336:$(Q):readAllRange") {
 	field(LNK1,"$(P)LS336:$(Q):HTR1:Range_RBV.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):HTR2:Range_RBV.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):AOUT3:Range_RBV.PROC  CA NMS")
@@ -80,7 +80,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllRange") {
         field(WAIT4,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllSetup") {
+record(sseq,"$(P)LS336:$(Q):readAllSetup") {
 	field(LNK1,"$(P)LS336:$(Q):IN1:getType.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):IN2:getType.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):IN3:getType.PROC  CA NMS")
@@ -99,7 +99,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllSetup") {
         field(WAIT8,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllSP") {
+record(sseq,"$(P)LS336:$(Q):readAllSP") {
 	field(LNK1,"$(P)LS336:$(Q):OUT1:SP_RBV.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):OUT2:SP_RBV.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):OUT3:SP_RBV.PROC  CA NMS")
@@ -118,7 +118,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllSP") {
         field(WAIT8,"Wait")
 }
 
-grecord(sseq,"$(P)LS336:$(Q):readAllSelect") {
+record(sseq,"$(P)LS336:$(Q):readAllSelect") {
 	field(LNK1,"$(P)LS336:$(Q):OUT1:Select.PROC  CA NMS")
 	field(LNK2,"$(P)LS336:$(Q):OUT2:Select.PROC  CA NMS")
 	field(LNK3,"$(P)LS336:$(Q):OUT3:Select.PROC  CA NMS")
@@ -130,7 +130,7 @@ grecord(sseq,"$(P)LS336:$(Q):readAllSelect") {
 }
 
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT1:Cntrl") {
+record(mbbo,"$(P)LS336:$(Q):OUT1:Cntrl") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -144,7 +144,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT1:Cntrl") {
 	field(FRST,"D")
   	field(FLNK,"$(P)LS336:$(Q):setOutMode1.VAL PP MS")
 }
-grecord(mbbo,"$(P)LS336:$(Q):OUT2:Cntrl") {
+record(mbbo,"$(P)LS336:$(Q):OUT2:Cntrl") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -159,7 +159,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT2:Cntrl") {
   	field(FLNK,"$(P)LS336:$(Q):setOutMode2.VAL PP MS")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT3:Cntrl") {
+record(mbbo,"$(P)LS336:$(Q):OUT3:Cntrl") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -173,7 +173,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT3:Cntrl") {
 	field(FRST,"D")
   	field(FLNK,"$(P)LS336:$(Q):setOutMode3.VAL PP MS")
 }
-grecord(mbbo,"$(P)LS336:$(Q):OUT4:Cntrl") {
+record(mbbo,"$(P)LS336:$(Q):OUT4:Cntrl") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -188,7 +188,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT4:Cntrl") {
   	field(FLNK,"$(P)LS336:$(Q):setOutMode4.VAL PP MS")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT1:Mode") {
+record(mbbo,"$(P)LS336:$(Q):OUT1:Mode") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -201,7 +201,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT1:Mode") {
   	field(FLNK,"$(P)LS336:$(Q):setOutMode1.VAL PP MS")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT2:Mode") {
+record(mbbo,"$(P)LS336:$(Q):OUT2:Mode") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -214,7 +214,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT2:Mode") {
   	field(FLNK,"$(P)LS336:$(Q):setOutMode2.VAL PP MS")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT3:Mode") {
+record(mbbo,"$(P)LS336:$(Q):OUT3:Mode") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"3")
@@ -227,7 +227,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT3:Mode") {
   	field(FLNK,"$(P)LS336:$(Q):setOutMode3.VAL PP MS")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):OUT4:Mode") {
+record(mbbo,"$(P)LS336:$(Q):OUT4:Mode") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"3")
@@ -241,7 +241,7 @@ grecord(mbbo,"$(P)LS336:$(Q):OUT4:Mode") {
 }
 
 
-grecord(mbbi,"$(P)LS336:$(Q):OUT1:Cntrl_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT1:Cntrl_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -254,34 +254,7 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT1:Cntrl_RBV") {
 	field(THST,"C")
 	field(FRST,"D")
 }
-grecord(mbbi,"$(P)LS336:$(Q):OUT2:Cntrl_RBV") {
-	field(DTYP,"Soft Channel")
-	field(ZRVL,"0")
-	field(ONVL,"1")
-	field(TWVL,"2")
-	field(THVL,"3")
-	field(FRVL,"4")
-	field(ZRST,"-")
-	field(ONST,"A")
-	field(TWST,"B")
-	field(THST,"C")
-	field(FRST,"D")
-}
-
-grecord(mbbi,"$(P)LS336:$(Q):OUT3:Cntrl_RBV") {
-	field(DTYP,"Soft Channel")
-	field(ZRVL,"0")
-	field(ONVL,"1")
-	field(TWVL,"2")
-	field(THVL,"3")
-	field(FRVL,"4")
-	field(ZRST,"-")
-	field(ONST,"A")
-	field(TWST,"B")
-	field(THST,"C")
-	field(FRST,"D")
-}
-grecord(mbbi,"$(P)LS336:$(Q):OUT4:Cntrl_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT2:Cntrl_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -295,7 +268,34 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT4:Cntrl_RBV") {
 	field(FRST,"D")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):OUT1:Mode_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT3:Cntrl_RBV") {
+	field(DTYP,"Soft Channel")
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(FRVL,"4")
+	field(ZRST,"-")
+	field(ONST,"A")
+	field(TWST,"B")
+	field(THST,"C")
+	field(FRST,"D")
+}
+record(mbbi,"$(P)LS336:$(Q):OUT4:Cntrl_RBV") {
+	field(DTYP,"Soft Channel")
+	field(ZRVL,"0")
+	field(ONVL,"1")
+	field(TWVL,"2")
+	field(THVL,"3")
+	field(FRVL,"4")
+	field(ZRST,"-")
+	field(ONST,"A")
+	field(TWST,"B")
+	field(THST,"C")
+	field(FRST,"D")
+}
+
+record(mbbi,"$(P)LS336:$(Q):OUT1:Mode_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -307,7 +307,7 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT1:Mode_RBV") {
 	field(THST,"Open Loop")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):OUT2:Mode_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT2:Mode_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRVL,"0")
 	field(ONVL,"1")
@@ -319,7 +319,7 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT2:Mode_RBV") {
 	field(THST,"Open Loop")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):OUT3:Mode_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT3:Mode_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRST,"Off")
 	field(THST,"Open Loop")
@@ -327,7 +327,7 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT3:Mode_RBV") {
 	field(FVST,"Warmup Supply")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):OUT4:Mode_RBV") {
+record(mbbi,"$(P)LS336:$(Q):OUT4:Mode_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZRST,"Off")
 	field(THST,"Open Loop")
@@ -335,12 +335,12 @@ grecord(mbbi,"$(P)LS336:$(Q):OUT4:Mode_RBV") {
 	field(FVST,"Warmup Supply")
 }
 
-grecord(stringin,"$(P)LS336:$(Q):IN1:getType") {
+record(stringin,"$(P)LS336:$(Q):IN1:getType") {
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInType(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN1:Sensor_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN1:Sensor_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -353,20 +353,20 @@ grecord(mbbi,"$(P)LS336:$(Q):IN1:Sensor_RBV") {
 	field(FRST,"Thermocouple")
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN1:AutoRange_RBV") {
+record(bi,"$(P)LS336:$(Q):IN1:AutoRange_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(ai,"$(P)LS336:$(Q):IN1:Range_RBV") {
+record(ai,"$(P)LS336:$(Q):IN1:Range_RBV") {
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN1:Comp_RBV") {
+record(bi,"$(P)LS336:$(Q):IN1:Comp_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN1:Units_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN1:Units_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -377,7 +377,7 @@ grecord(mbbi,"$(P)LS336:$(Q):IN1:Units_RBV") {
 	field(THST,"S")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):IN1:Units") {
+record(mbbo,"$(P)LS336:$(Q):IN1:Units") {
         field(DTYP, "stream")
         field(OUT, "@LakeShore336.proto setInType(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 	field(ZRVL,"1")
@@ -389,12 +389,12 @@ grecord(mbbo,"$(P)LS336:$(Q):IN1:Units") {
         field(FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord(stringin,"$(P)LS336:$(Q):IN2:getType") {
+record(stringin,"$(P)LS336:$(Q):IN2:getType") {
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInType(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN2:Sensor_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN2:Sensor_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -407,20 +407,20 @@ grecord(mbbi,"$(P)LS336:$(Q):IN2:Sensor_RBV") {
 	field(FRST,"Thermocouple")
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN2:AutoRange_RBV") {
+record(bi,"$(P)LS336:$(Q):IN2:AutoRange_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(ai,"$(P)LS336:$(Q):IN2:Range_RBV") {
+record(ai,"$(P)LS336:$(Q):IN2:Range_RBV") {
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN2:Comp_RBV") {
+record(bi,"$(P)LS336:$(Q):IN2:Comp_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN2:Units_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN2:Units_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -431,7 +431,7 @@ grecord(mbbi,"$(P)LS336:$(Q):IN2:Units_RBV") {
 	field(THST,"S")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):IN2:Units") {
+record(mbbo,"$(P)LS336:$(Q):IN2:Units") {
         field(DTYP, "stream")
         field(OUT, "@LakeShore336.proto setInType(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 	field(ZRVL,"1")
@@ -444,12 +444,12 @@ grecord(mbbo,"$(P)LS336:$(Q):IN2:Units") {
 }
 
 
-grecord(stringin,"$(P)LS336:$(Q):IN3:getType") {
+record(stringin,"$(P)LS336:$(Q):IN3:getType") {
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInType(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN3:Sensor_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN3:Sensor_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -462,20 +462,20 @@ grecord(mbbi,"$(P)LS336:$(Q):IN3:Sensor_RBV") {
 	field(FRST,"Thermocouple")
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN3:AutoRange_RBV") {
+record(bi,"$(P)LS336:$(Q):IN3:AutoRange_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(ai,"$(P)LS336:$(Q):IN3:Range_RBV") {
+record(ai,"$(P)LS336:$(Q):IN3:Range_RBV") {
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN3:Comp_RBV") {
+record(bi,"$(P)LS336:$(Q):IN3:Comp_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN3:Units_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN3:Units_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -486,7 +486,7 @@ grecord(mbbi,"$(P)LS336:$(Q):IN3:Units_RBV") {
 	field(THST,"S")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):IN3:Units") {
+record(mbbo,"$(P)LS336:$(Q):IN3:Units") {
         field(DTYP, "stream")
         field(OUT, "@LakeShore336.proto setInType(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 	field(ZRVL,"1")
@@ -498,12 +498,12 @@ grecord(mbbo,"$(P)LS336:$(Q):IN3:Units") {
         field(FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord(stringin,"$(P)LS336:$(Q):IN4:getType") {
+record(stringin,"$(P)LS336:$(Q):IN4:getType") {
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInType(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN4:Sensor_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN4:Sensor_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -516,20 +516,20 @@ grecord(mbbi,"$(P)LS336:$(Q):IN4:Sensor_RBV") {
 	field(FRST,"Thermocouple")
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN4:AutoRange_RBV") {
+record(bi,"$(P)LS336:$(Q):IN4:AutoRange_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(ai,"$(P)LS336:$(Q):IN4:Range_RBV") {
+record(ai,"$(P)LS336:$(Q):IN4:Range_RBV") {
 }
 
-grecord(bi,"$(P)LS336:$(Q):IN4:Comp_RBV") {
+record(bi,"$(P)LS336:$(Q):IN4:Comp_RBV") {
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):IN4:Units_RBV") {
+record(mbbi,"$(P)LS336:$(Q):IN4:Units_RBV") {
 	field(ZRVL,"0")
 	field(ONVL,"1")
 	field(TWVL,"2")
@@ -540,7 +540,7 @@ grecord(mbbi,"$(P)LS336:$(Q):IN4:Units_RBV") {
 	field(THST,"S")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):IN4:Units") {
+record(mbbo,"$(P)LS336:$(Q):IN4:Units") {
         field(DTYP, "stream")
         field(OUT, "@LakeShore336.proto setInType(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 	field(ZRVL,"1")
@@ -552,61 +552,61 @@ grecord(mbbo,"$(P)LS336:$(Q):IN4:Units") {
         field(FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):IN1:Name_RBV") {
+record (stringin, "$(P)LS336:$(Q):IN1:Name_RBV") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getInName(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):IN2:Name_RBV") {
+record (stringin, "$(P)LS336:$(Q):IN2:Name_RBV") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getInName(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):IN3:Name_RBV") {
+record (stringin, "$(P)LS336:$(Q):IN3:Name_RBV") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getInName(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):IN4:Name_RBV") {
+record (stringin, "$(P)LS336:$(Q):IN4:Name_RBV") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getInName(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(ai,"$(P)LS336:$(Q):IN1") {
+record(ai,"$(P)LS336:$(Q):IN1") {
 	field(PREC, 4)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInput(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord(ai,"$(P)LS336:$(Q):IN2") {
+record(ai,"$(P)LS336:$(Q):IN2") {
 	field(PREC, 4)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInput(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord(ai,"$(P)LS336:$(Q):IN3") {
+record(ai,"$(P)LS336:$(Q):IN3") {
 	field(PREC, 4)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInput(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord(ai,"$(P)LS336:$(Q):IN4") {
+record(ai,"$(P)LS336:$(Q):IN4") {
 	field(PREC, 4)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getInput(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(ai,"$(P)LS336:$(Q):HTR1") {
+record(ai,"$(P)LS336:$(Q):HTR1") {
 	field(PREC, 1)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getHeater(1) $(PORT) $(ADDR)")
 }
-grecord(ai,"$(P)LS336:$(Q):HTR2") {
+record(ai,"$(P)LS336:$(Q):HTR2") {
 	field(PREC, 1)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getHeater(2) $(PORT) $(ADDR)")
 }
 
-grecord(ai,"$(P)LS336:$(Q):AOUT3") {
+record(ai,"$(P)LS336:$(Q):AOUT3") {
 	field(PREC, 1)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getAOutput(3) $(PORT) $(ADDR)")
 }
-grecord(ai,"$(P)LS336:$(Q):AOUT4") {
+record(ai,"$(P)LS336:$(Q):AOUT4") {
 	field(PREC, 1)
         field(DTYP, "stream")
         field(INP, "@LakeShore336.proto getAOutput(4) $(PORT) $(ADDR)")
@@ -614,59 +614,59 @@ grecord(ai,"$(P)LS336:$(Q):AOUT4") {
 
 
 
-grecord(ai,"$(P)LS336:$(Q):P1_RBV") {
+record(ai,"$(P)LS336:$(Q):P1_RBV") {
 	field(PREC,"1")
 }
-grecord(ai,"$(P)LS336:$(Q):P2_RBV") {
+record(ai,"$(P)LS336:$(Q):P2_RBV") {
 	field(PREC,"1")
 }
 
-grecord(ai,"$(P)LS336:$(Q):I1_RBV") {
+record(ai,"$(P)LS336:$(Q):I1_RBV") {
 	field(PREC,"1")
 }
-grecord(ai,"$(P)LS336:$(Q):I2_RBV") {
+record(ai,"$(P)LS336:$(Q):I2_RBV") {
 	field(PREC,"1")
 }
-grecord(ai,"$(P)LS336:$(Q):D1_RBV") {
+record(ai,"$(P)LS336:$(Q):D1_RBV") {
 	field(PREC,"0")
 }
-grecord(ai,"$(P)LS336:$(Q):D2_RBV") {
+record(ai,"$(P)LS336:$(Q):D2_RBV") {
 	field(PREC,"0")
 }
 
-grecord(ao,"$(P)LS336:$(Q):P1") {
+record(ao,"$(P)LS336:$(Q):P1") {
 	field(PREC,"1")
         field(DRVL, "0.0")
         field(DRVH, "1000.0")
 	field(FLNK, "$(P)LS336:$(Q):setPID1.VAL PP MS")
 }
-grecord(ao,"$(P)LS336:$(Q):P2") {
+record(ao,"$(P)LS336:$(Q):P2") {
 	field(PREC,"1")
         field(DRVL, "0.0")
         field(DRVH, "1000.0")
 	field(FLNK, "$(P)LS336:$(Q):setPID2.VAL PP MS")
 }
 
-grecord(ao,"$(P)LS336:$(Q):I1") {
+record(ao,"$(P)LS336:$(Q):I1") {
 	field(PREC,"1")
         field(DRVL, "0.0")
         field(DRVH, "1000.0")
 	field(FLNK, "$(P)LS336:$(Q):setPID1.VAL PP MS")
 }
-grecord(ao,"$(P)LS336:$(Q):I2") {
+record(ao,"$(P)LS336:$(Q):I2") {
 	field(PREC,"1")
         field(DRVL, "0.0")
         field(DRVH, "1000.0")
 	field(FLNK, "$(P)LS336:$(Q):setPID2.VAL PP MS")
 }
 
-grecord(ao,"$(P)LS336:$(Q):D1") {
+record(ao,"$(P)LS336:$(Q):D1") {
 	field(PREC,"0")
         field(DRVL, "0")
         field(DRVH, "200")
 	field (FLNK, "$(P)LS336:$(Q):setPID1.VAL PP MS")
 }
-grecord(ao,"$(P)LS336:$(Q):D2") {
+record(ao,"$(P)LS336:$(Q):D2") {
 	field(PREC,"0")
         field(DRVL, "0")
         field(DRVH, "200")
@@ -674,46 +674,46 @@ grecord(ao,"$(P)LS336:$(Q):D2") {
 }
 
 
-grecord(ai,"$(P)LS336:$(Q):RampR1_RBV") {
+record(ai,"$(P)LS336:$(Q):RampR1_RBV") {
 	field(PREC,"1")
 }
-grecord(ai,"$(P)LS336:$(Q):RampR2_RBV") {
+record(ai,"$(P)LS336:$(Q):RampR2_RBV") {
 	field(PREC,"1")
 }
 
-grecord(bi,"$(P)LS336:$(Q):OnRamp1_RBV") {
+record(bi,"$(P)LS336:$(Q):OnRamp1_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(bi,"$(P)LS336:$(Q):OnRamp2_RBV") {
+record(bi,"$(P)LS336:$(Q):OnRamp2_RBV") {
 	field(DTYP,"Soft Channel")
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
 }
 
-grecord(bo,"$(P)LS336:$(Q):OnRamp1") {
+record(bo,"$(P)LS336:$(Q):OnRamp1") {
 	field(DTYP,"Soft Channel")
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
   	field(FLNK,"$(P)LS336:$(Q):setRamp1.VAL PP MS")
 }
 
-grecord(bo,"$(P)LS336:$(Q):OnRamp2") {
+record(bo,"$(P)LS336:$(Q):OnRamp2") {
 	field(DTYP,"Soft Channel")
 	field(ZNAM,"OFF")
 	field(ONAM,"ON")
   	field(FLNK,"$(P)LS336:$(Q):setRamp2.VAL PP MS")
 }
 
-grecord(ao,"$(P)LS336:$(Q):RampR1") {
+record(ao,"$(P)LS336:$(Q):RampR1") {
 	field(PREC,"1")
         field (DRVL, "0.0")
         field (DRVH, "100.0")
   	field(FLNK,"$(P)LS336:$(Q):setRamp1.VAL PP MS")
 }
-grecord(ao,"$(P)LS336:$(Q):RampR2") {
+record(ao,"$(P)LS336:$(Q):RampR2") {
 	field(PREC,"1")
         field (DRVL, "0.0")
         field (DRVH, "100.0")
@@ -721,79 +721,79 @@ grecord(ao,"$(P)LS336:$(Q):RampR2") {
 }
 
 
-grecord (stringin, "$(P)LS336:$(Q):ID") {
+record (stringin, "$(P)LS336:$(Q):ID") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getID($(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord (ai, "$(P)LS336:$(Q):OUT1:SP_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT1:SP_RBV") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (INP, "@LakeShore336.proto getSETP(1) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT2:SP_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT2:SP_RBV") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (INP, "@LakeShore336.proto getSETP(2) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT3:SP_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT3:SP_RBV") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (INP, "@LakeShore336.proto getSETP(3) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT4:SP_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT4:SP_RBV") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (INP, "@LakeShore336.proto getSETP(4) $(PORT) $(ADDR)")
 }
 
-grecord (ao, "$(P)LS336:$(Q):OUT1:SP") {
+record (ao, "$(P)LS336:$(Q):OUT1:SP") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (OUT, "@LakeShore336.proto setSETP(1) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):OUT1:SP_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT2:SP") {
+record (ao, "$(P)LS336:$(Q):OUT2:SP") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (OUT, "@LakeShore336.proto setSETP(2) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):OUT2:SP_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT3:SP") {
+record (ao, "$(P)LS336:$(Q):OUT3:SP") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (OUT, "@LakeShore336.proto setSETP(3) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):OUT3:SP_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT4:SP") {
+record (ao, "$(P)LS336:$(Q):OUT4:SP") {
   field (DTYP, "stream")
   field (PREC, "4")
   field (OUT, "@LakeShore336.proto setSETP(4) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):OUT4:SP_RBV.VAL  PP MS")
 }
 
-grecord (ai, "$(P)LS336:$(Q):OUT1:MOUT_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT1:MOUT_RBV") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (INP, "@LakeShore336.proto getMOUT(1) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT2:MOUT_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT2:MOUT_RBV") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (INP, "@LakeShore336.proto getMOUT(2) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT3:MOUT_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT3:MOUT_RBV") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (INP, "@LakeShore336.proto getMOUT(3) $(PORT) $(ADDR)")
 }
-grecord (ai, "$(P)LS336:$(Q):OUT4:MOUT_RBV") {
+record (ai, "$(P)LS336:$(Q):OUT4:MOUT_RBV") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (INP, "@LakeShore336.proto getMOUT(4) $(PORT) $(ADDR)")
 }
 
-grecord (ao, "$(P)LS336:$(Q):OUT1:MOUT") {
+record (ao, "$(P)LS336:$(Q):OUT1:MOUT") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (OUT, "@LakeShore336.proto setMOUT(1) $(PORT) $(ADDR)")
@@ -801,7 +801,7 @@ grecord (ao, "$(P)LS336:$(Q):OUT1:MOUT") {
   field (DRVH, "100.0")
   field (FLNK,"$(P)LS336:$(Q):OUT1:MOUT_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT2:MOUT") {
+record (ao, "$(P)LS336:$(Q):OUT2:MOUT") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (OUT, "@LakeShore336.proto setMOUT(2) $(PORT) $(ADDR)")
@@ -809,7 +809,7 @@ grecord (ao, "$(P)LS336:$(Q):OUT2:MOUT") {
   field (DRVH, "100.0")
   field (FLNK,"$(P)LS336:$(Q):OUT2:MOUT_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT3:MOUT") {
+record (ao, "$(P)LS336:$(Q):OUT3:MOUT") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (OUT, "@LakeShore336.proto setMOUT(3) $(PORT) $(ADDR)")
@@ -817,7 +817,7 @@ grecord (ao, "$(P)LS336:$(Q):OUT3:MOUT") {
   field (DRVH, "100.0")
   field (FLNK,"$(P)LS336:$(Q):OUT3:MOUT_RBV.VAL  PP MS")
 }
-grecord (ao, "$(P)LS336:$(Q):OUT4:MOUT") {
+record (ao, "$(P)LS336:$(Q):OUT4:MOUT") {
   field (DTYP, "stream")
   field (PREC, "2")
   field (DRVL, "0.0")
@@ -827,7 +827,7 @@ grecord (ao, "$(P)LS336:$(Q):OUT4:MOUT") {
 }
 
 
-grecord(mbbi,"$(P)LS336:$(Q):HTR1:Range_RBV") {
+record(mbbi,"$(P)LS336:$(Q):HTR1:Range_RBV") {
   field(DTYP, "stream")
   field(INP, "@LakeShore336.proto getRange(1) $(PORT) $(ADDR)")
   field(ZRST,"OFF")
@@ -836,7 +836,7 @@ grecord(mbbi,"$(P)LS336:$(Q):HTR1:Range_RBV") {
   field(THST,"HIGH")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):HTR1:Range") {
+record(mbbo,"$(P)LS336:$(Q):HTR1:Range") {
   field(DTYP, "stream")
   field(OUT, "@LakeShore336.proto setRange(1) $(PORT) $(ADDR)")
   field(ZRVL,"0")
@@ -851,7 +851,7 @@ grecord(mbbo,"$(P)LS336:$(Q):HTR1:Range") {
 }
 
 
-grecord(mbbi,"$(P)LS336:$(Q):HTR2:Range_RBV") {
+record(mbbi,"$(P)LS336:$(Q):HTR2:Range_RBV") {
   field(DTYP, "stream")
   field(INP, "@LakeShore336.proto getRange(2) $(PORT) $(ADDR)")
   field(ZRST,"OFF")
@@ -860,7 +860,7 @@ grecord(mbbi,"$(P)LS336:$(Q):HTR2:Range_RBV") {
   field(THST,"HIGH")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):HTR2:Range") {
+record(mbbo,"$(P)LS336:$(Q):HTR2:Range") {
   field(DTYP, "stream")
   field(OUT, "@LakeShore336.proto setRange(2) $(PORT) $(ADDR)")
   field(ZRVL,"0")
@@ -875,14 +875,14 @@ grecord(mbbo,"$(P)LS336:$(Q):HTR2:Range") {
 }
 
 
-grecord(mbbi,"$(P)LS336:$(Q):AOUT3:Range_RBV") {
+record(mbbi,"$(P)LS336:$(Q):AOUT3:Range_RBV") {
   field(DTYP, "stream")
   field(INP, "@LakeShore336.proto getRange(3) $(PORT) $(ADDR)")
   field(ZRST,"OFF")
   field(ONST,"ON")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):AOUT3:Range") {
+record(mbbo,"$(P)LS336:$(Q):AOUT3:Range") {
   field(DTYP, "stream")
   field(OUT, "@LakeShore336.proto setRange(3) $(PORT) $(ADDR)")
   field(ZRVL,"0")
@@ -892,14 +892,14 @@ grecord(mbbo,"$(P)LS336:$(Q):AOUT3:Range") {
   field(FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):AOUT4:Range_RBV") {
+record(mbbi,"$(P)LS336:$(Q):AOUT4:Range_RBV") {
   field(DTYP, "stream")
   field(INP, "@LakeShore336.proto getRange(4) $(PORT) $(ADDR)")
   field(ZRST,"OFF")
   field(ONST,"ON")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):AOUT4:Range") {
+record(mbbo,"$(P)LS336:$(Q):AOUT4:Range") {
   field(DTYP, "stream")
   field(OUT, "@LakeShore336.proto setRange(4) $(PORT) $(ADDR)")
   field(ZRVL,"0")
@@ -909,94 +909,94 @@ grecord(mbbo,"$(P)LS336:$(Q):AOUT4:Range") {
   field(FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):getPID1") {
+record (stringin, "$(P)LS336:$(Q):getPID1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getPID(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):getPID2") {
+record (stringin, "$(P)LS336:$(Q):getPID2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getPID(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
 
-grecord (stringin, "$(P)LS336:$(Q):setPID1") {
+record (stringin, "$(P)LS336:$(Q):setPID1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setPID(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK, "$(P)LS336:$(Q):getPID1.VAL PP MS")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setPID2") {
+record (stringin, "$(P)LS336:$(Q):setPID2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setPID(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK, "$(P)LS336:$(Q):getPID2.VAL PP MS")
 }
 
 
-grecord (stringin, "$(P)LS336:$(Q):getRamp1") {
+record (stringin, "$(P)LS336:$(Q):getRamp1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getRamp(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):getRamp2") {
+record (stringin, "$(P)LS336:$(Q):getRamp2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getRamp(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setRamp1") {
+record (stringin, "$(P)LS336:$(Q):setRamp1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setRamp(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK, "$(P)LS336:$(Q):getRamp1.VAL PP MS")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setRamp2") {
+record (stringin, "$(P)LS336:$(Q):setRamp2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setRamp(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK, "$(P)LS336:$(Q):getRamp2.VAL PP MS")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setOutMode1") {
+record (stringin, "$(P)LS336:$(Q):setOutMode1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setOUTMODE(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setOutMode2") {
+record (stringin, "$(P)LS336:$(Q):setOutMode2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setOUTMODE(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setOutMode3") {
+record (stringin, "$(P)LS336:$(Q):setOutMode3") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setOUTMODE(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):setOutMode4") {
+record (stringin, "$(P)LS336:$(Q):setOutMode4") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto setOUTMODE(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
   field (FLNK,"$(P)LS336:$(Q):readAll")
 }
 
-grecord (stringin, "$(P)LS336:$(Q):getOutMode1") {
+record (stringin, "$(P)LS336:$(Q):getOutMode1") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getOUTMODE(1,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):getOutMode2") {
+record (stringin, "$(P)LS336:$(Q):getOutMode2") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getOUTMODE(2,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):getOutMode3") {
+record (stringin, "$(P)LS336:$(Q):getOutMode3") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getOUTMODE(3,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
-grecord (stringin, "$(P)LS336:$(Q):getOutMode4") {
+record (stringin, "$(P)LS336:$(Q):getOutMode4") {
   field (DTYP, "stream")
   field (INP, "@LakeShore336.proto getOUTMODE(4,$(P)LS336:$(Q)) $(PORT) $(ADDR)")
 }
 
-grecord(mbbi,"$(P)LS336:$(Q):ModeRI_RBV") {
+record(mbbi,"$(P)LS336:$(Q):ModeRI_RBV") {
   field(DTYP, "stream")
   field(INP, "@LakeShore336.proto getMODE $(PORT) $(ADDR)")
   field(ZRST,"Local")
@@ -1004,7 +1004,7 @@ grecord(mbbi,"$(P)LS336:$(Q):ModeRI_RBV") {
   field(TWST,"Rem/Lockout")
 }
 
-grecord(mbbo,"$(P)LS336:$(Q):ModeRI") {
+record(mbbo,"$(P)LS336:$(Q):ModeRI") {
   field(DTYP, "stream")
   field(OUT, "@LakeShore336.proto setMODE $(PORT) $(ADDR)")
   field(ZRVL,"0")
