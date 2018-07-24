@@ -1,0 +1,1877 @@
+
+file {
+	name="/home/oxygen6/BCDA1/epics/synApps_5_8/ioc/bcda2/bcda2App/op/adl/BK9173B_more.adl"
+	version=030111
+}
+display {
+	object {
+		x=404
+		y=246
+		width=472
+		height=625
+	}
+	clr=54
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+"related display" {
+	object {
+		x=349
+		y=480
+		width=70
+		height=22
+	}
+	display[0] {
+		name="BK9173B.adl"
+		args="P=$(P),PS=$(PS)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=63
+	label="-Less"
+}
+text {
+	object {
+		x=13
+		y=523
+		width=369
+		height=11
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="For Local:  Set scan rate to Passive,"
+}
+text {
+	object {
+		x=13
+		y=556
+		width=369
+		height=11
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="For Remote: Send the power supply a command"
+}
+"message button" {
+	object {
+		x=12
+		y=594
+		width=100
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):Error.PROC"
+		clr=0
+		bclr=7
+	}
+	label="Error Check:"
+	press_msg="1"
+}
+"text update" {
+	object {
+		x=121
+		y=596
+		width=292
+		height=15
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):Error"
+		clr=30
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=117
+		y=594
+		width=298
+		height=18
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(P)BK9173B:$(PS):Error"
+	}
+}
+"related display" {
+	object {
+		x=349
+		y=508
+		width=70
+		height=22
+	}
+	display[0] {
+		name="BK9173B_limits.adl"
+		args="P=$(P),PS=$(PS)"
+	}
+	clr=34
+	bclr=30
+	label="-Limits"
+}
+text {
+	object {
+		x=85
+		y=536
+		width=200
+		height=11
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="then press '.' on front panel"
+}
+text {
+	object {
+		x=12
+		y=59
+		width=250
+		height=15
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="0  10V, 0  10A | 0  20V, 0  5A"
+}
+composite {
+	object {
+		x=26
+		y=63
+		width=10
+		height=6
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=26
+				y=66
+				width=10
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(26,66)
+				(36,66)
+			}
+		}
+		polyline {
+			object {
+				x=32
+				y=63
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(36,66)
+				(32,63)
+			}
+		}
+		polyline {
+			object {
+				x=32
+				y=66
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(36,66)
+				(32,69)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=98
+		y=63
+		width=10
+		height=6
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=98
+				y=66
+				width=10
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(98,66)
+				(108,66)
+			}
+		}
+		polyline {
+			object {
+				x=104
+				y=63
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(108,66)
+				(104,63)
+			}
+		}
+		polyline {
+			object {
+				x=104
+				y=66
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(108,66)
+				(104,69)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=178
+		y=63
+		width=10
+		height=6
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=178
+				y=66
+				width=10
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(178,66)
+				(188,66)
+			}
+		}
+		polyline {
+			object {
+				x=184
+				y=63
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(188,66)
+				(184,63)
+			}
+		}
+		polyline {
+			object {
+				x=184
+				y=66
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(188,66)
+				(184,69)
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=250
+		y=63
+		width=10
+		height=6
+	}
+	"composite name"=""
+	children {
+		polyline {
+			object {
+				x=250
+				y=66
+				width=10
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(250,66)
+				(260,66)
+			}
+		}
+		polyline {
+			object {
+				x=256
+				y=63
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(260,66)
+				(256,63)
+			}
+		}
+		polyline {
+			object {
+				x=256
+				y=66
+				width=4
+				height=3
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(260,66)
+				(256,69)
+			}
+		}
+	}
+}
+text {
+	object {
+		x=11
+		y=40
+		width=150
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Dual Range DC Power Supply:"
+}
+text {
+	object {
+		x=175
+		y=143
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="-Actual V Output-"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=175
+		y=175
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="-Voltage Setpoint-"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=175
+		y=194
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix=" Setpoint Readback-"
+	align="horiz. centered"
+}
+rectangle {
+	object {
+		x=12
+		y=87
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+rectangle {
+	object {
+		x=94
+		y=319
+		width=58
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+}
+rectangle {
+	object {
+		x=17
+		y=132
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=37
+		y=172
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=29
+		y=138
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=122
+		y=138
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="V"
+	align="horiz. right"
+}
+text {
+	object {
+		x=124
+		y=174
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=26
+		y=100
+		width=123
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Output 1"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=13
+		y=8
+		width=315
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="BK Precision 9173B"
+}
+polyline {
+	object {
+		x=8
+		y=27
+		width=244
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)E3631A:$(S):locRem"
+	}
+	points {
+		(9,28)
+		(251,28)
+	}
+}
+"message button" {
+	object {
+		x=22
+		y=354
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Off"
+		clr=0
+		bclr=7
+	}
+	label="Off"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=66
+		y=354
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_On"
+		clr=0
+		bclr=7
+	}
+	label="ON"
+	press_msg="1"
+}
+oval {
+	object {
+		x=112
+		y=358
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+menu {
+	object {
+		x=12
+		y=480
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas.SCAN"
+		clr=54
+		bclr=4
+	}
+}
+oval {
+	object {
+		x=114
+		y=360
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=10
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+oval {
+	object {
+		x=114
+		y=360
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=20
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+text {
+	object {
+		x=104
+		y=483
+		width=137
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Readback Scan Rate"
+}
+"text update" {
+	object {
+		x=24
+		y=319
+		width=70
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Watts"
+		clr=54
+		bclr=55
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=103
+		y=323
+		width=45
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Watts"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=26
+		y=199
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Vset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=130
+		y=354
+		width=30
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+		clr=54
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=138
+		y=173
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=17
+		y=173
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=87
+		y=197
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=127
+		y=200
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=122
+		y=204
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(122,204)
+		(125,204)
+	}
+}
+rectangle {
+	object {
+		x=17
+		y=222
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=37
+		y=262
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Iset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=29
+		y=228
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Imeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=122
+		y=228
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="A"
+	align="horiz. right"
+}
+text {
+	object {
+		x=124
+		y=264
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=26
+		y=289
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Iset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=138
+		y=263
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=17
+		y=263
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=87
+		y=287
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=127
+		y=290
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=122
+		y=294
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(122,294)
+		(125,294)
+	}
+}
+polyline {
+	object {
+		x=38
+		y=120
+		width=96
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	"dynamic attribute" {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+	}
+	points {
+		(38,120)
+		(134,120)
+	}
+}
+rectangle {
+	object {
+		x=11
+		y=87
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+	}
+}
+"text entry" {
+	object {
+		x=20
+		y=397
+		width=138
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas.DESC"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=306
+		y=87
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+rectangle {
+	object {
+		x=388
+		y=319
+		width=58
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+}
+rectangle {
+	object {
+		x=311
+		y=132
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=331
+		y=172
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Vset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=323
+		y=138
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Vmeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=416
+		y=138
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="V"
+	align="horiz. right"
+}
+text {
+	object {
+		x=418
+		y=174
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=320
+		y=100
+		width=123
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Output 2"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=316
+		y=354
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Off"
+		clr=0
+		bclr=7
+	}
+	label="Off"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=360
+		y=354
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_On"
+		clr=0
+		bclr=7
+	}
+	label="ON"
+	press_msg="1"
+}
+oval {
+	object {
+		x=406
+		y=358
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+oval {
+	object {
+		x=408
+		y=360
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=10
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
+oval {
+	object {
+		x=408
+		y=360
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=20
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
+"text update" {
+	object {
+		x=318
+		y=319
+		width=70
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Watts"
+		clr=54
+		bclr=55
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=397
+		y=323
+		width=45
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Watts"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=320
+		y=199
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Vset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=424
+		y=354
+		width=30
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_State"
+		clr=54
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=432
+		y=173
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=311
+		y=173
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=381
+		y=197
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=421
+		y=200
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=416
+		y=204
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(416,204)
+		(419,204)
+	}
+}
+rectangle {
+	object {
+		x=311
+		y=222
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=331
+		y=262
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Iset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=323
+		y=228
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Imeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=416
+		y=228
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="A"
+	align="horiz. right"
+}
+text {
+	object {
+		x=418
+		y=264
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=320
+		y=289
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Iset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=432
+		y=263
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=311
+		y=263
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=381
+		y=287
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=421
+		y=290
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=416
+		y=294
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(416,294)
+		(419,294)
+	}
+}
+polyline {
+	object {
+		x=332
+		y=120
+		width=96
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	"dynamic attribute" {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+	}
+	points {
+		(332,120)
+		(428,120)
+	}
+}
+rectangle {
+	object {
+		x=305
+		y=87
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+	}
+}
+"text entry" {
+	object {
+		x=314
+		y=397
+		width=138
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Vmeas.DESC"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=11
+		y=87
+		width=157
+		height=342
+	}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+rectangle {
+	object {
+		x=304
+		y=86
+		width=157
+		height=342
+	}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
+text {
+	object {
+		x=429
+		y=9
+		width=30
+		height=15
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="$(PS)"
+}
+text {
+	object {
+		x=378
+		y=9
+		width=50
+		height=15
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="$(P)"
+	align="horiz. right"
+}
+polyline {
+	object {
+		x=62
+		y=215
+		width=125
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(62,215)
+		(187,215)
+	}
+}
+polyline {
+	object {
+		x=187
+		y=208
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(187,215)
+		(194,208)
+	}
+}
+polyline {
+	object {
+		x=57
+		y=210
+		width=5
+		height=5
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(57,210)
+		(62,215)
+	}
+}
+text {
+	object {
+		x=175
+		y=234
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="-Actual I Output-"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=176
+		y=266
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="-Current Setpoint-"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=175
+		y=285
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix=" Setpoint Readback-"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=187
+		y=299
+		width=7
+		height=7
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(187,306)
+		(194,299)
+	}
+}
+polyline {
+	object {
+		x=62
+		y=306
+		width=125
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(62,306)
+		(187,306)
+	}
+}
+polyline {
+	object {
+		x=57
+		y=301
+		width=5
+		height=5
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(57,301)
+		(62,306)
+	}
+}
+text {
+	object {
+		x=212
+		y=322
+		width=44
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Power"
+	align="horiz. centered"
+}
+polyline {
+	object {
+		x=181
+		y=330
+		width=28
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(181,330)
+		(209,330)
+	}
+}
+polyline {
+	object {
+		x=256
+		y=330
+		width=28
+		height=0
+	}
+	"basic attribute" {
+		clr=14
+	}
+	points {
+		(256,330)
+		(284,330)
+	}
+}
+text {
+	object {
+		x=176
+		y=358
+		width=120
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="-Output On/Off-"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=19
+		y=435
+		width=150
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CV = Constant Voltage"
+}
+text {
+	object {
+		x=19
+		y=451
+		width=150
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="CC = Constant Current"
+}
+text {
+	object {
+		x=5
+		y=435
+		width=12
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="*"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=85
+		y=569
+		width=200
+		height=11
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="such as 'Off'"
+}
+text {
+	object {
+		x=5
+		y=451
+		width=12
+		height=13
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="*"
+	align="horiz. centered"
+}

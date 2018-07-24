@@ -1,0 +1,1246 @@
+
+file {
+	name="/home/oxygen6/BCDA1/epics/synApps_5_8/ioc/bcda2/bcda2App/op/adl/BK9173B.adl"
+	version=030111
+}
+display {
+	object {
+		x=110
+		y=81
+		width=335
+		height=418
+	}
+	clr=54
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+rectangle {
+	object {
+		x=7
+		y=38
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+rectangle {
+	object {
+		x=89
+		y=270
+		width=58
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+}
+rectangle {
+	object {
+		x=12
+		y=83
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=32
+		y=123
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=24
+		y=89
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=117
+		y=89
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="V"
+	align="horiz. right"
+}
+text {
+	object {
+		x=119
+		y=125
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=21
+		y=51
+		width=123
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Output 1"
+	align="horiz. centered"
+}
+"related display" {
+	object {
+		x=252
+		y=390
+		width=70
+		height=22
+	}
+	display[0] {
+		name="BK9173B_more.adl"
+		args="P=$(P),PS=$(PS)"
+		policy="replace display"
+	}
+	clr=0
+	bclr=63
+	label="-More"
+}
+text {
+	object {
+		x=8
+		y=4
+		width=315
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="BK Precision 9173B P.S."
+}
+text {
+	object {
+		x=307
+		y=8
+		width=30
+		height=15
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="$(PS)"
+}
+text {
+	object {
+		x=256
+		y=8
+		width=50
+		height=15
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="$(P)"
+	align="horiz. right"
+}
+polyline {
+	object {
+		x=3
+		y=23
+		width=238
+		height=2
+	}
+	"basic attribute" {
+		clr=14
+		width=2
+	}
+	"dynamic attribute" {
+		chan="$(P)E3631A:$(S):locRem"
+	}
+	points {
+		(4,24)
+		(240,24)
+	}
+}
+"message button" {
+	object {
+		x=17
+		y=305
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Off"
+		clr=0
+		bclr=7
+	}
+	label="Off"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=61
+		y=305
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_On"
+		clr=0
+		bclr=7
+	}
+	label="ON"
+	press_msg="1"
+}
+oval {
+	object {
+		x=107
+		y=309
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+menu {
+	object {
+		x=11
+		y=390
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas.SCAN"
+		clr=54
+		bclr=4
+	}
+}
+oval {
+	object {
+		x=109
+		y=311
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=10
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+oval {
+	object {
+		x=109
+		y=311
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=20
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+text {
+	object {
+		x=103
+		y=393
+		width=137
+		height=14
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Readback Scan Rate"
+}
+"text update" {
+	object {
+		x=19
+		y=270
+		width=70
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Watts"
+		clr=54
+		bclr=55
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=98
+		y=274
+		width=45
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Watts"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=21
+		y=150
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Vset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=125
+		y=305
+		width=30
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+		clr=54
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=133
+		y=124
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=12
+		y=124
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=82
+		y=148
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_V_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=122
+		y=151
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=117
+		y=155
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(117,155)
+		(120,155)
+	}
+}
+rectangle {
+	object {
+		x=12
+		y=173
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=32
+		y=213
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Iset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=24
+		y=179
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Imeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=117
+		y=179
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="A"
+	align="horiz. right"
+}
+text {
+	object {
+		x=119
+		y=215
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=21
+		y=240
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH1_Iset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=133
+		y=214
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=12
+		y=214
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=82
+		y=238
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_I_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=122
+		y=241
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=117
+		y=245
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(117,245)
+		(120,245)
+	}
+}
+polyline {
+	object {
+		x=33
+		y=71
+		width=96
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	"dynamic attribute" {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+	}
+	points {
+		(33,71)
+		(129,71)
+	}
+}
+rectangle {
+	object {
+		x=6
+		y=38
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+	}
+}
+"text entry" {
+	object {
+		x=15
+		y=348
+		width=138
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH1_Vmeas.DESC"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=172
+		y=38
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+rectangle {
+	object {
+		x=254
+		y=270
+		width=58
+		height=20
+	}
+	"basic attribute" {
+		clr=55
+	}
+}
+rectangle {
+	object {
+		x=177
+		y=83
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=197
+		y=123
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Vset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=189
+		y=89
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Vmeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=282
+		y=89
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="V"
+	align="horiz. right"
+}
+text {
+	object {
+		x=284
+		y=125
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="V"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=186
+		y=51
+		width=123
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Output 2"
+	align="horiz. centered"
+}
+"message button" {
+	object {
+		x=182
+		y=305
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Off"
+		clr=0
+		bclr=7
+	}
+	label="Off"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=226
+		y=305
+		width=39
+		height=19
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_On"
+		clr=0
+		bclr=7
+	}
+	label="ON"
+	press_msg="1"
+}
+oval {
+	object {
+		x=272
+		y=309
+		width=12
+		height=12
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=2
+	}
+}
+oval {
+	object {
+		x=274
+		y=311
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=10
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
+oval {
+	object {
+		x=274
+		y=311
+		width=8
+		height=8
+	}
+	"basic attribute" {
+		clr=20
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
+"text update" {
+	object {
+		x=184
+		y=270
+		width=70
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Watts"
+		clr=54
+		bclr=55
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=263
+		y=274
+		width=45
+		height=15
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Watts"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=186
+		y=150
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Vset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=290
+		y=305
+		width=30
+		height=20
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_State"
+		clr=54
+		bclr=2
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=298
+		y=124
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=177
+		y=124
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=247
+		y=148
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_V_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=287
+		y=151
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=282
+		y=155
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(282,155)
+		(285,155)
+	}
+}
+rectangle {
+	object {
+		x=177
+		y=173
+		width=136
+		height=36
+	}
+	"basic attribute" {
+		clr=14
+	}
+}
+"text entry" {
+	object {
+		x=197
+		y=213
+		width=85
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Iset"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=189
+		y=179
+		width=88
+		height=24
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Imeas"
+		clr=50
+		bclr=14
+	}
+	clrmod="discrete"
+	align="horiz. right"
+	limits {
+	}
+}
+text {
+	object {
+		x=282
+		y=179
+		width=16
+		height=24
+	}
+	"basic attribute" {
+		clr=50
+	}
+	textix="A"
+	align="horiz. right"
+}
+text {
+	object {
+		x=284
+		y=215
+		width=12
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="A"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=186
+		y=240
+		width=48
+		height=10
+	}
+	monitor {
+		chan="$(P)BK9173B:$(PS):CH2_Iset_rbk"
+		clr=54
+		bclr=2
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=298
+		y=214
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakUp.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=177
+		y=214
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakDown.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=247
+		y=238
+		width=34
+		height=15
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_I_TweakVal"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=287
+		y=241
+		width=25
+		height=10
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Tweak"
+}
+polyline {
+	object {
+		x=282
+		y=245
+		width=3
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	points {
+		(282,245)
+		(285,245)
+	}
+}
+polyline {
+	object {
+		x=198
+		y=71
+		width=96
+		height=0
+	}
+	"basic attribute" {
+		clr=54
+	}
+	"dynamic attribute" {
+		chan="$(P)BK9173B:$(PS):CH1_State"
+	}
+	points {
+		(198,71)
+		(294,71)
+	}
+}
+rectangle {
+	object {
+		x=171
+		y=38
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+	}
+}
+"text entry" {
+	object {
+		x=180
+		y=348
+		width=138
+		height=24
+	}
+	control {
+		chan="$(P)BK9173B:$(PS):CH2_Vmeas.DESC"
+		clr=14
+		bclr=3
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=6
+		y=38
+		width=157
+		height=342
+	}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH1_OnOffState"
+	}
+}
+rectangle {
+	object {
+		x=170
+		y=37
+		width=157
+		height=342
+	}
+	"basic attribute" {
+		clr=20
+		fill="outline"
+		width=2
+	}
+	"dynamic attribute" {
+		vis="if not zero"
+		chan="$(P)BK9173B:$(PS):CH2_OnOffState"
+	}
+}
