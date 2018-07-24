@@ -1,0 +1,339 @@
+# BK9173B.db - support for BK Precision 9173B dual-output power supply
+#           - streamDevice support, uses BK9173B.proto
+#
+
+record (stringin, "$(P)BK9173B:$(PS):IDN") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getIDN $(PORT)")
+}
+
+record (stringin, "$(P)BK9173B:$(PS):Error") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getError $(PORT)")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH1_Vmeas") {
+  field(SCAN, "Passive")
+  field(DESC, "Ch1 Description")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getVmeas1 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Vmeas")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH2_Vmeas") {
+  field(DESC, "Ch2 Description")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getVmeas2 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Imeas")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH1_Imeas") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getImeas1 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Imeas")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH2_Imeas") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getImeas2 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Vset_rbk")
+}
+
+record (fanout, "$(P)BK9173B:$(PS):Get_Limits") {
+  field(LNK1, "$(P)BK9173B:$(PS):CH1_Vlimit PP NMS")
+#  field(LNK2, "$(P)BK9173B:$(PS):CH2_Vlimit PP NMS")
+}
+
+record (ai, "$(P)BK9173B:$(PS):CH1_Vlimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getCH1Vlim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Vlimit")
+}
+
+record (ai, "$(P)BK9173B:$(PS):CH2_Vlimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getCH2Vlim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Ilimit")
+}
+
+record (ai, "$(P)BK9173B:$(PS):CH1_Ilimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getCH1Ilim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Ilimit")
+}
+
+record (ai, "$(P)BK9173B:$(PS):CH2_Ilimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getCH2Ilim $(PORT)")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH1_Vset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getVset1 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Vset_rbk")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH2_Vset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getVset2 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Iset_rbk")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH1_Iset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getIset1 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Iset_rbk")
+}
+
+record(ai, "$(P)BK9173B:$(PS):CH2_Iset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getIset2 $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_OnOffState_raw")
+}
+
+record (stringin, "$(P)BK9173B:$(PS):CH1_OnOffState_raw") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getOut1OnOffState $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_OnOffState")
+}
+
+record (scalcout, "$(P)BK9173B:$(PS):CH1_OnOffState") {
+  field(INAA, "$(P)BK9173B:$(PS):CH1_OnOffState_raw NPP NMS")
+  field(CALC, "AA='ON'?1:0")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_OnOffState_raw")
+}
+
+record (stringin, "$(P)BK9173B:$(PS):CH2_OnOffState_raw") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getOut2OnOffState $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_OnOffState")
+}
+
+record (scalcout, "$(P)BK9173B:$(PS):CH2_OnOffState") {
+  field(INAA, "$(P)BK9173B:$(PS):CH2_OnOffState_raw NPP NMS")
+  field(CALC, "AA='ON'?1:0")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_State")
+}
+
+record (stringin, "$(P)BK9173B:$(PS):CH1_State") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getOut1State $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_State")
+}
+
+record (stringin, "$(P)BK9173B:$(PS):CH2_State") {
+  field(DTYP, "stream")
+  field(INP, "@BK9173B.proto getOut2State $(PORT)")
+##  field(FLNK, "$(P)BK9173B:$(PS):CH2_OnOffState")
+}
+
+record(bo, "$(P)BK9173B:$(PS):CH1_On") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1_On $(PORT)")
+}
+
+record(bo, "$(P)BK9173B:$(PS):CH1_Off") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1_Off $(PORT)")
+}
+
+record(bo, "$(P)BK9173B:$(PS):CH2_On") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2_On $(PORT)")
+}
+
+record(bo, "$(P)BK9173B:$(PS):CH2_Off") {
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2_Off $(PORT)")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH1_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1_V $(PORT)")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH2_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2_V $(PORT)")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH1_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1_I $(PORT)")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH2_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2_I $(PORT)")
+}
+
+record(ao,"$(P)BK9173B:$(PS):CH1_V_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH1_V_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)BK9173B:$(PS):CH1_Vset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH1_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH1_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH1_V_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)BK9173B:$(PS):CH1_Vset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH1_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH1_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)BK9173B:$(PS):CH1_I_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH1_I_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)BK9173B:$(PS):CH1_Iset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH1_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH1_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH1_I_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)BK9173B:$(PS):CH1_Iset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH1_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH1_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)BK9173B:$(PS):CH2_V_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH2_V_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)BK9173B:$(PS):CH2_Vset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH2_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH2_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH2_V_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)BK9173B:$(PS):CH2_Vset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH2_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH2_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)BK9173B:$(PS):CH2_I_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH2_I_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)BK9173B:$(PS):CH2_Iset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH2_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH2_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)BK9173B:$(PS):CH2_I_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)BK9173B:$(PS):CH2_Iset.VAL  NPP MS")
+    field(INPB, "$(P)BK9173B:$(PS):CH2_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)BK9173B:$(PS):CH2_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH1_Vlimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "20.2")
+  field(LOPR, "0")
+  field(DRVH, "20.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1Vlim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Vlimit PP NMS")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH2_Vlimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "20.2")
+  field(LOPR, "0")
+  field(DRVH, "20.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2Vlim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Vlimit PP NMS")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH1_Ilimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "10.2")
+  field(LOPR, "0")
+  field(DRVH, "10.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH1Ilim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH1_Ilimit PP NMS")
+}
+
+record(ao, "$(P)BK9173B:$(PS):CH2_Ilimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "10.2")
+  field(LOPR, "0")
+  field(DRVH, "10.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@BK9173B.proto setCH2Ilim $(PORT)")
+  field(FLNK, "$(P)BK9173B:$(PS):CH2_Ilimit PP NMS")
+}
+
+record(scalcout, "$(P)BK9173B:$(PS):CH1_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)BK9173B:$(PS):CH1_Vmeas CP NMS")
+  field(INPB, "$(P)BK9173B:$(PS):CH1_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)BK9173B:$(PS):CH2_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)BK9173B:$(PS):CH2_Vmeas CP NMS")
+  field(INPB, "$(P)BK9173B:$(PS):CH2_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+
