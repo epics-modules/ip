@@ -39,7 +39,7 @@ option +r;
 #define MAX_CHANNELS 22
 #define NUM_FRONT_MODES 15
 #define NUM_REAR_MODES 8
-#define LENGTH_OF_PV_NAME 61
+#define MAX_LENGTH_OF_PV_NAME 61
 %% #include "stdlib.h"
 %% #include "string.h"
 
@@ -213,7 +213,7 @@ string ch_units;  assign ch_units to "";
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
-char pvname[LENGTH_OF_PV_NAME];
+char pvname[MAX_LENGTH_OF_PV_NAME];
 string close_format;
 int mode;
 int chan;
