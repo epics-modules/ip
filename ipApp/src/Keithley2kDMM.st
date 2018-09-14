@@ -250,7 +250,7 @@ ss mode_change {
             if (strcmp(model, "2000") == 0) {
                strncpy(close_format, "rout:clos (@%d)", sizeof(close_format));
             } else {
-               strncpy(close_format, "rout:clos (@1%2.2d)",sizeof(close_format));
+               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format));
             }
         } state monitor_mode_changes
     }
