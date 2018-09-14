@@ -212,7 +212,7 @@ string ch_units;  assign ch_units to "";
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
-string pvname;
+char pvname[61];
 string close_format;
 int mode;
 int chan;
