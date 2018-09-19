@@ -39,9 +39,9 @@ option +r;
 #define MAX_CHANNELS 22
 #define NUM_FRONT_MODES 15
 #define NUM_REAR_MODES 8
-#define MAX_LENGTH_OF_PV_NAME 61
 %% #include "stdlib.h"
 %% #include "string.h"
+%% #include "dbDefs.h"
 
 int i;
 int scan_chan;
@@ -213,7 +213,8 @@ string ch_units;  assign ch_units to "";
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
-char pvname[MAX_LENGTH_OF_PV_NAME];
+foreign pvname;
+%%char pvname[PVNAME_STRINGSZ]; 
 string close_format;
 int mode;
 int chan;
