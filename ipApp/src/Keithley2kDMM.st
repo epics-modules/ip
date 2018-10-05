@@ -41,6 +41,7 @@ option +r;
 #define NUM_REAR_MODES 8
 %% #include "stdlib.h"
 %% #include "string.h"
+%% #include "dbDefs.h"
 
 int i;
 int scan_chan;
@@ -212,7 +213,7 @@ string ch_units;  assign ch_units to "";
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
-string pvname;
+%%char pvname[PVNAME_STRINGSZ]; 
 string close_format;
 int mode;
 int chan;
@@ -243,14 +244,14 @@ ss mode_change {
             
             P = macValueGet("P");
             Dmm = macValueGet("Dmm");
-            strcpy(model, macValueGet("model"));
+            strncpy(model, macValueGet("model"), sizeof(model) - 1);
             pvPut(model);
             channels = atoi(macValueGet("channels"));
             pvPut(channels);
             if (strcmp(model, "2000") == 0) {
-               strcpy(close_format, "rout:clos (@%d)");
+               strncpy(close_format, "rout:clos (@%d)", sizeof(close_format) - 1);
             } else {
-               strcpy(close_format, "rout:clos (@1%2.2d)");
+               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format) - 1);
             }
         } state monitor_mode_changes
     }
