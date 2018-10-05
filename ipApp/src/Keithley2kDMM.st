@@ -244,15 +244,17 @@ ss mode_change {
             
             P = macValueGet("P");
             Dmm = macValueGet("Dmm");
-            strncpy(model, macValueGet("model"), sizeof(model) - 1);
+            strncpy(model, macValueGet("model"), sizeof(model));
+            model[sizeof(model)-1] = 0;
             pvPut(model);
             channels = atoi(macValueGet("channels"));
             pvPut(channels);
             if (strcmp(model, "2000") == 0) {
-               strncpy(close_format, "rout:clos (@%d)", sizeof(close_format) - 1);
+               strncpy(close_format, "rout:clos (@%d)", sizeof(close_format));
             } else {
-               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format) - 1);
+               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format));
             }
+            close_format[sizeof(close_format)-1] = 0;
         } state monitor_mode_changes
     }
     state monitor_mode_changes {
