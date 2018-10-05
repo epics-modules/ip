@@ -213,7 +213,6 @@ string ch_units;  assign ch_units to "";
 char *unit_strings[NUM_FRONT_MODES];
 char *P;
 char *Dmm;
-foreign pvname;
 %%char pvname[PVNAME_STRINGSZ]; 
 string close_format;
 int mode;
@@ -245,14 +244,14 @@ ss mode_change {
             
             P = macValueGet("P");
             Dmm = macValueGet("Dmm");
-            strncpy(model, macValueGet("model"), sizeof(model));
+            strncpy(model, macValueGet("model"), sizeof(model) - 1);
             pvPut(model);
             channels = atoi(macValueGet("channels"));
             pvPut(channels);
             if (strcmp(model, "2000") == 0) {
-               strncpy(close_format, "rout:clos (@%d)", sizeof(close_format));
+               strncpy(close_format, "rout:clos (@%d)", sizeof(close_format) - 1);
             } else {
-               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format));
+               strncpy(close_format, "rout:clos (@1%2.2d)", sizeof(close_format) - 1);
             }
         } state monitor_mode_changes
     }
