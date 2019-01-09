@@ -1,0 +1,17 @@
+# ### BK_9130.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix (power supply number)
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+
+#- Agilent E3631A triple output power supply
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=2, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\n")
+
+dbLoadRecords("$(IP)/ipApp/Db/BK9130.db", "P=$(PREFIX),PS=$(INSTANCE),PORT=$(PORT)")
