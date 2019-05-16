@@ -12,6 +12,11 @@
 OutTerminator = CR;
 InTerminator = CR LF;
 
+readError {
+  out "err";
+  in "err,%s";
+}
+
 writeValue {
   out "wr,%f";
 }
