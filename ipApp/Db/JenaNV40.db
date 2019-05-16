@@ -12,14 +12,14 @@
 record(ao, "$(P)$(C)write")
 {
    field(DTYP, "stream")
-   field(OUT,  "@jenaNV40.proto writeValue $(PORT)")
+   field(OUT,  "@JenaNV40.proto writeValue $(PORT)")
    field(PREC, "3")
 }
 
 record(ai, "$(P)$(C)read")
 {
    field(DTYP, "stream")
-   field(INP,  "@jenaNV40.proto readValue $(PORT)")
+   field(INP,  "@JenaNV40.proto readValue $(PORT)")
    field(PREC, "3")
    field(SCAN, "0")
 }
@@ -29,7 +29,7 @@ record(bo, "$(P)$(C)cl")
    field(DTYP, "stream")
    field(ZNAM, "Off")
    field(ONAM, "On")
-   field(OUT,  "@jenaNV40.proto closedLoop $(PORT)")
+   field(OUT,  "@JenaNV40.proto closedLoop $(PORT)")
 }
 
 record(bo, "$(P)$(C)rc")
@@ -37,5 +37,5 @@ record(bo, "$(P)$(C)rc")
    field(DTYP, "stream")
    field(ZNAM, "Off")
    field(ONAM, "On")
-   field(OUT,  "@jenaNV40.proto remoteControl $(PORT)")
+   field(OUT,  "@JenaNV40.proto remoteControl $(PORT)")
 }
