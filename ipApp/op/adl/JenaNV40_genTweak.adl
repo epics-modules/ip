@@ -1,14 +1,14 @@
 
 file {
 	name="/Users/kpetersn/epics/ioc/kmp2/kmp2App/op/adl/jenaNV40.adl"
-	version=030105
+	version=030111
 }
 display {
 	object {
-		x=841
-		y=212
+		x=224
+		y=160
 		width=164
-		height=270
+		height=350
 	}
 	clr=14
 	bclr=4
@@ -98,80 +98,6 @@ rectangle {
 		clr=54
 	}
 }
-composite {
-	object {
-		x=5
-		y=160
-		width=154
-		height=48
-	}
-	"composite name"=""
-	children {
-		"choice button" {
-			object {
-				x=54
-				y=181
-				width=105
-				height=27
-			}
-			control {
-				chan="$(P)$(C)cl"
-				clr=14
-				bclr=51
-			}
-			stacking="column"
-		}
-		text {
-			object {
-				x=5
-				y=160
-				width=110
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Closed Loop"
-		}
-	}
-}
-composite {
-	object {
-		x=5
-		y=215
-		width=154
-		height=48
-	}
-	"composite name"=""
-	children {
-		"choice button" {
-			object {
-				x=54
-				y=236
-				width=105
-				height=27
-			}
-			control {
-				chan="$(P)$(C)rc"
-				clr=14
-				bclr=51
-			}
-			stacking="column"
-		}
-		text {
-			object {
-				x=5
-				y=215
-				width=110
-				height=16
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Remote Control"
-		}
-	}
-}
 text {
 	object {
 		x=0
@@ -185,115 +111,186 @@ text {
 	textix="$(P)$(C)"
 	align="horiz. centered"
 }
-composite {
+"text entry" {
 	object {
-		x=20
-		y=25
-		width=120
-		height=65
+		x=44
+		y=130
+		width=77
+		height=25
 	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=20
-				y=25
-				width=120
-				height=30
-			}
-			monitor {
-				chan="$(P)$(C)read"
-				clr=14
-				bclr=4
-			}
-			align="horiz. centered"
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=20
-				y=60
-				width=120
-				height=30
-			}
-			control {
-				chan="$(P)$(C)write"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	control {
+		chan="$(P)$(C)twv.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
-composite {
+"message button" {
+	object {
+		x=5
+		y=130
+		width=33
+		height=40
+	}
+	control {
+		chan="$(P)$(C)twr.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=126
+		y=130
+		width=33
+		height=40
+	}
+	control {
+		chan="$(P)$(C)twf.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+rectangle {
 	object {
 		x=0
-		y=100
+		y=125
 		width=164
 		height=50
 	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=44
-				y=105
-				width=77
-				height=25
-			}
-			control {
-				chan="$(P)$(N)twv.VAL"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"message button" {
-			object {
-				x=5
-				y=105
-				width=33
-				height=40
-			}
-			control {
-				chan="$(P)$(N)twr.PROC"
-				clr=14
-				bclr=51
-			}
-			label="<"
-			press_msg="1"
-		}
-		"message button" {
-			object {
-				x=126
-				y=105
-				width=33
-				height=40
-			}
-			control {
-				chan="$(P)$(N)twf.PROC"
-				clr=14
-				bclr=51
-			}
-			label=">"
-			press_msg="1"
-		}
-		rectangle {
-			object {
-				x=0
-				y=100
-				width=164
-				height=50
-			}
-			"basic attribute" {
-				clr=14
-			}
-			"dynamic attribute" {
-				chan="$(PV)"
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	"dynamic attribute" {
+		chan="$(PV)"
+	}
+}
+"text entry" {
+	object {
+		x=0
+		y=20
+		width=164
+		height=20
+	}
+	control {
+		chan="$(P)$(C)read.DESC"
+		clr=54
+		bclr=0
+	}
+	format="string"
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=20
+		y=85
+		width=120
+		height=30
+	}
+	control {
+		chan="$(P)$(C)write"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=20
+		y=50
+		width=120
+		height=30
+	}
+	monitor {
+		chan="$(P)$(C)read"
+		clr=14
+		bclr=4
+	}
+	align="horiz. centered"
+	limits {
+	}
+}
+text {
+	object {
+		x=5
+		y=185
+		width=100
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Closed Loop"
+}
+"choice button" {
+	object {
+		x=54
+		y=206
+		width=105
+		height=27
+	}
+	control {
+		chan="$(P)$(C)cl"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+text {
+	object {
+		x=5
+		y=240
+		width=110
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Remote Control"
+}
+"choice button" {
+	object {
+		x=54
+		y=261
+		width=105
+		height=27
+	}
+	control {
+		chan="$(P)$(C)rc"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+text {
+	object {
+		x=5
+		y=295
+		width=110
+		height=16
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Poll period"
+}
+menu {
+	object {
+		x=54
+		y=316
+		width=105
+		height=27
+	}
+	control {
+		chan="$(P)$(C)read.SCAN"
+		clr=14
+		bclr=51
 	}
 }
