@@ -1,0 +1,214 @@
+#
+#
+#
+
+record(bo, "$(P)$(R):unit")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Metis_M322.proto setUnit($(A)) $(PORT)")
+  field(DESC, "Temperature Unit")
+  field(OMSL, "closed_loop")
+  field(ZNAM, "Celsius")
+  field(ONAM, "Fahrenheit")
+  field(FLNK, "$(P)$(R):unit_RBV")
+}
+
+record(bi, "$(P)$(R):unit_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getUnit($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(DESC, "Temperature Unit RBV")
+  field(ZNAM, "Celsius")
+  field(ONAM, "Fahrenheit")
+}
+
+### The buffer mode determines how much data is read from the pyrometer
+record(mbbo, "$(P)$(R):buffMode")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Metis_M322.proto setBuffMode($(A)) $(PORT)")
+  field(DESC, "Buffer Mode")
+  field(OMSL, "supervisory")
+  field(ZRVL, "0")
+  field(ZRST, "Mode 00")
+  field(ONVL, "1")
+  field(ONST, "Mode 01")
+  field(TWVL, "2")
+  field(TWST, "Mode 02")
+  field(FLNK, "$(P)$(R):buffMode_RBV")
+}
+
+record(mbbi, "$(P)$(R):buffMode_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getBuffMode($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(DESC, "Buffer Mode RBV")
+  field(ZRVL, "0")
+  field(ZRST, "Mode 00")
+  field(ONVL, "1")
+  field(ONST, "Mode 01")
+  field(TWVL, "2")
+  field(TWST, "Mode 02")
+}
+
+### Calculate which record should be processed based on the buffer mode
+record(calcout, "$(P)$(R):buffCalc")
+{
+  field(DESC, "Calc buff bitmap")
+  field(SCAN, "Passive")
+  field(INPA, "$(P)$(R):buffMode_RBV CP NMS")
+  field(CALC, "1<<A")
+  field(OOPT, "On Change")
+  field(DOPT, "Use CALC")
+}
+
+record(fanout, "$(P)$(R):readBuff")
+{
+  field(DESC, "Read selected buff")
+  field(SCAN, "Passive")
+  field(SELM, "Mask")
+  field(SELL, "$(P)$(R):buffCalc NPP NMS")
+  field(LNK1, "$(P)$(R):temp1:00")
+  field(LNK2, "$(P)$(R):temp1:01")
+  field(LNK3, "$(P)$(R):temp1:02")
+  field(FLNK, "$(P)$(R):readMore")
+}  
+
+record(fanout, "$(P)$(R):readMore")
+{
+  field(DESC, "Read more values")
+  field(SCAN, "Passive")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(R):devTemp")
+  field(LNK2, "$(P)$(R):error")
+}
+
+# Reads a raw value (temperature * 10)
+#record(longin, "$(P)$(R):temp1:00") {
+#  field(DTYP, "stream")
+#  field(INP,  "@Metis_M322.proto getBuff00Data($(A),$(P)$(R)) $(PORT)")
+#  field(SCAN, "Passive")
+#}
+
+### A different protocol function is needed to get the buffer data for
+### each buffer mode, which is why three nearly identical temp1:0x 
+### records are needed.
+record(ai, "$(P)$(R):temp1:00") {
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getBuff00Data($(A),$(P)$(R)) $(PORT)")
+  field(SCAN, "Passive")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+  field(FLNK, "$(P)$(R):temp1")
+}
+
+record(ai, "$(P)$(R):temp1:01") {
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getBuff01Data($(A),$(P)$(R)) $(PORT)")
+  field(SCAN, "Passive")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+  field(FLNK, "$(P)$(R):temp1")
+}
+
+record(ai, "$(P)$(R):temp1:02") {
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getBuff02Data($(A),$(P)$(R)) $(PORT)")
+  field(SCAN, "Passive")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+  field(FLNK, "$(P)$(R):temp1")
+}
+
+### This record will show the temperature reported by the pyrometer, 
+### regardless of the buffer mode.
+record(sel, "$(P)$(R):temp1")
+{
+  field(SCAN, "Passive")
+  field(INPA, "$(P)$(R):temp1:00")
+  field(INPB, "$(P)$(R):temp1:01")
+  field(INPC, "$(P)$(R):temp1:02")
+  field(SELM, "Specified")
+  field(NVL,  "$(P)$(R):buffMode_RBV")
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R):temp2")
+{
+  field(DTYP, "Raw Soft Channel")
+  field(INP,  "$(P)$(R):temp2Raw CP NMS")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R):temp2c")
+{
+  field(DTYP, "Raw Soft Channel")
+  field(INP,  "$(P)$(R):temp2cRaw CP NMS")
+  field(LINR, "SLOPE")
+  field(ESLO, "0.1")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+}
+
+### These records hold the values read by the getBuff0xData functions
+record(longout, "$(P)$(R):temp2Raw") {}
+record(longout, "$(P)$(R):temp2cRaw") {}
+record(longout, "$(P)$(R):rampSp") {}
+record(longout, "$(P)$(R):ao") {}
+record(longout, "$(P)$(R):signal") {}
+record(longout, "$(P)$(R):stat0") {}
+record(longout, "$(P)$(R):stat1") {}
+record(longout, "$(P)$(R):stat2") {}
+record(longout, "$(P)$(R):stat3") {}
+
+###
+record(longin, "$(P)$(R):focus_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getMeasDist($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(EGU,  "mm")
+  field(SCAN, "Passive")
+}
+
+record(longout, "$(P)$(R):focus")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Metis_M322.proto setMeasDist($(A)) $(PORT)")
+  field(EGU,  "mm")
+  field(SCAN, "Passive")
+  field(FLNK, "$(P)$(R):focus_RBV")
+}
+
+###
+record(longin, "$(P)$(R):error") {
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getErrorStatus($(A)) $(PORT)")
+  field(SCAN, "Passive")
+}
+
+### Device temperature (cam output is disabled when dev temp > 55 C)
+record(ai, "$(P)$(R):devTemp") {
+  field(DTYP, "stream")
+  field(INP,  "@Metis_M322.proto getDeviceTemp($(A)) $(PORT)")
+  field(SCAN, "Passive")
+  field(LINR, "SLOPE")
+  # ESLO = 1 / 256
+  field(ESLO, "0.00390625")
+  field(EOFF, "0.0")
+  field(PREC, "3")
+  field(EGU,  "C")
+  field(HIHI, "55.0")
+  field(HIGH, "50.0")
+}
