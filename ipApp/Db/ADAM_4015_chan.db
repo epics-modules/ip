@@ -1,0 +1,90 @@
+# Database for a single channel of the ADAM 4015 thermocouple module
+
+record(ai, "$(P)$(R):rtd$(C)") {
+  field(DTYP, "stream")
+  field(DESC, "RTD $(C)")
+  field(INP,  "@ADAM_4015.proto queryChan($(A)$(C)) $(PORT)")
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R):all_rtd$(C)") {
+  field(DESC, "RTD $(C)")
+  field(PREC, "3")
+}
+
+record(mbbo, "$(P)$(R):unit$(C)") {
+  field(DTYP, "Raw Soft Channel")
+  field(DESC, "Input $(C) unit")
+  field(ZRVL, 0)
+  field(ZRST, "Celsius")
+  field(ONVL, 1)
+  field(ONST, "Kelvin")
+  field(TWVL, 2)
+  field(TWST, "Fahrenheit")
+  field(VAL,  0)
+}
+
+record(calcout, "$(P)$(R):calc$(C)") {
+  field(DESC, "Input calc")
+  field(INPA, "$(P)$(R):rtd$(C).VAL CP")
+  field(INPB, "$(P)$(R):unit$(C).VAL CP")
+  field(CALC, "A")
+  field(OCAL, "(B)?(B=1)?A+273.15:((A*9/5)+32):A")
+  field(OOPT, "Every Time")
+  field(DOPT, "Use OCAL")
+  field(OUT, "$(P)$(R):temp$(C).VAL PP")
+  field(PREC, "3")
+}
+
+record(ao, "$(P)$(R):temp$(C)") {
+  field(DESC, "RTD $(C) temperature")
+  field(PREC, "3")
+}
+
+record(stringin, "$(P)$(R):inputCode$(C)_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "Input $(C) code (hex)")
+  field(INP,  "@ADAM_4015.proto queryChanType($(A),$(C)) $(PORT)")
+  field(SCAN, "Passive")
+}
+
+record(stringout, "$(P)$(R):inputCode$(C)")
+{
+  field(DTYP, "Soft Channel")
+  field(PINI, "NO")
+  field(DESC, "Input $(C) code (hex)")
+  field(SCAN, "Passive")
+}
+
+record(scalcout, "$(P)$(R):inputCodeCalc$(C)") {
+  field(DESC, "Validate input code")
+  field(PINI, "NO")
+  field(INAA, "$(P)$(R):inputCode$(C) CP NMS")
+  field(CALC, "A:=$S(AA,'%x');A>31&A<52&A#46&A#47&A#50")
+  field(OOPT, "When Non-zero")
+  field(DOPT, "Use OCAL")
+  field(OCAL, "AA")
+  field(OUT,  "$(P)$(R):setInputCode$(C) PP NMS")
+  field(SCAN, "Passive")
+}
+
+record(stringout, "$(P)$(R):setInputCode$(C)")
+{
+  field(DTYP, "stream")
+  field(PINI, "NO")
+  field(DESC, "Input $(C) code (hex)")
+  field(OUT,  "@ADAM_4015.proto setChanType($(A),$(C)) $(PORT)")
+  field(SCAN, "Passive")
+  field(FLNK, "$(P)$(R):setDelay$(C)")
+}
+
+record(seq, "$(P)$(R):setDelay$(C)")
+{
+  field(DESC, "Delay before updating RBV")
+  field(DO1,  "1")
+  field(LNK1, "$(P)$(R):inputCode$(C)_RBV.PROC")
+  field(DLY1, "0.2")
+  field(SCAN, "Passive")
+}

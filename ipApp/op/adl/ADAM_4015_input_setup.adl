@@ -1,0 +1,886 @@
+
+file {
+	name="/home/oxygen/KPETERSN/epics/ioc/synApps_5_7/kmp/kmpApp/op/adl/ADAM_4015_input_setup.adl"
+	version=030111
+}
+display {
+	object {
+		x=257
+		y=162
+		width=655
+		height=500
+	}
+	clr=14
+	bclr=1
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=1
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+text {
+	object {
+		x=15
+		y=10
+		width=625
+		height=40
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="ADAM 4015"
+	align="horiz. centered"
+}
+composite {
+	object {
+		x=15
+		y=415
+		width=625
+		height=72
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=15
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=0"
+		}
+		composite {
+			object {
+				x=120
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=1"
+		}
+		composite {
+			object {
+				x=225
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=2"
+		}
+		composite {
+			object {
+				x=330
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=3"
+		}
+		composite {
+			object {
+				x=435
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=4"
+		}
+		composite {
+			object {
+				x=540
+				y=415
+				width=100
+				height=72
+			}
+			"composite name"=""
+			"composite file"="ADAM_4015_chan_setup.adl;P=$(P),R=$(R),C=5"
+		}
+	}
+}
+composite {
+	object {
+		x=62
+		y=60
+		width=530
+		height=343
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=62
+				y=60
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Input Code"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=60
+				width=300
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Input Type"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=60
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Input Range"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=161
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="24"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=161
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (IEC, 0.00385)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=161
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-200 to 200 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=85
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="20"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=85
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (IEC, 0.00385)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=85
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-50 to 150 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=104
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="21"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=104
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (IEC, 0.00385)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=104
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=123
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="22"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=123
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (IEC, 0.00385)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=123
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 200 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=142
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="23"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=142
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (IEC, 0.00385)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=142
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 400 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=180
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="25"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=180
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (JIS, 0.00391)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=180
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-50 to 150 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=199
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="26"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=199
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (JIS, 0.00391)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=199
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=218
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="27"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=218
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (JIS, 0.00391)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=218
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 200 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=237
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="28"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=237
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (JIS, 0.00391)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=237
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 400 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=256
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="29"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=256
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 100 (JIS, 0.00391)"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=256
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-200 to 200 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=275
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="2A"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=275
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Platinum 1000"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=275
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-40 to 160 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=294
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="2B"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=294
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="BALCO 500"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=294
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-30 to 120 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=313
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="2C"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=313
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ni 604"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=313
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-80 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=332
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="2D"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=332
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ni 604"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=332
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=351
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="30"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=351
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Thermistor 3K"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=351
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=370
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="31"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=370
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Thermistor 10K"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=370
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="0 to 100 °C"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=62
+				y=389
+				width=100
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="33"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=167
+				y=389
+				width=300
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ni 508"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=472
+				y=389
+				width=120
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-50 to 200 °C"
+			align="horiz. right"
+		}
+	}
+}
