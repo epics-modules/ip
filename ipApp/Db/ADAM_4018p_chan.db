@@ -1,0 +1,161 @@
+# Database for a single channel of the ADAM 4018+ thermocouple module
+
+record(ai, "$(P)$(R):tc$(C)") {
+  field(DTYP, "stream")
+  field(DESC, "tc $(C)")
+  field(INP,  "@ADAM_4018p.proto queryChan($(A)$(C)) $(PORT)")
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R):all_tc$(C)") {
+  field(DESC, "tc $(C)")
+  field(PREC, "3")
+}
+
+record(mbbo, "$(P)$(R):unit$(C)") {
+  field(DTYP, "Raw Soft Channel")
+  field(DESC, "Input $(C) unit")
+  field(ZRVL, 0)
+  field(ZRST, "Celsius")
+  field(ONVL, 1)
+  field(ONST, "Kelvin")
+  field(TWVL, 2)
+  field(TWST, "Fahrenheit")
+  field(VAL,  0)
+}
+
+record(calcout, "$(P)$(R):calc$(C)") {
+  field(DESC, "Input calc")
+  field(INPA, "$(P)$(R):tc$(C).VAL CP")
+  field(INPB, "$(P)$(R):unit$(C).VAL CP")
+  field(CALC, "A")
+  field(OCAL, "(B)?(B=1)?A+273.15:((A*9/5)+32):A")
+  field(OOPT, "Every Time")
+  field(DOPT, "Use OCAL")
+  field(OUT, "$(P)$(R):temp$(C).VAL PP")
+  field(PREC, "3")
+}
+
+record(ao, "$(P)$(R):temp$(C)") {
+  field(DESC, "Input $(C) temperature")
+  field(PREC, "3")
+}
+
+
+record(mbbo, "$(P)$(R):input$(C)") {
+  field(DTYP, "Raw Soft Channel")
+  field(DESC, "Desired input type")
+  field(ZRVL, 0)
+  field(ZRST, "+/- 20 mA")
+  field(ONVL, 1)
+  field(ONST, "Type J TC")
+  field(TWVL, 2)
+  field(TWST, "Type K TC")
+  field(THVL, 3)
+  field(THST, "Type T TC")
+  field(FRVL, 4)
+  field(FRST, "Type E TC")
+  field(FVVL, 5)
+  field(FVST, "Type R TC")
+  field(SXVL, 6)
+  field(SXST, "Type S TC")
+  field(SVVL, 7)
+  field(SVST, "Type B TC")
+  field(VAL,  2)
+  #field(SDIS, "$(P)$(R):mode")
+  #field(DISV, 0)
+  field(FLNK, "$(P)$(R):setInput$(C)")
+}
+
+record(longout, "$(P)$(R):setInput$(C)") {
+  field(DTYP, "stream")
+  field(DESC, "Set input")
+  field(DOL,  "$(P)$(R):input$(C).RVAL")
+  field(OMSL, "closed_loop")
+  field(OUT,  "@ADAM_4018p.proto setChanType($(A),$(C)) $(PORT)")
+  field(DRVH, 7)
+  field(DRVL, 0)
+  #field(SDIS, "$(P)$(R):mode")
+  #field(DISV, 0)
+  field(FLNK, "$(P)$(R):setDelay$(C)")
+}
+
+record(seq, "$(P)$(R):setDelay$(C)")
+{
+  field(DESC, "Delay before updating RBV")
+  field(DO1,  "1")
+  field(LNK1, "$(P)$(R):input$(C)_RBV.PROC")
+  field(DLY1, "0.2")
+  field(SCAN, "Passive")
+}
+
+record(mbbi, "$(P)$(R):input$(C)_RBV") {
+  field(DTYP, "stream")
+  field(DESC, "Input type")
+  field(INP, "@ADAM_4018p.proto queryChanType($(A),$(C)) $(PORT)")
+  field(PINI, "YES")
+  field(ZRVL, 0)
+  field(ZRST, "+/- 20 mA")
+  field(ONVL, 1)
+  field(ONST, "Type J TC")
+  field(TWVL, 2)
+  field(TWST, "Type K TC")
+  field(THVL, 3)
+  field(THST, "Type T TC")
+  field(FRVL, 4)
+  field(FRST, "Type E TC")
+  field(FVVL, 5)
+  field(FVST, "Type R TC")
+  field(SXVL, 6)
+  field(SXST, "Type S TC")
+  field(SVVL, 7)
+  field(SVST, "Type B TC")
+  field(VAL,  2)
+  #field(SDIS, "$(P)$(R):mode")
+  #field(DISV, 1)
+}
+
+
+
+#!record(stringin, "$(P)$(R):inputCode$(C)_RBV")
+#!{
+#!  field(DTYP, "stream")
+#!  field(PINI, "YES")
+#!  field(DESC, "Input $(C) code (hex)")
+#!  field(INP,  "@ADAM_4018p.proto queryChanType($(A),$(C)) $(PORT)")
+#!  field(SCAN, "Passive")
+#!}
+#!
+#!record(stringout, "$(P)$(R):inputCode$(C)")
+#!{
+#!  field(DTYP, "Soft Channel")
+#!  field(PINI, "NO")
+#!  field(DESC, "Input $(C) code (hex)")
+#!  field(SCAN, "Passive")
+#!}
+#!
+#!record(scalcout, "$(P)$(R):inputCodeCalc$(C)") {
+#!  field(DESC, "Validate input code")
+#!  field(PINI, "NO")
+#!  field(INAA, "$(P)$(R):inputCode$(C) CP NMS")
+#!  field(CALC, "A:=$S(AA,'%x');A>31&A<52&A#46&A#47&A#50")
+#!  field(OOPT, "When Non-zero")
+#!  field(DOPT, "Use OCAL")
+#!  field(OCAL, "AA")
+#!  field(OUT,  "$(P)$(R):setInputCode$(C) PP NMS")
+#!  field(SCAN, "Passive")
+#!}
+#!
+#!record(stringout, "$(P)$(R):setInputCode$(C)")
+#!{
+#!  field(DTYP, "stream")
+#!  field(PINI, "NO")
+#!  field(DESC, "Input $(C) code (hex)")
+#!  field(OUT,  "@ADAM_4018p.proto setChanType($(A),$(C)) $(PORT)")
+#!  field(SCAN, "Passive")
+#!  field(FLNK, "$(P)$(R):setDelay$(C)")
+#!}
+#!
+
+
+
