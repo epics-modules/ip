@@ -175,6 +175,7 @@ record(mbbi,"$(P)$(R)Vent_RBV") {
 record(stringin,"$(P)$(R)Error_RBV") {
     field(DTYP, "stream")
     field(INP,  "@PACE5000.proto getError $(PORT)")
+    field(FLNK, "$(P)$(R)ReadSettings.PROC")
 }
 
 record(asyn,"$(P)$(R)Asyn") {
