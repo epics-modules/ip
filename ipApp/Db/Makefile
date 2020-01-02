@@ -16,6 +16,9 @@ DB += $(patsubst ../%, %, $(wildcard ../*.template))
 DB += $(patsubst ../%, %, $(wildcard ../*.db))
 DB += $(patsubst ../%, %, $(wildcard ../*.vdb))
 
+DB += $(patsubst ../%, %, $(wildcard ../*.proto))
+DB += $(patsubst ../%, %, $(wildcard ../*.protocol))
+
 REQ += $(patsubst ../%, %, $(wildcard ../*.req))
 
 #----------------------------------------------------
