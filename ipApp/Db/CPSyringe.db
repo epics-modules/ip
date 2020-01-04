@@ -69,7 +69,6 @@ record(ai,"$(P)$(R)Delivered_RBV") {
     field(PREC, "3")
 }
 
-
 record(bo,"$(P)$(R)ReadSettings") {
     field(PINI, "YES")
     field(ZNAM, "Done")
@@ -142,12 +141,12 @@ record(mbbi,"$(P)$(R)Mode_RBV") {
 }
 
 record(ao,"$(P)$(R)Diameter") {
-#    field(PINI, "YES")
+    field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setFloat(dia) $(PORT)")
     field(EGU,  "mm")
     field(PREC, "3")
-    field(FLNK, "$(P)$(R)ReadSettings.PROC")
+    field(FLNK, "$(P)$(R)SetAll.PROC")
 }
 
 record(ai,"$(P)$(R)Diameter_RBV") {
@@ -157,10 +156,19 @@ record(ai,"$(P)$(R)Diameter_RBV") {
     field(FLNK, "$(P)$(R)InfusionRate_RBV.PROC")
 }
 
+record(seq,"$(P)$(R)SetAll") {
+    field(LNK1, "$(P)$(R)InfusionRate.PROC CA")
+    field(LNK2, "$(P)$(R)WithdrawalRate.PROC CA")
+    field(LNK3, "$(P)$(R)InfusionVolume.PROC CA")
+    field(LNK4, "$(P)$(R)WithdrawalVolume.PROC CA")
+    field(FLNK, "$(P)$(R)ReadSettings.PROC")
+}
+
 ## Note that we need to use these scalcout records for the following ao records because
 ## the pump requires a value field that is exactly 5 characters, and we want 
 ## get as much precision as possible. So we convert the value to a string and
 ## then use the first 5 characters.  We get 1.000, 10.00, 100.0, etc.
+## The EGU inputs are CP so that ReadSettings is processed whenever they change.
 
 record(ao,"$(P)$(R)InfusionRate") {
     field(PINI, "YES")
@@ -173,7 +181,7 @@ record(scalcout,"$(P)$(R)InfusionRateCalc") {
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setNoneString $(PORT)")
     field(INPA, "$(P)$(R)InfusionRate.VAL NPP NMS")
-    field(INBB, "$(P)$(R)InfusionRate.EGU NPP NMS")
+    field(INBB, "$(P)$(R)InfusionRate.EGU CP NMS")
     field(CALC, "'ratei '+$P('%5.5s ',STR(A))+BB")
     field(FLNK, "$(P)$(R)ReadSettings.PROC")
 }
@@ -196,7 +204,7 @@ record(scalcout,"$(P)$(R)WithdrawalRateCalc") {
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setNoneString $(PORT)")
     field(INPA, "$(P)$(R)WithdrawalRate.VAL NPP NMS")
-    field(INBB, "$(P)$(R)WithdrawalRate.EGU NPP NMS")
+    field(INBB, "$(P)$(R)WithdrawalRate.EGU CP NMS")
     field(CALC, "'ratew '+$P('%5.5s ',STR(A))+BB")
     field(FLNK, "$(P)$(R)ReadSettings.PROC")
 }
@@ -219,7 +227,7 @@ record(scalcout,"$(P)$(R)InfusionVolumeCalc") {
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setNoneString $(PORT)")
     field(INPA, "$(P)$(R)InfusionVolume.VAL NPP NMS")
-    field(INBB, "$(P)$(R)InfusionVolume.EGU NPP NMS")
+    field(INBB, "$(P)$(R)InfusionVolume.EGU CP NMS")
     field(CALC, "'voli '+$P('%5.5s ',STR(A))+BB")
     field(FLNK, "$(P)$(R)ReadSettings.PROC")
 }
@@ -242,7 +250,7 @@ record(scalcout,"$(P)$(R)WithdrawalVolumeCalc") {
     field(DTYP, "stream")
     field(OUT,  "@CPSyringe.proto setNoneString $(PORT)")
     field(INPA, "$(P)$(R)WithdrawalVolume.VAL NPP NMS")
-    field(INBB, "$(P)$(R)WithdrawalVolume.EGU NPP NMS")
+    field(INBB, "$(P)$(R)WithdrawalVolume.EGU CP NMS")
     field(CALC, "'volw '+$P('%5.5s ',STR(A))+BB")
     field(FLNK, "$(P)$(R)ReadSettings.PROC")
 }
