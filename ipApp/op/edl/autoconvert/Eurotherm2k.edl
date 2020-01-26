@@ -1,28 +1,28 @@
-4 0 0
+4 0 1
 beginScreenProperties
 major 4
 minor 0
-release 0
+release 1
 x 702
 y 435
 w 180
 h 293
 font "helvetica-medium-r-18.0"
-ctlFont "helvetica-medium-r-8.0"
+ctlFont "helvetica-bold-r-10.0"
 btnFont "helvetica-medium-r-18.0"
-fgColor index 14
-bgColor index 10
-textColor index 14
-ctlFgColor1 index 30
-ctlFgColor2 index 32
-ctlBgColor1 index 34
-ctlBgColor2 index 35
-topShadowColor index 37
-botShadowColor index 44
+fgColor rgb 0 0 0
+bgColor rgb 26880 26880 26880
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
 snapToGrid
-gridSize 5
+gridSize 4
 endScreenProperties
-
 
 # (Rectangle)
 object activeRectangleClass
@@ -34,77 +34,76 @@ x 0
 y 0
 w 179
 h 36
-lineColor index 29
+lineColor rgb 9984 21504 36096
 fill
-fillColor index 29
+fillColor rgb 9984 21504 36096
 lineWidth 0
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 59
 y 74
 w 85
 h 35
 controlPv "$(P)ET$(TC):RBV_pvTemp"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "utopia-medium-r-24.0"
 fontAlign "center"
+fgColor rgb 29440 65280 27392
+bgColor rgb 26880 26880 26880
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 60
-bgColor index 10
-autoHeight
-format decimal
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 59
 y 111
 w 75
 h 26
 controlPv "$(P)ET$(TC):RBV_spTemp"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-18.0"
 fontAlign "center"
+fgColor rgb 29440 65280 27392
+bgColor rgb 26880 26880 26880
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 60
-bgColor index 10
-autoHeight
-format decimal
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 12
 y 151
-w 55
+w 59
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "SET PT:"
+  "SET PT:"
 }
 endObjectProperties
 
@@ -112,43 +111,44 @@ endObjectProperties
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 75
 y 146
 w 55
 h 20
 controlPv "$(P)ET$(TC):Setpoint.VAL"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 14
-bgColor index 3
-editable
-autoHeight
-format decimal
-motifWidget
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 12
 y 174
-w 55
+w 63
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "RMP RT:"
+  "RMP RT:"
 }
 endObjectProperties
 
@@ -156,69 +156,69 @@ endObjectProperties
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 75
 y 169
 w 55
 h 20
 controlPv "$(P)ET$(TC):RampRate.VAL"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 14
-bgColor index 3
-editable
-autoHeight
-format decimal
-motifWidget
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 99
 y 194
 w 25
 h 20
 controlPv "$(P)ET$(TC):RBV_RampRate"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
+fgColor rgb 54272 56064 40192
+bgColor rgb 26880 26880 26880
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 56
-bgColor index 10
-autoHeight
-format decimal
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 8
 y 3
 w 160
 h 20
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
-fgColor index 0
+fgColor rgb 65280 65280 65280
+bgColor index 3
 useDisplayBg
 value {
- "Eurotherm 2408"
+  "Eurotherm 2408"
 }
 endObjectProperties
 
@@ -226,18 +226,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 8
 y 21
 w 160
 h 14
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-12.0"
 fontAlign "center"
-fgColor index 0
+fgColor rgb 65280 65280 65280
+bgColor index 3
 useDisplayBg
 value {
- "Temperature Controller"
+  "Temperature Controller"
 }
 endObjectProperties
 
@@ -245,17 +246,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 12
 y 65
-w 23
+w 40
 h 12
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-10.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "($(P))"
+  "($(P))"
 }
 endObjectProperties
 
@@ -269,8 +271,8 @@ x 2
 y 39
 w 175
 h 251
-lineColor index 29
-fillColor index 29
+lineColor rgb 9984 21504 36096
+fillColor rgb 9984 21504 36096
 lineWidth 4
 endObjectProperties
 
@@ -284,26 +286,27 @@ x 4
 y 39
 w 169
 h 247
-lineColor index 6
-fillColor index 6
+lineColor rgb 40448 40448 40448
+fillColor rgb 40448 40448 40448
 endObjectProperties
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
-x 12
+minor 1
+release 1
+x 11
 y 118
-w 45
+w 48
 h 15
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-12.0"
 fontAlign "center"
-fgColor index 2
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "SETP:"
+  "SETP:"
 }
 endObjectProperties
 
@@ -311,44 +314,44 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
-x 12
+minor 1
+release 1
+x 9
 y 87
-w 45
+w 51
 h 15
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-12.0"
 fontAlign "center"
-fgColor index 2
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "TEMP:"
+  "TEMP:"
 }
 endObjectProperties
 
-# (Text Control)
-object activeXTextDspClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 94
 y 214
 w 40
 h 20
 controlPv "$(P)ET$(TC):RBV_Output"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-14.0"
 fontAlign "center"
+fgColor rgb 54272 56064 40192
+bgColor rgb 26880 26880 26880
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 56
-bgColor index 10
-autoHeight
-format decimal
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Circle)
@@ -361,8 +364,8 @@ x 137
 y 150
 w 4
 h 4
-lineColor index 2
-fillColor index 2
+lineColor rgb 55808 55808 55808
+fillColor rgb 55808 55808 55808
 lineWidth 0
 endObjectProperties
 
@@ -370,17 +373,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 143
 y 151
-w 15
+w 23
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "C"
+  "C"
 }
 endObjectProperties
 
@@ -388,17 +392,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 143
 y 174
-w 30
+w 36
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "C/m"
+  "C/m"
 }
 endObjectProperties
 
@@ -406,17 +411,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 12
 y 200
 w 75
 h 11
 font "helvetica-medium-r-8.0"
-fgColor index 2
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "RMP RT RDBK:"
+  "RMP RT RDBK:"
 }
 endObjectProperties
 
@@ -424,17 +430,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 12
 y 220
 w 75
 h 11
 font "helvetica-medium-r-8.0"
-fgColor index 2
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "OUTPUT POWER:"
+  "OUTPUT POWER:"
 }
 endObjectProperties
 
@@ -442,17 +449,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 138
 y 216
 w 30
 h 14
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "%"
+  "%"
 }
 endObjectProperties
 
@@ -466,8 +474,8 @@ x 138
 y 173
 w 4
 h 4
-lineColor index 2
-fillColor index 2
+lineColor rgb 55808 55808 55808
+fillColor rgb 55808 55808 55808
 lineWidth 0
 endObjectProperties
 
@@ -475,17 +483,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 143
 y 196
-w 30
+w 36
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "C/m"
+  "C/m"
 }
 endObjectProperties
 
@@ -499,8 +508,8 @@ x 138
 y 195
 w 4
 h 4
-lineColor index 2
-fillColor index 2
+lineColor rgb 55808 55808 55808
+fillColor rgb 55808 55808 55808
 lineWidth 0
 endObjectProperties
 
@@ -514,8 +523,8 @@ x 148
 y 89
 w 4
 h 4
-lineColor index 2
-fillColor index 2
+lineColor rgb 55808 55808 55808
+fillColor rgb 55808 55808 55808
 lineWidth 0
 endObjectProperties
 
@@ -523,17 +532,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 154
 y 90
-w 15
+w 23
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "C"
+  "C"
 }
 endObjectProperties
 
@@ -547,8 +557,8 @@ x 148
 y 117
 w 4
 h 4
-lineColor index 2
-fillColor index 2
+lineColor rgb 55808 55808 55808
+fillColor rgb 55808 55808 55808
 lineWidth 0
 endObjectProperties
 
@@ -556,17 +566,18 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 154
 y 118
-w 15
+w 23
 h 15
-font "helvetica-medium-r-8.0"
-fgColor index 2
+font "helvetica-medium-r-12.0"
+fgColor rgb 55808 55808 55808
+bgColor index 3
 useDisplayBg
 value {
- "C"
+  "C"
 }
 endObjectProperties
 
@@ -574,43 +585,44 @@ endObjectProperties
 object activeXTextDspClass
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 9
 y 43
 w 115
 h 20
 controlPv "$(P)ET$(TC):RBV_pvTemp.DESC"
-font "helvetica-medium-r-8.0"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 51200 51200 51200
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
 smartRefresh
 fastUpdate
-fgColor index 14
-bgColor index 3
-editable
-autoHeight
-format decimal
-motifWidget
-nullColor index 32
-useHexPrefix
-objType "controls"
 newPos
+objType "controls"
 endObjectProperties
 
 # (Static Text)
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
+minor 1
+release 1
 x 150
 y 44
-w 20
+w 63
 h 22
-font "helvetica-medium-r-8.0"
-fgColor index 56
+font "helvetica-medium-r-18.0"
+fgColor rgb 54272 56064 40192
+bgColor index 3
 useDisplayBg
 value {
- "$(TC)"
+  "$(TC)"
 }
 endObjectProperties
 
@@ -618,18 +630,19 @@ endObjectProperties
 object activeXTextClass
 beginObjectProperties
 major 4
-minor 0
-release 0
-x 126
+minor 1
+release 1
+x 124
 y 44
-w 20
+w 22
 h 20
-font "helvetica-medium-r-8.0"
+font "helvetica-medium-r-14.0"
 fontAlign "right"
-fgColor index 56
+fgColor rgb 54272 56064 40192
+bgColor index 3
 useDisplayBg
 value {
- "#"
+  "#"
 }
 endObjectProperties
 
@@ -643,12 +656,12 @@ x 17
 y 243
 w 69
 h 35
-fgColor index 1
-bgColor index 7
-selectColor index 7
-inconsistentColor index 1
-topShadowColor index 0
-botShadowColor index 14
+fgColor rgb 60416 60416 60416
+bgColor rgb 37120 37120 37120
+selectColor rgb 37120 37120 37120
+inconsistentColor rgb 60416 60416 60416
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
 controlPv "$(P)ET$(TC):scanCtl"
 font "helvetica-medium-r-10.0"
 endObjectProperties
@@ -663,11 +676,11 @@ x 108
 y 255
 w 55
 h 20
-fgColor index 1
-bgColor index 6
-topShadowColor index 2
-botShadowColor index 12
-font "helvetica-medium-r-10.0"
+fgColor rgb 60416 60416 60416
+bgColor rgb 40448 40448 40448
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-12.0"
 buttonLabel "More"
 numPvs 2
 numDsps 1
@@ -681,6 +694,9 @@ symbols {
   0 "P=$(P),TC=$(TC)"
 }
 closeAction {
+  0 1
+}
+replaceSymbols {
   0 1
 }
 closeDisplay {

@@ -14,7 +14,94 @@
         <string>
 
 QWidget#centralWidget {background: rgba(200, 200, 200, 255);}
-QPushButton::menu-indicator {image: url(none.png); width: 0}
+
+caTable {
+       font: 10pt;
+       background: cornsilk;
+       alternate-background-color: wheat;
+}
+
+caLineEdit {
+     border-radius: 1px;
+     background: lightyellow;
+     color: black;
+ }
+
+caTextEntry {
+    color: rgb(127, 0, 63);
+    background-color: cornsilk;
+    selection-color: #0a214c;
+    selection-background-color: wheat;
+    border: 1px groove black;
+    border-radius: 1px;
+    padding: 1px;
+}
+
+caTextEntry:focus {
+    padding: 0px;
+    border: 2px groove darkred;
+    border-radius: 1px;
+}
+
+QPushButton {
+      border-color: #00b;
+      border-radius: 2px;
+      padding: 3px;
+      border-width: 1px;
+
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						   stop:0   rgba(224, 239, 255, 255),
+						   stop:0.5 rgba(199, 215, 230, 255),
+						   stop:1   rgba(184, 214, 236, 255));
+}
+QPushButton:hover {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(201, 226, 255, 255),
+						stop:0.5 rgba(177, 204, 230, 255),
+						stop:1   rgba(163, 205, 236, 255));
+}
+QPushButton:pressed {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+QPushButton:disabled {
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1,
+						stop:0   rgba(174, 219, 255, 255),
+						stop:0.5 rgba(165, 199, 230, 255),
+						stop:1   rgba(134, 188, 236, 255));
+}
+
+caChoice {
+      background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                  stop: 0 #E1E1E1, stop: 0.4 #DDDDDD,
+                                  stop: 0.5 #D8D8D8, stop: 1.0 #D3D3D3);
+}
+
+caChoice &gt; QPushButton {
+      text-align: left;
+      padding: 1px;
+}
+
+caSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: lightgrey;
+height: 20px;
+border-radius: 4px;
+}
+
+caSlider::handle:horizontal {
+background: red;
+border: 1px solid #777;
+width: 13px;
+margin-top: -2px;
+margin-bottom: -2px;
+border-radius: 2px;
+}
+
+
 
 </string>
     </property>
@@ -122,7 +209,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>12</x>
                     <y>3</y>
-                    <width>202</width>
+                    <width>150</width>
                     <height>26</height>
                 </rect>
             </property>
@@ -209,7 +296,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>4</x>
                     <y>36</y>
-                    <width>132</width>
+                    <width>100</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -319,7 +406,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;268,1;</string>
+                <string>268,1;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_1">
@@ -355,7 +442,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;269,1;</string>
+                <string>269,1;</string>
             </property>
         </widget>
         <widget class="caPolyLine" name="caPolyLine_2">
@@ -391,7 +478,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;269,1;</string>
+                <string>269,1;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_2">
@@ -422,7 +509,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>5</x>
                     <y>80</y>
-                    <width>48</width>
+                    <width>40</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -626,7 +713,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>230</x>
                     <y>15</y>
-                    <width>36</width>
+                    <width>30</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -665,7 +752,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>199</x>
                     <y>14</y>
-                    <width>36</width>
+                    <width>30</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -698,7 +785,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>201</x>
                     <y>2</y>
-                    <width>64</width>
+                    <width>42</width>
                     <height>12</height>
                 </rect>
             </property>
@@ -719,7 +806,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN1:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN1:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -935,7 +1022,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN1:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN1:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1004,7 +1091,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>35</x>
                     <y>135</y>
-                    <width>28</width>
+                    <width>25</width>
                     <height>12</height>
                 </rect>
             </property>
@@ -1133,7 +1220,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>88</x>
                     <y>81</y>
-                    <width>9</width>
+                    <width>5</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -1348,7 +1435,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;269,1;</string>
+                <string>269,1;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_12">
@@ -1379,7 +1466,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>5</x>
                     <y>174</y>
-                    <width>48</width>
+                    <width>40</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -1490,7 +1577,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN2:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN2:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1706,7 +1793,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN2:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN2:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -1775,7 +1862,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>35</x>
                     <y>229</y>
-                    <width>28</width>
+                    <width>25</width>
                     <height>12</height>
                 </rect>
             </property>
@@ -1904,7 +1991,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>88</x>
                     <y>175</y>
-                    <width>9</width>
+                    <width>5</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -2119,7 +2206,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;268,1;</string>
+                <string>268,1;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_18">
@@ -2150,7 +2237,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>5</x>
                     <y>269</y>
-                    <width>48</width>
+                    <width>40</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -2261,7 +2348,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN3:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN3:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2477,7 +2564,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN3:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN3:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -2546,7 +2633,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>35</x>
                     <y>324</y>
-                    <width>28</width>
+                    <width>25</width>
                     <height>12</height>
                 </rect>
             </property>
@@ -2675,7 +2762,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>88</x>
                     <y>270</y>
-                    <width>9</width>
+                    <width>5</width>
                     <height>15</height>
                 </rect>
             </property>
@@ -2854,7 +2941,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>Solid</enum>
             </property>
             <property name="xyPairs">
-                <string>1,1;268,1;</string>
+                <string>268,1;</string>
             </property>
         </widget>
         <widget class="caLabel" name="caLabel_23">
@@ -2885,7 +2972,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>5</x>
                     <y>362</y>
-                    <width>48</width>
+                    <width>40</width>
                     <height>20</height>
                 </rect>
             </property>
@@ -2996,7 +3083,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN4:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN4:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3212,7 +3299,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <enum>caLineEdit::WidthAndHeight</enum>
             </property>
             <property name="channel">
-                <string>$(P)LS336:$(Q):IN4:Type_RBV</string>
+                <string>$(P)LS336:$(Q):IN4:Units_RBV</string>
             </property>
             <property name="foreground">
                 <color alpha="255">
@@ -3281,7 +3368,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>35</x>
                     <y>417</y>
-                    <width>28</width>
+                    <width>25</width>
                     <height>12</height>
                 </rect>
             </property>
@@ -3410,7 +3497,7 @@ QPushButton::menu-indicator {image: url(none.png); width: 0}
                 <rect>
                     <x>88</x>
                     <y>363</y>
-                    <width>9</width>
+                    <width>5</width>
                     <height>15</height>
                 </rect>
             </property>
