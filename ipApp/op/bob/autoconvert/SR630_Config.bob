@@ -1,0 +1,458 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>SR630_Config</name>
+  <x>974</x>
+  <y>305</y>
+  <width>325</width>
+  <height>180</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>5</x>
+    <y>50</y>
+    <width>315</width>
+    <height>125</height>
+    <line_color>
+      <color red="90" green="90" blue="90">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="90" green="90" blue="90">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>15</x>
+    <y>30</y>
+    <width>225</width>
+    <height>40</height>
+    <line_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>Configuration</text>
+    <x>20</x>
+    <y>30</y>
+    <width>215</width>
+    <height>40</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="30.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="90" green="90" blue="90">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #15</name>
+    <text>Channel:</text>
+    <x>15</x>
+    <y>70</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #18</name>
+    <x>105</x>
+    <y>70</y>
+    <width>35</width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #21</name>
+    <text>$(N)</text>
+    <x>110</x>
+    <y>70</y>
+    <width>25</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #24</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Channel$(N)_Sync.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)Channel$(N)_Sync.PROC</pv_name>
+    <text>Sync</text>
+    <x>255</x>
+    <y>60</y>
+    <width>55</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #27</name>
+    <text>Units:</text>
+    <x>25</x>
+    <y>95</y>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #30</name>
+    <text>Therm Type:</text>
+    <x>25</x>
+    <y>120</y>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #33</name>
+    <text>Nominal Val:</text>
+    <x>25</x>
+    <y>145</y>
+    <height>16</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #36</name>
+    <pv_name>$(P)$(R)rChannel$(N)_Units</pv_name>
+    <x>225</x>
+    <y>95</y>
+    <width>85</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #40</name>
+    <pv_name>$(P)$(R)rChannel$(N)_Therm_Type</pv_name>
+    <x>225</x>
+    <y>120</y>
+    <width>85</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #44</name>
+    <pv_name>$(P)$(R)rChannel$(N)_Nominal_Value</pv_name>
+    <x>225</x>
+    <y>145</y>
+    <width>85</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="30" green="187" blue="0">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>1</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #48</name>
+    <pv_name>$(P)$(R)wChannel$(N)_Units</pv_name>
+    <x>130</x>
+    <y>95</y>
+    <width>85</width>
+    <height>20</height>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #51</name>
+    <pv_name>$(P)$(R)wChannel$(N)_Therm_Type</pv_name>
+    <x>130</x>
+    <y>120</y>
+    <width>85</width>
+    <height>20</height>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #54</name>
+    <pv_name>$(P)$(R)wChannel$(N)_Nominal_Value</pv_name>
+    <x>130</x>
+    <y>145</y>
+    <width>85</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #58</name>
+    <actions>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>1</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 1 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>2</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 2 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>3</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 3 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>4</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 4 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>5</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 5 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>6</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 6 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>7</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 7 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>8</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 8 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>9</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 9 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>10</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 10 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>11</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 11 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>12</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 12 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>13</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 13 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>14</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 14 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>15</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 15 Config</description>
+      </action>
+      <action type="open_display">
+        <file>SR630_Config.opi</file>
+        <macros>
+          <N>16</N>
+        </macros>
+        <target>tab</target>
+        <description>Channel 16 Config</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>255</x>
+    <y>26</y>
+    <width>55</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #76</name>
+    <width>325</width>
+    <line_color>
+      <color red="39" green="84" blue="141">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="39" green="84" blue="141">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #79</name>
+    <text>Stanford SR630 Thermocouple</text>
+    <x>10</x>
+    <width>270</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #82</name>
+    <x>-4</x>
+    <y>-4</y>
+    <width>332</width>
+    <height>26</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+</display>
