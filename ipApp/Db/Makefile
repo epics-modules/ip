@@ -32,6 +32,6 @@ include $(TOP)/configure/RULES
 ifeq ($(BASE_3_14),YES)
 # Only needed for 3.14 build rules:
 vpath %.proto $(USR_VPATH) $(GENERIC_SRC_DIRS)
-#vpath %.protocol $(USR_VPATH) $(GENERIC_SRC_DIRS)
+vpath %.protocol $(USR_VPATH) $(GENERIC_SRC_DIRS)
 #vpath %.req $(USR_VPATH) $(GENERIC_SRC_DIRS)
 endif
