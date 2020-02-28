@@ -1,0 +1,600 @@
+
+file {
+	name="/home/oxygen40/KPETERSN/epics/ioc/synApps_5_7/kmp3/kmp3App/op/adl/SRS_SG390.adl"
+	version=030111
+}
+display {
+	object {
+		x=2397
+		y=201
+		width=635
+		height=325
+	}
+	clr=14
+	bclr=3
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+rectangle {
+	object {
+		x=5
+		y=50
+		width=625
+		height=270
+	}
+	"basic attribute" {
+		clr=11
+		fill="outline"
+		width=3
+	}
+}
+"related display" {
+	object {
+		x=565
+		y=26
+		width=55
+		height=20
+	}
+	display[0] {
+		label="asyn record"
+		name="asynRecord.adl"
+		args="P=$(P),R=$(R):asyn"
+	}
+	clr=14
+	bclr=51
+	label=" More"
+}
+rectangle {
+	object {
+		x=0
+		y=0
+		width=635
+		height=20
+	}
+	"basic attribute" {
+		clr=29
+	}
+}
+text {
+	object {
+		x=160
+		y=0
+		width=310
+		height=20
+	}
+	"basic attribute" {
+		clr=0
+	}
+	textix="Stanford SG390 Signal Generator"
+}
+rectangle {
+	object {
+		x=-4
+		y=-4
+		width=642
+		height=26
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+		width=3
+	}
+}
+text {
+	object {
+		x=20
+		y=65
+		width=75
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Version:"
+}
+"text update" {
+	object {
+		x=105
+		y=65
+		width=515
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):version"
+		clr=54
+		bclr=3
+	}
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=20
+		y=146
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Amplitude:"
+}
+text {
+	object {
+		x=20
+		y=200
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Phase:"
+}
+text {
+	object {
+		x=20
+		y=92
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Frequency:"
+}
+"text entry" {
+	object {
+		x=125
+		y=90
+		width=195
+		height=24
+	}
+	control {
+		chan="$(P)$(R):freq.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=125
+		y=117
+		width=195
+		height=24
+	}
+	control {
+		chan="$(P)$(R):freqMHz.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=125
+		y=144
+		width=195
+		height=24
+	}
+	control {
+		chan="$(P)$(R):amp.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=125
+		y=171
+		width=195
+		height=24
+	}
+	control {
+		chan="$(P)$(R):ampRMS.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=125
+		y=198
+		width=195
+		height=24
+	}
+	control {
+		chan="$(P)$(R):phase.VAL"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=20
+		y=119
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Frequency:"
+}
+text {
+	object {
+		x=20
+		y=173
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Amplitude:"
+}
+text {
+	object {
+		x=20
+		y=284
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Poll Period:"
+}
+menu {
+	object {
+		x=150
+		y=284
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)$(R):readAll.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+"message button" {
+	object {
+		x=260
+		y=284
+		width=110
+		height=20
+	}
+	control {
+		chan="$(P)$(R):readAll.PROC"
+		clr=0
+		bclr=54
+	}
+	label="Read All"
+	press_msg="1"
+}
+text {
+	object {
+		x=20
+		y=258
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="LF Enable:"
+}
+"choice button" {
+	object {
+		x=125
+		y=255
+		width=150
+		height=25
+	}
+	control {
+		chan="$(P)$(R):lf.VAL"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+"text update" {
+	object {
+		x=280
+		y=258
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):lf_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=20
+		y=229
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="RF Enable:"
+}
+"choice button" {
+	object {
+		x=125
+		y=226
+		width=150
+		height=25
+	}
+	control {
+		chan="$(P)$(R):rf.VAL"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+"text update" {
+	object {
+		x=280
+		y=229
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):rf_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=535
+		y=92
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):freq_RBV.EGU"
+		clr=54
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=535
+		y=119
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):freqMHz_RBV.EGU"
+		clr=54
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=535
+		y=146
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):amp_RBV.EGU"
+		clr=54
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=535
+		y=173
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):ampRMS_RBV.EGU"
+		clr=54
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=535
+		y=200
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):phase_RBV.EGU"
+		clr=54
+		bclr=3
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=330
+		y=92
+		width=195
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):freq_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=330
+		y=119
+		width=195
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):freqMHz_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=330
+		y=146
+		width=195
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):amp_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=330
+		y=173
+		width=195
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):ampRMS_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=330
+		y=200
+		width=195
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R):phase_RBV.VAL"
+		clr=54
+		bclr=3
+	}
+	align="horiz. right"
+	limits {
+	}
+}
