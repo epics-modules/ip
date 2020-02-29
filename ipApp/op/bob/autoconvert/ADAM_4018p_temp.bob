@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>ADAM_4018p_temp</name>
+  <x>72</x>
+  <y>317</y>
+  <width>975</width>
+  <height>172</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="group" version="2.0.0">
+    <name>composite #6</name>
+    <x>5</x>
+    <y>50</y>
+    <width>963</width>
+    <height>64</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #9</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>1</C>
+      </macros>
+      <x>121</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #11</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>0</C>
+      </macros>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #13</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>2</C>
+      </macros>
+      <x>242</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #15</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>3</C>
+      </macros>
+      <x>363</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #17</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>4</C>
+      </macros>
+      <x>484</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #19</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>5</C>
+      </macros>
+      <x>605</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #21</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>6</C>
+      </macros>
+      <x>726</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+    <widget type="embedded" version="2.0.0">
+      <name>composite #23</name>
+      <file>ADAM_4018p_temp_chan.bob</file>
+      <macros>
+        <C>7</C>
+      </macros>
+      <x>847</x>
+      <width>116</width>
+      <height>91</height>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #25</name>
+    <text>ADAM 4018p (Temperature)</text>
+    <x>5</x>
+    <y>5</y>
+    <width>965</width>
+    <height>40</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="30.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #28</name>
+    <actions>
+      <action type="open_display">
+        <file>ADAM_4018p.opi</file>
+        <target>tab</target>
+        <description>ADAM 4018p</description>
+      </action>
+      <action type="open_display">
+        <file>ADAM_4018p_setup.opi</file>
+        <target>tab</target>
+        <description>ADAM 4018p Setup</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>852</x>
+    <y>147</y>
+    <width>116</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #32</name>
+    <x>5</x>
+    <y>147</y>
+    <width>237</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="combo" version="2.0.0">
+      <name>menu #35</name>
+      <pv_name>$(P)$(R):read.SCAN</pv_name>
+      <x>121</x>
+      <width>116</width>
+      <height>20</height>
+      <background_color>
+        <color red="255" green="255" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #38</name>
+      <text>Scan period</text>
+      <width>116</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+  </widget>
+</display>
