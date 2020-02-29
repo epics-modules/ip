@@ -1,0 +1,106 @@
+# varianDual.db
+# Template database for Varian Dual pump controller
+# Pete Owens - 17/9/03
+#
+# substitutions:
+# device  - device name
+# port    - seral port
+# channel - channel 
+# high    - high pressure limit (exponent: limit = 1.0e$(high)
+# hihi    - hihi pressure limit (exponent: limit = 1.0e$(hihi)
+################################################################################
+# HV on/off
+#
+record(bo, "$(device):HV")
+{
+    field(DESC, "HV on/off")
+    field(DTYP, "stream")
+    field(OUT,  "@multiguage.protocol hvonoff($(channel)) $(port) 0")
+    field(FLNK, "$(device):P")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+################################################################################
+# Voltage
+#
+record(ai, "$(device):V")
+{
+    field(DESC, "Measured Voltage")
+    field(DTYP, "stream")
+    field(INP,  "@multiguage.protocol vmeas($(channel)) $(port) 0")
+    field(SCAN, "1 second")
+    field(EGU,  "V")
+}
+################################################################################
+# Current
+#
+record(ai, "$(device):I")
+{
+    field(DESC, "Measured Current")
+    field(DTYP, "stream")
+    field(INP,  "@multiguage.protocol imeas($(channel)) $(port) 0")
+    field(SCAN, "1 second")
+    field(EGU,  "A")
+}
+################################################################################
+# Pressure
+#
+record(ai, "$(device):P")
+{
+    field(DESC, "Measured Pressure")
+    field(DTYP, "stream")
+    field(INP,  "@multiguage.protocol pmeas($(channel)) $(port) 0")
+    field(SCAN, "1 second")
+    field(FLNK, "$(device):PLOG")
+    field(EGU,  "Torr")
+    field(HOPR, "3")
+    field(LOPR, "-12")
+    field(HIHI, "1.0e$(hihi)")
+    field(HIGH, "1.0e$(high)")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LSV,  "NO_ALARM")
+    field(LLSV, "NO_ALARM")}
+record(calc, "$(device):PLOG")
+{
+    field(DESC, "log Pressure")
+    field(EGU,  "log")
+    field(CALC, "LOG(A)")
+    field(INPA, "$(device):P")
+    field(HOPR, "3")
+    field(LOPR, "-12")
+    field(HIHI, "$(hihi)")
+    field(HIGH, "$(high)")
+    field(HHSV, "MAJOR")
+    field(HSV,  "MINOR")
+    field(LSV,  "NO_ALARM")
+    field(LLSV, "NO_ALARM")
+}
+################################################################################
+# Setpoints
+#
+record(ai, "$(device):SP1") {
+    field(DESC, "Setpoint 1")
+    field(DTYP, "stream")
+    field(INP,  "@multiguage.protocol rsetpt1($(channel)) $(port) 0")
+    field(SCAN, "1 second")
+}
+record(ao, "$(device):SETSP1") {
+    field(DESC, "Set Setpoint 1")
+    field(DTYP, "stream")
+    field(OUT,  "@multiguage.protocol wsetpt1($(channel)) $(port) 0")
+    field(FLNK, "$(device):SP1")
+}
+record(ai, "$(device):SP2") {
+    field(DESC, "Setpoint 2")
+    field(DTYP, "stream")
+    field(INP,  "@multiguage.protocol rsetpt2($(channel)) $(port) 0")
+    field(SCAN, "1 second")
+}
+record(ao, "$(device):SETSP2") {
+    field(DESC, "Set Setpoint 2")
+    field(DTYP, "stream")
+    field(OUT,  "@multiguage.protocol wsetpt2($(channel)) $(port) 0")
+    field(FLNK, "$(device):SP2")
+}
+################################################################################
