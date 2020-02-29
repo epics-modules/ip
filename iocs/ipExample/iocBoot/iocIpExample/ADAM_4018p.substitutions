@@ -1,0 +1,24 @@
+file "$(IP)/ipApp/Db/ADAM_4018p.db"
+{
+pattern
+{P,      R,     PORT,    A}
+{IOC:,   adam2, rs485p2, 01}
+
+}
+
+# NOTE: Channel number must start from zero to match the protocol
+file "$(IP)/ipApp/Db/ADAM_4018p_chan.db"
+{
+pattern
+{P,      R,     PORT,       A,  C} 
+{IOC:,   adam2, rs485p2,   01,  0} 
+{IOC:,   adam2, rs485p2,   01,  1} 
+{IOC:,   adam2, rs485p2,   01,  2} 
+{IOC:,   adam2, rs485p2,   01,  3} 
+{IOC:,   adam2, rs485p2,   01,  4} 
+{IOC:,   adam2, rs485p2,   01,  5} 
+{IOC:,   adam2, rs485p2,   01,  6} 
+{IOC:,   adam2, rs485p2,   01,  7} 
+
+}
+

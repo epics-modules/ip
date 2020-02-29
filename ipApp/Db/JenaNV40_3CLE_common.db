@@ -1,0 +1,16 @@
+# Database for Piezosystem Jena NV 40/3 CLE
+
+record(stringin, "$(P)$(J)version")
+{
+  field(DTYP, "stream")
+  field(INP,  "@JenaNV40_3CLE.proto versionRead $(PORT)")
+  field(PINI, "YES")
+}
+
+record(stringin, "$(P)$(J)error")
+{
+  field(DTYP, "stream")
+  field(INP,  "@JenaNV40_3CLE.proto errorRead $(PORT)")
+  field(PINI, "YES")
+}
+

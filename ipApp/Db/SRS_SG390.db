@@ -1,0 +1,180 @@
+#
+# Support for the SRS SG390
+#
+
+record(waveform, "$(P)$(R):version")
+{
+  field(DTYP, "stream")
+  field(FTVL, "CHAR")
+  field(INP,  "@SRS_SG390.proto getIdString $(PORT)")
+  field(DESC, "Controller info string")
+  # Pick an arbitrarily-large max size
+  field(NELM, "120")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(R):freq")
+{
+  field(DTYP, "stream")
+  field(DESC, "Set carrier freq")
+  field(OUT,  "@SRS_SG390.proto setFreq $(PORT)")
+  field(PREC, "6")
+  field(EGU,  "Hz")
+  field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R):freq_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Read carrier freq")
+  field(INP,  "@SRS_SG390.proto getFreq $(PORT)")
+  field(PREC, "6")
+  field(EGU,  "Hz")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(R):freqMHz")
+{
+  field(DTYP, "stream")
+  field(DESC, "Set carrier freq")
+  field(OUT,  "@SRS_SG390.proto setFreqMHz $(PORT)")
+  field(PREC, "9")
+  field(EGU,  "MHz")
+  field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R):freqMHz_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Read carrier freq")
+  field(INP,  "@SRS_SG390.proto getFreqMHz $(PORT)")
+  field(PREC, "9")
+  field(EGU,  "MHz")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(R):amp")
+{
+  field(DTYP, "stream")
+  field(DESC, "Set RF Amplitude")
+  field(OUT,  "@SRS_SG390.proto setAmp $(PORT)")
+  field(PREC, "2")
+  field(EGU,  "dBm")
+  field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R):amp_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Read RF Amplitude")
+  field(INP,  "@SRS_SG390.proto getAmp $(PORT)")
+  field(PREC, "2")
+  field(EGU,  "dBm")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(R):ampRMS")
+{
+  field(DTYP, "stream")
+  field(DESC, "Set RF Amplitude")
+  field(OUT,  "@SRS_SG390.proto setAmpRMS $(PORT)")
+  field(PREC, "3")
+  field(EGU,  "V (rms)")
+  field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R):ampRMS_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Read RF Amplitude")
+  field(INP,  "@SRS_SG390.proto getAmpRMS $(PORT)")
+  field(PREC, "3")
+  field(EGU,  "V (rms)")
+  field(SCAN, "Passive")
+}
+
+record(ao, "$(P)$(R):phase")
+{
+  field(DTYP, "stream")
+  field(DESC, "Set carrier phase")
+  field(OUT,  "@SRS_SG390.proto setPhase $(PORT)")
+  field(PREC, "2")
+  field(EGU,  "Degrees")
+  field(SCAN, "Passive")
+}
+
+record(ai, "$(P)$(R):phase_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Read carrier phase")
+  field(INP,  "@SRS_SG390.proto getPhase $(PORT)")
+  field(PREC, "2")
+  field(EGU,  "Degrees")
+  field(SCAN, "Passive")
+}
+
+record(bo, "$(P)$(R):rf")
+{
+  field(DTYP, "stream")
+  field(DESC, "Enable/Disable RF")
+  field(OUT,  "@SRS_SG390.proto setRF $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(SCAN, "Passive")
+}
+
+record(bi, "$(P)$(R):rf_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Enable/Disable RF")
+  field(INP,  "@SRS_SG390.proto getRF $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(SCAN, "Passive")
+}
+
+record(bo, "$(P)$(R):lf")
+{
+  field(DTYP, "stream")
+  field(DESC, "Enable/Disable LF")
+  field(OUT,  "@SRS_SG390.proto setLF $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(SCAN, "Passive")
+}
+
+record(bi, "$(P)$(R):lf_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "Enable/Disable LF")
+  field(INP,  "@SRS_SG390.proto getLF $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(SCAN, "Passive")
+}
+
+record(fanout, "$(P)$(R):readAll")
+{
+  field(DESC, "Read all parameters")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(R):freq_RBV")
+  field(LNK2, "$(P)$(R):freqMHz_RBV")
+  field(LNK3, "$(P)$(R):amp_RBV")
+  field(LNK4, "$(P)$(R):ampRMS_RBV")
+  field(LNK5, "$(P)$(R):phase_RBV")
+  field(LNK6, "$(P)$(R):readMore")
+  field(SCAN, "Passive")
+}
+
+record(fanout, "$(P)$(R):readMore")
+{
+  field(DESC, "Read more parameters")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(R):rf_RBV")
+  field(LNK2, "$(P)$(R):lf_RBV")
+  #field(LNK3, "$(P)$(R):")
+  #field(LNK4, "$(P)$(R):")
+  #field(LNK5, "$(P)$(R):")
+  #field(LNK6, "$(P)$(R):")
+  field(SCAN, "Passive")
+}

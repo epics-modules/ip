@@ -1,0 +1,73 @@
+# Database for Piezosystem Jena NV 40/3 CLE
+
+record(bo, "$(P)$(J)$(N):remote")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@JenaNV40_3CLE.proto remoteSet($(N)) $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+}
+
+#record(bi, "$(P)$(J)$(N):remoteRdbk")
+#{
+#  field(DTYP, "stream")
+#  field(INP,  "@JenaNV40_3CLE.proto remoteRead($(N)) $(PORT)")
+#  field(ZNAM, "Off")
+#  field(ONAM, "On")
+#  field(PINI, "YES")
+#}
+
+record(bo, "$(P)$(J)$(N):cloop")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@JenaNV40_3CLE.proto cloopSet($(N)) $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+}
+
+record(bi, "$(P)$(J)$(N):cloopRdbk")
+{
+  field(DTYP, "stream")
+  field(INP,  "@JenaNV40_3CLE.proto cloopRead($(N)) $(PORT)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(PINI, "YES")
+}
+
+record(ao, "$(P)$(J)$(N):val")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@JenaNV40_3CLE.proto piezoMove($(N)) $(PORT)")
+  field(PREC, "4")
+}
+
+record(ai, "$(P)$(J)$(N):rdbk")
+{
+  field(DTYP, "stream")
+  field(INP,  "@JenaNV40_3CLE.proto piezoRead($(N)) $(PORT)")
+  field(PREC, "4")
+  field(PINI, "YES")
+}
+
+record(mbbo, "$(P)$(J)$(N):monMode")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@JenaNV40_3CLE.proto monModeSet($(N)) $(PORT)")
+  field(ZRST, "Voltage")
+  field(ONST, "Position")
+  field(TWST, "OL=V/CL=Pos")
+  field(FLNK, "$(P)$(J)$(N):monModeRdbk")
+  field(VAL,  "0")
+  field(PINI, "YES")
+}
+
+record(mbbi, "$(P)$(J)$(N):monModeRdbk")
+{
+  field(DTYP, "stream")
+  field(INP,  "@JenaNV40_3CLE.proto monModeRead($(N)) $(PORT)")
+  field(ZRST, "Voltage")
+  field(ONST, "Position")
+  field(TWST, "OL/CL")
+  field(PINI, "YES")
+}
+

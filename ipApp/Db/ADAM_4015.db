@@ -1,0 +1,91 @@
+# Database for the ADAM 4015 RTD module
+
+record(bo, "$(P)$(R):mode") {
+  field(DESC, "Mode")
+  field(ZNAM, "Operation")
+  field(ONAM, "Setup")
+  field(VAL,  0)
+}
+
+record(stringout, "$(P)$(R):status") {
+  field(DESC, "Status string")
+}
+
+record(bo, "$(P)$(R):readAll") {
+  field(DTYP, "stream")
+  field(DESC, "Read RTDs")
+  field(ZNAM, "Done")
+  field(ONAM, "Read")
+  field(OUT, "@ADAM_4015.proto queryAll($(A),$(P)$(R)) $(PORT)")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(fanout, "$(P)$(R):read") {
+  field(DESC, "Read individual RTDs")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+  field(LNK1, "$(P)$(R):rtd0")
+  field(LNK2, "$(P)$(R):rtd1")
+  field(LNK3, "$(P)$(R):rtd2")
+  field(LNK4, "$(P)$(R):rtd3")
+  field(LNK5, "$(P)$(R):rtd4")
+  field(LNK6, "$(P)$(R):readMore")
+}
+
+record(fanout, "$(P)$(R):readMore") {
+  field(DESC, "Read individual RTDs")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+  field(LNK1, "$(P)$(R):rtd5")
+  field(LNK2, "$(P)$(R):rtd6")
+  field(LNK3, "$(P)$(R):rtd7")
+}
+
+record(stringin, "$(P)$(R):model") {
+  field(DTYP, "stream")
+  field(DESC, "Model")
+  field(INP, "@ADAM_4015.proto queryModel($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(stringin, "$(P)$(R):firmware") {
+  field(DTYP, "stream")
+  field(DESC, "Firmware version")
+  field(INP, "@ADAM_4015.proto queryFW($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(mbbi, "$(P)$(R):baud") {
+  field(DTYP, "stream")
+  field(DESC, "Baud rate (bps)")
+  field(INP, "@ADAM_4015.proto queryBaud($(A)) $(PORT)")
+  field(PINI, "YES")
+  field(ZRVL, 0)
+  field(ZRST, "1200")
+  field(ONVL, 1)
+  field(ONST, "2400")
+  field(TWVL, 2)
+  field(TWST, "4800")
+  field(THVL, 3)
+  field(THST, "9600")
+  field(FRVL, 4)
+  field(FRST, "19200")
+  field(FVVL, 5)
+  field(FVST, "38400")
+  field(VAL, 0)
+  field(SDIS, "$(P)$(R):mode")
+  field(DISV, 1)
+}
+
+record(fanout, "$(P)$(R):readSettings") {
+  field(DESC, "Read settings")
+  field(LNK1, "$(P)$(R):model")
+  field(LNK2, "$(P)$(R):firmware")
+  field(LNK3, "$(P)$(R):baud")
+  field(SCAN, "Passive")
+}

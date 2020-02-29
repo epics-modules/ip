@@ -1,0 +1,525 @@
+
+file {
+	name="/home/oxygen40/KPETERSN/backup/9idc_pyrometer/kmp3/kmp3App/op/adl/metis_M322.adl"
+	version=030111
+}
+display {
+	object {
+		x=254
+		y=93
+		width=571
+		height=450
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+text {
+	object {
+		x=15
+		y=15
+		width=541
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Metis M322 - $(P)$(R)"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=15
+		y=80
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Temperature 1"
+}
+text {
+	object {
+		x=15
+		y=50
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Buffer Mode"
+}
+menu {
+	object {
+		x=220
+		y=50
+		width=160
+		height=25
+	}
+	control {
+		chan="$(P)$(R):buffMode"
+		clr=14
+		bclr=4
+	}
+}
+menu {
+	object {
+		x=220
+		y=80
+		width=160
+		height=25
+	}
+	control {
+		chan="$(P)$(R):readBuff.SCAN"
+		clr=14
+		bclr=4
+	}
+}
+text {
+	object {
+		x=15
+		y=110
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Temperature 2"
+}
+text {
+	object {
+		x=15
+		y=140
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Temperature 2c"
+}
+text {
+	object {
+		x=15
+		y=380
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Error Status"
+}
+text {
+	object {
+		x=15
+		y=260
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status Byte 0"
+}
+text {
+	object {
+		x=15
+		y=290
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status Byte 1"
+}
+text {
+	object {
+		x=15
+		y=320
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status Byte 2"
+}
+text {
+	object {
+		x=15
+		y=350
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status Byte 3"
+}
+text {
+	object {
+		x=15
+		y=230
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Signal Strength"
+}
+"text update" {
+	object {
+		x=396
+		y=80
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):temp1"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=50
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):buffMode_RBV"
+		clr=14
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=110
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):temp2"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=140
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):temp2c"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=380
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):error"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=260
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):stat0"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=230
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):signal"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=290
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):stat1"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=320
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):stat2"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=350
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):stat3"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=15
+		y=200
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Focus (mm)"
+}
+"text entry" {
+	object {
+		x=220
+		y=200
+		width=160
+		height=25
+	}
+	control {
+		chan="$(P)$(R):focus"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=396
+		y=200
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):focus_RBV"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
+"related display" {
+	object {
+		x=456
+		y=410
+		width=100
+		height=25
+	}
+	display[1] {
+		label="asynOctet"
+		name="asynOctet.adl"
+		args="P=$(P),R=$(R):asyn"
+	}
+	clr=1
+	bclr=18
+	label="-asyn"
+}
+text {
+	object {
+		x=15
+		y=170
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Temperature Unit"
+}
+"text update" {
+	object {
+		x=396
+		y=170
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):unit_RBV"
+		clr=14
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+menu {
+	object {
+		x=220
+		y=170
+		width=160
+		height=25
+	}
+	control {
+		chan="$(P)$(R):unit"
+		clr=14
+		bclr=4
+	}
+}
+text {
+	object {
+		x=15
+		y=410
+		width=200
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Device Temp (C)"
+}
+"text update" {
+	object {
+		x=220
+		y=410
+		width=160
+		height=25
+	}
+	monitor {
+		chan="$(P)$(R):devTemp"
+		clr=14
+		bclr=4
+	}
+	limits {
+	}
+}
