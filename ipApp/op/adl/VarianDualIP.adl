@@ -113,216 +113,206 @@ text {
 	textix="$(P)$(R)"
 	align="horiz. centered"
 }
-composite {
+text {
+	object {
+		x=52
+		y=69
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Pressure"
+	align="horiz. right"
+}
+text {
 	object {
 		x=12
-		y=69
-		width=227
-		height=170
+		y=94
+		width=120
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=52
-				y=69
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Pressure"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=12
-				y=94
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="High Voltage"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=62
-				y=119
-				width=70
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Voltage"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=62
-				y=144
-				width=70
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Current"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=32
-				y=169
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Setpoint 1"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=32
-				y=194
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Setpoint 2"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=32
-				y=219
-				width=100
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Setpoint 2"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=139
-				y=69
-				width=100
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)P"
-				clr=17
-				bclr=12
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=139
-				y=119
-				width=100
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)V"
-				clr=17
-				bclr=12
-			}
-			align="horiz. right"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=139
-				y=144
-				width=100
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)I"
-				clr=17
-				bclr=12
-			}
-			align="horiz. right"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=139
-				y=169
-				width=100
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SP1"
-				clr=17
-				bclr=12
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=139
-				y=194
-				width=100
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SP2"
-				clr=17
-				bclr=12
-			}
-			align="horiz. right"
-			format="exponential"
-			limits {
-			}
-		}
-		menu {
-			object {
-				x=139
-				y=94
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)HV"
-				clr=17
-				bclr=51
-			}
-		}
-		"text entry" {
-			object {
-				x=139
-				y=219
-				width=100
-				height=20
-			}
-			control {
-				chan="$(P)$(R)SETSP2"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="High Voltage"
+	align="horiz. right"
+}
+text {
+	object {
+		x=62
+		y=119
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Voltage"
+	align="horiz. right"
+}
+text {
+	object {
+		x=62
+		y=144
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Current"
+	align="horiz. right"
+}
+text {
+	object {
+		x=32
+		y=169
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint 1"
+	align="horiz. right"
+}
+text {
+	object {
+		x=32
+		y=194
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint 2"
+	align="horiz. right"
+}
+text {
+	object {
+		x=32
+		y=219
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint 2"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=139
+		y=69
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)P"
+		clr=17
+		bclr=12
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=139
+		y=119
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)V"
+		clr=17
+		bclr=12
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=139
+		y=144
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)I"
+		clr=17
+		bclr=12
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=139
+		y=169
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SP1"
+		clr=17
+		bclr=12
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=139
+		y=194
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SP2"
+		clr=17
+		bclr=12
+	}
+	align="horiz. right"
+	format="exponential"
+	limits {
+	}
+}
+menu {
+	object {
+		x=139
+		y=94
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)$(R)HV"
+		clr=17
+		bclr=51
+	}
+}
+"text entry" {
+	object {
+		x=139
+		y=219
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SETSP2"
+		clr=14
+		bclr=51
+	}
+	limits {
 	}
 }
