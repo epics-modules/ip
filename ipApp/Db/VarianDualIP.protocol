@@ -1,20 +1,47 @@
 # MultiGuage Compatible protocol for the Varian Dual Controller
 
-Terminator   = CR;
-ReplyTimeout = 1000;
-ReadTimeout  = 1000;
-ExtraInput   = Ignore;
+OutTerminator = CR;
+InTerminator  = CR;
+ReplyTimeout  = 1000;
+ReadTimeout   = 1000;
+ExtraInput    = Ignore;
 
-vmeas   { out "#\$1" "07?";   in ">\$1" "07%d";  }
-imeas   { out "#\$1" "08?";     in ">\$1" "08%f";  }
-pmeas   { out "#\$1" "02?";     in ">\$1" "02%f";  }
-rsetpt1 { out "#\$1" "71?";     in ">\$1" "71%f";  }
-wsetpt1 { out "#\$1" "71%0.1E"; in ">\$1" "71"; }
-rsetpt2 { out "#\$1" "72?";     in ">\$1" "72%f";  }
-wsetpt2 { out "#\$1" "72%0.1E"; in ">\$1" "72"; }
-rhvonoff { out "#\$1" "30?";    in ">\$1" "30%d";    }
-whvonoff {
-  OutTerminator = CR;
+vmeas {
+  out "#\$1" "07?";   
+  in  ">\$1" "07%d";
+}
+imeas {
+  out "#\$1" "08?";
+  in  ">\$1" "08%f";
+}
+pmeas {
+  out "#\$1" "02?";
+  in  ">\$1" "02%f";
+}
+rsetpt1 {
+  out "#\$1" "71?";
+  in  ">\$1" "71%f";
+}
+wsetpt1 {
   InTerminator = ACK;
-  out "#\$1" "30%1b"; in;    
+  out "#\$1" "71%0.1E";
+  in;
+}
+rsetpt2 {
+  out "#\$1" "72?";
+  in  ">\$1" "72%f";
+}
+wsetpt2 {
+  InTerminator = ACK;
+  out "#\$1" "72%0.1E";
+  in;
+}
+rhvonoff {
+  out "#\$1" "30?";
+  in  ">\$1" "30%d";
+}
+whvonoff {
+  InTerminator = ACK;
+  out "#\$1" "30%1b";
+  in;    
 }
