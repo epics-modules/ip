@@ -1,0 +1,28 @@
+# ### cs800.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- STATUS_ADDR    - network address for status packets
+#- COMMAND_ADDR   - network address for commands
+#- ASYN           - Location of ASYN module
+#- IP             - Location of IP module
+#- ###################################################
+
+# STATUS_ADDR  "255.255.255.255:30304:30304 UDP"
+# COMMAND_ADDR "10.0.0.173:30305 UDP*"
+
+# Status Packets
+drvAsynIPPortConfigure("OC_SP", $(STATUS_ADDR), 0, 0, 0)
+# Commands
+drvAsynIPPortConfigure("OC_CMD", $(COMMAND_IP), 0, 0, 0)
+
+#asynSetTraceIOMask("OC_SP", 0, 2)
+#asynSetTraceMask("OC_SP", 0, 9)
+#asynSetTraceIOMask("OC_CMD", 0, 2)
+#asynSetTraceMask("OC_CMD", 0, 9)
+
+dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:SP,PORT=OC_SP,ADDR=0,OMAX=1000,IMAX=1000")
+dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:CMD,PORT=OC_CMD,ADDR=0,OMAX=1000,IMAX=1000")
+
+dbLoadRecords("$(IP)/ipApp/Db/cs800.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=OC_SP,PORTCMD=OC_CMD")

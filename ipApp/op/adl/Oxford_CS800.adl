@@ -1,0 +1,1293 @@
+
+file {
+	name="/opt/epics/synApps/support/all_adl/Oxford_CS800.adl"
+	version=030114
+}
+display {
+	object {
+		x=2683
+		y=297
+		width=650
+		height=700
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+text {
+	object {
+		x=305
+		y=5
+		width=236
+		height=23
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Oxford CryoStream 800"
+	align="horiz. centered"
+}
+rectangle {
+	object {
+		x=5
+		y=30
+		width=400
+		height=560
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+}
+text {
+	object {
+		x=68
+		y=30
+		width=236
+		height=23
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=15
+		y=67
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gas Setpoint"
+}
+text {
+	object {
+		x=15
+		y=92
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gas Temperature"
+}
+text {
+	object {
+		x=15
+		y=117
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gas Error"
+}
+text {
+	object {
+		x=15
+		y=142
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Run Mode"
+}
+text {
+	object {
+		x=15
+		y=167
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Phase ID"
+}
+text {
+	object {
+		x=15
+		y=192
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Ramp Rate"
+}
+text {
+	object {
+		x=15
+		y=217
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Target Temp"
+}
+text {
+	object {
+		x=15
+		y=242
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Evap Temp"
+}
+text {
+	object {
+		x=15
+		y=267
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Time remaining in phase"
+}
+text {
+	object {
+		x=15
+		y=292
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gas Flow"
+}
+text {
+	object {
+		x=15
+		y=317
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Gas Heat"
+}
+text {
+	object {
+		x=15
+		y=342
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Evap Heat"
+}
+text {
+	object {
+		x=15
+		y=367
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Suction temp"
+}
+text {
+	object {
+		x=15
+		y=392
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Suction heater"
+}
+text {
+	object {
+		x=15
+		y=417
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Back pressure"
+}
+text {
+	object {
+		x=15
+		y=442
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Alarm status"
+}
+text {
+	object {
+		x=15
+		y=467
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Pump uptime"
+}
+text {
+	object {
+		x=15
+		y=492
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Controller number"
+}
+text {
+	object {
+		x=15
+		y=517
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Software version"
+}
+text {
+	object {
+		x=15
+		y=542
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Evap Adjust"
+}
+text {
+	object {
+		x=15
+		y=567
+		width=150
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="LN Level"
+}
+"text update" {
+	object {
+		x=179
+		y=64
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):SETPOINT"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=89
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):TEMP"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=114
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):ERROR"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=139
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):RUNMODE"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=164
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):PHASE"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=189
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):RAMPRATE"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=214
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):TARGETTEMP"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=239
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):EVAPTEMP"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=264
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):REMAINING"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=289
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):GASFLOW"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=314
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):GASHEAT"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=339
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):EVAPHEAT"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=364
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):SUCTTEMP"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=389
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):SUCTHEAT"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=414
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):BACKPRESS"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=439
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):ALARM.VAL"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=464
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):RUNTIME"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=489
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):CTRLNUM"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=514
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):VER"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=539
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):EVAPADJUST"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=179
+		y=564
+		width=200
+		height=20
+	}
+	monitor {
+		chan="$(CS):LEVEL"
+		clr=14
+		bclr=7
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=30
+		width=229
+		height=200
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+"message button" {
+	object {
+		x=421
+		y=89
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):RESTART.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Restart"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=421
+		y=179
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):STOP.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Stop"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=419
+		y=44
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):PURGE.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Purge"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=524
+		y=44
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):HOLD.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Hold"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=419
+		y=134
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):PAUSE.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Pause"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=524
+		y=134
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):RESUME.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Resume"
+	press_msg="1"
+}
+rectangle {
+	object {
+		x=409
+		y=230
+		width=229
+		height=105
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+"message button" {
+	object {
+		x=424
+		y=288
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):RAMP.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Ramp"
+	press_msg="1"
+}
+composite {
+	object {
+		x=422
+		y=238
+		width=205
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=422
+				y=238
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ramp Rate"
+			align="horiz. centered"
+		}
+		"text entry" {
+			object {
+				x=527
+				y=238
+				width=100
+				height=20
+			}
+			control {
+				chan="$(CS):RRATE"
+				clr=54
+				bclr=0
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=422
+		y=263
+		width=205
+		height=20
+	}
+	"composite name"=""
+	children {
+		"text entry" {
+			object {
+				x=527
+				y=263
+				width=100
+				height=20
+			}
+			control {
+				chan="$(CS):RTEMP"
+				clr=54
+				bclr=0
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=422
+				y=263
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Target Ramp Temp"
+			align="horiz. centered"
+		}
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=335
+		width=229
+		height=75
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+"message button" {
+	object {
+		x=424
+		y=368
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):PLAT.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Plat"
+	press_msg="1"
+}
+composite {
+	object {
+		x=422
+		y=343
+		width=205
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=422
+				y=343
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Plat Time"
+			align="horiz. centered"
+		}
+		"text entry" {
+			object {
+				x=527
+				y=343
+				width=100
+				height=20
+			}
+			control {
+				chan="$(CS):PTIME"
+				clr=54
+				bclr=0
+			}
+			limits {
+			}
+		}
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=410
+		width=229
+		height=75
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+"message button" {
+	object {
+		x=424
+		y=443
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):COOL.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Cool"
+	press_msg="1"
+}
+text {
+	object {
+		x=422
+		y=418
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Target Cool Temp"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=527
+		y=418
+		width=100
+		height=20
+	}
+	control {
+		chan="$(CS):CTEMP"
+		clr=54
+		bclr=0
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=485
+		width=229
+		height=55
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+text {
+	object {
+		x=419
+		y=492
+		width=50
+		height=40
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Turbo"
+	align="horiz. centered"
+}
+"choice button" {
+	object {
+		x=474
+		y=492
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):TURBO"
+		clr=54
+		bclr=0
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=540
+		width=229
+		height=75
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+"message button" {
+	object {
+		x=424
+		y=573
+		width=200
+		height=40
+	}
+	control {
+		chan="$(CS):END.PROC"
+		clr=14
+		bclr=51
+	}
+	label="End"
+	press_msg="1"
+}
+text {
+	object {
+		x=422
+		y=548
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="End Rate"
+	align="horiz. centered"
+}
+"text entry" {
+	object {
+		x=527
+		y=548
+		width=100
+		height=20
+	}
+	control {
+		chan="$(CS):ERATE"
+		clr=54
+		bclr=0
+	}
+	limits {
+	}
+}
+rectangle {
+	object {
+		x=409
+		y=615
+		width=229
+		height=55
+	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+text {
+	object {
+		x=419
+		y=622
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Serial"
+	align="horiz. centered"
+}
+"choice button" {
+	object {
+		x=474
+		y=622
+		width=100
+		height=40
+	}
+	control {
+		chan="$(CS):DISABLE"
+		clr=54
+		bclr=0
+	}
+}
+text {
+	object {
+		x=418
+		y=637
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Comms"
+	align="horiz. centered"
+}
+rectangle {
+	object {
+		x=580
+		y=493
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A==2"
+		chan="$(CS):TURBOMODE"
+	}
+}
+rectangle {
+	object {
+		x=580
+		y=513
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A==0"
+		chan="$(CS):TURBOMODE"
+	}
+}
+rectangle {
+	object {
+		x=580
+		y=622
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=15
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A==0"
+		chan="$(CS):DISABLE"
+	}
+}
+rectangle {
+	object {
+		x=580
+		y=642
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=20
+	}
+	"dynamic attribute" {
+		vis="calc"
+		calc="A==1"
+		chan="$(CS):DISABLE"
+	}
+}
