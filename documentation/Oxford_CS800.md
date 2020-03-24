@@ -23,9 +23,9 @@ file | description
 ---- | -----
 documentation/Oxford_CS800.md | this file
 iocsh/Oxford_CS800.iocsh | startup commands
-ipApp//Db/Oxford_CS800.db | PV database
-ipApp//Db/Oxford_CS800.proto | streams protocol
-ipApp//Db/Oxford_CS800_settings.req | autosave request file
+ipApp/Db/Oxford_CS800.db | PV database
+ipApp/Db/Oxford_CS800.proto | streams protocol
+ipApp/Db/Oxford_CS800_settings.req | autosave request file
 ipApp/op/adl/Oxford_CS800.adl | MEDM screen
 
 ## vendor
