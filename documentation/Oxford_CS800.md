@@ -25,7 +25,7 @@ documentation/Oxford_CS800.md | this file
 iocsh/Oxford_CS800.iocsh | startup commands
 ipApp//Db/Oxford_CS800.db | PV database
 ipApp//Db/Oxford_CS800.proto | streams protocol
-ipApp//Db/Oxford_CS800.req | autosave request file
+ipApp//Db/Oxford_CS800_settings.req | autosave request file
 ipApp/op/adl/Oxford_CS800.adl | MEDM screen
 
 ## vendor
@@ -57,9 +57,12 @@ Add these lines to the IOC's `st.cmd` file before the call to `iocInit`:
 
 #### `auto_settings.req`
 
-Add this line to the IOC's `auto_settings.req` file:
+Most autosave request files are named by deleting 
+`.db` from the database name, and adding `_settings.req`
+so that `autosaveBuild` can include it automatically 
+when the database is loaded.
 
-    file Oxford_CS800.req P=$(P),Q=CS
+Thus, no additional configuration is needed here.
 
 ### MEDM display
 
