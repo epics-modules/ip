@@ -13,16 +13,18 @@
 # COMMAND_ADDR "10.0.0.173:30305 UDP*"
 
 # Status Packets
-drvAsynIPPortConfigure("OC_SP", $(STATUS_ADDR), 0, 0, 0)
+drvAsynIPPortConfigure("OC_SP", "$(STATUS_ADDR)", 0, 0, 0)
 # Commands
-drvAsynIPPortConfigure("OC_CMD", $(COMMAND_IP), 0, 0, 0)
+drvAsynIPPortConfigure("OC_CMD", "$(COMMAND_ADDR)", 0, 0, 0)
 
 #asynSetTraceIOMask("OC_SP", 0, 2)
 #asynSetTraceMask("OC_SP", 0, 9)
 #asynSetTraceIOMask("OC_CMD", 0, 2)
 #asynSetTraceMask("OC_CMD", 0, 9)
 
+
 dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:SP,PORT=OC_SP,ADDR=0,OMAX=1000,IMAX=1000")
 dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:CMD,PORT=OC_CMD,ADDR=0,OMAX=1000,IMAX=1000")
 
+epicsEnvSet("STREAM_PROTOCOL_PATH", "$(STREAM_PROTOCOL_PATH):$(IP)/ipApp/Db")
 dbLoadRecords("$(IP)/db/Oxford_CS800.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=OC_SP,PORTCMD=OC_CMD")
