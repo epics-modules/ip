@@ -25,4 +25,4 @@ drvAsynIPPortConfigure("OC_CMD", $(COMMAND_IP), 0, 0, 0)
 dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:SP,PORT=OC_SP,ADDR=0,OMAX=1000,IMAX=1000")
 dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:CMD,PORT=OC_CMD,ADDR=0,OMAX=1000,IMAX=1000")
 
-dbLoadRecords("$(IP)/ipApp/Db/cs800.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=OC_SP,PORTCMD=OC_CMD")
+dbLoadRecords("$(IP)/db/Oxford_CS800.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=OC_SP,PORTCMD=OC_CMD")
