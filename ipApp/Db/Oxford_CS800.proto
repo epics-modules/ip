@@ -290,7 +290,7 @@ read { in "\xAA\xAB" 					# header \xAAAB,
 
 restart { out "\x00\x0A\x00\x00\x00\x00%<sum8>"; }
 ramp    { out "\x00\x0B%(\$1:RRATEH.RVAL)r%(\$1:RRATEL.RVAL)r%(\$1:RTEMPH.RVAL)r%(\$1:RTEMPL.RVAL)r%<sum8>"; }
-plat    { out "\x00\x0C%(\$1:PTIMEH.RVAL)r%(\$1:PTIMEL.RVAL)r\x00\x00\%<sum8>"; }
+plat    { out "\x00\x0C%(\$1:PTIMEH.RVAL)r%(\$1:PTIMEL.RVAL)r\x00\x00%<sum8>"; }
 hold    { out "\x00\x0D\x00\x00\x00\x00%<sum8>"; }
 cool    { out "\x00\x0E%(\$1:CTEMPH.RVAL)r%(\$1:CTEMPL.RVAL)r\x00\x00%<sum8>"; }
 end     { out "\x00\x0F%(\$1:ERATEH.RVAL)r%(\$1:ERATEL.RVAL)r\x00\x00%<sum8>"; }
