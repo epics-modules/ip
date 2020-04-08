@@ -260,8 +260,8 @@ read { in "\xAA\xAB" 					# header \xAAAB,
 	  "%02r%(\$1:SHIELDHEAT.RVAL)02r"		# 2016
 	  "%02r%(\$1:NOZZLEHEAT.RVAL)02r"		# 2017
 	  "%02r%02r"					# 2018
-	  "%02r%02r"					# 2019
-	  "%02r%02r"					# 2020
+	  "%02r%(\$1:AVGSAMPLEHEAT.RVAL)02r"		# 2019
+	  "%02r%(\$1:AVGNOZZLEHEAT.RVAL)02r"		# 2020
 	  "%02r%02r"					# 2021
 	  "%02r%02r"					# 2022
 	  "%02r%02r"					# 2023

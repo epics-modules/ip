@@ -404,7 +404,18 @@ record(ai, "$(P)$(Q):NOZZLEHEAT") {
 }
 
 # Param id 2019
-record(ai, "$(P)$(Q):ERROR") {
+record(ai, "$(P)$(Q):AVGSAMPLEHEAT") {
+  field(DTYP, "Raw Soft Channel")
+  field(PINI, "YES")
+  field(LINR, "LINEAR")
+  field(ESLO, "0.01")
+  field(EOFF, "0")
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+# Param id 2020
+record(ai, "$(P)$(Q):AVGNOZZLEHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
