@@ -187,259 +187,13 @@ composite {
 }
 composite {
 	object {
-		x=10
-		y=245
-		width=341
-		height=26
+		x=-2147483638
+		y=2147483606
+		width=1
+		height=1
 	}
 	"composite name"=""
 	children {
-		rectangle {
-			object {
-				x=10
-				y=245
-				width=341
-				height=26
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(CS):HOLD"
-			}
-		}
-		"message button" {
-			object {
-				x=14
-				y=249
-				width=160
-				height=18
-			}
-			control {
-				chan="$(CS):COOL.PROC"
-				clr=14
-				bclr=51
-			}
-			label="Cool down"
-			press_msg="1"
-		}
-		text {
-			object {
-				x=182
-				y=251
-				width=74
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="target, K"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=264
-				y=249
-				width=78
-				height=17
-			}
-			control {
-				chan="$(CS):CTEMP"
-				clr=54
-				bclr=1
-			}
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=10
-		y=214
-		width=341
-		height=26
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=-2147483638
-				y=2147483606
-				width=1
-				height=1
-			}
-			"composite name"=""
-			children {
-			}
-		}
-		rectangle {
-			object {
-				x=10
-				y=214
-				width=341
-				height=26
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(CS):HOLD"
-			}
-		}
-		"message button" {
-			object {
-				x=14
-				y=218
-				width=160
-				height=18
-			}
-			control {
-				chan="$(CS):PLAT.PROC"
-				clr=14
-				bclr=57
-			}
-			label="Plateau"
-			press_msg="1"
-		}
-		composite {
-			object {
-				x=178
-				y=218
-				width=158
-				height=17
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=178
-						y=220
-						width=74
-						height=12
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="time, m"
-					align="horiz. centered"
-				}
-				"text entry" {
-					object {
-						x=258
-						y=218
-						width=78
-						height=17
-					}
-					control {
-						chan="$(CS):PTIME"
-						clr=54
-						bclr=1
-					}
-					limits {
-					}
-				}
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=10
-		y=163
-		width=341
-		height=46
-	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=10
-				y=163
-				width=341
-				height=46
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(CS):HOLD"
-			}
-		}
-		"message button" {
-			object {
-				x=14
-				y=167
-				width=160
-				height=18
-			}
-			control {
-				chan="$(CS):RAMP.PROC"
-				clr=14
-				bclr=32
-			}
-			label="Ramp up"
-			press_msg="1"
-		}
-		text {
-			object {
-				x=181
-				y=169
-				width=74
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="rate, K/h"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=261
-				y=167
-				width=78
-				height=17
-			}
-			control {
-				chan="$(CS):RRATE"
-				clr=54
-				bclr=1
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=181
-				y=189
-				width=74
-				height=12
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="target, K"
-			align="horiz. centered"
-		}
-		"text entry" {
-			object {
-				x=261
-				y=187
-				width=78
-				height=17
-			}
-			control {
-				chan="$(CS):RTEMP"
-				clr=54
-				bclr=1
-			}
-			limits {
-			}
-		}
 	}
 }
 rectangle {
@@ -866,6 +620,241 @@ composite {
 			}
 			textix="communicating"
 			align="horiz. centered"
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=163
+		width=341
+		height=46
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=163
+				width=341
+				height=46
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			"dynamic attribute" {
+				chan="$(CS):HOLD"
+			}
+		}
+		"message button" {
+			object {
+				x=14
+				y=167
+				width=160
+				height=18
+			}
+			control {
+				chan="$(CS):RAMP.PROC"
+				clr=14
+				bclr=32
+			}
+			label="Ramp up"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=264
+				y=187
+				width=78
+				height=17
+			}
+			control {
+				chan="$(CS):RTEMP"
+				clr=54
+				bclr=1
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=184
+				y=189
+				width=74
+				height=12
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="target, K"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=184
+				y=169
+				width=74
+				height=12
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="rate, K/h"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=264
+				y=167
+				width=78
+				height=17
+			}
+			control {
+				chan="$(CS):RRATE"
+				clr=54
+				bclr=1
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=245
+		width=341
+		height=26
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=245
+				width=341
+				height=26
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			"dynamic attribute" {
+				chan="$(CS):HOLD"
+			}
+		}
+		"message button" {
+			object {
+				x=14
+				y=249
+				width=160
+				height=18
+			}
+			control {
+				chan="$(CS):COOL.PROC"
+				clr=14
+				bclr=51
+			}
+			label="Cool down"
+			press_msg="1"
+		}
+		text {
+			object {
+				x=182
+				y=251
+				width=74
+				height=12
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="target, K"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=264
+				y=249
+				width=78
+				height=17
+			}
+			control {
+				chan="$(CS):CTEMP"
+				clr=54
+				bclr=1
+			}
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=214
+		width=341
+		height=26
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=214
+				width=341
+				height=26
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			"dynamic attribute" {
+				chan="$(CS):HOLD"
+			}
+		}
+		"message button" {
+			object {
+				x=14
+				y=218
+				width=160
+				height=18
+			}
+			control {
+				chan="$(CS):PLAT.PROC"
+				clr=14
+				bclr=57
+			}
+			label="Plateau"
+			press_msg="1"
+		}
+		text {
+			object {
+				x=184
+				y=220
+				width=74
+				height=12
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="time, m"
+			align="horiz. right"
+		}
+		"text entry" {
+			object {
+				x=264
+				y=218
+				width=78
+				height=17
+			}
+			control {
+				chan="$(CS):PTIME"
+				clr=54
+				bclr=1
+			}
+			limits {
+			}
 		}
 	}
 }
