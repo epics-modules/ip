@@ -1137,7 +1137,10 @@ record(stringin, "$(P)$(Q):ALARM")
 #  field(SNAM, "alarmlookupProcess")
 #}
 
+# Param id 1065
 record(ai, "$(P)$(Q):ALARMI") {
+  # CS800 documentation is not specific about these codes.
+  # Notes say there are 17 values so can't use an mbbi record.
   field(DESC, "Alarm number")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
