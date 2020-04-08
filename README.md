@@ -3,6 +3,16 @@
 # ip
 APS BCDA synApps module: ip
 
+This repository contains support for devices that communicate 
+via ASCII (RS232, for example) or the 
+[stream device](https://github.com/paulscherrerinstitute/StreamDevice) 
+protocol from PSI.  Some such devices have their own repository (such as 
+[delayGen](https://github.com/epics-modules/delayGen)) if they support 
+a number of related devices or functionality.
+
+The name *ip* is legacy, deriving from the use of Industry Pack cards in a
+VME environment to provide the serial or GPIB communications channels.
+
 For more information, see
    http://www.aps.anl.gov/bcda/synApps
 
