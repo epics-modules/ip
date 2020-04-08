@@ -16,6 +16,7 @@
 
 * David Vine
 * James O'Hea (for the cs700 support that precedes this)
+* Pete Jemian
 
 ## files
 
