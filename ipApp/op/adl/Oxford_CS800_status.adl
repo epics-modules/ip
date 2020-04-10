@@ -1,11 +1,11 @@
 
 file {
-	name="/home/mintadmin/Documents/projects/ip/ipApp/op/adl/Oxford_CS800_status.adl"
-	version=030114
+	name="/net/s19dserv/xorApps/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_status.adl"
+	version=030111
 }
 display {
 	object {
-		x=0
+		x=10
 		y=25
 		width=708
 		height=523
@@ -1419,67 +1419,146 @@ composite {
 		}
 	}
 }
+"related display" {
+	object {
+		x=371
+		y=38
+		width=80
+		height=18
+	}
+	display[0] {
+		label="temperature"
+		name="Oxford_CS800.adl"
+		args="CS=$(CS)"
+	}
+	clr=14
+	bclr=6
+	label="-Main screen"
+}
+"related display" {
+	object {
+		x=459
+		y=38
+		width=80
+		height=18
+	}
+	display[0] {
+		label="program"
+		name="Oxford_CS800_program.adl"
+		args="CS=$(CS)"
+		policy="replace display"
+	}
+	display[1] {
+		label="status"
+		name="Oxford_CS800_status.adl"
+		args="CS=$(CS)"
+	}
+	display[2] {
+		label="admin"
+		name="Oxford_CS800_admin.adl"
+		args="CS=$(CS)"
+	}
+	clr=14
+	bclr=6
+	label="-More ..."
+}
+composite {
+	object {
+		x=184
+		y=33
+		width=168
+		height=28
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=184
+				y=33
+				width=168
+				height=28
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			"dynamic attribute" {
+				chan="$(CS):HOLD"
+			}
+		}
+		"text update" {
+			object {
+				x=210
+				y=41
+				width=40
+				height=12
+			}
+			monitor {
+				chan="$(CS):CTRLNUM"
+				clr=14
+				bclr=2
+			}
+			clrmod="alarm"
+			align="horiz. centered"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=304
+				y=41
+				width=40
+				height=12
+			}
+			monitor {
+				chan="$(CS):VER"
+				clr=14
+				bclr=2
+			}
+			clrmod="alarm"
+			align="horiz. centered"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=188
+				y=41
+				width=30
+				height=12
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="ID"
+		}
+		text {
+			object {
+				x=258
+				y=40
+				width=40
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="vers"
+			align="horiz. right"
+		}
+	}
+}
 composite {
 	object {
 		x=10
 		y=33
-		width=529
+		width=168
 		height=28
 	}
 	"composite name"=""
 	children {
 		composite {
 			object {
-				x=371
-				y=38
-				width=168
-				height=18
-			}
-			"composite name"=""
-			children {
-				"related display" {
-					object {
-						x=371
-						y=38
-						width=80
-						height=18
-					}
-					display[0] {
-						label="temperature"
-						name="Oxford_CS800.adl"
-						args="CS=$(CS)"
-					}
-					clr=14
-					bclr=6
-					label="-Main screen"
-				}
-				"related display" {
-					object {
-						x=459
-						y=38
-						width=80
-						height=18
-					}
-					display[0] {
-						label="status"
-						name="Oxford_CS800_status.adl"
-						args="CS=$(CS)"
-						policy="replace display"
-					}
-					display[1] {
-						label="admin"
-						name="Oxford_CS800_admin.adl"
-						args="CS=$(CS)"
-					}
-					clr=14
-					bclr=6
-					label="-More ..."
-				}
-			}
-		}
-		composite {
-			object {
-				x=184
+				x=10
 				y=33
 				width=168
 				height=28
@@ -1488,7 +1567,7 @@ composite {
 			children {
 				rectangle {
 					object {
-						x=184
+						x=10
 						y=33
 						width=168
 						height=28
@@ -1501,194 +1580,98 @@ composite {
 						chan="$(CS):HOLD"
 					}
 				}
-				"text update" {
-					object {
-						x=210
-						y=41
-						width=40
-						height=12
-					}
-					monitor {
-						chan="$(CS):CTRLNUM"
-						clr=14
-						bclr=2
-					}
-					clrmod="alarm"
-					align="horiz. centered"
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=304
-						y=41
-						width=40
-						height=12
-					}
-					monitor {
-						chan="$(CS):VER"
-						clr=14
-						bclr=2
-					}
-					clrmod="alarm"
-					align="horiz. centered"
-					limits {
-					}
-				}
 				text {
 					object {
-						x=188
+						x=14
 						y=41
-						width=30
-						height=12
+						width=40
+						height=11
 					}
 					"basic attribute" {
 						clr=14
 					}
-					textix="ID"
+					textix="comms"
 				}
-				text {
-					object {
-						x=258
-						y=40
-						width=40
-						height=14
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="vers"
-					align="horiz. right"
-				}
-			}
-		}
-		composite {
-			object {
-				x=10
-				y=33
-				width=168
-				height=28
-			}
-			"composite name"=""
-			children {
 				composite {
 					object {
-						x=10
-						y=33
-						width=168
-						height=28
+						x=58
+						y=39
+						width=45
+						height=17
 					}
 					"composite name"=""
 					children {
-						rectangle {
-							object {
-								x=10
-								y=33
-								width=168
-								height=28
-							}
-							"basic attribute" {
-								clr=14
-								fill="outline"
-							}
-							"dynamic attribute" {
-								chan="$(CS):HOLD"
-							}
-						}
-						text {
-							object {
-								x=14
-								y=41
-								width=40
-								height=11
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="comms"
-						}
-						composite {
+						"message button" {
 							object {
 								x=58
 								y=39
-								width=45
+								width=30
 								height=17
 							}
-							"composite name"=""
-							children {
-								"message button" {
-									object {
-										x=58
-										y=39
-										width=30
-										height=17
-									}
-									control {
-										chan="$(CS):DISABLE"
-										clr=54
-										bclr=56
-									}
-									label="ON"
-									press_msg="0"
-								}
-								rectangle {
-									object {
-										x=93
-										y=40
-										width=10
-										height=14
-									}
-									"basic attribute" {
-										clr=15
-									}
-									"dynamic attribute" {
-										vis="calc"
-										calc="A==0"
-										chan="$(CS):DISABLE"
-									}
-								}
+							control {
+								chan="$(CS):DISABLE"
+								clr=54
+								bclr=56
+							}
+							label="ON"
+							press_msg="0"
+						}
+						rectangle {
+							object {
+								x=93
+								y=40
+								width=10
+								height=14
+							}
+							"basic attribute" {
+								clr=15
+							}
+							"dynamic attribute" {
+								vis="calc"
+								calc="A==0"
+								chan="$(CS):DISABLE"
 							}
 						}
-						composite {
+					}
+				}
+				composite {
+					object {
+						x=126
+						y=39
+						width=45
+						height=17
+					}
+					"composite name"=""
+					children {
+						"message button" {
 							object {
 								x=126
 								y=39
-								width=45
+								width=30
 								height=17
 							}
-							"composite name"=""
-							children {
-								"message button" {
-									object {
-										x=126
-										y=39
-										width=30
-										height=17
-									}
-									control {
-										chan="$(CS):DISABLE"
-										clr=54
-										bclr=56
-									}
-									label="OFF"
-									press_msg="1"
-								}
-								rectangle {
-									object {
-										x=161
-										y=40
-										width=10
-										height=14
-									}
-									"basic attribute" {
-										clr=20
-									}
-									"dynamic attribute" {
-										vis="calc"
-										calc="A==1"
-										chan="$(CS):DISABLE"
-									}
-								}
+							control {
+								chan="$(CS):DISABLE"
+								clr=54
+								bclr=56
+							}
+							label="OFF"
+							press_msg="1"
+						}
+						rectangle {
+							object {
+								x=161
+								y=40
+								width=10
+								height=14
+							}
+							"basic attribute" {
+								clr=20
+							}
+							"dynamic attribute" {
+								vis="calc"
+								calc="A==1"
+								chan="$(CS):DISABLE"
 							}
 						}
 					}

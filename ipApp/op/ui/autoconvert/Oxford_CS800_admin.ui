@@ -14,6 +14,7 @@
         <string>
 
 QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
+QPushButton::menu-indicator {image: url(none.png); width: 0}
 
 </string>
     </property>
@@ -894,16 +895,16 @@ QWidget#centralWidget {background: rgba(187, 187, 187, 255);}
                     <enum>Menu</enum>
                 </property>
                 <property name="labels">
-                    <string>status;admin</string>
+                    <string>program;status;admin</string>
                 </property>
                 <property name="files">
-                    <string>Oxford_CS800_status.adl;Oxford_CS800_admin.adl</string>
+                    <string>Oxford_CS800_program.adl;Oxford_CS800_status.adl;Oxford_CS800_admin.adl</string>
                 </property>
                 <property name="args">
-                    <string>CS=$(CS);CS=$(CS)</string>
+                    <string>CS=$(CS);CS=$(CS);CS=$(CS)</string>
                 </property>
                 <property name="removeParent">
-                    <string>false;true</string>
+                    <string>true;true;true</string>
                 </property>
             </widget>
             <widget class="caRelatedDisplay" name="caRelatedDisplay_1">

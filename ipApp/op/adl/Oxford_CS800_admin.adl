@@ -1,7 +1,7 @@
 
 file {
-	name="/home/mintadmin/Documents/projects/ip/ipApp/op/adl/Oxford_CS800_admin.adl"
-	version=030114
+	name="/net/s19dserv/xorApps/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_admin.adl"
+	version=030111
 }
 display {
 	object {
@@ -449,11 +449,18 @@ composite {
 				height=18
 			}
 			display[0] {
+				label="program"
+				name="Oxford_CS800_program.adl"
+				args="CS=$(CS)"
+				policy="replace display"
+			}
+			display[1] {
 				label="status"
 				name="Oxford_CS800_status.adl"
 				args="CS=$(CS)"
+				policy="replace display"
 			}
-			display[1] {
+			display[2] {
 				label="admin"
 				name="Oxford_CS800_admin.adl"
 				args="CS=$(CS)"
