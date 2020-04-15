@@ -137,7 +137,8 @@ read { in "\xAA\xAB" 					# header \xAAAB,
 	  "\x04\x4c%02r"				# 1100
 	  "%02r%02r"					# 1101
 	  "%02r%02r"					# 1102
-	  "%02r%02r"					# 1103
+	  "%02r%(\$1:TURBOMODE.RVAL)02r"		# 1068
+	  "%02r%(\$1:VALVEOPENING.RVAL)02r"					# 1103
 	  "%02r%02r"					# 1104
 	  "%02r%02r"					# 1105
 	  "%02r%02r"					# 1106

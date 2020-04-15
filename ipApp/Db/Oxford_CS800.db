@@ -272,11 +272,23 @@ record(ai, "$(P)$(Q):TURBOMODE") {
   field(PINI, "YES")
 }
 
+# Param id 1103
+record(ai, "$(P)$(Q):VALVEOPENING") {
+  field(DESC, "Flow Block Valve Opening")
+  field(DTYP, "Raw Soft Channel")
+  field(EGU,  "%")
+  field(LOPR,  0)
+  field(HOPR,  100)
+  field(PINI, "YES")
+}
+
 # Param id 1203
 record(ai, "$(P)$(Q):LEVEL") {
   field(DESC, "Liquid Nitrogen Level")
   field(DTYP, "Raw Soft Channel")
   field(EGU,  "%")
+  field(LOPR,  0)
+  field(HOPR,  100)
   field(PINI, "YES")
 }
 
