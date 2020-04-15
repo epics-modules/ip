@@ -304,6 +304,22 @@ composite {
 		args="CS=$(CS)"
 	}
 	display[1] {
+		label="hour plot"
+		name="Oxford_CS800_hourplot.adl"
+		args="CS=$(CS)"
+	}
+	display[2] {
+		label="sensors, heaters, and flow"
+		name="Oxford_CS800_sensors.adl"
+		args="CS=$(CS)"
+	}
+	display[3] {
+		label="ramp, plat, cool, hold, ..."
+		name="Oxford_CS800_program.adl"
+		args="CS=$(CS)"
+		policy="replace display"
+	}
+	display[4] {
 		label="status"
 		name="Oxford_CS800_status.adl"
 		args="CS=$(CS)"

@@ -464,24 +464,25 @@ composite {
 				width=80
 				height=18
 			}
-			display[0] {
-				label="program"
-				name="Oxford_CS800_program.adl"
-				args="CS=$(CS)"
-			}
 			display[1] {
-				label="status"
-				name="Oxford_CS800_status.adl"
+				label="hour plot"
+				name="Oxford_CS800_hourplot.adl"
 				args="CS=$(CS)"
 			}
 			display[2] {
-				label="admin"
-				name="Oxford_CS800_admin.adl"
+				label="sensors, heaters, and flow"
+				name="Oxford_CS800_sensors.adl"
 				args="CS=$(CS)"
 			}
 			display[3] {
-				label="hour plot"
-				name="Oxford_CS800_hourplot.adl"
+				label="ramp, plat, cool, hold, ..."
+				name="Oxford_CS800_program.adl"
+				args="CS=$(CS)"
+				policy="replace display"
+			}
+			display[4] {
+				label="status"
+				name="Oxford_CS800_status.adl"
 				args="CS=$(CS)"
 			}
 			clr=14
