@@ -1,7 +1,7 @@
 
 file {
-	name="/net/s19dserv/xorApps/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_admin.adl"
-	version=030111
+	name="/usr/local/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_admin.adl"
+	version=030114
 }
 display {
 	object {
@@ -443,35 +443,6 @@ composite {
 	children {
 		"related display" {
 			object {
-				x=98
-				y=211
-				width=80
-				height=18
-			}
-			display[0] {
-				label="program"
-				name="Oxford_CS800_program.adl"
-				args="CS=$(CS)"
-				policy="replace display"
-			}
-			display[1] {
-				label="status"
-				name="Oxford_CS800_status.adl"
-				args="CS=$(CS)"
-				policy="replace display"
-			}
-			display[2] {
-				label="admin"
-				name="Oxford_CS800_admin.adl"
-				args="CS=$(CS)"
-				policy="replace display"
-			}
-			clr=14
-			bclr=6
-			label="-More ..."
-		}
-		"related display" {
-			object {
 				x=10
 				y=211
 				width=80
@@ -485,6 +456,37 @@ composite {
 			clr=14
 			bclr=6
 			label="-Main screen"
+		}
+		"related display" {
+			object {
+				x=98
+				y=211
+				width=80
+				height=18
+			}
+			display[0] {
+				label="program"
+				name="Oxford_CS800_program.adl"
+				args="CS=$(CS)"
+			}
+			display[1] {
+				label="status"
+				name="Oxford_CS800_status.adl"
+				args="CS=$(CS)"
+			}
+			display[2] {
+				label="admin"
+				name="Oxford_CS800_admin.adl"
+				args="CS=$(CS)"
+			}
+			display[3] {
+				label="hour plot"
+				name="Oxford_CS800_hourplot.adl"
+				args="CS=$(CS)"
+			}
+			clr=14
+			bclr=6
+			label="-More ..."
 		}
 	}
 }

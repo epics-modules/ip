@@ -91,7 +91,7 @@ text {
 	object {
 		x=10
 		y=8
-		width=330
+		width=341
 		height=20
 	}
 	"basic attribute" {
@@ -126,6 +126,16 @@ composite {
 	display[1] {
 		label="status"
 		name="Oxford_CS800_status.adl"
+		args="CS=$(CS)"
+	}
+	display[2] {
+		label="hour plot"
+		name="Oxford_CS800_hourplot.adl"
+		args="CS=$(CS)"
+	}
+	display[3] {
+		label="sensors, heaters, and flow"
+		name="Oxford_CS800_sensors.adl"
 		args="CS=$(CS)"
 	}
 	clr=14
@@ -303,16 +313,6 @@ composite {
 	}
 	period=300.000000
 	pen[0] {
-		chan="$(CS):TARGETTEMP"
-		clr=51
-		limits {
-			loprSrc="default"
-			loprDefault=80
-			hoprSrc="default"
-			hoprDefault=300
-		}
-	}
-	pen[1] {
 		chan="$(CS):SETPOINT"
 		clr=20
 		limits {
@@ -322,7 +322,7 @@ composite {
 			hoprDefault=300
 		}
 	}
-	pen[2] {
+	pen[1] {
 		chan="$(CS):TEMP"
 		clr=15
 		limits {
@@ -333,140 +333,199 @@ composite {
 		}
 	}
 }
-composite {
+rectangle {
 	object {
 		x=10
 		y=58
 		width=341
 		height=100
 	}
+	"basic attribute" {
+		clr=14
+		fill="outline"
+	}
+	"dynamic attribute" {
+		chan="$(CS):HOLD"
+	}
+}
+composite {
+	object {
+		x=11
+		y=139
+		width=329
+		height=10
+	}
 	"composite name"=""
 	children {
-		rectangle {
-			object {
-				x=10
-				y=58
-				width=341
-				height=100
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-			"dynamic attribute" {
-				chan="$(CS):HOLD"
-			}
-		}
 		composite {
 			object {
 				x=11
 				y=139
-				width=329
+				width=134
 				height=10
 			}
 			"composite name"=""
 			children {
-				composite {
+				text {
 					object {
 						x=11
 						y=139
-						width=134
+						width=50
 						height=10
 					}
-					"composite name"=""
-					children {
-						text {
-							object {
-								x=11
-								y=139
-								width=50
-								height=10
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="Phase: "
-							align="horiz. right"
-						}
-						"text update" {
-							object {
-								x=65
-								y=139
-								width=80
-								height=10
-							}
-							monitor {
-								chan="$(CS):PHASE"
-								clr=14
-								bclr=2
-							}
-							clrmod="alarm"
-							align="horiz. centered"
-							limits {
-							}
-						}
+					"basic attribute" {
+						clr=14
 					}
+					textix="Phase: "
+					align="horiz. right"
 				}
-				composite {
+				"text update" {
 					object {
-						x=175
+						x=65
 						y=139
-						width=165
+						width=80
 						height=10
 					}
-					"composite name"=""
-					children {
-						text {
-							object {
-								x=260
-								y=139
-								width=80
-								height=10
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="minutes left"
-						}
-						"text update" {
-							object {
-								x=175
-								y=139
-								width=80
-								height=10
-							}
-							monitor {
-								chan="$(CS):REMAINING"
-								clr=14
-								bclr=2
-							}
-							clrmod="alarm"
-							align="horiz. centered"
-							limits {
-							}
-						}
+					monitor {
+						chan="$(CS):PHASE"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
 					}
 				}
 			}
 		}
 		composite {
 			object {
-				x=18
+				x=175
+				y=139
+				width=165
+				height=10
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=260
+						y=139
+						width=80
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="minutes left"
+				}
+				"text update" {
+					object {
+						x=175
+						y=139
+						width=80
+						height=10
+					}
+					monitor {
+						chan="$(CS):REMAINING"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
+"text update" {
+	object {
+		x=18
+		y=98
+		width=200
+		height=36
+	}
+	monitor {
+		chan="$(CS):TEMP"
+		clr=15
+		bclr=12
+	}
+	clrmod="alarm"
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=218
+		y=98
+		width=125
+		height=36
+	}
+	monitor {
+		chan="$(CS):TEMP.EGU"
+		clr=15
+		bclr=12
+	}
+	clrmod="alarm"
+	limits {
+	}
+}
+composite {
+	object {
+		x=19
+		y=58
+		width=325
+		height=35
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=19
 				y=58
-				width=326
-				height=76
+				width=160
+				height=8
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="current setpoint"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=184
+				y=58
+				width=160
+				height=8
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="target setpoint"
+			align="horiz. centered"
+		}
+		composite {
+			object {
+				x=19
+				y=71
+				width=160
+				height=22
 			}
 			"composite name"=""
 			children {
 				"text update" {
 					object {
-						x=18
-						y=98
-						width=200
-						height=36
+						x=19
+						y=71
+						width=100
+						height=22
 					}
 					monitor {
-						chan="$(CS):TEMP"
+						chan="$(CS):SETPOINT"
 						clr=15
 						bclr=12
 					}
@@ -477,13 +536,13 @@ composite {
 				}
 				"text update" {
 					object {
-						x=218
-						y=98
-						width=125
-						height=36
+						x=119
+						y=71
+						width=60
+						height=22
 					}
 					monitor {
-						chan="$(CS):TEMP.EGU"
+						chan="$(CS):SETPOINT.EGU"
 						clr=15
 						bclr=12
 					}
@@ -491,129 +550,48 @@ composite {
 					limits {
 					}
 				}
-				composite {
+			}
+		}
+		composite {
+			object {
+				x=184
+				y=71
+				width=160
+				height=22
+			}
+			"composite name"=""
+			children {
+				"text update" {
 					object {
-						x=19
-						y=58
-						width=325
-						height=35
+						x=184
+						y=71
+						width=100
+						height=22
 					}
-					"composite name"=""
-					children {
-						text {
-							object {
-								x=19
-								y=58
-								width=160
-								height=8
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="current setpoint"
-							align="horiz. centered"
-						}
-						text {
-							object {
-								x=184
-								y=58
-								width=160
-								height=8
-							}
-							"basic attribute" {
-								clr=14
-							}
-							textix="target setpoint"
-							align="horiz. centered"
-						}
-						composite {
-							object {
-								x=19
-								y=71
-								width=160
-								height=22
-							}
-							"composite name"=""
-							children {
-								"text update" {
-									object {
-										x=19
-										y=71
-										width=100
-										height=22
-									}
-									monitor {
-										chan="$(CS):SETPOINT"
-										clr=15
-										bclr=12
-									}
-									clrmod="alarm"
-									align="horiz. right"
-									limits {
-									}
-								}
-								"text update" {
-									object {
-										x=119
-										y=71
-										width=60
-										height=22
-									}
-									monitor {
-										chan="$(CS):SETPOINT.EGU"
-										clr=15
-										bclr=12
-									}
-									clrmod="alarm"
-									limits {
-									}
-								}
-							}
-						}
-						composite {
-							object {
-								x=184
-								y=71
-								width=160
-								height=22
-							}
-							"composite name"=""
-							children {
-								"text update" {
-									object {
-										x=184
-										y=71
-										width=100
-										height=22
-									}
-									monitor {
-										chan="$(CS):TARGETTEMP"
-										clr=15
-										bclr=12
-									}
-									clrmod="alarm"
-									align="horiz. right"
-									limits {
-									}
-								}
-								"text update" {
-									object {
-										x=284
-										y=71
-										width=60
-										height=22
-									}
-									monitor {
-										chan="$(CS):TARGETTEMP.EGU"
-										clr=15
-										bclr=12
-									}
-									clrmod="alarm"
-									limits {
-									}
-								}
-							}
-						}
+					monitor {
+						chan="$(CS):TARGETTEMP"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=284
+						y=71
+						width=60
+						height=22
+					}
+					monitor {
+						chan="$(CS):TARGETTEMP.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
 					}
 				}
 			}
