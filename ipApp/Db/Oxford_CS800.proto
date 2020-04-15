@@ -105,7 +105,7 @@ read { in "\xAA\xAB" 					# header \xAAAB,
 	  "%02r%(\$1:GASHEAT.RVAL)02r"			# 1061
 	  "%02r%(\$1:EVAPHEAT.RVAL)02r"			# 1062
 	  "%02r%(\$1:SUCTHEAT.RVAL)02r"			# 1063
-	  "%02r%(\$1:BACKPRESS.RVAL)02r"		# 1064
+	  "%02r%02r"					# 1064
 	  "%02r%(\$1:ALARMI.RVAL)02r"			# 1065
 	  "%02r%(\$1:RUNTIME.RVAL)02r"			# 1066
 	  "%02r%(\$1:EVAPADJUST.RVAL)02r"		# 1067
@@ -135,7 +135,7 @@ read { in "\xAA\xAB" 					# header \xAAAB,
 	  "%02r%02r"					# 1097
 	  "\x04\x4a%02r"				# 1098
 	  "\x04\x4c%02r"				# 1100
-	  "%02r%02r"					# 1101
+	  "%02r%(\$1:BACKPRESS.RVAL)02r"		# 1101
 	  "%02r%02r"					# 1102
 	  "%02r%(\$1:VALVEOPENING.RVAL)02r"					# 1103
 	  "%02r%02r"					# 1104
