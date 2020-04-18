@@ -37,6 +37,21 @@ ipApp/op/adl/Oxford_CS800.adl | MEDM screen
 
 ## IOC configuration
 
+This support reads UDP broadcasts from the CS800 controller on port 30304 and 
+writes commands to the controller by UDP on port 30305.  A specific controller 
+is identified by its IP address, specified in the `st.cmd` file with environment
+variable `CS800_IP_ADDR`.
+
+Because `asyn` will bind to these sockets during the IOC startup, they are
+not available for any other applications to use on the workstation running 
+the IOC.  Thus, only one IOC supporting one CS800 can run on a single workstation.
+To support multiple CS800 controllers run each IOC on a different workstation.
+
+NOTE:  A [request](https://github.com/epics-modules/asyn/issues/108) has 
+been made to the *asyn* repository to support the 
+[`SO_REUSEPORT`](https://lwn.net/Articles/542629/) socket option
+that would allow multiple IOCs to be run from the same host.
+
 ### IOC startup directory
 
 Instructions for EPICS base release 3.15 or later.
