@@ -52,16 +52,18 @@ Add these lines to the IOC's `st.cmd` file before the call to `iocInit`:
     epicsEnvSet("STREAM_PROTOCOL_PATH", "$(IP)/ipApp/Db")
 
     # Oxford CryoStream 800 cooler
-    epicsEnvSet("STATUS_ADDR", "255.255.255.255:30304:30304 UDP")
-    epicsEnvSet("COMMAND_ADDR", "10.0.0.173:30305 UDP*")
+    epicsEnvSet("CS800_IP_ADDR", "10.0.0.173")
+    epicsEnvSet("STATUS_ADDR", "$(CS800_IP_ADDR):30304:30304 UDP")
+    epicsEnvSet("COMMAND_ADDR", "$(CS800_IP_ADDR):30305 UDP")
     iocshLoad("$(IP)ipApp/Db/Oxford_CS800.iocsh", "PREFIX=$(PREFIX),INSTANCE=CS")
 
 #### `auto_settings.req`
 
-Most autosave request files are named by deleting 
-`.db` from the database name, and adding `_settings.req`
-so that `autosaveBuild` can include it automatically 
-when the database is loaded.
+By convention to enable automatic discovery of *autosave* requests,
+the autosave request file is in the same directory with
+the PV database file.  Both files share the same filename, 
+up to the final part of the name (`_settings.req` and 
+`.db`, respectively).
 
 Thus, no additional configuration is needed here.
 
