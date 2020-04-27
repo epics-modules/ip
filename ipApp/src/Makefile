@@ -24,7 +24,6 @@ ip_SRCS += Keithley65xxEM.st
 ip_SRCS += Keithley2kDMM_mf40.st
 ip_SRCS += Federal.st
 ip_SRCS += Oxford_CS800.st
-ip_SRCS += demo_dither.st
 ip_SRCS += devMPC.c
 ip_SRCS += devGP307gpib.c  
 ip_SRCS += devXxHeidenhainGpib.c
