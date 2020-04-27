@@ -1,4 +1,4 @@
-program cs800 ("name=cs0, CID=0, P=xxx:, R=CS0:, SP=xxx:CS:status_packet")
+program Oxford_CS800 ("name=cs0, CID=0, P=xxx:, R=CS0:, SP=xxx:CS:status_packet")
 
 /* option -c;  /* Begin execution before PV connections complete */
 option +d;  /* turn ON run-time debugging messages */
@@ -62,11 +62,51 @@ option -w;  /* Suppress SNC warnings */
       value = getParam(_PARAM_ID_, param_id, param_value);       \
       if (value != NOT_FOUND) PVPUT(_PV_, value);
 
-#define PARAM_CONTROLLER_NUMBER       (1028)
-#define PARAM_CONTROLLER_SETPOINT     (1050)
-#define PARAM_CONTROLLER_TEMPERATURE  (1051)
-#define PARAM_CONTROLLER_RUNMODE      (1053)
-#define PARAM_CONTROLLER_PHASE        (1054)
+#define PARAM_DEVICETYPE      (1000)
+#define PARAM_DEVICESUBTYPE   (1001)
+#define PARAM_DEVICEMINTEMP   (1002)
+#define PARAM_DEVICEMAXTEMP   (1003)
+#define PARAM_VER             (1004)
+#define PARAM_CTRLNUM         (1028)
+#define PARAM_SETPOINT        (1050)
+#define PARAM_TEMP            (1051)
+#define PARAM_ERROR           (1052)
+#define PARAM_RUNMODE         (1053)
+#define PARAM_PHASE           (1054)
+#define PARAM_RAMPRATE        (1055)
+#define PARAM_TARGETTEMP      (1056)
+#define PARAM_EVAPTEMP        (1057)
+#define PARAM_SUCTTEMP        (1058)
+#define PARAM_REMAINING       (1059)
+#define PARAM_GASFLOW         (1060)
+#define PARAM_GASHEAT         (1061)
+#define PARAM_EVAPHEAT        (1062)
+#define PARAM_SUCTHEAT        (1063)
+#define PARAM_ALARMI          (1065)
+#define PARAM_RUNTIME         (1066)
+#define PARAM_EVAPADJUST      (1067)
+#define PARAM_TURBOMODE       (1068)
+#define PARAM_BACKPRESS       (1101)
+#define PARAM_VALVEOPENING    (1103)
+#define PARAM_LEVEL           (1203)
+#define PARAM_COLDHEADTEMP    (2010)
+#define PARAM_SHIELDTEMP      (2011)
+#define PARAM_VACGAUGE        (2012)
+#define PARAM_NOZZLETEMP      (2013)
+#define PARAM_SAMPLEHEAT      (2014)
+#define PARAM_COLDHEADHEAT    (2015)
+#define PARAM_SHIELDHEAT      (2016)
+#define PARAM_NOZZLEHEAT      (2017)
+#define PARAM_AVGSAMPLEHEAT   (2019)
+#define PARAM_AVGNOZZLEHEAT   (2020)
+#define PARAM_SAMHOLDTEMP     (2030)
+#define PARAM_CRYOSTATTEMP    (2031)
+#define PARAM_SAMHOLDPRES     (2032)
+#define PARAM_ELAPSED         (2034)
+#define PARAM_SUCTSETTEMP     (2035)
+#define PARAM_NOZZLESETTEMP   (2036)
+#define PARAM_COLLARTEMP      (2041)
+#define PARAM_VACSENSOR       (2042)
 
 
 /****
@@ -77,13 +117,13 @@ char scratch[256];
 int i;
 int cid;
 int s_cid;
-int value;
-int s_checksum;
+unsigned int value;
+unsigned int s_checksum;
 int param_id[NUMBER_OF_PARAMETERS];
-int param_value[NUMBER_OF_PARAMETERS];
+unsigned int param_value[NUMBER_OF_PARAMETERS];
 char*   SNLtaskName;
 
-%% int getParam(int id, int *pid, int *pval);
+%% int getParam(int id, int *pid, unsigned int *pval);
 
 /*------------------------------------------------ 
   ------------------------------------------------   assignments
@@ -92,20 +132,63 @@ char*   SNLtaskName;
 /**** 
  **** asyn record
  ****/
-PV(int, s_nrrd, "{SP}.NRRD", Monitor);       /* number bytes received */
-PVA(short, s_binp, STATUS_PACKET_VALID_LENGTH, "{SP}.BINP", Monitor);    /* Binary input */
+PV(unsigned int, s_nrrd, "{SP}.NRRD", Monitor);       /* number bytes received */
+PVA(short, s_binp, STATUS_PACKET_VALID_LENGTH, "{SP}.BINP", EvFlag);    /* Binary input */
 
 
 /**** 
  **** CS800 controller database 
  ****/
-PV(int, disable,      "{P}{R}disable",          Monitor);
-PV(int, setpoint,     "{P}{R}setpoint.RVAL",    NoMon);
-PV(int, temperature,  "{P}{R}temperature.RVAL", NoMon);
-PV(int, run_mode,     "{P}{R}runmode.RVAL",     NoMon);
-PV(int, phase,        "{P}{R}phase.RVAL",       NoMon);
+PV(unsigned int, disable,      "{P}{R}DISABLE",          Monitor);
+PV(unsigned int, setpoint,     "{P}{R}SETPOINT.RVAL",    NoMon);
+PV(unsigned int, temperature,  "{P}{R}TEMP.RVAL",        NoMon);
+PV(unsigned int, run_mode,     "{P}{R}RUNMODE.RVAL",     NoMon);
+PV(unsigned int, phase,        "{P}{R}PHASE.RVAL",       NoMon);
+PV(string, alarm,     "{P}{R}ALARM",            NoMon);
 
-PV(int, debug_flag, "{P}{R}debug", Monitor);    /* SNL diagnostics level */
+PV(unsigned int, debug_flag, "{P}{R}DEBUG", Monitor);    /* SNL diagnostics level */
+
+PV(unsigned int, devicetype, "{P}{R}DEVICETYPE.RVAL", NoMon);
+PV(unsigned int, devicesubtype, "{P}{R}DEVICESUBTYPE.RVAL", NoMon);
+PV(unsigned int, devicemintemp, "{P}{R}DEVICEMINTEMP.RVAL", NoMon);
+PV(unsigned int, devicemaxtemp, "{P}{R}DEVICEMAXTEMP.RVAL", NoMon);
+PV(unsigned int, ver, "{P}{R}VER.RVAL", NoMon);
+PV(unsigned int, ramprate, "{P}{R}RAMPRATE.RVAL", NoMon);
+PV(unsigned int, targettemp, "{P}{R}TARGETTEMP.RVAL", NoMon);
+PV(unsigned int, evaptemp, "{P}{R}EVAPTEMP.RVAL", NoMon);
+PV(unsigned int, sucttemp, "{P}{R}SUCTTEMP.RVAL", NoMon);
+PV(unsigned int, remaining, "{P}{R}REMAINING.RVAL", NoMon);
+PV(unsigned int, gasflow, "{P}{R}GASFLOW.RVAL", NoMon);
+PV(unsigned int, gasheat, "{P}{R}GASHEAT.RVAL", NoMon);
+PV(unsigned int, evapheat, "{P}{R}EVAPHEAT.RVAL", NoMon);
+PV(unsigned int, suctheat, "{P}{R}SUCTHEAT.RVAL", NoMon);
+PV(unsigned int, backpress, "{P}{R}BACKPRESS.RVAL", NoMon);
+PV(unsigned int, runtime, "{P}{R}RUNTIME.RVAL", NoMon);
+PV(unsigned int, alarmi, "{P}{R}ALARMI.RVAL", NoMon);
+PV(unsigned int, ctrlnum, "{P}{R}CTRLNUM.RVAL", NoMon);
+PV(unsigned int, evapadjust, "{P}{R}EVAPADJUST.RVAL", NoMon);
+PV(unsigned int, turbomode, "{P}{R}TURBOMODE.RVAL", NoMon);
+PV(unsigned int, valveopening, "{P}{R}VALVEOPENING.RVAL", NoMon);
+PV(unsigned int, level, "{P}{R}LEVEL.RVAL", NoMon);
+PV(unsigned int, error, "{P}{R}ERROR.RVAL", NoMon);
+PV(unsigned int, coldheadtemp, "{P}{R}COLDHEADTEMP.RVAL", NoMon);
+PV(unsigned int, shieldtemp, "{P}{R}SHIELDTEMP.RVAL", NoMon);
+PV(unsigned int, vacgauge, "{P}{R}VACGAUGE.RVAL", NoMon);
+PV(unsigned int, nozzletemp, "{P}{R}NOZZLETEMP.RVAL", NoMon);
+PV(unsigned int, sampleheat, "{P}{R}SAMPLEHEAT.RVAL", NoMon);
+PV(unsigned int, coldheadheat, "{P}{R}COLDHEADHEAT.RVAL", NoMon);
+PV(unsigned int, shieldheat, "{P}{R}SHIELDHEAT.RVAL", NoMon);
+PV(unsigned int, nozzleheat, "{P}{R}NOZZLEHEAT.RVAL", NoMon);
+PV(unsigned int, avgsampleheat, "{P}{R}AVGSAMPLEHEAT.RVAL", NoMon);
+PV(unsigned int, avgnozzleheat, "{P}{R}AVGNOZZLEHEAT.RVAL", NoMon);
+PV(unsigned int, samholdtemp, "{P}{R}SAMHOLDTEMP.RVAL", NoMon);
+PV(unsigned int, cryostattemp, "{P}{R}CRYOSTATTEMP.RVAL", NoMon);
+PV(unsigned int, samholdpres, "{P}{R}SAMHOLDPRES.RVAL", NoMon);
+PV(unsigned int, elapsed, "{P}{R}ELAPSED.RVAL", NoMon);
+PV(unsigned int, suctsettemp, "{P}{R}SUCTSETTEMP.RVAL", NoMon);
+PV(unsigned int, nozzlesettemp, "{P}{R}NOZZLESETTEMP.RVAL", NoMon);
+PV(unsigned int, collartemp, "{P}{R}COLLARTEMP.RVAL", NoMon);
+PV(unsigned int, vacsensor, "{P}{R}VACSENSOR.RVAL", NoMon);
 
 
 /* 
@@ -120,11 +203,14 @@ ss cs800 {
       pvGet(s_nrrd);
       
       cid = atoi(macValueGet("CID"));
+      efSet(s_binp_mon);
 
-      DEBUG_PRINT1(DEBUGLEVEL_INFO, "controller ID: %d", cid);
-      DEBUG_PRINT1(DEBUGLEVEL_INFO, "IOC prefix: %s", macValueGet("P"));
-      DEBUG_PRINT1(DEBUGLEVEL_INFO, "controller database: %s", macValueGet("R"));
-      DEBUG_PRINT1(DEBUGLEVEL_INFO, "status packet PV: %s", macValueGet("SP"));
+      printf("(%s,#%d) PV prefix %s%s\n", 
+             macValueGet("name"), 
+             cid,
+             macValueGet("P"),
+             macValueGet("R"));
+      printf("(%s) status packet PV: %s\n", macValueGet("name"), macValueGet("SP"));
     } state idle
   }
 
@@ -136,7 +222,7 @@ ss cs800 {
 
     when (disable) {} state ignore
 
-    when (s_nrrd == STATUS_PACKET_VALID_LENGTH) {
+    when (efTestAndClear(s_binp_mon) && s_nrrd == STATUS_PACKET_VALID_LENGTH) {
       /* interpret binary input buffer
 
          ignore ...
@@ -153,16 +239,16 @@ ss cs800 {
       }
 
       /*
-       * If CID was given as 0 (or negative), then look at the first packet
+       * If CID was given as 0, then look at the first packet
        * and reassign cid to the controller ID found in that packet.
        * This is likely the default case when only one CS800 controller
        * is on the network.  No need to identify the controller by 
        * number since it is the only one.
        */
-      s_cid = getParam(PARAM_CONTROLLER_NUMBER, param_id, param_value);
-      if (cid < 1) {
+      s_cid = getParam(PARAM_CTRLNUM, param_id, param_value);
+      if (cid == 0) {
         cid = s_cid;
-        DEBUG_PRINT1(DEBUGLEVEL_INFO, "choosing controller ID: %d", cid);
+        printf("(%s) choosing controller ID: %d\n", macValueGet("name"), cid);
       }
     } state validate
 
@@ -192,7 +278,7 @@ ss cs800 {
     when (cid < 1) {} state idle
 
     when (cid != s_cid) {
-        DEBUG_PRINT2(DEBUGLEVEL_DEBUG, "controller ID mismatch: expected=%d received=%d", cid, s_cid);
+        // DEBUG_PRINT2(DEBUGLEVEL_DEBUG, "controller ID mismatch: expected=%d received=%d", cid, s_cid);
     } state idle
 
     when () {} state process
@@ -207,10 +293,121 @@ ss cs800 {
     when (disable) {} state ignore
 
     when () {
-      CHECK_PVPUT(setpoint,     PARAM_CONTROLLER_SETPOINT);
-      CHECK_PVPUT(temperature,  PARAM_CONTROLLER_TEMPERATURE);
-      CHECK_PVPUT(run_mode,     PARAM_CONTROLLER_RUNMODE);
-      CHECK_PVPUT(phase,        PARAM_CONTROLLER_PHASE);
+      CHECK_PVPUT(setpoint,     PARAM_SETPOINT);
+      CHECK_PVPUT(temperature,  PARAM_TEMP);
+      CHECK_PVPUT(run_mode,     PARAM_RUNMODE);
+      CHECK_PVPUT(phase,        PARAM_PHASE);
+
+      CHECK_PVPUT(devicetype, PARAM_DEVICETYPE);
+      CHECK_PVPUT(devicesubtype, PARAM_DEVICESUBTYPE);
+      CHECK_PVPUT(devicemintemp, PARAM_DEVICEMINTEMP);
+      CHECK_PVPUT(devicemaxtemp, PARAM_DEVICEMAXTEMP);
+      CHECK_PVPUT(ver, PARAM_VER);
+      CHECK_PVPUT(ramprate, PARAM_RAMPRATE);
+      CHECK_PVPUT(targettemp, PARAM_TARGETTEMP);
+      CHECK_PVPUT(evaptemp, PARAM_EVAPTEMP);
+      CHECK_PVPUT(sucttemp, PARAM_SUCTTEMP);
+      CHECK_PVPUT(remaining, PARAM_REMAINING);
+      CHECK_PVPUT(gasflow, PARAM_GASFLOW);
+      CHECK_PVPUT(gasheat, PARAM_GASHEAT);
+      CHECK_PVPUT(evapheat, PARAM_EVAPHEAT);
+      CHECK_PVPUT(suctheat, PARAM_SUCTHEAT);
+      CHECK_PVPUT(backpress, PARAM_BACKPRESS);
+      CHECK_PVPUT(runtime, PARAM_RUNTIME);
+      CHECK_PVPUT(alarmi, PARAM_ALARMI);
+      CHECK_PVPUT(ctrlnum, PARAM_CTRLNUM);
+      /* DIAGNOSTIC
+      printf("(%s,#%d) PV prefix %s%s update ID=%d  PHASE=%d  SP=%d  T=%d\n", 
+             macValueGet("name"), 
+             cid,
+             macValueGet("P"),
+             macValueGet("R"),
+             ctrlnum,
+             phase,
+             setpoint,
+             temperature);
+      */
+      CHECK_PVPUT(evapadjust, PARAM_EVAPADJUST);
+      CHECK_PVPUT(turbomode, PARAM_TURBOMODE);
+      CHECK_PVPUT(valveopening, PARAM_VALVEOPENING);
+      CHECK_PVPUT(level, PARAM_LEVEL);
+      CHECK_PVPUT(error, PARAM_ERROR);
+      CHECK_PVPUT(coldheadtemp, PARAM_COLDHEADTEMP);
+      CHECK_PVPUT(shieldtemp, PARAM_SHIELDTEMP);
+      CHECK_PVPUT(vacgauge, PARAM_VACGAUGE);
+      CHECK_PVPUT(nozzletemp, PARAM_NOZZLETEMP);
+      CHECK_PVPUT(sampleheat, PARAM_SAMPLEHEAT);
+      CHECK_PVPUT(coldheadheat, PARAM_COLDHEADHEAT);
+      CHECK_PVPUT(shieldheat, PARAM_SHIELDHEAT);
+      CHECK_PVPUT(nozzleheat, PARAM_NOZZLEHEAT);
+      CHECK_PVPUT(avgsampleheat, PARAM_AVGSAMPLEHEAT);
+      CHECK_PVPUT(avgnozzleheat, PARAM_AVGNOZZLEHEAT);
+      CHECK_PVPUT(samholdtemp, PARAM_SAMHOLDTEMP);
+      CHECK_PVPUT(cryostattemp, PARAM_CRYOSTATTEMP);
+      CHECK_PVPUT(samholdpres, PARAM_SAMHOLDPRES);
+      CHECK_PVPUT(elapsed, PARAM_ELAPSED);
+      CHECK_PVPUT(suctsettemp, PARAM_SUCTSETTEMP);
+      CHECK_PVPUT(nozzlesettemp, PARAM_NOZZLESETTEMP);
+      CHECK_PVPUT(collartemp, PARAM_COLLARTEMP);
+      CHECK_PVPUT(vacsensor, PARAM_VACSENSOR);
+
+      if (alarmi == 0) {PVPUTSTR(alarm, "No error")}
+      else if (alarmi == 1) {PVPUTSTR(alarm, "Stop Pressed")}
+      else if (alarmi == 2) {PVPUTSTR(alarm, "Stop Command")}
+      else if (alarmi == 3) {PVPUTSTR(alarm, "End Complete")}
+      else if (alarmi == 4) {PVPUTSTR(alarm, "Purge Complete")}
+      else if (alarmi == 5) {PVPUTSTR(alarm, "Temp Warning")}
+      else if (alarmi == 6) {PVPUTSTR(alarm, "Pressure Warning")}
+      else if (alarmi == 7) {PVPUTSTR(alarm, "Check Vacuum")}
+      else if (alarmi == 8) {PVPUTSTR(alarm, "Self-check Fail")}
+      else if (alarmi == 9) {PVPUTSTR(alarm, "Flow Rate Fail")}
+      else if (alarmi == 10) {PVPUTSTR(alarm, "Temp Control Error")}
+      else if (alarmi == 11) {PVPUTSTR(alarm, "Gas Type Error")}
+      else if (alarmi == 12) {PVPUTSTR(alarm, "Temp Reading Error")}
+      else if (alarmi == 13) {PVPUTSTR(alarm, "Suct Temp Error")}
+      else if (alarmi == 14) {PVPUTSTR(alarm, "Sensor Fail")}
+      else if (alarmi == 15) {PVPUTSTR(alarm, "Brownout")}
+      else if (alarmi == 16) {PVPUTSTR(alarm, "Sink Overheat")}
+      else if (alarmi == 17) {PVPUTSTR(alarm, "PSU Overheat")}
+      else if (alarmi == 18) {PVPUTSTR(alarm, "Power Loss")}
+      else if (alarmi == 19) {PVPUTSTR(alarm, "Coldhead Too Cold")}
+      else if (alarmi == 20) {PVPUTSTR(alarm, "Coldhead Timeout")}
+      else if (alarmi == 21) {PVPUTSTR(alarm, "Cryodrive Not Found")}
+      else if (alarmi == 22) {PVPUTSTR(alarm, "Cryodrive Error")}
+      else if (alarmi == 23) {PVPUTSTR(alarm, "No Nitrogen")}
+      else if (alarmi == 24) {PVPUTSTR(alarm, "No Helium")}
+      else if (alarmi == 25) {PVPUTSTR(alarm, "Vac Gauge Fail")}
+      else if (alarmi == 26) {PVPUTSTR(alarm, "Vac Reading Error")}
+      else if (alarmi == 27) {PVPUTSTR(alarm, "RS232 Error")}
+      else if (alarmi == 28) {PVPUTSTR(alarm, "Coldhead Temp Warning")}
+      else if (alarmi == 29) {PVPUTSTR(alarm, "Coldhead Temp Error")}
+      else if (alarmi == 30) {PVPUTSTR(alarm, "Do Not Open Cryostate")}
+      else if (alarmi == 31) {PVPUTSTR(alarm, "Do Not Open Cryostat")}
+      else if (alarmi == 32) {PVPUTSTR(alarm, "Unplug Xtal Sensor")}
+      else if (alarmi == 33) {PVPUTSTR(alarm, "Cryostat Open")}
+      else if (alarmi == 34) {PVPUTSTR(alarm, "High Temp Warning")}
+      else if (alarmi == 35) {PVPUTSTR(alarm, "High Temp Error")}
+      else if (alarmi == 36) {PVPUTSTR(alarm, "Cryodrive T Sensor Fault")}
+      else if (alarmi == 37) {PVPUTSTR(alarm, "Cryodrive P Sensor Fault")}
+      else if (alarmi == 38) {PVPUTSTR(alarm, "Cryodrive Low T Trip")}
+      else if (alarmi == 39) {PVPUTSTR(alarm, "Cryodrive High T Trip")}
+      else if (alarmi == 40) {PVPUTSTR(alarm, "Cryodrive Low P Trip")}
+      else if (alarmi == 41) {PVPUTSTR(alarm, "Cryodrive High T Warning")}
+      else if (alarmi == 42) {PVPUTSTR(alarm, "Cryodrive Low P Warning")}
+      else if (alarmi == 43) {PVPUTSTR(alarm, "Connect Gas Supply")}
+      else if (alarmi == 44) {PVPUTSTR(alarm, "Autofill Fault")}
+      else if (alarmi == 45) {PVPUTSTR(alarm, "Autofill About To Fill")}
+      else if (alarmi == 46) {PVPUTSTR(alarm, "Autofill Filling")}
+      else if (alarmi == 47) {PVPUTSTR(alarm, "Collar Temp Error")}
+      else if (alarmi == 48) {PVPUTSTR(alarm, "Coldhead Error")}
+      else if (alarmi == 49) {PVPUTSTR(alarm, "Turbo Flow")}
+      else if (alarmi == 50) {PVPUTSTR(alarm, "He Selected")}
+      else if (alarmi == 51) {PVPUTSTR(alarm, "Cryodrive Not Ready")}
+      else if (alarmi == 52) {PVPUTSTR(alarm, "Regen Required")}
+      else if (alarmi == 53) {PVPUTSTR(alarm, "Regen Complete")}
+      else if (alarmi == 54) {PVPUTSTR(alarm, "Connect Vacuum")}
+      else if (alarmi == 55) {PVPUTSTR(alarm, "Disconnect Vacuum")}
+      else {PVPUTSTR(alarm, "not recognized")}
     } state idle
   }
 
@@ -219,7 +416,7 @@ ss cs800 {
 
 %{
 
-int getParam(int id, int *param_id, int *param_value) {
+int getParam(int id, int *param_id, unsigned int *param_value) {
   for (int i=0; i<NUMBER_OF_PARAMETERS; i++)
     if (param_id[i] == id)
       return param_value[i];
