@@ -374,6 +374,7 @@ ss cs800 {
       else if (alarmi == 27) {PVPUTSTR(alarm, "RS232 Error")}
       else if (alarmi == 28) {PVPUTSTR(alarm, "Coldhead Temp Warning")}
       else if (alarmi == 29) {PVPUTSTR(alarm, "Coldhead Temp Error")}
+      /* TODO: verify next two messages, they look the same */
       else if (alarmi == 30) {PVPUTSTR(alarm, "Do Not Open Cryostate")}
       else if (alarmi == 31) {PVPUTSTR(alarm, "Do Not Open Cryostat")}
       else if (alarmi == 32) {PVPUTSTR(alarm, "Unplug Xtal Sensor")}
