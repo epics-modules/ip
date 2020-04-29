@@ -62,6 +62,9 @@ option -w;  /* Suppress SNC warnings */
       value = getParam(_PARAM_ID_, param_id, param_value);       \
       if (value != NOT_FOUND) PVPUT(_PV_, value);
 
+#define GETBYTE(_ARR_, _IDX_)  (_ARR_[_IDX_] & 0xff)
+#define GETUINT16(_ARR_, _IDX_)  (GETBYTE(_ARR_, _IDX_)*256 + GETBYTE(_ARR_, _IDX_+1))
+
 #define PARAM_DEVICETYPE      (1000)
 #define PARAM_DEVICESUBTYPE   (1001)
 #define PARAM_DEVICEMINTEMP   (1002)
@@ -108,15 +111,14 @@ option -w;  /* Suppress SNC warnings */
 #define PARAM_COLLARTEMP      (2041)
 #define PARAM_VACSENSOR       (2042)
 
-
 /****
  **** local variables 
  ****/
 char current_state[256];
 char scratch[256];
 int i;
-int cid;
-int s_cid;
+unsigned int cid;
+unsigned int s_cid;
 unsigned int value;
 unsigned int s_checksum;
 int param_id[NUMBER_OF_PARAMETERS];
@@ -133,7 +135,7 @@ char*   SNLtaskName;
  **** asyn record
  ****/
 PV(unsigned int, s_nrrd, "{SP}.NRRD", Monitor);       /* number bytes received */
-PVA(short, s_binp, STATUS_PACKET_VALID_LENGTH, "{SP}.BINP", EvFlag);    /* Binary input */
+PVA(unsigned short, s_binp, STATUS_PACKET_VALID_LENGTH, "{SP}.BINP", EvFlag);    /* Binary input */
 
 
 /**** 
@@ -231,11 +233,11 @@ ss cs800 {
            second last two bytes: 16-bit checksum
            last two bytes: 0xabaa
        */
-      s_checksum = s_binp[924]*256 + s_binp[925];
+      s_checksum = GETUINT16(s_binp, 924);
 
       for (i=4; i < STATUS_PACKET_VALID_LENGTH-4; i+=4) {
-        param_id[i/4] = s_binp[i]*256 + s_binp[i+1];
-        param_value[i/4] = s_binp[i+2]*256 + s_binp[i+3];
+        param_id[i/4] = GETUINT16(s_binp, i);
+        param_value[i/4] = GETUINT16(s_binp, i+2);
       }
 
       /*
@@ -256,7 +258,9 @@ ss cs800 {
   }
 
 
-  /* user can disable this software */
+  /*
+   * park here while user has disabled this software
+   */
   state ignore {
     when (!strcmp(current_state, "ignore")) {
       CHANGE_STATE("ignore")
@@ -316,17 +320,6 @@ ss cs800 {
       CHECK_PVPUT(runtime, PARAM_RUNTIME);
       CHECK_PVPUT(alarmi, PARAM_ALARMI);
       CHECK_PVPUT(ctrlnum, PARAM_CTRLNUM);
-      /* DIAGNOSTIC
-      printf("(%s,#%d) PV prefix %s%s update ID=%d  PHASE=%d  SP=%d  T=%d\n", 
-             macValueGet("name"), 
-             cid,
-             macValueGet("P"),
-             macValueGet("R"),
-             ctrlnum,
-             phase,
-             setpoint,
-             temperature);
-      */
       CHECK_PVPUT(evapadjust, PARAM_EVAPADJUST);
       CHECK_PVPUT(turbomode, PARAM_TURBOMODE);
       CHECK_PVPUT(valveopening, PARAM_VALVEOPENING);
