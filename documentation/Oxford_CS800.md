@@ -140,4 +140,8 @@ Thus, no additional configuration is needed here.
 
 ### MEDM display
 
-    Oxford_CS800.adl CS=xxx:CS0   (no trailing `:`)
+    Oxford_CS800.adl CS=xxx:CS0:
+
+### caQtDM display
+
+    Oxford_CS800.ui CS=xxx:CS0:
