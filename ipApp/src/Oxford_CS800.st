@@ -411,7 +411,8 @@ ss cs800 {
 %{
 
 int getParam(int id, int *param_id, unsigned int *param_value) {
-  for (int i=0; i<NUMBER_OF_PARAMETERS; i++)
+  int i;
+  for (i=0; i<NUMBER_OF_PARAMETERS; i++)
     if (param_id[i] == id)
       return param_value[i];
 
