@@ -1,30 +1,23 @@
-# ### cs800.iocsh ###
 
-#- ###################################################
-#- PREFIX         - IOC Prefix
-#- INSTANCE       - Instance Prefix
-#- STATUS_ADDR    - network address for status packets
-#- COMMAND_ADDR   - network address for commands
-#- ASYN           - Location of ASYN module
-#- IP             - Location of IP module
-#- ###################################################
+# file: Oxford_CS800.iocsh
+# purpose: Status and commands for a specific CS800 controller
 
-# STATUS_ADDR  "255.255.255.255:30304:30304 UDP"
-# COMMAND_ADDR "10.0.0.173:30305 UDP*"
+# MACRO PARAMETERS
+#
+# MACRO         | EXAMPLE               | DEFINITION
+# ------------- | --------------------- | ----------------------
+# PREFIX        | xxx:            | IOC prefix
+# R             | CS0:                  | CS800 controller database prefix
+# CID           | 411                   | Controller Number (use 0 if unknown and only 1 CS800)
+# COMMAND_IP    | 192.168.0.144         | IP number of CS800 controller
+# CS800_STATUS  | xxx:CS:status_packets | asyn PV with status packet data
 
-# Status Packets
-drvAsynIPPortConfigure("OC_SP", "$(STATUS_ADDR)", 0, 0, 0)
-# Commands
-drvAsynIPPortConfigure("OC_CMD", "$(COMMAND_ADDR)", 0, 0, 0)
+epicsEnvSet("CS800_ASYN_CMD_PORT", "CS800_CMD_$(CID)")
+epicsEnvSet("STREAM_PROTOCOL_PATH", "$(STREAM_PROTOCOL_PATH):$(IP)/db")
 
-#asynSetTraceIOMask("OC_SP", 0, 2)
-#asynSetTraceMask("OC_SP", 0, 9)
-#asynSetTraceIOMask("OC_CMD", 0, 2)
-#asynSetTraceMask("OC_CMD", 0, 9)
+# To support multiple controllers, we use UDP& for each
+# Requires asyn including https://github.com/epics-modules/asyn/pull/109
+drvAsynIPPortConfigure("$(CS800_ASYN_CMD_PORT)", "$(COMMAND_IP):30305 UDP&")
 
-
-dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:SP,PORT=OC_SP,ADDR=0,OMAX=1000,IMAX=1000")
-dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):ASYN:CMD,PORT=OC_CMD,ADDR=0,OMAX=1000,IMAX=1000")
-
-epicsEnvSet("STREAM_PROTOCOL_PATH", "$(STREAM_PROTOCOL_PATH):$(IP)/ipApp/Db")
-dbLoadRecords("$(IP)/db/Oxford_CS800.db", "P=$(PREFIX),Q=$(INSTANCE),PORT=OC_SP,PORTCMD=OC_CMD")
+dbLoadRecords("$(IP)/db/Oxford_CS800.db", "P=$(PREFIX),R=$(R),CP=$(CS800_ASYN_CMD_PORT)",SP=$(CS800_STATUS))
+doAfterIocInit("seq Oxford_CS800,'name=cs800_$(CID),CID=$(CID),P=$(PREFIX),R=$(R),SP=$(CS800_STATUS)'")

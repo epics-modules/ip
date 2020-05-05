@@ -1,42 +1,69 @@
-# The documentation on the protocol is almost non-existent so you need to guess what parameters mean
-# from their names, also units and conversion
 
+# Oxford provides documentation on the protocol on request.
+# Units and conversion factors are deduced empirically.
 
-# % macro, DISABLE_COMMS, Optional macro to control whether comms are disabled (1) or not (0) on startup. Defaults to disabled
+# MACRO PARAMETERS
+#
+# MACRO         | EXAMPLE     | DEFINITION
+# ------------- | ----------- | ----------------------
+# DISABLE_COMMS | 0           | (optional) comms are disabled (1) or not (0: default) on startup
+# P             | xxx:        | IOC prefix
+# R             | CS0:        | controller's database prefix
+# CP            | CS800_CMD0  | controller's asyn command port
 
-record(mbbi, "$(P)$(Q):TYPE")
+record(mbbo, "$(P)$(R)DEBUG")
 {
-  field(DESC, "Status Packet Type")
-  field(DTYP, "Raw Soft Channel")
-  field(VAL,  "1")
-  field(ONVL, "1")
-  field(TWVL, "2")
-  field(ONST, "928B Packets")
-  field(TWST, "Extended Packets")
+  field(DESC, "SNL diagnostics level")
+  field(RVAL, 2)
+  field(ZRST, "off")
+  field(ONST, "error")
+  field(TWST, "warning")
+  field(THST, "info")
+  field(FRST, "debug")
   field(PINI, "YES")
 }
-record(ai, "$(P)$(Q):DATALENGTH") {
-  field(DESC, "Status packet length")
-  field(DTYP, "Raw Soft Channel")
+
+record(bo, "$(P)$(R)DISABLE") {
+  field(DESC, "Disable comms")
   field(PINI, "YES")
+  field(VAL,  "$(DISABLE_COMMS=1)")
+  field(OMSL, "supervisory")
+  field(ZNAM, "Enabled")
+  field(ONAM, "Disabled")
 }
+
+#record(asyn,"$(P)$(R)command_port")
+#{
+#    field(DESC, "Commands to a CS800 controller")
+#    field(DTYP, "asynRecordDevice")
+#    field(PORT, "$(CP)")
+#    field(ADDR, 0)
+#    field(OMAX, 1000)
+#    field(IMAX, 1000)
+#    field(TMOD, "Write")
+#    field(TMOT, 1.0)
+#    field(OFMT, "Binary")
+#}
+
+#########################################################
+# status (input from controller on port 30304)
 
 # Param id 1000
-record(ai, "$(P)$(Q):DEVICETYPE") {
+record(ai, "$(P)$(R)DEVICETYPE") {
   field(DESC, "Cryo stream device type")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
 # Param id 1001
-record(ai, "$(P)$(Q):DEVICESUBTYPE") {
+record(ai, "$(P)$(R)DEVICESUBTYPE") {
   field(DESC, "Cryo stream device sub type")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
 # Param id 1002
-record(ai, "$(P)$(Q):DEVICEMINTEMP") {
+record(ai, "$(P)$(R)DEVICEMINTEMP") {
   field(DESC, "Device minimum temp")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -50,7 +77,7 @@ record(ai, "$(P)$(Q):DEVICEMINTEMP") {
 }
 
 # Param id 1003
-record(ai, "$(P)$(Q):DEVICEMAXTEMP") {
+record(ai, "$(P)$(R)DEVICEMAXTEMP") {
   field(DESC, "Device maximum temp")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -64,7 +91,7 @@ record(ai, "$(P)$(Q):DEVICEMAXTEMP") {
 }
 
 # Param id 1004
-record(ai, "$(P)$(Q):VER") {
+record(ai, "$(P)$(R)VER") {
   field(DESC, "Software Version")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -72,7 +99,7 @@ record(ai, "$(P)$(Q):VER") {
 
 
 # Param id 1053
-record(mbbi, "$(P)$(Q):RUNMODE") {
+record(mbbi, "$(P)$(R)RUNMODE") {
   field(DESC, "Run Mode")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -93,7 +120,7 @@ record(mbbi, "$(P)$(Q):RUNMODE") {
 }
 
 # param id 1054
-record(mbbi, "$(P)$(Q):PHASE") {
+record(mbbi, "$(P)$(R)PHASE") {
   field(DESC, "Phase ID")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -123,7 +150,7 @@ record(mbbi, "$(P)$(Q):PHASE") {
 
 
 # Param id 1055
-record(ai, "$(P)$(Q):RAMPRATE") {
+record(ai, "$(P)$(R)RAMPRATE") {
   field(DESC, "Ramp Rate")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -138,7 +165,7 @@ record(ai, "$(P)$(Q):RAMPRATE") {
 }
 
 # Param id 1056
-record(ai, "$(P)$(Q):TARGETTEMP") {
+record(ai, "$(P)$(R)TARGETTEMP") {
   field(DESC, "Target Temperature")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -152,7 +179,7 @@ record(ai, "$(P)$(Q):TARGETTEMP") {
 }
 
 # Param id 1057
-record(ai, "$(P)$(Q):EVAPTEMP") {
+record(ai, "$(P)$(R)EVAPTEMP") {
   field(DESC, "Evap Temperature")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -166,7 +193,7 @@ record(ai, "$(P)$(Q):EVAPTEMP") {
 }
 
 # Param id 1058
-record(ai, "$(P)$(Q):SUCTTEMP") {
+record(ai, "$(P)$(R)SUCTTEMP") {
   field(DESC, "Suct Temperature")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -180,7 +207,7 @@ record(ai, "$(P)$(Q):SUCTTEMP") {
 }
 
 # Param id 1059
-record(ai, "$(P)$(Q):REMAINING") {
+record(ai, "$(P)$(R)REMAINING") {
   field(DESC, "Time Remaining in Phase")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -188,7 +215,7 @@ record(ai, "$(P)$(Q):REMAINING") {
 }
 
 # Param id 1060
-record(ai, "$(P)$(Q):GASFLOW") {
+record(ai, "$(P)$(R)GASFLOW") {
   field(DESC, "Gas Flow")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -202,7 +229,7 @@ record(ai, "$(P)$(Q):GASFLOW") {
 }
 
 # Param id 1061
-record(ai, "$(P)$(Q):GASHEAT") {
+record(ai, "$(P)$(R)GASHEAT") {
   field(DESC, "Gas Heater")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -213,7 +240,7 @@ record(ai, "$(P)$(Q):GASHEAT") {
 }
 
 # Param id 1062
-record(ai, "$(P)$(Q):EVAPHEAT") {
+record(ai, "$(P)$(R)EVAPHEAT") {
   field(DESC, "Evap Heater")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -225,7 +252,7 @@ record(ai, "$(P)$(Q):EVAPHEAT") {
 }
 
 # Param id 1063
-record(ai, "$(P)$(Q):SUCTHEAT") {
+record(ai, "$(P)$(R)SUCTHEAT") {
   field(DESC, "Suct Heater")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -237,7 +264,7 @@ record(ai, "$(P)$(Q):SUCTHEAT") {
 }
 
 # Param id 1064
-record(ai, "$(P)$(Q):BACKPRESS") {
+record(ai, "$(P)$(R)BACKPRESS") {
   field(DESC, "Back Pressure")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -251,7 +278,7 @@ record(ai, "$(P)$(Q):BACKPRESS") {
 }
 
 # Param id 1066
-record(ai, "$(P)$(Q):RUNTIME") {
+record(ai, "$(P)$(R)RUNTIME") {
   field(DESC, "Pump Uptime")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -259,28 +286,28 @@ record(ai, "$(P)$(Q):RUNTIME") {
 }
 
 # Param id 1028
-record(ai, "$(P)$(Q):CTRLNUM") {
+record(ai, "$(P)$(R)CTRLNUM") {
   field(DESC, "Controller Number")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
 # Param id 1067
-record(ai, "$(P)$(Q):EVAPADJUST") {
+record(ai, "$(P)$(R)EVAPADJUST") {
   field(DESC, "Evap Vacuum Compensation")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
 # Param id 1068
-record(ai, "$(P)$(Q):TURBOMODE") {
+record(ai, "$(P)$(R)TURBOMODE") {
   field(DESC, "Turbo Mode Readback")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
 # Param id 1103
-record(ai, "$(P)$(Q):VALVEOPENING") {
+record(ai, "$(P)$(R)VALVEOPENING") {
   field(DESC, "Flow Block Valve Opening")
   field(DTYP, "Raw Soft Channel")
   field(EGU,  "%")
@@ -292,7 +319,7 @@ record(ai, "$(P)$(Q):VALVEOPENING") {
 }
 
 # Param id 1203
-record(ai, "$(P)$(Q):LEVEL") {
+record(ai, "$(P)$(R)LEVEL") {
   field(DESC, "Liquid Nitrogen Level")
   field(DTYP, "Raw Soft Channel")
   field(EGU,  "%")
@@ -301,25 +328,8 @@ record(ai, "$(P)$(Q):LEVEL") {
   field(PINI, "YES")
 }
 
-record(asyn, "$(P)$(Q):ASYN") {
-  field(PORT, "$(PORT)")
-  field(IMAX, "1024")
-  field(OMAX, "1024")
-  field(NRRD, "1000")
-  field(IFMT, "Binary")
-  field(TMOT, "0.1")
-}
-
-record(ai, "$(P)$(Q):STATUS") {
-  field(SCAN, ".5 second")
-  field(DTYP, "stream")
-  field(VAL, "1")
-  field(INP, "@Oxford_CS800.proto read($(P)$(Q)) $(PORT)")
-  field(SDIS, "$(P)$(Q):DISABLE")  
-}
-
 # Param id 1050
-record(ai, "$(P)$(Q):SETPOINT") {
+record(ai, "$(P)$(R)SETPOINT") {
   field(DESC, "Set Point")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -333,7 +343,7 @@ record(ai, "$(P)$(Q):SETPOINT") {
 }
 
 # Param id 1051
-record(ai, "$(P)$(Q):TEMP") {
+record(ai, "$(P)$(R)TEMP") {
   field(DESC, "Current Temperature")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -347,7 +357,7 @@ record(ai, "$(P)$(Q):TEMP") {
 }
 
 # Param id 1052
-record(ai, "$(P)$(Q):ERROR") {
+record(ai, "$(P)$(R)ERROR") {
   field(DESC, "Gas Error (temperature)")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -359,7 +369,7 @@ record(ai, "$(P)$(Q):ERROR") {
 }
 
 # Param id 2010
-record(ai, "$(P)$(Q):COLDHEADTEMP") {
+record(ai, "$(P)$(R)COLDHEADTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -370,7 +380,7 @@ record(ai, "$(P)$(Q):COLDHEADTEMP") {
 }
 
 # Param id 2011
-record(ai, "$(P)$(Q):SHIELDTEMP") {
+record(ai, "$(P)$(R)SHIELDTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -381,7 +391,7 @@ record(ai, "$(P)$(Q):SHIELDTEMP") {
 }
 
 # Param id 2012
-record(ai, "$(P)$(Q):VACGAUGE") {
+record(ai, "$(P)$(R)VACGAUGE") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -392,7 +402,7 @@ record(ai, "$(P)$(Q):VACGAUGE") {
 }
 
 # Param id 2013
-record(ai, "$(P)$(Q):NOZZLETEMP") {
+record(ai, "$(P)$(R)NOZZLETEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -403,7 +413,7 @@ record(ai, "$(P)$(Q):NOZZLETEMP") {
 }
 
 # Param id 2014
-record(ai, "$(P)$(Q):SAMPLEHEAT") {
+record(ai, "$(P)$(R)SAMPLEHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -416,7 +426,7 @@ record(ai, "$(P)$(Q):SAMPLEHEAT") {
 }
 
 # Param id 2015
-record(ai, "$(P)$(Q):COLDHEADHEAT") {
+record(ai, "$(P)$(R)COLDHEADHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -427,7 +437,7 @@ record(ai, "$(P)$(Q):COLDHEADHEAT") {
 }
 
 # Param id 2016
-record(ai, "$(P)$(Q):SHIELDHEAT") {
+record(ai, "$(P)$(R)SHIELDHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -438,7 +448,7 @@ record(ai, "$(P)$(Q):SHIELDHEAT") {
 }
 
 # Param id 2017
-record(ai, "$(P)$(Q):NOZZLEHEAT") {
+record(ai, "$(P)$(R)NOZZLEHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -449,7 +459,7 @@ record(ai, "$(P)$(Q):NOZZLEHEAT") {
 }
 
 # Param id 2019
-record(ai, "$(P)$(Q):AVGSAMPLEHEAT") {
+record(ai, "$(P)$(R)AVGSAMPLEHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -460,7 +470,7 @@ record(ai, "$(P)$(Q):AVGSAMPLEHEAT") {
 }
 
 # Param id 2020
-record(ai, "$(P)$(Q):AVGNOZZLEHEAT") {
+record(ai, "$(P)$(R)AVGNOZZLEHEAT") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -471,7 +481,7 @@ record(ai, "$(P)$(Q):AVGNOZZLEHEAT") {
 }
 
 # Param id 2030
-record(ai, "$(P)$(Q):SAMHOLDTEMP") {
+record(ai, "$(P)$(R)SAMHOLDTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -484,7 +494,7 @@ record(ai, "$(P)$(Q):SAMHOLDTEMP") {
 }
 
 # Param id 2031
-record(ai, "$(P)$(Q):CRYOSTATTEMP") {
+record(ai, "$(P)$(R)CRYOSTATTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -497,7 +507,7 @@ record(ai, "$(P)$(Q):CRYOSTATTEMP") {
 }
 
 # Param id 2032
-record(ai, "$(P)$(Q):SAMHOLDPRES") {
+record(ai, "$(P)$(R)SAMHOLDPRES") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -508,7 +518,7 @@ record(ai, "$(P)$(Q):SAMHOLDPRES") {
 }
 
 # Param id 2034
-record(ai, "$(P)$(Q):ELAPSED") {
+record(ai, "$(P)$(R)ELAPSED") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -519,7 +529,7 @@ record(ai, "$(P)$(Q):ELAPSED") {
 }
 
 # Param id 2035
-record(ai, "$(P)$(Q):SUCTSETTEMP") {
+record(ai, "$(P)$(R)SUCTSETTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -530,7 +540,7 @@ record(ai, "$(P)$(Q):SUCTSETTEMP") {
 }
 
 # Param id 2036
-record(ai, "$(P)$(Q):NOZZLESETTEMP") {
+record(ai, "$(P)$(R)NOZZLESETTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -541,7 +551,7 @@ record(ai, "$(P)$(Q):NOZZLESETTEMP") {
 }
 
 # Param id 2041
-record(ai, "$(P)$(Q):COLLARTEMP") {
+record(ai, "$(P)$(R)COLLARTEMP") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(LINR, "LINEAR")
@@ -552,676 +562,47 @@ record(ai, "$(P)$(Q):COLLARTEMP") {
 }
 
 # Param id 2042
-record(ai, "$(P)$(Q):VACSENSOR") {
+record(ai, "$(P)$(R)VACSENSOR") {
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
 }
 
-record(scalcout, "$(P)$(Q):ALARMCALC0"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "No error")
-   field(CALC, "A==0")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC1"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Stop Pressed")
-   field(CALC, "A==1")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC2"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Stop Command")
-   field(CALC, "A==2")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC3"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "End Complete")
-   field(CALC, "A==3")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC4"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Purge Complete")
-   field(CALC, "A==4")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC5"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Temp Warning")
-   field(CALC, "A==5")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC6"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Pressure Warning")
-   field(CALC, "A==6")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC7"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Check Vacuum")
-   field(CALC, "A==7")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC8"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Self-check Fail")
-   field(CALC, "A==8")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC9"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Flow Rate Fail")
-   field(CALC, "A==9")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC10"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Temp Control Error")
-   field(CALC, "A==10")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC11"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Gas Type Error")
-   field(CALC, "A==11")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC12"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Temp Reading Error")
-   field(CALC, "A==12")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC13"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Suct Temp Error")
-   field(CALC, "A==13")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC14"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Sensor Fail")
-   field(CALC, "A==14")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC15"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Brownout")
-   field(CALC, "A==15")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC16"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Sink Overheat")
-   field(CALC, "A==16")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC17"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "PSU Overheat")
-   field(CALC, "A==17")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC18"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Power Loss")
-   field(CALC, "A==18")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC19"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Coldhead Too Cold")
-   field(CALC, "A==19")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC20"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Coldhead Timeout")
-   field(CALC, "A==20")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC21"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Not Found")
-   field(CALC, "A==21")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC22"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Error")
-   field(CALC, "A==22")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC23"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "No Nitrogen")
-   field(CALC, "A==23")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC24"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "No Helium")
-   field(CALC, "A==24")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC25"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Vac Gauge Fail")
-   field(CALC, "A==25")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC26"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Vac Reading Error")
-   field(CALC, "A==26")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC27"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "RS232 Error")
-   field(CALC, "A==27")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC28"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Colehead Temp Warning")
-   field(CALC, "A==28")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC29"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Coldhead Temp Error")
-   field(CALC, "A==29")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC30"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Do Not Open Cryostate")
-   field(CALC, "A==30")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC31"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Do Not Open Cryostat")
-   field(CALC, "A==31")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC32"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Unplug Xtal Sensor")
-   field(CALC, "A==32")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC33"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryostat Open")
-   field(CALC, "A==34")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC35"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "High Temp Warning")
-   field(CALC, "A==35")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC36"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "High Temp Error")
-   field(CALC, "A==36")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC37"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive T Sensor Fault")
-   field(CALC, "A==37")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC38"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive P Sensor Fault")
-   field(CALC, "A==38")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC39"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Low T Trip")
-   field(CALC, "A==39")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC40"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive High T Trip")
-   field(CALC, "A==40")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC41"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Low P Trip")
-   field(CALC, "A==41")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC42"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive High T Warning")
-   field(CALC, "A==42")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC43"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Low P Warning")
-   field(CALC, "A==43")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC44"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Connect Gas Supply")
-   field(CALC, "A==44")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC45"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Autofill Fault")
-   field(CALC, "A==45")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC46"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Autofill About To Fill")
-   field(CALC, "A==46")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC47"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Autofill Filling")
-   field(CALC, "A==47")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC48"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Collar Temp Error")
-   field(CALC, "A==48")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC49"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Coldhead Error")
-   field(CALC, "A==49")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC50"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Turbo Flow")
-   field(CALC, "A==50")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC51"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "He Selected")
-   field(CALC, "A==51")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC52"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Cryodrive Not Ready")
-   field(CALC, "A==52")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC53"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Regen Required")
-   field(CALC, "A==53")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC54"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Regen Complete")
-   field(CALC, "A==54")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC55"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Connect Vacuum")
-   field(CALC, "A==55")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(scalcout, "$(P)$(Q):ALARMCALC56"){
-   field(DESC, "Alarm status")
-   field(INPA, "$(P)$(Q):ALARMI.VAL CP MS")
-   field(AA,   "Disconnect Vacuum")
-   field(CALC, "A==56")
-   field(OCAL, "AA")
-   field(OOPT, "3")
-   field(DOPT, "1")
-   field(OUT,  "$(P)$(Q):ALARM.VAL")
-}
-
-record(stringin, "$(P)$(Q):ALARM")
-{
-   field(VAL, "Init")
-}
-
-#record(ai, "$(P)$(Q):ALARM") {
-#  field(DESC, "Alarm Status")
-#  field(INPA, "$(P)$(Q):ALARMI")
-#  field(FTA, "LONG")
-#  field(FTVA, "STRING")
-#  field(SNAM, "alarmlookupProcess")
-#}
-
 # Param id 1065
-record(ai, "$(P)$(Q):ALARMI") {
+record(ai, "$(P)$(R)ALARMI") {
   # CS800 documentation is not specific about these codes.
-  # Notes say there are 17 values so can't use an mbbi record.
   field(DESC, "Alarm number")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(HIGH, "1")
   field(HSV,  "MAJOR")
-#  field(FLNK, "$(P)$(Q):ALARMCALC")
 }
 
-record(bo, "$(P)$(Q):DISABLE") {
-  field(DESC, "Disable comms")
-  field(PINI, "YES")
-  field(VAL,  "$(DISABLE_COMMS=1)")
-  field(OMSL, "supervisory")
-  field(ZNAM, "Enabled")
-  field(ONAM, "Disabled")
+record(stringin, "$(P)$(R)ALARM")
+{
+   field(DESC, "Alarm text")
+   field(VAL, "unset")
 }
 
-record(ao, "$(P)$(Q):RESTART") {
+
+#########################################################
+# commands (output to controller on port 30305)
+
+
+record(ao, "$(P)$(R)RESTART") {
   field(DESC, "Start/Restart program")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto restart($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto restart($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):RAMP") {
+record(ao, "$(P)$(R)RAMP") {
   field(DESC, "Start a ramp")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto ramp($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto ramp($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):RTEMP") {
+record(ao, "$(P)$(R)RTEMP") {
   field(DESC, "Ramp Target Temp")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -1233,36 +614,36 @@ record(ao, "$(P)$(Q):RTEMP") {
   field(EGU, "K")
   field(DRVL, "1.00")
   field(DRVH, "360.00")
-  field(FLNK, "$(P)$(Q):RTEMPCH")
+  field(FLNK, "$(P)$(R)RTEMPCH")
 }
 
-record(ao, "$(P)$(Q):RTEMPH") {
+record(ao, "$(P)$(R)RTEMPH") {
   field(DESC, "Ramp Target Temp Hi byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):RTEMPL") {
+record(ao, "$(P)$(R)RTEMPL") {
   field(DESC, "Ramp Target Temp Lo byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(calcout, "$(P)$(Q):RTEMPCH") {
+record(calcout, "$(P)$(R)RTEMPCH") {
   field(CALC, "(A>>8>=C)?A>>8-C:A>>8")
-  field(INPA, "$(P)$(Q):RTEMP.RVAL")
+  field(INPA, "$(P)$(R)RTEMP.RVAL")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):RTEMPH PP")
-  field(FLNK, "$(P)$(Q):RTEMPCL")
+  field(OUT, "$(P)$(R)RTEMPH PP")
+  field(FLNK, "$(P)$(R)RTEMPCL")
 }
 
-record(calcout, "$(P)$(Q):RTEMPCL") {
+record(calcout, "$(P)$(R)RTEMPCL") {
   field(CALC, "(A%B>=C)?A%B-B:A%B")
-  field(INPA, "$(P)$(Q):RTEMP.RVAL")
+  field(INPA, "$(P)$(R)RTEMP.RVAL")
   field(INPB, "256")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):RTEMPL PP")
+  field(OUT, "$(P)$(R)RTEMPL PP")
 }
 
-record(ao, "$(P)$(Q):RRATE") {
+record(ao, "$(P)$(R)RRATE") {
   field(DESC, "Set Ramp Rate")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -1270,93 +651,93 @@ record(ao, "$(P)$(Q):RRATE") {
   field(DRVL, "1")
   field(DRVH, "360")
   field(VAL, "360")
-  field(FLNK, "$(P)$(Q):RRATECH")
+  field(FLNK, "$(P)$(R)RRATECH")
 }
 
-record(calcout, "$(P)$(Q):RRATECH") {
+record(calcout, "$(P)$(R)RRATECH") {
   field(CALC, "(A>>8>=C)?A>>8-C:A>>8")
-  field(INPA, "$(P)$(Q):RRATE.RVAL")
+  field(INPA, "$(P)$(R)RRATE.RVAL")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):RRATEH.VAL PP")
-  field(FLNK, "$(P)$(Q):RRATECL")
+  field(OUT, "$(P)$(R)RRATEH.VAL PP")
+  field(FLNK, "$(P)$(R)RRATECL")
 }
 
-record(ao, "$(P)$(Q):RRATEH") {
+record(ao, "$(P)$(R)RRATEH") {
   field(DESC, "Ramp Target Temp Hi byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):RRATEL") {
+record(ao, "$(P)$(R)RRATEL") {
   field(DESC, "Ramp Target Temp Lo byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(calcout, "$(P)$(Q):RRATECL") {
+record(calcout, "$(P)$(R)RRATECL") {
   field(CALC, "(A%B>=C)?A%B-B:A%B")
-  field(INPA, "$(P)$(Q):RRATE.RVAL")
+  field(INPA, "$(P)$(R)RRATE.RVAL")
   field(INPB, "256")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):RRATEL.VAL PP")
+  field(OUT, "$(P)$(R)RRATEL.VAL PP")
 }
 
-record(ao, "$(P)$(Q):PLAT") {
+record(ao, "$(P)$(R)PLAT") {
   field(DESC, "Start a plat")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto plat($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto plat($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):PTIME") {
+record(ao, "$(P)$(R)PTIME") {
   field(DESC, "Plat Time")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
   field(EGU, "min")
   field(DRVL, "1")
   field(DRVH, "1440")
-  field(FLNK, "$(P)$(Q):PTIMECH")
+  field(FLNK, "$(P)$(R)PTIMECH")
 }
 
-record(calcout, "$(P)$(Q):PTIMECH") {
+record(calcout, "$(P)$(R)PTIMECH") {
   field(CALC, "(A>>8>=C)?A>>8-C:A>>8")
-  field(INPA, "$(P)$(Q):PTIME.RVAL")
+  field(INPA, "$(P)$(R)PTIME.RVAL")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):PTIMEH.VAL PP")
-  field(FLNK, "$(P)$(Q):PTIMECL")
+  field(OUT, "$(P)$(R)PTIMEH.VAL PP")
+  field(FLNK, "$(P)$(R)PTIMECL")
 }
 
-record(calcout, "$(P)$(Q):PTIMECL") {
+record(calcout, "$(P)$(R)PTIMECL") {
   field(CALC, "(A%B>=C)?A%B-B:A%B")
-  field(INPA, "$(P)$(Q):PTIME.RVAL")
+  field(INPA, "$(P)$(R)PTIME.RVAL")
   field(INPB, "256")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):PTIMEL.VAL PP")
+  field(OUT, "$(P)$(R)PTIMEL.VAL PP")
 }
 
-record(ao, "$(P)$(Q):PTIMEL") {
+record(ao, "$(P)$(R)PTIMEL") {
   field(DESC, "Ramp Target Temp Lo byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):PTIMEH") {
+record(ao, "$(P)$(R)PTIMEH") {
   field(DESC, "Ramp Target Temp Hi byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):HOLD") {
+record(ao, "$(P)$(R)HOLD") {
   field(DESC, "Start a hold")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto hold($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto hold($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):COOL") {
+record(ao, "$(P)$(R)COOL") {
   field(DESC, "Start a cool")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto cool($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto cool($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):CTEMP") {
+record(ao, "$(P)$(R)CTEMP") {
   field(DESC, "Cool Temp")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -1368,43 +749,43 @@ record(ao, "$(P)$(Q):CTEMP") {
   field(VAL, 100)
   field(DRVL, "80.00")
   field(DRVH, "327.67")
-  field(FLNK, "$(P)$(Q):CTEMPCH")
+  field(FLNK, "$(P)$(R)CTEMPCH")
 }
 
 
-record(calcout, "$(P)$(Q):CTEMPCH") {
+record(calcout, "$(P)$(R)CTEMPCH") {
   field(CALC, "(A>>8>=C)?A>>8-C:A>>8")
-  field(INPA, "$(P)$(Q):CTEMP.RVAL")
+  field(INPA, "$(P)$(R)CTEMP.RVAL")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):CTEMPH.VAL PP")
-  field(FLNK, "$(P)$(Q):CTEMPCL")
+  field(OUT, "$(P)$(R)CTEMPH.VAL PP")
+  field(FLNK, "$(P)$(R)CTEMPCL")
 }
 
-record(calcout, "$(P)$(Q):CTEMPCL") {
+record(calcout, "$(P)$(R)CTEMPCL") {
   field(CALC, "(A%B>=C)?A%B-B:A%B")
-  field(INPA, "$(P)$(Q):CTEMP.RVAL")
+  field(INPA, "$(P)$(R)CTEMP.RVAL")
   field(INPB, "256")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):CTEMPL.VAL PP")
+  field(OUT, "$(P)$(R)CTEMPL.VAL PP")
 }
 
-record(ao, "$(P)$(Q):CTEMPL") {
+record(ao, "$(P)$(R)CTEMPL") {
   field(DESC, "Ramp Target Temp Lo byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):CTEMPH") {
+record(ao, "$(P)$(R)CTEMPH") {
   field(DESC, "Ramp Target Temp Hi byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):END") {
+record(ao, "$(P)$(R)END") {
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto end($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE") 
+  field(OUT, "@Oxford_CS800.proto end($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE") 
 }
 
-record(ao, "$(P)$(Q):ERATE") {
+record(ao, "$(P)$(R)ERATE") {
   field(DESC, "Set End Rate")
   field(DTYP, "Raw Soft Channel")
   field(PINI, "YES")
@@ -1412,74 +793,74 @@ record(ao, "$(P)$(Q):ERATE") {
   field(DRVL, "1")
   field(VAL, "360")
   field(DRVH, "360")
-  field(FLNK, "$(P)$(Q):ERATECH")
+  field(FLNK, "$(P)$(R)ERATECH")
 }
 
-record(calcout, "$(P)$(Q):ERATECH") {
+record(calcout, "$(P)$(R)ERATECH") {
   field(CALC, "(A>>8>=C)?A>>8-C:A>>8")
-  field(INPA, "$(P)$(Q):ERATE.RVAL")
+  field(INPA, "$(P)$(R)ERATE.RVAL")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):ERATEH.VAL PP")
-  field(FLNK, "$(P)$(Q):ERATECL")
+  field(OUT, "$(P)$(R)ERATEH.VAL PP")
+  field(FLNK, "$(P)$(R)ERATECL")
 }
 
-record(calcout, "$(P)$(Q):ERATECL") {
+record(calcout, "$(P)$(R)ERATECL") {
   field(CALC, "(A%B>=C)?A%B-B:A%B")
-  field(INPA, "$(P)$(Q):ERATE.RVAL")
+  field(INPA, "$(P)$(R)ERATE.RVAL")
   field(INPB, "256")
   field(INPC, "128")
-  field(OUT, "$(P)$(Q):ERATEL.VAL PP")
+  field(OUT, "$(P)$(R)ERATEL.VAL PP")
 }
 
-record(ao, "$(P)$(Q):ERATEH") {
+record(ao, "$(P)$(R)ERATEH") {
   field(DESC, "Ramp Target Temp Hi byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):ERATEL") {
+record(ao, "$(P)$(R)ERATEL") {
   field(DESC, "Ramp Target Temp Lo byte")
   field(DTYP, "Raw Soft Channel")
 }
 
-record(ao, "$(P)$(Q):PURGE") {
+record(ao, "$(P)$(R)PURGE") {
   field(DESC, "Start a Purge/Warm")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto purge($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto purge($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):PAUSE") {
+record(ao, "$(P)$(R)PAUSE") {
   field(DESC, "Pause program")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto pause($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto pause($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):RESUME") {
+record(ao, "$(P)$(R)RESUME") {
   field(DESC, "Resume program")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto resume($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto resume($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(ao, "$(P)$(Q):STOP") {
+record(ao, "$(P)$(R)STOP") {
   field(DESC, "Stop program")
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto stop($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto stop($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }
 
-record(bo, "$(P)$(Q):TURBO") {
+record(bo, "$(P)$(R)TURBO") {
   field(DTYP, "Raw Soft Channel")
   field(ZNAM, "Off")
   field(ONAM, "On")
-  field(FLNK, "$(P)$(Q):TURBOCMD")
+  field(FLNK, "$(P)$(R)TURBOCMD")
   field(RVAL, "0")
   # field(PINI, "YES")
 }
 
-record(ao, "$(P)$(Q):TURBOCMD") {
+record(ao, "$(P)$(R)TURBOCMD") {
   field(DTYP, "stream")
-  field(OUT, "@Oxford_CS800.proto turbo($(P)$(Q)) $(PORTCMD)")
-  field(SDIS, "$(P)$(Q):DISABLE")
+  field(OUT, "@Oxford_CS800.proto turbo($(P)$(R)) $(CP)")
+  field(SDIS, "$(P)$(R)DISABLE")
 }

@@ -130,7 +130,7 @@ composite {
 						fill="outline"
 					}
 					"dynamic attribute" {
-						chan="$(CS):HOLD"
+						chan="$(CS)HOLD"
 					}
 				}
 				"text update" {
@@ -141,7 +141,7 @@ composite {
 						height=8
 					}
 					monitor {
-						chan="$(CS):CTRLNUM"
+						chan="$(CS)CTRLNUM"
 						clr=14
 						bclr=2
 					}
@@ -158,7 +158,7 @@ composite {
 						height=8
 					}
 					monitor {
-						chan="$(CS):VER"
+						chan="$(CS)VER"
 						clr=14
 						bclr=2
 					}
@@ -215,7 +215,7 @@ composite {
 						fill="outline"
 					}
 					"dynamic attribute" {
-						chan="$(CS):HOLD"
+						chan="$(CS)HOLD"
 					}
 				}
 				text {
@@ -230,7 +230,7 @@ composite {
 					}
 					"dynamic attribute" {
 						vis="if not zero"
-						chan="$(CS):DISABLE"
+						chan="$(CS)DISABLE"
 					}
 					textix="not communicating"
 					align="horiz. centered"
@@ -247,7 +247,7 @@ composite {
 					}
 					"dynamic attribute" {
 						vis="if zero"
-						chan="$(CS):DISABLE"
+						chan="$(CS)DISABLE"
 					}
 					textix="communicating"
 					align="horiz. centered"
@@ -271,7 +271,7 @@ composite {
 	}
 	period=3600.000000
 	pen[0] {
-		chan="$(CS):SETPOINT"
+		chan="$(CS)SETPOINT"
 		clr=20
 		limits {
 			loprSrc="default"
@@ -281,7 +281,7 @@ composite {
 		}
 	}
 	pen[1] {
-		chan="$(CS):TEMP"
+		chan="$(CS)TEMP"
 		clr=15
 		limits {
 			loprSrc="default"
