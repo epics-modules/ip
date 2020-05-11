@@ -10,7 +10,10 @@
     - [IOC startup directory](#ioc-startup-directory)
       - [`st.cmd`](#stcmd)
       - [`auto_settings.req`](#autosettingsreq)
+  - [Display screens](#display-screens)
     - [MEDM display](#medm-display)
+    - [caQtDM display](#caqtdm-display)
+    - [Example screens](#example-screens)
 
 ## authors
 
@@ -138,6 +141,8 @@ up to the final part of the name (`_settings.req` and
 
 Thus, no additional configuration is needed here.
 
+## Display screens
+
 ### MEDM display
 
     Oxford_CS800.adl CS=xxx:CS0:
@@ -145,3 +150,47 @@ Thus, no additional configuration is needed here.
 ### caQtDM display
 
     Oxford_CS800.ui CS=xxx:CS0:
+
+### Example screens
+
+Example screens are shown using the controller at APS 19-ID
+and the caQtDM application.
+
+**main** : `Oxford_CS800.ui`
+
+![](images/Oxford_CS800_main.jpg?raw=true)
+
+**hour plot of temperature** : `Oxford_CS800_hourplot.ui`
+
+![](images/Oxford_CS800_hour.jpg?raw=true)
+
+**sensors, heaters, and flow** : `Oxford_CS800_sensors.ui`
+
+note: *Gas flow* signal from controller is incorrect (raw value of 0xfffe)
+
+![](images/Oxford_CS800_sensors.jpg?raw=true)
+
+**ramp, plateau, cool** : `Oxford_CS800_program.ui`
+
+Commands to change the setpoint programmatically.
+
+![](images/Oxford_CS800_ramp.jpg?raw=true)
+
+**status** : `Oxford_CS800_status.ui`
+
+![](images/Oxford_CS800_status.jpg?raw=true)
+
+**all status values monitored** : `Oxford_CS800_status_full.ui`
+
+note: some signals from controller are incorrect (raw value of 0xfffe)
+
+![](images/Oxford_CS800_status_full.jpg?raw=true)
+
+**administrative** : `Oxford_CS800_admin.ui`
+
+CAUTION: Controls on this screen can turn off or restart the 
+controller.  This screen can only be reached from the status 
+or full status screens.
+
+![](images/Oxford_CS800_admin.jpg?raw=true)
+
