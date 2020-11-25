@@ -1,0 +1,1019 @@
+
+file {
+	name="/usr/local/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_sensors.adl"
+	version=030114
+}
+display {
+	object {
+		x=140
+		y=126
+		width=400
+		height=327
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+composite {
+	object {
+		x=10
+		y=33
+		width=382
+		height=20
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=204
+				y=33
+				width=188
+				height=20
+			}
+			"composite name"=""
+			children {
+				rectangle {
+					object {
+						x=204
+						y=33
+						width=188
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+					}
+					"dynamic attribute" {
+						chan="$(CS)HOLD"
+					}
+				}
+				"text update" {
+					object {
+						x=233
+						y=39
+						width=45
+						height=8
+					}
+					monitor {
+						chan="$(CS)CTRLNUM"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=338
+						y=39
+						width=45
+						height=8
+					}
+					monitor {
+						chan="$(CS)VER"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=208
+						y=39
+						width=20
+						height=8
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="ID"
+				}
+				text {
+					object {
+						x=287
+						y=38
+						width=45
+						height=10
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="vers"
+					align="horiz. right"
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=33
+				width=188
+				height=20
+			}
+			"composite name"=""
+			children {
+				rectangle {
+					object {
+						x=10
+						y=33
+						width=188
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+					}
+					"dynamic attribute" {
+						chan="$(CS)HOLD"
+					}
+				}
+				text {
+					object {
+						x=14
+						y=39
+						width=177
+						height=10
+					}
+					"basic attribute" {
+						clr=22
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(CS)DISABLE"
+					}
+					textix="not communicating"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=14
+						y=39
+						width=177
+						height=10
+					}
+					"basic attribute" {
+						clr=15
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(CS)DISABLE"
+					}
+					textix="communicating"
+					align="horiz. centered"
+				}
+			}
+		}
+	}
+}
+text {
+	object {
+		x=10
+		y=8
+		width=382
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Oxford CryoStream 800: $(CS)"
+	align="horiz. centered"
+}
+composite {
+	object {
+		x=10
+		y=230
+		width=382
+		height=87
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=230
+				width=382
+				height=87
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
+		text {
+			object {
+				x=16
+				y=236
+				width=80
+				height=18
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Flow control"
+			align="horiz. centered"
+		}
+		composite {
+			object {
+				x=16
+				y=297
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=16
+						y=297
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Valve opening"
+					align="horiz. centered"
+				}
+				"text update" {
+					object {
+						x=306
+						y=297
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)VALVEOPENING"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=297
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)VALVEOPENING.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=297
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)VALVEOPENING"
+						clr=51
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=278
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=16
+						y=278
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Back pressure"
+					align="horiz. centered"
+				}
+				"text update" {
+					object {
+						x=306
+						y=278
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)BACKPRESS"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=278
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)BACKPRESS.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=278
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)BACKPRESS"
+						clr=51
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=259
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=16
+						y=259
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Gas flow"
+					align="horiz. centered"
+				}
+				"text update" {
+					object {
+						x=306
+						y=259
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASFLOW"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=259
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASFLOW.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=259
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASFLOW"
+						clr=51
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=81
+		width=382
+		height=144
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=81
+				width=382
+				height=144
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=148
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=148
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTTEMP"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=148
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTTEMP.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=148
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTTEMP"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=148
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Suct temp"
+					align="horiz. centered"
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=129
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=129
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPTEMP"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=129
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPTEMP.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=129
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPTEMP"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=129
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Evap temp"
+					align="horiz. centered"
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=110
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=110
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)TEMP"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=110
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)TEMP.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=110
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)TEMP"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=110
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Sample temp"
+					align="horiz. centered"
+				}
+			}
+		}
+		text {
+			object {
+				x=16
+				y=87
+				width=150
+				height=18
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Sensors and heaters"
+			align="horiz. centered"
+		}
+		composite {
+			object {
+				x=16
+				y=205
+				width=370
+				height=14
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=205
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTHEAT"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=205
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTHEAT.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=205
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)SUCTHEAT"
+						clr=52
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=205
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Suct heat"
+					align="horiz. centered"
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=186
+				width=370
+				height=15
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=186
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPHEAT"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=186
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPHEAT.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=186
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)EVAPHEAT"
+						clr=52
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=187
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Evap heat"
+					align="horiz. centered"
+				}
+			}
+		}
+		composite {
+			object {
+				x=16
+				y=167
+				width=370
+				height=15
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=306
+						y=167
+						width=60
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASHEAT"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					align="horiz. right"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=366
+						y=167
+						width=20
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASHEAT.EGU"
+						clr=15
+						bclr=12
+					}
+					clrmod="alarm"
+					limits {
+					}
+				}
+				bar {
+					object {
+						x=101
+						y=167
+						width=200
+						height=14
+					}
+					monitor {
+						chan="$(CS)GASHEAT"
+						clr=52
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=16
+						y=168
+						width=80
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Gas heat"
+					align="horiz. centered"
+				}
+			}
+		}
+	}
+}
+"related display" {
+	object {
+		x=10
+		y=58
+		width=382
+		height=18
+	}
+	display[0] {
+		label="main"
+		name="Oxford_CS800.adl"
+		args="CS=$(CS)"
+	}
+	display[1] {
+		label="hour plot"
+		name="Oxford_CS800_hourplot.adl"
+		args="CS=$(CS)"
+	}
+	display[2] {
+		label="sensors, heaters, and flow"
+		name="Oxford_CS800_sensors.adl"
+		args="CS=$(CS)"
+	}
+	display[3] {
+		label="ramp, plat, cool, hold, ..."
+		name="Oxford_CS800_program.adl"
+		args="CS=$(CS)"
+	}
+	display[4] {
+		label="status"
+		name="Oxford_CS800_status.adl"
+		args="CS=$(CS)"
+	}
+	display[5] {
+		label="admin"
+		name="Oxford_CS800_admin.adl"
+		args="CS=$(CS)"
+	}
+	clr=14
+	bclr=6
+	label="-Programming and Status ..."
+}

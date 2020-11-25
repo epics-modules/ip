@@ -1,0 +1,1329 @@
+
+file {
+	name="/usr/local/epics/synApps_6_1/support/ip-git/ipApp/op/adl/Oxford_CS800_status.adl"
+	version=030114
+}
+display {
+	object {
+		x=10
+		y=31
+		width=362
+		height=527
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+text {
+	object {
+		x=10
+		y=8
+		width=342
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Oxford CryoStream 800: $(CS)"
+	align="horiz. centered"
+}
+composite {
+	object {
+		x=10
+		y=90
+		width=342
+		height=425
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=10
+				y=90
+				width=342
+				height=425
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
+		composite {
+			object {
+				x=22
+				y=97
+				width=319
+				height=413
+			}
+			"composite name"=""
+			children {
+				composite {
+					object {
+						x=22
+						y=306
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=306
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)GASHEAT"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=306
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="GASHEAT"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=287
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=287
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)EVAPTEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=287
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="EVAPTEMP"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=268
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=268
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)EVAPHEAT"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=268
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="EVAPHEAT"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=249
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=249
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)EVAPADJUST"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=249
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="EVAPADJUST"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=230
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=230
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)ERROR"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=230
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="ERROR"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=211
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=211
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)DEVICETYPE"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=211
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="DEVICETYPE"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=192
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=192
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)DEVICESUBTYPE"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=192
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="DEVICESUBTYPE"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=173
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=173
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)DEVICEMINTEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=173
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="DEVICEMINTEMP"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=154
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=154
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)DEVICEMAXTEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=154
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="DEVICEMAXTEMP"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=135
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=135
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)CTRLNUM"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=135
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="CTRLNUM"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=116
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=116
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)BACKPRESS"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=116
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="BACKPRESS"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=97
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=22
+								y=97
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)ALARMI"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=148
+								y=97
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="ALARMI"
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=496
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=496
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="VER"
+						}
+						"text update" {
+							object {
+								x=22
+								y=496
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)VER"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=477
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=477
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="TEMP"
+						}
+						"text update" {
+							object {
+								x=22
+								y=477
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)TEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=458
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=458
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="TARGETTEMP"
+						}
+						"text update" {
+							object {
+								x=22
+								y=458
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)TARGETTEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=439
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=439
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="SUCTTEMP"
+						}
+						"text update" {
+							object {
+								x=22
+								y=439
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)SUCTTEMP"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=420
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=420
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="SUCTHEAT"
+						}
+						"text update" {
+							object {
+								x=22
+								y=420
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)SUCTHEAT"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=401
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						composite {
+							object {
+								x=22
+								y=401
+								width=319
+								height=14
+							}
+							"composite name"=""
+							children {
+								text {
+									object {
+										x=148
+										y=401
+										width=193
+										height=14
+									}
+									"basic attribute" {
+										clr=14
+									}
+									textix="RUNTIME"
+								}
+								"text update" {
+									object {
+										x=22
+										y=401
+										width=119
+										height=14
+									}
+									monitor {
+										chan="$(CS)RUNTIME"
+										clr=14
+										bclr=2
+									}
+									clrmod="alarm"
+									align="horiz. centered"
+									limits {
+									}
+								}
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=382
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=382
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="RUNMODE"
+						}
+						"text update" {
+							object {
+								x=22
+								y=382
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)RUNMODE"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=363
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=363
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="REMAINING"
+						}
+						"text update" {
+							object {
+								x=22
+								y=363
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)REMAINING"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=344
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=344
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="RAMPRATE"
+						}
+						"text update" {
+							object {
+								x=22
+								y=344
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)RAMPRATE"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=22
+						y=325
+						width=319
+						height=14
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=148
+								y=325
+								width=193
+								height=14
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="PHASE"
+						}
+						"text update" {
+							object {
+								x=22
+								y=325
+								width=119
+								height=14
+							}
+							monitor {
+								chan="$(CS)PHASE"
+								clr=14
+								bclr=2
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							limits {
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=66
+		width=342
+		height=19
+	}
+	"composite name"=""
+	children {
+		"related display" {
+			object {
+				x=10
+				y=66
+				width=171
+				height=18
+			}
+			display[0] {
+				label="temperature"
+				name="Oxford_CS800.adl"
+				args="CS=$(CS)"
+			}
+			clr=14
+			bclr=6
+			label="-Main screen"
+		}
+		"related display" {
+			object {
+				x=181
+				y=67
+				width=171
+				height=18
+			}
+			display[0] {
+				label="main"
+				name="Oxford_CS800.adl"
+				args="CS=$(CS)"
+			}
+			display[1] {
+				label="hour plot"
+				name="Oxford_CS800_hourplot.adl"
+				args="CS=$(CS)"
+			}
+			display[2] {
+				label="sensors, heaters, and flow"
+				name="Oxford_CS800_sensors.adl"
+				args="CS=$(CS)"
+			}
+			display[3] {
+				label="ramp, plat, cool, hold, ..."
+				name="Oxford_CS800_program.adl"
+				args="CS=$(CS)"
+			}
+			display[4] {
+				label="status"
+				name="Oxford_CS800_status.adl"
+				args="CS=$(CS)"
+			}
+			display[5] {
+				label="full status"
+				name="Oxford_CS800_status_full.adl"
+				args="CS=$(CS)"
+			}
+			display[6] {
+				label="admin"
+				name="Oxford_CS800_admin.adl"
+				args="CS=$(CS)"
+			}
+			clr=14
+			bclr=6
+			label="-More ..."
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=33
+		width=342
+		height=28
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=184
+				y=33
+				width=168
+				height=28
+			}
+			"composite name"=""
+			children {
+				rectangle {
+					object {
+						x=184
+						y=33
+						width=168
+						height=28
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+					}
+					"dynamic attribute" {
+						chan="$(CS)HOLD"
+					}
+				}
+				"text update" {
+					object {
+						x=210
+						y=41
+						width=40
+						height=12
+					}
+					monitor {
+						chan="$(CS)CTRLNUM"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=304
+						y=41
+						width=40
+						height=12
+					}
+					monitor {
+						chan="$(CS)VER"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=188
+						y=41
+						width=30
+						height=12
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="ID"
+				}
+				text {
+					object {
+						x=258
+						y=40
+						width=40
+						height=14
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="vers"
+					align="horiz. right"
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=33
+				width=168
+				height=28
+			}
+			"composite name"=""
+			children {
+				composite {
+					object {
+						x=10
+						y=33
+						width=168
+						height=28
+					}
+					"composite name"=""
+					children {
+						rectangle {
+							object {
+								x=10
+								y=33
+								width=168
+								height=28
+							}
+							"basic attribute" {
+								clr=14
+								fill="outline"
+							}
+							"dynamic attribute" {
+								chan="$(CS)HOLD"
+							}
+						}
+						text {
+							object {
+								x=14
+								y=41
+								width=40
+								height=11
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="comms"
+						}
+						composite {
+							object {
+								x=58
+								y=39
+								width=45
+								height=17
+							}
+							"composite name"=""
+							children {
+								"message button" {
+									object {
+										x=58
+										y=39
+										width=30
+										height=17
+									}
+									control {
+										chan="$(CS)DISABLE"
+										clr=54
+										bclr=56
+									}
+									label="ON"
+									press_msg="0"
+								}
+								rectangle {
+									object {
+										x=93
+										y=40
+										width=10
+										height=14
+									}
+									"basic attribute" {
+										clr=15
+									}
+									"dynamic attribute" {
+										vis="calc"
+										calc="A==0"
+										chan="$(CS)DISABLE"
+									}
+								}
+							}
+						}
+						composite {
+							object {
+								x=126
+								y=39
+								width=45
+								height=17
+							}
+							"composite name"=""
+							children {
+								"message button" {
+									object {
+										x=126
+										y=39
+										width=30
+										height=17
+									}
+									control {
+										chan="$(CS)DISABLE"
+										clr=54
+										bclr=56
+									}
+									label="OFF"
+									press_msg="1"
+								}
+								rectangle {
+									object {
+										x=161
+										y=40
+										width=10
+										height=14
+									}
+									"basic attribute" {
+										clr=20
+									}
+									"dynamic attribute" {
+										vis="calc"
+										calc="A==1"
+										chan="$(CS)DISABLE"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
