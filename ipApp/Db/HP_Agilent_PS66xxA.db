@@ -49,14 +49,14 @@ record (stringin, "$(P)$(R)IDN") {
 
 record(sseq,"$(P)$(R)ReadAll") {
   field (SCAN,"1 second")
-  field (FLNK, "(P)PS66xxA:$(S):dV")
+  field (FLNK, "$(P)$(R)dV")
 }
 
 record (ai, "$(P)$(R)dV") {
   field (DTYP, "stream")
   field (INP, "@HP_Agilent_PS66xxA.proto getOutVolt $(PORT) $(ADDR)")
   field (PREC, "3")
-  field (FLNK, "(P)PS66xxA:$(S):dC")
+  field (FLNK, "$(P)$(R)dC")
 }
 
 # Delivered Current (Amp)
@@ -64,28 +64,28 @@ record (ai, "$(P)$(R)dC") {
   field (DTYP, "stream")
   field (INP, "@HP_Agilent_PS66xxA.proto getOutCurrent $(PORT) $(ADDR)")
   field (PREC, "3")
-  field (FLNK, "(P)PS66xxA:$(S):getVoltLevel")
+  field (FLNK, "$(P)$(R)getVoltLevel")
 }
 
 record (ai, "$(P)$(R)getVoltLevel") {
   field (DTYP, "stream")
   field (INP, "@HP_Agilent_PS66xxA.proto getVoltLevel $(PORT) $(ADDR)")
   field (PREC, "3")
-  field (FLNK, "(P)PS66xxA:$(S):getVoltProt")
+  field (FLNK, "$(P)$(R)getVoltProt")
 }
 
 record (ai, "$(P)$(R)getVoltProt") {
   field (DTYP, "stream")
   field (INP, "@HP_Agilent_PS66xxA.proto getVoltProt $(PORT) $(ADDR)")
   field (PREC, "3")
-  field (FLNK, "(P)PS66xxA:$(S):getCurrentLevel")
+  field (FLNK, "$(P)$(R)getCurrentLevel")
 }
 
 record (ai, "$(P)$(R)getCurrentLevel") {
   field (DTYP, "stream")
   field (INP, "@HP_Agilent_PS66xxA.proto getCurrentLevel $(PORT) $(ADDR)")
   field (PREC, "3")
-  field (FLNK, "(P)PS66xxA:$(S):Output")
+  field (FLNK, "$(P)$(R)Output")
 }
 
 record (bi, "$(P)$(R)Output") {
@@ -93,7 +93,7 @@ record (bi, "$(P)$(R)Output") {
   field (INP, "@HP_Agilent_PS66xxA.proto getOnOff $(PORT) $(ADDR)")
   field (ZNAM, "OFF")
   field (ONAM, "ON")
-  field (FLNK, "(P)PS66xxA:$(S):Protect")
+  field (FLNK, "$(P)$(R)Protect")
 }
 
 record (bi, "$(P)$(R)Protect") {
@@ -101,7 +101,7 @@ record (bi, "$(P)$(R)Protect") {
   field (INP, "@HP_Agilent_PS66xxA.proto getOverCurrOnOff $(PORT) $(ADDR)")
   field (ZNAM, "OFF")
   field (ONAM, "ON")
-  field (FLNK, "(P)PS66xxA:$(S):StatusReg")
+  field (FLNK, "$(P)$(R)StatusReg")
 }
 
 record (ai, "$(P)$(R)StatusReg") {
