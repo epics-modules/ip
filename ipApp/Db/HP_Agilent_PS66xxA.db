@@ -1,0 +1,223 @@
+# HP_Agilent PS 66xxA Series 
+
+# Output records
+record (ao, "$(P)$(R)setV") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setVoltLevel $(PORT) $(ADDR)")
+  field (DRVL, "0")
+  field (PREC, "3")
+}
+
+record (ao, "$(P)$(R)setC") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setCurrent $(PORT) $(ADDR)")
+  field (DRVL, "0")
+  field (PREC, "3")
+}
+
+record (ao, "$(P)$(R)setVoltProt") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setVoltProt $(PORT) $(ADDR)")
+  field (DRVL, "0")
+  field (PREC, "3")
+}
+
+record (bo, "$(P)$(R)ProtectOnOff") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setOverCurrOnOff $(PORT) $(ADDR)")
+  field (ZNAM, "OFF")
+  field (ONAM, "ON")
+}
+
+record (bo, "$(P)$(R)OnOff") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setOnOff $(PORT) $(ADDR)")
+  field (ZNAM, "OFF")
+  field (ONAM, "ON")
+}
+
+record (bo, "$(P)$(R)ErrClr") {
+  field (DTYP, "stream")
+  field (OUT, "@HP_Agilent_PS66xxA.proto setErrClr $(PORT) $(ADDR)")
+}
+
+# Input records
+record (stringin, "$(P)$(R)IDN") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getID $(PORT) $(ADDR)")
+}
+
+record(sseq,"$(P)$(R)ReadAll") {
+  field (SCAN,"1 second")
+  field (FLNK, "(P)PS66xxA:$(S):dV")
+}
+
+record (ai, "$(P)$(R)dV") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getOutVolt $(PORT) $(ADDR)")
+  field (PREC, "3")
+  field (FLNK, "(P)PS66xxA:$(S):dC")
+}
+
+# Delivered Current (Amp)
+record (ai, "$(P)$(R)dC") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getOutCurrent $(PORT) $(ADDR)")
+  field (PREC, "3")
+  field (FLNK, "(P)PS66xxA:$(S):getVoltLevel")
+}
+
+record (ai, "$(P)$(R)getVoltLevel") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getVoltLevel $(PORT) $(ADDR)")
+  field (PREC, "3")
+  field (FLNK, "(P)PS66xxA:$(S):getVoltProt")
+}
+
+record (ai, "$(P)$(R)getVoltProt") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getVoltProt $(PORT) $(ADDR)")
+  field (PREC, "3")
+  field (FLNK, "(P)PS66xxA:$(S):getCurrentLevel")
+}
+
+record (ai, "$(P)$(R)getCurrentLevel") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getCurrentLevel $(PORT) $(ADDR)")
+  field (PREC, "3")
+  field (FLNK, "(P)PS66xxA:$(S):Output")
+}
+
+record (bi, "$(P)$(R)Output") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getOnOff $(PORT) $(ADDR)")
+  field (ZNAM, "OFF")
+  field (ONAM, "ON")
+  field (FLNK, "(P)PS66xxA:$(S):Protect")
+}
+
+record (bi, "$(P)$(R)Protect") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getOverCurrOnOff $(PORT) $(ADDR)")
+  field (ZNAM, "OFF")
+  field (ONAM, "ON")
+  field (FLNK, "(P)PS66xxA:$(S):StatusReg")
+}
+
+record (ai, "$(P)$(R)StatusReg") {
+  field (DTYP, "stream")
+  field (INP, "@HP_Agilent_PS66xxA.proto getStatus $(PORT) $(ADDR)")
+  field (FLNK, "$(P)$(R)SRCalc PP MS")
+}
+
+record(transform, "$(P)$(R)SRCalc") {
+  field(INPA, "$(P)$(R)StatusReg")
+  field(CMTB, "OverVoltage")
+  field(CLCB, "A&1")
+  field(OUTB, "$(P)$(R)SR:Vtrip PP MS")
+  field(CMTC, "OverCurrent")
+  field(CLCC, "A&2?1:0")
+  field(OUTC, "$(P)$(R)SR:Itrip PP MS")
+  field(CMTD, "OverTemp")
+  field(CLCD, "A&16?1:0")
+  field(OUTD, "$(P)$(R)SR:OverTemp PP MS")
+  field(CMTE, "RemoteTrig")
+  field(CLCE, "A&512?1:0")
+  field(OUTE, "")
+  field(CMTF, "UnRegulatedOut")
+  field(CLCF, "A&1024?1:0")
+  field(OUTF, "$(P)$(R)SR:UnReg PP MS")
+  field(INPG, "$(P)$(R)dV") 
+  field(INPH, "$(P)$(R)dC") 
+  field(CMTI, "Resitance")
+  field(CLCI, "G/H")
+  field(OUTI, "$(P)$(R)SR:Resistance PP MS")
+  field(CMTK, "TripFault")
+  field(CLCK, "B|C|D?0:1")
+  field(INPL, "$(P)$(R)dV") 
+  field(INPM, "$(P)$(R)dC") 
+  field(CMTN, "PowerOutPut")
+  field(CLCN, "L*M")
+  field(OUTN, "$(P)$(R)SR:powerOutPut PP MS")
+  field(PREC,"8")
+}
+
+record (ao, "$(P)$(R)SR:powerOutPut") {
+  field(PREC,"5")
+}
+
+record (ao, "$(P)$(R)SR:Resistance") {
+  field(PREC,"5")
+}
+
+record (calcout, "$(P)$(R)VTripClr") {
+  field(DESC, "Clear V on Trip")
+  field(INPA, "$(P)$(R)SRCalc.K CP MS")
+  field(A, "1")
+  field(CALC, "A")
+  field(OOPT, "Transition To Zero")
+  field(OUT, "$(P)$(R)setV PP")
+}
+
+record (bi, "$(P)$(R)SR:Vtrip") {
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record (bi, "$(P)$(R)SR:Itrip") {
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record (bi, "$(P)$(R)SR:OverTemp") {
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record (bi, "$(P)$(R)SR:UnReg") {
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record(asyn,"$(P)$(R)comm") {
+  field(PORT,"$(PORT)")
+  field(ADDR,"$(ADDR)")
+}
+
+# These records are for tweaking the Amp setpoint
+record(ao,"$(P)$(R)SP_C_tweak") {
+  field(PREC,"3")
+}
+
+record(calcout,"$(P)$(R)SP_C_tweak_down") {
+  field(INPA,"$(P)$(R)SP_C_tweak.VAL NPP NMS")
+  field(INPB,"$(P)$(R)setC.VAL NPP NMS")
+  field(CALC,"B-A")
+  field(OUT, "$(P)$(R)setC.VAL PP NMS")
+}
+
+record(calcout,"$(P)$(R)SP_C_tweak_up") {
+  field(INPA,"$(P)$(R)SP_C_tweak.VAL NPP NMS")
+  field(INPB,"$(P)$(R)setC.VAL NPP NMS")
+  field(CALC,"B+A")
+  field(OUT, "$(P)$(R)setC.VAL PP NMS")
+}
+
+# These records are for tweaking the Voltage setpoint
+record(ao,"$(P)$(R)SP_V_tweak") {
+  field(PREC,"3")
+}
+
+record(calcout,"$(P)$(R)SP_V_tweak_down") {
+  field(INPA,"$(P)$(R)SP_V_tweak NPP NMS")
+  field(INPB,"$(P)$(R)setV NPP NMS")
+  field(CALC,"B-A")
+  field(OUT, "$(P)$(R)setV PP NMS")
+}
+
+record(calcout,"$(P)$(R)SP_V_tweak_up") {
+  field(INPA,"$(P)$(R)SP_V_tweak NPP NMS")
+  field(INPB,"$(P)$(R)setV NPP NMS")
+  field(CALC,"B+A")
+  field(OUT, "$(P)$(R)setV PP NMS")
+}
