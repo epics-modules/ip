@@ -34,6 +34,7 @@ setVoltLevel {
 
 getVoltLevel {
   out "VOLT:LEVEL?";
+  in "%E";
   @init {out "VOLT:LEVEL?"; in "%E";}
 }
 
@@ -61,11 +62,13 @@ setCurrentLevel {
 
 getCurrentLevel {
   out "CURR:LEVEL?";
+  in "%E";
   @init {out "CURR:LEVEL?"; in "%E";}
 }
 
 setOnOff {
   out "OUTP %{OFF|ON}";
+  @init {out "OUTP?"; in "%d";}
 }
 
 getOnOff {
