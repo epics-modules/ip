@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Oxford_CS800_program</name>
+  <x>116</x>
+  <y>53</y>
+  <width>360</width>
+  <height>204</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>Oxford CryoStream 800: $(CS)</text>
+    <x>10</x>
+    <y>8</y>
+    <width>330</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #9</name>
+    <x>4000</x>
+    <y>202</y>
+    <width>1</width>
+    <height>1</height>
+    <style>3</style>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #12</name>
+    <x>10</x>
+    <y>58</y>
+    <width>341</width>
+    <height>46</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #15</name>
+      <width>341</width>
+      <height>46</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #19</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)RAMP.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)RAMP.PROC</pv_name>
+      <text>Ramp up</text>
+      <x>4</x>
+      <y>4</y>
+      <width>160</width>
+      <height>18</height>
+      <background_color>
+        <color red="238" green="182" blue="43">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #22</name>
+      <pv_name>$(CS)RTEMP</pv_name>
+      <x>254</x>
+      <y>24</y>
+      <width>78</width>
+      <height>17</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="236" green="236" blue="236">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #26</name>
+      <text>target, K</text>
+      <x>174</x>
+      <y>26</y>
+      <width>74</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #29</name>
+      <text>rate, K/h</text>
+      <x>174</x>
+      <y>6</y>
+      <width>74</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #32</name>
+      <pv_name>$(CS)RRATE</pv_name>
+      <x>254</x>
+      <y>4</y>
+      <width>78</width>
+      <height>17</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="236" green="236" blue="236">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #36</name>
+    <x>10</x>
+    <y>140</y>
+    <width>341</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #39</name>
+      <width>341</width>
+      <height>26</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #43</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)COOL.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)COOL.PROC</pv_name>
+      <text>Cool down</text>
+      <x>4</x>
+      <y>4</y>
+      <width>160</width>
+      <height>18</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #46</name>
+      <text>target, K</text>
+      <x>172</x>
+      <y>6</y>
+      <width>74</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #49</name>
+      <pv_name>$(CS)CTEMP</pv_name>
+      <x>254</x>
+      <y>4</y>
+      <width>78</width>
+      <height>17</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="236" green="236" blue="236">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #53</name>
+    <x>10</x>
+    <y>109</y>
+    <width>341</width>
+    <height>26</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #56</name>
+      <width>341</width>
+      <height>26</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #60</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)PLAT.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)PLAT.PROC</pv_name>
+      <text>Plateau</text>
+      <x>4</x>
+      <y>4</y>
+      <width>160</width>
+      <height>18</height>
+      <background_color>
+        <color red="187" green="193" blue="135">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #63</name>
+      <text>time, m</text>
+      <x>174</x>
+      <y>6</y>
+      <width>74</width>
+      <height>12</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>2</horizontal_alignment>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #66</name>
+      <pv_name>$(CS)PTIME</pv_name>
+      <x>254</x>
+      <y>4</y>
+      <width>78</width>
+      <height>17</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="236" green="236" blue="236">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #70</name>
+    <x>10</x>
+    <y>171</y>
+    <width>300</width>
+    <height>26</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #74</name>
+    <x>21</x>
+    <y>175</y>
+    <width>279</width>
+    <height>17</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #77</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)HOLD.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)HOLD.PROC</pv_name>
+      <text>Cancel and Hold</text>
+      <x>143</x>
+      <width>136</width>
+      <height>17</height>
+      <background_color>
+        <color red="187" green="193" blue="135">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #80</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)PAUSE.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)PAUSE.PROC</pv_name>
+      <text>Pause</text>
+      <width>67</width>
+      <height>17</height>
+      <background_color>
+        <color red="187" green="193" blue="135">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #83</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(CS)RESUME.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(CS)RESUME.PROC</pv_name>
+      <text>Resume</text>
+      <x>71</x>
+      <width>67</width>
+      <height>17</height>
+      <background_color>
+        <color red="187" green="193" blue="135">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #86</name>
+    <actions>
+      <action type="open_display">
+        <file>Oxford_CS800.opi</file>
+        <target>tab</target>
+        <description>main</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_hourplot.opi</file>
+        <target>tab</target>
+        <description>hour plot</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_sensors.opi</file>
+        <target>tab</target>
+        <description>sensors, heaters, and flow</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_program.opi</file>
+        <target>tab</target>
+        <description>ramp, plat, cool, hold, ...</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_status.opi</file>
+        <target>tab</target>
+        <description>status</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_admin.opi</file>
+        <target>tab</target>
+        <description>admin</description>
+      </action>
+    </actions>
+    <text></text>
+    <x>319</x>
+    <y>171</y>
+    <width>33</width>
+    <height>24</height>
+    <background_color>
+      <color red="158" green="158" blue="158">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #94</name>
+    <x>10</x>
+    <y>33</y>
+    <width>341</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #97</name>
+      <x>173</x>
+      <width>168</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #100</name>
+        <width>168</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #104</name>
+        <pv_name>$(CS)CTRLNUM</pv_name>
+        <x>26</x>
+        <y>6</y>
+        <width>40</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #108</name>
+        <pv_name>$(CS)VER</pv_name>
+        <x>120</x>
+        <y>6</y>
+        <width>40</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #112</name>
+        <text>ID</text>
+        <x>4</x>
+        <y>6</y>
+        <width>18</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #115</name>
+        <text>vers</text>
+        <x>74</x>
+        <y>5</y>
+        <width>40</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #118</name>
+      <width>168</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #121</name>
+        <width>168</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #125</name>
+        <text>not communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>158</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="190" green="25" blue="11">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0!=0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #129</name>
+        <text>communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>158</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0==0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+    </widget>
+  </widget>
+</display>

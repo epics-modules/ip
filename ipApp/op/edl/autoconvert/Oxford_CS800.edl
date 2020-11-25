@@ -1,0 +1,1055 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 95
+y 57
+w 400
+h 406
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 10
+y 8
+w 380
+h 20
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Oxford CryoStream 800: $(CS)"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x -2147483638
+y 192
+w 1
+h 1
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 33
+w 380
+h 20
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 203
+y 33
+w 187
+h 20
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 203
+y 33
+w 187
+h 20
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
+lineWidth 0
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 232
+y 39
+w 45
+h 8
+controlPv "$(CS)CTRLNUM"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 337
+y 39
+w 45
+h 8
+controlPv "$(CS)VER"
+format "decimal"
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 207
+y 39
+w 20
+h 8
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "ID"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 285
+y 38
+w 45
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "vers"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 33
+w 187
+h 20
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 33
+w 187
+h 20
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
+lineWidth 0
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 14
+y 39
+w 176
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor rgb 48640 6400 2816
+bgColor index 3
+useDisplayBg
+value {
+  "not communicating"
+}
+visPv "CALC\\\{(A)\}($(CS)DISABLE)"
+visInvert
+visMin 0
+visMax 1
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 14
+y 39
+w 176
+h 10
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor rgb 0 55296 0
+bgColor index 3
+useDisplayBg
+value {
+  "communicating"
+}
+visPv "CALC\\\{(A)\}($(CS)DISABLE)"
+visMin 0
+visMax 1
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+# Geometry
+x 10
+y 188
+w 380
+h 210
+# Appearance
+border
+plotAreaBorder
+graphTitle 
+xLabel "elapsed time, s"
+yLabel "Kelvin"
+fgColor rgb 0 0 0
+bColor rgb 47872 47872 47872
+gridColor rgb 0 0 0
+font "helvetica-medium-r-18.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 200
+#  X axis properties
+xAxisSrc "AutoScale"
+xMax 1
+xLablePrecision 1
+#  Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+yMax 1
+#  Y2 axis properties
+showY2Axis
+y2AxisSrc "AutoScale"
+y2Max 1
+#  Trace Properties
+numTraces 2
+yPv {
+  0 "$(CS)SETPOINT"
+  1 "$(CS)TEMP"
+}
+plotUpdateMode {
+  0 "y"
+  1 "y"
+}
+opMode {
+  0 "plot"
+  1 "plot"
+}
+plotColor {
+  0 rgb 64768 0 0
+  1 rgb 0 55296 0
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 163
+w 380
+h 18
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 58
+w 380
+h 100
+
+beginGroup
+
+# (Rectangle)
+object activeRectangleClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 58
+w 380
+h 100
+lineColor rgb 0 0 0
+fillColor rgb 0 0 0
+lineWidth 0
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 63
+w 365
+h 91
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 103
+w 364
+h 36
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 242
+y 103
+w 140
+h 36
+controlPv "$(CS)TEMP.EGU"
+format "decimal"
+font "utopia-medium-r-24.0"
+fontAlign "left"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 18
+y 103
+w 224
+h 36
+controlPv "$(CS)TEMP"
+format "decimal"
+font "utopia-medium-r-24.0"
+fontAlign "right"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 19
+y 63
+w 179
+h 8
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "current setpoint"
+}
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 204
+y 63
+w 179
+h 8
+font "helvetica-bold-r-12.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "target setpoint"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 19
+y 76
+w 179
+h 22
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 19
+y 76
+w 112
+h 22
+controlPv "$(CS)SETPOINT"
+format "decimal"
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 131
+y 76
+w 67
+h 22
+controlPv "$(CS)SETPOINT.EGU"
+format "decimal"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 204
+y 76
+w 179
+h 22
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 204
+y 76
+w 112
+h 22
+controlPv "$(CS)TARGETTEMP"
+format "decimal"
+font "helvetica-medium-r-18.0"
+fontAlign "right"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 316
+y 76
+w 67
+h 22
+controlPv "$(CS)TARGETTEMP.EGU"
+format "decimal"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 17920 17920 17920
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 260
+y 144
+w 120
+h 10
+controlPv "$(CS)ALARM"
+format "decimal"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 138
+y 144
+w 105
+h 10
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 138
+y 144
+w 40
+h 10
+controlPv "$(CS)REMAINING"
+format "decimal"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 183
+y 144
+w 60
+h 8
+font "helvetica-bold-r-12.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "min. left"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 144
+w 115
+h 10
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 73
+y 144
+w 60
+h 10
+controlPv "$(CS)PHASE"
+format "decimal"
+font "helvetica-medium-r-8.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 18
+y 144
+w 50
+h 8
+font "helvetica-bold-r-12.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Phase: "
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x -2147483638
+y 192
+w 1
+h 1
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 33
+w 380
+h 20
+
+beginGroup
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 203
+y 33
+w 187
+h 20
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 33
+w 187
+h 20
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 163
+w 380
+h 18
+
+beginGroup
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 163
+w 380
+h 18
+fgColor rgb 0 0 0
+bgColor rgb 40448 40448 40448
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-10.0"
+buttonLabel "Programming and Status ..."
+numPvs 10
+numDsps 5
+displayFileName {
+  0 "Oxford_CS800.edl"
+  1 "Oxford_CS800_hourplot.edl"
+  2 "Oxford_CS800_sensors.edl"
+  3 "Oxford_CS800_program.edl"
+  4 "Oxford_CS800_status.edl"
+}
+menuLabel {
+  0 "main"
+  1 "hour plot"
+  2 "sensors, heaters, and flow"
+  3 "ramp, plat, cool, hold, ..."
+  4 "status"
+}
+symbols {
+  0 "CS=$(CS)"
+  1 "CS=$(CS)"
+  2 "CS=$(CS)"
+  3 "CS=$(CS)"
+  4 "CS=$(CS)"
+}
+replaceSymbols {
+  0 1
+  1 1
+  2 1
+  3 1
+  4 1
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 58
+w 380
+h 100
+
+beginGroup
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 63
+w 365
+h 91
+
+beginGroup
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 103
+w 364
+h 36
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 19
+y 76
+w 179
+h 22
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 204
+y 76
+w 179
+h 22
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 138
+y 144
+w 105
+h 10
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 18
+y 144
+w 115
+h 10
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+

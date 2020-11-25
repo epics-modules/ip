@@ -1,0 +1,870 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Oxford_CS800_sensors</name>
+  <x>140</x>
+  <y>126</y>
+  <width>400</width>
+  <height>327</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="group" version="2.0.0">
+    <name>composite #6</name>
+    <x>10</x>
+    <y>33</y>
+    <width>382</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #9</name>
+      <x>194</x>
+      <width>188</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #12</name>
+        <width>188</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #16</name>
+        <pv_name>$(CS)CTRLNUM</pv_name>
+        <x>29</x>
+        <y>6</y>
+        <width>45</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #20</name>
+        <pv_name>$(CS)VER</pv_name>
+        <x>134</x>
+        <y>6</y>
+        <width>45</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #24</name>
+        <text>ID</text>
+        <x>4</x>
+        <y>6</y>
+        <width>20</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #27</name>
+        <text>vers</text>
+        <x>83</x>
+        <y>5</y>
+        <width>45</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #30</name>
+      <width>188</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #33</name>
+        <width>188</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #37</name>
+        <text>not communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>177</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="190" green="25" blue="11">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0!=0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #41</name>
+        <text>communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>177</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0==0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #45</name>
+    <text>Oxford CryoStream 800: $(CS)</text>
+    <x>10</x>
+    <y>8</y>
+    <width>382</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #48</name>
+    <x>10</x>
+    <y>230</y>
+    <width>382</width>
+    <height>87</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #51</name>
+      <width>382</width>
+      <height>87</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #54</name>
+      <text>Flow control</text>
+      <x>6</x>
+      <y>6</y>
+      <width>80</width>
+      <height>18</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #57</name>
+      <x>6</x>
+      <y>67</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>text #60</name>
+        <text>Valve opening</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #63</name>
+        <pv_name>$(CS)VALVEOPENING</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #67</name>
+        <pv_name>$(CS)VALVEOPENING.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #71</name>
+        <pv_name>$(CS)VALVEOPENING</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #75</name>
+      <x>6</x>
+      <y>48</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>text #78</name>
+        <text>Back pressure</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #81</name>
+        <pv_name>$(CS)BACKPRESS</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #85</name>
+        <pv_name>$(CS)BACKPRESS.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #89</name>
+        <pv_name>$(CS)BACKPRESS</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #93</name>
+      <x>6</x>
+      <y>29</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="label" version="2.0.0">
+        <name>text #96</name>
+        <text>Gas flow</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #99</name>
+        <pv_name>$(CS)GASFLOW</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #103</name>
+        <pv_name>$(CS)GASFLOW.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #107</name>
+        <pv_name>$(CS)GASFLOW</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #111</name>
+    <x>10</x>
+    <y>81</y>
+    <width>382</width>
+    <height>144</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #114</name>
+      <width>382</width>
+      <height>144</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #117</name>
+      <x>6</x>
+      <y>67</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #120</name>
+        <pv_name>$(CS)SUCTTEMP</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #124</name>
+        <pv_name>$(CS)SUCTTEMP.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #128</name>
+        <pv_name>$(CS)SUCTTEMP</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #132</name>
+        <text>Suct temp</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #135</name>
+      <x>6</x>
+      <y>48</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #138</name>
+        <pv_name>$(CS)EVAPTEMP</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #142</name>
+        <pv_name>$(CS)EVAPTEMP.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #146</name>
+        <pv_name>$(CS)EVAPTEMP</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #150</name>
+        <text>Evap temp</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #153</name>
+      <x>6</x>
+      <y>29</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #156</name>
+        <pv_name>$(CS)TEMP</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #160</name>
+        <pv_name>$(CS)TEMP.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #164</name>
+        <pv_name>$(CS)TEMP</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #168</name>
+        <text>Sample temp</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #171</name>
+      <text>Sensors and heaters</text>
+      <x>6</x>
+      <y>6</y>
+      <width>150</width>
+      <height>18</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #174</name>
+      <x>6</x>
+      <y>124</y>
+      <width>370</width>
+      <height>14</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #177</name>
+        <pv_name>$(CS)SUCTHEAT</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #181</name>
+        <pv_name>$(CS)SUCTHEAT.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #185</name>
+        <pv_name>$(CS)SUCTHEAT</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #189</name>
+        <text>Suct heat</text>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #192</name>
+      <x>6</x>
+      <y>105</y>
+      <width>370</width>
+      <height>15</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #195</name>
+        <pv_name>$(CS)EVAPHEAT</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #199</name>
+        <pv_name>$(CS)EVAPHEAT.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #203</name>
+        <pv_name>$(CS)EVAPHEAT</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #207</name>
+        <text>Evap heat</text>
+        <y>1</y>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #210</name>
+      <x>6</x>
+      <y>86</y>
+      <width>370</width>
+      <height>15</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #213</name>
+        <pv_name>$(CS)GASHEAT</pv_name>
+        <x>290</x>
+        <width>60</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #217</name>
+        <pv_name>$(CS)GASHEAT.EGU</pv_name>
+        <x>350</x>
+        <width>20</width>
+        <height>14</height>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="70" green="70" blue="70">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+      </widget>
+      <widget type="progressbar" version="2.0.0">
+        <name>bar #221</name>
+        <pv_name>$(CS)GASHEAT</pv_name>
+        <x>85</x>
+        <width>200</width>
+        <height>14</height>
+        <background_color>
+          <color red="187" green="187" blue="187">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #225</name>
+        <text>Gas heat</text>
+        <y>1</y>
+        <width>80</width>
+        <height>14</height>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #228</name>
+    <actions>
+      <action type="open_display">
+        <file>Oxford_CS800.opi</file>
+        <target>tab</target>
+        <description>main</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_hourplot.opi</file>
+        <target>tab</target>
+        <description>hour plot</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_sensors.opi</file>
+        <target>tab</target>
+        <description>sensors, heaters, and flow</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_program.opi</file>
+        <target>tab</target>
+        <description>ramp, plat, cool, hold, ...</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_status.opi</file>
+        <target>tab</target>
+        <description>status</description>
+      </action>
+      <action type="open_display">
+        <file>Oxford_CS800_admin.opi</file>
+        <target>tab</target>
+        <description>admin</description>
+      </action>
+    </actions>
+    <text>Programming and Status ...</text>
+    <x>10</x>
+    <y>58</y>
+    <width>382</width>
+    <height>18</height>
+    <background_color>
+      <color red="158" green="158" blue="158">
+      </color>
+    </background_color>
+  </widget>
+</display>

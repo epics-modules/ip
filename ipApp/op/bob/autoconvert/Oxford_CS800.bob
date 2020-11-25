@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>Oxford_CS800</name>
+  <x>95</x>
+  <y>57</y>
+  <width>400</width>
+  <height>406</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="label" version="2.0.0">
+    <name>text #6</name>
+    <text>Oxford CryoStream 800: $(CS)</text>
+    <x>10</x>
+    <y>8</y>
+    <width>380</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #9</name>
+    <x>4000</x>
+    <y>192</y>
+    <width>1</width>
+    <height>1</height>
+    <style>3</style>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #12</name>
+    <x>10</x>
+    <y>33</y>
+    <width>380</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #15</name>
+      <x>193</x>
+      <width>187</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #18</name>
+        <width>187</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #22</name>
+        <pv_name>$(CS)CTRLNUM</pv_name>
+        <x>29</x>
+        <y>6</y>
+        <width>45</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #26</name>
+        <pv_name>$(CS)VER</pv_name>
+        <x>134</x>
+        <y>6</y>
+        <width>45</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #30</name>
+        <text>ID</text>
+        <x>4</x>
+        <y>6</y>
+        <width>20</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <auto_size>true</auto_size>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #33</name>
+        <text>vers</text>
+        <x>82</x>
+        <y>5</y>
+        <width>45</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <horizontal_alignment>2</horizontal_alignment>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #36</name>
+      <width>187</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="rectangle" version="2.0.0">
+        <name>rectangle #39</name>
+        <width>187</width>
+        <line_width>1</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #43</name>
+        <text>not communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>176</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="190" green="25" blue="11">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0!=0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #47</name>
+        <text>communicating</text>
+        <x>4</x>
+        <y>6</y>
+        <width>176</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </foreground_color>
+        <horizontal_alignment>1</horizontal_alignment>
+        <rules>
+          <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0==0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(CS)DISABLE</pv_name>
+          </rule>
+        </rules>
+      </widget>
+    </widget>
+  </widget>
+  <widget type="stripchart" version="2.0.0">
+    <name>strip chart #51</name>
+    <x>10</x>
+    <y>188</y>
+    <width>380</width>
+    <height>210</height>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <show_toolbar>false</show_toolbar>
+    <time_range>300 second</time_range>
+    <y_axes>
+      <y_axis>
+        <title></title>
+        <autoscale>true</autoscale>
+        <log_scale>false</log_scale>
+        <minimum>0.0</minimum>
+        <maximum>100.0</maximum>
+        <show_grid>false</show_grid>
+        <visible>true</visible>
+      </y_axis>
+    </y_axes>
+    <traces>
+      <trace>
+        <name>$(traces[0].y_pv)</name>
+        <y_pv>$(CS)SETPOINT</y_pv>
+        <axis>0</axis>
+        <trace_type>2</trace_type>
+        <color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </color>
+        <line_width>2</line_width>
+        <point_type>0</point_type>
+        <point_size>10</point_size>
+        <visible>true</visible>
+      </trace>
+      <trace>
+        <name>$(traces[1].y_pv)</name>
+        <y_pv>$(CS)TEMP</y_pv>
+        <axis>0</axis>
+        <trace_type>2</trace_type>
+        <color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </color>
+        <line_width>2</line_width>
+        <point_type>0</point_type>
+        <point_size>10</point_size>
+        <visible>true</visible>
+      </trace>
+    </traces>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #58</name>
+    <x>10</x>
+    <y>163</y>
+    <width>380</width>
+    <height>18</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>related display #61</name>
+      <actions>
+        <action type="open_display">
+          <file>Oxford_CS800.opi</file>
+          <target>tab</target>
+          <description>main</description>
+        </action>
+        <action type="open_display">
+          <file>Oxford_CS800_hourplot.opi</file>
+          <target>tab</target>
+          <description>hour plot</description>
+        </action>
+        <action type="open_display">
+          <file>Oxford_CS800_sensors.opi</file>
+          <target>tab</target>
+          <description>sensors, heaters, and flow</description>
+        </action>
+        <action type="open_display">
+          <file>Oxford_CS800_program.opi</file>
+          <target>tab</target>
+          <description>ramp, plat, cool, hold, ...</description>
+        </action>
+        <action type="open_display">
+          <file>Oxford_CS800_status.opi</file>
+          <target>tab</target>
+          <description>status</description>
+        </action>
+      </actions>
+      <text>Programming and Status ...</text>
+      <width>380</width>
+      <height>18</height>
+      <background_color>
+        <color red="158" green="158" blue="158">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #68</name>
+    <x>10</x>
+    <y>58</y>
+    <width>380</width>
+    <height>100</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #71</name>
+      <width>380</width>
+      <height>100</height>
+      <line_width>1</line_width>
+      <line_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="0" green="0" blue="0">
+        </color>
+      </background_color>
+      <transparent>true</transparent>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #75</name>
+      <x>8</x>
+      <y>5</y>
+      <width>365</width>
+      <height>91</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="group" version="2.0.0">
+        <name>composite #78</name>
+        <y>40</y>
+        <width>364</width>
+        <height>36</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #81</name>
+          <pv_name>$(CS)TEMP.EGU</pv_name>
+          <x>224</x>
+          <width>140</width>
+          <height>36</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="30.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #85</name>
+          <pv_name>$(CS)TEMP</pv_name>
+          <width>224</width>
+          <height>36</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="30.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #89</name>
+        <text>current setpoint</text>
+        <x>1</x>
+        <width>179</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #92</name>
+        <text>target setpoint</text>
+        <x>186</x>
+        <width>179</width>
+        <height>8</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="8.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>composite #95</name>
+        <x>1</x>
+        <y>13</y>
+        <width>179</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #98</name>
+          <pv_name>$(CS)SETPOINT</pv_name>
+          <width>112</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #102</name>
+          <pv_name>$(CS)SETPOINT.EGU</pv_name>
+          <x>112</x>
+          <width>67</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>composite #106</name>
+        <x>186</x>
+        <y>13</y>
+        <width>179</width>
+        <height>22</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #109</name>
+          <pv_name>$(CS)TARGETTEMP</pv_name>
+          <width>112</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #113</name>
+          <pv_name>$(CS)TARGETTEMP.EGU</pv_name>
+          <x>112</x>
+          <width>67</width>
+          <height>22</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <foreground_color>
+            <color red="0" green="216" blue="0">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="70" green="70" blue="70">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+        </widget>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #117</name>
+        <pv_name>$(CS)ALARM</pv_name>
+        <x>242</x>
+        <y>81</y>
+        <width>120</width>
+        <height>10</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="10.0">
+          </font>
+        </font>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>1</format>
+        <show_units>false</show_units>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>composite #121</name>
+        <x>120</x>
+        <y>81</y>
+        <width>105</width>
+        <height>10</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #124</name>
+          <pv_name>$(CS)REMAINING</pv_name>
+          <width>40</width>
+          <height>10</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="10.0">
+            </font>
+          </font>
+          <background_color>
+            <color red="218" green="218" blue="218">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+          <horizontal_alignment>1</horizontal_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>text #128</name>
+          <text>min. left</text>
+          <x>45</x>
+          <width>60</width>
+          <height>8</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="8.0">
+            </font>
+          </font>
+          <auto_size>true</auto_size>
+        </widget>
+      </widget>
+      <widget type="group" version="2.0.0">
+        <name>composite #131</name>
+        <y>81</y>
+        <width>115</width>
+        <height>10</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #134</name>
+          <pv_name>$(CS)PHASE</pv_name>
+          <x>55</x>
+          <width>60</width>
+          <height>10</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="10.0">
+            </font>
+          </font>
+          <background_color>
+            <color red="218" green="218" blue="218">
+            </color>
+          </background_color>
+          <format>1</format>
+          <show_units>false</show_units>
+          <horizontal_alignment>1</horizontal_alignment>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>text #138</name>
+          <text>Phase:</text>
+          <width>50</width>
+          <height>8</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="8.0">
+            </font>
+          </font>
+          <horizontal_alignment>2</horizontal_alignment>
+        </widget>
+      </widget>
+    </widget>
+  </widget>
+</display>
