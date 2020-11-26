@@ -122,235 +122,213 @@ text {
 	textix="HP/Agilent PS66xxA Power Supply- $(P)$(R)"
 	align="horiz. centered"
 }
-composite {
+rectangle {
 	object {
 		x=5
 		y=65
 		width=330
 		height=135
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=5
-				y=65
-				width=330
-				height=135
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		composite {
-			object {
-				x=40
-				y=69
-				width=260
-				height=123
-			}
-			"composite name"=""
-			children {
-				rectangle {
-					object {
-						x=106
-						y=69
-						width=120
-						height=21
-					}
-					"basic attribute" {
-						clr=2
-					}
-				}
-				text {
-					object {
-						x=111
-						y=70
-						width=110
-						height=20
-					}
-					"basic attribute" {
-						clr=54
-					}
-					textix="Voltage (V)"
-					align="horiz. centered"
-				}
-				"text update" {
-					object {
-						x=125
-						y=147
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)dV"
-						clr=15
-						bclr=14
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=40
-						y=147
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Measured"
-					align="horiz. right"
-				}
-				text {
-					object {
-						x=70
-						y=122
-						width=50
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Tweak"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=141
-						y=122
-						width=62
-						height=20
-					}
-					control {
-						chan="$(P)$(R)SP_V_tweak"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"message button" {
-					object {
-						x=204
-						y=122
-						width=15
-						height=20
-					}
-					control {
-						chan="$(P)$(R)SP_V_tweak_up.PROC"
-						clr=14
-						bclr=51
-					}
-					label=">"
-					press_msg="1"
-				}
-				"message button" {
-					object {
-						x=125
-						y=122
-						width=15
-						height=20
-					}
-					control {
-						chan="$(P)$(R)SP_V_tweak_down.PROC"
-						clr=14
-						bclr=51
-					}
-					label="<"
-					press_msg="1"
-				}
-				"text entry" {
-					object {
-						x=125
-						y=97
-						width=85
-						height=20
-					}
-					control {
-						chan="$(P)$(R)setV"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=215
-						y=97
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)getVoltLevel"
-						clr=15
-						bclr=14
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=40
-						y=97
-						width=80
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Setpoint"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=125
-						y=172
-						width=85
-						height=20
-					}
-					control {
-						chan="$(P)$(R)setVoltProt"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=215
-						y=172
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)getVoltProt"
-						clr=15
-						bclr=14
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=70
-						y=172
-						width=50
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Limit"
-					align="horiz. right"
-				}
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
+}
+rectangle {
+	object {
+		x=106
+		y=69
+		width=120
+		height=21
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+text {
+	object {
+		x=111
+		y=70
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Voltage (V)"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=125
+		y=147
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)dV"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=40
+		y=147
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Measured"
+	align="horiz. right"
+}
+text {
+	object {
+		x=70
+		y=122
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Tweak"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=141
+		y=122
+		width=62
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=204
+		y=122
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak_up.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=125
+		y=122
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak_down.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=125
+		y=97
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)setV"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=215
+		y=97
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)getVoltLevel"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=40
+		y=97
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=125
+		y=172
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)setVoltProt"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=215
+		y=172
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)getVoltProt"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=70
+		y=172
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Limit"
+	align="horiz. right"
 }
 rectangle {
 	object {
@@ -561,123 +539,99 @@ text {
 	}
 	stacking="column"
 }
-composite {
+rectangle {
 	object {
 		x=5
 		y=295
 		width=330
 		height=85
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=5
-				y=295
-				width=330
-				height=85
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		rectangle {
-			object {
-				x=105
-				y=299
-				width=130
-				height=21
-			}
-			"basic attribute" {
-				clr=2
-			}
-		}
-		text {
-			object {
-				x=110
-				y=300
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=54
-			}
-			textix="Calculations"
-			align="horiz. centered"
-		}
-		composite {
-			object {
-				x=45
-				y=328
-				width=250
-				height=45
-			}
-			"composite name"=""
-			children {
-				"text update" {
-					object {
-						x=210
-						y=328
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)SR:powerOutPut"
-						clr=15
-						bclr=14
-					}
-					clrmod="alarm"
-					format="string"
-					limits {
-					}
-				}
-				text {
-					object {
-						x=113
-						y=328
-						width=90
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Power (W)"
-					align="horiz. right"
-				}
-				"text update" {
-					object {
-						x=210
-						y=353
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)SR:Resistance"
-						clr=15
-						bclr=14
-					}
-					clrmod="alarm"
-					format="string"
-					limits {
-					}
-				}
-				text {
-					object {
-						x=45
-						y=353
-						width=160
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Resistance (Ohm)"
-					align="horiz. right"
-				}
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
+}
+rectangle {
+	object {
+		x=105
+		y=299
+		width=130
+		height=21
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+text {
+	object {
+		x=110
+		y=300
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Calculations"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=210
+		y=328
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SR:powerOutPut"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	limits {
+	}
+}
+text {
+	object {
+		x=113
+		y=328
+		width=90
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Power (W)"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=210
+		y=353
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SR:Resistance"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	limits {
+	}
+}
+text {
+	object {
+		x=45
+		y=353
+		width=160
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Resistance (Ohm)"
+	align="horiz. right"
 }
 rectangle {
 	object {
@@ -715,311 +669,274 @@ rectangle {
 		fill="outline"
 	}
 }
-composite {
+rectangle {
 	object {
 		x=5
 		y=205
 		width=330
 		height=85
 	}
-	"composite name"=""
-	children {
-		rectangle {
-			object {
-				x=5
-				y=205
-				width=330
-				height=85
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-		rectangle {
-			object {
-				x=110
-				y=209
-				width=120
-				height=21
-			}
-			"basic attribute" {
-				clr=2
-			}
-		}
-		text {
-			object {
-				x=135
-				y=210
-				width=70
-				height=20
-			}
-			"basic attribute" {
-				clr=54
-			}
-			textix="Control"
-			align="horiz. centered"
-		}
-		composite {
-			object {
-				x=15
-				y=238
-				width=310
-				height=45
-			}
-			"composite name"=""
-			children {
-				"text update" {
-					object {
-						x=238
-						y=238
-						width=85
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)Output"
-						clr=15
-						bclr=14
-					}
-					clrmod="alarm"
-					format="string"
-					limits {
-					}
-				}
-				text {
-					object {
-						x=23
-						y=238
-						width=120
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Power Off/On"
-					align="horiz. right"
-				}
-				"choice button" {
-					object {
-						x=148
-						y=238
-						width=85
-						height=20
-					}
-					control {
-						chan="$(P)$(R)OnOff.VAL"
-						clr=14
-						bclr=51
-					}
-					stacking="column"
-				}
-				menu {
-					object {
-						x=150
-						y=263
-						width=85
-						height=20
-					}
-					control {
-						chan="$(P)$(R)ReadAll.SCAN"
-						clr=14
-						bclr=51
-					}
-				}
-				"message button" {
-					object {
-						x=240
-						y=263
-						width=85
-						height=20
-					}
-					control {
-						chan="$(P)$(R)ReadAll.PROC"
-						clr=14
-						bclr=51
-					}
-					label="Read"
-					press_msg="1"
-				}
-				text {
-					object {
-						x=15
-						y=263
-						width=130
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Readback rate"
-					align="horiz. right"
-				}
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
 }
-composite {
+rectangle {
+	object {
+		x=110
+		y=209
+		width=120
+		height=21
+	}
+	"basic attribute" {
+		clr=2
+	}
+}
+text {
+	object {
+		x=135
+		y=210
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=54
+	}
+	textix="Control"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=238
+		y=238
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Output"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=23
+		y=238
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Power Off/On"
+	align="horiz. right"
+}
+"choice button" {
+	object {
+		x=148
+		y=238
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)OnOff.VAL"
+		clr=14
+		bclr=51
+	}
+	stacking="column"
+}
+menu {
+	object {
+		x=150
+		y=263
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ReadAll.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+"message button" {
+	object {
+		x=240
+		y=263
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ReadAll.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Read"
+	press_msg="1"
+}
+text {
+	object {
+		x=15
+		y=263
+		width=130
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Readback rate"
+	align="horiz. right"
+}
+text {
+	object {
+		x=417
+		y=240
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Voltage Trip"
+	align="horiz. right"
+}
+text {
+	object {
+		x=416
+		y=265
+		width=120
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Current Trip"
+	align="horiz. right"
+}
+text {
+	object {
+		x=447
+		y=290
+		width=90
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Over Temp"
+	align="horiz. right"
+}
+text {
 	object {
 		x=396
+		y=315
+		width=140
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="PS UnRegulated"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=544
 		y=240
-		width=232
-		height=120
+		width=83
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=417
-				y=240
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Voltage Trip"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=416
-				y=265
-				width=120
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Current Trip"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=447
-				y=290
-				width=90
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Over Temp"
-			align="horiz. right"
-		}
-		text {
-			object {
-				x=396
-				y=315
-				width=140
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="PS UnRegulated"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=544
-				y=240
-				width=83
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SR:Vtrip"
-				clr=15
-				bclr=14
-			}
-			clrmod="alarm"
-			align="horiz. centered"
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=543
-				y=265
-				width=83
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SR:Itrip"
-				clr=15
-				bclr=14
-			}
-			clrmod="alarm"
-			align="horiz. centered"
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=544
-				y=290
-				width=83
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SR:OverTemp"
-				clr=15
-				bclr=14
-			}
-			clrmod="alarm"
-			align="horiz. centered"
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=543
-				y=315
-				width=83
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)SR:UnReg"
-				clr=15
-				bclr=14
-			}
-			clrmod="alarm"
-			align="horiz. centered"
-			format="string"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=426
-				y=340
-				width=110
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Clear fault"
-			align="horiz. right"
-		}
-		"message button" {
-			object {
-				x=543
-				y=340
-				width=85
-				height=20
-			}
-			control {
-				chan="$(P)$(R)ErrClr.PROC"
-				clr=0
-				bclr=21
-			}
-			label="Clear Fault"
-			press_msg="1"
-		}
+	monitor {
+		chan="$(P)$(R)SR:Vtrip"
+		clr=15
+		bclr=14
 	}
+	clrmod="alarm"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=543
+		y=265
+		width=83
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SR:Itrip"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=544
+		y=290
+		width=83
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SR:OverTemp"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=543
+		y=315
+		width=83
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)SR:UnReg"
+		clr=15
+		bclr=14
+	}
+	clrmod="alarm"
+	format="string"
+	limits {
+	}
+}
+text {
+	object {
+		x=426
+		y=340
+		width=110
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Clear fault"
+	align="horiz. right"
+}
+"message button" {
+	object {
+		x=543
+		y=340
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ErrClr.PROC"
+		clr=0
+		bclr=21
+	}
+	label="Clear Fault"
+	press_msg="1"
 }
 "text update" {
 	object {
