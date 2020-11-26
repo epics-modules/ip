@@ -93,6 +93,8 @@ record (bi, "$(P)$(R)Output") {
   field (INP, "@HP_Agilent_PS66xxA.proto getOnOff $(PORT) $(ADDR)")
   field (ZNAM, "OFF")
   field (ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MINOR")
   field (FLNK, "$(P)$(R)Protect")
 }
 
@@ -101,6 +103,8 @@ record (bi, "$(P)$(R)Protect") {
   field (INP, "@HP_Agilent_PS66xxA.proto getOverCurrOnOff $(PORT) $(ADDR)")
   field (ZNAM, "OFF")
   field (ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MINOR")
   field (FLNK, "$(P)$(R)StatusReg")
 }
 
@@ -162,21 +166,29 @@ record (calcout, "$(P)$(R)VTripClr") {
 record (bi, "$(P)$(R)SR:Vtrip") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MAJOR")
 }
 
 record (bi, "$(P)$(R)SR:Itrip") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MAJOR")
 }
 
 record (bi, "$(P)$(R)SR:OverTemp") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MAJOR")
 }
 
 record (bi, "$(P)$(R)SR:UnReg") {
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field (ZSV, "NO_ALARM")
+  field (OSV, "MAJOR")
 }
 
 record(asyn,"$(P)$(R)comm") {
