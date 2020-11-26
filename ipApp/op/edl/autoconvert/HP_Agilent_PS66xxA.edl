@@ -76,19 +76,6 @@ value {
 }
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 5
-y 65
-w 330
-h 135
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -103,19 +90,6 @@ lineColor rgb 0 0 0
 fillColor rgb 0 0 0
 lineWidth 0
 endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 40
-y 69
-w 260
-h 123
-
-beginGroup
 
 # (Rectangle)
 object activeRectangleClass
@@ -383,16 +357,6 @@ value {
 }
 endObjectProperties
 
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -649,39 +613,6 @@ value {
 }
 endObjectProperties
 
-# (Static Text)
-object activeXTextClass
-beginObjectProperties
-major 4
-minor 1
-release 1
-x 0
-y 35
-w 675
-h 20
-font "helvetica-medium-r-14.0"
-fontAlign "center"
-fgColor rgb 2560 0 47104
-bgColor index 3
-useDisplayBg
-value {
-  "$(P)$(R)IDN"
-}
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 5
-y 295
-w 330
-h 85
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -733,19 +664,6 @@ value {
 }
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 45
-y 328
-w 250
-h 45
-
-beginGroup
-
 # (Text Monitor)
 object activeXTextDspClass:noedit
 beginObjectProperties
@@ -757,7 +675,7 @@ y 328
 w 85
 h 20
 controlPv "$(P)$(R)SR:powerOutPut"
-format "string"
+format "decimal"
 font "helvetica-medium-r-14.0"
 fontAlign "left"
 fgColor rgb 0 65535 0
@@ -802,7 +720,7 @@ y 353
 w 85
 h 20
 controlPv "$(P)$(R)SR:Resistance"
-format "string"
+format "decimal"
 font "helvetica-medium-r-14.0"
 fontAlign "left"
 fgColor rgb 0 65535 0
@@ -835,16 +753,6 @@ value {
   "Resistance (Ohm)"
 }
 endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
 
 # (Rectangle)
 object activeRectangleClass
@@ -897,19 +805,6 @@ fillColor rgb 0 0 0
 lineWidth 0
 endObjectProperties
 
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 5
-y 205
-w 330
-h 85
-
-beginGroup
-
 # (Rectangle)
 object activeRectangleClass
 beginObjectProperties
@@ -960,19 +855,6 @@ value {
   "Control"
 }
 endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 15
-y 238
-w 310
-h 45
-
-beginGroup
 
 # (Text Monitor)
 object activeXTextDspClass:noedit
@@ -1038,29 +920,6 @@ value {
   "Readback rate"
 }
 endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 396
-y 240
-w 232
-h 120
-
-beginGroup
 
 # (Static Text)
 object activeXTextClass
@@ -1155,7 +1014,7 @@ h 20
 controlPv "$(P)$(R)SR:Vtrip"
 format "string"
 font "helvetica-medium-r-14.0"
-fontAlign "center"
+fontAlign "left"
 fgColor rgb 0 65535 0
 fgAlarm
 bgColor rgb 0 0 0
@@ -1180,7 +1039,7 @@ h 20
 controlPv "$(P)$(R)SR:Itrip"
 format "string"
 font "helvetica-medium-r-14.0"
-fontAlign "center"
+fontAlign "left"
 fgColor rgb 0 65535 0
 fgAlarm
 bgColor rgb 0 0 0
@@ -1205,7 +1064,7 @@ h 20
 controlPv "$(P)$(R)SR:OverTemp"
 format "string"
 font "helvetica-medium-r-14.0"
-fontAlign "center"
+fontAlign "left"
 fgColor rgb 0 65535 0
 fgAlarm
 bgColor rgb 0 0 0
@@ -1230,7 +1089,7 @@ h 20
 controlPv "$(P)$(R)SR:UnReg"
 format "string"
 font "helvetica-medium-r-14.0"
-fontAlign "center"
+fontAlign "left"
 fgColor rgb 0 65535 0
 fgAlarm
 bgColor rgb 0 0 0
@@ -1262,34 +1121,29 @@ value {
 }
 endObjectProperties
 
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
+# (Text Monitor)
+object activeXTextDspClass:noedit
 beginObjectProperties
 major 4
-minor 0
+minor 7
 release 0
 x 5
-y 65
-w 330
-h 135
-
-beginGroup
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 40
-y 69
-w 260
-h 123
-
-beginGroup
+y 35
+w 675
+h 20
+controlPv "$(P)$(R)IDN"
+format "string"
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor rgb 2560 0 47104
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
 
 # (Message Button)
 object activeMessageButtonClass
@@ -1340,16 +1194,6 @@ offLabel "<"
 useEnumNumeric
 font "helvetica-medium-r-12.0"
 endObjectProperties
-
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
 
 # (Message Button)
 object activeMessageButtonClass
@@ -1421,64 +1265,6 @@ controlPv "$(P)$(R)ProtectOnOff.VAL"
 font "helvetica-medium-r-10.0"
 orientation "horizontal"
 endObjectProperties
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 5
-y 295
-w 330
-h 85
-
-beginGroup
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 45
-y 328
-w 250
-h 45
-
-beginGroup
-
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 5
-y 205
-w 330
-h 85
-
-beginGroup
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 15
-y 238
-w 310
-h 45
-
-beginGroup
 
 # (Choice Button)
 object activeChoiceButtonClass
@@ -1546,28 +1332,6 @@ useEnumNumeric
 font "helvetica-medium-r-12.0"
 endObjectProperties
 
-endGroup
-
-endObjectProperties
-
-
-endGroup
-
-endObjectProperties
-
-# (Group)
-object activeGroupClass
-beginObjectProperties
-major 4
-minor 0
-release 0
-x 396
-y 240
-w 232
-h 120
-
-beginGroup
-
 # (Message Button)
 object activeMessageButtonClass
 beginObjectProperties
@@ -1592,9 +1356,4 @@ offLabel "Clear Fault"
 useEnumNumeric
 font "helvetica-medium-r-12.0"
 endObjectProperties
-
-endGroup
-
-endObjectProperties
-
 
