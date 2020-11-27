@@ -1,6 +1,6 @@
 
 file {
-	name="/home/epics/support/ip/ipApp/op/adl/HP_Agilent_PS66xxA.adl"
+	name="/home/epics/support/ip-2-20-1/ipApp/op/adl/HP_Agilent_PS66xxA.adl"
 	version=030109
 }
 display {
@@ -158,135 +158,6 @@ text {
 	textix="Voltage (V)"
 	align="horiz. centered"
 }
-"text update" {
-	object {
-		x=125
-		y=147
-		width=85
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)dV"
-		clr=15
-		bclr=14
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=40
-		y=147
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Measured"
-	align="horiz. right"
-}
-text {
-	object {
-		x=70
-		y=122
-		width=50
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Tweak"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=141
-		y=122
-		width=62
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_V_tweak"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=204
-		y=122
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_V_tweak_up.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=125
-		y=122
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_V_tweak_down.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=125
-		y=97
-		width=85
-		height=20
-	}
-	control {
-		chan="$(P)$(R)setV"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=215
-		y=97
-		width=85
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)getVoltLevel"
-		clr=15
-		bclr=14
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=40
-		y=97
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Setpoint"
-	align="horiz. right"
-}
 "text entry" {
 	object {
 		x=125
@@ -365,135 +236,6 @@ text {
 	}
 	textix="Current (A)"
 	align="horiz. centered"
-}
-"text update" {
-	object {
-		x=470
-		y=147
-		width=85
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)dC"
-		clr=15
-		bclr=14
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=385
-		y=147
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Measured"
-	align="horiz. right"
-}
-text {
-	object {
-		x=415
-		y=122
-		width=50
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Tweak"
-	align="horiz. right"
-}
-"text entry" {
-	object {
-		x=486
-		y=122
-		width=62
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_C_tweak"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=549
-		y=122
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_C_tweak_up.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=470
-		y=122
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)SP_C_tweak_down.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=470
-		y=97
-		width=85
-		height=20
-	}
-	control {
-		chan="$(P)$(R)setC"
-		clr=14
-		bclr=51
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=560
-		y=97
-		width=85
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)getCurrentLevel"
-		clr=15
-		bclr=14
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=385
-		y=97
-		width=80
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Setpoint"
-	align="horiz. right"
 }
 "text update" {
 	object {
@@ -954,4 +696,262 @@ text {
 	format="string"
 	limits {
 	}
+}
+text {
+	object {
+		x=70
+		y=147
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Tweak"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=141
+		y=147
+		width=62
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=204
+		y=147
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak_up.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=125
+		y=147
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_V_tweak_down.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=125
+		y=122
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)setV"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=215
+		y=122
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)getVoltLevel"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=40
+		y=122
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=125
+		y=97
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)dV"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=40
+		y=97
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Measured"
+	align="horiz. right"
+}
+text {
+	object {
+		x=415
+		y=147
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Tweak"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=486
+		y=147
+		width=62
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_C_tweak"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=549
+		y=147
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_C_tweak_up.PROC"
+		clr=14
+		bclr=51
+	}
+	label=">"
+	press_msg="1"
+}
+"message button" {
+	object {
+		x=470
+		y=147
+		width=15
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SP_C_tweak_down.PROC"
+		clr=14
+		bclr=51
+	}
+	label="<"
+	press_msg="1"
+}
+"text entry" {
+	object {
+		x=470
+		y=122
+		width=85
+		height=20
+	}
+	control {
+		chan="$(P)$(R)setC"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=560
+		y=122
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)getCurrentLevel"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=385
+		y=122
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Setpoint"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=470
+		y=97
+		width=85
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)dC"
+		clr=15
+		bclr=14
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=385
+		y=97
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Measured"
+	align="horiz. right"
 }
