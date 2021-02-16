@@ -1,0 +1,153 @@
+record(bo, "$(P)$(C)Run") {
+    field(DTYP, "stream")
+    field(OUT, "@teled_d.proto setRun($(UNIT),$(PUMP)) $(PORT)")
+    info(autosaveFields, "VAL")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+record(bo, "$(P)$(C)Stop") {
+    field(DTYP, "stream")
+    field(OUT, "@teled_d.proto setStop($(UNIT),$(PUMP)) $(PORT)")
+    info(autosaveFields, "VAL")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+
+record(bo, "$(P)$(C)Remote") {
+    field(DTYP, "stream")
+    field(OUT, "@teled_d.proto setRem($(UNIT)) $(PORT)")
+    info(autosaveFields, "VAL")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+record(bo, "$(P)$(C)Local") {
+    field(DTYP, "stream")
+    field(OUT, "@teled_d.proto setLoc($(UNIT)) $(PORT)")
+    info(autosaveFields, "VAL")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+
+record(ao, "$(P)$(C)PressSet") {
+    field(EGU, "bar")
+    field(PREC, "3")
+    field(FLNK, "$(P)$(C)PressSeq")
+}
+
+record(sseq, "$(P)$(C)PressSeq") {
+    field(LNK1, "$(P)$(C)Remote.PROC CA")
+    field(WAIT1, "Wait")
+    field(LNK2, "$(P)$(C)Run.PROC CA")
+    field(WAIT2, "Wait")
+    field(DOL3, "$(P)$(C)PressSet")
+    field(LNK3, "$(P)$(C)PressSend PP")
+}
+
+record(ao, "$(P)$(C)PressSend") {
+    field(DTYP, "stream")
+    field(EGU, "bar")
+    field(OUT, "@teled_d.proto setPress($(UNIT),$(PUMP)) $(PORT)")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)$(C)MaxFlow") {
+    field(EGU, "ml/min")
+    field(PREC, "3")
+    field(FLNK, "$(P)$(C)MaxFlowSeq")
+}
+record(sseq, "$(P)$(C)MaxFlowSeq") {
+    field(LNK1, "$(P)$(C)Remote.PROC CA")
+    field(WAIT1, "Wait")
+    field(LNK2, "$(P)$(C)Run.PROC CA")
+    field(WAIT2, "Wait")
+    field(DOL3, "$(P)$(C)MaxFlow")
+    field(LNK3, "$(P)$(C)MaxFlowSend PP")
+}
+record(ao,"$(P)$(C)MaxFlowSend") {
+    field(DTYP, "stream")
+    field(EGU, "ml/min")
+    field(OUT, "@teled_d.proto setMFlow($(UNIT),$(PUMP)) $(PORT)")
+    field(PREC, "3")
+}
+
+record(seq, "$(P)$(C)Scanner") {
+   field(SCAN, "1 second")
+   field(LNK1, "$(P)$(C)Vol.PROC PP")
+   field(DLY2, "0.1")
+   field(LNK2, "$(P)$(C)Pressure.PROC PP")
+   field(DLY3, "0.1")
+   field(LNK3, "$(P)$(C)PressSet_RBV.PROC PP")
+   field(DLY4, "0.1")
+   field(LNK4, "$(P)$(C)Flow.PROC PP")
+   field(DLY5, "0.1")
+   field(LNK5, "$(P)$(C)MaxFlow_RBV.PROC PP")
+   field(DLY6, "0.1")
+   field(LNK6, "$(P)$(C)Status.PROC PP")
+}
+
+record(ai, "$(P)$(C)Vol") {
+   field(DTYP, "stream")
+   field(INP, "@teled_d.proto getVol($(UNIT),$(PUMP)) $(PORT)")
+   field(PREC, "3")
+   info(archive, "Monitor, 00:00:01, VAL")
+}
+record(ai, "$(P)$(C)Pressure") {
+   field(DTYP, "stream")
+   field(INP,  "@teled_d.proto getPress($(UNIT),$(PUMP)) $(PORT)")
+   field(EGU, "bar")
+   info(archive, "Monitor, 00:00:01, VAL")
+}
+record(ai,"$(P)$(C)PressSet_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@teled_d.proto getSetPress($(UNIT),$(PUMP)) $(PORT)")
+    field(EGU, "bar")
+    info(archive, "Monitor, 00:00:01, VAL")
+    field(PREC, "3")
+}
+record(ai,"$(P)$(C)Flow") {
+    field(DTYP, "stream")
+    field(INP,  "@teled_d.proto getFlow($(UNIT),$(PUMP)) $(PORT)")
+    field(EGU, "ml/min")
+    field(PREC, "3")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+record(ai,"$(P)$(C)MaxFlow_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@teled_d.proto getMFlow($(UNIT),$(PUMP)) $(PORT)")
+    field(EGU, "ml/min")
+    field(PREC, "3")
+    info(archive, "Monitor, 00:00:01, VAL")
+}
+record(stringin, "$(P)$(C)Status") {
+    field(DTYP, "stream")
+    field(INP,  "@teled_d.proto getStatus($(UNIT),$(PUMP)) $(PORT)")
+}
+
+record(stringout, "$(P)$(C)Command") {
+   field(FLNK, "$(P)$(C)CmdProc")
+}
+
+record(aSub, "$(P)$(C)CmdProc") {
+   field(INPA, "$(P)$(C)Command")
+   field(FTA, "STRING")
+   field(SNAM, "formatCmd")
+   field(FTVA, "CHAR")
+   field(NOVA, "80")
+   field(OUTA, "$(P)$(C)CmdReply PP")
+}
+
+# Written to, sends the string. The reply replaces the string written to it. 
+record(waveform, "$(P)$(C)CmdReply") {
+   field(DTYP, "stream")
+   field(INP,  "@teled_d.proto sendCmd($(UNIT)) $(PORT)")
+   field(FTVL, "CHAR")
+   field(NELM, "80")
+}
+
+record(calc, "$(P)$(C)AlarmI") {
+   field(DESC, "Immediate Alarm")
+   field(INPA, "$(P)$(C)BDetStatus")
+   field(INPB, "$(P)$(C)Vol.SEVR")
+   field(INPC, "$(P)$(C)Pressure.SEVR")
+   field(INPD, "$(P)$(C)Flow.SEVR")
+   field(CALC, "(A==3)||B||C||D")
+   field(HIHI, "0.5")
+   field(HHSV, "MAJOR")
+}
+
