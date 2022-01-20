@@ -1,0 +1,49 @@
+record( longin, "$(P)$(ENC)RBV") {
+    field( DTYP, "stream")
+    field( INP,  "@Protura_P201.proto getPos($(BITS)) $(PORT)")
+    field(SCAN, ".2 second")
+#    field( PREC, "6")
+    field( FLNK, "$(P)$(ENC)Pos")
+}
+
+
+record( ai, "$(P)$(ENC)Pos") {
+    field( DTYP, "Raw Soft Channel")
+    field( INP,  "$(P)$(ENC)RBV")
+    field( LINR, "LINEAR")
+    field( ESLO, "5e-5")
+    field( EOFF, "0.")
+    field( PREC, "5")
+    field( EGU,  "mm")
+}
+
+# Set Position OFFSET based on current motor position 
+# EOFF = -(VAL-EOFF)+(Motor.DVAL * Motor.RRES)
+record(transform, "$(P)$(ENC)_SetOff") {
+    field ( PREC, "6")
+    field ( DESC, "$(ENC) Calc Offset")
+    field ( CMTA, "ENC")
+    field ( CMTB, "EOFF")
+    field ( CMTC, "DVAL")
+    field ( CMTD, "RDBK RES")
+    field ( CMTI, "SET EOFF")
+    field ( INPA, "$(P)$(ENC)Pos")
+    field ( INPB, "$(P)$(ENC)Pos.EOFF")
+    field ( INPC, "$(M).DVAL")
+    field ( INPD, "$(M).RRES")
+    field ( CLCI, "-(A-B)+(D*C)")
+    field ( OUTI, "$(P)$(ENC)Pos.EOFF")
+    field ( COPT, "Always")
+}
+
+# Trigger the encoder offset calc from the motor record SET
+record (scalcout, "$(P)$(ENC)_TrigSet") {
+    field ( DESC, "$(ENC) Trigger Set")
+    field ( INPA, "$(M).SET CP NMS")
+    field ( CALC, "A")
+    field ( OOPT, "Transition To Zero")
+    field ( OUT, "$(P)$(ENC)_SetOff.PROC")
+}
+  
+
+  

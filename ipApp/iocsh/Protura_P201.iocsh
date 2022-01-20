@@ -1,0 +1,19 @@
+# ### Protura_P201.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- DEVPATH        - Serial Device Filepath
+#- MOTOR          - Associated Motor
+#- IP             - Location of IP module
+#-
+#- BITS           - Optional: Encoder Bitdepth
+#-                  Default: 32
+#- ###################################################
+
+drvAsynSerialPortConfigure("serial_$(INSTANCE)", "$(DEVPATH)", 0, 0, 0)
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=serial_$(INSTANCE), BAUD=115200, BITS=8, STOP=1")
+asynOctetConnect("serial_$(INSTANCE)", "serial_$(INSTANCE)")
+
+dbLoadRecords("$(IP)/db/Protura_P201.db","P=$(PREFIX),ENC=$(INSTANCE),PORT=serial_$(INSTANCE), BITS=$(BITS=32), M=$(MOTOR)")
