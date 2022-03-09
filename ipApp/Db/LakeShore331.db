@@ -1,22 +1,22 @@
 grecord(dfanout,"$(P)LS331:$(Q):Init") {
-	field(SCAN,"1 second")
-	field(OUTA,"$(P)LS331:$(Q):Input_sel.PROC  PP NMS")
-	field(OUTB,"$(P)LS331:$(Q):Units_sel.PROC  PP NMS")
-	field(OUTC,"$(P)LS331:$(Q):HeatRg.PROC  PP NMS")
-	field(OUTD,"$(P)LS331:$(Q):Gain_set.PROC  PP NMS")
-	field(OUTE,"$(P)LS331:$(Q):Rset_set.PROC  PP NMS")
-	field(OUTF,"$(P)LS331:$(Q):Rate_set.PROC  PP NMS")
-	field(OUTG,"$(P)LS331:$(Q):RampR_set.PROC  PP NMS")
-	field(OUTH,"$(P)LS331:$(Q):InitB.PROC  PP NMS")
+  field(SCAN,"1 second")
+  field(OUTA,"$(P)LS331:$(Q):Input_sel.PROC  PP NMS")
+  field(OUTB,"$(P)LS331:$(Q):Units_sel.PROC  PP NMS")
+  field(OUTC,"$(P)LS331:$(Q):HeatRg.PROC  PP NMS")
+  field(OUTD,"$(P)LS331:$(Q):Gain_set.PROC  PP NMS")
+  field(OUTE,"$(P)LS331:$(Q):Rset_set.PROC  PP NMS")
+  field(OUTF,"$(P)LS331:$(Q):Rate_set.PROC  PP NMS")
+  field(OUTG,"$(P)LS331:$(Q):RampR_set.PROC  PP NMS")
+  field(OUTH,"$(P)LS331:$(Q):InitB.PROC  PP NMS")
 }
 
 grecord(dfanout,"$(P)LS331:$(Q):InitB") {
-	field(SCAN,"Passive")
-	field(OUTA,"$(P)LS331:$(Q):Ramp_on.PROC  PP NMS")
-	field(OUTB,"$(P)LS331:$(Q):wr_SP.PROC  PP NMS")
-	field(OUTC,"$(P)LS331:$(Q):read.PROC  PP NMS")
-	field(OUTD,"$(P)LS331:$(Q):readPID.PROC  PP NMS")
-	field(OUTE,"$(P)LS331:$(Q):Init.SCAN CA NMS")
+  field(SCAN,"Passive")
+  field(OUTA,"$(P)LS331:$(Q):Ramp_on.PROC  PP NMS")
+  field(OUTB,"$(P)LS331:$(Q):wr_SP.PROC  PP NMS")
+  field(OUTC,"$(P)LS331:$(Q):read.PROC  PP NMS")
+  field(OUTD,"$(P)LS331:$(Q):readPID.PROC  PP NMS")
+  field(OUTE,"$(P)LS331:$(Q):Init.SCAN CA NMS")
 }
 
 record(ao, "$(P)LS331:$(Q):Rset_set") {
@@ -272,7 +272,7 @@ record(scalcout, "$(P)LS331:$(Q):Ramp_scalc") {
 }
 record(scalcout, "$(P)LS331:$(Q):RampR") {
   field(FLNK, "$(P)LS331:$(Q):Ramp_state.PROC  PP MS")
-  field(CALC, "SSCANF(AA,'%s')[2,10]")
+  field(CALC, "AA[2,10]")
   field(INAA, "$(P)LS331:$(Q):wr_rd_Ramp.AINP  NPP MS")
   field(PREC, "1")
 }
@@ -357,7 +357,7 @@ record(scalcout, "$(P)LS331:$(Q):SampleB") {
 record(scalcout, "$(P)LS331:$(Q):CtlInput") {
   field(DESC, "Parse string for Ctl Input")
   field(FLNK, "$(P)LS331:$(Q):CtlUnits.PROC  PP MS")
-  field(CALC, "SSCANF(AA,'%s')[0,0]")
+  field(CALC, "AA[0,0]")
   field(INAA, "$(P)LS331:$(Q):rd_CtlParms.AINP  NPP MS")
   field(PREC, "1")
   field(AA, "A")
@@ -366,7 +366,7 @@ record(scalcout, "$(P)LS331:$(Q):CtlInput") {
 record(scalcout, "$(P)LS331:$(Q):CtlUnits") {
   field(DESC, "Parse string for Ctl Unit")
   field(FLNK, "$(P)LS331:$(Q):CtlUnits_str.PROC  PP MS")
-  field(CALC, "INT(SSCANF(AA,'%s')[2,2])")
+  field(CALC, "INT(AA[2,2])")
   field(INAA, "$(P)LS331:$(Q):rd_CtlParms.AINP  NPP MS")
   field(PREC, "1")
   field(AA, "A,2")
