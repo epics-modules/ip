@@ -1,0 +1,17 @@
+# ### Oxford_CS700.iocsh ###
+
+#- ###############################################################
+#-
+#- MACRO         | EXAMPLE               | DEFINITION
+#- ------------- | --------------------- | ----------------------
+#- PREFIX        | xxx:                  | IOC prefix
+#- INSTANCe      | CS0:                  | Controller instance prefix
+#- PORT          | serial1               | asyn port for communication
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD=9600), BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\r\n")
+
+dbLoadRecords("$(IP)/db/Oxford_CS700.db", "P=$(PREFIX), C=$(INSTANCE), PORT=$(PORT)")
+doAfterIocInit("seq &cryostream, 'name=CS700,P=$(PREFIX),C=$(INSTANCE)'")

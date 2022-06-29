@@ -1,0 +1,356 @@
+record(ai, "$(P)$(C)GasSetPoint") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+  field(HOPR, "320")
+  field(LOPR, "20")
+}
+
+record(calc, "$(P)$(C)GasSetPointC") 
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)GasSetPoint.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+  field(HOPR, "46.85")
+  field(LOPR, "-253.15")
+}
+
+record(ai, "$(P)$(C)GasTemp") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+record(calc, "$(P)$(C)GasTempC") 
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)GasTemp.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+  field(HOPR, "46.85")
+  field(LOPR, "-253.15")
+}
+
+record(ai, "$(P)$(C)GasError") 
+{
+  field(PREC, "2")
+}
+
+record(mbbi, "$(P)$(C)PhaseID") 
+{
+  field(ZRST, "RAMP")
+  field(ONST, "COOL")
+  field(TWST, "PLAT")
+  field(THST, "HOLD")
+  field(FRST, "END")
+  field(FVST, "PURGE")
+  field(SXST, "DELETE_PHASE")
+  field(SVST, "LOAD_PROGRAM")
+  field(EIST, "SAVE_PROGRAM")
+  field(NIST, "SOAK")
+  field(TEST, "WAIT")
+}
+
+record(mbbi, "$(P)$(C)RunMode") {
+  field(ZRST, "StartUp")
+  field(ONST, "StartUpFail")
+  field(TWST, "StartUpOK")
+  field(THST, "Run")
+  field(FRST, "SetUp")
+  field(FVST, "ShutdownOK")
+  field(SXST, "ShutdownFail")
+}
+
+record(scalcout, "$(P)$(C)AlarmCode1") 
+{
+  field(CALC, "@@A")
+  field(OUT, "$(P)$(C)AlarmCode.AA PP NMS")
+  field(AA, "No Alarm")
+  field(BB, "Stop button pressed")
+  field(CC, "Stop command received")
+  field(DD, "End phase complete")
+  field(EE, "Purge phase complete")
+  field(FF, "Temp error > 5K")
+  field(GG, "Back pressure > 0.5 bar")
+  field(HH, "Evaporator reduction at max")
+}
+
+record(scalcout, "$(P)$(C)AlarmCode") 
+{
+  #field(CALC, "@@(A-7)")
+  field(CALC, "@@(max(A-7,0))")
+  field(INPA, "$(P)$(C)AlarmCode1.A  NPP NMS")
+  field(BB, "Self-check fail")
+  field(CC, "Gas flow < 2 l /min")
+  field(DD, "Temp error > 25K")
+  field(EE, "Unphysical temp. reported")
+  field(FF, "Invalid ADC  reading")
+  field(GG, "Degradation of power supply")
+  field(HH, "Heat  sink overheating")
+  field(II, "Power supply overheating")
+  field(JJ, "Power failure")
+}
+
+record(longin, "$(P)$(C)RampRate") 
+{
+  field(EGU, "K/hour")
+  field(HOPR, "360")
+  field(LOPR, "1")
+}
+
+record(ai, "$(P)$(C)TargetTemp") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+record(calc, "$(P)$(C)TargetTempC")
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)TargetTemp.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+}
+
+record(ai, "$(P)$(C)ShieldTemp") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+record(calc, "$(P)$(C)ShieldTempC") 
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)ShieldTemp.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+}
+
+record(ai, "$(P)$(C)NozzleTemp") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+record(calc, "$(P)$(C)NozzleTempC") 
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)NozzleTemp.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+}
+
+record(ai, "$(P)$(C)WaterTemp") 
+{
+  field(PREC, "2")
+  field(EGU, "K")
+}
+
+record(calc, "$(P)$(C)WaterTempC") 
+{
+  field(CALC, "A-273.15")
+  field(INPA, "$(P)$(C)WaterTemp.VAL CP NMS")
+  field(EGU, "C")
+  field(PREC, "2")
+}
+
+record(ai, "$(P)$(C)GasFlow") 
+{
+  field(PREC, "1")
+  field(EGU, "l/min")
+  field(HOPR, "10")
+  field(LOPR, "0")
+}
+
+record(ai, "$(P)$(C)OuterFlow") 
+{
+  field(PREC, "1")
+  field(EGU, "l/min")
+  field(HOPR, "10")
+  field(LOPR, "0")
+}
+
+record(longin, "$(P)$(C)GasHeat") 
+{
+  field(EGU, "%")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(P)$(C)AverageGasHeat") 
+{
+  field(EGU, "%")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(P)$(C)ShieldHeat") 
+{
+  field(EGU, "%")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(P)$(C)NozzleHeat") 
+{
+  field(EGU, "%")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(longin, "$(P)$(C)AverageNozzleHeat") 
+{
+  field(EGU, "%")
+  field(HOPR, "100")
+  field(LOPR, "0")
+}
+
+record(ai, "$(P)$(C)RunTime") 
+{
+  field(PREC, "2")
+  field(EGU, "Hour")
+}
+
+record(ai, "$(P)$(C)Remaining")
+{
+}
+
+record(ai, "$(P)$(C)CryoSpeed")
+{
+}
+
+record(ai, "$(P)$(C)CryoAdjust")
+{
+}
+
+record(mbbiDirect, "$(P)$(C)CryoStatus")
+{
+	field(DTYP, "Raw Soft Channel")
+}
+
+record(ai, "$(P)$(C)LinePressure") 
+{
+  field(PREC, "2")
+  field(EGU, "bar")
+}
+
+record(bo, "$(P)$(C)start") { }
+record(bo, "$(P)$(C)End") { }
+
+record(longout, "$(P)$(C)EndRate") 
+{
+  field(DTYP, "Soft Channel")
+  field(VAL, "359")
+}
+
+record(transform, "$(P)$(C)EndRateChar") 
+{
+  field(INPA, "$(P)$(C)EndRate.VAL CP NMS")
+  field(CLCB, "NINT(A>360?360:A<1?1:A)")
+  field(CLCC, "(B>>8)&255")
+  field(CLCD, "B&255")
+}
+
+record(bo, "$(P)$(C)setTemp") 
+{
+}
+
+record(longout, "$(P)$(C)Rate_Ramp") 
+{
+  field(DTYP, "Soft Channel")
+  field(VAL, "360")
+}
+
+record(transform, "$(P)$(C)Rate") 
+{
+  field(INPA, "$(P)$(C)Rate_Ramp.VAL CP NMS")
+  field(CLCB, "NINT(A>360?360:A<1?1:A)")
+  field(CLCC, "(B>>8)&255")
+  field(CLCD, "B&255")
+}
+
+record(transform, "$(P)$(C)Setpoint") 
+{
+  field(CLCA, "B+273.15")
+  field(CLCB, "A-273.15")
+  field(CLCC, "NINT((A>320?320:A<20?20:A)*100)")
+  field(CLCD, "(C>>8)&255")
+  field(CLCE, "C&255")
+  field(CLCF, "1")
+  field(OUTF, "$(P)$(C)setTemp.VAL PP NMS")
+  field(CMTA, "in K")
+  field(CMTB, "in C")
+  field(CMTC, "in 100*K")
+}
+
+
+record(asyn, "$(P)$(C)Status") 
+{
+  field(SCAN, "2 second")
+  field(PORT, "$(PORT)")
+  field(TMOD, "Write/Read")
+  field(NOWT, "0")
+  field(OFMT, "Binary")
+  field(IMAX, "46")
+  field(NRRD, "46")
+  field(IFMT, "Binary")
+  field(TMOT, "15")
+}
+
+record(asyn, "$(P)$(C)Cmd3") 
+{
+  field(PORT, "$(PORT)")
+  field(TMOD, "Write")
+  field(OFMT, "Binary")
+  field(OMAX, "6")
+  field(IFMT, "Binary")
+}
+
+record(asyn, "$(P)$(C)Cmd2") 
+{
+  field(PORT, "$(PORT)")
+  field(TMOD, "Write")
+  field(OFMT, "Binary")
+  field(OMAX, "4")
+  field(IFMT, "Binary")
+}
+
+record(asyn, "$(P)$(C)Cmd1") 
+{
+  field(PORT, "$(PORT)")
+  field(TMOD, "Write")
+  field(OFMT, "Binary")
+  field(OMAX, "2")
+  field(IFMT, "Binary")
+}
+
+record(asyn, "$(P)$(C)Cmd4") 
+{
+  field(PORT, "$(PORT)")
+  field(TMOD, "Write")
+  field(OFMT, "Binary")
+  field(OMAX, "3")
+  field(IFMT, "Binary")
+}
+
+record(bo,"$(P)$(C)ForceHe")
+{
+  field(ZNAM,"Off")
+  field(ONAM,"On")
+}
+
+record(bo, "$(P)$(C)Purge")
+{
+}
+
+record(bo,"$(P)$(C)Cool") { }
+record(ao, "$(P)$(C)Debug") { }
+
+record(mbbi, "$(P)$(C)DetectedGasType")
+{
+}
+
+record(mbbi, "$(P)$(C)SelectedGasType")
+{
+}
