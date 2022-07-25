@@ -1,0 +1,17 @@
+# ### PTC10_tec.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Name of asyn port to be created
+#- PREC           - Number of digits after the decimal
+#- ### I/O channel names
+#- TI             - TEC input channel name
+#- TO             - TEC output channel name
+#- ### Module locations shouldn't need to be passed explicitly
+#- IP             - Location of IP module
+#- ###################################################
+
+# PTC440 TEC driver
+dbLoadRecords("$(IP)/db/PTC10_tec_in_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(TI),EGU=C,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_tec_out_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(TO),EGU=A,PREC=$(PREC)")

@@ -1,0 +1,67 @@
+# Database file for one Thermocouple channel of the SRS PTC10 Temperature Controller
+
+record(stringin, "$(P)$(T):$(C):name_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) name rbv")
+  field(INP,  "@PTC10.proto getName($(C)) $(PORT) $(ADDR)")
+}
+
+record(ai, "$(P)$(T):$(C):temperature") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) temperature")
+  field(INP,  "@PTC10.proto getOutputLevel($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "$(EGU)")
+  field(PREC, "$(PREC=4)")
+}
+
+record(mbbi, "$(P)$(T):$(C):sensor_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Sensor rbv")
+  field(INP,  "@PTC10.proto getTcSensor($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(FRVL, "4")
+  field(FVVL, "5")
+  field(SXVL, "6")
+  field(SVVL, "7")
+  field(ZRST, "B")
+  field(ONST, "E")
+  field(TWST, "J")
+  field(THST, "K")
+  field(FRST, "N")
+  field(FVST, "R")
+  field(SXST, "S")
+  field(SVST, "T")
+}
+
+## Sensor is locked and can't be changed
+#record(mbbo, "$(P)$(T):$(C):sensor")
+#{
+#  field(DTYP, "stream")
+#  #field(PINI, "YES")
+#  field(DESC, "$(C) Sensor")
+#  field(OUT,  "@PTC10.proto setTcSensor($(C)) $(PORT) $(ADDR)")
+#  field(ZRVL, "0")
+#  field(ONVL, "1")
+#  field(TWVL, "2")
+#  field(THVL, "3")
+#  field(FRVL, "4")
+#  field(FVVL, "5")
+#  field(SXVL, "6")
+#  field(SVVL, "7")
+#  field(ZRST, "B")
+#  field(ONST, "E")
+#  field(TWST, "J")
+#  field(THST, "K")
+#  field(FRST, "N")
+#  field(FVST, "R")
+#  field(SXST, "S")
+#  field(SVST, "T")
+#  field(VAL,  "3")
+#  field(FLNK, "$(P)$(T):$(C):sensor_RBV")
+#}

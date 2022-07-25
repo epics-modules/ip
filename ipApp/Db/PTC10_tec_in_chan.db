@@ -1,0 +1,102 @@
+# Database file for one TEC intput channel of the SRS PTC10 Temperature Controller
+
+record(stringin, "$(P)$(T):$(C):name_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) name rbv")
+  field(INP,  "@PTC10.proto getName($(C)) $(PORT) $(ADDR)")
+}
+
+record(ai, "$(P)$(T):$(C):temperature") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) temperature")
+  field(INP,  "@PTC10.proto getOutputLevel($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "$(EGU)")
+  field(PREC, "$(PREC=4)")
+}
+
+record(mbbi, "$(P)$(T):$(C):units_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Units rbv")
+  field(INP,  "@PTC10.proto getTecUnits($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ZRST, "Ohm")
+  field(ONVL, "1")
+  field(ONST, "V")
+  field(TWVL, "2")
+  field(TWST, "mA")
+}
+
+# PTC440-specific features
+
+record(mbbi, "$(P)$(T):$(C):sensor_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Sensor rbv")
+  field(INP,  "@PTC10.proto getTecSensor($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ZRST, "Therm")
+  field(ONVL, "1")
+  field(ONST, "RTD")
+  field(TWVL, "2")
+  field(TWST, "LM135")
+  field(THVL, "3")
+  field(THST, "AD590")
+}
+
+## Sensor is locked and can't be changed
+#record(mbbo, "$(P)$(T):$(C):sensor")
+#{
+#  field(DTYP, "stream")
+#  #field(PINI, "YES")
+#  field(DESC, "$(C) Sensor")
+#  field(OUT,  "@PTC10.proto setTecSensor($(C)) $(PORT) $(ADDR)")
+#  field(ZRVL, "0")
+#  field(ZRST, "Therm")
+#  field(ONVL, "1")
+#  field(ONST, "RTD")
+#  field(TWVL, "2")
+#  field(TWST, "LM135")
+#  field(THVL, "3")
+#  field(THST, "AD590")
+#  field(VAL,  "0")
+#  field(FLNK, "$(P)$(T):$(C):sensor_RBV")
+#}
+
+record(mbbi, "$(P)$(T):$(C):current_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) TEC Input Current rbv")
+  field(INP,  "@PTC10.proto getTecCurrent($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(ZRST, "1 mA")
+  field(ONST, "100 uA")
+  field(TWST, "10 uA")
+  field(THST, "Auto")
+}
+
+record(mbbo, "$(P)$(T):$(C):current")
+{
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "$(C) TEC Input Current")
+  field(OUT,  "@PTC10.proto setTecCurrent($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ONVL, "1")
+  field(TWVL, "2")
+  field(THVL, "3")
+  field(ZRST, "1 mA")
+  field(ONST, "100 uA")
+  field(TWST, "10 uA")
+  field(THST, "Auto")
+  field(VAL,  "3")
+  field(FLNK, "$(P)$(T):$(C):current_RBV")
+}
+

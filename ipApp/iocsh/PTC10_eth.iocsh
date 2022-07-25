@@ -1,0 +1,41 @@
+# ### PTC10_eth.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- IP_ADDR        - IP address of the PTC10
+#- IP_PORT        - IP port number (default: 23)
+#- PORT           - Name of asyn port to be created
+#- PREC           - Number of digits after the decimal
+#- ### I/O channel names
+#- A1             - Analog I/O channel 1 name (default = 5A)
+#- A2             - Analog I/O channel 2 name (default = 5B)
+#- A3             - Analog I/O channel 3 name (default = 5C)
+#- A4             - Analog I/O channel 4 name (default = 5D)
+#- ### Module locations shouldn't need to be passed explicitly
+#- IP             - Location of IP module
+#- ASYN           - Location of ASYN module
+#- ###################################################
+
+drvAsynIPPortConfigure("$(PORT)","$(IP_ADDR):$(IP_PORT=23)", 0, 0, 0)
+
+# Only show errors
+asynSetTraceMask("$(PORT)", 0, 1)
+# Leave ascii selected so debug messages can be turned on with a single click
+asynSetTraceIOMask("$(PORT)", 0, 1)
+
+# Set end-of-string terminators
+asynOctetSetInputEos( "$(PORT)", 0, "\r\n")
+asynOctetSetOutputEos("$(PORT)", 0, "\r\n")
+
+# PTC10 
+dbLoadRecords("$(IP)/db/PTC10.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0")
+
+# PTC10 Analog I/O
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=1,C=$(A1=5A),EGU=V,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=2,C=$(A2=5B),EGU=V,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=3,C=$(A3=5C),EGU=V,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=4,C=$(A4=5D),EGU=V,PREC=$(PREC)")
+
+# Asyn record for troubleshooting
+dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):asyn,PORT=$(PORT),ADDR=0,OMAX=0,IMAX=0")
