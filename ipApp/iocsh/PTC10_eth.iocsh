@@ -6,7 +6,7 @@
 #- IP_ADDR        - IP address of the PTC10
 #- IP_PORT        - IP port number (default: 23)
 #- PORT           - Name of asyn port to be created
-#- PREC           - Number of digits after the decimal
+#- PREC           - Number of digits after the decimal (default = 3)
 #- ### I/O channel names
 #- A1             - Analog I/O channel 1 name (default = 5A)
 #- A2             - Analog I/O channel 2 name (default = 5B)
@@ -32,10 +32,10 @@ asynOctetSetOutputEos("$(PORT)", 0, "\r\n")
 dbLoadRecords("$(IP)/db/PTC10.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0")
 
 # PTC10 Analog I/O
-dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=1,C=$(A1=5A),EGU=V,PREC=$(PREC)")
-dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=2,C=$(A2=5B),EGU=V,PREC=$(PREC)")
-dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=3,C=$(A3=5C),EGU=V,PREC=$(PREC)")
-dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=4,C=$(A4=5D),EGU=V,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=1,C=$(A1=5A),EGU=V,PREC=$(PREC=3)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=2,C=$(A2=5B),EGU=V,PREC=$(PREC=3)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=3,C=$(A3=5C),EGU=V,PREC=$(PREC=3)")
+dbLoadRecords("$(IP)/db/PTC10_aio_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,N=4,C=$(A4=5D),EGU=V,PREC=$(PREC=3)")
 
 # Asyn record for troubleshooting
 dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):asyn,PORT=$(PORT),ADDR=0,OMAX=0,IMAX=0")

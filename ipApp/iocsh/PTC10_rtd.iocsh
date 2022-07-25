@@ -4,7 +4,7 @@
 #- PREFIX         - IOC Prefix
 #- INSTANCE       - Instance Prefix
 #- PORT           - Name of asyn port to be created
-#- PREC           - Number of digits after the decimal
+#- PREC           - Number of digits after the decimal (default = 3)
 #- ### I/O channel names
 #- R1             - RTD channel 1 name
 #- R2             - RTD channel 2 name
@@ -13,5 +13,5 @@
 #- ###################################################
 
 # PTC323 thermister/diode/RTD card
-dbLoadRecords("$(IP)/db/PTC10_rtd_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(R1),EGU=C,PREC=$(PREC)")
-dbLoadRecords("$(IP)/db/PTC10_rtd_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(R2),EGU=C,PREC=$(PREC)")
+dbLoadRecords("$(IP)/db/PTC10_rtd_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(R1),EGU=C,PREC=$(PREC=3)")
+dbLoadRecords("$(IP)/db/PTC10_rtd_chan.db","P=$(PREFIX),T=$(INSTANCE),PORT=$(PORT),ADDR=0,C=$(R2),EGU=C,PREC=$(PREC=3)")
