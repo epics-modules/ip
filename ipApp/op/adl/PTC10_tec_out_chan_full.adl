@@ -1,0 +1,1250 @@
+
+file {
+	name="/net/s12dserv/xorApps/epics/synApps_5_8/ioc/12idTEMP2/12idTEMP2App/op/adl/PTC10_tec_out_chan_full.adl"
+	version=030111
+}
+display {
+	object {
+		x=322
+		y=382
+		width=350
+		height=725
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+composite {
+	object {
+		x=10
+		y=20
+		width=185
+		height=25
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=10
+				y=20
+				width=80
+				height=25
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Channel"
+		}
+		"text update" {
+			object {
+				x=95
+				y=20
+				width=100
+				height=25
+			}
+			monitor {
+				chan="$(P)$(T):$(C):name_RBV"
+				clr=14
+				bclr=4
+			}
+			format="string"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=65
+		width=328
+		height=115
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=155
+				width=326
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=155
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="PID Mode"
+				}
+				"text update" {
+					object {
+						x=261
+						y=155
+						width=75
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):pid:mode_RBV"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+				"message button" {
+					object {
+						x=95
+						y=155
+						width=75
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):pid:mode"
+						clr=0
+						bclr=63
+					}
+					label="On"
+					press_msg="1"
+				}
+				"message button" {
+					object {
+						x=179
+						y=155
+						width=75
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):off"
+						clr=0
+						bclr=22
+					}
+					label="Off"
+					press_msg="1"
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=65
+				width=328
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=65
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Ramp Temp"
+				}
+				menu {
+					object {
+						x=95
+						y=65
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):rampTemp_RBV.SCAN"
+						clr=14
+						bclr=4
+					}
+				}
+				composite {
+					object {
+						x=200
+						y=65
+						width=138
+						height=25
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=200
+								y=65
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):$(C):rampTemp_RBV"
+								clr=14
+								bclr=4
+							}
+							limits {
+							}
+						}
+						text {
+							object {
+								x=313
+								y=65
+								width=25
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="C"
+						}
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=95
+				width=328
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=95
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Set Point"
+				}
+				"text entry" {
+					object {
+						x=95
+						y=95
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):setPoint"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				composite {
+					object {
+						x=200
+						y=95
+						width=138
+						height=25
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=200
+								y=95
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):$(C):setPoint_RBV"
+								clr=14
+								bclr=4
+							}
+							limits {
+							}
+						}
+						text {
+							object {
+								x=313
+								y=95
+								width=25
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="C"
+						}
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=125
+				width=328
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=125
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Ramp Rate"
+				}
+				"text entry" {
+					object {
+						x=95
+						y=125
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):rampRate"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				composite {
+					object {
+						x=200
+						y=125
+						width=138
+						height=25
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=200
+								y=125
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):$(C):rampRate_RBV"
+								clr=14
+								bclr=4
+							}
+							limits {
+							}
+						}
+						text {
+							object {
+								x=313
+								y=125
+								width=25
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="C/s"
+						}
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=685
+		width=290
+		height=25
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=10
+				y=685
+				width=80
+				height=25
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Update rate"
+		}
+		menu {
+			object {
+				x=95
+				y=685
+				width=100
+				height=25
+			}
+			control {
+				chan="$(P)$(T):$(C):poll.SCAN"
+				clr=14
+				bclr=4
+			}
+		}
+		"message button" {
+			object {
+				x=200
+				y=685
+				width=100
+				height=25
+			}
+			control {
+				chan="$(P)$(T):$(C):poll.PROC"
+				clr=0
+				bclr=9
+			}
+			label="Update all"
+			press_msg="1"
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=415
+		width=290
+		height=115
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=445
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=445
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="PID I"
+				}
+				"text update" {
+					object {
+						x=200
+						y=445
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):pid:I_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=445
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):pid:I"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=475
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=475
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="PID D"
+				}
+				"text update" {
+					object {
+						x=200
+						y=475
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):pid:D_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=475
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):pid:D"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=505
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=505
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="PID Input"
+				}
+				"text update" {
+					object {
+						x=200
+						y=505
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):pid:input_RBV"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=505
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):pid:input"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=415
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=415
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="PID P"
+				}
+				"text update" {
+					object {
+						x=200
+						y=415
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):pid:P_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=415
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):pid:P"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=555
+		width=290
+		height=115
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=555
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=555
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Tune lag"
+				}
+				"text update" {
+					object {
+						x=200
+						y=555
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):tune:lag_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=555
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):tune:lag"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=645
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=645
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Tune type"
+				}
+				"text update" {
+					object {
+						x=200
+						y=645
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):tune:type_RBV"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+				menu {
+					object {
+						x=95
+						y=645
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):tune:type"
+						clr=14
+						bclr=4
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=585
+				width=290
+				height=55
+			}
+			"composite name"=""
+			children {
+				composite {
+					object {
+						x=10
+						y=585
+						width=290
+						height=25
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=10
+								y=585
+								width=80
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Tune step"
+						}
+						"text update" {
+							object {
+								x=200
+								y=585
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):$(C):tune:step_RBV"
+								clr=14
+								bclr=4
+							}
+							limits {
+							}
+						}
+						"text entry" {
+							object {
+								x=95
+								y=585
+								width=100
+								height=25
+							}
+							control {
+								chan="$(P)$(T):$(C):tune:step"
+								clr=14
+								bclr=4
+							}
+							limits {
+							}
+						}
+					}
+				}
+				composite {
+					object {
+						x=10
+						y=615
+						width=290
+						height=25
+					}
+					"composite name"=""
+					children {
+						text {
+							object {
+								x=10
+								y=615
+								width=80
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Tune mode"
+						}
+						"text update" {
+							object {
+								x=200
+								y=615
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):$(C):tune:mode_RBV"
+								clr=14
+								bclr=4
+							}
+							format="string"
+							limits {
+							}
+						}
+						menu {
+							object {
+								x=95
+								y=615
+								width=100
+								height=25
+							}
+							control {
+								chan="$(P)$(T):$(C):tune:mode"
+								clr=14
+								bclr=4
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=200
+		width=290
+		height=55
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=200
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=200
+						y=200
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):range_RBV"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+				menu {
+					object {
+						x=95
+						y=200
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):range"
+						clr=14
+						bclr=4
+					}
+				}
+				text {
+					object {
+						x=10
+						y=200
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Range"
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=230
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				"text update" {
+					object {
+						x=200
+						y=230
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):slew_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=95
+						y=230
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):slew"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=10
+						y=230
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Slew"
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=275
+		width=290
+		height=115
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=275
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=275
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="IO Type"
+				}
+				menu {
+					object {
+						x=95
+						y=275
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):ioType"
+						clr=14
+						bclr=4
+					}
+				}
+				"text update" {
+					object {
+						x=200
+						y=275
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):ioType_RBV"
+						clr=14
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=305
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=305
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="High limit"
+				}
+				"text update" {
+					object {
+						x=200
+						y=305
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):highLimit_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=335
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=335
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Current"
+				}
+				"text entry" {
+					object {
+						x=95
+						y=335
+						width=100
+						height=25
+					}
+					control {
+						chan="$(P)$(T):$(C):output"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=200
+						y=335
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):output_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=10
+				y=365
+				width=290
+				height=25
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=10
+						y=365
+						width=80
+						height=25
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Low limit"
+				}
+				"text update" {
+					object {
+						x=200
+						y=365
+						width=100
+						height=25
+					}
+					monitor {
+						chan="$(P)$(T):$(C):lowLimit_RBV"
+						clr=14
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+	}
+}

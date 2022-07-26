@@ -1,0 +1,341 @@
+
+file {
+	name="/net/s12dserv/xorApps/epics/synApps_5_8/ioc/12idTEMP2/12idTEMP2App/op/adl/PTC10_top.adl"
+	version=030111
+}
+display {
+	object {
+		x=1656
+		y=223
+		width=450
+		height=135
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+composite {
+	object {
+		x=10
+		y=10
+		width=430
+		height=115
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=10
+				width=100
+				height=115
+			}
+			"composite name"=""
+			children {
+				"related display" {
+					object {
+						x=10
+						y=10
+						width=100
+						height=25
+					}
+					display[0] {
+						label="Temperatures"
+						name="PTC10_temperature_4x.adl"
+						args="P=$(P),T=$(T),IN1=$(T1),IN2=$(T2),IN3=$(T3),IN4=$(T4)"
+					}
+					display[1] {
+						label="Thermocouple #1"
+						name="PTC10_tc_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(T1)"
+					}
+					display[2] {
+						label="Thermocouple #2"
+						name="PTC10_tc_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(T2)"
+					}
+					display[3] {
+						label="Thermocouple #3"
+						name="PTC10_tc_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(T3)"
+					}
+					display[4] {
+						label="Thermocouple #4"
+						name="PTC10_tc_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(T4)"
+					}
+					clr=0
+					bclr=19
+					label="-Thermocouple"
+				}
+				"related display" {
+					object {
+						x=10
+						y=70
+						width=100
+						height=25
+					}
+					display[0] {
+						label="Analog I/O #1"
+						name="PTC10_aio_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(A1)"
+					}
+					display[1] {
+						label="Analog I/O #2"
+						name="PTC10_aio_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(A2)"
+					}
+					display[2] {
+						label="Analog I/O #3"
+						name="PTC10_aio_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(A3)"
+					}
+					display[3] {
+						label="Analog I/O #4"
+						name="PTC10_aio_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(A4)"
+					}
+					clr=0
+					bclr=19
+					label="-Analog I/O"
+				}
+				"related display" {
+					object {
+						x=10
+						y=40
+						width=100
+						height=25
+					}
+					display[0] {
+						label="Temperatures"
+						name="PTC10_temperature_4x.adl"
+						args="P=$(P),T=$(T),IN1=$(R1),IN2=$(R2),IN3=$(R3),IN4=$(R4)"
+					}
+					display[1] {
+						label="RTD #1"
+						name="PTC10_rtd_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(R1)"
+					}
+					display[2] {
+						label="RTD #2"
+						name="PTC10_rtd_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(R2)"
+					}
+					display[3] {
+						label="RTD #3"
+						name="PTC10_rtd_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(R3)"
+					}
+					display[4] {
+						label="RTD #4"
+						name="PTC10_rtd_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(R4)"
+					}
+					clr=0
+					bclr=19
+					label="-RTD"
+				}
+				"related display" {
+					object {
+						x=10
+						y=100
+						width=100
+						height=25
+					}
+					display[0] {
+						label="TEC Input"
+						name="PTC10_tec_in_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(TI)"
+					}
+					display[1] {
+						label="TEC Output"
+						name="PTC10_tec_out_chan_full.adl"
+						args="P=$(P),T=$(T),C=$(TO)"
+					}
+					clr=0
+					bclr=19
+					label="-TEC"
+				}
+			}
+		}
+		composite {
+			object {
+				x=130
+				y=10
+				width=310
+				height=115
+			}
+			"composite name"=""
+			children {
+				composite {
+					object {
+						x=130
+						y=70
+						width=310
+						height=55
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=235
+								y=70
+								width=100
+								height=25
+							}
+							monitor {
+								chan="$(P)$(T):outputEnable_RBV"
+								clr=14
+								bclr=4
+							}
+							format="string"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=130
+								y=83
+								width=100
+								height=25
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Output Enable"
+						}
+						menu {
+							object {
+								x=340
+								y=70
+								width=100
+								height=25
+							}
+							control {
+								chan="$(P)$(T):outputEnable_RBV.SCAN"
+								clr=14
+								bclr=4
+							}
+						}
+						"message button" {
+							object {
+								x=235
+								y=100
+								width=100
+								height=25
+							}
+							control {
+								chan="$(P)$(T):outputEnable"
+								clr=0
+								bclr=63
+							}
+							label="On"
+							press_msg="1"
+						}
+						"message button" {
+							object {
+								x=340
+								y=100
+								width=100
+								height=25
+							}
+							control {
+								chan="$(P)$(T):outputEnable"
+								clr=0
+								bclr=22
+							}
+							label="Off"
+							press_msg="0"
+						}
+					}
+				}
+				text {
+					object {
+						x=130
+						y=10
+						width=310
+						height=55
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="$(P)$(T)"
+					align="horiz. centered"
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,21 @@
+
+record(bo, "$(P)$(T):outputEnable") {
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "Output enable")
+  field(OUT,  "@PTC10.proto setOutputEnable() $(PORT) $(ADDR)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(VAL,  "1")
+  field(FLNK, "$(P)$(T):outputEnable_RBV")
+}
+
+record(bi, "$(P)$(T):outputEnable_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "Output enable")
+  field(INP,  "@PTC10.proto getOutputEnable() $(PORT) $(ADDR)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+}
+

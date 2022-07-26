@@ -1,0 +1,440 @@
+# Database file for one channel of the SRS PTC10 Temperature Controller
+
+record(stringin, "$(P)$(T):$(C):name_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) name rbv")
+  field(INP,  "@PTC10.proto getName($(C)) $(PORT) $(ADDR)")
+}
+
+record(ao, "$(P)$(T):$(C):output")
+{
+  field(DTYP, "stream")
+  field(DESC, "$(C) voltage")
+  field(OUT,  "@PTC10.proto setOutputLevel($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "$(EGU)")
+  field(PREC, "$(PREC=4)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):output_RBV")
+}
+
+record(ai, "$(P)$(T):$(C):output_RBV")
+{
+  field(DTYP, "stream")
+  field(DESC, "$(C) voltage")
+  field(INP,  "@PTC10.proto getOutputLevel($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "$(EGU)")
+  field(PREC, "$(PREC=4)")
+}
+
+# TODO: add some records to force RBV updates when ioType_RBV changes
+
+record(mbbi, "$(P)$(T):$(C):ioType_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) IO type rbv")
+  field(INP,  "@PTC10.proto getIOtype($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ZRST, "Input")
+  field(ONVL, "1")
+  field(ONST, "Set out")
+  field(TWVL, "2")
+  field(TWST, "Meas out")
+}
+
+record(mbbo, "$(P)$(T):$(C):ioType")
+{
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "$(C) IO type")
+  field(OUT,  "@PTC10.proto setIOtype($(C)) $(PORT) $(ADDR)")
+  field(ZRVL, "0")
+  field(ZRST, "Input")
+  field(ONVL, "1")
+  field(ONST, "Set out")
+  field(TWVL, "2")
+  field(TWST, "Meas out")
+  field(FLNK, "$(P)$(T):$(C):ioType_RBV")
+}
+
+record(bo, "$(P)$(T):$(C):off")
+{
+  field(DTYP, "stream")
+  field(PINI, "NO")
+  field(DESC, "Turn $(C) off")
+  field(OUT,  "@PTC10.proto setOff($(C)) $(PORT) $(ADDR)")
+  field(ZNAM, "Done")
+  field(ONAM, "Off")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:mode_RBV")
+}
+
+record(ai, "$(P)$(T):$(C):lowLimit_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Low limit rbv")
+  field(INP,  "@PTC10.proto getLowLimit($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "V")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ao, "$(P)$(T):$(C):lowLimit") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) Low limit")
+  field(OUT,  "@PTC10.proto setLowLimit($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "V")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):lowLimit_RBV")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ai, "$(P)$(T):$(C):highLimit_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) High limit rbv")
+  field(INP,  "@PTC10.proto getHighLimit($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "V")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ao, "$(P)$(T):$(C):highLimit") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) High limit")
+  field(OUT,  "@PTC10.proto setHighLimit($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "V")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):highLimit_RBV")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ai, "$(P)$(T):$(C):setPoint_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Set Point rbv")
+  field(INP,  "@PTC10.proto getSetpoint($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "C")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ao, "$(P)$(T):$(C):setPoint") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) Set Point")
+  field(OUT,  "@PTC10.proto setSetpoint($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "C")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):setPoint_RBV")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ai, "$(P)$(T):$(C):rampRate_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Ramp Rate rbv")
+  field(INP,  "@PTC10.proto getRampRate($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "C/s")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ao, "$(P)$(T):$(C):rampRate") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) Ramp Rate")
+  field(OUT,  "@PTC10.proto setRampRate($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "C/s")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):rampRate_RBV")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ai, "$(P)$(T):$(C):rampTemp_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Ramp Temp rbv")
+  field(INP,  "@PTC10.proto getRampTemp($(C)) $(PORT) $(ADDR)")
+  field(EGU,  "C")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "$(PREC=4)")
+}
+
+record(ai, "$(P)$(T):$(C):pid:P_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) PID P gain rbv")
+  field(INP,  "@PTC10.proto getPidP($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "4")
+}
+
+record(ao, "$(P)$(T):$(C):pid:P") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) PID P gain")
+  field(OUT,  "@PTC10.proto setPidP($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:P_RBV")
+  field(PREC, "4")
+}
+
+record(ai, "$(P)$(T):$(C):pid:I_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) PID I gain rbv")
+  field(INP,  "@PTC10.proto getPidI($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "4")
+}
+
+record(ao, "$(P)$(T):$(C):pid:I") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) PID I gain")
+  field(OUT,  "@PTC10.proto setPidI($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:I_RBV")
+  field(PREC, "4")
+}
+
+record(ai, "$(P)$(T):$(C):pid:D_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) PID D gain rbv")
+  field(INP,  "@PTC10.proto getPidD($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "4")
+}
+
+record(ao, "$(P)$(T):$(C):pid:D") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) PID D gain")
+  field(OUT,  "@PTC10.proto setPidD($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:D_RBV")
+  field(PREC, "4")
+}
+
+record(stringin, "$(P)$(T):$(C):pid:input_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) PID input rbv")
+  field(INP,  "@PTC10.proto getPidInput($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+}
+
+record(stringout, "$(P)$(T):$(C):pid:input") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) PID input")
+  field(OUT,  "@PTC10.proto setPidInput($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:input_RBV")
+}
+
+record(bi, "$(P)$(T):$(C):pid:mode_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) PID mode rbv")
+  field(INP,  "@PTC10.proto getPidMode($(C)) $(PORT) $(ADDR)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+}
+
+record(bo, "$(P)$(T):$(C):pid:mode")
+{
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "$(C) PID mode")
+  field(OUT,  "@PTC10.proto setPidMode($(C)) $(PORT) $(ADDR)")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+  field(VAL,  "0")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):pid:mode_RBV")
+}
+
+record(ai, "$(P)$(T):$(C):tune:lag_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Tune lag")
+  field(INP,  "@PTC10.proto getTuneLag($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "0")
+  field(EGU,  "seconds")
+}
+
+record(ao, "$(P)$(T):$(C):tune:lag") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) Tune lag")
+  field(OUT,  "@PTC10.proto setTuneLag($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):tune:lag_RBV")
+  field(VAL,  "30")
+  field(PREC, "0")
+  field(EGU,  "seconds")
+}
+
+# 
+record(ai, "$(P)$(T):$(C):tune:step_RBV") {
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Tune step")
+  field(INP,  "@PTC10.proto getTuneStep($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(PREC, "3")
+  field(EGU,  "volts")
+}
+
+record(ao, "$(P)$(T):$(C):tune:step") {
+  field(DTYP, "stream")
+  field(DESC, "$(C) Tune step")
+  field(OUT,  "@PTC10.proto setTuneStep($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(FLNK, "$(P)$(T):$(C):tune:step_RBV")
+  field(PREC, "3")
+  field(VAL,  "0.5")
+  field(EGU,  "volts")
+}
+
+record(mbbi, "$(P)$(T):$(C):tune:mode_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Tune mode rbv")
+  field(INP,  "@PTC10.proto getTuneMode($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(ZRVL, "0")
+  field(ZRST, "Off")
+  field(ONVL, "1")
+  field(ONST, "Auto")
+  field(TWVL, "2")
+  field(TWST, "Step")
+  field(THVL, "3")
+  field(THST, "Relay")
+}
+
+record(mbbo, "$(P)$(T):$(C):tune:mode")
+{
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "$(C) Tune mode")
+  field(OUT,  "@PTC10.proto setTuneMode($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(ZRVL, "0")
+  field(ZRST, "Off")
+  field(ONVL, "1")
+  field(ONST, "Auto")
+  field(TWVL, "2")
+  field(TWST, "Step")
+  field(THVL, "3")
+  field(THST, "Relay")
+  field(VAL,  "0")
+  field(FLNK, "$(P)$(T):$(C):tune:mode_RBV")
+}
+
+record(mbbi, "$(P)$(T):$(C):tune:type_RBV")
+{
+  field(DTYP, "stream")
+  field(PINI, "YES")
+  field(DESC, "$(C) Tune type rbv")
+  field(INP,  "@PTC10.proto getTuneType($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(ZRVL, "0")
+  field(ZRST, "Cons")
+  field(ONVL, "1")
+  field(ONST, "Moderate")
+  field(TWVL, "2")
+  field(TWST, "Aggr")
+  field(THVL, "3")
+  field(THST, "Auto")
+}
+
+record(mbbo, "$(P)$(T):$(C):tune:type")
+{
+  field(DTYP, "stream")
+  #field(PINI, "YES")
+  field(DESC, "$(C) Tune type")
+  field(OUT,  "@PTC10.proto setTuneType($(C)) $(PORT) $(ADDR)")
+  field(SDIS, "$(P)$(T):$(C):ioType_RBV")
+  field(DISV, "0")
+  field(ZRVL, "0")
+  field(ZRST, "Cons")
+  field(ONVL, "1")
+  field(ONST, "Moderate")
+  field(TWVL, "2")
+  field(TWST, "Aggr")
+  field(THVL, "3")
+  field(THST, "Auto")
+  field(VAL,  "0")
+  field(FLNK, "$(P)$(T):$(C):tune:type_RBV")
+}
+
+# Assume the channel name will not change, so don't poll it
+#field(LNK#, "$(P)$(T):$(C):name_RBV")
+record(fanout, "$(P)$(T):$(C):poll")
+{
+  field(DESC, "Update readback values")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(T):$(C):output_RBV")
+  field(LNK2, "$(P)$(T):$(C):ioType_RBV")
+  field(LNK3, "$(P)$(T):$(C):lowLimit_RBV")
+  field(LNK4, "$(P)$(T):$(C):highLimit_RBV")
+  field(LNK5, "$(P)$(T):$(C):setPoint_RBV")
+  field(LNK6, "$(P)$(T):$(C):poll2")
+  field(SCAN, "Passive")
+}
+
+record(fanout, "$(P)$(T):$(C):poll2")
+{
+  field(DESC, "Update readback values")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(T):$(C):rampRate_RBV")
+  field(LNK2, "$(P)$(T):$(C):rampTemp_RBV")
+  field(LNK3, "$(P)$(T):$(C):pid:P_RBV")
+  field(LNK4, "$(P)$(T):$(C):pid:I_RBV")
+  field(LNK5, "$(P)$(T):$(C):pid:D_RBV")
+  field(LNK6, "$(P)$(T):$(C):poll3")
+  field(SCAN, "Passive")
+}
+
+record(fanout, "$(P)$(T):$(C):poll3")
+{
+  field(DESC, "Update readback values")
+  field(SELM, "All")
+  field(LNK1, "$(P)$(T):$(C):pid:mode_RBV")
+  field(LNK2, "$(P)$(T):$(C):pid:input_RBV")
+  field(LNK3, "$(P)$(T):$(C):tune:lag_RBV")
+  field(LNK4, "$(P)$(T):$(C):tune:step_RBV")
+  field(LNK5, "$(P)$(T):$(C):tune:mode_RBV")
+  field(LNK6, "$(P)$(T):$(C):tune:type_RBV")
+  field(SCAN, "Passive")
+}

@@ -1,0 +1,11 @@
+# Example PTC10 configuration
+
+epicsEnvSet("PREFIX", "IOC:")
+
+epicsEnvSet("STREAM_PROTOCOL_PATH","$(IP)/db")
+
+# NOTE: IP and ASYN need to be defined for the following to succeed
+iocshLoad("$(IP)/iocsh/PTC10_eth.iocsh","PREFIX=$(PREFIX),INSTANCE=tc1,IP_ADDR=127.0.0.1,PORT=PTC_ETH,A1=5A,A2=5B,A3=5C,A4=5D")
+iocshLoad("$(IP)/iocsh/PTC10_tc.iocsh", "PREFIX=$(PREFIX),INSTANCE=tc1,PORT=PTC_ETH,T1=1A,T2=1B,T3=1C,T4=1D")
+iocshLoad("$(IP)/iocsh/PTC10_rtd.iocsh","PREFIX=$(PREFIX),INSTANCE=tc1,PORT=PTC_ETH,R1=2A,R2=2B")
+iocshLoad("$(IP)/iocsh/PTC10_tec.iocsh","PREFIX=$(PREFIX),INSTANCE=tc1,PORT=PTC_ETH,TI=3A,TO=3B")
