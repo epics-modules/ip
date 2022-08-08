@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/epics-modules/ip.svg?branch=master)](https://travis-ci.org/epics-modules/ip)
+[![IP](https://github.com/epics-modules/ip/actions/workflows/ci-scripts-build.yml/badge.svg)](https://github.com/epics-modules/ip/actions/workflows/ci-scripts-build.yml)
 
 # ip
 APS BCDA synApps module: ip
