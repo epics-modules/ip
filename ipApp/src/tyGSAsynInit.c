@@ -108,11 +108,11 @@ static const iocshArg tyGSAsynInitArg1 = { "module name",iocshArgString};
 static const iocshArg tyGSAsynInitArg2 = { "module channel",iocshArgInt};
 static const iocshArg tyGSAsynInitArg3 = { "baud",iocshArgInt};
 static const iocshArg tyGSAsynInitArg4 = { "parity('N'=none,'E'=even,'O'=odd)",
-                                          iocshArgInt};
+                                          iocshArgString};
 static const iocshArg tyGSAsynInitArg5 = { "stop bits(1 or 2)",iocshArgInt};
 static const iocshArg tyGSAsynInitArg6 = { "data bits(5-8)",iocshArgInt};
 static const iocshArg tyGSAsynInitArg7 = { "handshake('N'=none,'H'=hardware)",
-                                          iocshArgInt};
+                                          iocshArgString};
 static const iocshArg tyGSAsynInitArg8 = { "Input EOS",iocshArgString};
 static const iocshArg tyGSAsynInitArg9 = { "Output EOS",iocshArgString};
 static const iocshArg * const tyGSAsynInitArgs[910] = {
@@ -124,9 +124,15 @@ static const iocshFuncDef tyGSAsynInitFuncDef = {
     "tyGSAsynInit",10,tyGSAsynInitArgs};
 static void tyGSAsynInitCallFunc(const iocshArgBuf *args)
 {
+	char parity = 0;
+	char handshake = 0;
+	
+	if (args[4].sval && strlen(args[4].sval) > 0)    { parity = args[4].sval[0]; }
+	if (args[7].sval && strlen(args[7].sval) > 0)    { handshake = args[7].sval[0]; }
+	
     tyGSAsynInit(
         args[0].sval,args[1].sval,args[2].ival,args[3].ival,
-        args[4].ival,args[5].ival,args[6].ival,args[7].ival,
+        parity, args[5].ival,args[6].ival, handshake,
         args[8].sval,args[9].sval);
 }
 
