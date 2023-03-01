@@ -1,0 +1,95 @@
+record(ai, "$(P)oxTemp") {
+    field(DESC, "Cryo temp")
+    field(DTYP, "stream")
+    field(INP,  "@oxfordCryo.proto getSensorTemp $(PORT)")
+    field(PREC, "1")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)oxSampleFlow.PROC")
+}
+record(ai, "$(P)oxSampleFlow") {
+    field(DESC, "Sample flow")
+    field(DTYP, "stream")
+    field(INP,  "@oxfordCryo.proto getSampleFlow $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxShieldFlow.PROC")
+}
+
+record(ai, "$(P)oxShieldFlow") {
+    field(DESC, "Shield flow")
+    field(DTYP, "stream")
+    field(INP,  "@oxfordCryo.proto getShieldFlow $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxDesiredT.PROC")
+}
+
+record(ai, "$(P)oxDesiredT") {
+    field(DESC, "Desired Temp")
+    field(DTYP, "stream")
+    field(INP,  "@oxfordCryo.proto getSetpointTemp $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxLorR.PROC")
+}
+
+record(ai, "$(P)oxLorR") {
+    field(DESC, "Local or Remote")
+    field(DTYP, "stream")
+    field(INP,  "@oxfordCryo.proto getLorR $(PORT)")
+    field(PREC, "1")
+}
+
+record(bo, "$(P)oxLocal") {
+    field(DESC, "Local mode")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setLocal $(PORT)")
+}
+
+record(bo, "$(P)oxRemote") {
+    field(DESC, "Remote mode")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setRemote $(PORT)")
+}
+
+record(ao, "$(P)oxSetTemp") {
+    field(DESC, "Set Temp")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setTemp $(PORT)")
+    field(PREC, "1")
+}
+
+record(ao, "$(P)oxSetSampleFlow") {
+    field(DESC, "Set Sample Flow")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setSampleFlow $(PORT)")
+    field(PREC, "1")
+}
+
+record(ao, "$(P)oxSetShieldFlow") {
+    field(DESC, "Set Shield Flow")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setShieldFlow $(PORT)")
+    field(PREC, "1")
+}
+
+record(bo, "$(P)oxSetHeaterMode") {
+    field(DESC, "Set Heater Mode")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setHeaterMode $(PORT)")
+    field(ZNAM, "Fixed")
+    field(ONAM, "Control")
+    field(VAL,  "1")
+}
+
+record(ao, "$(P)oxSetHeaterVolts") {
+    field(DESC, "Set Heater Volts")
+    field(DTYP, "stream")
+    field(OUT,  "@oxfordCryo.proto setHeaterVolts $(PORT)")
+    field(PREC, "1")
+}
+
+#record(compress,"$(P)oxTempPlot") {
+#    field(DESC, "Cryojet Temperature")
+#    field(INP,  "$(P)oxTemp")
+#    field(NSAM, "1440")
+#    field(SCAN, "3")
+#    field(PREC, "1")
+#}
