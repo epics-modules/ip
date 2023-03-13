@@ -1,0 +1,475 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 1656
+y 223
+w 450
+h 135
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 430
+h 115
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 100
+h 115
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 10
+w 310
+h 115
+
+beginGroup
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 70
+w 310
+h 55
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 70
+w 100
+h 25
+controlPv "$(P)$(T):outputEnable_RBV"
+format "string"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 130
+y 83
+w 133
+h 25
+font "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Output Enable"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 130
+y 10
+w 310
+h 55
+font "utopia-medium-r-34.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "$(P)$(T)"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 430
+h 115
+
+beginGroup
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 100
+h 115
+
+beginGroup
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 10
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+bgColor rgb 8448 27648 0
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-14.0"
+buttonLabel "Thermocouple"
+numPvs 10
+numDsps 5
+displayFileName {
+  0 "PTC10_temperature_4x.edl"
+  1 "PTC10_tc_chan_full.edl"
+  2 "PTC10_tc_chan_full.edl"
+  3 "PTC10_tc_chan_full.edl"
+  4 "PTC10_tc_chan_full.edl"
+}
+menuLabel {
+  0 "Temperatures"
+  1 "Thermocouple #1"
+  2 "Thermocouple #2"
+  3 "Thermocouple #3"
+  4 "Thermocouple #4"
+}
+symbols {
+  0 "P=$(P),T=$(T),IN1=$(T1),IN2=$(T2),IN3=$(T3),IN4=$(T4)"
+  1 "P=$(P),T=$(T),C=$(T1)"
+  2 "P=$(P),T=$(T),C=$(T2)"
+  3 "P=$(P),T=$(T),C=$(T3)"
+  4 "P=$(P),T=$(T),C=$(T4)"
+}
+replaceSymbols {
+  0 1
+  1 1
+  2 1
+  3 1
+  4 1
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 70
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+bgColor rgb 8448 27648 0
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-14.0"
+buttonLabel "Analog I/O"
+numPvs 8
+numDsps 4
+displayFileName {
+  0 "PTC10_aio_chan_full.edl"
+  1 "PTC10_aio_chan_full.edl"
+  2 "PTC10_aio_chan_full.edl"
+  3 "PTC10_aio_chan_full.edl"
+}
+menuLabel {
+  0 "Analog I/O #1"
+  1 "Analog I/O #2"
+  2 "Analog I/O #3"
+  3 "Analog I/O #4"
+}
+symbols {
+  0 "P=$(P),T=$(T),C=$(A1)"
+  1 "P=$(P),T=$(T),C=$(A2)"
+  2 "P=$(P),T=$(T),C=$(A3)"
+  3 "P=$(P),T=$(T),C=$(A4)"
+}
+replaceSymbols {
+  0 1
+  1 1
+  2 1
+  3 1
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 40
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+bgColor rgb 8448 27648 0
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-14.0"
+buttonLabel "RTD"
+numPvs 10
+numDsps 5
+displayFileName {
+  0 "PTC10_temperature_4x.edl"
+  1 "PTC10_rtd_chan_full.edl"
+  2 "PTC10_rtd_chan_full.edl"
+  3 "PTC10_rtd_chan_full.edl"
+  4 "PTC10_rtd_chan_full.edl"
+}
+menuLabel {
+  0 "Temperatures"
+  1 "RTD #1"
+  2 "RTD #2"
+  3 "RTD #3"
+  4 "RTD #4"
+}
+symbols {
+  0 "P=$(P),T=$(T),IN1=$(R1),IN2=$(R2),IN3=$(R3),IN4=$(R4)"
+  1 "P=$(P),T=$(T),C=$(R1)"
+  2 "P=$(P),T=$(T),C=$(R2)"
+  3 "P=$(P),T=$(T),C=$(R3)"
+  4 "P=$(P),T=$(T),C=$(R4)"
+}
+replaceSymbols {
+  0 1
+  1 1
+  2 1
+  3 1
+  4 1
+}
+endObjectProperties
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 100
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+bgColor rgb 8448 27648 0
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-medium-r-14.0"
+buttonLabel "TEC"
+numPvs 4
+numDsps 2
+displayFileName {
+  0 "PTC10_tec_in_chan_full.edl"
+  1 "PTC10_tec_out_chan_full.edl"
+}
+menuLabel {
+  0 "TEC Input"
+  1 "TEC Output"
+}
+symbols {
+  0 "P=$(P),T=$(T),C=$(TI)"
+  1 "P=$(P),T=$(T),C=$(TO)"
+}
+replaceSymbols {
+  0 1
+  1 1
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 10
+w 310
+h 115
+
+beginGroup
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 130
+y 70
+w 310
+h 55
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 340
+y 70
+w 100
+h 25
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)$(T):outputEnable_RBV.SCAN"
+indicatorPv "$(P)$(T):outputEnable_RBV.SCAN"
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 235
+y 100
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+onColor rgb 10240 37632 5376
+offColor rgb 10240 37632 5376
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
+controlPv "$(P)$(T):outputEnable"
+pressValue "1"
+releaseValue 
+onLabel "On"
+offLabel "On"
+3d
+useEnumNumeric
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+# (Message Button)
+object activeMessageButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 340
+y 100
+w 100
+h 25
+fgColor rgb 65280 65280 65280
+onColor rgb 48640 6400 2816
+offColor rgb 48640 6400 2816
+topShadowColor rgb 65280 65280 65280
+botShadowColor rgb 0 0 0
+controlPv "$(P)$(T):outputEnable"
+pressValue "0"
+releaseValue 
+onLabel "Off"
+offLabel "Off"
+3d
+useEnumNumeric
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+

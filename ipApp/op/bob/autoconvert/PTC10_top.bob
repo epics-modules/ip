@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<display version="2.0.0">
+  <name>PTC10_top</name>
+  <x>1656</x>
+  <y>223</y>
+  <width>450</width>
+  <height>135</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="group" version="2.0.0">
+    <name>composite #6</name>
+    <x>10</x>
+    <y>10</y>
+    <width>430</width>
+    <height>115</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #9</name>
+      <width>100</width>
+      <height>115</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="action_button" version="3.0.0">
+        <name>related display #12</name>
+        <actions>
+          <action type="open_display">
+            <file>PTC10_temperature_4x.opi</file>
+            <macros>
+              <IN1>$(T1)</IN1>
+              <IN2>$(T2)</IN2>
+              <IN3>$(T3)</IN3>
+              <IN4>$(T4)</IN4>
+            </macros>
+            <target>tab</target>
+            <description>Temperatures</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_tc_chan_full.opi</file>
+            <macros>
+              <C>$(T1)</C>
+            </macros>
+            <target>tab</target>
+            <description>Thermocouple #1</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_tc_chan_full.opi</file>
+            <macros>
+              <C>$(T2)</C>
+            </macros>
+            <target>tab</target>
+            <description>Thermocouple #2</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_tc_chan_full.opi</file>
+            <macros>
+              <C>$(T3)</C>
+            </macros>
+            <target>tab</target>
+            <description>Thermocouple #3</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_tc_chan_full.opi</file>
+            <macros>
+              <C>$(T4)</C>
+            </macros>
+            <target>tab</target>
+            <description>Thermocouple #4</description>
+          </action>
+        </actions>
+        <text>Thermocouple</text>
+        <height>25</height>
+        <foreground_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="33" green="108" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>related display #19</name>
+        <actions>
+          <action type="open_display">
+            <file>PTC10_aio_chan_full.opi</file>
+            <macros>
+              <C>$(A1)</C>
+            </macros>
+            <target>tab</target>
+            <description>Analog I/O #1</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_aio_chan_full.opi</file>
+            <macros>
+              <C>$(A2)</C>
+            </macros>
+            <target>tab</target>
+            <description>Analog I/O #2</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_aio_chan_full.opi</file>
+            <macros>
+              <C>$(A3)</C>
+            </macros>
+            <target>tab</target>
+            <description>Analog I/O #3</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_aio_chan_full.opi</file>
+            <macros>
+              <C>$(A4)</C>
+            </macros>
+            <target>tab</target>
+            <description>Analog I/O #4</description>
+          </action>
+        </actions>
+        <text>Analog I/O</text>
+        <y>60</y>
+        <height>25</height>
+        <foreground_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="33" green="108" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>related display #25</name>
+        <actions>
+          <action type="open_display">
+            <file>PTC10_temperature_4x.opi</file>
+            <macros>
+              <IN1>$(R1)</IN1>
+              <IN2>$(R2)</IN2>
+              <IN3>$(R3)</IN3>
+              <IN4>$(R4)</IN4>
+            </macros>
+            <target>tab</target>
+            <description>Temperatures</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_rtd_chan_full.opi</file>
+            <macros>
+              <C>$(R1)</C>
+            </macros>
+            <target>tab</target>
+            <description>RTD #1</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_rtd_chan_full.opi</file>
+            <macros>
+              <C>$(R2)</C>
+            </macros>
+            <target>tab</target>
+            <description>RTD #2</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_rtd_chan_full.opi</file>
+            <macros>
+              <C>$(R3)</C>
+            </macros>
+            <target>tab</target>
+            <description>RTD #3</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_rtd_chan_full.opi</file>
+            <macros>
+              <C>$(R4)</C>
+            </macros>
+            <target>tab</target>
+            <description>RTD #4</description>
+          </action>
+        </actions>
+        <text>RTD</text>
+        <y>30</y>
+        <height>25</height>
+        <foreground_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="33" green="108" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>related display #32</name>
+        <actions>
+          <action type="open_display">
+            <file>PTC10_tec_in_chan_full.opi</file>
+            <macros>
+              <C>$(TI)</C>
+            </macros>
+            <target>tab</target>
+            <description>TEC Input</description>
+          </action>
+          <action type="open_display">
+            <file>PTC10_tec_out_chan_full.opi</file>
+            <macros>
+              <C>$(TO)</C>
+            </macros>
+            <target>tab</target>
+            <description>TEC Output</description>
+          </action>
+        </actions>
+        <text>TEC</text>
+        <y>90</y>
+        <height>25</height>
+        <foreground_color>
+          <color red="255" green="255" blue="255">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="33" green="108" blue="0">
+          </color>
+        </background_color>
+      </widget>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #36</name>
+      <x>120</x>
+      <width>310</width>
+      <height>115</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="group" version="2.0.0">
+        <name>composite #39</name>
+        <y>60</y>
+        <width>310</width>
+        <height>55</height>
+        <style>3</style>
+        <transparent>true</transparent>
+        <widget type="textupdate" version="2.0.0">
+          <name>text update #42</name>
+          <pv_name>$(P)$(T):outputEnable_RBV</pv_name>
+          <x>105</x>
+          <height>25</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <background_color>
+            <color red="187" green="187" blue="187">
+            </color>
+          </background_color>
+          <format>6</format>
+          <show_units>false</show_units>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="label" version="2.0.0">
+          <name>text #46</name>
+          <text>Output Enable</text>
+          <y>13</y>
+          <height>25</height>
+          <font>
+            <font family="Liberation Sans" style="REGULAR" size="16.0">
+            </font>
+          </font>
+          <auto_size>true</auto_size>
+        </widget>
+        <widget type="combo" version="2.0.0">
+          <name>menu #49</name>
+          <pv_name>$(P)$(T):outputEnable_RBV.SCAN</pv_name>
+          <x>210</x>
+          <height>25</height>
+          <background_color>
+            <color red="187" green="187" blue="187">
+            </color>
+          </background_color>
+          <border_alarm_sensitive>false</border_alarm_sensitive>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>message button #52</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(P)$(T):outputEnable</pv_name>
+              <value>1</value>
+              <description>Write</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(T):outputEnable</pv_name>
+          <text>On</text>
+          <x>105</x>
+          <y>30</y>
+          <height>25</height>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="40" green="147" blue="21">
+            </color>
+          </background_color>
+        </widget>
+        <widget type="action_button" version="3.0.0">
+          <name>message button #55</name>
+          <actions>
+            <action type="write_pv">
+              <pv_name>$(P)$(T):outputEnable</pv_name>
+              <value>0</value>
+              <description>Write</description>
+            </action>
+          </actions>
+          <pv_name>$(P)$(T):outputEnable</pv_name>
+          <text>Off</text>
+          <x>210</x>
+          <y>30</y>
+          <height>25</height>
+          <foreground_color>
+            <color red="255" green="255" blue="255">
+            </color>
+          </foreground_color>
+          <background_color>
+            <color red="190" green="25" blue="11">
+            </color>
+          </background_color>
+        </widget>
+      </widget>
+      <widget type="label" version="2.0.0">
+        <name>text #58</name>
+        <text>$(P)$(T)</text>
+        <width>310</width>
+        <height>55</height>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="30.0">
+          </font>
+        </font>
+        <horizontal_alignment>1</horizontal_alignment>
+      </widget>
+    </widget>
+  </widget>
+</display>

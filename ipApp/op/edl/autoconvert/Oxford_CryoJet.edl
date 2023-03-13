@@ -1,0 +1,1025 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 756
+y 74
+w 371
+h 725
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 29
+y 7
+w 316
+h 34
+font "utopia-medium-r-24.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Oxford CryoJet and ILM"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 80
+w 220
+h 20
+controlPv "$(P)oxDesiredT.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 300
+y 80
+w 60
+h 20
+controlPv "$(P)oxSetTemp"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 80
+w 60
+h 20
+controlPv "$(P)oxDesiredT"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 130
+w 350
+h 120
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 230
+w 220
+h 20
+controlPv "$(P)ILM_level.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 180
+w 220
+h 20
+controlPv "$(P)oxSampleFlow.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 205
+w 220
+h 20
+controlPv "$(P)oxShieldFlow.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 130
+w 220
+h 20
+controlPv "$(P)oxHeaterCurrent.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 155
+w 220
+h 20
+controlPv "$(P)oxHeaterVolts.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 300
+y 180
+w 60
+h 20
+controlPv "$(P)oxSetSampleFlow"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Control)
+object activeXTextDspClass
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 300
+y 205
+w 60
+h 20
+controlPv "$(P)oxSetShieldFlow"
+format "decimal"
+font "helvetica-medium-r-12.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+editable
+motifWidget
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 230
+w 60
+h 20
+controlPv "$(P)ILM_level"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 180
+w 60
+h 20
+controlPv "$(P)oxSampleFlow"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 205
+w 60
+h 20
+controlPv "$(P)oxShieldFlow"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 130
+w 60
+h 20
+controlPv "$(P)oxHeaterCurrent"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 155
+w 60
+h 20
+controlPv "$(P)oxHeaterVolts"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 55
+w 285
+h 20
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 55
+w 220
+h 20
+controlPv "$(P)oxTemp.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 55
+w 60
+h 20
+controlPv "$(P)oxTemp"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 10
+y 105
+w 220
+h 20
+controlPv "$(P)oxTempError.DESC"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 235
+y 105
+w 60
+h 20
+controlPv "$(P)oxTempError"
+format "decimal"
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 332
+w 362
+h 386
+
+beginGroup
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 354
+w 360
+h 170
+# Appearance
+border
+graphTitle 
+xLabel "History (Hours)"
+yLabel 
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+gridColor rgb 0 0 0
+font "helvetica-medium-r-10.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 0
+#  X axis properties
+showXAxis
+xAxisSrc "AutoScale"
+xLablePrecision 1
+#  Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+#  Trace Properties
+numTraces 1
+xPv {
+  0 "$(P)history$(N).VALB"
+}
+yPv {
+  0 "$(P)history$(N).VALD"
+}
+plotStyle {
+  0 "line"
+}
+plotUpdateMode {
+  0 "x"
+}
+plotSymbolType {
+  0 "circle"
+}
+plotColor {
+  0 rgb 0 0 0
+}
+endObjectProperties
+
+# (X-Y Graph)
+object xyGraphClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 7
+y 548
+w 360
+h 170
+# Appearance
+border
+graphTitle 
+xLabel "History (Hours)"
+yLabel 
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+gridColor rgb 0 0 0
+font "helvetica-medium-r-10.0"
+# Operating Modes
+plotMode "plotLastNPts"
+nPts 0
+#  X axis properties
+showXAxis
+xAxisSrc "AutoScale"
+xLablePrecision 1
+#  Y axis properties
+showYAxis
+yAxisSrc "AutoScale"
+#  Trace Properties
+numTraces 1
+xPv {
+  0 "$(P)history$(N).VALB"
+}
+yPv {
+  0 "$(P)history$(N).VALE"
+}
+plotStyle {
+  0 "line"
+}
+plotUpdateMode {
+  0 "x"
+}
+plotSymbolType {
+  0 "circle"
+}
+plotColor {
+  0 rgb 0 0 0
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 5
+y 332
+w 180
+h 20
+controlPv "$(P)history$(N)_PV1_DESC"
+format "string"
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 8
+y 526
+w 180
+h 20
+controlPv "$(P)history$(N)_PV2_DESC"
+format "string"
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 25
+y 265
+w 334
+h 20
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 25
+y 265
+w 70
+h 20
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "CryoJet"
+}
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 193
+y 265
+w 166
+h 20
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 278
+y 265
+w 81
+h 20
+controlPv "$(P)oxGetLRMode"
+format "string"
+font "helvetica-medium-r-14.0"
+fontAlign "center"
+fgColor rgb 0 65535 0
+fgAlarm
+bgColor rgb 55808 55808 55808
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 64
+y 290
+w 115
+h 20
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 54
+y 290
+w 40
+h 20
+font "helvetica-medium-r-14.0"
+fontAlign "right"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "ILM"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 130
+w 350
+h 120
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 55
+w 285
+h 20
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 5
+y 332
+w 362
+h 386
+
+beginGroup
+
+# (Related Display)
+object relatedDisplayClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 342
+y 333
+w 14
+h 14
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+font "helvetica-bold-r-12.0"
+icon
+numPvs 2
+numDsps 1
+displayFileName {
+  0 "pvHistory2.edl"
+}
+menuLabel {
+  0 "Setup"
+}
+symbols {
+  0 "P=$(P),N=$(N)"
+}
+replaceSymbols {
+  0 1
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 25
+y 265
+w 334
+h 20
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 100
+y 266
+w 80
+h 19
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)oxTemp.SCAN"
+indicatorPv "$(P)oxTemp.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 193
+y 265
+w 166
+h 20
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 193
+y 265
+w 80
+h 20
+fgColor rgb 0 0 0
+bgColor rgb 29440 57088 65280
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)oxSetLRMode"
+indicatorPv "$(P)oxSetLRMode"
+font "helvetica-medium-r-12.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 64
+y 290
+w 115
+h 20
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 99
+y 291
+w 80
+h 19
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)ILM.SCAN"
+indicatorPv "$(P)ILM.SCAN"
+font "helvetica-medium-r-10.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+

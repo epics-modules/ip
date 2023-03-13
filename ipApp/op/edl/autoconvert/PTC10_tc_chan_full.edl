@@ -1,0 +1,280 @@
+4 0 1
+beginScreenProperties
+major 4
+minor 0
+release 1
+x 212
+y 169
+w 310
+h 140
+font "helvetica-medium-r-18.0"
+ctlFont "helvetica-bold-r-10.0"
+btnFont "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+textColor rgb 0 0 0
+ctlFgColor1 rgb 64256 62208 18944
+ctlFgColor2 rgb 60928 46592 11008
+ctlBgColor1 rgb 52480 24832 0
+ctlBgColor2 rgb 65280 45056 65280
+topShadowColor rgb 44544 19968 48128
+botShadowColor rgb 13312 13056 34304
+showGrid
+snapToGrid
+gridSize 4
+endScreenProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 20
+w 185
+h 25
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 10
+y 20
+w 82
+h 25
+font "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Channel"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 95
+y 20
+w 100
+h 25
+controlPv "$(P)$(T):$(C):name_RBV"
+format "string"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 105
+w 290
+h 25
+
+beginGroup
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 200
+y 105
+w 100
+h 25
+controlPv "$(P)$(T):$(C):sensor_RBV"
+format "string"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 10
+y 105
+w 80
+h 25
+font "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Sensor"
+}
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 65
+w 290
+h 25
+
+beginGroup
+
+# (Static Text)
+object activeXTextClass
+beginObjectProperties
+major 4
+minor 1
+release 1
+x 10
+y 65
+w 119
+h 25
+font "helvetica-medium-r-18.0"
+fgColor rgb 0 0 0
+bgColor index 3
+useDisplayBg
+value {
+  "Temperature"
+}
+endObjectProperties
+
+# (Text Monitor)
+object activeXTextDspClass:noedit
+beginObjectProperties
+major 4
+minor 7
+release 0
+x 200
+y 65
+w 100
+h 25
+controlPv "$(P)$(T):$(C):temperature"
+format "decimal"
+font "helvetica-medium-r-18.0"
+fontAlign "left"
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+limitsFromDb
+nullColor rgb 60928 46592 11008
+smartRefresh
+fastUpdate
+newPos
+objType "controls"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 20
+w 185
+h 25
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 105
+w 290
+h 25
+
+beginGroup
+
+endGroup
+
+endObjectProperties
+
+# (Group)
+object activeGroupClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 10
+y 65
+w 290
+h 25
+
+beginGroup
+
+# (Menu Button)
+object activeMenuButtonClass
+beginObjectProperties
+major 4
+minor 0
+release 0
+x 95
+y 65
+w 100
+h 25
+fgColor rgb 0 0 0
+bgColor rgb 47872 47872 47872
+inconsistentColor rgb 17920 17920 17920
+topShadowColor rgb 55808 55808 55808
+botShadowColor rgb 17920 17920 17920
+controlPv "$(P)$(T):$(C):temperature.SCAN"
+indicatorPv "$(P)$(T):$(C):temperature.SCAN"
+font "helvetica-medium-r-14.0"
+endObjectProperties
+
+endGroup
+
+endObjectProperties
+
+
