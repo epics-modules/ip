@@ -1,14 +1,14 @@
 
 file {
-	name="/usr/local/epics/op/adl/Oxford_CryoJet2.adl"
-	version=030104
+	name="/home/epics/support/ip-2-21-1/ipApp/op/adl/Oxford_CryoJet.adl"
+	version=030117
 }
 display {
 	object {
-		x=830
-		y=39
+		x=756
+		y=74
 		width=371
-		height=567
+		height=725
 	}
 	clr=14
 	bclr=4
@@ -102,407 +102,570 @@ text {
 }
 "text update" {
 	object {
-		x=194
-		y=85
-		width=43
-		height=16
-	}
-	monitor {
-		chan="$(P)ILM_level"
-		clr=14
-		bclr=4
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=55
-		y=85
-		width=120
-		height=16
-	}
-	monitor {
-		chan="$(P)ILM_level.DESC"
-		clr=14
-		bclr=4
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=194
-		y=105
-		width=43
-		height=16
-	}
-	monitor {
-		chan="$(P)oxSampleFlow"
-		clr=14
-		bclr=4
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=194
-		y=125
-		width=43
-		height=16
-	}
-	monitor {
-		chan="$(P)oxShieldFlow"
-		clr=14
-		bclr=4
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=55
-		y=105
-		width=120
-		height=16
-	}
-	monitor {
-		chan="$(P)oxSampleFlow.DESC"
-		clr=14
-		bclr=4
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=55
-		y=125
-		width=120
-		height=16
-	}
-	monitor {
-		chan="$(P)oxShieldFlow.DESC"
-		clr=14
-		bclr=4
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=194
-		y=45
-		width=43
-		height=16
-	}
-	monitor {
-		chan="$(P)oxTemp"
-		clr=14
-		bclr=4
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=55
-		y=45
-		width=120
-		height=16
-	}
-	monitor {
-		chan="$(P)oxTemp.DESC"
-		clr=14
-		bclr=4
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=194
-		y=65
-		width=43
-		height=16
-	}
-	monitor {
-		chan="$(P)oxDesiredT"
-		clr=14
-		bclr=4
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=55
-		y=65
-		width=120
-		height=16
+		x=10
+		y=80
+		width=220
+		height=20
 	}
 	monitor {
 		chan="$(P)oxDesiredT.DESC"
 		clr=14
 		bclr=4
 	}
+	align="horiz. right"
 	limits {
 	}
 }
-composite {
+"text entry" {
 	object {
-		x=259
-		y=62
+		x=300
+		y=80
 		width=60
-		height=80
-	}
-	"composite name"=""
-	children {
-		"text entry" {
-			object {
-				x=259
-				y=62
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)oxSetTemp.A"
-				clr=14
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=259
-				y=102
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)oxSetSampleFlow.A"
-				clr=14
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"text entry" {
-			object {
-				x=259
-				y=122
-				width=60
-				height=20
-			}
-			control {
-				chan="$(P)oxSetShieldFlow.A"
-				clr=14
-				bclr=4
-			}
-			limits {
-			}
-		}
-	}
-	"dynamic attribute" {
-		vis="calc"
-		calc="A=1"
-		chan="$(P)oxLorR"
-	}
-}
-composite {
-	object {
-		x=110
-		y=148
-		width=160
-		height=18
-	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=110
-				y=148
-				width=160
-				height=18
-			}
-			control {
-				chan="$(P)oxRemote.PROC"
-				clr=14
-				bclr=4
-			}
-			label="Currently in Local Mode"
-			press_msg="1"
-		}
-	}
-	"dynamic attribute" {
-		vis="calc"
-		calc="A=0"
-		chan="$(P)oxLorR"
-	}
-}
-composite {
-	object {
-		x=110
-		y=148
-		width=160
-		height=18
-	}
-	"composite name"=""
-	children {
-		"message button" {
-			object {
-				x=110
-				y=148
-				width=160
-				height=18
-			}
-			control {
-				chan="$(P)oxLocal.PROC"
-				clr=14
-				bclr=4
-			}
-			label="Currently in Remote Mode"
-			press_msg="0"
-		}
-	}
-	"dynamic attribute" {
-		vis="calc"
-		calc="A=1"
-		chan="$(P)oxLorR"
-	}
-}
-"cartesian plot" {
-	object {
-		x=7
-		y=200
-		width=360
-		height=170
-	}
-	plotcom {
-		xlabel="History (Hours)"
-		clr=14
-		bclr=4
-	}
-	style="line"
-	count="0"
-	trace[0] {
-		xdata="$(P)history$(N).VALC"
-		ydata="$(P)history$(N).VALD"
-		data_clr=14
-	}
-	x_axis {
-		axisStyle="time"
-		rangeStyle="auto-scale"
-		maxRange=0.000000
-	}
-	y1_axis {
-		rangeStyle="auto-scale"
-		maxRange=100.000000
-	}
-	y2_axis {
-		rangeStyle="auto-scale"
-	}
-	countPvName="0"
-}
-"cartesian plot" {
-	object {
-		x=7
-		y=394
-		width=360
-		height=170
-	}
-	plotcom {
-		xlabel="History (Hours)"
-		clr=14
-		bclr=4
-	}
-	style="line"
-	count="0"
-	trace[0] {
-		xdata="$(P)history$(N).VALC"
-		ydata="$(P)history$(N).VALE"
-		data_clr=14
-	}
-	x_axis {
-		axisStyle="time"
-		rangeStyle="auto-scale"
-		maxRange=0.000000
-	}
-	y1_axis {
-		rangeStyle="auto-scale"
-		maxRange=100.000000
-	}
-	y2_axis {
-		rangeStyle="auto-scale"
-	}
-	countPvName="0"
-}
-"related display" {
-	object {
-		x=344
-		y=151
-		width=14
-		height=14
-	}
-	display[0] {
-		label="Setup"
-		name="pvHistory2.adl"
-		args="P=$(P),N=$(N)"
-	}
-	clr=14
-	bclr=4
-}
-"text update" {
-	object {
-		x=5
-		y=178
-		width=180
 		height=20
-	}
-	monitor {
-		chan="$(P)history$(N)_PV1_DESC"
-		clr=14
-		bclr=4
-	}
-	align="horiz. centered"
-	format="string"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=8
-		y=372
-		width=180
-		height=20
-	}
-	monitor {
-		chan="$(P)history$(N)_PV2_DESC"
-		clr=14
-		bclr=4
-	}
-	align="horiz. centered"
-	format="string"
-	limits {
-	}
-}
-menu {
-	object {
-		x=287
-		y=171
-		width=80
-		height=19
 	}
 	control {
-		chan="14IDB:oxTemp.SCAN"
+		chan="$(P)oxSetTemp"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=235
+		y=80
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)oxDesiredT"
+		clr=14
+		bclr=51
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+composite {
+	object {
+		x=10
+		y=130
+		width=350
+		height=120
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=10
+				y=230
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)ILM_level.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=10
+				y=180
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)oxSampleFlow.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=10
+				y=205
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)oxShieldFlow.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=10
+				y=130
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)oxHeaterCurrent.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=10
+				y=155
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)oxHeaterVolts.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=300
+				y=180
+				width=60
+				height=20
+			}
+			control {
+				chan="$(P)oxSetSampleFlow"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text entry" {
+			object {
+				x=300
+				y=205
+				width=60
+				height=20
+			}
+			control {
+				chan="$(P)oxSetShieldFlow"
+				clr=14
+				bclr=51
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=230
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)ILM_level"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=180
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)oxSampleFlow"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=205
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)oxShieldFlow"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=130
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)oxHeaterCurrent"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=155
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)oxHeaterVolts"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=10
+		y=55
+		width=285
+		height=20
+	}
+	"composite name"=""
+	children {
+		"text update" {
+			object {
+				x=10
+				y=55
+				width=220
+				height=20
+			}
+			monitor {
+				chan="$(P)oxTemp.DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=235
+				y=55
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)oxTemp"
+				clr=14
+				bclr=51
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+	}
+}
+"text update" {
+	object {
+		x=10
+		y=105
+		width=220
+		height=20
+	}
+	monitor {
+		chan="$(P)oxTempError.DESC"
 		clr=14
 		bclr=4
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=235
+		y=105
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)oxTempError"
+		clr=14
+		bclr=51
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+composite {
+	object {
+		x=5
+		y=332
+		width=362
+		height=386
+	}
+	"composite name"=""
+	children {
+		"cartesian plot" {
+			object {
+				x=7
+				y=354
+				width=360
+				height=170
+			}
+			plotcom {
+				xlabel="History (Hours)"
+				clr=14
+				bclr=4
+			}
+			style="line"
+			count="0"
+			trace[0] {
+				xdata="$(P)history$(N).VALB"
+				ydata="$(P)history$(N).VALD"
+				data_clr=14
+				yaxis=0
+				yside=0
+			}
+			x_axis {
+				axisStyle="time"
+				rangeStyle="auto-scale"
+				maxRange=0.000000
+			}
+			y1_axis {
+				rangeStyle="auto-scale"
+				maxRange=100.000000
+			}
+			y2_axis {
+				rangeStyle="auto-scale"
+			}
+			countPvName="0"
+		}
+		"cartesian plot" {
+			object {
+				x=7
+				y=548
+				width=360
+				height=170
+			}
+			plotcom {
+				xlabel="History (Hours)"
+				clr=14
+				bclr=4
+			}
+			style="line"
+			count="0"
+			trace[0] {
+				xdata="$(P)history$(N).VALB"
+				ydata="$(P)history$(N).VALE"
+				data_clr=14
+				yaxis=0
+				yside=0
+			}
+			x_axis {
+				axisStyle="time"
+				rangeStyle="auto-scale"
+				maxRange=0.000000
+			}
+			y1_axis {
+				rangeStyle="auto-scale"
+				maxRange=100.000000
+			}
+			y2_axis {
+				rangeStyle="auto-scale"
+			}
+			countPvName="0"
+		}
+		"related display" {
+			object {
+				x=342
+				y=333
+				width=14
+				height=14
+			}
+			display[0] {
+				label="Setup"
+				name="pvHistory2.adl"
+				args="P=$(P),N=$(N)"
+			}
+			clr=14
+			bclr=4
+		}
+		"text update" {
+			object {
+				x=5
+				y=332
+				width=180
+				height=20
+			}
+			monitor {
+				chan="$(P)history$(N)_PV1_DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. centered"
+			format="string"
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=8
+				y=526
+				width=180
+				height=20
+			}
+			monitor {
+				chan="$(P)history$(N)_PV2_DESC"
+				clr=14
+				bclr=4
+			}
+			align="horiz. centered"
+			format="string"
+			limits {
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=25
+		y=265
+		width=334
+		height=20
+	}
+	"composite name"=""
+	children {
+		menu {
+			object {
+				x=100
+				y=266
+				width=80
+				height=19
+			}
+			control {
+				chan="$(P)oxTemp.SCAN"
+				clr=14
+				bclr=4
+			}
+		}
+		text {
+			object {
+				x=25
+				y=265
+				width=70
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="CryoJet"
+			align="horiz. right"
+		}
+		composite {
+			object {
+				x=193
+				y=265
+				width=166
+				height=20
+			}
+			"composite name"=""
+			children {
+				menu {
+					object {
+						x=193
+						y=265
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)oxSetLRMode"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=278
+						y=265
+						width=81
+						height=20
+					}
+					monitor {
+						chan="$(P)oxGetLRMode"
+						clr=14
+						bclr=2
+					}
+					clrmod="alarm"
+					align="horiz. centered"
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=64
+		y=290
+		width=115
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=64
+				y=290
+				width=30
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="ILM"
+			align="horiz. right"
+		}
+		menu {
+			object {
+				x=99
+				y=291
+				width=80
+				height=19
+			}
+			control {
+				chan="$(P)ILM.SCAN"
+				clr=14
+				bclr=4
+			}
+		}
 	}
 }
