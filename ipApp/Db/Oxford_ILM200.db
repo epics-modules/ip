@@ -1,0 +1,20 @@
+grecord(asyn,"$(P)$(R)")
+{
+    field(DESC,"ILM200 $(P)$(R)")
+    field(PORT,"$(PORT)")
+    field(AOUT,"R1")
+    field(SCAN,"3")
+    field(TMOD,"0")
+    field(FLNK,"$(P)$(R)_level.VAL")
+}
+
+grecord(scalcout,"$(P)$(R)_level") {
+    field(DESC,"Dewar level (%)")
+    field(INAA,"$(P)$(R).AINP NPP NMS")
+#    field(CALC,"SSCANF(AA, '%*3c%lf')/10")
+    field(CALC,"MIN(105,MAX(0,$S(AA, '%*3c%d')/10))")
+    field(PREC,"1")
+}
+
+
+
