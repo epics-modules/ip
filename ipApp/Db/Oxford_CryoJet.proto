@@ -3,50 +3,53 @@ Terminator = CR;
 getSetpointTemp {
 	out "R0";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getSensorTemp {
 	out "R1";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getTempError {
 	out "R4";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getHeaterCurrent {
 	out "R5";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getHeaterVolts {
 	out "R6";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getSampleFlow {
 	out "R19";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
 getShieldFlow {
 	out "R18";
 	in "R%f";
+	@mismatch { in "?\?"; }
 }
 
-getLorR {
+getLRMode {
 	out "X";
 	in "%*4cC%i%*7c";
+	@mismatch {in "";}
 }
 
-setLocal {
-	out "C0";
-	in "C"
-}
-
-setRemote {
-	out "C1";
+setLRmode {
+	out "C%d";
 	in "C"
 }
 
