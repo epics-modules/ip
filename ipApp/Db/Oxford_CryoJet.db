@@ -1,79 +1,103 @@
 record(ai, "$(P)oxTemp") {
-    field(DESC, "Cryo temp")
+    field(DESC, "Sensor temp. (K)")
     field(DTYP, "stream")
-    field(INP,  "@oxfordCryo.proto getSensorTemp $(PORT)")
+    field(INP,  "@Oxford_CryoJet.proto getSensorTemp $(PORT)")
     field(PREC, "1")
     field(SCAN, "1 second")
     field(FLNK, "$(P)oxSampleFlow.PROC")
 }
+
 record(ai, "$(P)oxSampleFlow") {
-    field(DESC, "Sample flow")
+    field(DESC, "Sample flow (l/m)")
     field(DTYP, "stream")
-    field(INP,  "@oxfordCryo.proto getSampleFlow $(PORT)")
+    field(INP,  "@Oxford_CryoJet.proto getSampleFlow $(PORT)")
     field(PREC, "1")
     field(FLNK, "$(P)oxShieldFlow.PROC")
 }
 
 record(ai, "$(P)oxShieldFlow") {
-    field(DESC, "Shield flow")
+    field(DESC, "Shield flow (l/m)")
     field(DTYP, "stream")
-    field(INP,  "@oxfordCryo.proto getShieldFlow $(PORT)")
+    field(INP,  "@Oxford_CryoJet.proto getShieldFlow $(PORT)")
     field(PREC, "1")
     field(FLNK, "$(P)oxDesiredT.PROC")
 }
 
 record(ai, "$(P)oxDesiredT") {
-    field(DESC, "Desired Temp")
+    field(DESC, "Setpoint temp. (K)")
     field(DTYP, "stream")
-    field(INP,  "@oxfordCryo.proto getSetpointTemp $(PORT)")
+    field(INP,  "@Oxford_CryoJet.proto getSetpointTemp $(PORT)")
     field(PREC, "1")
-    field(FLNK, "$(P)oxLorR.PROC")
+    field(FLNK, "$(P)oxTempError.PROC")
 }
 
-record(ai, "$(P)oxLorR") {
+record(ai, "$(P)oxTempError") {
+    field(DESC, "Temp. error (K)")
+    field(DTYP, "stream")
+    field(INP,  "@Oxford_CryoJet.proto getTempError $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxHeaterCurrent.PROC")
+}
+
+record(ai, "$(P)oxHeaterCurrent") {
+    field(DESC, "Heater current (%)")
+    field(DTYP, "stream")
+    field(INP,  "@Oxford_CryoJet.proto getHeaterCurrent $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxHeaterVolts.PROC")
+}
+
+record(ai, "$(P)oxHeaterVolts") {
+    field(DESC, "Heater volts")
+    field(DTYP, "stream")
+    field(INP,  "@Oxford_CryoJet.proto getHeaterVolts $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)oxGetLRMode.PROC")
+}
+
+record(bi, "$(P)oxGetLRMode") {
     field(DESC, "Local or Remote")
     field(DTYP, "stream")
-    field(INP,  "@oxfordCryo.proto getLorR $(PORT)")
-    field(PREC, "1")
+    field(INP,  "@Oxford_CryoJet.proto getLRMode $(PORT)")
+    field(ZNAM, "Local")
+    field(ONAM, "Remote")
+    field(ZSV,  "MINOR")
+    field(OSV,  "NO_ALARM")
 }
 
-record(bo, "$(P)oxLocal") {
-    field(DESC, "Local mode")
+record(bo, "$(P)oxSetLRMode") {
+    field(DESC, "Local or Remote")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setLocal $(PORT)")
-}
-
-record(bo, "$(P)oxRemote") {
-    field(DESC, "Remote mode")
-    field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setRemote $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setLRMode $(PORT)")
+    field(ZNAM, "Local")
+    field(ONAM, "Remote")
 }
 
 record(ao, "$(P)oxSetTemp") {
     field(DESC, "Set Temp")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setTemp $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setTemp $(PORT)")
     field(PREC, "1")
 }
 
 record(ao, "$(P)oxSetSampleFlow") {
     field(DESC, "Set Sample Flow")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setSampleFlow $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setSampleFlow $(PORT)")
     field(PREC, "1")
 }
 
 record(ao, "$(P)oxSetShieldFlow") {
     field(DESC, "Set Shield Flow")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setShieldFlow $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setShieldFlow $(PORT)")
     field(PREC, "1")
 }
 
 record(bo, "$(P)oxSetHeaterMode") {
     field(DESC, "Set Heater Mode")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setHeaterMode $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setHeaterMode $(PORT)")
     field(ZNAM, "Fixed")
     field(ONAM, "Control")
     field(VAL,  "1")
@@ -82,7 +106,7 @@ record(bo, "$(P)oxSetHeaterMode") {
 record(ao, "$(P)oxSetHeaterVolts") {
     field(DESC, "Set Heater Volts")
     field(DTYP, "stream")
-    field(OUT,  "@oxfordCryo.proto setHeaterVolts $(PORT)")
+    field(OUT,  "@Oxford_CryoJet.proto setHeaterVolts $(PORT)")
     field(PREC, "1")
 }
 
