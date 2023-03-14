@@ -1,0 +1,17 @@
+# ### Agilent_E3631A.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+
+#- Agilent E3631A triple output power supply
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=2, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\r\n")
+
+dbLoadRecords("$(IP)/ipApp/Db/Agilent_E3631A.db", "P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT)")

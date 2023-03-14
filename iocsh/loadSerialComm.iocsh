@@ -1,0 +1,23 @@
+#- ###################################################
+#- PREFIX    - IOC prefix
+#- PORT      - Port prefix used to initialize Octal module
+#- PORT0     - Port for first asyn record  (Default: $(PORT)0)
+#- PORT1     - Port for second asyn record (Default: $(PORT1=$(PORT)1))
+#- ...
+#- PORT7     - Port for last asyn record (Default: $(PORT7=$(PORT)7))
+#- IN_BUFF   - Input buffer size (Default: 1000), 
+#- OUT_BUFF  - Output buffer size (Default:1000)
+#- INSTANCE0 - Instance name for first asyn record (Default: asyn_$(PORT0=$(PORT)0))
+#- ...
+#- INSTANCE7 - Instance name for last asyn record (Default: asyn_$(PORT7=$(PORT)7))
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT0=$(PORT='')0), INSTANCE=$(INSTANCE0=asyn_$(PORT0=$(PORT='')0)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT1=$(PORT='')1), INSTANCE=$(INSTANCE1=asyn_$(PORT1=$(PORT='')1)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT2=$(PORT='')2), INSTANCE=$(INSTANCE2=asyn_$(PORT2=$(PORT='')2)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT3=$(PORT='')3), INSTANCE=$(INSTANCE3=asyn_$(PORT3=$(PORT='')3)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT4=$(PORT='')4), INSTANCE=$(INSTANCE4=asyn_$(PORT4=$(PORT='')4)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT5=$(PORT='')5), INSTANCE=$(INSTANCE5=asyn_$(PORT5=$(PORT='')5)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT6=$(PORT='')6), INSTANCE=$(INSTANCE6=asyn_$(PORT6=$(PORT='')6)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+iocshLoad("$(IP)/iocsh/loadSerialPort.iocsh", "PORT=$(PORT7=$(PORT='')7), INSTANCE=$(INSTANCE7=asyn_$(PORT7=$(PORT='')7)), IN_BUFF=$(IN_BUFF=1000), OUT_BUFF=$(OUT_BUFF=1000)")
+

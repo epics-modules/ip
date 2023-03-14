@@ -1,0 +1,16 @@
+# ### SR_570.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+#- Stanford Research Systems SR570 Current Preamplifier
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=2, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r")
+asynOctetSetOutputEos("$(PORT)", -1, "\r")
+
+dbLoadRecords("$(IP)/ipApp/Db/SR570.db", "P=$(PREFIX),A=$(INSTANCE),PORT=$(PORT)")

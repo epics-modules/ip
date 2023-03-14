@@ -1,0 +1,21 @@
+# ### Keithley_2k_serial.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- NUM_CHANNELS   - Number of channels (10, 20, 22)
+#- MODEL          - Keithley model number (2700, 2000)
+#- IP             - Location of IP module
+#- BAUD           - Optional: Baud rate you have set the 
+#-                            Keithley to operate at.
+#-                  Default: 9600
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=$(BAUD=9600), BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\r")
+
+dbLoadRecords("$(IP)/ipApp/Db/Keithley2kDMM_mf.db","P=$(PREFIX),Dmm=$(INSTANCE),PORT=$(PORT)")
+doAfterIocInit("seq &Keithley2kDMM,('P=$(PREFIX), Dmm=$(INSTANCE), channels=$(NUM_CHANNELS), model=$(MODEL)')")

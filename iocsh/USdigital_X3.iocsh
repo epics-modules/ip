@@ -1,0 +1,16 @@
+# ### USdigital_X3.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+#- US Digital X3 Inclinometer
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=19200, BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/USdigital_X3.vdb", "P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT)")

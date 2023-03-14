@@ -1,0 +1,15 @@
+# ### Queensgate_piezo.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+# Queensgate piezo driver
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=7, STOP=2, PARITY=odd")
+
+asynOctetSetInputEos( "$(PORT)", -1, "")
+asynOctetSetOutputEos("$(PORT)", -1, "")
+
+dbLoadRecords("$(IP)/ipApp/Db/pzt.db","P=$(PREFIX),PORT=$(PORT)")

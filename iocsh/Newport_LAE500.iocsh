@@ -1,0 +1,16 @@
+# ### Newport_LAE500.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+#- Newport LAE500 autocollimator support
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r")
+asynOctetSetOutputEos("$(PORT)", -1, "\r")
+
+dbLoadRecords("$(IP)/ipApp/Db/Newport_LAE500.db", "P=$(PREFIX),R=$(INSTANCE),PORT=$(PORT)")

@@ -1,0 +1,16 @@
+# ### Oxford_X1k.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+#- Oxford Cyberstar X1000 Scintillation detector and pulse processing unit
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=9600, BITS=8, STOP=1, PARITY=none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\n")
+asynOctetSetOutputEos("$(PORT)", -1, "\n")
+
+dbLoadRecords("$(IP)/ipApp/Db/Oxford_X1k.db", "P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT)")
