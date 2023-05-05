@@ -1,332 +1,350 @@
-<html>
-
-<head>
-<meta http-equiv="Content-Type"
-content="text/html; charset=iso-8859-1">
-<title>ipDocs</title>
-</head>
-
-<body bgcolor="#FFFFFF">
-
-<h1 align="center">ip module Documentation</h1>
-
-The ip module contains support for specific message-based (e.g., serial)
-devices.
-
-<P>To use the support in this module, include either <code>ip.dbd</code> or
-<code>ipSupport.dbd</code> in the <code>.dbd</code> file that will be loaded
-into the ioc.  For a VME crate, also include either <code>ipVX.dbd</code> or
-<code>ipVXSupport.dbd</code>.  In either case, link with the library
-<code>libip</code>.  (EPICS has a separate lib directory for each target arch,
-but all target arches use the same dbd directory.)
-
-<P><a href="ipReleaseNotes.html">ipReleaseNotes.html</a>
-<dl>
-
-<p><p><dt>Cole-Palmer Syringe Pump
-<dd>CPSyringe.db CPSyringe.proto CPSyringe_settings.req CPSyringe.adl
-
-
-<p><p><dt><a href="BK9130.txt">BK Precision 9130 triple output power
-supply</a>
-<dd>BK9130.db BK9130.proto BK9130_settings.req BK9130*.adl
-
-
-<p><p><dt><a href="Agilent_E3631A.txt">Agilent E3631A programmable power supply</a>
-
-<dd>Agilent_E3631A.db Agilent_E3631A_settings.req Agilent_settings.req
-Agilent_E3631A.adl Agilent_E3631A_A.adl
-
-<p><p><dt><a href="Federal.txt">Federal encoder reader</a>
-
-<dd>Federal.st Federal.db Federal.adl Federal_more.adl Federal_setup.adl
-
-<p><p><dt><a href="devXxStrParm.README">devXxStrParm</a>: Deprecated generic
-command build and parsing.  (The stream module is better.)
-
-<dd>devXxStrParm.c
-serialFmt.db
-
-<p><p><dt><a href="deviceCmdReply.html">deviceCmdReply</a>: run-time support for
-building commands, sending them, and parsing replies
-
-<dd>deviceCmdReply.db deviceCmdReply_settings.req deviceCmdReply.adl
-deviceCmdReply_full.adl
-
-
-<p><p><dt><a href="picoMotor.txt">New Focus 8750 Picomotor controller</a>
-
-<dd>picoMotor.db picoMotor.substitutions picoMotor_positions.req
-picoMotor_settings.req picoStop12.db picoStop8.db picoMotor.adl picoMotor_18.adl
-picoMotor_9.adl picoMotor_help.adl picoMotor_more.adl picoTop_example.adl
-pico_small.adl topPicoMotors12.adl
-
-
-<p><p><dt><a href="Encoder_AD4.README">US Digital AD4 Quadrature to Serial Adaptor</a>
-
-<dd>Encoder_AD4.db Encoder_AD4.proto Encoder_AD4_settings.req Encoder_AD4.adl
-
-<p><p><dt><a href="Omega_DP41.txt">Omega DP41 Panel Meter</a>
-
-<dd>OmegaDP41.db Omega_DP41.db Omega_DP41.proto Omega_DP41_settings.req
-OmegaDP41.adl OmegaDP41_more.adl Omega_DP41.adl Omega_DP41_settings.adl
-
-<p><p><dt><a href="USdigital_X3.txt">US Digital X3 Multi-Axis Absolute MEMS Inclinometer</a>
-
-<dd>USdigital_X3.proto USdigital_X3.vdb USdigital_X3_settings.req
-USdigital_X3.adl USdigital_X3_more.adl
-
-<p><dt><a href="LakeShore_TC_336.txt">Lakeshore 336 Temperature Controller</a>
-
-<dd>LakeShore336.db LakeShore336.proto LakeShore336.req LakeShore336.adl
-LakeShore336_full.adl LakeShore336_more.adl
-
-<p><dt>Keithley 2000 digital multimeter
-
-<dd>Keithley2kDMM.st Keithley2kDMM Keithley2kDMM.db Keithley2kDMM20.db
-Keithley2kDMM20_settings.req Keithley2kDMM_channelN_settings.req
-Keithley2kDMM_mf.db Keithley2kDMM_mf10_settings.req
-Keithley2kDMM_mf20_settings.req Keithley2kDMM_mf22_settings.req
-Keithley2kDMM_mf40.db Keithley2kDMM_mf40_settings.req Keithley2kDMM_10chan_mf.adl
-Keithley2kDMM_mf40.adl Keithley2kDMM_mf40.st
-Keithley2kDMM_mf_channelN_settings.req Keithley2kDMM_settings.req
-Keithley_10CH_settings.req Keithley2kDMM.adl Keithley2kDMM20.adl
-Keithley2kDMM20_full.adl Keithley2kDMM_11_22_mf.adl Keithley2kDMM_calc.adl
-Keithley2kDMM_full.adl Keithley2kDMM_full_mf.adl Keithley2kDMM_mf.adl
-Keithley2kDMM_scpi.adl scpi_commands.adl
-
-
-<p><dt>Keithley65xx Electrometer
-
-<dd>Keithley65xxEM.st Keithley65xxEM.db Keithley65xxEM.adl
-
-<p><dt>Heidenhain ND261 encoder reader
-
-<dd>devAiHeidND261.c heidND261.db HeidND261.adl
-
-<p><dt>MKS 937 Vacuum Gauge Controller
-
-<dd>devAiMKS.c MKS.db MKS_single.db
-
-<p><dt>GP307 vacuum controller
-
-<dd>devGP307gpib.c
-
-<p><dt>MPC ion pump controller
-
-<dd>devMPC.c devMPC.h MPC.db MPC_settings.req MPC.adl MPC_TSP.adl
-
-<p><dt>Pfeiffer TPG261 Vacuum Controller
-
-<dd>devTPG261.c devTPG261.h TPG261.db TPG261.adl
-
-<p><dt>Televac Vacuum Controller
-
-<dd>devTelevac.c devTelevac.h
-
-<p><dt><a href="pzt.txt">Queensgate Piezo controller</a>
-
-<dd>devXxAX301.c pzt.db pzt.adl pzt_1id.adl pzt_3id.adl
-
-<p><dt>Eurotherm 800 and 2000 series temperature controllers
-
-<dd>devXxEurotherm.c Eurotherm.db Eurotherm2k Eurotherm2k.db Eurotherm2k.db.txt
-Eurotherm2k_settings.req Eurotherm.adl Eurotherm2k.adl Eurotherm2k_more.adl
-
-
-<p><dt>Heidenhain AWE1024 encoder interpolator
-
-<dd>devXxHeidenhainGpib.c HeidAWE1024 HeidAWE1024.db HeidEncoder.adl
-2HeidEncoder.adl
-
-<p><dt>Keithley DMM199 digital multimeter
-
-<dd>devXxKeithleyDMM199Gpib.c KeithleyDMM KeithleyDMM.db KeithleyDMM.adl
-KeithleyDMM_full.adl
-
-
-<p><dt>tyGSAsynInit: shorthand for a common collection of asyn commands
-
-<dd>tyGSAsynInit.c
-
-
-<p><dt>Alcatel ACS 1000 vacuum gauge controller
-
-<dd>Alcatel_ACS1000.db
-Alcatel_ACS1000.protocol
-
-
-<p><dt>Alcatel ACS 2000 vacuum gauge controller
-
-<dd>Alcatel_ACS2000.db Alcatel_ACS2000.protocol
-
-
-<p><dt>Physical Electronics Digitel 500/1500 ion pump controller
-
-<dd>Digitel.db
-
-
-<p><dt>Heidenhain VRZ460 encoder reader
-
-<dd>HeidVRZ460_encoder.db HeidVRZ460_encoder.adl
-
-
-<p><dt>Huber DMC9200 motor controller
-
-<dd>HuberDMC9200.db HuberDMC9200Init.db HuberDMC.adl
-
-
-<p><dt>Piezosystems Jena NV 40/1 CLE piezo controller
-
-<dd>JenaNV40.db JenaNV40.proto jenaNV40.adl jenaNV40_genTweak.adl
-
-
-<p><dt><a href="LakeShore330.txt">LakeShore 330 temperature controller</a>
-
-<dd>LakeShore330.db LakeShore330_settings.req LakeShore330.adl LakeShore330_more.adl
-
-
-<p><dt>LakeShore 331 temperature controller
-
-<dd>LakeShore331.db LakeShore331.req LakeShore331.adl LakeShore331_more.adl
-
-
-<p><dt><a href="LakeShore340.db.txt">LakeShore 340 temperature controller</a>
-
-<dd>LakeShore340.db LakeShore340.req LakeShore340.adl LakeShore340_more.adl
-
-
-<p><dt>LakeShore DRC-93CA temperature controller
-
-
-<dd>LakeShoreDRC-93CA.db LakeShore.adl
-
-
-<p><dt>Mitutoyo MIG2 multi input gathering unit
-
-<dd>MitutoyoMIG2.db MitutoyoMIG2.adl MitutoyoMIG2_more.adl
-
-
-<p><dt>NCD R2X series Single/Dual RS-232 Relay Controllers
-
-<dd>NCD_R2X.db NCD_R2X.proto NCD_R2X.adl
-
-
-<p><dt>Newport LAE500 autocollimator
-
-<dd>Newport_LAE500.db Newport_LAE500_settings.req Newport_LAE500.adl
-Newport_LAE500_help.adl
-
-
-<p><dt>Oxford ILM202 liquid nitrogen controller
-
-<dd>Oxford_ILM202.db Oxford_ILM202.adl
-
-
-<p><dt>Oxford Cyberstar X1000 scintillator detector
-
-<dd>Oxford_X1k.db Oxford_X1k.adl
-cyberAmp.db
-cyberAmp.adl
-
-
-<p><dt>PI 500 piezo controller
-
-<dd>PI500.db PI500.adl
-
-
-<p><dt>Pelco CM6700 video switch
-
-<dd>Pelco_CM6700.db Pelco_CM6700_names.db Pelco_CM6700_settings.req
-Pelco_CM6700.adl* Pelco_CM6700_names.adl*
-
-
-<p><dt>Stanford SR570 current preamplifier
-
-<dd>SR570.db SR570preamp_settings.req SR570.adl SR570_tiny.adl
-
-
-<p><dt>Stanford SR630 thermocouple reader
-
-<dd>SR630.db SR630_settings.req SR630.adl
-
-
-<p><dt>Stanford SR810 lockin amplifier</a>
-
-<dd>SR810.vdb SR810.adl
-
-
-<p><dt><a href="SR830.txt">Stanford SR830 lockin amplifier</a>
-
-<dd>SR830.vdb SR830_settings.req SR830.adl
-
-
-<p><dt>TSP ion pump controller
-
-<dd>TSP.db
-TSP_settings.req
-
-
-<p><dt>autosave settings file for the asyn record
-
-<dd>asynRecord_settings.req
-
-<p><dt>Omega iSeries monitor/controller
-
-<dd>iSeries.db
-iSeries.proto
- 
- 
-<p><dt>Advantech ADAM 4018 8-ch Thermocouple Input Module
-<dd>ADAM_4018.iocsh
-ADAM_4018.proto
-ADAM_4018.db
-ADAM_4018_settings.req
-ADAM_4018_chan.db
-ADAM_4018_chan_settings.req
-ADAM_4018.adl
-ADAM_4018_chan.adl
-ADAM_4018_setup.adl
-ADAM_4018_temp.adl
-ADAM_4018_temp_chan.adl
-
-<p><dt>pico motor (?)
-
-<dd>picos.db
-
-
-<p><dt>Monochromator calibration (calc-record display)
-
-<dd>PSL_calibration.adl
-
-<p><dt>Backward compatibility
-
-<dd>Serial_IO.adl
-Serial_Port_Setup.adl
-love_chain_a.adl
-love_controller.adl
-serial_OI_block.adl
-serial_OI_block_full.adl
-
-
-<p><dt>nanoradian encoder
-
-<dd>nanoradianEncoder.adl
-
-
-<p><dt>serial test
-
-<dd>serialtest.adl
-
-<p><dt>GE PACE5000 pressure controller
-<dd>PACE5000.db, PACE5000.proto, PACE5000_settings.req, PACE5000.adl
-
-</dl>
-
-<address>
-    Suggestions and Comments to: <br>
-    <a href="mailto:mooney@aps.anl.gov">Tim Mooney </a>:
-    (mooney@aps.anl.gov) <br>
-</address>
-</body>
-</html>
+ip module Documentation
+=======================
+
+The ip module contains support for specific message-based (e.g., serial) devices. To use the support in this module, include either `ip.dbd` or `ipSupport.dbd` in the `.dbd` file that will be loaded into the ioc. For a VME crate, also include either `ipVX.dbd` or `ipVXSupport.dbd`. In either case, link with the library `libip`. (EPICS has a separate lib directory for each target arch, but all target arches use the same dbd directory.)
+
+[ipReleaseNotes.html](ipReleaseNotes.html)
+
+Cole-Palmer Syringe Pump 
+- CPSyringe.db 
+- CPSyringe.proto 
+- CPSyringe\_settings.req 
+- CPSyringe.adl 
+
+[BK Precision 9130 triple output power supply](BK9130.txt)
+- BK9130.db 
+- BK9130.proto 
+- BK9130\_settings.req 
+- BK9130\*.adl 
+
+[Agilent E3631A programmable power supply](Agilent_E3631A.txt)
+- Agilent\_E3631A.db 
+- Agilent\_E3631A\_settings.req 
+- Agilent\_settings.req 
+- Agilent\_E3631A.adl 
+- Agilent\_E3631A\_A.adl 
+
+[Federal encoder reader](Federal.txt)
+- Federal.st 
+- Federal.db 
+- Federal.adl 
+- Federal\_more.adl 
+- Federal\_setup.adl 
+
+[devXxStrParm](devXxStrParm.README): Deprecated generic command build and parsing. (The stream module is better.) 
+- devXxStrParm.c 
+- serialFmt.db 
+
+[deviceCmdReply](deviceCmdReply.html): run-time support for building commands, sending them, and parsing replies 
+- deviceCmdReply.db 
+- deviceCmdReply\_settings.req 
+- deviceCmdReply.adl 
+- deviceCmdReply\_full.adl 
+
+[New Focus 8750 Picomotor controller](picoMotor.txt)
+- picoMotor.db 
+- picoMotor.substitutions 
+- picoMotor\_positions.req 
+- picoMotor\_settings.req 
+- picoStop12.db 
+- picoStop8.db 
+- picoMotor.adl 
+- picoMotor\_18.adl 
+- picoMotor\_9.adl 
+- picoMotor\_help.adl 
+- picoMotor\_more.adl 
+- picoTop\_example.adl 
+- pico\_small.adl 
+- topPicoMotors12.adl 
+
+[US Digital AD4 Quadrature to Serial Adaptor](Encoder_AD4.README)
+- Encoder\_AD4.db 
+- Encoder\_AD4.proto 
+- Encoder\_AD4\_settings.req 
+- Encoder\_AD4.adl 
+
+[Omega DP41 Panel Meter](Omega_DP41.txt)
+- OmegaDP41.db 
+- Omega\_DP41.db 
+- Omega\_DP41.proto 
+- Omega\_DP41\_settings.req 
+- OmegaDP41.adl 
+- OmegaDP41\_more.adl 
+- Omega\_DP41.adl 
+- Omega\_DP41\_settings.adl 
+
+[US Digital X3 Multi-Axis Absolute MEMS Inclinometer](USdigital_X3.txt)
+- USdigital\_X3.proto 
+- USdigital\_X3.vdb 
+- USdigital\_X3\_settings.req 
+- USdigital\_X3.adl 
+- USdigital\_X3\_more.adl 
+
+[Lakeshore 336 Temperature Controller](LakeShore_TC_336.txt)
+- LakeShore336.db 
+- LakeShore336.proto 
+- LakeShore336.req 
+- LakeShore336.adl 
+- LakeShore336\_full.adl 
+- LakeShore336\_more.adl 
+
+Keithley 2000 digital multimeter 
+- Keithley2kDMM.st 
+- Keithley2kDMM 
+- Keithley2kDMM.db 
+- Keithley2kDMM20.db 
+- Keithley2kDMM20\_settings.req 
+- Keithley2kDMM\_channelN\_settings.req 
+- Keithley2kDMM\_mf.db 
+- Keithley2kDMM\_mf10\_settings.req 
+- Keithley2kDMM\_mf20\_settings.req 
+- Keithley2kDMM\_mf22\_settings.req 
+- Keithley2kDMM\_mf40.db 
+- Keithley2kDMM\_mf40\_settings.req 
+- Keithley2kDMM\_10chan\_mf.adl 
+- Keithley2kDMM\_mf40.adl 
+- Keithley2kDMM\_mf40.st 
+- Keithley2kDMM\_mf\_channelN\_settings.req 
+- Keithley2kDMM\_settings.req 
+- Keithley\_10CH\_settings.req 
+- Keithley2kDMM.adl 
+- Keithley2kDMM20.adl 
+- Keithley2kDMM20\_full.adl 
+- Keithley2kDMM\_11\_22\_mf.adl 
+- Keithley2kDMM\_calc.adl 
+- Keithley2kDMM\_full.adl 
+- Keithley2kDMM\_full\_mf.adl 
+- Keithley2kDMM\_mf.adl 
+- Keithley2kDMM\_scpi.adl 
+- scpi\_commands.adl 
+
+Keithley65xx Electrometer 
+- Keithley65xxEM.st 
+- Keithley65xxEM.db 
+- Keithley65xxEM.adl 
+
+Heidenhain ND261 encoder reader 
+- devAiHeidND261.c 
+- heidND261.db 
+- HeidND261.adl 
+
+MKS 937 Vacuum Gauge Controller 
+- devAiMKS.c 
+- MKS.db 
+- MKS\_single.db 
+
+GP307 vacuum controller 
+- devGP307gpib.c
+
+MPC ion pump controller 
+- devMPC.c 
+- devMPC.h 
+- MPC.db 
+- MPC\_settings.req 
+- MPC.adl 
+- MPC\_TSP.adl 
+
+Pfeiffer TPG261 Vacuum Controller 
+- devTPG261.c 
+- devTPG261.h 
+- TPG261.db 
+- TPG261.adl 
+
+Televac Vacuum Controller 
+- devTelevac.c 
+- devTelevac.h 
+
+[Queensgate Piezo controller](pzt.txt)
+- devXxAX301.c 
+- pzt.db 
+- pzt.adl 
+- pzt\_1id.adl 
+- pzt\_3id.adl 
+
+Eurotherm 800 and 2000 series temperature controllers 
+- devXxEurotherm.c 
+- Eurotherm.db 
+- Eurotherm2k 
+- Eurotherm2k.db 
+- Eurotherm2k.db.txt 
+- Eurotherm2k\_settings.req 
+- Eurotherm.adl 
+- Eurotherm2k.adl 
+- Eurotherm2k\_more.adl 
+
+Heidenhain AWE1024 encoder interpolator 
+- devXxHeidenhainGpib.c 
+
+HeidAWE1024 
+- HeidAWE1024.db 
+- HeidEncoder.adl 
+- 2HeidEncoder.adl 
+
+Keithley DMM199 digital multimeter 
+- devXxKeithleyDMM199Gpib.c 
+
+KeithleyDMM 
+- KeithleyDMM.db 
+- KeithleyDMM.adl 
+- KeithleyDMM\_full.adl 
+
+tyGSAsynInit: shorthand for a common collection of asyn commands 
+- tyGSAsynInit.c 
+
+Alcatel ACS 1000 vacuum gauge controller 
+- Alcatel\_ACS1000.db 
+- Alcatel\_ACS1000.protocol 
+
+Alcatel ACS 2000 vacuum gauge controller 
+- Alcatel\_ACS2000.db 
+- Alcatel\_ACS2000.protocol 
+
+Physical Electronics Digitel 500/1500 ion pump controller 
+- Digitel.db 
+
+Heidenhain VRZ460 encoder reader 
+- HeidVRZ460\_encoder.db 
+- HeidVRZ460\_encoder.adl 
+
+Huber DMC9200 motor controller 
+- HuberDMC9200.db 
+- HuberDMC9200Init.db 
+- HuberDMC.adl 
+
+Piezosystems Jena NV 40/1 CLE piezo controller 
+- JenaNV40.db 
+- JenaNV40.proto 
+- jenaNV40.adl 
+- jenaNV40\_genTweak.adl 
+
+[LakeShore 330 temperature controller](LakeShore330.txt)
+- LakeShore330.db 
+- LakeShore330\_settings.req 
+- LakeShore330.adl 
+- LakeShore330\_more.adl 
+
+LakeShore 331 temperature controller 
+- LakeShore331.db 
+- LakeShore331.req 
+- LakeShore331.adl 
+- LakeShore331\_more.adl 
+
+[LakeShore 340 temperature controller](LakeShore340.db.txt)
+- LakeShore340.db 
+- LakeShore340.req 
+- LakeShore340.adl 
+- LakeShore340\_more.adl 
+
+LakeShore DRC-93CA temperature controller 
+- LakeShoreDRC-93CA.db 
+- LakeShore.adl 
+
+Mitutoyo MIG2 multi input gathering unit 
+- MitutoyoMIG2.db 
+- MitutoyoMIG2.adl 
+- MitutoyoMIG2\_more.adl 
+
+NCD R2X series Single/Dual RS-232 Relay Controllers 
+- NCD\_R2X.db 
+- NCD\_R2X.proto 
+- NCD\_R2X.adl 
+
+Newport LAE500 autocollimator 
+- Newport\_LAE500.db 
+- Newport\_LAE500\_settings.req 
+- Newport\_LAE500.adl 
+- Newport\_LAE500\_help.adl 
+
+Oxford ILM202 liquid nitrogen controller 
+- Oxford\_ILM202.db 
+- Oxford\_ILM202.adl 
+
+Oxford Cyberstar X1000 scintillator detector 
+- Oxford\_X1k.db 
+- Oxford\_X1k.adl 
+- cyberAmp.db 
+- cyberAmp.adl 
+
+PI 500 piezo controller 
+- PI500.db 
+- PI500.adl 
+
+Pelco CM6700 video switch 
+- Pelco\_CM6700.db 
+- Pelco\_CM6700\_names.db 
+- Pelco\_CM6700\_settings.req 
+- Pelco\_CM6700.adl\* 
+- Pelco\_CM6700\_names.adl\* 
+
+Stanford SR570 current preamplifier 
+- SR570.db 
+- SR570preamp\_settings.req 
+- SR570.adl 
+- SR570\_tiny.adl 
+
+Stanford SR630 thermocouple reader 
+- SR630.db 
+- SR630\_settings.req 
+- SR630.adl 
+
+Stanford SR810 lockin amplifier 
+- SR810.vdb 
+- SR810.adl 
+
+[Stanford SR830 lockin amplifier](SR830.txt)
+- SR830.vdb 
+- SR830\_settings.req 
+- SR830.adl 
+
+TSP ion pump controller 
+- TSP.db 
+- TSP\_settings.req 
+
+autosave settings file for the asyn record 
+- asynRecord\_settings.req 
+
+Omega iSeries monitor/controller 
+- iSeries.db 
+- iSeries.proto 
+
+Advantech ADAM 4018 8-ch Thermocouple Input Module 
+- ADAM\_4018.iocsh 
+- ADAM\_4018.proto 
+- ADAM\_4018.db 
+- ADAM\_4018\_settings.req 
+- ADAM\_4018\_chan.db 
+- ADAM\_4018\_chan\_settings.req 
+- ADAM\_4018.adl 
+- ADAM\_4018\_chan.adl 
+- ADAM\_4018\_setup.adl 
+- ADAM\_4018\_temp.adl 
+- ADAM\_4018\_temp\_chan.adl 
+
+pico motor (?) 
+- picos.db 
+
+Monochromator calibration (calc-record display) 
+- PSL\_calibration.adl 
+
+Backward compatibility 
+- Serial\_IO.adl 
+- Serial\_Port\_Setup.adl 
+- love\_chain\_a.adl 
+- love\_controller.adl 
+- serial\_OI\_block.adl 
+- serial\_OI\_block\_full.adl 
+
+nanoradian encoder 
+- nanoradianEncoder.adl 
+
+serial test 
+- serialtest.adl 
+
+GE PACE5000 pressure controller 
+- PACE5000.db, 
+- PACE5000.proto, 
+- PACE5000\_settings.req, 
+- PACE5000.adl  
+
+Suggestions and Comments to:   
+ [Tim Mooney ](mailto:mooney@aps.anl.gov): (mooney@aps.anl.gov)
