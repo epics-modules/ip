@@ -1,5 +1,12 @@
+---
+layout: default
+title: Home
+nav_order: 1
+---
+
+
 # HTML documentation
 
-* [deviceCmdReply.html](https://htmlpreview.github.io/?https://github.com/epics-modules/ip/blob/master/documentation/deviceCmdReply.html)
-* [ipDoc.html](https://htmlpreview.github.io/?https://github.com/epics-modules/ip/blob/master/documentation/ipDoc.html)
-* [ipReleaseNotes.html](https://htmlpreview.github.io/?https://github.com/epics-modules/ip/blob/master/documentation/ipReleaseNotes.html)
+* [deviceCmdReply.html](deviceCmdReply.md)
+* [ipDoc.html](ipDoc.md)
+* [ipReleaseNotes.html](ipReleaseNotes.md)

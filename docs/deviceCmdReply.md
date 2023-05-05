@@ -1,3 +1,10 @@
+---
+layout: default
+title: deviceCmdReply
+nav_order: 4
+---
+
+
 deviceCmdReply
 ==============
 
