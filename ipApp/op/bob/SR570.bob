@@ -1,0 +1,1155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2023-05-15 14:55:50 by rivers-->
+<display version="2.0.0">
+  <name>SR570</name>
+  <x>501</x>
+  <y>126</y>
+  <width>510</width>
+  <height>197</height>
+  <background_color>
+    <color red="218" green="218" blue="218">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #243</name>
+    <x>7</x>
+    <y>117</y>
+    <width>87</width>
+    <height>44</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(A)offset_cal.VAL</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #239</name>
+    <x>7</x>
+    <y>35</y>
+    <width>87</width>
+    <height>44</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(A)bias_on.VAL</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <width>510</width>
+    <height>22</height>
+    <line_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <width>30</width>
+    <height>21</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>SR570 CURRENT PREAMPLIFIER</text>
+    <x>260</x>
+    <y>5</y>
+    <width>250</width>
+    <height>14</height>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #15</name>
+    <text>#$(A)</text>
+    <y>5</y>
+    <width>35</width>
+    <height>16</height>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #18</name>
+    <pv_name>$(P)$(A)init.DESC</pv_name>
+    <x>30</x>
+    <width>230</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #22</name>
+    <x>110</x>
+    <y>62</y>
+    <width>195</width>
+    <height>75</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #25</name>
+      <y>55</y>
+      <width>195</width>
+      <line_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #28</name>
+      <text>lowpass 3dB freq.</text>
+      <width>195</width>
+      <height>14</height>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #31</name>
+      <text>highpass 3dB freq.</text>
+      <y>40</y>
+      <width>195</width>
+      <height>14</height>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="scrollbar" version="2.0.0">
+      <name>valuator #34</name>
+      <pv_name>$(P)$(A)low_freq.VAL</pv_name>
+      <y>15</y>
+      <width>105</width>
+      <maximum>15.0</maximum>
+      <limits_from_pv>false</limits_from_pv>
+      <bar_length>1.0</bar_length>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>menu #38</name>
+      <pv_name>$(P)$(A)low_freq.VAL</pv_name>
+      <x>105</x>
+      <y>15</y>
+      <width>90</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="11.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="scrollbar" version="2.0.0">
+      <name>valuator #41</name>
+      <pv_name>$(P)$(A)high_freq.VAL</pv_name>
+      <y>55</y>
+      <width>85</width>
+      <maximum>11.0</maximum>
+      <limits_from_pv>false</limits_from_pv>
+      <bar_length>1.0</bar_length>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>menu #45</name>
+      <pv_name>$(P)$(A)high_freq.VAL</pv_name>
+      <x>105</x>
+      <y>55</y>
+      <width>90</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="11.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #48</name>
+    <x>335</x>
+    <y>22</y>
+    <width>90</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #54</name>
+      <text>GAIN MODE</text>
+      <width>90</width>
+      <height>14</height>
+      <font>
+        <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #57</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(A)reset.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(A)reset.PROC</pv_name>
+    <text>DEFAULT</text>
+    <x>345</x>
+    <y>116</y>
+    <width>70</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #60</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(A)init.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(A)init.PROC</pv_name>
+    <text>SET ALL</text>
+    <x>345</x>
+    <y>92</y>
+    <width>70</width>
+    <height>20</height>
+    <background_color>
+      <color red="238" green="182" blue="43">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #63</name>
+    <x>325</x>
+    <y>162</y>
+    <width>130</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="combo" version="2.0.0">
+      <name>menu #66</name>
+      <pv_name>$(P)$(A)sens_unit.VAL</pv_name>
+      <x>60</x>
+      <width>70</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>menu #69</name>
+      <pv_name>$(P)$(A)sens_num.VAL</pv_name>
+      <width>60</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #72</name>
+    <pv_name>$(P)$(A)offset_on.VAL</pv_name>
+    <x>110</x>
+    <y>162</y>
+    <width>45</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #75</name>
+    <pv_name>$(P)$(A)offset_sign.VAL</pv_name>
+    <x>155</x>
+    <y>162</y>
+    <width>30</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #78</name>
+    <pv_name>$(P)$(A)offset_num.VAL</pv_name>
+    <x>185</x>
+    <y>162</y>
+    <width>50</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #81</name>
+    <pv_name>$(P)$(A)offset_unit.VAL</pv_name>
+    <x>235</x>
+    <y>162</y>
+    <width>55</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #84</name>
+    <pv_name>$(P)$(A)offset_cal.VAL</pv_name>
+    <x>10</x>
+    <y>162</y>
+    <width>80</width>
+    <height>20</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #87</name>
+    <text>SENSITIVITY</text>
+    <x>348</x>
+    <y>142</y>
+    <width>86</width>
+    <height>16</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #90</name>
+    <x>440</x>
+    <y>22</y>
+    <width>5</width>
+    <height>135</height>
+    <points>
+      <point x="2.0" y="2.0">
+      </point>
+      <point x="2.0" y="132.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #94</name>
+    <x>315</x>
+    <y>22</y>
+    <width>5</width>
+    <height>174</height>
+    <points>
+      <point x="2.0" y="2.0">
+      </point>
+      <point x="2.0" y="171.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #98</name>
+    <x>409</x>
+    <y>24</y>
+    <width>46</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="41.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #102</name>
+    <x>310</x>
+    <y>74</y>
+    <width>151</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="146.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #106</name>
+    <x>440</x>
+    <y>74</y>
+    <width>19</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="14.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #110</name>
+    <x>425</x>
+    <y>144</y>
+    <width>79</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="74.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #114</name>
+    <y>22</y>
+    <width>5</width>
+    <height>178</height>
+    <points>
+      <point x="2.0" y="2.0">
+      </point>
+      <point x="2.0" y="175.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #118</name>
+    <y>108</y>
+    <width>104</width>
+    <height>8</height>
+    <points>
+      <point x="0.0" y="4.0">
+      </point>
+      <point x="96.0" y="4.0">
+      </point>
+    </points>
+    <line_width>8</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #122</name>
+    <text>INPUT OFFSET</text>
+    <x>134</x>
+    <y>142</y>
+    <width>87</width>
+    <height>14</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #125</name>
+    <x>450</x>
+    <y>22</y>
+    <width>50</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="label" version="2.0.0">
+      <name>text #128</name>
+      <text>INVERT</text>
+      <width>50</width>
+      <height>14</height>
+      <font>
+        <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+        </font>
+      </font>
+      <horizontal_alignment>1</horizontal_alignment>
+    </widget>
+    <widget type="combo" version="2.0.0">
+      <name>menu #131</name>
+      <pv_name>$(P)$(A)invert_on.VAL</pv_name>
+      <y>15</y>
+      <width>50</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="11.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #134</name>
+    <x>450</x>
+    <y>72</y>
+    <width>50</width>
+    <height>35</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="combo" version="2.0.0">
+      <name>menu #140</name>
+      <pv_name>$(P)$(A)blank_on.VAL</pv_name>
+      <y>15</y>
+      <width>50</width>
+      <height>20</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="11.0">
+        </font>
+      </font>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #143</name>
+    <text>BIAS VOLTAGE</text>
+    <x>8</x>
+    <y>22</y>
+    <width>88</width>
+    <height>14</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #146</name>
+    <pv_name>$(P)$(A)bias_on.VAL</pv_name>
+    <x>10</x>
+    <y>80</y>
+    <width>80</width>
+    <height>20</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #149</name>
+    <x>10</x>
+    <y>57</y>
+    <width>80</width>
+    <height>20</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #152</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(A)bias_dec.VAL</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(A)bias_dec.VAL</pv_name>
+      <text>&lt;</text>
+      <width>20</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textentry" version="3.0.0">
+      <name>text entry #155</name>
+      <pv_name>$(P)$(A)bias_tweak.D</pv_name>
+      <x>20</x>
+      <width>40</width>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #159</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(A)bias_inc.VAL</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(A)bias_inc.VAL</pv_name>
+      <text>&gt;</text>
+      <x>60</x>
+      <width>20</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #162</name>
+    <pv_name>$(P)$(A)bias_put.VAL</pv_name>
+    <x>10</x>
+    <y>37</y>
+    <width>60</width>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #166</name>
+    <text>mV</text>
+    <x>70</x>
+    <y>40</y>
+    <width>21</width>
+    <height>16</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #169</name>
+    <text>FILTER</text>
+    <x>165</x>
+    <y>22</y>
+    <width>49</width>
+    <height>16</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #172</name>
+    <pv_name>$(P)$(A)filter_type.VAL</pv_name>
+    <x>110</x>
+    <y>37</y>
+    <width>125</width>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #175</name>
+    <y>192</y>
+    <width>511</width>
+    <height>5</height>
+    <points>
+      <point x="1.0" y="2.0">
+      </point>
+      <point x="507.0" y="2.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #179</name>
+    <x>215</x>
+    <y>144</y>
+    <width>139</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="134.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #183</name>
+    <x>505</x>
+    <y>22</y>
+    <width>5</width>
+    <height>178</height>
+    <points>
+      <point x="2.0" y="2.0">
+      </point>
+      <point x="2.0" y="175.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #187</name>
+    <x>95</x>
+    <y>22</y>
+    <width>5</width>
+    <height>135</height>
+    <points>
+      <point x="2.0" y="2.0">
+      </point>
+      <point x="2.0" y="132.0">
+      </point>
+    </points>
+    <line_width>5</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #191</name>
+    <x>490</x>
+    <y>74</y>
+    <width>25</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="20.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #195</name>
+    <x>491</x>
+    <y>144</y>
+    <width>24</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="19.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #199</name>
+    <x>494</x>
+    <y>24</y>
+    <width>21</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="16.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #203</name>
+    <y>24</y>
+    <width>14</width>
+    <height>10</height>
+    <points>
+      <point x="3.0" y="5.0">
+      </point>
+      <point x="7.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #207</name>
+    <x>88</x>
+    <y>24</y>
+    <width>77</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="72.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #211</name>
+    <x>209</x>
+    <y>24</y>
+    <width>139</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="134.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #215</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(A)offset_u_dec.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(A)offset_u_dec.VAL</pv_name>
+    <text>&lt;</text>
+    <x>10</x>
+    <y>139</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #218</name>
+    <pv_name>$(P)$(A)offset_u_tweak.D</pv_name>
+    <x>30</x>
+    <y>139</y>
+    <width>40</width>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #222</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(A)offset_u_inc.VAL</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(A)offset_u_inc.VAL</pv_name>
+    <text>&gt;</text>
+    <x>70</x>
+    <y>139</y>
+    <width>20</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #225</name>
+    <pv_name>$(P)$(A)off_u_put.VAL</pv_name>
+    <x>10</x>
+    <y>119</y>
+    <width>60</width>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #229</name>
+    <text>FS</text>
+    <x>70</x>
+    <y>119</y>
+    <width>20</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #232</name>
+    <x>94</x>
+    <y>144</y>
+    <width>43</width>
+    <height>10</height>
+    <points>
+      <point x="5.0" y="5.0">
+      </point>
+      <point x="38.0" y="5.0">
+      </point>
+    </points>
+    <line_width>10</line_width>
+    <line_color>
+      <color red="133" green="133" blue="133">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #236</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(A)filter_reset.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(A)filter_reset.PROC</pv_name>
+    <text>RESET</text>
+    <x>252</x>
+    <y>37</y>
+    <width>55</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #247</name>
+    <text>1000</text>
+    <x>70</x>
+    <y>129</y>
+    <width>20</width>
+    <height>12</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #250</name>
+    <x>70</x>
+    <y>128</y>
+    <width>22</width>
+    <height>1</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="21.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #254</name>
+    <actions>
+      <action type="open_display">
+        <file>SR570_tiny.opi</file>
+        <target>replace</target>
+        <description>Front-panel display</description>
+      </action>
+    </actions>
+    <text>Less</text>
+    <x>468</x>
+    <y>175</y>
+    <width>40</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="26" green="115" blue="9">
+      </color>
+    </background_color>
+    <tooltip>$(actions)</tooltip>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #51</name>
+    <pv_name>$(P)$(A)gain_mode.VAL</pv_name>
+    <x>330</x>
+    <y>37</y>
+    <height>20</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="11.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #137</name>
+    <text>BLANK</text>
+    <x>451</x>
+    <y>72</y>
+    <width>50</width>
+    <height>14</height>
+    <font>
+      <font name="Fine Print" family="Liberation Sans" style="REGULAR" size="12.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+</display>
