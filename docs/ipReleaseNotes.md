@@ -8,12 +8,25 @@ nav_order: 3
 ip Release Notes
 ================
 
+Release 2-22 June, 2023
+-----------------------
+
+- New Support for:
+  - SRS PTC10 programmable temperature controller.
+  - Lakeshore 218
+  - Protura P201 BissC Adapter
+  - Oxford ILM 200 and Cryojet 2
+    
+- tyGSAsynInit function arguments 'parity' and 'handshake' changed to accept strings in IOC shell
+    
+- Documentation moved to github pages
+
 Release 2-21-1 June, 2021
 -------------------------
 
 - New Support for:
-- Teledyne Syringe Pump
-- HP Agilent Power Supplies
+  - Teledyne Syringe Pump
+  - HP Agilent Power Supplies
  
 
 Release 2-21 October, 2020
@@ -24,14 +37,14 @@ Release 2-21 October, 2020
 - Changing the Diameter reset the rates and volumes to defaults. Fixed this by adding a SetAll seq record that rewrites the rates and volumes when the diameter is changed.
  
 - New Support for:
-- BK 9173B Power Supply
-- 
-- Jena NV 40/3CLE Amplifier
-- ADAM 4015 6-ch RTD module
-- Advantech ADAM 4018 8-ch RTD Module
-- Metis M322 Pyrometer
-- Stanford S6390 Vector Signal Generator
-- Varian Dual Ion Pump Controller
+  - BK 9173B Power Supply
+    
+  - Jena NV 40/3CLE Amplifier
+  - ADAM 4015 6-ch RTD module
+  - Advantech ADAM 4018 8-ch RTD Module
+  - Metis M322 Pyrometer
+  - Stanford S6390 Vector Signal Generator
+  - Varian Dual Ion Pump Controller
  
 - CS800 Support updated to allow multiple devices on one subnet
 
