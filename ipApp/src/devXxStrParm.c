@@ -378,7 +378,7 @@ static void devStrParmCallback(asynUser *pasynUser)
 {
    dbCommon *pr = (dbCommon *)pasynUser->userPvt;
    devStrParmPvt *pPvt = (devStrParmPvt *)pr->dpvt;
-   struct rset *prset = (struct rset *)(pr->rset);
+   rset *prset = (rset *)(pr->rset);
    int eomReason;
    asynStatus status;
 

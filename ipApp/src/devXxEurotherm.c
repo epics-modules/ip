@@ -307,7 +307,7 @@ static void devEurothermCallback(asynUser *pasynUser)
 {
 	dbCommon *pr = (dbCommon *)pasynUser->userPvt;
 	devEurothermPvt *pPvt = (devEurothermPvt *)pr->dpvt;
-	struct rset *prset = (struct rset *)(pr->rset);
+	rset *prset = (rset *)(pr->rset);
 
 	pPvt->pasynUser->timeout = pPvt->timeout;
 

@@ -817,7 +817,7 @@ static void devMPCCallback(asynUser *pasynUser)
     dbCommon *pr = (dbCommon *)pasynUser->userPvt;
     devMPCPvt *pPvt = (devMPCPvt *)pr->dpvt;
     char readBuffer[MPC_BUFFER_SIZE];
-    struct rset *prset = (struct rset *)(pr->rset);
+    rset *prset = (rset *)(pr->rset);
     int eomReason;
     size_t nread, nwrite;
 

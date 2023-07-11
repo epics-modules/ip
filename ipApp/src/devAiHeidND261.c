@@ -157,7 +157,7 @@ static void devAiHeidND261Callback(asynUser *pasynUser)
 	dbCommon *pr = (dbCommon *)pasynUser->userPvt;
 	aiRecord* pai = (aiRecord*) pr;
 	devAiHeidND261Pvt *pPvt = (devAiHeidND261Pvt *)pr->dpvt;
-	struct rset *prset = (struct rset *)(pr->rset);
+	rset *prset = (rset *)(pr->rset);
     int eomReason;
 
 	pPvt->pasynUser->timeout = pPvt->timeout;
