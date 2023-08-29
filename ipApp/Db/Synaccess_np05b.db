@@ -1,0 +1,155 @@
+##########################################
+# $(P)$(R)setX
+# Sets outlet X On (VAL=1) or Off (VAL=0)
+##########################################
+
+record (bo, "$(P)$(R)set1")
+{
+    field (DTYP, "stream")
+    field (VAL, 0)
+    field (OUT,  "@Synaccess_netBooter.proto set(1) $(PORT)")
+    field (FLNK,  "$(P)$(R)get_status.PROC")
+}
+
+record (bo, "$(P)$(R)set2")
+{
+    field (DTYP, "stream")
+    field (VAL, 0)
+    field (OUT,  "@Synaccess_netBooter.proto set(2) $(PORT)")
+    field (FLNK,  "$(P)$(R)get_status.PROC")
+}
+
+record (bo, "$(P)$(R)set3")
+{
+    field (DTYP, "stream")
+    field (VAL, 0)
+    field (OUT,  "@Synaccess_netBooter.proto set(3) $(PORT)")
+    field (FLNK,  "$(P)$(R)get_status.PROC")
+}
+
+record (bo, "$(P)$(R)set4")
+{
+    field (DTYP, "stream")
+    field (VAL, 0)
+    field (OUT,  "@Synaccess_netBooter.proto set(4) $(PORT)")
+    field (FLNK,  "$(P)$(R)get_status.PROC")
+}
+
+record (bo, "$(P)$(R)set5")
+{
+    field (DTYP, "stream")
+    field (VAL, 0)
+    field (OUT,  "@Synaccess_netBooter.proto set(5) $(PORT)")
+    field (FLNK,  "$(P)$(R)get_status.PROC")
+}
+
+###################
+# $(P)$(R)rebootX
+# Reboots outlet X
+###################
+
+record (bo, "$(P)$(R)reboot1")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto reboot(1) $(PORT)")
+}
+
+record (bo, "$(P)$(R)reboot2")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto reboot(2) $(PORT)")
+}
+
+record (bo, "$(P)$(R)reboot3")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto reboot(3) $(PORT)")
+}
+
+record (bo, "$(P)$(R)reboot4")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto reboot(4) $(PORT)")
+}
+record (bo, "$(P)$(R)reboot5")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto reboot(5) $(PORT)")
+}
+
+# Waits for 3 seconds before processing $(P)$(R)get_status
+record (seq, "$(P)$(R)wait_for_all")
+{
+  field (LNK0,"$(P)$(R)get_status.PROC")
+  field (DO0, 1)
+  field (DLY0, 3)
+}
+
+#######################
+# $(P)$(R)allon
+# Turns all outlets On
+#######################
+
+record (bo, "$(P)$(R)allon")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto setall(1) $(PORT)")
+    field (FLNK, "$(P)$(R)wait_for_all.PROC")
+}
+
+
+
+#######################
+# $(P)$(R)alloff
+# Turns all outlets Off
+#######################
+
+record (bo, "$(P)$(R)alloff")
+{
+    field (DTYP, "stream")
+    field (OUT,  "@Synaccess_netBooter.proto setall(0) $(PORT)")
+    field (FLNK, "$(P)$(R)wait_for_all.PROC")
+}
+
+######################################
+# $(P)$(R)statusX
+# Indicates the status of each outlet
+######################################
+
+record (stringin, "$(P)$(R)get_status")
+{
+  field (DTYP, "stream")
+  field (INP,  "@Synaccess_netBooter.proto get_status5($(P),$(R)) $(PORT)")
+  field (PINI, "YES")
+}
+
+record (bi, "$(P)$(R)status1")
+{
+   field (INP, 0)
+   field (SCAN, "Passive")
+}
+
+record (bi, "$(P)$(R)status2")
+{
+   field (INP, 0)
+   field (SCAN, "Passive")
+}
+
+record (bi, "$(P)$(R)status3")
+{
+
+   field (INP, 0)
+   field (SCAN, "Passive")
+}
+
+record (bi, "$(P)$(R)status4")
+{
+   field (INP, 0)
+   field (SCAN, "Passive")
+}
+
+record (bi, "$(P)$(R)status5")
+{
+   field (INP, 0)
+   field (SCAN, "Passive")
+}
