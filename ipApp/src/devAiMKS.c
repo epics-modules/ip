@@ -294,7 +294,7 @@ static void callbackAi(asynUser *pasynUser)
     asynStatus status;
     size_t nwrite, nread;
     int eomReason;
-    struct rset *prset = (struct rset *)(pai->rset);
+    rset *prset = (rset *)(pai->rset);
 
     pasynUser->timeout = TIMEOUT;
     status = pPvt->pasynOctet->write(pPvt->asynOctetPvt, pasynUser,

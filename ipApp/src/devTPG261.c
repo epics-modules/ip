@@ -636,7 +636,7 @@ static void devTPG261Callback(asynUser *pasynUser)
     dbCommon *pr = (dbCommon *)pasynUser->userPvt;
     devTPG261Pvt *pPvt = (devTPG261Pvt *)pr->dpvt;
     char readBuffer[TPG261_BUFFER_SIZE];
-    struct rset *prset = (struct rset *)(pr->rset);
+    rset *prset = (rset *)(pr->rset);
 
     size_t nread, nwrite;
     int eomReason;

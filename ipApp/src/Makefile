@@ -15,6 +15,8 @@ DBD += ipVXSupport.dbd
 DBD += ip.dbd
 DBD += ipVX.dbd
 
+USR_CFLAGS += -DUSE_TYPED_RSET
+
 ip_SRCS += devXxStrParm.c
 ip_SRCS += devXxEurotherm.c
 ip_SRCS += devAiHeidND261.c

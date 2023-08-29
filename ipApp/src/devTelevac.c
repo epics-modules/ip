@@ -345,7 +345,7 @@ static void devTelevacCallback(asynUser *pasynUser)
     dbCommon *pr = (dbCommon *)pasynUser->userPvt;
     devTelevacPvt *pPvt = (devTelevacPvt *)pr->dpvt;
     char readBuffer[Televac_BUFFER_SIZE];
-    struct rset *prset = (struct rset *)(pr->rset);
+    rset *prset = (rset *)(pr->rset);
     size_t nread, nwrite; 
     int eomReason;
 
