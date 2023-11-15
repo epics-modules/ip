@@ -1,0 +1,3186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1264</width>
+    <height>582</height>
+   </rect>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>900</width>
+    <height>475</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_29" stretch="4,2,2">
+       <item>
+        <widget class="caTextEntry" name="catextentry_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):device.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_8">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>300</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_56">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>All On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):allon</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="releaseMessage">
+          <string notr="true"/>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_25">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>350</width>
+           <height>30</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>1</string>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status1.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set1</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_35">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set1</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status1.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut1;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut1, N=1:$(R):;P=$(P),R=$(R), N=1</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>2</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status2.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set2</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_39">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set2</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status2.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut2;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut2, N=2:$(R):;P=$(P),R=$(R), N=2</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>3</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status3.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set3</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_40">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set3</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_6">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status3.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut3;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut3, N=3:$(R):;P=$(P),R=$(R), N=3</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_7" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>4</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status4.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set4</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_41">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set4</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_7">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status4.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut4;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut4, N=4:$(R):;P=$(P),R=$(R), N=4</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_8" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>5</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status5.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set5</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_42">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set5</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_8">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status5.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut5;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut5, N=5:$(R):;P=$(P),R=$(R), N=5</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_9" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>6</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status6.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set6</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_43">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set6</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_9">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status6.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut6;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut6, N=6:$(R):;P=$(P),R=$(R), N=6</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_10" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>7</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status7.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_12">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set7</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_44">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set7</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_10">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status7.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut7;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut7, N=7:$(R):;P=$(P),R=$(R), N=7</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_11" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>8</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status8.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_13">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set8</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_45">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set8</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_11">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status8.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_12">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut8;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut8, N=8:$(R):;P=$(P),R=$(R), N=8</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_24">
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>350</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>60</width>
+           <height>25</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeType">
+      <enum>QSizePolicy::Fixed</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>10</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_30" stretch="3,5,2,2">
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_57">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>All Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):alloff</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="releaseMessage">
+          <string notr="true"/>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>300</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caLabel" name="calabel_2">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Connected</string>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>37</red>
+           <green>176</green>
+           <blue>27</blue>
+          </color>
+         </property>
+         <property name="visibility">
+          <enum>caLabel::IfZero</enum>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):get_status.SEVR</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLabel" name="calabel_3">
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+           <weight>75</weight>
+           <italic>false</italic>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>Disconnected</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
+         </property>
+         <property name="scaledContents">
+          <bool>true</bool>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>255</red>
+           <green>0</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="visibility">
+          <enum>caLabel::IfNotZero</enum>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):get_status.SEVR</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_26">
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>350</width>
+           <height>30</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_14" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>  9</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status9.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_16">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set9</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_48">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set9</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status9.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_3">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut9;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut9, N=9:$(R):;P=$(P),R=$(R), N=9</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_15" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_15">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>10</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_15">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status10.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_17">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set10</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_49">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set10</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_15">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status10.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_4">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut10;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut10, N=10:$(R):;P=$(P),R=$(R), N=10</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_16" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>11</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_16">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status11.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_18">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set11</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_50">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set11</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_16">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status11.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_5">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut11;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut11, N=11:$(R):;P=$(P),R=$(R), N=11</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_17" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_17">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>12</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_17">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status12.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_19">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set12</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_51">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set12</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_17">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status12.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_13">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut12;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut12, N=12:$(R):;P=$(P),R=$(R), N=12</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_18" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_18">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>13</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_18">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status13.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_20">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set13</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_52">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set13</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_18">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status13.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_14">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut3;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut13, N=13:$(R):;P=$(P),R=$(R), N=13</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_19" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_19">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>14</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_19">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status14.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_21">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set14</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_53">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set14</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_19">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status14.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_15">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut14;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut14, N=14:$(R):;P=$(P),R=$(R), N=14</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_20" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>15</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_20">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status15.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_22">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set15</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_54">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set15</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_20">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status15.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_16">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut15;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut15, N=15:$(R):;P=$(P),R=$(R), N=15</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_21" stretch="1,2,3,3,10,2">
+       <item>
+        <widget class="QLabel" name="label_21">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>18</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+           <underline>false</underline>
+          </font>
+         </property>
+         <property name="text">
+          <string>16</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caLed" name="caled_21">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>18</width>
+           <height>4</height>
+          </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>ArrowCursor</cursorShape>
+         </property>
+         <property name="toolTip">
+          <string>1</string>
+         </property>
+         <property name="statusTip">
+          <string>1</string>
+         </property>
+         <property name="whatsThis">
+          <string>1</string>
+         </property>
+         <property name="accessibleName">
+          <string>1</string>
+         </property>
+         <property name="accessibleDescription">
+          <string>1</string>
+         </property>
+         <property name="scaleContents">
+          <bool>true</bool>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status16.RVAL</string>
+         </property>
+         <property name="trueColor">
+          <color>
+           <red>228</red>
+           <green>30</green>
+           <blue>30</blue>
+          </color>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_23">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>On</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set16</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">1</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caMessageButton" name="camessagebutton_55">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>40</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Off</string>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):set16</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>87</red>
+           <green>202</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="pressMessage">
+          <string notr="true">0</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caTextEntry" name="catextentry_21">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>220</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="channel" stdset="0">
+          <string notr="true">$(P):$(R):status16.DESC</string>
+         </property>
+         <property name="background">
+          <color>
+           <red>228</red>
+           <green>228</green>
+           <blue>228</blue>
+          </color>
+         </property>
+         <property name="colorMode">
+          <enum>caLineEdit::Static</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_17">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>30</horstretch>
+           <verstretch>30</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="label">
+          <string notr="true">- calc </string>
+         </property>
+         <property name="labels">
+          <string>userCalcOut16;Enable/Disable</string>
+         </property>
+         <property name="files">
+          <string>userCalcOut.ui;en_dis_line.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P):,C=$(R):userCalcOut16, N=16:$(R):;P=$(P),R=$(R), N=16</string>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_23">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>350</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="caRelatedDisplay" name="carelateddisplay_23">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="acceptDrops">
+          <bool>false</bool>
+         </property>
+         <property name="autoFillBackground">
+          <bool>false</bool>
+         </property>
+         <property name="label">
+          <string notr="true">-View</string>
+         </property>
+         <property name="foreground">
+          <color>
+           <red>255</red>
+           <green>255</green>
+           <blue>255</blue>
+          </color>
+         </property>
+         <property name="background">
+          <color>
+           <red>53</red>
+           <green>132</green>
+           <blue>0</blue>
+          </color>
+         </property>
+         <property name="labels">
+          <string>1-8;9-16</string>
+         </property>
+         <property name="files">
+          <string>Synaccess_np1601du_less1.ui;Synaccess_np1601du_less2.ui</string>
+         </property>
+         <property name="args">
+          <string>P=$(P), R=$(R);P=$(P), R=$(R);</string>
+         </property>
+         <property name="fontScaleMode" stdset="0">
+          <enum>EPushButton::WidthAndHeight</enum>
+         </property>
+         <property name="stackingMode" stdset="0">
+          <enum>caRowColMenu::Menu</enum>
+         </property>
+         <property name="removeParent" stdset="0">
+          <string>true;true</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>caRelatedDisplay</class>
+   <extends>QWidget</extends>
+   <header>caRelatedDisplay</header>
+  </customwidget>
+  <customwidget>
+   <class>caTextEntry</class>
+   <extends>caLineEdit</extends>
+   <header>caTextEntry</header>
+  </customwidget>
+  <customwidget>
+   <class>caMessageButton</class>
+   <extends>QPushButton</extends>
+   <header>caMessageButton</header>
+  </customwidget>
+  <customwidget>
+   <class>caLabel</class>
+   <extends>QLabel</extends>
+   <header>caLabel</header>
+  </customwidget>
+  <customwidget>
+   <class>caLed</class>
+   <extends>QWidget</extends>
+   <header>caLed</header>
+  </customwidget>
+  <customwidget>
+   <class>caLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>caLineEdit</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

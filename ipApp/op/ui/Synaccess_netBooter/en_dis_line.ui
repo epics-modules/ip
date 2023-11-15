@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>400</width>
+    <height>63</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,2,6,1">
+     <item>
+      <widget class="caMessageButton" name="camessagebutton_3">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>40</horstretch>
+         <verstretch>30</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>E</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P):userCalcOut$(N):$(R):EnableCalc.VAL</string>
+       </property>
+       <property name="background">
+        <color>
+         <red>87</red>
+         <green>202</green>
+         <blue>228</blue>
+        </color>
+       </property>
+       <property name="pressMessage">
+        <string notr="true">1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="caMessageButton" name="camessagebutton_35">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>40</horstretch>
+         <verstretch>30</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>D</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P):userCalcOut$(N):$(R):EnableCalc.VAL</string>
+       </property>
+       <property name="background">
+        <color>
+         <red>87</red>
+         <green>202</green>
+         <blue>228</blue>
+        </color>
+       </property>
+       <property name="pressMessage">
+        <string notr="true">0</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="caTextEntry" name="catextentry">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>220</horstretch>
+         <verstretch>30</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P):$(R):userCalcOut$(N).DESC</string>
+       </property>
+       <property name="background">
+        <color>
+         <red>228</red>
+         <green>228</green>
+         <blue>228</blue>
+        </color>
+       </property>
+       <property name="colorMode">
+        <enum>caLineEdit::Static</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="caGraphics" name="cagraphics">
+       <property name="fillstyle" stdset="0">
+        <enum>caGraphics::Filled</enum>
+       </property>
+       <property name="visibility">
+        <enum>caGraphics::Calc</enum>
+       </property>
+       <property name="visibilityCalc">
+        <string notr="true">a=0</string>
+       </property>
+       <property name="channel" stdset="0">
+        <string notr="true">$(P):userCalcOut$(N):$(R):EnableCalc.RVAL</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>caTextEntry</class>
+   <extends>caLineEdit</extends>
+   <header>caTextEntry</header>
+  </customwidget>
+  <customwidget>
+   <class>caMessageButton</class>
+   <extends>QPushButton</extends>
+   <header>caMessageButton</header>
+  </customwidget>
+  <customwidget>
+   <class>caGraphics</class>
+   <extends>QWidget</extends>
+   <header>caGraphics</header>
+  </customwidget>
+  <customwidget>
+   <class>caLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>caLineEdit</header>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>
