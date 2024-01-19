@@ -1,0 +1,247 @@
+# Database for the Thorlabs SC10 shutter controller
+
+
+###############################################################################
+# Binary control and readbacks
+#
+# Note: baud control is not implemented but only has two options 0 (9600) and 1
+# (115k)
+###############################################################################
+
+record(bo, "$(P)$(S):Enable")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setEnable $(PORT)")
+  field(DESC, "Shutter enable")
+  field(ZNAM, "Disabled")
+  field(ONAM, "Enabled")
+  field(FLNK, "$(P)$(S):Enable_RBV PP")
+}
+
+record(bi, "$(P)$(S):Enable_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getEnable $(PORT)")
+  field(DESC, "Shutter enable status")
+  field(ZNAM, "Disabled")
+  field(ONAM, "Enabled")
+}
+
+record(bo, "$(P)$(S):TriggerMode")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setTrig $(PORT)")
+  field(DESC, "Shutter trigger mode")
+  field(ZNAM, "Internal")
+  field(ONAM, "External")
+  field(FLNK, "$(P)$(S):TriggerMode_RBV PP")
+}
+
+record(bi, "$(P)$(S):TriggerMode_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getTrig $(PORT)")
+  field(DESC, "Shutter trigger mode status")
+  field(ZNAM, "Internal")
+  field(ONAM, "External")
+}
+
+record(bo, "$(P)$(S):ExtTriggerOutMode")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setXTO $(PORT)")
+  field(DESC, "External trigger out mode")
+  field(ZNAM, "Shutter")
+  field(ONAM, "Controller")
+  field(FLNK, "$(P)$(S):ExtTriggerOutMode_RBV PP")
+}
+
+record(bi, "$(P)$(S):ExtTriggerOutMode_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getXTO $(PORT)")
+  field(DESC, "External trigger out mode")
+  field(ZNAM, "Shutter")
+  field(ONAM, "Controller")
+}
+
+record(bi, "$(P)$(S):ClosedStatus_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getClosed $(PORT)")
+  field(DESC, "Shutter Closed status")
+  field(ZNAM, "Open")
+  field(ONAM, "Closed")
+}
+
+record(bi, "$(P)$(S):InterlockStatus_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getInterlock $(PORT)")
+  field(DESC, "Shutter Closed status")
+  field(ZNAM, "Un-tripped")
+  field(ONAM, "Tripped")
+}
+
+###############################################################################
+# Multi-bit Binary control and readbacks
+###############################################################################
+
+record(mbbo, "$(P)$(S):Mode"){
+  field(DTYP, "Soft Channel")
+  field(ZRST, "Manual")
+  field(ONST, "Auto")
+  field(TWST, "Single")
+  field(THST, "Repeat")
+  field(FRST, "External Gate")
+}
+
+record(calcout, "$(P)$(S):ModeCalc"){
+  field(INPA, "$(P)$(S):Mode CP")
+  field(CALC, "A+1")
+  field(OUT, "$(P)$(S):ModeSet PP")
+}
+
+record(ao, "$(P)$(S):ModeSet") {
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setMode $(PORT)")
+  field(PREC, "0")
+  field(FLNK, "$(P)$(S):ModeSet_RBV PP")
+}
+
+record(ai, "$(P)$(S):ModeSet_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getMode $(PORT)")
+  field(PREC, "0")
+}
+  
+record(calcout, "$(P)$(S):ModeRBVCalc"){
+  field(INPA, "$(P)$(S):ModeSet_RBV CP")
+  field(CALC, "A-1")
+  field(OUT, "$(P)$(S):Mode_RBV PP")
+}
+
+record(mbbi, "$(P)$(S):Mode_RBV"){
+  field(DTYP, "Soft Channel")
+  field(ZRST, "Manual")
+  field(ONST, "Auto")
+  field(TWST, "Single")
+  field(THST, "Repeat")
+  field(FRST, "External Gate")
+}
+
+###############################################################################
+# Integer control and readbacks
+###############################################################################
+
+record(ao, "$(P)$(S):Reps") {
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setRep $(PORT)")
+  field(PREC, "0")
+  field(DRVH, "99")
+  field(DRVL, "1")
+  field(FLNK, "$(P)$(S):Reps_RBV PP")
+}
+
+record(ai, "$(P)$(S):Reps_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getRep $(PORT)")
+  field(PREC, "0")
+}
+
+record(ao, "$(P)$(S):OpenTime") {
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setOpen $(PORT)")
+  field(PREC, "0")
+  field(DRVH, "999999")
+  field(DRVL, "1")
+  field(EGU, "ms")
+  field(FLNK, "$(P)$(S):OpenTime_RBV PP")
+}
+
+record(ai, "$(P)$(S):OpenTime_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getOpen $(PORT)")
+  field(PREC, "0")
+  field(EGU, "ms")
+}
+
+record(ao, "$(P)$(S):ShutTime") {
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto setShut $(PORT)")
+  field(PREC, "0")
+  field(DRVH, "999999")
+  field(DRVL, "1")
+  field(EGU, "ms")
+  field(FLNK, "$(P)$(S):ShutTime_RBV PP")
+}
+
+record(ai, "$(P)$(S):ShutTime_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@Thorlabs_SC10.proto getShut $(PORT)")
+  field(PREC, "0")
+  field(EGU, "ms")
+}
+
+###############################################################################
+# Stream Commands
+###############################################################################
+
+#save (save baud rate and output mode)
+record(bo, "$(P)$(S):Save")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto saveComm $(PORT)")
+  field(DESC, "Shutter trigger mode")
+}
+
+#savp (save settings [ex mode, open time, closed time] to EEPROM)
+record(bo, "$(P)$(S):SaveProg")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto saveProg $(PORT)")
+  field(DESC, "Shutter trigger mode")
+}
+ 
+#resp (load settings [ex mode, open time, closed time] from EEPROM)
+record(bo, "$(P)$(S):RestoreProg")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@Thorlabs_SC10.proto restoreProg $(PORT)")
+  field(DESC, "Shutter trigger mode")
+}
+
+###############################################################################
+# Readback updates
+###############################################################################
+
+# seq for updates of all RBVs
+record(seq, "$(P)$(S):UpdateRBVs") {
+  field(SCAN, "1 second")
+  field(LNK1, "$(P)$(S):Enable_RBV.PROC PP")
+  field(DLY2, "0.1")
+  field(LNK2, "$(P)$(S):TriggerMode_RBV.PROC PP")
+  field(DLY3, "0.1")
+  field(LNK3, "$(P)$(S):ExtTriggerOutMode_RBV.PROC PP")
+  field(DLY4, "0.1")
+  field(LNK4, "$(P)$(S):ClosedStatus_RBV.PROC PP")
+  field(DLY5, "0.1")
+  field(LNK5, "$(P)$(S):InterlockStatus_RBV.PROC PP")
+  field(DLY6, "0.1")
+  field(LNK6, "$(P)$(S):ModeSet_RBV.PROC PP")
+  field(DLY7, "0.1")
+  field(LNK7, "$(P)$(S):Reps_RBV.PROC PP")
+  field(DLY8, "0.1")
+  field(LNK8, "$(P)$(S):OpenTime_RBV.PROC PP")
+  field(DLY9, "0.1")
+  field(LNK9, "$(P)$(S):ShutTime_RBV.PROC PP")
+}
+
+###############################################################################
+# Other
+###############################################################################
+record(stringin, "$(P)$(S):ID"){
+  field(SCAN, "Passive")
+  field(DTYP, "stream")
+  field(INP, "@Thorlabs_SC10.proto getID $(PORT)")
+}  

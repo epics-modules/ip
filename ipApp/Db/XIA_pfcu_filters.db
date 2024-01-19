@@ -48,6 +48,38 @@ record(bi, "$(P)$(F):modeRBV") {
 # Filter configuration PVs
 ########################################################################
 
+record(mbbo, "$(P)$(F):config"){
+	field(DTYP, "Soft Channel")
+	field(ZRST, "0000")
+	field(ONST, "0001")
+	field(TWST, "0010")
+	field(THST, "0011")
+	field(FRST, "0100")
+	field(FVST, "0101")
+	field(SXST, "0110")
+	field(SVST, "0111")
+	field(EIST, "1000")
+	field(NIST, "1001")
+	field(TEST, "1010")
+	field(ELST, "1011")
+	field(TVST, "1100")
+	field(TTST, "1101")
+	field(FTST, "1110")
+	field(FFST, "1111")
+}
+
+record(transform, "$(P)$(F):configTransform"){
+	field(INPA, "$(P)$(F):config CP")
+	field(CLCB, "(A>>3)%2")
+	field(OUTB, "$(P)$(F):filter1 PP")
+	field(CLCC, "(A>>2)%2")
+	field(OUTC, "$(P)$(F):filter2 PP")
+	field(CLCD, "(A>>1)%2")
+	field(OUTD, "$(P)$(F):filter3 PP")
+	field(CLCE, "A%2")
+	field(OUTE, "$(P)$(F):filter4 PP")
+}
+
 record(calcout, "$(P)$(F):calcConfig")
 {
 	field(INPA, "$(P)$(F):filter1 CP")
@@ -199,36 +231,40 @@ record(ao,"$(P)$(F):filter4_thick")
 record(mbbo, "$(P)$(F):filter1_mat"){
 	field(VAL,"0")
 	field(ZRST,"Al")
-	field(ONST,"Ti")
-	field(TWST,"Glass")
-	field(THST,"Other")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
 	field(DESC,"material filter 1")
 }
 
 record(mbbo, "$(P)$(F):filter2_mat"){
 	field(VAL,"0")
 	field(ZRST,"Al")
-	field(ONST,"Ti")
-	field(TWST,"Glass")
-	field(THST,"Other")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
 	field(DESC,"material filter 2")
 }
 
 record(mbbo, "$(P)$(F):filter3_mat"){
 	field(VAL,"0")
 	field(ZRST,"Al")
-	field(ONST,"Ti")
-	field(TWST,"Glass")
-	field(THST,"Other")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
 	field(DESC,"material filter 3")
 }
 
 record(mbbo, "$(P)$(F):filter4_mat"){
 	field(VAL,"0")
 	field(ZRST,"Al")
-	field(ONST,"Ti")
-	field(TWST,"Glass")
-	field(THST,"Other")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
 	field(DESC,"material filter 4")
 }
 

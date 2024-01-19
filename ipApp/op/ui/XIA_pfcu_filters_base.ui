@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>736</width>
-    <height>33</height>
+    <height>36</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -22,7 +22,7 @@
      <height>31</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,2,2,1,5,1,1,2">
+   <layout class="QHBoxLayout" name="horizontalLayout" stretch="2,2,2,1,5,2,2">
     <property name="spacing">
      <number>5</number>
     </property>
@@ -195,28 +195,9 @@
      </widget>
     </item>
     <item>
-     <widget class="caMessageButton" name="caMessageButton_0">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="fontScaleMode">
-       <enum>EPushButton::WidthAndHeight</enum>
-      </property>
+     <widget class="caChoice" name="cachoice">
       <property name="channel" stdset="0">
        <string notr="true">$(P)$(F):filter$(N)</string>
-      </property>
-      <property name="label">
-       <string>In</string>
-      </property>
-      <property name="foreground">
-       <color>
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
-       </color>
       </property>
       <property name="background">
        <color>
@@ -225,50 +206,17 @@
         <blue>255</blue>
        </color>
       </property>
-      <property name="pressMessage">
-       <string notr="true">1</string>
-      </property>
       <property name="colorMode">
-       <enum>caMessageButton::Static</enum>
+       <enum>caChoice::Static</enum>
       </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="caMessageButton" name="caMessageButton_1">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
+      <property name="stackingMode" stdset="0">
+       <enum>caChoice::Column</enum>
       </property>
-      <property name="fontScaleMode">
-       <enum>EPushButton::WidthAndHeight</enum>
+      <property name="startBit">
+       <number>0</number>
       </property>
-      <property name="channel" stdset="0">
-       <string notr="true">$(P)$(F):filter$(N)</string>
-      </property>
-      <property name="label">
-       <string>Out</string>
-      </property>
-      <property name="foreground">
-       <color>
-        <red>0</red>
-        <green>0</green>
-        <blue>0</blue>
-       </color>
-      </property>
-      <property name="background">
-       <color>
-        <red>115</red>
-        <green>223</green>
-        <blue>255</blue>
-       </color>
-      </property>
-      <property name="pressMessage">
-       <string notr="true">0</string>
-      </property>
-      <property name="colorMode">
-       <enum>caMessageButton::Static</enum>
+      <property name="endBit">
+       <number>1</number>
       </property>
      </widget>
     </item>
@@ -321,14 +269,14 @@
    <header>caMenu</header>
   </customwidget>
   <customwidget>
+   <class>caChoice</class>
+   <extends>QWidget</extends>
+   <header>caChoice</header>
+  </customwidget>
+  <customwidget>
    <class>caTextEntry</class>
    <extends>caLineEdit</extends>
    <header>caTextEntry</header>
-  </customwidget>
-  <customwidget>
-   <class>caMessageButton</class>
-   <extends>QPushButton</extends>
-   <header>caMessageButton</header>
   </customwidget>
   <customwidget>
    <class>caLabel</class>

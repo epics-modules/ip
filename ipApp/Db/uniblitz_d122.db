@@ -1,0 +1,20 @@
+# Database for the Uniblitz shutter controllers
+# Developed and tested with the D-122
+
+
+
+record(bo, "$(P)$(S):Control")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setShutter $(PORT)")
+  field(DESC, "Uniblitz shutter control")
+  field(ZNAM, "Close")
+  field(ONAM, "Open")
+}
+
+record(bo, "$(P)$(S):Reset")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setReset $(PORT)")
+  field(DESC, "Uniblitz Reset")
+}

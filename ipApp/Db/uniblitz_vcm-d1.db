@@ -1,0 +1,52 @@
+# Database for the Uniblitz shutter controllers
+# Developed and tested with the VCM-D1
+
+record(bi, "$(P)$(S):Status")
+{
+  field(DTYP, "stream")
+  field(INP,  "@uniblitz.proto checkSync $(PORT)")
+  field(DESC, "Uniblitz sync status")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+}
+
+record(bo, "$(P)$(S):Control")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setShutter $(PORT)")
+  field(DESC, "Uniblitz shutter control")
+  field(ZNAM, "Close")
+  field(ONAM, "Open")
+}
+
+record(bo, "$(P)$(S):Gate")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setGate $(PORT)")
+  field(DESC, "Uniblitz gate control")
+  field(ZNAM, "Close")
+  field(ONAM, "Open")
+}
+
+record(bo, "$(P)$(S):AuxOut")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setAuxOut $(PORT)")
+  field(DESC, "Uniblitz Aux Out Enable")
+  field(ZNAM, "Disable")
+  field(ONAM, "Enable")
+}
+
+record(bo, "$(P)$(S):Trigger")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setTrigger $(PORT)")
+  field(DESC, "Uniblitz Trigger")
+}
+
+record(bo, "$(P)$(S):Reset")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@uniblitz.proto setReset $(PORT)")
+  field(DESC, "Uniblitz Reset")
+}
