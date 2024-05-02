@@ -1,0 +1,302 @@
+# Channel specific control of Keyence CL-3000
+
+record(bo, "$(P)$(S):$(CHAN):autoZero")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@KeyenceCL3000.proto autoZero($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Turn on/off automatic zeroing")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record(ao, "$(P)$(S):$(CHAN):offset_set")
+{
+#  field(DTYP, "stream")
+#  field(OUT,  "@KeyenceCL3000.proto setOffset($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Offset setting")
+  field(FLNK, "$(P)$(S):$(CHAN):offset_string PP")
+  field(PREC, "4")
+  field(PINI, "1")
+}
+
+record(scalcout, "$(P)$(S):$(CHAN):offset_string")
+{
+  field(DTYP, "stream")
+  field(INPA, "$(P)$(S):$(CHAN):offset_set PP")
+  field(AA, "$(MINDISP)")
+#  field(BB, "SW,OF,$(CHAN),")
+  field(CALC, "$P(AA,A)")
+  field(OUT,  "@KeyenceCL3000.proto setOffsetStr($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Offset setting string")
+  field(FLNK, "$(P)$(S):$(CHAN):offset_RBV PP")  
+}
+
+record(ai, "$(P)$(S):$(CHAN):offset_RBV")
+{
+  field(DTYP, "stream")
+  field(INP,  "@KeyenceCL3000.proto getOffset($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Offset readback")
+  field(PREC, "4")
+}
+
+record(ao, "$(P)$(S):$(CHAN):scaling_set")
+{ 
+#  field(DTYP, "stream")
+#  field(OUT,  "@KeyenceCL3000.proto setScaling($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Scaling setting")
+  field(FLNK, "$(P)$(S):$(CHAN):scaling_string PP")
+  field(PREC, "4")
+  field(PINI, "1")
+}
+
+record(scalcout, "$(P)$(S):$(CHAN):scaling_string")
+{
+  field(DTYP, "stream")
+  field(A, "0")
+  field(B, "0")
+  field(C, "1")
+  field(INPD, "$(P)$(S):$(CHAN):scaling_set PP")
+  field(AA, "$(MINDISP)")
+#  field(BB, "SW,SC,$(CHAN),")
+  field(CALC, "$P(AA,A)+','+$P(AA,B)+','+$P(AA,C)+','+$P(AA,D)")
+  field(OUT,  "@KeyenceCL3000.proto setScalingStr($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Scaling setting string")
+  field(FLNK, "$(P)$(S):$(CHAN):scaling_RBV PP")  
+}
+
+record(ai, "$(P)$(S):$(CHAN):scaling_RBV")
+{ 
+  field(DTYP, "stream")
+  field(INP,  "@KeyenceCL3000.proto getScaling($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Scaling readback")
+  field(PREC, "4")
+}
+
+# Measurement value get request options.
+#  0: Measurement value only
+#  1: Measurement value + Measurement result information
+#  2: Measurement value + Judgment result
+#  3: Measurement value + Measurement result information + Judgment result
+#  4: Count value + Measurement value
+#  5: Count value + Measurement value + Measurement result information
+#  6: Count value + Measurement value + Judgment result
+#  7: Count value + Measurement value + Measurement result information + Judgment result
+
+record(mbbo, "$(P)$(S):$(CHAN):measType")
+{
+	field(DTYP, "Soft Channel")
+	field(ZRST, "Meas value only")
+	field(ONST, "Meas value + result info")
+	field(TWST, "Meas value + judgement")
+	field(THST, "Meas + result + judgement")
+	field(FRST, "Count + Meas value")
+	field(FVST, "Count + Meas + result")
+	field(SXST, "Count + Meas + judgement")
+	field(SVST, "All")
+}
+
+record(ao, "$(P)$(S):$(CHAN):measurement")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@KeyenceCL3000.proto getMeas($(CHAN), $(P)$(S)) $(PORT)")
+  field(DESC, "Measurement value")
+  field(FLNK, "$(P)$(S):$(CHAN):measString")
+}
+
+record(ai, "$(P)$(S):$(CHAN):measurement_RBV")
+{
+  field(DTYP, "Soft Channel")
+  field(PREC, "4")
+  field(EGU, "mm")
+  field(DESC, "Measurement value")
+}
+
+record(ai, "$(P)$(S):$(CHAN):resultInfo_RBV")
+{
+  field(DTYP, "Soft Channel")
+  field(DESC, "Result Info")
+}
+
+record(stringin, "$(P)$(S):$(CHAN):judgement_RBV")
+{
+  field(DTYP, "Soft Channel")
+  field(DESC, "Judgement value")
+}
+
+record(ai, "$(P)$(S):$(CHAN):Count_RBV")
+{
+  field(DTYP, "Soft Channel")
+  field(DESC, "Count value")
+}
+
+########################################################################
+# When an error occurs on command acceptance An error response “ER, **, nn” will be returned.
+# The error response consists of the following information:
+# ○○ 		Received command that caused the error
+#
+# 			2-digit error code
+# 			• 72: Timeout error
+# 			• 73: Command length error
+# 			• 74: Undefined command error
+# nn 		• 81: State error
+# 			• 82: Parameter count error
+# 			• 83: Parameter range error
+# 			• 84: Command specific error (Refer to the command
+# 			details)
+########################################################################
+
+record(stringin, "$(P)$(S):$(CHAN):errorString")
+{
+  field(DTYP, "Soft Channel")
+  field(DESC, "Last error")
+}
+
+record(stringin, "$(P)$(S):$(CHAN):measString")
+{
+	field(DESC, "Measurement string")
+    field(FLNK, "$(P)$(S):$(CHAN):parseSeq")
+}
+
+########################################################################
+# Parsing measurement string
+#
+# 4x sCalcouts -- called selectively based on measurement type
+#	1. Get first float (either counts or measurement); all types (0-7)
+#	2. Get second float/string (either measurement, result or judgment); types 1-7
+#	3. Get third float/string (either result or judgment; types 3, 5-7
+#	4. Get fourth string (judgement); type 7
+#
+# 2x sseq
+#	1. Choose sCalcouts based on calcMask
+#	2. distribute parsed strings based on distMask
+#
+# 2x calcouts
+#	1. calcMask: Calc mask to choose which sCalcouts to complete based on measurement type
+#		0 --> calc1
+#		1,2,4 --> calc1, calc2
+#		3,5,6 --> calc1, calc2, calc3
+#		7 --> calc1, calc2, calc3, calc4
+#	2. distMask: Calc mask for sseq to send correct strings to correct RBV PV
+#		0 --> 1; 1 --> 9; 2 --> 33; 3 --> 73; 4 --> 6; 5 --> 22; 6 --> 70; 7 --> 150
+#
+########################################################################
+
+
+record(scalcout, "$(P)$(S):$(CHAN):parseMeasStr1")
+{
+	field(DESC, "Get first element of return string")
+	field(INAA, "$(P)$(S):$(CHAN):measString NPP")
+	field(CALC, "BB:=$S(AA,\"%f,%*s\");B:=DBL(BB);BB")
+}
+
+record(scalcout, "$(P)$(S):$(CHAN):parseMeasStr2")
+{
+	field(DESC, "Get second element - if there")
+	field(INAA, "$(P)$(S):$(CHAN):measString NPP")
+	field(INPA, "$(P)$(S):$(CHAN):measType")
+	field(CALC, "BB:=(A=2?$S(AA,\"%*f,%s\"):$S(AA,\"%*f,%f,%*s\"));BB")
+}
+
+record(scalcout, "$(P)$(S):$(CHAN):parseMeasStr3")
+{
+	field(DESC, "Get third element - if there")
+	field(INAA, "$(P)$(S):$(CHAN):measString NPP")
+	field(INPA, "$(P)$(S):$(CHAN):measType")
+	field(CALC, "BB:=((A%3)=0?$S(AA,\"%*f,%*f,%s\"):$S(AA,\"%*f,%*f,%f,%*s\"));BB")
+}
+
+record(scalcout, "$(P)$(S):$(CHAN):parseMeasStr4")
+{
+	field(DESC, "Get fourth element - if there")
+	field(INAA, "$(P)$(S):$(CHAN):measString NPP")
+	field(CALC, "BB:=$S(AA,\"%*f,%*f,%*f,%s\");BB")
+}
+
+# Use Meas Type as mask to process the RBVs which pull in various elements of earlier string calc
+record(seq, "$(P)$(S):$(CHAN):parseSeq")
+{
+	field(LNK1, "$(P)$(S):$(CHAN):parseMeasStr1.PROC PP")
+	field(LNK2, "$(P)$(S):$(CHAN):parseMeasStr2.PROC PP")
+	field(LNK3, "$(P)$(S):$(CHAN):parseMeasStr3.PROC PP")
+	field(LNK4, "$(P)$(S):$(CHAN):parseMeasStr4.PROC PP")
+	field(SELM, "2")
+	field(SELL, "$(P)$(S):$(CHAN):parseMask PP")
+	field(FLNK, "$(P)$(S):$(CHAN):distSeq")
+}
+
+
+record(sseq, "$(P)$(S):$(CHAN):distSeq")
+{
+	field(DOL1, "$(P)$(S):$(CHAN):parseMeasStr1.VAL PP")
+	field(LNK1, "$(P)$(S):$(CHAN):measurement_RBV PP")
+	field(DOL2, "$(P)$(S):$(CHAN):parseMeasStr2.VAL PP")
+	field(LNK2, "$(P)$(S):$(CHAN):measurement_RBV PP")
+	field(DOL3, "$(P)$(S):$(CHAN):parseMeasStr1.VAL PP")
+	field(LNK3, "$(P)$(S):$(CHAN):Count_RBV PP")
+	field(DOL4, "$(P)$(S):$(CHAN):parseMeasStr2.VAL PP")
+	field(LNK4, "$(P)$(S):$(CHAN):resultInfo_RBV PP")
+	field(DOL5, "$(P)$(S):$(CHAN):parseMeasStr3.VAL PP")
+	field(LNK5, "$(P)$(S):$(CHAN):resultInfo_RBV PP")
+	field(DOL6, "$(P)$(S):$(CHAN):parseMeasStr2.SVAL PP")
+	field(LNK6, "$(P)$(S):$(CHAN):judgement_RBV PP")
+	field(DOL7, "$(P)$(S):$(CHAN):parseMeasStr3.SVAL PP")
+	field(LNK7, "$(P)$(S):$(CHAN):judgement_RBV PP")
+	field(DOL8, "$(P)$(S):$(CHAN):parseMeasStr4.SVAL PP")
+	field(LNK8, "$(P)$(S):$(CHAN):judgement_RBV PP")
+	field(SELM, "2")
+	field(SELL, "$(P)$(S):$(CHAN):distMask PP")
+}
+
+# Calcs for Masks to determine which elements of the sequences get run
+record(acalcout, "$(P)$(S):$(CHAN):parseMask")
+{
+	field(DESC, "Mask for string parse seq")
+	field(INPA, "$(P)$(S):$(CHAN):measType CP")
+	field(INPB, "1")
+	field(INPC, "3")
+	field(INPD, "3")
+	field(INPE, "7")
+	field(INPF, "3")
+	field(INPG, "7")
+	field(INPH, "7")
+	field(INPI, "15")
+	field(CALC, "@(A+1)")
+#	field(CALC, "A=0?1:(A=7?15:(A<3?3:(A=4?3:7)))")
+#	field(OUT, "$(P)$(S):$(CHAN):parseSeq.SELN")
+}
+
+record(acalcout, "$(P)$(S):$(CHAN):distMask")
+{
+	field(DESC, "Mask for string parse seq")
+	field(INPA, "$(P)$(S):$(CHAN):measType CP")
+	field(INPB, "1")
+	field(INPC, "9")
+	field(INPD, "33")
+	field(INPE, "73")
+	field(INPF, "6")
+	field(INPG, "22")
+	field(INPH, "70")
+	field(INPI, "150")
+	field(CALC, "@(A+1)")
+#	field(OUT, "$(P)$(S):$(CHAN):distSeq.SELN")
+}
+
+
+########################################################################
+#
+# Generic command handlers
+#
+########################################################################
+
+record(stringout, "$(P)$(S):$(CHAN):sendCmd")
+{
+	field(DTYP, "stream")
+	field(OUT,  "@KeyenceCL3000.proto sendCmd($(CHAN), $(P)$(S)) $(PORT)")
+	field(DESC, "Measurement string")
+	field(FLNK, "$(P)$(S):$(CHAN):replyString PP") 
+}
+
+record(stringin, "$(P)$(S):$(CHAN):replyString")
+{
+	field(DESC, "Measurement string")
+}
