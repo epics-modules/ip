@@ -1,0 +1,300 @@
+# InstekGPP.db - support for Intek GPP series power supplies
+#           - streamDevice support, uses InstekGPP.proto
+#
+
+record (stringin, "$(P)$(R)IDN") {
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getIDN $(PORT)")
+}
+
+record (stringin, "$(P)$(R)Error") {
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getError $(PORT)")
+}
+
+record(ai, "$(P)$(R)CH1_Vmeas") {
+  field(SCAN, "Passive")
+  field(DESC, "Ch1 Description")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getAllmeas(1,$(P)$(R)CH1_Imeas) $(PORT)")
+  field(FLNK, "$(P)$(R)CH2_Vmeas")
+}
+
+record(ai, "$(P)$(R)CH1_Imeas") {
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R)CH2_Vmeas") {
+  field(DESC, "Ch2 Description")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getAllmeas(2,$(P)$(R)CH2_Imeas) $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_Vset_rbk")
+}
+
+record(ai, "$(P)$(R)CH2_Imeas") {
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R)CH1_Vset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getVset($(P)$(R)CH2_Vset_rbk) $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_Iset_rbk")
+}
+
+record(ai, "$(P)$(R)CH2_Vset_rbk") {
+  field(PREC, "3")
+}
+
+record(ai, "$(P)$(R)CH1_Iset_rbk") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getIset($(P)$(R)CH2_Iset_rbk) $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_State")
+}
+
+record(ai, "$(P)$(R)CH2_Iset_rbk") {
+  field(PREC, "3")
+}
+
+record(bi, "$(P)$(R)CH1_State") {
+  field(DTYP, "stream")
+  field(INP,  "@InstekGPP.proto getOutState(1) $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(FLNK, "$(P)$(R)CH2_State")
+}
+
+record(bi, "$(P)$(R)CH2_State") {
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getOutState(2) $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record (fanout, "$(P)$(R)Get_Limits") {
+  field(LNK1, "$(P)$(R)CH1_Vlimit PP NMS")
+#  field(LNK2, "$(P)$(R)CH2_Vlimit PP NMS")
+}
+
+record (ai, "$(P)$(R)CH1_Vlimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getCH1Vlim $(PORT)")
+  field(FLNK, "$(P)$(R)CH2_Vlimit")
+}
+
+record (ai, "$(P)$(R)CH2_Vlimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getCH2Vlim $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_Ilimit")
+}
+
+record (ai, "$(P)$(R)CH1_Ilimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getCH1Ilim $(PORT)")
+  field(FLNK, "$(P)$(R)CH2_Ilimit")
+}
+
+record (ai, "$(P)$(R)CH2_Ilimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@InstekGPP.proto getCH2Ilim $(PORT)")
+}
+
+
+record(bo, "$(P)$(R)CH1_OutState") {
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setOutState(1) $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record(bo, "$(P)$(R)CH2_OutState") {
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setOutState(2) $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record(ao, "$(P)$(R)CH1_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setVolt(1) $(PORT)")
+}
+
+record(ao, "$(P)$(R)CH2_Vset") {
+  field(PREC, "3")
+  field(HOPR, "30")
+  field(LOPR, "0")
+  field(DRVH, "30")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setVolt(2) $(PORT)")
+}
+
+record(ao, "$(P)$(R)CH1_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCurrent(1) $(PORT)")
+}
+
+record(ao, "$(P)$(R)CH2_Iset") {
+  field(PREC, "3")
+  field(HOPR, "3")
+  field(LOPR, "0")
+  field(DRVH, "3")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCurrent(2) $(PORT)")
+}
+
+record(ao,"$(P)$(R)CH1_V_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH1_V_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)$(R)CH1_Vset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH1_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH1_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH1_V_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)$(R)CH1_Vset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH1_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH1_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)CH1_I_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH1_I_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)$(R)CH1_Iset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH1_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH1_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH1_I_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)$(R)CH1_Iset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH1_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH1_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)CH2_V_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH2_V_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)$(R)CH2_Vset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH2_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH2_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH2_V_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)$(R)CH2_Vset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH2_V_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH2_Vset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)CH2_I_TweakVal") {
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH2_I_TweakUp") {
+    field(CALC, "A+B")
+    field(INPA, "$(P)$(R)CH2_Iset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH2_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH2_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CH2_I_TweakDown") {
+    field(CALC, "A-B")
+    field(INPA, "$(P)$(R)CH2_Iset.VAL  NPP MS")
+    field(INPB, "$(P)$(R)CH2_I_TweakVal.VAL  NPP MS")
+    field(OUT,  "$(P)$(R)CH2_Iset.VAL  PP MS")
+    field(PREC, "3")
+}
+
+record(ao, "$(P)$(R)CH1_Vlimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "20.2")
+  field(LOPR, "0")
+  field(DRVH, "20.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCH1Vlim $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_Vlimit PP NMS")
+}
+
+record(ao, "$(P)$(R)CH2_Vlimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "20.2")
+  field(LOPR, "0")
+  field(DRVH, "20.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCH2Vlim $(PORT)")
+  field(FLNK, "$(P)$(R)CH2_Vlimit PP NMS")
+}
+
+record(ao, "$(P)$(R)CH1_Ilimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "10.2")
+  field(LOPR, "0")
+  field(DRVH, "10.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCH1Ilim $(PORT)")
+  field(FLNK, "$(P)$(R)CH1_Ilimit PP NMS")
+}
+
+record(ao, "$(P)$(R)CH2_Ilimit_Set") {
+  field(PREC, "3")
+  field(HOPR, "10.2")
+  field(LOPR, "0")
+  field(DRVH, "10.2")
+  field(DRVL, "0")
+  field(DTYP, "stream")
+  field(OUT, "@InstekGPP.proto setCH2Ilim $(PORT)")
+  field(FLNK, "$(P)$(R)CH2_Ilimit PP NMS")
+}
+
+record(scalcout, "$(P)$(R)CH1_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)CH1_Vmeas CP NMS")
+  field(INPB, "$(P)$(R)CH1_Imeas CP NMS")
+  field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)$(R)CH2_Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)CH2_Vmeas CP NMS")
+  field(INPB, "$(P)$(R)CH2_Imeas CP NMS")
+  field(CALC, "A*B")
+}
