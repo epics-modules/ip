@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=281
-		y=101
+		x=581
+		y=172
 		width=472
 		height=625
 	}
@@ -119,13 +119,13 @@ text {
 	object {
 		x=13
 		y=556
-		width=369
+		width=270
 		height=11
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="For Remote: Send the power supply a command"
+	textix="For Remote: Send the power supply any command"
 }
 "message button" {
 	object {
@@ -192,13 +192,13 @@ text {
 	object {
 		x=85
 		y=536
-		width=200
+		width=204
 		height=11
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="then press '.' on front panel"
+	textix="then press 'Unlock' on front panel"
 }
 text {
 	object {
@@ -248,17 +248,6 @@ rectangle {
 	}
 	"basic attribute" {
 		clr=2
-	}
-}
-rectangle {
-	object {
-		x=94
-		y=319
-		width=58
-		height=20
-	}
-	"basic attribute" {
-		clr=55
 	}
 }
 rectangle {
@@ -374,49 +363,6 @@ polyline {
 		(108,28)
 	}
 }
-"message button" {
-	object {
-		x=22
-		y=354
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH1_OutState"
-		clr=0
-		bclr=7
-	}
-	label="Off"
-	press_msg="0"
-}
-"message button" {
-	object {
-		x=66
-		y=354
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH1_OutState"
-		clr=0
-		bclr=7
-	}
-	label="ON"
-	press_msg="1"
-}
-oval {
-	object {
-		x=112
-		y=358
-		width=12
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
-	}
-}
 menu {
 	object {
 		x=12
@@ -428,38 +374,6 @@ menu {
 		chan="$(P)$(R)CH1_Vmeas.SCAN"
 		clr=54
 		bclr=4
-	}
-}
-oval {
-	object {
-		x=114
-		y=360
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=10
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(R)CH1_OnOffState"
-	}
-}
-oval {
-	object {
-		x=114
-		y=360
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=20
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH1_OnOffState"
 	}
 }
 text {
@@ -476,35 +390,6 @@ text {
 }
 "text update" {
 	object {
-		x=24
-		y=319
-		width=70
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Watts"
-		clr=54
-		bclr=55
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=103
-		y=323
-		width=45
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Watts"
-	align="horiz. centered"
-}
-"text update" {
-	object {
 		x=26
 		y=199
 		width=48
@@ -516,21 +401,6 @@ text {
 		bclr=2
 	}
 	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=130
-		y=354
-		width=30
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH1_State"
-		clr=54
-		bclr=2
-	}
 	limits {
 	}
 }
@@ -821,17 +691,6 @@ rectangle {
 }
 rectangle {
 	object {
-		x=388
-		y=319
-		width=58
-		height=20
-	}
-	"basic attribute" {
-		clr=55
-	}
-}
-rectangle {
-	object {
 		x=311
 		y=132
 		width=136
@@ -912,110 +771,6 @@ text {
 	textix="Output 2"
 	align="horiz. centered"
 }
-"message button" {
-	object {
-		x=316
-		y=354
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH2_OutState"
-		clr=0
-		bclr=7
-	}
-	label="Off"
-	press_msg="0"
-}
-"message button" {
-	object {
-		x=360
-		y=354
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH2_OutState"
-		clr=0
-		bclr=7
-	}
-	label="ON"
-	press_msg="1"
-}
-oval {
-	object {
-		x=406
-		y=358
-		width=12
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
-	}
-}
-oval {
-	object {
-		x=408
-		y=360
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=10
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(R)CH2_OnOffState"
-	}
-}
-oval {
-	object {
-		x=408
-		y=360
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=20
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH2_OnOffState"
-	}
-}
-"text update" {
-	object {
-		x=318
-		y=319
-		width=70
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Watts"
-		clr=54
-		bclr=55
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=397
-		y=323
-		width=45
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Watts"
-	align="horiz. centered"
-}
 "text update" {
 	object {
 		x=320
@@ -1029,21 +784,6 @@ text {
 		bclr=2
 	}
 	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=424
-		y=354
-		width=30
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH2_State"
-		clr=54
-		bclr=2
-	}
 	limits {
 	}
 }
@@ -1594,7 +1334,7 @@ text {
 	object {
 		x=85
 		y=569
-		width=200
+		width=78
 		height=11
 	}
 	"basic attribute" {
@@ -1629,5 +1369,389 @@ text {
 	}
 	format="string"
 	limits {
+	}
+}
+composite {
+	object {
+		x=316
+		y=319
+		width=138
+		height=70
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=316
+				y=369
+				width=138
+				height=20
+			}
+			"composite name"=""
+			children {
+				oval {
+					object {
+						x=408
+						y=375
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=15
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(R)CH2_OutState"
+					}
+				}
+				oval {
+					object {
+						x=408
+						y=375
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)$(R)CH2_OutState"
+					}
+				}
+				"message button" {
+					object {
+						x=316
+						y=369
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH2_OutState"
+						clr=14
+						bclr=15
+					}
+					label="Off"
+					press_msg="0"
+				}
+				"message button" {
+					object {
+						x=360
+						y=369
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH2_OutState"
+						clr=14
+						bclr=20
+					}
+					label="ON"
+					press_msg="1"
+				}
+				oval {
+					object {
+						x=406
+						y=373
+						width=12
+						height=12
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+						width=2
+					}
+				}
+				"text update" {
+					object {
+						x=424
+						y=369
+						width=30
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)CH2_State"
+						clr=54
+						bclr=2
+					}
+					clrmod="alarm"
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		rectangle {
+			object {
+				x=388
+				y=319
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=318
+				y=319
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH2_Watts"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=397
+				y=323
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Watts"
+		}
+		rectangle {
+			object {
+				x=389
+				y=344
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=319
+				y=344
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH2_Ohms"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=398
+				y=348
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ohms"
+		}
+	}
+}
+composite {
+	object {
+		x=22
+		y=319
+		width=138
+		height=70
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=94
+				y=319
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=24
+				y=319
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Watts"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=103
+				y=323
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Watts"
+		}
+		composite {
+			object {
+				x=22
+				y=369
+				width=138
+				height=20
+			}
+			"composite name"=""
+			children {
+				oval {
+					object {
+						x=114
+						y=375
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)$(R)CH1_OutState"
+					}
+				}
+				oval {
+					object {
+						x=114
+						y=375
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=15
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(R)CH1_OutState"
+					}
+				}
+				"message button" {
+					object {
+						x=22
+						y=369
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH1_OutState"
+						clr=14
+						bclr=15
+					}
+					label="Off"
+					press_msg="0"
+				}
+				"message button" {
+					object {
+						x=66
+						y=369
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH1_OutState"
+						clr=14
+						bclr=20
+					}
+					label="ON"
+					press_msg="1"
+				}
+				oval {
+					object {
+						x=112
+						y=373
+						width=12
+						height=12
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+						width=2
+					}
+				}
+				"text update" {
+					object {
+						x=130
+						y=369
+						width=30
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)CH1_State"
+						clr=54
+						bclr=2
+					}
+					clrmod="alarm"
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		rectangle {
+			object {
+				x=94
+				y=344
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=24
+				y=344
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Ohms"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=103
+				y=348
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ohms"
+		}
 	}
 }

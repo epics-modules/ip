@@ -1,12 +1,12 @@
 
 file {
-	name="/home/epics/support/ip/ipApp/op/adl/InstekGPP.adl"
+	name="/home/epics/support/ip-2-21-1/ipApp/op/adl/InstekGPP.adl"
 	version=030117
 }
 display {
 	object {
-		x=110
-		y=81
+		x=105
+		y=106
 		width=335
 		height=418
 	}
@@ -96,17 +96,6 @@ rectangle {
 	}
 	"basic attribute" {
 		clr=2
-	}
-}
-rectangle {
-	object {
-		x=89
-		y=270
-		width=58
-		height=20
-	}
-	"basic attribute" {
-		clr=55
 	}
 }
 rectangle {
@@ -211,44 +200,19 @@ text {
 	object {
 		x=8
 		y=4
-		width=315
+		width=90
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Intek GPP Power Supply"
-}
-text {
-	object {
-		x=307
-		y=8
-		width=30
-		height=15
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="$(R)"
-}
-text {
-	object {
-		x=256
-		y=8
-		width=50
-		height=15
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="$(P)"
-	align="horiz. right"
+	textix="Intek GPP"
 }
 polyline {
 	object {
 		x=3
 		y=23
-		width=238
+		width=101
 		height=2
 	}
 	"basic attribute" {
@@ -260,50 +224,7 @@ polyline {
 	}
 	points {
 		(4,24)
-		(240,24)
-	}
-}
-"message button" {
-	object {
-		x=17
-		y=305
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH1_OutState"
-		clr=0
-		bclr=7
-	}
-	label="Off"
-	press_msg="0"
-}
-"message button" {
-	object {
-		x=61
-		y=305
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH1_OutState"
-		clr=0
-		bclr=7
-	}
-	label="ON"
-	press_msg="1"
-}
-oval {
-	object {
-		x=107
-		y=309
-		width=12
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
+		(103,24)
 	}
 }
 menu {
@@ -317,38 +238,6 @@ menu {
 		chan="$(P)$(R)CH1_Vmeas.SCAN"
 		clr=54
 		bclr=4
-	}
-}
-oval {
-	object {
-		x=109
-		y=311
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=10
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(R)CH1_OnOffState"
-	}
-}
-oval {
-	object {
-		x=109
-		y=311
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=20
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH1_OnOffState"
 	}
 }
 text {
@@ -365,35 +254,6 @@ text {
 }
 "text update" {
 	object {
-		x=19
-		y=270
-		width=70
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Watts"
-		clr=54
-		bclr=55
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=98
-		y=274
-		width=45
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Watts"
-	align="horiz. centered"
-}
-"text update" {
-	object {
 		x=21
 		y=150
 		width=48
@@ -405,21 +265,6 @@ text {
 		bclr=2
 	}
 	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=125
-		y=305
-		width=30
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH1_State"
-		clr=54
-		bclr=2
-	}
 	limits {
 	}
 }
@@ -710,17 +555,6 @@ rectangle {
 }
 rectangle {
 	object {
-		x=254
-		y=270
-		width=58
-		height=20
-	}
-	"basic attribute" {
-		clr=55
-	}
-}
-rectangle {
-	object {
 		x=177
 		y=83
 		width=136
@@ -801,110 +635,6 @@ text {
 	textix="Output 2"
 	align="horiz. centered"
 }
-"message button" {
-	object {
-		x=182
-		y=305
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH2_OutState"
-		clr=0
-		bclr=7
-	}
-	label="Off"
-	press_msg="0"
-}
-"message button" {
-	object {
-		x=226
-		y=305
-		width=39
-		height=19
-	}
-	control {
-		chan="$(P)$(R)CH2_OutState"
-		clr=0
-		bclr=7
-	}
-	label="ON"
-	press_msg="1"
-}
-oval {
-	object {
-		x=272
-		y=309
-		width=12
-		height=12
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-		width=2
-	}
-}
-oval {
-	object {
-		x=274
-		y=311
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=10
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if zero"
-		chan="$(P)$(R)CH2_OnOffState"
-	}
-}
-oval {
-	object {
-		x=274
-		y=311
-		width=8
-		height=8
-	}
-	"basic attribute" {
-		clr=20
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH2_OnOffState"
-	}
-}
-"text update" {
-	object {
-		x=184
-		y=270
-		width=70
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Watts"
-		clr=54
-		bclr=55
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=263
-		y=274
-		width=45
-		height=15
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Watts"
-	align="horiz. centered"
-}
 "text update" {
 	object {
 		x=186
@@ -918,21 +648,6 @@ text {
 		bclr=2
 	}
 	align="horiz. right"
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=290
-		y=305
-		width=30
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)CH2_State"
-		clr=54
-		bclr=2
-	}
 	limits {
 	}
 }
@@ -1183,18 +898,6 @@ polyline {
 		(294,71)
 	}
 }
-rectangle {
-	object {
-		x=171
-		y=38
-		width=155
-		height=340
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-	}
-}
 "text entry" {
 	object {
 		x=180
@@ -1243,4 +946,413 @@ rectangle {
 		vis="if not zero"
 		chan="$(P)$(R)CH2_OnOffState"
 	}
+}
+rectangle {
+	object {
+		x=171
+		y=38
+		width=155
+		height=340
+	}
+	"basic attribute" {
+		clr=54
+		fill="outline"
+	}
+}
+composite {
+	object {
+		x=184
+		y=270
+		width=138
+		height=70
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=184
+				y=320
+				width=138
+				height=20
+			}
+			"composite name"=""
+			children {
+				oval {
+					object {
+						x=276
+						y=326
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=15
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(R)CH2_OutState"
+					}
+				}
+				oval {
+					object {
+						x=276
+						y=326
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)$(R)CH2_OutState"
+					}
+				}
+				"message button" {
+					object {
+						x=184
+						y=320
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH2_OutState"
+						clr=14
+						bclr=15
+					}
+					label="Off"
+					press_msg="0"
+				}
+				"message button" {
+					object {
+						x=228
+						y=320
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH2_OutState"
+						clr=14
+						bclr=20
+					}
+					label="ON"
+					press_msg="1"
+				}
+				oval {
+					object {
+						x=274
+						y=324
+						width=12
+						height=12
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+						width=2
+					}
+				}
+				"text update" {
+					object {
+						x=292
+						y=320
+						width=30
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)CH2_State"
+						clr=54
+						bclr=2
+					}
+					clrmod="alarm"
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		rectangle {
+			object {
+				x=256
+				y=270
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=186
+				y=270
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH2_Watts"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=265
+				y=274
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Watts"
+		}
+		rectangle {
+			object {
+				x=257
+				y=295
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=187
+				y=295
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH2_Ohms"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=266
+				y=299
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ohms"
+		}
+	}
+}
+composite {
+	object {
+		x=19
+		y=270
+		width=138
+		height=70
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=91
+				y=270
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=21
+				y=270
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Watts"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=100
+				y=274
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Watts"
+		}
+		composite {
+			object {
+				x=19
+				y=320
+				width=138
+				height=20
+			}
+			"composite name"=""
+			children {
+				oval {
+					object {
+						x=111
+						y=326
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=20
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if not zero"
+						chan="$(P)$(R)CH1_OutState"
+					}
+				}
+				oval {
+					object {
+						x=111
+						y=326
+						width=8
+						height=8
+					}
+					"basic attribute" {
+						clr=15
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(R)CH1_OutState"
+					}
+				}
+				"message button" {
+					object {
+						x=19
+						y=320
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH1_OutState"
+						clr=14
+						bclr=15
+					}
+					label="Off"
+					press_msg="0"
+				}
+				"message button" {
+					object {
+						x=63
+						y=320
+						width=39
+						height=19
+					}
+					control {
+						chan="$(P)$(R)CH1_OutState"
+						clr=14
+						bclr=20
+					}
+					label="ON"
+					press_msg="1"
+				}
+				oval {
+					object {
+						x=109
+						y=324
+						width=12
+						height=12
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+						width=2
+					}
+				}
+				"text update" {
+					object {
+						x=127
+						y=320
+						width=30
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)CH1_State"
+						clr=54
+						bclr=2
+					}
+					clrmod="alarm"
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+		rectangle {
+			object {
+				x=91
+				y=295
+				width=58
+				height=20
+			}
+			"basic attribute" {
+				clr=55
+			}
+		}
+		"text update" {
+			object {
+				x=21
+				y=295
+				width=70
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Ohms"
+				clr=54
+				bclr=55
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=100
+				y=299
+				width=45
+				height=15
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Ohms"
+		}
+	}
+}
+text {
+	object {
+		x=110
+		y=6
+		width=220
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="$(P)$(R)"
+	align="horiz. centered"
 }
