@@ -64,6 +64,8 @@ record(bi, "$(P)$(R)CH1_State") {
   field(INP,  "@InstekGPP.proto getOutState(1) $(PORT)")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
   field(FLNK, "$(P)$(R)CH2_State")
 }
 
@@ -72,6 +74,8 @@ record(bi, "$(P)$(R)CH2_State") {
   field(INP, "@InstekGPP.proto getOutState(2) $(PORT)")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
 }
 
 record (fanout, "$(P)$(R)Get_Limits") {
@@ -112,6 +116,8 @@ record(bo, "$(P)$(R)CH1_OutState") {
   field(OUT, "@InstekGPP.proto setOutState(1) $(PORT)")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
 }
 
 record(bo, "$(P)$(R)CH2_OutState") {
@@ -119,6 +125,8 @@ record(bo, "$(P)$(R)CH2_OutState") {
   field(OUT, "@InstekGPP.proto setOutState(2) $(PORT)")
   field(ZNAM, "OFF")
   field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
 }
 
 record(ao, "$(P)$(R)CH1_Vset") {
@@ -297,4 +305,18 @@ record(scalcout, "$(P)$(R)CH2_Watts") {
   field(INPA, "$(P)$(R)CH2_Vmeas CP NMS")
   field(INPB, "$(P)$(R)CH2_Imeas CP NMS")
   field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)$(R)CH1_Ohms") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)CH1_Vmeas CP NMS")
+  field(INPB, "$(P)$(R)CH1_Imeas CP NMS")
+  field(CALC, "A/B")
+}
+
+record(scalcout, "$(P)$(R)CH2_Ohms") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)CH2_Vmeas CP NMS")
+  field(INPB, "$(P)$(R)CH2_Imeas CP NMS")
+  field(CALC, "A/B")
 }
