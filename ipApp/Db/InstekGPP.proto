@@ -1,0 +1,86 @@
+# Instekl GPP Power Supply Streams Protocol File 
+#
+#####
+# Interface: ASCII (RS232, GPIB, or LAN)
+#
+
+#ExtraInput = Ignore;
+
+getIDN { 
+	out "*IDN?";
+  in "%39c";
+	@init {out "*IDN?"; in "%39c";}
+	}
+
+getError { 
+	out ":SYST:ERR?";
+  in "%39c";
+	}
+
+getAllmeas {
+	out ":MEAS\$1:ALL?";
+	in "%f,%(\$2)f,%*f";
+	}
+
+getVset {
+	out ":SOUR:VOLT:ALL?";
+	in "%f,%(\$1)f,%*f";
+	}
+
+getIset {
+	out ":SOUR:CURR:ALL?";
+	in "%f,%(\$1)f,%*f";
+	}
+
+getOutState {
+	out ":OUTP\$1:STAT?";
+	in "%s";
+	}
+
+setOutState {
+	out ":OUTP\$1:STAT %s";
+	}
+
+setVolt {
+	out "SOUR\$1:VOLT %f";
+	}
+
+setCurrent {
+	out "SOUR\$1:CURR %f";
+	}
+
+getCH1Vlim  {
+  out "OUT:LIM:VOLT?";
+	in "%f";
+	}
+
+getCH2Vlim  {
+  out "OUT:LIM:VOLT2?";
+	in "%f";
+	}
+
+getCH1Ilim  {
+  out "OUT:LIM:CURR?";
+	in "%f";
+	}
+
+getCH2Ilim  {
+  out "OUT:LIM:CURR2?";
+	in "%f";
+	}
+
+setCH1Vlim {
+        out "OUT:LIM:VOLT %.3f";
+	}
+
+setCH2Vlim {
+        out "OUT:LIM:VOLT2 %.3f";
+	}
+
+setCH1Ilim {
+        out "OUT:LIM:CURR %.3f";
+	}
+
+setCH2Ilim {
+        out "OUT:LIM:CURR2 %.3f";
+	}

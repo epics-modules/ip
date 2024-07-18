@@ -139,6 +139,7 @@ typedef struct devMPCPvt {
     opType       opType;
     recType      recType;
     asynStatus   status;
+    asynStatus   prevReadStatus;
     char         recBuf[MPC_BUFFER_SIZE];
     char         sendBuf[MPC_BUFFER_SIZE];
     char         address[3];
@@ -339,7 +340,7 @@ static int buildCommand(devMPCPvt *pPvt, int hexCmd, char *pvalue)
 
     asynPrint(pPvt->pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC::buildCommand %s command 0x%X len=%d string=|%s|\n",
-              pr->name, hexCmd, strlen(pPvt->sendBuf), pPvt->sendBuf);
+              pr->name, hexCmd, (int)strlen(pPvt->sendBuf), pPvt->sendBuf);
 
     return(0);
 }
@@ -835,16 +836,26 @@ static void devMPCCallback(asynUser *pasynUser)
     }
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC::devMPCCallback %s nwrite=%d, output=%s\n",
-              pr->name, nwrite, pPvt->sendBuf);
+              pr->name, (int)nwrite, pPvt->sendBuf);
     pPvt->status = pPvt->pasynOctet->read(pPvt->octetPvt, pasynUser, 
                                           readBuffer, MPC_BUFFER_SIZE, 
                                           &nread, &eomReason);
     if (pPvt->status != asynSuccess) {
-        asynPrint(pasynUser, ASYN_TRACE_ERROR,
-                  "devMPC::devMPCCallback %s read error, status=%d error= %s\n",
-                  pr->name, pPvt->status, pasynUser->errorMessage);
+        if (pPvt->status != pPvt->prevReadStatus) {
+            asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                      "devMPC::devMPCCallback %s read error, status=%d error= %s\n",
+                      pr->name, pPvt->status, pasynUser->errorMessage);
+            pPvt->prevReadStatus = pPvt->status;
+        }
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
         goto done;
+    } else {
+        if (pPvt->status != pPvt->prevReadStatus) {
+            asynPrint(pasynUser, ASYN_TRACE_ERROR,
+                      "devMPC::devMPCCallback %s read status back to normal\n",
+                      pr->name);
+            pPvt->prevReadStatus = pPvt->status;
+        }
     }
     if (eomReason !=2) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
@@ -856,17 +867,17 @@ static void devMPCCallback(asynUser *pasynUser)
     if (nread == MPC_BUFFER_SIZE) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devMPC::devMPCCallback %s message too large=%d\n",
-                  pr->name, nread);
+                  pr->name, (int)nread);
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
         goto done;
     }
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC::devMPCCallback %s nread=%d, input=%s\n",
-              pr->name, nread, readBuffer);
+              pr->name, (int)nread, readBuffer);
     if (nread < 4) {
         asynPrint(pasynUser, ASYN_TRACE_ERROR,
                   "devMPC::devMPCCallback %s message too small=%d\n", 
-                  pr->name, nread);
+                  pr->name, (int)nread);
         recGblSetSevr(pr, READ_ALARM, INVALID_ALARM);
         pPvt->status = asynError;
         goto done;
@@ -874,7 +885,7 @@ static void devMPCCallback(asynUser *pasynUser)
 
     asynPrint(pasynUser, ASYN_TRACEIO_DEVICE,
               "devMPC: %s command (%d) received (before processing) len=%d, |%s|\n",
-              pr->name, pPvt->command, nread, readBuffer);
+              pr->name, pPvt->command, (int)nread, readBuffer);
     if(readBuffer[3]=='O' && readBuffer[4] == 'K') {
         if (nread < 12 ) {
             strcpy(pPvt->recBuf, "OK");

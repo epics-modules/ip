@@ -1,0 +1,1615 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Saved on 2024-06-10 17:18:22 by epics-->
+<display version="2.0.0">
+  <name>InstekGPP</name>
+  <x>105</x>
+  <y>106</y>
+  <width>335</width>
+  <height>418</height>
+  <background_color>
+    <color red="187" green="187" blue="187">
+    </color>
+  </background_color>
+  <grid_visible>false</grid_visible>
+  <grid_step_x>5</grid_step_x>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #6</name>
+    <x>7</x>
+    <y>38</y>
+    <width>155</width>
+    <height>340</height>
+    <line_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #9</name>
+    <x>12</x>
+    <y>83</y>
+    <width>136</width>
+    <height>36</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #12</name>
+    <pv_name>$(P)$(R)CH1_Vset</pv_name>
+    <x>32</x>
+    <y>123</y>
+    <width>85</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #16</name>
+    <pv_name>$(P)$(R)CH1_Vmeas</pv_name>
+    <x>24</x>
+    <y>89</y>
+    <width>88</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #20</name>
+    <text>V</text>
+    <x>117</x>
+    <y>89</y>
+    <width>16</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #23</name>
+    <text>V</text>
+    <x>119</x>
+    <y>125</y>
+    <width>12</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #26</name>
+    <text>Output 1</text>
+    <x>21</x>
+    <y>51</y>
+    <width>123</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #29</name>
+    <actions>
+      <action type="open_display">
+        <file>InstekGPP_more.opi</file>
+        <target>replace</target>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>252</x>
+    <y>390</y>
+    <width>70</width>
+    <height>22</height>
+    <foreground_color>
+      <color red="255" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="40" green="147" blue="21">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #32</name>
+    <text>Intek GPP</text>
+    <x>8</x>
+    <y>4</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #35</name>
+    <x>3</x>
+    <y>23</y>
+    <width>101</width>
+    <height>2</height>
+    <points>
+      <point x="1.0" y="1.0">
+      </point>
+      <point x="100.0" y="1.0">
+      </point>
+    </points>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #40</name>
+    <pv_name>$(P)$(R)CH1_Vmeas.SCAN</pv_name>
+    <x>11</x>
+    <y>390</y>
+    <width>85</width>
+    <height>20</height>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #43</name>
+    <text>Readback Scan Rate</text>
+    <x>103</x>
+    <y>393</y>
+    <width>137</width>
+    <height>14</height>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #46</name>
+    <pv_name>$(P)$(R)CH1_Vset_rbk</pv_name>
+    <x>21</x>
+    <y>150</y>
+    <width>48</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #50</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH1_V_TweakUp.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH1_V_TweakUp.PROC</pv_name>
+    <text>&gt;</text>
+    <x>133</x>
+    <y>124</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #53</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH1_V_TweakDown.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH1_V_TweakDown.PROC</pv_name>
+    <text>&lt;</text>
+    <x>12</x>
+    <y>124</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #56</name>
+    <pv_name>$(P)$(R)CH1_V_TweakVal</pv_name>
+    <x>82</x>
+    <y>148</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #60</name>
+    <text>Tweak</text>
+    <x>122</x>
+    <y>151</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #63</name>
+    <x>117</x>
+    <y>155</y>
+    <width>3</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="3.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #67</name>
+    <x>12</x>
+    <y>173</y>
+    <width>136</width>
+    <height>36</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #70</name>
+    <pv_name>$(P)$(R)CH1_Iset</pv_name>
+    <x>32</x>
+    <y>213</y>
+    <width>85</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #74</name>
+    <pv_name>$(P)$(R)CH1_Imeas</pv_name>
+    <x>24</x>
+    <y>179</y>
+    <width>88</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #78</name>
+    <text>A</text>
+    <x>117</x>
+    <y>179</y>
+    <width>16</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #81</name>
+    <text>A</text>
+    <x>119</x>
+    <y>215</y>
+    <width>12</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #84</name>
+    <pv_name>$(P)$(R)CH1_Iset_rbk</pv_name>
+    <x>21</x>
+    <y>240</y>
+    <width>48</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #88</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH1_I_TweakUp.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH1_I_TweakUp.PROC</pv_name>
+    <text>&gt;</text>
+    <x>133</x>
+    <y>214</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #91</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH1_I_TweakDown.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH1_I_TweakDown.PROC</pv_name>
+    <text>&lt;</text>
+    <x>12</x>
+    <y>214</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #94</name>
+    <pv_name>$(P)$(R)CH1_I_TweakVal</pv_name>
+    <x>82</x>
+    <y>238</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #98</name>
+    <text>Tweak</text>
+    <x>122</x>
+    <y>241</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #101</name>
+    <x>117</x>
+    <y>245</y>
+    <width>3</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="3.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #105</name>
+    <x>33</x>
+    <y>71</y>
+    <width>96</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="96.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #110</name>
+    <x>6</x>
+    <y>38</y>
+    <width>155</width>
+    <height>340</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #113</name>
+    <pv_name>$(P)$(R)CH1_Vmeas.DESC</pv_name>
+    <x>15</x>
+    <y>348</y>
+    <width>138</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #117</name>
+    <x>172</x>
+    <y>38</y>
+    <width>155</width>
+    <height>340</height>
+    <line_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #120</name>
+    <x>177</x>
+    <y>83</y>
+    <width>136</width>
+    <height>36</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #123</name>
+    <pv_name>$(P)$(R)CH2_Vset</pv_name>
+    <x>197</x>
+    <y>123</y>
+    <width>85</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #127</name>
+    <pv_name>$(P)$(R)CH2_Vmeas</pv_name>
+    <x>189</x>
+    <y>89</y>
+    <width>88</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #131</name>
+    <text>V</text>
+    <x>282</x>
+    <y>89</y>
+    <width>16</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #134</name>
+    <text>V</text>
+    <x>284</x>
+    <y>125</y>
+    <width>12</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #137</name>
+    <text>Output 2</text>
+    <x>186</x>
+    <y>51</y>
+    <width>123</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #140</name>
+    <pv_name>$(P)$(R)CH2_Vset_rbk</pv_name>
+    <x>186</x>
+    <y>150</y>
+    <width>48</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #144</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH2_V_TweakUp.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH2_V_TweakUp.PROC</pv_name>
+    <text>&gt;</text>
+    <x>298</x>
+    <y>124</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #147</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH2_V_TweakDown.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH2_V_TweakDown.PROC</pv_name>
+    <text>&lt;</text>
+    <x>177</x>
+    <y>124</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #150</name>
+    <pv_name>$(P)$(R)CH2_V_TweakVal</pv_name>
+    <x>247</x>
+    <y>148</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #154</name>
+    <text>Tweak</text>
+    <x>287</x>
+    <y>151</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #157</name>
+    <x>282</x>
+    <y>155</y>
+    <width>3</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="3.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #161</name>
+    <x>177</x>
+    <y>173</y>
+    <width>136</width>
+    <height>36</height>
+    <line_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #164</name>
+    <pv_name>$(P)$(R)CH2_Iset</pv_name>
+    <x>197</x>
+    <y>213</y>
+    <width>85</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #168</name>
+    <pv_name>$(P)$(R)CH2_Imeas</pv_name>
+    <x>189</x>
+    <y>179</y>
+    <width>88</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="0" green="0" blue="0">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #172</name>
+    <text>A</text>
+    <x>282</x>
+    <y>179</y>
+    <width>16</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="153" green="255" blue="255">
+      </color>
+    </foreground_color>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #175</name>
+    <text>A</text>
+    <x>284</x>
+    <y>215</y>
+    <width>12</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #178</name>
+    <pv_name>$(P)$(R)CH2_Iset_rbk</pv_name>
+    <x>186</x>
+    <y>240</y>
+    <width>48</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="218" green="218" blue="218">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <horizontal_alignment>2</horizontal_alignment>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #182</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH2_I_TweakUp.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH2_I_TweakUp.PROC</pv_name>
+    <text>&gt;</text>
+    <x>298</x>
+    <y>214</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #185</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)CH2_I_TweakDown.PROC</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)CH2_I_TweakDown.PROC</pv_name>
+    <text>&lt;</text>
+    <x>177</x>
+    <y>214</y>
+    <width>15</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #188</name>
+    <pv_name>$(P)$(R)CH2_I_TweakVal</pv_name>
+    <x>247</x>
+    <y>238</y>
+    <width>34</width>
+    <height>15</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #192</name>
+    <text>Tweak</text>
+    <x>287</x>
+    <y>241</y>
+    <width>25</width>
+    <height>10</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="10.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </foreground_color>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #195</name>
+    <x>282</x>
+    <y>245</y>
+    <width>3</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="3.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="polyline" version="2.0.0">
+    <name>polyline #199</name>
+    <x>198</x>
+    <y>71</y>
+    <width>96</width>
+    <height>0</height>
+    <points>
+      <point x="0.0" y="0.0">
+      </point>
+      <point x="96.0" y="0.0">
+      </point>
+    </points>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #204</name>
+    <pv_name>$(P)$(R)CH2_Vmeas.DESC</pv_name>
+    <x>180</x>
+    <y>348</y>
+    <width>138</width>
+    <height>24</height>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <background_color>
+      <color red="200" green="200" blue="200">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #208</name>
+    <x>6</x>
+    <y>38</y>
+    <width>157</width>
+    <height>342</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)CH1_OnOffState</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #212</name>
+    <x>170</x>
+    <y>37</y>
+    <width>157</width>
+    <height>342</height>
+    <line_width>2</line_width>
+    <line_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+    <rules>
+      <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+        <exp bool_exp="!(pv0!=0)">
+          <value>false</value>
+        </exp>
+        <pv_name>$(P)$(R)CH2_OnOffState</pv_name>
+      </rule>
+    </rules>
+  </widget>
+  <widget type="rectangle" version="2.0.0">
+    <name>rectangle #216</name>
+    <x>171</x>
+    <y>38</y>
+    <width>155</width>
+    <height>340</height>
+    <line_width>1</line_width>
+    <line_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </line_color>
+    <background_color>
+      <color red="10" green="0" blue="184">
+      </color>
+    </background_color>
+    <transparent>true</transparent>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #219</name>
+    <x>184</x>
+    <y>270</y>
+    <width>138</width>
+    <height>70</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="group" version="2.0.0">
+      <name>composite #222</name>
+      <y>50</y>
+      <width>138</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #225</name>
+        <x>92</x>
+        <y>6</y>
+        <width>8</width>
+        <height>8</height>
+        <line_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0==0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(P)$(R)CH2_OutState</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #229</name>
+        <x>92</x>
+        <y>6</y>
+        <width>8</width>
+        <height>8</height>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0!=0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(P)$(R)CH2_OutState</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>message button #233</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(P)$(R)CH2_OutState</pv_name>
+            <value>0</value>
+            <description>Write</description>
+          </action>
+        </actions>
+        <pv_name>$(P)$(R)CH2_OutState</pv_name>
+        <text>Off</text>
+        <width>39</width>
+        <height>19</height>
+        <background_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>message button #236</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(P)$(R)CH2_OutState</pv_name>
+            <value>1</value>
+            <description>Write</description>
+          </action>
+        </actions>
+        <pv_name>$(P)$(R)CH2_OutState</pv_name>
+        <text>ON</text>
+        <x>44</x>
+        <width>39</width>
+        <height>19</height>
+        <background_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #239</name>
+        <x>90</x>
+        <y>4</y>
+        <width>12</width>
+        <height>12</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #242</name>
+        <pv_name>$(P)$(R)CH2_State</pv_name>
+        <x>108</x>
+        <width>30</width>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="16.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="10" green="0" blue="184">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>6</format>
+        <show_units>false</show_units>
+      </widget>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #246</name>
+      <x>72</x>
+      <width>58</width>
+      <line_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>text update #249</name>
+      <pv_name>$(P)$(R)CH2_Watts</pv_name>
+      <x>2</x>
+      <width>70</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #253</name>
+      <text>Watts</text>
+      <x>81</x>
+      <y>4</y>
+      <width>45</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #256</name>
+      <x>73</x>
+      <y>25</y>
+      <width>58</width>
+      <line_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>text update #259</name>
+      <pv_name>$(P)$(R)CH2_Ohms</pv_name>
+      <x>3</x>
+      <y>25</y>
+      <width>70</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #263</name>
+      <text>Ohms</text>
+      <x>82</x>
+      <y>29</y>
+      <width>45</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="group" version="2.0.0">
+    <name>composite #266</name>
+    <x>19</x>
+    <y>270</y>
+    <width>138</width>
+    <height>70</height>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #269</name>
+      <x>72</x>
+      <width>58</width>
+      <line_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>text update #272</name>
+      <pv_name>$(P)$(R)CH1_Watts</pv_name>
+      <x>2</x>
+      <width>70</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #276</name>
+      <text>Watts</text>
+      <x>81</x>
+      <y>4</y>
+      <width>45</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+    <widget type="group" version="2.0.0">
+      <name>composite #279</name>
+      <y>50</y>
+      <width>138</width>
+      <height>20</height>
+      <style>3</style>
+      <transparent>true</transparent>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #282</name>
+        <x>92</x>
+        <y>6</y>
+        <width>8</width>
+        <height>8</height>
+        <line_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="vis_if_not_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0!=0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(P)$(R)CH1_OutState</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #286</name>
+        <x>92</x>
+        <y>6</y>
+        <width>8</width>
+        <height>8</height>
+        <line_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </background_color>
+        <rules>
+          <rule name="vis_if_zero" prop_id="visible" out_exp="false">
+            <exp bool_exp="!(pv0==0)">
+              <value>false</value>
+            </exp>
+            <pv_name>$(P)$(R)CH1_OutState</pv_name>
+          </rule>
+        </rules>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>message button #290</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(P)$(R)CH1_OutState</pv_name>
+            <value>0</value>
+            <description>Write</description>
+          </action>
+        </actions>
+        <pv_name>$(P)$(R)CH1_OutState</pv_name>
+        <text>Off</text>
+        <width>39</width>
+        <height>19</height>
+        <background_color>
+          <color red="0" green="216" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="action_button" version="3.0.0">
+        <name>message button #293</name>
+        <actions>
+          <action type="write_pv">
+            <pv_name>$(P)$(R)CH1_OutState</pv_name>
+            <value>1</value>
+            <description>Write</description>
+          </action>
+        </actions>
+        <pv_name>$(P)$(R)CH1_OutState</pv_name>
+        <text>ON</text>
+        <x>44</x>
+        <width>39</width>
+        <height>19</height>
+        <background_color>
+          <color red="253" green="0" blue="0">
+          </color>
+        </background_color>
+      </widget>
+      <widget type="ellipse" version="2.0.0">
+        <name>oval #296</name>
+        <x>90</x>
+        <y>4</y>
+        <width>12</width>
+        <height>12</height>
+        <line_width>2</line_width>
+        <line_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </line_color>
+        <background_color>
+          <color red="0" green="0" blue="0">
+          </color>
+        </background_color>
+        <transparent>true</transparent>
+      </widget>
+      <widget type="textupdate" version="2.0.0">
+        <name>text update #299</name>
+        <pv_name>$(P)$(R)CH1_State</pv_name>
+        <x>108</x>
+        <width>30</width>
+        <font>
+          <font family="Liberation Sans" style="REGULAR" size="16.0">
+          </font>
+        </font>
+        <foreground_color>
+          <color red="10" green="0" blue="184">
+          </color>
+        </foreground_color>
+        <background_color>
+          <color red="218" green="218" blue="218">
+          </color>
+        </background_color>
+        <format>6</format>
+        <show_units>false</show_units>
+      </widget>
+    </widget>
+    <widget type="rectangle" version="2.0.0">
+      <name>rectangle #303</name>
+      <x>72</x>
+      <y>25</y>
+      <width>58</width>
+      <line_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </line_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="textupdate" version="2.0.0">
+      <name>text update #306</name>
+      <pv_name>$(P)$(R)CH1_Ohms</pv_name>
+      <x>2</x>
+      <y>25</y>
+      <width>70</width>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <foreground_color>
+        <color red="10" green="0" blue="184">
+        </color>
+      </foreground_color>
+      <background_color>
+        <color red="235" green="241" blue="181">
+        </color>
+      </background_color>
+      <format>1</format>
+      <show_units>false</show_units>
+      <horizontal_alignment>2</horizontal_alignment>
+      <border_alarm_sensitive>false</border_alarm_sensitive>
+    </widget>
+    <widget type="label" version="2.0.0">
+      <name>text #310</name>
+      <text>Ohms</text>
+      <x>81</x>
+      <y>29</y>
+      <width>45</width>
+      <height>15</height>
+      <font>
+        <font family="Liberation Sans" style="REGULAR" size="16.0">
+        </font>
+      </font>
+      <auto_size>true</auto_size>
+    </widget>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #313</name>
+    <text>$(P)$(R)</text>
+    <x>110</x>
+    <y>6</y>
+    <width>220</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>1</horizontal_alignment>
+  </widget>
+</display>
