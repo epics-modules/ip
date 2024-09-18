@@ -35,6 +35,18 @@ get_status5
 
   out "$A5";
 
+  @mismatch {
+      in
+        "%*1c" # sometimes it sends a <00> ?
+        "$A5\r\n"
+        "%*4c"
+        "%(\$1\$2status5.RVAL)1b"
+        "%(\$1\$2status4.RVAL)1b"
+        "%(\$1\$2status3.RVAL)1b"
+        "%(\$1\$2status2.RVAL)1b"
+        "%(\$1\$2status1.RVAL)1b";
+  }
+
   in 
     "$A5\r\n"   # from echoed input
     "%*4c"      # ignore return status ($A0)
@@ -43,6 +55,7 @@ get_status5
     "%(\$1\$2status3.RVAL)1b"       
     "%(\$1\$2status2.RVAL)1b"
     "%(\$1\$2status1.RVAL)1b";
+
 }
 
 

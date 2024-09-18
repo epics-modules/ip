@@ -1,0 +1,7 @@
+# Setup a 16 port power strip
+drvAsynIPPortConfigure("dev1", "IP_ADDRESS")
+dbLoadRecords("$(TOP)/db/Synaccess_np1601du.db","P=$(PREFIX), R=dev1:, PORT=dev1")
+
+# Setup a 5 port power strip
+drvAsynIPPortConfigure("dev2", "IP_ADDRESS")
+dbLoadRecords("$(TOP)/db/Synaccess_np05b.db","P=$(PREFIX), R=dev2:, PORT=dev2")
