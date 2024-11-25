@@ -1,0 +1,10 @@
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+iocshLoad("$(IP)/iocsh/setSerialParams.iocsh", "PORT=$(PORT), BAUD=38400, BITS=8, STOP=1, PARITY=even")
+
+dbLoadRecords("$(IP)/db/MicroE_SS350.vdb","P=$(PREFIX),N=$(INSTANCE),PORT=$(PORT)")
