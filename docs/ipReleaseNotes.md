@@ -8,6 +8,13 @@ nav_order: 3
 ip Release Notes
 ================
 
+Release 2-23 XXX, 2024
+-----------------------
+
+- New Support for:
+  - Power supplies from Versatile Power (XR series) and Advanced Energy (iLS series)
+  - Power supplies from Instek (GPP series)
+
 Release 2-22 June, 2023
 -----------------------
 
