@@ -7,80 +7,85 @@
 #ExtraInput = Ignore;
 
 getIDN { 
-	out "*IDN?";
+  out "*IDN?";
   in "%39c";
-	@init {out "*IDN?"; in "%39c";}
-	}
+  @init {out "*IDN?"; in "%39c";}
+}
 
 getError { 
-	out ":SYST:ERR?";
+  out ":SYST:ERR?";
   in "%39c";
-	}
+}
 
 getAllmeas {
-	out ":MEAS\$1:ALL?";
-	in "%f,%(\$2)f,%*f";
-	}
+  out ":MEAS\$1:ALL?";
+  in "%f,%(\$2)f,%*f";
+}
 
 getVset {
-	out ":SOUR:VOLT:ALL?";
-	in "%f,%(\$1)f,%*f";
-	}
+  out ":SOUR:VOLT:ALL?";
+  in "%f,%(\$1)f,%*f";
+}
 
 getIset {
-	out ":SOUR:CURR:ALL?";
-	in "%f,%(\$1)f,%*f";
-	}
+  out ":SOUR:CURR:ALL?";
+  in "%f,%(\$1)f,%*f";
+}
 
 getOutState {
-	out ":OUTP\$1:STAT?";
-	in "%s";
-	}
+  out ":OUTP\$1:STAT?";
+  in "%s";
+}
+
+getCurrLimState {
+  out ":SOUR\$1:CURR:LIM:STAT?";
+  in "%d";
+}
 
 setOutState {
-	out ":OUTP\$1:STAT %s";
-	}
+  out ":OUTP\$1:STAT %s";
+}
 
 setVolt {
-	out "SOUR\$1:VOLT %f";
-	}
+  out "SOUR\$1:VOLT %f";
+}
 
 setCurrent {
-	out "SOUR\$1:CURR %f";
-	}
+  out "SOUR\$1:CURR %f";
+}
 
-getCH1Vlim  {
-  out "OUT:LIM:VOLT?";
-	in "%f";
-	}
+getOVPValue  {
+  out ":OUTP\$1:OVP?";
+  in "%f";
+}
 
-getCH2Vlim  {
-  out "OUT:LIM:VOLT2?";
-	in "%f";
-	}
+getOVPState  {
+  out ":OUTP\$1:OVP:STAT?";
+  in "%s";
+}
 
-getCH1Ilim  {
-  out "OUT:LIM:CURR?";
-	in "%f";
-	}
+getOCPValue  {
+  out ":OUTP\$1:OCP?";
+  in "%f";
+}
 
-getCH2Ilim  {
-  out "OUT:LIM:CURR2?";
-	in "%f";
-	}
+getOCPState  {
+  out ":OUTP\$1:OCP:STAT?";
+  in "%s";
+}
 
-setCH1Vlim {
-        out "OUT:LIM:VOLT %.3f";
-	}
+setOVPValue  {
+  out ":OUTP\$1:OVP %f";
+}
 
-setCH2Vlim {
-        out "OUT:LIM:VOLT2 %.3f";
-	}
+setOVPState  {
+  out ":OUTP\$1:OVP:STAT %s";
+}
 
-setCH1Ilim {
-        out "OUT:LIM:CURR %.3f";
-	}
+setOCPValue  {
+  out ":OUTP\$1:OCP %f";
+}
 
-setCH2Ilim {
-        out "OUT:LIM:CURR2 %.3f";
-	}
+setOCPState  {
+  out ":OUTP\$1:OCP:STAT %s";
+}
