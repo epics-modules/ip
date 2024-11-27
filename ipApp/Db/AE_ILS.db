@@ -1,0 +1,238 @@
+# Database file for the following power supplies 
+# - Advanced Energy iLS series
+# - Versatile Power XR series
+
+record(lsi, "$(P)$(R)IDN") {
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getIDN $(PORT)")
+  field(PINI, "YES")
+}
+
+record(ai, "$(P)$(R)VoltMeas") {
+  field(SCAN, "Passive")
+  field(DESC, "Measured voltage")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getVoltMeas $(PORT)")
+  field(FLNK, "$(P)$(R)CurrentMeas")
+}
+
+record(ai, "$(P)$(R)CurrentMeas") {
+  field(DESC, "Measured current")
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getCurrentMeas $(PORT)")
+  field(FLNK, "$(P)$(R)Volt_RBV")
+}
+
+record(ai, "$(P)$(R)Volt_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getVoltSet $(PORT)")
+  field(FLNK, "$(P)$(R)Current_RBV")
+}
+
+record(ai, "$(P)$(R)Current_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getCurrentSet $(PORT)")
+  field(FLNK, "$(P)$(R)Power_RBV")
+}
+
+record(ai, "$(P)$(R)Power_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getPowerSet $(PORT)")
+  field(FLNK, "$(P)$(R)OutState_RBV")
+}
+
+record(bi, "$(P)$(R)OutState_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@AE_ILS.proto getOutState $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+  field(FLNK, "$(P)$(R)Mode_RBV")
+}
+
+record(stringin, "$(P)$(R)Mode_RBV") {
+  field(DTYP, "stream")
+  field(INP,  "@AE_ILS.proto getMode $(PORT)")
+  field(FLNK, "$(P)$(R)Error")
+}
+
+record(longin, "$(P)$(R)Error") {
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getError $(PORT)")
+}
+
+record(bo, "$(P)$(R)OutState") {
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setOutState $(PORT)")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+  field(ZSV,  "NO_ALARM")
+  field(OSV,  "MAJOR")
+}
+
+record(longin, "$(P)$(R)ClearError") {
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto clearError $(PORT)")
+}
+
+record(ao, "$(P)$(R)Volt") {
+  field(PREC, "3")
+
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setVolt $(PORT)")
+}
+
+record(ao, "$(P)$(R)Current") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setCurrent $(PORT)")
+}
+
+record(ao, "$(P)$(R)Power") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setPower $(PORT)")
+}
+
+record(ao,"$(P)$(R)VoltTweakVal") {
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)VoltTweakUp") {
+  field(CALC, "A+B")
+  field(INPA, "$(P)$(R)Volt.VAL  NPP MS")
+  field(INPB, "$(P)$(R)VoltTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Volt.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)VoltTweakDown") {
+  field(CALC, "A-B")
+  field(INPA, "$(P)$(R)Volt.VAL  NPP MS")
+  field(INPB, "$(P)$(R)VoltTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Volt.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)CurrentTweakVal") {
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CurrentTweakUp") {
+  field(CALC, "A+B")
+  field(INPA, "$(P)$(R)Current.VAL  NPP MS")
+  field(INPB, "$(P)$(R)CurrentTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Current.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)CurrentTweakDown") {
+  field(CALC, "A-B")
+  field(INPA, "$(P)$(R)Current.VAL  NPP MS")
+  field(INPB, "$(P)$(R)CurrentTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Current.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(ao,"$(P)$(R)PowerTweakVal") {
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)PowerTweakUp") {
+  field(CALC, "A+B")
+  field(INPA, "$(P)$(R)Power.VAL  NPP MS")
+  field(INPB, "$(P)$(R)PowerTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Power.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(calcout,"$(P)$(R)PowerTweakDown") {
+  field(CALC, "A-B")
+  field(INPA, "$(P)$(R)Power.VAL  NPP MS")
+  field(INPB, "$(P)$(R)PowerTweakVal.VAL  NPP MS")
+  field(OUT,  "$(P)$(R)Power.VAL  PP MS")
+  field(PREC, "3")
+}
+
+record(bo, "$(P)$(R)Get_Limits") {
+  field(FLNK, "$(P)$(R)VoltLimit_RBV PP NMS")
+  field(PINI, "YES")
+}
+
+record(ai, "$(P)$(R)VoltLimit_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getOVPValue $(PORT)")
+  field(FLNK, "$(P)$(R)CurrentLimit_RBV")
+}
+
+record(ai, "$(P)$(R)CurrentLimit_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getOCPValue $(PORT)")
+  field(FLNK, "$(P)$(R)PowerLimit_RBV")
+}
+
+record(ai, "$(P)$(R)PowerLimit_RBV") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(INP, "@AE_ILS.proto getOPPValue $(PORT)")
+}
+
+record(ao, "$(P)$(R)VoltLimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setOVPValue $(PORT)")
+  field(FLNK, "$(P)$(R)Get_Limits PP NMS")
+}
+
+record(ao, "$(P)$(R)CurrentLimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setOCPValue $(PORT)")
+  field(FLNK, "$(P)$(R)Get_Limits PP NMS")
+}
+
+record(ao, "$(P)$(R)PowerLimit") {
+  field(PREC, "3")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setOPPValue $(PORT)")
+  field(FLNK, "$(P)$(R)Get_Limits PP NMS")
+}
+
+record(scalcout, "$(P)$(R)Watts") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)VoltMeas CP NMS")
+  field(INPB, "$(P)$(R)CurrentMeas CP NMS")
+  field(CALC, "A*B")
+}
+
+record(scalcout, "$(P)$(R)Ohms") {
+  field(PREC, "3")
+  field(INPA, "$(P)$(R)VoltMeas CP NMS")
+  field(INPB, "$(P)$(R)CurrentMeas CP NMS")
+  field(CALC, "A/B")
+}
+
+record(mbbo, "$(P)$(R)Mode") {
+  field(ZRST, "LOCAL")
+  field(ZRVL, "0")
+  field(ONST, "REMOTE")
+  field(ONVL, "1")
+  field(TWST, "RWLock ")
+  field(TWVL, "2")
+  field(THST, "VOLTAGE")
+  field(THVL, "3")
+  field(FRST, "CURRENT")
+  field(FRVL, "4")
+  field(FVST, "DUAL")
+  field(FVVL, "5")
+  field(DTYP, "stream")
+  field(OUT, "@AE_ILS.proto setMode $(PORT)")
+}
