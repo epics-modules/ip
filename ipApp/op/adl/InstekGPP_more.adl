@@ -8,7 +8,7 @@ display {
 		x=581
 		y=172
 		width=472
-		height=625
+		height=550
 	}
 	clr=54
 	bclr=4
@@ -87,263 +87,6 @@ display {
 		1a7309,
 	}
 }
-"related display" {
-	object {
-		x=349
-		y=480
-		width=70
-		height=22
-	}
-	display[0] {
-		name="InstekGPP.adl"
-		args="P=$(P),R=$(R)"
-		policy="replace display"
-	}
-	clr=0
-	bclr=63
-	label="-Less"
-}
-text {
-	object {
-		x=13
-		y=523
-		width=369
-		height=11
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="For Local:  Set scan rate to Passive,"
-}
-text {
-	object {
-		x=13
-		y=556
-		width=270
-		height=11
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="For Remote: Send the power supply any command"
-}
-"message button" {
-	object {
-		x=12
-		y=594
-		width=100
-		height=19
-	}
-	control {
-		chan="$(P)$(R)Error.PROC"
-		clr=0
-		bclr=7
-	}
-	label="Error Check:"
-	press_msg="1"
-}
-"text update" {
-	object {
-		x=121
-		y=596
-		width=292
-		height=15
-	}
-	monitor {
-		chan="$(P)$(R)Error"
-		clr=30
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-rectangle {
-	object {
-		x=117
-		y=594
-		width=298
-		height=18
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-	"dynamic attribute" {
-		chan="$(P)$(R)Error"
-	}
-}
-"related display" {
-	object {
-		x=349
-		y=508
-		width=70
-		height=22
-	}
-	display[0] {
-		name="InstekGPP_limits.adl"
-		args="P=$(P),R=$(R)"
-	}
-	clr=34
-	bclr=30
-	label="-Limits"
-}
-text {
-	object {
-		x=85
-		y=536
-		width=204
-		height=11
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="then press 'Unlock' on front panel"
-}
-text {
-	object {
-		x=175
-		y=143
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="-Actual V Output-"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=175
-		y=175
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="-Voltage Setpoint-"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=175
-		y=194
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix=" Setpoint Readback-"
-	align="horiz. centered"
-}
-rectangle {
-	object {
-		x=12
-		y=87
-		width=155
-		height=340
-	}
-	"basic attribute" {
-		clr=2
-	}
-}
-rectangle {
-	object {
-		x=17
-		y=132
-		width=136
-		height=36
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-"text entry" {
-	object {
-		x=37
-		y=172
-		width=85
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH1_Vset"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=29
-		y=138
-		width=88
-		height=24
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Vmeas"
-		clr=50
-		bclr=14
-	}
-	clrmod="discrete"
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=122
-		y=138
-		width=16
-		height=24
-	}
-	"basic attribute" {
-		clr=50
-	}
-	textix="V"
-	align="horiz. right"
-}
-text {
-	object {
-		x=124
-		y=174
-		width=12
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="V"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=26
-		y=100
-		width=123
-		height=20
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Output 1"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=13
-		y=8
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Instek GPP"
-}
 polyline {
 	object {
 		x=8
@@ -363,1002 +106,10 @@ polyline {
 		(108,28)
 	}
 }
-menu {
-	object {
-		x=12
-		y=480
-		width=85
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH1_Vmeas.SCAN"
-		clr=54
-		bclr=4
-	}
-}
-text {
-	object {
-		x=104
-		y=483
-		width=137
-		height=14
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Readback Scan Rate"
-}
-"text update" {
-	object {
-		x=26
-		y=199
-		width=48
-		height=10
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Vset_rbk"
-		clr=54
-		bclr=2
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=138
-		y=173
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH1_V_TweakUp.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=17
-		y=173
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH1_V_TweakDown.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=87
-		y=197
-		width=34
-		height=15
-	}
-	control {
-		chan="$(P)$(R)CH1_V_TweakVal"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=127
-		y=200
-		width=25
-		height=10
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Tweak"
-}
-polyline {
-	object {
-		x=122
-		y=204
-		width=3
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	points {
-		(122,204)
-		(125,204)
-	}
-}
-rectangle {
-	object {
-		x=17
-		y=222
-		width=136
-		height=36
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-"text entry" {
-	object {
-		x=37
-		y=262
-		width=85
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH1_Iset"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=29
-		y=228
-		width=88
-		height=24
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Imeas"
-		clr=50
-		bclr=14
-	}
-	clrmod="discrete"
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=122
-		y=228
-		width=16
-		height=24
-	}
-	"basic attribute" {
-		clr=50
-	}
-	textix="A"
-	align="horiz. right"
-}
-text {
-	object {
-		x=124
-		y=264
-		width=12
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="A"
-	align="horiz. centered"
-}
-"text update" {
-	object {
-		x=26
-		y=289
-		width=48
-		height=10
-	}
-	monitor {
-		chan="$(P)$(R)CH1_Iset_rbk"
-		clr=54
-		bclr=2
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=138
-		y=263
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH1_I_TweakUp.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=17
-		y=263
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH1_I_TweakDown.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=87
-		y=287
-		width=34
-		height=15
-	}
-	control {
-		chan="$(P)$(R)CH1_I_TweakVal"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=127
-		y=290
-		width=25
-		height=10
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Tweak"
-}
-polyline {
-	object {
-		x=122
-		y=294
-		width=3
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	points {
-		(122,294)
-		(125,294)
-	}
-}
-polyline {
-	object {
-		x=38
-		y=120
-		width=96
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	"dynamic attribute" {
-		chan="$(P)$(R)CH1_State"
-	}
-	points {
-		(38,120)
-		(134,120)
-	}
-}
-rectangle {
-	object {
-		x=11
-		y=87
-		width=155
-		height=340
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-	}
-}
-"text entry" {
-	object {
-		x=20
-		y=397
-		width=138
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH1_Vmeas.DESC"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-rectangle {
-	object {
-		x=306
-		y=87
-		width=155
-		height=340
-	}
-	"basic attribute" {
-		clr=2
-	}
-}
-rectangle {
-	object {
-		x=311
-		y=132
-		width=136
-		height=36
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-"text entry" {
-	object {
-		x=331
-		y=172
-		width=85
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH2_Vset"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=323
-		y=138
-		width=88
-		height=24
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Vmeas"
-		clr=50
-		bclr=14
-	}
-	clrmod="discrete"
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=416
-		y=138
-		width=16
-		height=24
-	}
-	"basic attribute" {
-		clr=50
-	}
-	textix="V"
-	align="horiz. right"
-}
-text {
-	object {
-		x=418
-		y=174
-		width=12
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="V"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=320
-		y=100
-		width=123
-		height=20
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Output 2"
-	align="horiz. centered"
-}
-"text update" {
-	object {
-		x=320
-		y=199
-		width=48
-		height=10
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Vset_rbk"
-		clr=54
-		bclr=2
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=432
-		y=173
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH2_V_TweakUp.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=311
-		y=173
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH2_V_TweakDown.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=381
-		y=197
-		width=34
-		height=15
-	}
-	control {
-		chan="$(P)$(R)CH2_V_TweakVal"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=421
-		y=200
-		width=25
-		height=10
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Tweak"
-}
-polyline {
-	object {
-		x=416
-		y=204
-		width=3
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	points {
-		(416,204)
-		(419,204)
-	}
-}
-rectangle {
-	object {
-		x=311
-		y=222
-		width=136
-		height=36
-	}
-	"basic attribute" {
-		clr=14
-	}
-}
-"text entry" {
-	object {
-		x=331
-		y=262
-		width=85
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH2_Iset"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-"text update" {
-	object {
-		x=323
-		y=228
-		width=88
-		height=24
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Imeas"
-		clr=50
-		bclr=14
-	}
-	clrmod="discrete"
-	align="horiz. right"
-	limits {
-	}
-}
-text {
-	object {
-		x=416
-		y=228
-		width=16
-		height=24
-	}
-	"basic attribute" {
-		clr=50
-	}
-	textix="A"
-	align="horiz. right"
-}
-text {
-	object {
-		x=418
-		y=264
-		width=12
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="A"
-	align="horiz. centered"
-}
-"text update" {
-	object {
-		x=320
-		y=289
-		width=48
-		height=10
-	}
-	monitor {
-		chan="$(P)$(R)CH2_Iset_rbk"
-		clr=54
-		bclr=2
-	}
-	align="horiz. right"
-	limits {
-	}
-}
-"message button" {
-	object {
-		x=432
-		y=263
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH2_I_TweakUp.PROC"
-		clr=14
-		bclr=51
-	}
-	label=">"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=311
-		y=263
-		width=15
-		height=20
-	}
-	control {
-		chan="$(P)$(R)CH2_I_TweakDown.PROC"
-		clr=14
-		bclr=51
-	}
-	label="<"
-	press_msg="1"
-}
-"text entry" {
-	object {
-		x=381
-		y=287
-		width=34
-		height=15
-	}
-	control {
-		chan="$(P)$(R)CH2_I_TweakVal"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=421
-		y=290
-		width=25
-		height=10
-	}
-	"basic attribute" {
-		clr=54
-	}
-	textix="Tweak"
-}
-polyline {
-	object {
-		x=416
-		y=294
-		width=3
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	points {
-		(416,294)
-		(419,294)
-	}
-}
-polyline {
-	object {
-		x=332
-		y=120
-		width=96
-		height=0
-	}
-	"basic attribute" {
-		clr=54
-	}
-	"dynamic attribute" {
-		chan="$(P)$(R)CH1_State"
-	}
-	points {
-		(332,120)
-		(428,120)
-	}
-}
-rectangle {
-	object {
-		x=305
-		y=87
-		width=155
-		height=340
-	}
-	"basic attribute" {
-		clr=54
-		fill="outline"
-	}
-}
-"text entry" {
-	object {
-		x=314
-		y=397
-		width=138
-		height=24
-	}
-	control {
-		chan="$(P)$(R)CH2_Vmeas.DESC"
-		clr=14
-		bclr=3
-	}
-	limits {
-	}
-}
-rectangle {
-	object {
-		x=11
-		y=87
-		width=157
-		height=342
-	}
-	"basic attribute" {
-		clr=20
-		fill="outline"
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH1_OnOffState"
-	}
-}
-rectangle {
-	object {
-		x=304
-		y=86
-		width=157
-		height=342
-	}
-	"basic attribute" {
-		clr=20
-		fill="outline"
-		width=2
-	}
-	"dynamic attribute" {
-		vis="if not zero"
-		chan="$(P)$(R)CH2_OnOffState"
-	}
-}
-text {
-	object {
-		x=150
-		y=9
-		width=300
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(P)$(R)"
-	align="horiz. centered"
-}
-polyline {
-	object {
-		x=62
-		y=215
-		width=125
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(62,215)
-		(187,215)
-	}
-}
-polyline {
-	object {
-		x=187
-		y=208
-		width=7
-		height=7
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(187,215)
-		(194,208)
-	}
-}
-polyline {
-	object {
-		x=57
-		y=210
-		width=5
-		height=5
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(57,210)
-		(62,215)
-	}
-}
-text {
-	object {
-		x=175
-		y=234
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="-Actual I Output-"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=176
-		y=266
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="-Current Setpoint-"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=175
-		y=285
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix=" Setpoint Readback-"
-	align="horiz. centered"
-}
-polyline {
-	object {
-		x=187
-		y=299
-		width=7
-		height=7
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(187,306)
-		(194,299)
-	}
-}
-polyline {
-	object {
-		x=62
-		y=306
-		width=125
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(62,306)
-		(187,306)
-	}
-}
-polyline {
-	object {
-		x=57
-		y=301
-		width=5
-		height=5
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(57,301)
-		(62,306)
-	}
-}
-text {
-	object {
-		x=212
-		y=322
-		width=44
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Power"
-	align="horiz. centered"
-}
-polyline {
-	object {
-		x=181
-		y=330
-		width=28
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(181,330)
-		(209,330)
-	}
-}
-polyline {
-	object {
-		x=256
-		y=330
-		width=28
-		height=0
-	}
-	"basic attribute" {
-		clr=14
-	}
-	points {
-		(256,330)
-		(284,330)
-	}
-}
-text {
-	object {
-		x=176
-		y=358
-		width=120
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="-Output On/Off-"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=19
-		y=435
-		width=150
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CV = Constant Voltage"
-}
-text {
-	object {
-		x=19
-		y=451
-		width=150
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="CC = Constant Current"
-}
-text {
-	object {
-		x=5
-		y=435
-		width=12
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="*"
-	align="horiz. centered"
-}
-text {
-	object {
-		x=85
-		y=569
-		width=78
-		height=11
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="such as 'Off'"
-}
-text {
-	object {
-		x=5
-		y=451
-		width=12
-		height=13
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="*"
-	align="horiz. centered"
-}
 "text update" {
 	object {
 		x=10
-		y=44
+		y=34
 		width=400
 		height=20
 	}
@@ -1373,205 +124,1232 @@ text {
 }
 composite {
 	object {
-		x=316
-		y=319
-		width=138
-		height=70
+		x=9
+		y=59
+		width=454
+		height=369
 	}
 	"composite name"=""
 	children {
+		text {
+			object {
+				x=175
+				y=117
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-Actual V Output-"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=175
+				y=149
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-Voltage Setpoint-"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=175
+				y=168
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix=" Setpoint Readback-"
+			align="horiz. centered"
+		}
+		polyline {
+			object {
+				x=62
+				y=189
+				width=125
+				height=0
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(62,189)
+				(187,189)
+			}
+		}
+		polyline {
+			object {
+				x=187
+				y=182
+				width=7
+				height=7
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(187,189)
+				(194,182)
+			}
+		}
+		polyline {
+			object {
+				x=57
+				y=184
+				width=5
+				height=5
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(57,184)
+				(62,189)
+			}
+		}
+		text {
+			object {
+				x=175
+				y=208
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-Actual I Output-"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=176
+				y=240
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="-Current Setpoint-"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=175
+				y=259
+				width=120
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix=" Setpoint Readback-"
+			align="horiz. centered"
+		}
+		polyline {
+			object {
+				x=187
+				y=273
+				width=7
+				height=7
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(187,280)
+				(194,273)
+			}
+		}
+		text {
+			object {
+				x=177
+				y=373
+				width=119
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="--Output On/Off--"
+			align="horiz. centered"
+		}
 		composite {
 			object {
-				x=316
-				y=369
-				width=138
-				height=20
+				x=304
+				y=59
+				width=159
+				height=369
 			}
 			"composite name"=""
 			children {
-				oval {
+				rectangle {
 					object {
-						x=408
-						y=375
-						width=8
-						height=8
+						x=306
+						y=61
+						width=155
+						height=365
 					}
 					"basic attribute" {
-						clr=15
-						width=2
-					}
-					"dynamic attribute" {
-						vis="if zero"
-						chan="$(P)$(R)CH2_OutState"
+						clr=2
 					}
 				}
-				oval {
+				rectangle {
 					object {
-						x=408
-						y=375
-						width=8
-						height=8
+						x=304
+						y=59
+						width=159
+						height=369
 					}
 					"basic attribute" {
 						clr=20
+						fill="outline"
 						width=2
 					}
 					"dynamic attribute" {
 						vis="if not zero"
-						chan="$(P)$(R)CH2_OutState"
+						chan="$(P)$(R)CH2_State"
 					}
 				}
-				"message button" {
+				rectangle {
 					object {
-						x=316
-						y=369
-						width=39
-						height=19
-					}
-					control {
-						chan="$(P)$(R)CH2_OutState"
-						clr=14
-						bclr=15
-					}
-					label="Off"
-					press_msg="0"
-				}
-				"message button" {
-					object {
-						x=360
-						y=369
-						width=39
-						height=19
-					}
-					control {
-						chan="$(P)$(R)CH2_OutState"
-						clr=14
-						bclr=20
-					}
-					label="ON"
-					press_msg="1"
-				}
-				oval {
-					object {
-						x=406
-						y=373
-						width=12
-						height=12
+						x=311
+						y=106
+						width=136
+						height=36
 					}
 					"basic attribute" {
 						clr=14
-						fill="outline"
-						width=2
+					}
+				}
+				"text entry" {
+					object {
+						x=331
+						y=146
+						width=85
+						height=24
+					}
+					control {
+						chan="$(P)$(R)CH2_Vset"
+						clr=14
+						bclr=3
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=416
+						y=112
+						width=16
+						height=24
+					}
+					"basic attribute" {
+						clr=50
+					}
+					textix="V"
+					align="horiz. right"
+				}
+				text {
+					object {
+						x=418
+						y=148
+						width=12
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="V"
+					align="horiz. centered"
+				}
+				"text update" {
+					object {
+						x=320
+						y=173
+						width=48
+						height=10
+					}
+					monitor {
+						chan="$(P)$(R)CH2_Vset_rbk"
+						clr=54
+						bclr=2
+					}
+					align="horiz. right"
+					limits {
+					}
+				}
+				"message button" {
+					object {
+						x=432
+						y=147
+						width=15
+						height=20
+					}
+					control {
+						chan="$(P)$(R)CH2_V_TweakUp.PROC"
+						clr=14
+						bclr=51
+					}
+					label=">"
+					press_msg="1"
+				}
+				"message button" {
+					object {
+						x=311
+						y=147
+						width=15
+						height=20
+					}
+					control {
+						chan="$(P)$(R)CH2_V_TweakDown.PROC"
+						clr=14
+						bclr=51
+					}
+					label="<"
+					press_msg="1"
+				}
+				"text entry" {
+					object {
+						x=381
+						y=171
+						width=34
+						height=15
+					}
+					control {
+						chan="$(P)$(R)CH2_V_TweakVal"
+						clr=14
+						bclr=3
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=421
+						y=174
+						width=25
+						height=10
+					}
+					"basic attribute" {
+						clr=54
+					}
+					textix="Tweak"
+				}
+				polyline {
+					object {
+						x=416
+						y=178
+						width=3
+						height=0
+					}
+					"basic attribute" {
+						clr=54
+					}
+					points {
+						(416,178)
+						(419,178)
+					}
+				}
+				rectangle {
+					object {
+						x=311
+						y=196
+						width=136
+						height=36
+					}
+					"basic attribute" {
+						clr=14
+					}
+				}
+				"text entry" {
+					object {
+						x=331
+						y=236
+						width=85
+						height=24
+					}
+					control {
+						chan="$(P)$(R)CH2_Iset"
+						clr=14
+						bclr=3
+					}
+					limits {
 					}
 				}
 				"text update" {
 					object {
-						x=424
-						y=369
-						width=30
-						height=20
+						x=323
+						y=202
+						width=88
+						height=24
 					}
 					monitor {
-						chan="$(P)$(R)CH2_State"
+						chan="$(P)$(R)CH2_Imeas"
+						clr=50
+						bclr=14
+					}
+					clrmod="discrete"
+					align="horiz. right"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=416
+						y=202
+						width=16
+						height=24
+					}
+					"basic attribute" {
+						clr=50
+					}
+					textix="A"
+					align="horiz. right"
+				}
+				text {
+					object {
+						x=418
+						y=238
+						width=12
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="A"
+					align="horiz. centered"
+				}
+				"text update" {
+					object {
+						x=320
+						y=263
+						width=48
+						height=10
+					}
+					monitor {
+						chan="$(P)$(R)CH2_Iset_rbk"
 						clr=54
 						bclr=2
 					}
-					clrmod="alarm"
-					format="string"
+					align="horiz. right"
 					limits {
+					}
+				}
+				"message button" {
+					object {
+						x=432
+						y=237
+						width=15
+						height=20
+					}
+					control {
+						chan="$(P)$(R)CH2_I_TweakUp.PROC"
+						clr=14
+						bclr=51
+					}
+					label=">"
+					press_msg="1"
+				}
+				"message button" {
+					object {
+						x=311
+						y=237
+						width=15
+						height=20
+					}
+					control {
+						chan="$(P)$(R)CH2_I_TweakDown.PROC"
+						clr=14
+						bclr=51
+					}
+					label="<"
+					press_msg="1"
+				}
+				"text entry" {
+					object {
+						x=381
+						y=261
+						width=34
+						height=15
+					}
+					control {
+						chan="$(P)$(R)CH2_I_TweakVal"
+						clr=14
+						bclr=3
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=421
+						y=264
+						width=25
+						height=10
+					}
+					"basic attribute" {
+						clr=54
+					}
+					textix="Tweak"
+				}
+				polyline {
+					object {
+						x=416
+						y=268
+						width=3
+						height=0
+					}
+					"basic attribute" {
+						clr=54
+					}
+					points {
+						(416,268)
+						(419,268)
+					}
+				}
+				polyline {
+					object {
+						x=332
+						y=94
+						width=96
+						height=0
+					}
+					"basic attribute" {
+						clr=54
+					}
+					"dynamic attribute" {
+						chan="$(P)$(R)CH1_State"
+					}
+					points {
+						(332,94)
+						(428,94)
+					}
+				}
+				"text entry" {
+					object {
+						x=314
+						y=397
+						width=138
+						height=24
+					}
+					control {
+						chan="$(P)$(R)CH2_Vmeas.DESC"
+						clr=14
+						bclr=3
+					}
+					limits {
+					}
+				}
+				composite {
+					object {
+						x=316
+						y=369
+						width=138
+						height=20
+					}
+					"composite name"=""
+					children {
+						oval {
+							object {
+								x=408
+								y=375
+								width=8
+								height=8
+							}
+							"basic attribute" {
+								clr=15
+								width=2
+							}
+							"dynamic attribute" {
+								vis="if zero"
+								chan="$(P)$(R)CH2_OutState"
+							}
+						}
+						oval {
+							object {
+								x=408
+								y=375
+								width=8
+								height=8
+							}
+							"basic attribute" {
+								clr=20
+								width=2
+							}
+							"dynamic attribute" {
+								vis="if not zero"
+								chan="$(P)$(R)CH2_OutState"
+							}
+						}
+						"message button" {
+							object {
+								x=316
+								y=369
+								width=39
+								height=19
+							}
+							control {
+								chan="$(P)$(R)CH2_OutState"
+								clr=14
+								bclr=15
+							}
+							label="Off"
+							press_msg="0"
+						}
+						"message button" {
+							object {
+								x=360
+								y=369
+								width=39
+								height=19
+							}
+							control {
+								chan="$(P)$(R)CH2_OutState"
+								clr=14
+								bclr=20
+							}
+							label="ON"
+							press_msg="1"
+						}
+						oval {
+							object {
+								x=406
+								y=373
+								width=12
+								height=12
+							}
+							"basic attribute" {
+								clr=14
+								fill="outline"
+								width=2
+							}
+						}
+						"text update" {
+							object {
+								x=424
+								y=369
+								width=30
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)CH2_State"
+								clr=54
+								bclr=2
+							}
+							clrmod="alarm"
+							format="string"
+							limits {
+							}
+						}
+					}
+				}
+				rectangle {
+					object {
+						x=389
+						y=344
+						width=58
+						height=20
+					}
+					"basic attribute" {
+						clr=55
+					}
+				}
+				"text update" {
+					object {
+						x=319
+						y=344
+						width=70
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)CH2_Ohms"
+						clr=54
+						bclr=55
+					}
+					align="horiz. right"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=398
+						y=348
+						width=45
+						height=15
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Ohms"
+				}
+				composite {
+					object {
+						x=318
+						y=319
+						width=128
+						height=20
+					}
+					"composite name"=""
+					children {
+						rectangle {
+							object {
+								x=388
+								y=319
+								width=58
+								height=20
+							}
+							"basic attribute" {
+								clr=55
+							}
+						}
+						"text update" {
+							object {
+								x=318
+								y=319
+								width=70
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)CH2_Watts"
+								clr=54
+								bclr=55
+							}
+							align="horiz. right"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=397
+								y=323
+								width=45
+								height=15
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Watts"
+						}
+					}
+				}
+				composite {
+					object {
+						x=318
+						y=294
+						width=127
+						height=20
+					}
+					"composite name"=""
+					children {
+						"text update" {
+							object {
+								x=365
+								y=294
+								width=80
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)CH2_ControlMode"
+								clr=0
+								bclr=14
+							}
+							clrmod="alarm"
+							align="horiz. centered"
+							format="string"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=318
+								y=294
+								width=40
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Mode"
+							align="horiz. right"
+						}
+					}
+				}
+				"text update" {
+					object {
+						x=323
+						y=112
+						width=88
+						height=24
+					}
+					monitor {
+						chan="$(P)$(R)CH2_Vmeas"
+						clr=50
+						bclr=14
+					}
+					clrmod="discrete"
+					align="horiz. right"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=320
+						y=74
+						width=123
+						height=20
+					}
+					"basic attribute" {
+						clr=54
+					}
+					textix="Output 2"
+					align="horiz. centered"
+				}
+				rectangle {
+					object {
+						x=304
+						y=59
+						width=159
+						height=369
+					}
+					"basic attribute" {
+						clr=15
+						fill="outline"
+						width=2
+					}
+					"dynamic attribute" {
+						vis="if zero"
+						chan="$(P)$(R)CH2_State"
 					}
 				}
 			}
 		}
 		rectangle {
 			object {
-				x=388
-				y=319
-				width=58
-				height=20
+				x=12
+				y=61
+				width=155
+				height=365
 			}
 			"basic attribute" {
-				clr=55
+				clr=2
 			}
-		}
-		"text update" {
-			object {
-				x=318
-				y=319
-				width=70
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)CH2_Watts"
-				clr=54
-				bclr=55
-			}
-			align="horiz. right"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=397
-				y=323
-				width=45
-				height=15
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Watts"
 		}
 		rectangle {
 			object {
-				x=389
-				y=344
-				width=58
-				height=20
+				x=17
+				y=106
+				width=136
+				height=36
 			}
 			"basic attribute" {
-				clr=55
+				clr=14
+			}
+		}
+		"text entry" {
+			object {
+				x=37
+				y=146
+				width=85
+				height=24
+			}
+			control {
+				chan="$(P)$(R)CH1_Vset"
+				clr=14
+				bclr=3
+			}
+			limits {
 			}
 		}
 		"text update" {
 			object {
-				x=319
-				y=344
-				width=70
-				height=20
+				x=29
+				y=112
+				width=88
+				height=24
 			}
 			monitor {
-				chan="$(P)$(R)CH2_Ohms"
-				clr=54
-				bclr=55
+				chan="$(P)$(R)CH1_Vmeas"
+				clr=50
+				bclr=14
 			}
+			clrmod="discrete"
 			align="horiz. right"
 			limits {
 			}
 		}
 		text {
 			object {
-				x=398
-				y=348
-				width=45
-				height=15
+				x=122
+				y=112
+				width=16
+				height=24
+			}
+			"basic attribute" {
+				clr=50
+			}
+			textix="V"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=124
+				y=148
+				width=12
+				height=20
 			}
 			"basic attribute" {
 				clr=14
 			}
-			textix="Ohms"
+			textix="V"
+			align="horiz. centered"
 		}
-	}
-}
-composite {
-	object {
-		x=22
-		y=319
-		width=138
-		height=70
-	}
-	"composite name"=""
-	children {
+		text {
+			object {
+				x=26
+				y=74
+				width=123
+				height=20
+			}
+			"basic attribute" {
+				clr=54
+			}
+			textix="Output 1"
+			align="horiz. centered"
+		}
+		"text update" {
+			object {
+				x=26
+				y=173
+				width=48
+				height=10
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Vset_rbk"
+				clr=54
+				bclr=2
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"message button" {
+			object {
+				x=138
+				y=147
+				width=15
+				height=20
+			}
+			control {
+				chan="$(P)$(R)CH1_V_TweakUp.PROC"
+				clr=14
+				bclr=51
+			}
+			label=">"
+			press_msg="1"
+		}
+		"message button" {
+			object {
+				x=17
+				y=147
+				width=15
+				height=20
+			}
+			control {
+				chan="$(P)$(R)CH1_V_TweakDown.PROC"
+				clr=14
+				bclr=51
+			}
+			label="<"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=87
+				y=171
+				width=34
+				height=15
+			}
+			control {
+				chan="$(P)$(R)CH1_V_TweakVal"
+				clr=14
+				bclr=3
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=127
+				y=174
+				width=25
+				height=10
+			}
+			"basic attribute" {
+				clr=54
+			}
+			textix="Tweak"
+		}
+		polyline {
+			object {
+				x=122
+				y=178
+				width=3
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(122,178)
+				(125,178)
+			}
+		}
+		rectangle {
+			object {
+				x=17
+				y=196
+				width=136
+				height=36
+			}
+			"basic attribute" {
+				clr=14
+			}
+		}
+		"text entry" {
+			object {
+				x=37
+				y=236
+				width=85
+				height=24
+			}
+			control {
+				chan="$(P)$(R)CH1_Iset"
+				clr=14
+				bclr=3
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
+				x=29
+				y=202
+				width=88
+				height=24
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Imeas"
+				clr=50
+				bclr=14
+			}
+			clrmod="discrete"
+			align="horiz. right"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=122
+				y=202
+				width=16
+				height=24
+			}
+			"basic attribute" {
+				clr=50
+			}
+			textix="A"
+			align="horiz. right"
+		}
+		text {
+			object {
+				x=124
+				y=238
+				width=12
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="A"
+			align="horiz. centered"
+		}
+		"text update" {
+			object {
+				x=26
+				y=263
+				width=48
+				height=10
+			}
+			monitor {
+				chan="$(P)$(R)CH1_Iset_rbk"
+				clr=54
+				bclr=2
+			}
+			align="horiz. right"
+			limits {
+			}
+		}
+		"message button" {
+			object {
+				x=138
+				y=237
+				width=15
+				height=20
+			}
+			control {
+				chan="$(P)$(R)CH1_I_TweakUp.PROC"
+				clr=14
+				bclr=51
+			}
+			label=">"
+			press_msg="1"
+		}
+		"message button" {
+			object {
+				x=17
+				y=237
+				width=15
+				height=20
+			}
+			control {
+				chan="$(P)$(R)CH1_I_TweakDown.PROC"
+				clr=14
+				bclr=51
+			}
+			label="<"
+			press_msg="1"
+		}
+		"text entry" {
+			object {
+				x=87
+				y=261
+				width=34
+				height=15
+			}
+			control {
+				chan="$(P)$(R)CH1_I_TweakVal"
+				clr=14
+				bclr=3
+			}
+			limits {
+			}
+		}
+		text {
+			object {
+				x=127
+				y=264
+				width=25
+				height=10
+			}
+			"basic attribute" {
+				clr=54
+			}
+			textix="Tweak"
+		}
+		polyline {
+			object {
+				x=122
+				y=268
+				width=3
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			points {
+				(122,268)
+				(125,268)
+			}
+		}
+		polyline {
+			object {
+				x=38
+				y=94
+				width=96
+				height=0
+			}
+			"basic attribute" {
+				clr=54
+			}
+			"dynamic attribute" {
+				chan="$(P)$(R)CH1_State"
+			}
+			points {
+				(38,94)
+				(134,94)
+			}
+		}
+		rectangle {
+			object {
+				x=9
+				y=59
+				width=159
+				height=369
+			}
+			"basic attribute" {
+				clr=20
+				fill="outline"
+				width=2
+			}
+			"dynamic attribute" {
+				vis="if not zero"
+				chan="$(P)$(R)CH1_State"
+			}
+		}
+		polyline {
+			object {
+				x=62
+				y=280
+				width=125
+				height=0
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(62,280)
+				(187,280)
+			}
+		}
+		polyline {
+			object {
+				x=57
+				y=275
+				width=5
+				height=5
+			}
+			"basic attribute" {
+				clr=14
+			}
+			points {
+				(57,275)
+				(62,280)
+			}
+		}
+		"text entry" {
+			object {
+				x=20
+				y=397
+				width=138
+				height=24
+			}
+			control {
+				chan="$(P)$(R)CH1_Vmeas.DESC"
+				clr=14
+				bclr=3
+			}
+			limits {
+			}
+		}
 		rectangle {
 			object {
 				x=94
@@ -1752,6 +1530,323 @@ composite {
 				clr=14
 			}
 			textix="Ohms"
+		}
+		"text update" {
+			object {
+				x=71
+				y=294
+				width=80
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)CH1_ControlMode"
+				clr=0
+				bclr=14
+			}
+			clrmod="alarm"
+			align="horiz. centered"
+			format="string"
+			limits {
+			}
+		}
+		text {
+			object {
+				x=24
+				y=294
+				width=40
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Mode"
+			align="horiz. right"
+		}
+		rectangle {
+			object {
+				x=9
+				y=59
+				width=159
+				height=369
+			}
+			"basic attribute" {
+				clr=15
+				fill="outline"
+				width=2
+			}
+			"dynamic attribute" {
+				vis="if zero"
+				chan="$(P)$(R)CH1_State"
+			}
+		}
+		text {
+			object {
+				x=177
+				y=323
+				width=119
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="------Power------"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=180
+				y=348
+				width=112
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="---Resistance---"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=180
+				y=298
+				width=112
+				height=13
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="--Control mode--"
+			align="horiz. centered"
+		}
+	}
+}
+composite {
+	object {
+		x=12
+		y=433
+		width=445
+		height=22
+	}
+	"composite name"=""
+	children {
+		"related display" {
+			object {
+				x=387
+				y=433
+				width=70
+				height=22
+			}
+			display[0] {
+				name="InstekGPP.adl"
+				args="P=$(P),R=$(R)"
+				policy="replace display"
+			}
+			clr=0
+			bclr=63
+			label="-Less"
+		}
+		"related display" {
+			object {
+				x=308
+				y=433
+				width=70
+				height=22
+			}
+			display[0] {
+				name="InstekGPP_limits.adl"
+				args="P=$(P),R=$(R)"
+			}
+			clr=34
+			bclr=30
+			label="-Limits"
+		}
+		menu {
+			object {
+				x=12
+				y=434
+				width=85
+				height=20
+			}
+			control {
+				chan="$(P)$(R)CH1_Vmeas.SCAN"
+				clr=54
+				bclr=4
+			}
+		}
+		text {
+			object {
+				x=104
+				y=437
+				width=137
+				height=14
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Readback Scan Rate"
+		}
+	}
+}
+composite {
+	object {
+		x=13
+		y=460
+		width=276
+		height=57
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=13
+				y=460
+				width=222
+				height=11
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="For Local:  Set scan rate to Passive,"
+		}
+		text {
+			object {
+				x=13
+				y=493
+				width=270
+				height=11
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="For Remote: Send the power supply any command"
+		}
+		text {
+			object {
+				x=85
+				y=473
+				width=204
+				height=11
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="then press 'Unlock' on front panel"
+		}
+		text {
+			object {
+				x=85
+				y=506
+				width=78
+				height=11
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="such as 'Off'"
+		}
+	}
+}
+composite {
+	object {
+		x=12
+		y=522
+		width=403
+		height=19
+	}
+	"composite name"=""
+	children {
+		rectangle {
+			object {
+				x=117
+				y=522
+				width=298
+				height=18
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+			"dynamic attribute" {
+				chan="$(P)$(R)Error"
+			}
+		}
+		composite {
+			object {
+				x=12
+				y=522
+				width=401
+				height=19
+			}
+			"composite name"=""
+			children {
+				"message button" {
+					object {
+						x=12
+						y=522
+						width=100
+						height=19
+					}
+					control {
+						chan="$(P)$(R)Error.PROC"
+						clr=0
+						bclr=7
+					}
+					label="Error Check:"
+					press_msg="1"
+				}
+				"text update" {
+					object {
+						x=121
+						y=524
+						width=292
+						height=15
+					}
+					monitor {
+						chan="$(P)$(R)Error"
+						clr=30
+						bclr=4
+					}
+					format="string"
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=13
+		y=8
+		width=437
+		height=21
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=13
+				y=8
+				width=100
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Instek GPP"
+		}
+		text {
+			object {
+				x=150
+				y=9
+				width=300
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="$(P)$(R)"
+			align="horiz. centered"
 		}
 	}
 }
