@@ -187,6 +187,7 @@ record(ai, "$(P)$(R)PowerLimit_RBV") {
 
 record(ao, "$(P)$(R)VoltLimit") {
   field(PREC, "3")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@AE_ILS.proto setOVPValue $(PORT)")
   field(FLNK, "$(P)$(R)Get_Limits PP NMS")
@@ -194,6 +195,7 @@ record(ao, "$(P)$(R)VoltLimit") {
 
 record(ao, "$(P)$(R)CurrentLimit") {
   field(PREC, "3")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@AE_ILS.proto setOCPValue $(PORT)")
   field(FLNK, "$(P)$(R)Get_Limits PP NMS")
@@ -201,6 +203,7 @@ record(ao, "$(P)$(R)CurrentLimit") {
 
 record(ao, "$(P)$(R)PowerLimit") {
   field(PREC, "3")
+  field(PINI, "YES")
   field(DTYP, "stream")
   field(OUT, "@AE_ILS.proto setOPPValue $(PORT)")
   field(FLNK, "$(P)$(R)Get_Limits PP NMS")
