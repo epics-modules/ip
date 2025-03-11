@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=918
-		y=90
+		x=757
+		y=140
 		width=855
-		height=700
+		height=920
 	}
 	clr=14
 	bclr=4
@@ -152,7 +152,7 @@ rectangle {
 		x=5
 		y=55
 		width=845
-		height=130
+		height=105
 	}
 	"basic attribute" {
 		clr=14
@@ -163,18 +163,18 @@ text {
 	object {
 		x=10
 		y=135
-		width=180
+		width=110
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Reset error status"
+	textix="Reset error"
 	align="horiz. right"
 }
 text {
 	object {
-		x=290
+		x=220
 		y=135
 		width=160
 		height=20
@@ -187,7 +187,7 @@ text {
 }
 text {
 	object {
-		x=557
+		x=487
 		y=135
 		width=110
 		height=20
@@ -198,48 +198,25 @@ text {
 	textix="Read status"
 	align="horiz. right"
 }
-text {
-	object {
-		x=150
-		y=160
-		width=40
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="More"
-	align="horiz. right"
-}
 "related display" {
 	object {
-		x=195
-		y=160
-		width=80
+		x=700
+		y=135
+		width=110
 		height=20
 	}
 	display[0] {
-		label="Channel 1"
-		name="Rigol_DG4000_ChN.adl"
-		args="P=$(P), R=$(R), CH=Ch1:"
-	}
-	display[1] {
-		label="Channel 2"
-		name="Rigol_DG4000_ChN.adl"
-		args="P=$(P), R=$(R), CH=Ch2:"
-	}
-	display[2] {
 		label="asyn record"
 		name="asynRecord.adl"
 		args="P=$(P), R=$(R)Asyn"
 	}
 	clr=14
 	bclr=51
-	label="More"
+	label="asyn record"
 }
 menu {
 	object {
-		x=455
+		x=385
 		y=135
 		width=83
 		height=18
@@ -252,7 +229,7 @@ menu {
 }
 "message button" {
 	object {
-		x=672
+		x=602
 		y=135
 		width=80
 		height=20
@@ -267,7 +244,7 @@ menu {
 }
 "message button" {
 	object {
-		x=195
+		x=125
 		y=135
 		width=80
 		height=20
@@ -279,300 +256,6 @@ menu {
 	}
 	label="Reset"
 	press_msg="1"
-}
-composite {
-	object {
-		x=5
-		y=505
-		width=520
-		height=135
-	}
-	"composite name"=""
-	children {
-		composite {
-			object {
-				x=10
-				y=513
-				width=513
-				height=122
-			}
-			"composite name"=""
-			children {
-				text {
-					object {
-						x=50
-						y=513
-						width=200
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User waveform 1 size"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=258
-						y=513
-						width=80
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserWf1Size"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=349
-						y=513
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf1Size.DRVL"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=442
-						y=513
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf1Size.DRVH"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=50
-						y=538
-						width=200
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User waveform 2 size"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=258
-						y=538
-						width=80
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserWf2Size"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=349
-						y=538
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf2Size.DRVL"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=442
-						y=538
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf2Size.DRVH"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=51
-						y=563
-						width=200
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User waveform 3 size"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=259
-						y=563
-						width=80
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserWf3Size"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=350
-						y=563
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf3Size.DRVL"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=443
-						y=563
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf3Size.DRVH"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				text {
-					object {
-						x=50
-						y=588
-						width=200
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="User waveform 4 size"
-					align="horiz. right"
-				}
-				"text entry" {
-					object {
-						x=258
-						y=588
-						width=80
-						height=20
-					}
-					control {
-						chan="$(P)$(R)UserWf4Size"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=349
-						y=588
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf4Size.DRVL"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"text update" {
-					object {
-						x=442
-						y=588
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)UserWf4Size.DRVH"
-						clr=14
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"message button" {
-					object {
-						x=257
-						y=613
-						width=82
-						height=22
-					}
-					control {
-						chan="$(P)$(R)ClearWaveforms.PROC"
-						clr=14
-						bclr=51
-					}
-					label="Clear"
-					press_msg="1"
-				}
-				text {
-					object {
-						x=10
-						y=613
-						width=240
-						height=20
-					}
-					"basic attribute" {
-						clr=14
-					}
-					textix="Clear all user waveforms"
-					align="horiz. right"
-				}
-			}
-		}
-		rectangle {
-			object {
-				x=5
-				y=505
-				width=520
-				height=135
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
-	}
 }
 "text update" {
 	object {
@@ -631,4 +314,50 @@ text {
 	format="string"
 	limits {
 	}
+}
+composite {
+	object {
+		x=5
+		y=195
+		width=420
+		height=720
+	}
+	"composite name"=""
+	"composite file"="Rigol_DG4000_ChN.adl;P=$(P),R=$(R),CH=Ch1:"
+}
+text {
+	object {
+		x=161
+		y=165
+		width=108
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Channel 1"
+	align="horiz. centered"
+}
+text {
+	object {
+		x=586
+		y=165
+		width=108
+		height=25
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Channel 2"
+	align="horiz. centered"
+}
+composite {
+	object {
+		x=430
+		y=195
+		width=420
+		height=720
+	}
+	"composite name"=""
+	"composite file"="Rigol_DG4000_ChN.adl;P=$(P),R=$(R),CH=Ch2:"
 }
