@@ -81,7 +81,7 @@ record(mbbi,"$(P)$(R)Ch$(N):Shape_RBV") {
     field(FRVL, "4")
     field(FRST, "NOISE")
     field(FVVL, "5")
-    field(FVST, "DC")
+    field(FVST, "USER")
     field(SXVL, "6")
     field(SXST, "HARMONIC")
     field(SVVL, "7")
@@ -112,35 +112,35 @@ record(ao,"$(P)$(R)Ch$(N):PulseDelay") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):PULS:DEL) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):PulseDelay_RBV.PROC")
 }
 
 record(ai,"$(P)$(R)Ch$(N):PulseDelay_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):PULS:DEL) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):PulseWidth") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):PULS:WIDT) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):PulseWidth_RBV.PROC")
 }
 
 record(ai,"$(P)$(R)Ch$(N):PulseWidth_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):PULS:WIDT) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):PulseRise") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):PULS:TRAN:LEAD) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):PulseRise_RBV.PROC")
 }
 
@@ -154,14 +154,14 @@ record(ao,"$(P)$(R)Ch$(N):PulseFall") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):PULS:TRAN:TRA) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):PulseFall_RBV.PROC")
 }
 
 record(ai,"$(P)$(R)Ch$(N):PulseFall_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):PULS:TRAN:TRA) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):RampSymmetry") {
@@ -184,55 +184,6 @@ record(ai,"$(P)$(R)Ch$(N):RampSymmetry_RBV") {
     field(PREC, "1")
 }
 
-record(ao,"$(P)$(R)Ch$(N):DCAmplitude") {
-#    field(PINI, "YES")
-    field(DTYP, "stream")
-    field(OUT,  "@Rigol_DG4000.proto setInt(:SOUR$(N):DC) $(PORT) $(ADDR)")
-    field(DRVL, "0.")
-    field(DRVH, "100.")
-    field(LOPR, "0.")
-    field(HOPR, "100.")
-    field(PREC, "0")
-    field(VAL,  "100.")
-    field(FLNK, "$(P)$(R)Ch$(N):DCAmplitude_RBV.PROC")
-}
-
-record(ai,"$(P)$(R)Ch$(N):DCAmplitude_RBV") {
-    field(DTYP, "stream")
-    field(INP,  "@Rigol_DG4000.proto getInt(:SOUR$(N):DC) $(PORT) $(ADDR)")
-    field(LOPR, "0.")
-    field(HOPR, "100.")
-    field(PREC, "0")
-}
-
-record(mbbo,"$(P)$(R)Ch$(N):TraceSelect") {
-#    field(PINI, "YES")
-    field(DTYP, "stream")
-    field(OUT,  "@Rigol_DG4000.proto setInt(:TRAC:SEL) $(PORT) $(ADDR)")
-    field(ZRVL, "1")
-    field(ZRST, "1")
-    field(ONVL, "2")
-    field(ONST, "2")
-    field(TWVL, "3")
-    field(TWST, "3")
-    field(THVL, "4")
-    field(THST, "4")
-    field(FLNK, "$(P)$(R)Ch$(N):TraceSelect_RBV.PROC")
-}
-
-record(mbbi,"$(P)$(R)Ch$(N):TraceSelect_RBV") {
-    field(DTYP, "stream")
-    field(INP,  "@Rigol_DG4000.proto getInt(:TRAC:SEL) $(PORT) $(ADDR)")
-    field(ZRVL, "1")
-    field(ZRST, "1")
-    field(ONVL, "2")
-    field(ONST, "2")
-    field(TWVL, "3")
-    field(TWST, "3")
-    field(THVL, "4")
-    field(THST, "4")
-}
-
 record(ao,"$(P)$(R)Ch$(N):Frequency") {
     field(PINI, "YES")
     field(DTYP, "stream")
@@ -241,7 +192,7 @@ record(ao,"$(P)$(R)Ch$(N):Frequency") {
     field(DRVH, "160.e6")
     field(LOPR, "1.e-6")
     field(HOPR, "160.e6")
-    field(PREC, "3")
+    field(PREC, "$(PREC=4)")
     field(VAL,  "1.e6")
     field(FLNK, "$(P)$(R)Ch$(N):Frequency_RBV.PROC")
 }
@@ -251,7 +202,7 @@ record(ai,"$(P)$(R)Ch$(N):Frequency_RBV") {
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):FREQ:FIX) $(PORT) $(ADDR)")
     field(LOPR, "1.e-6")
     field(HOPR, "160.e6")
-    field(PREC, "3")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):Amplitude") {
@@ -262,7 +213,7 @@ record(ao,"$(P)$(R)Ch$(N):Amplitude") {
     field(DRVH, "9.99")
     field(LOPR, "0.01")
     field(HOPR, "9.99")
-    field(PREC, "2")
+    field(PREC, "$(PREC=4)")
     field(VAL,  "5.0")
     field(FLNK, "$(P)$(R)Ch$(N):Amplitude_RBV.PROC")
 }
@@ -272,7 +223,7 @@ record(ai,"$(P)$(R)Ch$(N):Amplitude_RBV") {
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):VOLT:LEV:IMM:AMPL) $(PORT) $(ADDR)")
     field(LOPR, "0.01")
     field(HOPR, "9.99")
-    field(PREC, "2")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):Phase") {
@@ -283,7 +234,7 @@ record(ao,"$(P)$(R)Ch$(N):Phase") {
     field(DRVH, "360")
     field(LOPR, "0")
     field(HOPR, "360")
-    field(PREC, "3")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):Phase_RBV.PROC")
 }
 
@@ -292,7 +243,7 @@ record(ai,"$(P)$(R)Ch$(N):Phase_RBV") {
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):PHAS) $(PORT) $(ADDR)")
     field(LOPR, "0")
     field(HOPR, "360")
-    field(PREC, "3")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):Offset") {
@@ -303,7 +254,7 @@ record(ao,"$(P)$(R)Ch$(N):Offset") {
     field(DRVH, "4.50")
     field(LOPR, "-4.50")
     field(HOPR, "4.50")
-    field(PREC, "2")
+    field(PREC, "$(PREC=4)")
     field(VAL,  "0.0")
     field(FLNK, "$(P)$(R)Ch$(N):Offset_RBV.PROC")
 }
@@ -393,14 +344,14 @@ record(ao,"$(P)$(R)Ch$(N):BurstPeriod") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):BURS:INT:PER) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):BurstPeriod_RBV.PROC")
 }
 
 record(ai,"$(P)$(R)Ch$(N):BurstPeriod_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):BURS:INT:PER) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
 }
 
 record(ao,"$(P)$(R)Ch$(N):BurstPhase") {
@@ -427,14 +378,14 @@ record(ao,"$(P)$(R)Ch$(N):BurstDelay") {
     field(PINI, "YES")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DG4000.proto setFloat(:SOUR$(N):BURS:TDEL) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
     field(FLNK, "$(P)$(R)Ch$(N):BurstPhase_RBV.PROC")
 }
 
 record(ai,"$(P)$(R)Ch$(N):BurstDelay_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Rigol_DG4000.proto getFloat(:SOUR$(N):BURS:TDEL) $(PORT) $(ADDR)")
-    field(PREC, "6")
+    field(PREC, "$(PREC=4)")
 }
 
 record(bo,"$(P)$(R)Ch$(N):BurstOnce") {
@@ -531,4 +482,20 @@ record(mbbi,"$(P)$(R)Ch$(N):BurstGatePolarity_RBV") {
     field(ZRST, "NORM")
     field(ONVL, "1")
     field(ONST, "INV")
+}
+
+###
+### User-defined waveforms
+###
+record(waveform,"$(P)$(R)Ch$(N):UserWF") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DG4000.proto setWaveform$(N) $(PORT) $(ADDR)")
+    field(FTVL, "DOUBLE")
+    field(NELM, "$(NELM)")
+    field(FLNK, "$(P)$(R)Ch$(N):SetUserMode")
+}
+
+record(stringout,"$(P)$(R)Ch$(N):SetUserMode") {
+    field(OUT,  "$(P)$(R)Ch$(N):Shape PP")
+    field(VAL,  "USER")
 }

@@ -6,12 +6,11 @@
 # Mark Rivers
 # March 8, 2025
 
-# Some commands can take a long time to reply
-ReplyTimeout = 3000;
-WriteTimeout = 3000;
+ReplyTimeout = 1000;
+WriteTimeout = 1000;
 # Many records have PINI=YES, so there can be many operations in the queue
-# Need at least 15 seconds LockTimeout to prevent queue timeout
-LockTimeout = 30000;
+# Set 3 seconds LockTimeout to prevent queue timeout
+LockTimeout = 3000;
 
 getLongString {
    out "\$1?";
@@ -50,13 +49,14 @@ setNone {
    out "\$1";
 }
 
-setWaveform {
-   out ":TRAC:DATA #0%.2r\n";
-   WriteTimeout = 10000;
+setWaveform1 {
+   separator=",";
+   out ":OUTP1:STAT ON";
+   out ":TRAC:DATA VOLATILE, (%f)";
 }
 
-setUserWfSize {
-   out ":TRAC:DEL \$1";
-   out ":TRAC:DEF \$1,%d";
-   WriteTimeout = 5000;
+setWaveform2 {
+   separator=",";
+   out ":OUTP2:STAT ON";
+   out ":TRAC:DATA VOLATILE, (%f)";
 }
