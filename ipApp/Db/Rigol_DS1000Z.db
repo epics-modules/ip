@@ -1,0 +1,364 @@
+# Rigol_DS1000Z.db
+
+# Mark Rivers
+# March 11, 2025
+
+# Database file for Rigol DS1000 series oscilloscopes
+# This file contains the global records for the oscilloscope, not the channel-specific records.
+#
+# This support uses StreamDevice.
+# It supports a limited number of features of the device.  
+
+# Macro parameters required when loading this database:
+#  P = Record name prefix
+#  R = Base record name
+#  PORT = Name of asyn port for the VXI-11 driver for the device
+#
+
+
+###
+### Model
+###
+record(waveform,"$(P)$(R)Model_RBV") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getLongString(*IDN) $(PORT)")
+    field(FTVL, "CHAR")
+    field(NELM, 256)
+}
+
+###
+### Status control
+###
+record(bo,"$(P)$(R)ReadStatusScan") {
+    field(SCAN, "Passive")
+    field(FLNK, "$(P)$(R)ReadStatus.PROC")
+}
+
+record(bo,"$(P)$(R)ReadStatus") {
+    field(PINI, "YES")
+    field(FLNK, "$(P)$(R)Error_RBV.PROC")
+}
+
+record(waveform,"$(P)$(R)Error_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getLongString(:SYST:ERR) $(PORT)")
+    field(FTVL, "CHAR")
+    field(NELM, 256)
+}
+
+record(bo,"$(P)$(R)ClearStatus") {
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setNone(*CLS) $(PORT)")
+}
+
+###
+### Trigger control
+###
+record(mbbo,"$(P)$(R)TrigMode") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TRIG:MODE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "EDGE")
+    field(ONVL, "1")
+    field(ONST, "PULS")
+    field(TWVL, "2")
+    field(TWST, "RUNT")
+    field(THVL, "3")
+    field(THST, "WIND")
+    field(FRVL, "4")
+    field(FRST, "NEDG")
+    field(FVVL, "5")
+    field(FVST, "SLOP")
+    field(SXVL, "6")
+    field(SXST, "VID")
+    field(SVVL, "7")
+    field(SVST, "PATT")
+    field(EIVL, "8")
+    field(EIST, "DEL")
+    field(NIVL, "9")
+    field(NIST, "TIM")
+    field(TEVL, "10")
+    field(TEST, "DUR")
+    field(ELVL, "11")
+    field(ELST, "SHOL")
+    field(TVVL, "12")
+    field(TVST, "RS232")
+    field(TTVL, "13")
+    field(TTST, "IIC")
+    field(FTVL, "14")
+    field(FTST, "SPI")
+    field(FLNK, "$(P)$(R)TrigMode_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigMode_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TRIG:MODE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "EDGE")
+    field(ONVL, "1")
+    field(ONST, "PULS")
+    field(TWVL, "2")
+    field(TWST, "RUNT")
+    field(THVL, "3")
+    field(THST, "WIND")
+    field(FRVL, "4")
+    field(FRST, "NEDG")
+    field(FVVL, "5")
+    field(FVST, "SLOP")
+    field(SXVL, "6")
+    field(SXST, "VID")
+    field(SVVL, "7")
+    field(SVST, "PATT")
+    field(EIVL, "8")
+    field(EIST, "DEL")
+    field(NIVL, "9")
+    field(NIST, "TIM")
+    field(TEVL, "10")
+    field(TEST, "DUR")
+    field(ELVL, "11")
+    field(ELST, "SHOL")
+    field(TVVL, "12")
+    field(TVST, "RS232")
+    field(TTVL, "13")
+    field(TTST, "IIC")
+    field(FTVL, "14")
+    field(FTST, "SPI")
+}
+
+record(mbbo,"$(P)$(R)TrigSource") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TRIG:EDGE:SOUR) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "CHAN1")
+    field(ONVL, "1")
+    field(ONST, "CHAN2")
+    field(TWVL, "2")
+    field(TWST, "CHAN3")
+    field(THVL, "3")
+    field(THST, "CHAN4")
+    field(FRVL, "4")
+    field(FRST, "AC")
+    field(FVVL, "5")
+    field(FVST, "DO")
+    field(SXVL, "6")
+    field(SXST, "D1")
+    field(SVVL, "7")
+    field(SVST, "D2")
+    field(EIVL, "8")
+    field(EIST, "D3")
+    field(NIVL, "9")
+    field(NIST, "D4")
+    field(TEVL, "10")
+    field(TEST, "D5")
+    field(ELVL, "11")
+    field(ELST, "D6")
+    field(TVVL, "12")
+    field(TVST, "D7")
+    field(TTVL, "13")
+    field(TTST, "D8")
+    field(FTVL, "14")
+    field(FTST, "D9")
+    field(FFVL, "15")
+    field(FFST, "D10")
+    field(FLNK, "$(P)$(R)TrigSource_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigSource_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TRIG:EDGE:SOUR) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "CHAN1")
+    field(ONVL, "1")
+    field(ONST, "CHAN2")
+    field(TWVL, "2")
+    field(TWST, "CHAN3")
+    field(THVL, "3")
+    field(THST, "CHAN4")
+    field(FRVL, "4")
+    field(FRST, "AC")
+    field(FVVL, "5")
+    field(FVST, "DO")
+    field(SXVL, "6")
+    field(SXST, "D1")
+    field(SVVL, "7")
+    field(SVST, "D2")
+    field(EIVL, "8")
+    field(EIST, "D3")
+    field(NIVL, "9")
+    field(NIST, "D4")
+    field(TEVL, "10")
+    field(TEST, "D5")
+    field(ELVL, "11")
+    field(ELST, "D6")
+    field(TVVL, "12")
+    field(TVST, "D7")
+    field(TTVL, "13")
+    field(TTST, "D8")
+    field(FTVL, "14")
+    field(FTST, "D9")
+    field(FFVL, "15")
+    field(FFST, "D10")
+}
+
+record(mbbo,"$(P)$(R)TrigSweep") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TRIG:SWE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "AUTO")
+    field(ONVL, "1")
+    field(ONST, "NORM")
+    field(TWVL, "2")
+    field(TWST, "SING")
+    field(FLNK, "$(P)$(R)TrigSweep_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigSweep_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TRIG:SWE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "AUTO")
+    field(ONVL, "1")
+    field(ONST, "NORM")
+    field(TWVL, "2")
+    field(TWST, "SING")
+}
+
+record(mbbo,"$(P)$(R)TrigSlope") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TRIG:EDGE:SLOP) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "POS")
+    field(ONVL, "1")
+    field(ONST, "NEG")
+    field(TWVL, "2")
+    field(TWST, "RFAL")
+    field(FLNK, "$(P)$(R)TrigSlope_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigSlope_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TRIG:EDGE:SLOP) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "POS")
+    field(ONVL, "1")
+    field(ONST, "NEG")
+    field(TWVL, "2")
+    field(TWST, "RFAL")
+}
+
+record(ao,"$(P)$(R)TrigLevel") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setFloat(:TRIG:EDGE:LEV) $(PORT)")
+    field(PREC, "$(PREC=4)")
+    field(FLNK, "$(P)$(R)TrigLevel_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)TrigLevel_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getFloat(:TRIG:EDGE:LEV) $(PORT)")
+    field(PREC, "$(PREC=4)")
+}
+
+record(ao,"$(P)$(R)TrigHoldoff") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setFloat(:TRIG:HOLD) $(PORT)")
+    field(PREC, "$(PREC=4)")
+    field(FLNK, "$(P)$(R)TrigHoldoff_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)TrigHoldoff_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getFloat(:TRIG:HOLD) $(PORT)")
+    field(PREC, "$(PREC=4)")
+}
+
+record(mbbo,"$(P)$(R)TrigNoiseReject") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TRIG:NREJ) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+    field(FLNK, "$(P)$(R)TrigNoiseReject_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigNoiseReject_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getInt(:TRIG:NREJ) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "OFF")
+    field(ONVL, "1")
+    field(ONST, "ON")
+}
+
+###
+### Trigger control
+###
+record(mbbo,"$(P)$(R)TimeMode") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setString(:TIM:MODE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "MAIN")
+    field(ONVL, "1")
+    field(ONST, "XY")
+    field(TWVL, "2")
+    field(TWST, "ROLL")
+    field(FLNK, "$(P)$(R)TimeMode_RBV.PROC")
+}
+
+record(mbbi,"$(P)$(R)TimeMode_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TIM:MODE) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "MAIN")
+    field(ONVL, "1")
+    field(ONST, "XY")
+    field(TWVL, "2")
+    field(TWST, "ROLL")
+}
+
+record(ao,"$(P)$(R)TimeScale") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setFloat(:TIM:SCAL) $(PORT)")
+    field(PREC, "$(PREC=4)")
+    field(FLNK, "$(P)$(R)TimeScale_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)TimeScale_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getFloat(:TIM:SCAL) $(PORT)")
+    field(PREC, "$(PREC=4)")
+}
+
+record(ao,"$(P)$(R)TimeOffset") {
+    field(PINI, "YES")
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setFloat(:TIM:OFFS) $(PORT)")
+    field(PREC, "$(PREC=4)")
+    field(FLNK, "$(P)$(R)TimeOffset_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)TimeOffset_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getFloat(:TIM:OFFS) $(PORT)")
+    field(PREC, "$(PREC=4)")
+}
+
+
+###
+### Asyn record
+###
+record(asyn,"$(P)$(R)Asyn") {
+    field(PORT, "$(PORT)")
+}
+
