@@ -1,0 +1,1216 @@
+
+file {
+	name="/home/epics/support/ip/ipApp/op/adl/Rigol_DG4000_ChN.adl"
+	version=030117
+}
+display {
+	object {
+		x=58
+		y=144
+		width=430
+		height=730
+	}
+	clr=14
+	bclr=4
+	cmap=""
+	gridSpacing=5
+	gridOn=0
+	snapToGrid=0
+}
+"color map" {
+	ncolors=65
+	colors {
+		ffffff,
+		ececec,
+		dadada,
+		c8c8c8,
+		bbbbbb,
+		aeaeae,
+		9e9e9e,
+		919191,
+		858585,
+		787878,
+		696969,
+		5a5a5a,
+		464646,
+		2d2d2d,
+		000000,
+		00d800,
+		1ebb00,
+		339900,
+		2d7f00,
+		216c00,
+		fd0000,
+		de1309,
+		be190b,
+		a01207,
+		820400,
+		5893ff,
+		597ee1,
+		4b6ec7,
+		3a5eab,
+		27548d,
+		fbf34a,
+		f9da3c,
+		eeb62b,
+		e19015,
+		cd6100,
+		ffb0ff,
+		d67fe2,
+		ae4ebc,
+		8b1a96,
+		610a75,
+		a4aaff,
+		8793e2,
+		6a73c1,
+		4d52a4,
+		343386,
+		c7bb6d,
+		b79d5c,
+		a47e3c,
+		7d5627,
+		58340f,
+		99ffff,
+		73dfff,
+		4ea5f9,
+		2a63e4,
+		0a00b8,
+		ebf1b5,
+		d4db9d,
+		bbc187,
+		a6a462,
+		8b8239,
+		73ff6b,
+		52da3b,
+		3cb420,
+		289315,
+		1a7309,
+	}
+}
+composite {
+	object {
+		x=5
+		y=5
+		width=420
+		height=55
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=210
+				y=10
+				width=60
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Output"
+			align="horiz. centered"
+		}
+		text {
+			object {
+				x=70
+				y=35
+				width=120
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Output state"
+			align="horiz. right"
+		}
+		menu {
+			object {
+				x=195
+				y=35
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)$(CH)OutputState"
+				clr=14
+				bclr=51
+			}
+		}
+		"text update" {
+			object {
+				x=280
+				y=35
+				width=120
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)$(CH)OutputState_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		rectangle {
+			object {
+				x=5
+				y=5
+				width=420
+				height=55
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
+	}
+}
+composite {
+	object {
+		x=5
+		y=65
+		width=420
+		height=660
+	}
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=5
+				y=65
+				width=420
+				height=340
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=210
+						y=70
+						width=60
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Source"
+					align="horiz. centered"
+				}
+				rectangle {
+					object {
+						x=5
+						y=65
+						width=420
+						height=155
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+					}
+				}
+				text {
+					object {
+						x=140
+						y=95
+						width=50
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Shape"
+					align="horiz. right"
+				}
+				text {
+					object {
+						x=50
+						y=120
+						width=140
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Frequency (Hz)"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=95
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)Shape"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=95
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)Shape_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=120
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)Frequency_RBV"
+						clr=53
+						bclr=4
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=195
+						y=120
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)Frequency"
+						clr=14
+						bclr=51
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=60
+						y=143
+						width=130
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Amplitude (V)"
+					align="horiz. right"
+				}
+				"text update" {
+					object {
+						x=280
+						y=143
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)Amplitude_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=195
+						y=143
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)Amplitude"
+						clr=14
+						bclr=51
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=80
+						y=168
+						width=110
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Phase (deg)"
+					align="horiz. right"
+				}
+				"text update" {
+					object {
+						x=280
+						y=168
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)Phase_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=195
+						y=168
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)Phase"
+						clr=14
+						bclr=51
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=90
+						y=193
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Offset (V)"
+					align="horiz. right"
+				}
+				"text update" {
+					object {
+						x=280
+						y=193
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)Offset_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				"text entry" {
+					object {
+						x=195
+						y=193
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)Offset"
+						clr=14
+						bclr=51
+					}
+					limits {
+					}
+				}
+				composite {
+					object {
+						x=5
+						y=225
+						width=420
+						height=180
+					}
+					"composite name"=""
+					children {
+						rectangle {
+							object {
+								x=5
+								y=225
+								width=420
+								height=180
+							}
+							"basic attribute" {
+								clr=14
+								fill="outline"
+							}
+						}
+						text {
+							object {
+								x=123
+								y=230
+								width=190
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Waveform parameters"
+							align="horiz. centered"
+						}
+						text {
+							object {
+								x=45
+								y=255
+								width=150
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Square duty (%)"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=255
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)SquDuty"
+								clr=14
+								bclr=51
+							}
+							limits {
+							}
+						}
+						text {
+							object {
+								x=85
+								y=280
+								width=110
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Pulse delay"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=280
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)PulseDelay"
+								clr=14
+								bclr=51
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=85
+								y=305
+								width=110
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Pulse width"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=305
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)PulseWidth"
+								clr=14
+								bclr=51
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=95
+								y=330
+								width=100
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Pulse rise"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=330
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)PulseRise"
+								clr=14
+								bclr=51
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=95
+								y=355
+								width=100
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Pulse fall"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=355
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)PulseFall"
+								clr=14
+								bclr=51
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						text {
+							object {
+								x=25
+								y=380
+								width=170
+								height=20
+							}
+							"basic attribute" {
+								clr=14
+							}
+							textix="Ramp symmetry (%)"
+							align="horiz. right"
+						}
+						"text entry" {
+							object {
+								x=200
+								y=380
+								width=80
+								height=20
+							}
+							control {
+								chan="$(P)$(R)$(CH)RampSymmetry"
+								clr=14
+								bclr=51
+							}
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=255
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)SquDuty_RBV"
+								clr=53
+								bclr=4
+							}
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=280
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)PulseDelay_RBV"
+								clr=53
+								bclr=4
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=305
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)PulseWidth_RBV"
+								clr=53
+								bclr=4
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=330
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)PulseRise_RBV"
+								clr=53
+								bclr=4
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=355
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)PulseFall_RBV"
+								clr=53
+								bclr=4
+							}
+							format="exponential"
+							limits {
+							}
+						}
+						"text update" {
+							object {
+								x=285
+								y=380
+								width=120
+								height=20
+							}
+							monitor {
+								chan="$(P)$(R)$(CH)RampSymmetry_RBV"
+								clr=53
+								bclr=4
+							}
+							limits {
+							}
+						}
+					}
+				}
+			}
+		}
+		composite {
+			object {
+				x=5
+				y=410
+				width=420
+				height=315
+			}
+			"composite name"=""
+			children {
+				text {
+					object {
+						x=215
+						y=415
+						width=50
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=70
+						y=440
+						width=120
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst cycles"
+					align="horiz. right"
+				}
+				"text entry" {
+					object {
+						x=195
+						y=440
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstCycles"
+						clr=14
+						bclr=51
+					}
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=440
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstCycles_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				rectangle {
+					object {
+						x=5
+						y=410
+						width=420
+						height=315
+					}
+					"basic attribute" {
+						clr=14
+						fill="outline"
+					}
+				}
+				text {
+					object {
+						x=90
+						y=465
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst mode"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=465
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstMode"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=465
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstMode_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=80
+						y=565
+						width=110
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst state"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=565
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstState"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=565
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstState_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=90
+						y=590
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst once"
+					align="horiz. right"
+				}
+				"message button" {
+					object {
+						x=196
+						y=590
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstOnce.PROC"
+						clr=14
+						bclr=51
+					}
+					label="Burst"
+					press_msg="1"
+				}
+				text {
+					object {
+						x=10
+						y=615
+						width=180
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst trig. source"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=615
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstTrigSource"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=615
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstTrigSource_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=20
+						y=640
+						width=170
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst trig. slope"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=640
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstTrigSlope"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=640
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstTrigSlope_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=40
+						y=665
+						width=150
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst trig. out"
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=665
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstTrigOut"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=665
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstTrigOut_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=70
+						y=490
+						width=120
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst period"
+					align="horiz. right"
+				}
+				"text entry" {
+					object {
+						x=195
+						y=490
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstPeriod"
+						clr=14
+						bclr=51
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=490
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstPeriod_RBV"
+						clr=53
+						bclr=4
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=80
+						y=515
+						width=110
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst delay"
+					align="horiz. right"
+				}
+				"text entry" {
+					object {
+						x=195
+						y=515
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstDelay"
+						clr=14
+						bclr=51
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=515
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstDelay_RBV"
+						clr=53
+						bclr=4
+					}
+					format="exponential"
+					limits {
+					}
+				}
+				text {
+					object {
+						x=20
+						y=540
+						width=170
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst phase (deg)"
+					align="horiz. right"
+				}
+				"text entry" {
+					object {
+						x=195
+						y=540
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstPhase"
+						clr=14
+						bclr=51
+					}
+					limits {
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=540
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstPhase_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+				text {
+					object {
+						x=40
+						y=690
+						width=150
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Burst gate pol."
+					align="horiz. right"
+				}
+				menu {
+					object {
+						x=196
+						y=690
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)$(CH)BurstGatePolarity"
+						clr=14
+						bclr=51
+					}
+				}
+				"text update" {
+					object {
+						x=280
+						y=690
+						width=120
+						height=20
+					}
+					monitor {
+						chan="$(P)$(R)$(CH)BurstGatePolarity_RBV"
+						clr=53
+						bclr=4
+					}
+					limits {
+					}
+				}
+			}
+		}
+	}
+}
