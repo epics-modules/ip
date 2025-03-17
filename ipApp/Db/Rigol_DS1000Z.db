@@ -31,12 +31,7 @@ record(waveform,"$(P)$(R)Model_RBV") {
 ### Status control
 ###
 record(bo,"$(P)$(R)ReadStatusScan") {
-    field(SCAN, "Passive")
-    field(FLNK, "$(P)$(R)ReadStatus.PROC")
-}
-
-record(bo,"$(P)$(R)ReadStatus") {
-    field(PINI, "YES")
+    field(SCAN, "1 second")
     field(FLNK, "$(P)$(R)Error_RBV.PROC")
 }
 
@@ -45,11 +40,53 @@ record(waveform,"$(P)$(R)Error_RBV") {
     field(INP,  "@Rigol_DS1000Z.proto getLongString(:SYST:ERR) $(PORT)")
     field(FTVL, "CHAR")
     field(NELM, 256)
+    field(FLNK, "$(P)$(R)TrigStatus.PROC")
+}
+
+record(mbbi,"$(P)$(R)TrigStatus") {
+    field(DTYP, "stream")
+    field(INP,  "@Rigol_DS1000Z.proto getString(:TRIG:STAT) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "TD")
+    field(ONVL, "1")
+    field(ONST, "WAIT")
+    field(TWVL, "2")
+    field(TWST, "RUN")
+    field(THVL, "3")
+    field(THST, "AUTO")
+    field(FRVL, "4")
+    field(FRST, "STOP")
+}
+
+record(fanout, "$(P)$(R)ReadTraces") {
+    field(LNK1,"$(P)$(R)Ch1:RawData.PROC  PP MS")
+    field(LNK2,"$(P)$(R)Ch2:RawData.PROC  PP MS")
+    field(LNK3,"$(P)$(R)Ch3:RawData.PROC  PP MS")
+    field(LNK4,"$(P)$(R)Ch4:RawData.PROC  PP MS")
+    field(SCAN, "1 second")
 }
 
 record(bo,"$(P)$(R)ClearStatus") {
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DS1000Z.proto setNone(*CLS) $(PORT)")
+}
+
+###
+### Run/Stop control
+###
+record(bo,"$(P)$(R)Run") {
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setNone(:RUN) $(PORT)")
+}
+
+record(bo,"$(P)$(R)Stop") {
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setNone(:STOP) $(PORT)")
+}
+
+record(bo,"$(P)$(R)ForceTrigger") {
+    field(DTYP, "stream")
+    field(OUT,  "@Rigol_DS1000Z.proto setNone(:TFOR) $(PORT)")
 }
 
 ###
@@ -253,6 +290,7 @@ record(mbbi,"$(P)$(R)TrigSlope_RBV") {
 
 record(ao,"$(P)$(R)TrigLevel") {
     field(PINI, "YES")
+    field(PHAS, "2")
     field(DTYP, "stream")
     field(OUT,  "@Rigol_DS1000Z.proto setFloat(:TRIG:EDGE:LEV) $(PORT)")
     field(PREC, "$(PREC=4)")
@@ -354,11 +392,19 @@ record(ai,"$(P)$(R)TimeOffset_RBV") {
     field(PREC, "$(PREC=4)")
 }
 
+record(acalcout, "$(P)$(R)TimeAxis") {
+    field(INPA, "$(P)$(R)TimeScale_RBV CP")
+    field(INPB, "$(P)$(R)TimeOffset_RBV CP")
+    field(CALC, "IX*A/100-B")
+    field(NELM, "$(NELM)")
+}
+
 
 ###
 ### Asyn record
 ###
 record(asyn,"$(P)$(R)Asyn") {
     field(PORT, "$(PORT)")
+    field(IMAX, "100000")
 }
 

@@ -6,11 +6,11 @@
 # Mark Rivers
 # March 8, 2025
 
-ReplyTimeout = 1000;
+ReplyTimeout = 2000;
 WriteTimeout = 1000;
 # Many records have PINI=YES, so there can be many operations in the queue
 # Set 3 seconds LockTimeout to prevent queue timeout
-LockTimeout = 3000;
+LockTimeout = 10000;
 
 getLongString {
    out "\$1?";
@@ -25,6 +25,7 @@ getString {
 
 setString {
    out "\$1 %s";
+   wait 50;
 }
 
 getInt {
@@ -49,14 +50,11 @@ setNone {
    out "\$1";
 }
 
-setWaveform1 {
-   separator=",";
-   out ":OUTP1:STAT ON";
-   out ":TRAC:DATA VOLATILE, (%f)";
+readWaveform {
+   out ":WAV:FORM BYTE";
+   out ":WAV:MODE NORM";
+   out ":WAV:SOUR \$1";
+   out ":WAV:DATA?";
+   in  "%*11c%.1r";
 }
 
-setWaveform2 {
-   separator=",";
-   out ":OUTP2:STAT ON";
-   out ":TRAC:DATA VOLATILE, (%f)";
-}
