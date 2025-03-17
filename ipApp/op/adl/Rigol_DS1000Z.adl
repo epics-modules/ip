@@ -5,10 +5,10 @@ file {
 }
 display {
 	object {
-		x=844
-		y=144
-		width=855
-		height=400
+		x=382
+		y=179
+		width=955
+		height=950
 	}
 	clr=14
 	bclr=4
@@ -91,43 +91,97 @@ rectangle {
 	object {
 		x=0
 		y=5
-		width=855
+		width=955
 		height=40
 	}
 	"basic attribute" {
 		clr=52
 	}
 }
-text {
+composite {
 	object {
-		x=158
+		x=216
 		y=10
-		width=267
+		width=522
 		height=26
 	}
-	"basic attribute" {
-		clr=14
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=488
+				y=10
+				width=250
+				height=26
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="$(P)$(R)"
+		}
+		text {
+			object {
+				x=216
+				y=10
+				width=267
+				height=26
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Rigol DS1000 Oscilloscope"
+			align="horiz. centered"
+		}
 	}
-	textix="Rigol DS1000 Oscilloscope"
-	align="horiz. centered"
+}
+"cartesian plot" {
+	object {
+		x=5
+		y=540
+		width=945
+		height=400
+	}
+	plotcom {
+		xlabel="Time"
+		ylabel="Volts"
+		clr=0
+		bclr=14
+	}
+	style="line"
+	trace[0] {
+		xdata="$(P)$(R)TimeAxis.AVAL"
+		ydata="$(P)$(R)Ch1:Data.AVAL"
+		data_clr=30
+		yaxis=0
+		yside=0
+	}
+	trace[1] {
+		xdata="$(P)$(R)TimeAxis.AVAL"
+		ydata="$(P)$(R)Ch2:Data.AVAL"
+		data_clr=25
+		yaxis=0
+		yside=0
+	}
+	trace[2] {
+		xdata="$(P)$(R)TimeAxis.AVAL"
+		ydata="$(P)$(R)Ch3:Data.AVAL"
+		data_clr=20
+		yaxis=0
+		yside=0
+	}
+	trace[3] {
+		xdata="$(P)$(R)TimeAxis.AVAL"
+		ydata="$(P)$(R)Ch4:Data.AVAL"
+		data_clr=15
+		yaxis=0
+		yside=0
+	}
 }
 text {
 	object {
-		x=430
-		y=10
-		width=250
-		height=26
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="$(P)$(R)"
-}
-text {
-	object {
-		x=351
-		y=60
-		width=143
+		x=447
+		y=55
+		width=60
 		height=20
 	}
 	"basic attribute" {
@@ -139,119 +193,257 @@ text {
 rectangle {
 	object {
 		x=5
-		y=55
-		width=845
-		height=105
+		y=50
+		width=945
+		height=80
 	}
 	"basic attribute" {
 		clr=14
 		fill="outline"
 	}
 }
-text {
+composite {
 	object {
-		x=10
-		y=135
-		width=110
-		height=20
+		x=5
+		y=270
+		width=470
+		height=130
 	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Reset error"
-	align="horiz. right"
+	"composite name"=""
+	"composite file"="Rigol_DS1000Z_ChN.adl;P=$(P),R=$(R),CH=Ch1:, N=1"
 }
-text {
+composite {
 	object {
-		x=220
-		y=135
-		width=160
-		height=20
+		x=5
+		y=405
+		width=470
+		height=130
 	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Read status rate"
-	align="horiz. right"
+	"composite name"=""
+	"composite file"="Rigol_DS1000Z_ChN.adl;P=$(P),R=$(R),CH=Ch2:,N=2"
 }
-text {
+composite {
 	object {
-		x=487
-		y=135
-		width=110
-		height=20
+		x=480
+		y=405
+		width=470
+		height=130
 	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Read status"
-	align="horiz. right"
+	"composite name"=""
+	"composite file"="Rigol_DS1000Z_ChN.adl;P=$(P),R=$(R),CH=Ch4:,N=4"
 }
-"related display" {
+composite {
 	object {
-		x=700
-		y=135
-		width=110
-		height=20
+		x=480
+		y=270
+		width=470
+		height=130
 	}
-	display[0] {
-		label="asyn record"
-		name="asynRecord.adl"
-		args="P=$(P), R=$(R)Asyn"
-	}
-	clr=14
-	bclr=51
-	label="asyn record"
+	"composite name"=""
+	"composite file"="Rigol_DS1000Z_ChN.adl;P=$(P),R=$(R),CH=Ch3:,N=3"
 }
-menu {
+composite {
 	object {
-		x=385
+		x=5
 		y=135
-		width=83
-		height=18
+		width=130
+		height=130
 	}
-	control {
-		chan="$(P)$(R)ReadStatusScan.SCAN"
-		clr=14
-		bclr=51
+	"composite name"=""
+	children {
+		composite {
+			object {
+				x=10
+				y=140
+				width=120
+				height=120
+			}
+			"composite name"=""
+			children {
+				rectangle {
+					object {
+						x=10
+						y=240
+						width=120
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					"dynamic attribute" {
+						calc="A=0"
+						chan="$(P)$(R)TrigStatus"
+					}
+				}
+				text {
+					object {
+						x=20
+						y=240
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=20
+					}
+					"dynamic attribute" {
+						vis="calc"
+						calc="A==4"
+						chan="$(P)$(R)TrigStatus"
+					}
+					textix="Stop"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=240
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=15
+					}
+					"dynamic attribute" {
+						vis="calc"
+						calc="A==0"
+						chan="$(P)$(R)TrigStatus"
+					}
+					textix="Triggered"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=20
+						y=240
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=30
+					}
+					"dynamic attribute" {
+						vis="calc"
+						calc="A==1"
+						chan="$(P)$(R)TrigStatus"
+					}
+					textix="Wait"
+					align="horiz. centered"
+				}
+				"message button" {
+					object {
+						x=30
+						y=165
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)Run"
+						clr=14
+						bclr=15
+					}
+					label="Run"
+					press_msg="1"
+				}
+				"message button" {
+					object {
+						x=30
+						y=190
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)Stop"
+						clr=14
+						bclr=20
+					}
+					label="Stop"
+					press_msg="1"
+				}
+				"message button" {
+					object {
+						x=30
+						y=215
+						width=80
+						height=20
+					}
+					control {
+						chan="$(P)$(R)ForceTrigger"
+						clr=14
+						bclr=30
+					}
+					label="Trigger"
+					press_msg="1"
+				}
+				text {
+					object {
+						x=20
+						y=240
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=15
+					}
+					"dynamic attribute" {
+						vis="calc"
+						calc="A==2"
+						chan="$(P)$(R)TrigStatus"
+					}
+					textix="Run"
+				}
+				text {
+					object {
+						x=20
+						y=240
+						width=100
+						height=20
+					}
+					"basic attribute" {
+						clr=30
+					}
+					"dynamic attribute" {
+						vis="calc"
+						calc="A==3"
+						chan="$(P)$(R)TrigStatus"
+					}
+					textix="Auto"
+					align="horiz. centered"
+				}
+				text {
+					object {
+						x=35
+						y=140
+						width=70
+						height=20
+					}
+					"basic attribute" {
+						clr=14
+					}
+					textix="Control"
+					align="horiz. centered"
+				}
+			}
+		}
+		rectangle {
+			object {
+				x=5
+				y=135
+				width=130
+				height=130
+			}
+			"basic attribute" {
+				clr=14
+				fill="outline"
+			}
+		}
 	}
-}
-"message button" {
-	object {
-		x=602
-		y=135
-		width=80
-		height=20
-	}
-	control {
-		chan="$(P)$(R)ReadStatus.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Read"
-	press_msg="1"
-}
-"message button" {
-	object {
-		x=125
-		y=135
-		width=80
-		height=20
-	}
-	control {
-		chan="$(P)$(R)ClearStatus.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset"
-	press_msg="1"
 }
 "text update" {
 	object {
-		x=115
-		y=85
-		width=730
-		height=20
+		x=75
+		y=82
+		width=450
+		height=18
 	}
 	monitor {
 		chan="$(P)$(R)Model_RBV"
@@ -262,52 +454,22 @@ menu {
 	limits {
 	}
 }
-text {
+rectangle {
 	object {
-		x=15
-		y=85
-		width=60
-		height=20
+		x=140
+		y=135
+		width=530
+		height=130
 	}
 	"basic attribute" {
 		clr=14
-	}
-	textix="Model"
-	align="horiz. right"
-}
-text {
-	object {
-		x=10
-		y=110
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Last error"
-	align="horiz. right"
-}
-"text update" {
-	object {
-		x=115
-		y=110
-		width=730
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)Error_RBV"
-		clr=53
-		bclr=4
-	}
-	format="string"
-	limits {
+		fill="outline"
 	}
 }
 text {
 	object {
-		x=205
-		y=170
+		x=370
+		y=140
 		width=70
 		height=20
 	}
@@ -317,180 +479,23 @@ text {
 	textix="Trigger"
 	align="horiz. centered"
 }
-rectangle {
-	object {
-		x=5
-		y=165
-		width=420
-		height=210
-	}
-	"basic attribute" {
-		clr=14
-		fill="outline"
-	}
-}
-menu {
-	object {
-		x=196
-		y=220
-		width=80
-		height=20
-	}
-	control {
-		chan="$(P)$(R)TrigSweep"
-		clr=14
-		bclr=51
-	}
-}
 text {
 	object {
-		x=140
-		y=220
-		width=50
+		x=369
+		y=215
+		width=100
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Sweep"
-	align="horiz. right"
-}
-"text update" {
-	object {
-		x=280
-		y=220
-		width=120
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)TrigSweep_RBV"
-		clr=53
-		bclr=4
-	}
-	limits {
-	}
-}
-composite {
-	object {
-		x=150
-		y=195
-		width=250
-		height=20
-	}
-	"composite name"=""
-	children {
-		menu {
-			object {
-				x=196
-				y=195
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TrigMode"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=150
-				y=195
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Mode"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=280
-				y=195
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TrigMode_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-	}
-}
-composite {
-	object {
-		x=131
-		y=245
-		width=270
-		height=20
-	}
-	"composite name"=""
-	children {
-		menu {
-			object {
-				x=197
-				y=245
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TrigSource"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=131
-				y=245
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Source"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=281
-				y=245
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TrigSource_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-	}
-}
-text {
-	object {
-		x=70
-		y=345
-		width=120
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Noise reject"
+	textix="Noise rej."
 	align="horiz. right"
 }
 menu {
 	object {
-		x=196
-		y=345
+		x=475
+		y=215
 		width=80
 		height=20
 	}
@@ -500,120 +505,38 @@ menu {
 		bclr=51
 	}
 }
-"text update" {
-	object {
-		x=280
-		y=345
-		width=120
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)TrigNoiseReject_RBV"
-		clr=53
-		bclr=4
-	}
-	limits {
-	}
-}
-menu {
-	object {
-		x=196
-		y=270
-		width=80
-		height=20
-	}
-	control {
-		chan="$(P)$(R)TrigSlope"
-		clr=14
-		bclr=51
-	}
-}
 text {
 	object {
-		x=140
-		y=270
+		x=419
+		y=165
 		width=50
 		height=20
 	}
 	"basic attribute" {
 		clr=14
 	}
-	textix="Slope"
+	textix="Level"
 	align="horiz. right"
 }
-"text update" {
+"text entry" {
 	object {
-		x=280
-		y=270
-		width=120
+		x=474
+		y=165
+		width=80
 		height=20
 	}
-	monitor {
-		chan="$(P)$(R)TrigSlope_RBV"
-		clr=53
-		bclr=4
+	control {
+		chan="$(P)$(R)TrigLevel"
+		clr=14
+		bclr=51
 	}
 	limits {
 	}
 }
-composite {
-	object {
-		x=140
-		y=295
-		width=260
-		height=20
-	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=140
-				y=295
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Level"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=195
-				y=295
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TrigLevel"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=280
-				y=295
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TrigLevel_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-	}
-}
 text {
 	object {
-		x=120
-		y=320
+		x=399
+		y=190
 		width=70
 		height=20
 	}
@@ -625,8 +548,8 @@ text {
 }
 "text entry" {
 	object {
-		x=195
-		y=320
+		x=474
+		y=190
 		width=80
 		height=20
 	}
@@ -639,11 +562,210 @@ text {
 	limits {
 	}
 }
+menu {
+	object {
+		x=215
+		y=190
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TrigSweep"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=159
+		y=190
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Sweep"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=215
+		y=165
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TrigMode"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=169
+		y=165
+		width=40
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Mode"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=216
+		y=215
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TrigSource"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=150
+		y=215
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Source"
+	align="horiz. right"
+}
 "text update" {
 	object {
-		x=280
-		y=320
-		width=120
+		x=300
+		y=215
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigSource_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+menu {
+	object {
+		x=215
+		y=240
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TrigSlope"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=159
+		y=240
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Slope"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=299
+		y=190
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigSweep_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=299
+		y=165
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigMode_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=299
+		y=240
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigSlope_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=559
+		y=215
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigNoiseReject_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=559
+		y=165
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TrigLevel_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=559
+		y=190
+		width=100
 		height=20
 	}
 	monitor {
@@ -655,170 +777,285 @@ text {
 	limits {
 	}
 }
-composite {
+rectangle {
 	object {
-		x=430
-		y=165
-		width=420
+		x=675
+		y=147
+		width=270
 		height=110
 	}
-	"composite name"=""
-	children {
-		menu {
-			object {
-				x=621
-				y=197
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TimeMode"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=565
-				y=197
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Mode"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=705
-				y=197
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TimeMode_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=565
-				y=222
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Scale"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=620
-				y=222
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TimeScale"
-				clr=14
-				bclr=51
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=705
-				y=222
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TimeScale_RBV"
-				clr=53
-				bclr=4
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=555
-				y=247
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Offset"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=620
-				y=247
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)TimeOffset"
-				clr=14
-				bclr=51
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=705
-				y=247
-				width=120
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)TimeOffset_RBV"
-				clr=53
-				bclr=4
-			}
-			format="exponential"
-			limits {
-			}
-		}
-		text {
-			object {
-				x=618
-				y=170
-				width=80
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Timebase"
-			align="horiz. centered"
-		}
-		rectangle {
-			object {
-				x=430
-				y=165
-				width=420
-				height=110
-			}
-			"basic attribute" {
-				clr=14
-				fill="outline"
-			}
-		}
+	"basic attribute" {
+		clr=14
+		fill="outline"
 	}
+}
+menu {
+	object {
+		x=751
+		y=179
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TimeMode"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=695
+		y=179
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Mode"
+	align="horiz. right"
+}
+text {
+	object {
+		x=695
+		y=204
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Scale"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=750
+		y=204
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TimeScale"
+		clr=14
+		bclr=51
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
+	object {
+		x=685
+		y=229
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Offset"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=750
+		y=229
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)TimeOffset"
+		clr=14
+		bclr=51
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
+	object {
+		x=770
+		y=152
+		width=80
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Timebase"
+	align="horiz. centered"
+}
+"text update" {
+	object {
+		x=835
+		y=179
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TimeMode_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=835
+		y=204
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TimeScale_RBV"
+		clr=53
+		bclr=4
+	}
+	format="exponential"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=835
+		y=229
+		width=100
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)TimeOffset_RBV"
+		clr=53
+		bclr=4
+	}
+	format="exponential"
+	limits {
+	}
+}
+text {
+	object {
+		x=530
+		y=80
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Last error"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=635
+		y=80
+		width=310
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Error_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"related display" {
+	object {
+		x=650
+		y=105
+		width=110
+		height=20
+	}
+	display[0] {
+		label="asyn record"
+		name="asynRecord.adl"
+		args="P=$(P), R=$(R)Asyn"
+	}
+	clr=14
+	bclr=51
+	label="asyn record"
+}
+"message button" {
+	object {
+		x=530
+		y=105
+		width=100
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ClearStatus.PROC"
+		clr=14
+		bclr=51
+	}
+	label="Reset error"
+	press_msg="1"
+}
+menu {
+	object {
+		x=75
+		y=105
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ReadStatusScan.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=10
+		y=105
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=255
+		y=105
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ReadTraces.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=190
+		y=105
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Traces"
+	align="horiz. right"
+}
+text {
+	object {
+		x=22
+		y=80
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Model"
+	align="horiz. right"
 }
