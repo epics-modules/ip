@@ -1,0 +1,14 @@
+# ### Thorlabs_SC10.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+# SC10 responses end with an ">"
+asynOctetSetInputEos( "$(PORT)", -1, "\r>")
+asynOctetSetOutputEos("$(PORT)", -1, "\r")
+
+dbLoadRecords("$(IP)/ipApp/Db/Thorlabs_SC10.db", "P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT)")

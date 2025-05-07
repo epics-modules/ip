@@ -1,0 +1,56 @@
+# ### KeyenceCL3000.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- IP_ADDR        - IP address of the PTC10
+#- IP_PORT        - IP port number (default: 24685)
+#- PORT           - Name of asyn port to be created
+#- ### Module locations shouldn't need to be passed explicitly
+#- IP             - Location of IP module
+#- ASYN           - Location of ASYN module
+#- MINDISP		  - Minimum display format (default "%+08.4f") specific 
+#                   to device 
+#- ###################################################
+
+#####################################################
+#
+# Note about MINDISP -- MINDISP is the format string needed 
+# to express values in terms of the minimum display unit.  
+# This format is how the CL3000 expects the scaling and 
+# offset values be delivered as as well as how it delivers 
+# its measurement value.
+#
+# For the default format %+08.4f, the range is +/-99.9999 mm,
+# so the minimum step is 0.1 um.  Leading zeros are 
+# expected when the value is below 10% of the max (e.g. 
+# +/-09.9999 mm).  
+#
+# If the minimum step is 10 um, the MINDISP format string 
+# would be %+08.2f
+#
+######################################################
+
+
+drvAsynIPPortConfigure("$(PORT)","$(IP_ADDR):$(IP_PORT=24685)", 0, 0, 0)
+
+epicsEnvSet("STREAM_PROTOCOL_PATH","$(STREAM_PROTOCOL_PATH):$(IP)/ipApp/Db")
+
+# Only show errors
+asynSetTraceMask("$(PORT)", 0, 1)
+# Leave ascii selected so debug messages can be turned on with a single click
+asynSetTraceIOMask("$(PORT)", 0, 1)
+
+# Set end-of-string terminators
+asynOctetSetInputEos( "$(PORT)", 0, "\r")
+asynOctetSetOutputEos("$(PORT)", 0, "\r")
+
+# Keyence CL 3000 general commands
+dbLoadRecords("$(IP)/db/KeyenceCL3000_main.db","P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT),ADDR=0")
+
+# Keyence CL 3000 channel commands
+dbLoadRecords("$(IP)/db/KeyenceCL3000_chan.db","P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT),MINDISP=$(MINDISP="%+08.4f"),ADDR=0,CHAN=1")
+
+# Asyn record for troubleshooting
+dbLoadRecords("$(ASYN)/db/asynRecord.db","P=$(PREFIX),R=$(INSTANCE):asyn,PORT=$(PORT),ADDR=0,OMAX=0,IMAX=0")
+

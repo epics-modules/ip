@@ -1,0 +1,41 @@
+record(bo, "$(P)$(S):setMode")
+{
+	field(DESC, "Set mode of device")
+	field(ZNAM, "Measurement")
+	field(ONAM, "Setup")
+}
+
+record(scalcout, "$(P)$(S):calcMode")
+{
+	field(DTYP, "stream")
+	field(INPA, "$(P)$(S):setMode CP")
+	field(AA, "R0")
+	field(BB, "Q0")
+	field(DTYP, "stream")
+	field(CALC, "A=0?AA:BB")
+	field(OUT,  "@KeyenceCL3000.proto setMode($(P)$(S)) $(PORT)")
+	field(FLNK, "$(P)$(S):mode_RBV")
+}
+
+record(stringin, "$(P)$(S):mode_RBV")
+{
+  field(DESC, "Mode of device")
+}
+
+record(bo, "$(P)$(S):emissControl")
+{
+  field(DTYP, "stream")
+  field(OUT,  "@KeyenceCL3000.proto emission_ctrl($(P)$(S)) $(PORT)")
+  field(DESC, "Turn on/off emission control")
+  field(ZNAM, "OFF")
+  field(ONAM, "ON")
+}
+
+record(stringin, "$(P)$(S):errorString")
+{
+  field(DTYP, "Soft Channel")
+  field(DESC, "Last error")
+}
+
+
+

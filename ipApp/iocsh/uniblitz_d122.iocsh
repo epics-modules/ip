@@ -1,0 +1,32 @@
+# ### uniblitz_d122.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- PORT           - Serial port name
+#- IP             - Location of IP module
+#- ###################################################
+
+
+#---------------------------------------------------------------------------------------------------------
+# Uniblitz D122
+# Moxa port is configured for:
+# baud = 300
+# bits = 8
+# parity = None
+# stop bits = 1
+#
+# If computer is ever directly connected to Uniblitz instead of the moxa,
+# need to confgiure the serial port, In this intance drvAsynSerialPortConfigure 
+# is used instead of drvAsynIPPortConfgure. With drvAsynSerialPortConfigure, 
+# need to add the following :
+#! asynSetOption("$(PORT)", -1, "baud",    "300")
+#! asynSetOption("$(PORT)", -1, "bits",    "8")
+#! asynSetOption("$(PORT)", -1, "stop",    "1")
+#! asynSetOption("$(PORT)", -1, "parity",  "none")
+
+asynOctetSetInputEos( "$(PORT)", -1, "\r")
+asynOctetSetOutputEos("$(PORT)", -1, "\r")
+dbLoadRecords("$(IP)/db/uniblitz_d122.db", "P=$(PREFIX),S=$(INSTANCE),PORT=$(PORT)")
+
+#---------------------------------------------------------------------------------------------------------

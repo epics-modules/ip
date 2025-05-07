@@ -1,0 +1,353 @@
+########################################################################
+#
+# XIA PFCU 4-filter stream support
+#
+#
+# Author: M. Wyman (APS)
+# Date: March 2023
+########################################################################
+
+########################################################################
+# Mode configuration PVs
+########################################################################
+
+record(bo, "$(P)$(F):mode"){
+	field(ZNAM,"Filter")
+	field(ONAM,"Shutter")
+	field(PINI, "YES")
+	field(VAL, "0")
+}
+
+record(calcout, "$(P)$(F):calcMode"){
+	field(INPA, "$(P)$(F):setMode CP")
+	field(CALC, "A=0?4:2")
+	field(DTYP, "stream")
+	field(OUT, "@XIA_pfcu_filters.proto setMode($(ADDR), $(P)$(F):calcModeRBV.AA) $(PORT)")
+#	field(OUT, "$(P)$(F):setMode PP")
+	field(FLNK, "$(P)$(F):calcModeRBV PP")
+}
+
+#record(bo, "$(P)$(F):setMode"){
+#	field(DTYP, "stream")
+#	field(OUT, "@XIA_pfcu_filters.proto setMode($(ADDR), $(P)$(F):calcModeRBV.AA) $(PORT)")
+#	field(FLNK, "$(P)$(F):calcModeRBV PP")
+#}
+
+record(scalcout, "$(P)$(F):calcModeRBV"){
+	field(BB, "Disabled")
+	field(CALC, "AA=BB?0:1")
+	field(OUT, "$(P)$(F):modeRBV PP")
+}
+
+record(bi, "$(P)$(F):modeRBV") {
+	field(ZNAM,"Filter")
+	field(ONAM,"Shutter")
+}
+
+########################################################################
+# Filter configuration PVs
+########################################################################
+
+record(mbbo, "$(P)$(F):config"){
+	field(DTYP, "Soft Channel")
+	field(ZRST, "0000")
+	field(ONST, "0001")
+	field(TWST, "0010")
+	field(THST, "0011")
+	field(FRST, "0100")
+	field(FVST, "0101")
+	field(SXST, "0110")
+	field(SVST, "0111")
+	field(EIST, "1000")
+	field(NIST, "1001")
+	field(TEST, "1010")
+	field(ELST, "1011")
+	field(TVST, "1100")
+	field(TTST, "1101")
+	field(FTST, "1110")
+	field(FFST, "1111")
+	field(OUT, "$(P)$(F):setConfig PP")
+}
+
+record(transform, "$(P)$(F):configTransform"){
+	field(INPA, "$(P)$(F):config CP")
+	field(CLCB, "(A>>3)%2")
+	field(OUTB, "$(P)$(F):filter1 PP")
+	field(CLCC, "(A>>2)%2")
+	field(OUTC, "$(P)$(F):filter2 PP")
+	field(CLCD, "(A>>1)%2")
+	field(OUTD, "$(P)$(F):filter3 PP")
+	field(CLCE, "A%2")
+	field(OUTE, "$(P)$(F):filter4 PP")
+}
+
+record(calcout, "$(P)$(F):calcConfig")
+{
+	field(DISV, "1")
+	field(SDIS, "$(P)$(F):setConfig.PACT")
+	field(INPA, "$(P)$(F):filter1 CP")
+	field(INPB, "$(P)$(F):filter2 CP")
+	field(INPC, "$(P)$(F):filter3 CP")
+	field(INPD, "$(P)$(F):filter4 CP")
+	field(CALC, "A*8+B*4+C*2+D")
+	field(OUT, "$(P)$(F):setConfig PP")
+}
+
+record(mbbo, "$(P)$(F):setConfig"){
+	field(DISV, "1")
+	field(SDIS, "$(P)$(F):config_sync.PACT")
+	field(DTYP, "stream")
+	field(ZRST, "0000")
+	field(ONST, "0001")
+	field(TWST, "0010")
+	field(THST, "0011")
+	field(FRST, "0100")
+	field(FVST, "0101")
+	field(SXST, "0110")
+	field(SVST, "0111")
+	field(EIST, "1000")
+	field(NIST, "1001")
+	field(TEST, "1010")
+	field(ELST, "1011")
+	field(TVST, "1100")
+	field(TTST, "1101")
+	field(FTST, "1110")
+	field(FFST, "1111")
+
+	field(OUT, "@XIA_pfcu_filters.proto setState($(ADDR), $(P)$(F):) $(PORT)")
+	field(FLNK, "$(P)$(F):calcConfigRBV")
+}
+
+record(calcout, "$(P)$(F):readConfig") {
+	field(DTYP, "stream")
+	field(CALC, "0")
+	field(OUT, "@XIA_pfcu_filters.proto getState($(ADDR), $(P)$(F):) $(PORT)")
+	field(PINI, "YES")
+	field(FLNK, "$(P)$(F):calcConfigRBV")
+}	
+
+record(scalcout, "$(P)$(F):calcConfigRBV"){
+	field(INPA, "$(P)$(F):filter1_RBV PP")
+	field(INPB, "$(P)$(F):filter2_RBV PP")
+	field(INPC, "$(P)$(F):filter3_RBV PP")
+	field(INPD, "$(P)$(F):filter4_RBV PP")
+	field(CALC, "AA:=PRINTF('%i',A)+PRINTF('%i',B)+PRINTF('%i',C)+PRINTF('%i',D);AA")
+    field(OUT, "$(P)$(F):config_RBV PP")
+}
+
+record(mbbi, "$(P)$(F):config_RBV"){
+	field(ZRST, "0000")
+	field(ONST, "0001")
+	field(TWST, "0010")
+	field(THST, "0011")
+	field(FRST, "0100")
+	field(FVST, "0101")
+	field(SXST, "0110")
+	field(SVST, "0111")
+	field(EIST, "1000")
+	field(NIST, "1001")
+	field(TEST, "1010")
+	field(ELST, "1011")
+	field(TVST, "1100")
+	field(TTST, "1101")
+	field(FTST, "1110")
+	field(FFST, "1111")
+	field(FLNK, "$(P)$(F):config_sync")
+}
+
+record(mbbo, "$(P)$(F):config_sync"){
+	field(DOL, "$(P)$(F):config_RBV NPP")
+	field(OMSL, "closed_loop")
+	field(OUT, "$(P)$(F):config PP")
+}
+
+record(bo, "$(P)$(F):filter1"){
+	field(ZNAM,"OUT")
+	field(ONAM,"IN")
+}
+
+record(bo, "$(P)$(F):filter2"){
+	field(ZNAM,"OUT")
+	field(ONAM,"IN")
+}
+
+record(bo, "$(P)$(F):filter3"){
+	field(ZNAM,"OUT")
+	field(ONAM,"IN")
+}
+
+record(bo, "$(P)$(F):filter4"){
+	field(ZNAM,"OUT")
+	field(ONAM,"IN")
+}
+
+record(mbbi, "$(P)$(F):filter1_RBV"){
+	field(ZRST,"Out")
+	field(ONST,"In")
+	field(TWST,"Short Circuit")
+	field(THST,"Open Circuit")
+}
+
+record(mbbi, "$(P)$(F):filter2_RBV"){
+	field(ZRST,"Out")
+	field(ONST,"In")
+	field(TWST,"Short Circuit")
+	field(THST,"Open Circuit")
+}
+
+record(mbbi, "$(P)$(F):filter3_RBV"){
+	field(ZRST,"Out")
+	field(ONST,"In")
+	field(TWST,"Short Circuit")
+	field(THST,"Open Circuit")
+}
+
+record(mbbi, "$(P)$(F):filter4_RBV"){
+	field(ZRST,"Out")
+	field(ONST,"In")
+	field(TWST,"Short Circuit")
+	field(THST,"Open Circuit")
+}
+
+record(ao,"$(P)$(F):filter1_thick")
+{
+	field(VAL,"0.1626")
+	field(DESC,"filter 1")
+	field(EGU, "mm")
+	field(PREC,"3")
+}
+
+record(ao,"$(P)$(F):filter2_thick")
+{
+	field(VAL,"0.3226")
+	field(DESC,"filter 2")
+	field(EGU, "mm")
+	field(PREC,"3")
+}
+
+record(ao,"$(P)$(F):filter3_thick")
+{
+	field(VAL,"0.6325")
+	field(DESC,"filter 3")
+	field(EGU, "mm")
+	field(PREC,"3")
+}
+
+record(ao,"$(P)$(F):filter4_thick")
+{
+	field(VAL,"1.27")
+	field(DESC,"filter 4")
+	field(EGU, "mm")
+	field(PREC,"3")
+}
+
+record(mbbo, "$(P)$(F):filter1_mat"){
+	field(VAL,"0")
+	field(ZRST,"Al")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
+	field(DESC,"material filter 1")
+}
+
+record(mbbo, "$(P)$(F):filter2_mat"){
+	field(VAL,"0")
+	field(ZRST,"Al")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
+	field(DESC,"material filter 2")
+}
+
+record(mbbo, "$(P)$(F):filter3_mat"){
+	field(VAL,"0")
+	field(ZRST,"Al")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
+	field(DESC,"material filter 3")
+}
+
+record(mbbo, "$(P)$(F):filter4_mat"){
+	field(VAL,"0")
+	field(ZRST,"Al")
+	field(ONST,"Mo")
+	field(TWST,"Ti")
+	field(THST,"Glass")
+	field(FRST,"Other")
+	field(DESC,"material filter 4")
+}
+
+record(stringout,"$(P)$(F):filter1_other") {
+}
+record(stringout,"$(P)$(F):filter2_other") {
+}
+record(stringout,"$(P)$(F):filter3_other") {
+}
+record(stringout,"$(P)$(F):filter4_other") {
+}
+
+
+
+
+########################################################################
+# Admistrative PVs
+########################################################################
+
+record(calcout, "$(P)$(F):readFault") {
+	field(DTYP, "stream")
+	field(CALC, "0")
+	field(OUT, "@XIA_pfcu_filters.proto fault($(ADDR), $(P)$(F):) $(PORT)")
+#	field(PINI, "YES")
+	field(SCAN, "2 second")
+}	
+
+record(calcout, "$(P)$(F):clearFault") {
+	field(DTYP, "stream")
+	field(CALC, "0")
+	field(OUT, "@XIA_pfcu_filters.proto clear($(ADDR), $(P)$(F):) $(PORT)")
+	field(SCAN, "Passive")
+}
+
+record(bo, "$(P)$(F):control"){
+	field(ZNAM,"Locked")
+	field(ONAM,"Unlocked")
+	field(PINI, "YES")
+	field(VAL, "1")
+}
+
+record(scalcout, "$(P)$(F):calcControlMode")
+{
+	field(INPA, "$(P)$(F):control CP")
+	field(AA, "L")
+	field(BB, "U")
+	field(CALC, "A=0?AA:BB")
+	field(DTYP, "stream")
+	field(OUT, "@XIA_pfcu_filters.proto setControl($(ADDR), $(P)$(F):calcControlRBV.AA) $(PORT)")
+	field(FLNK, "$(P)$(F):calcControlRBV PP")
+}
+
+record(scalcout, "$(P)$(F):calcControlRBV")
+{
+	field(BB, "Disabled")
+	field(CALC, "AA=BB?0:1")
+	field(OUT, "$(P)$(F):modeRBV PP")
+}
+
+record(bi, "$(P)$(F):controlRBV")
+{
+	field(ZNAM,"Locked")
+	field(ONAM,"Unlocked")
+}
+
+record(waveform, "$(P)$(F):sysReport")
+{
+	field(DTYP, "stream")
+	field(INP, "@XIA_pfcu_filters.proto sysReport($(ADDR)) $(PORT)")
+	field(PINI, "YES")
+	field(FTVL, "CHAR")
+	field(NELM, "1000")
+}

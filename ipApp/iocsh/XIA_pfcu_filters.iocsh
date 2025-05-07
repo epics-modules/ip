@@ -1,0 +1,18 @@
+# ### XIA_pfcu_filters.iocsh ###
+
+#- ###################################################
+#- PREFIX         - IOC Prefix
+#- INSTANCE       - Instance Prefix
+#- ADDRESS        - PFCU Address
+#- PORT           - Port name of moxa serial server 
+#- OPTICS         - Location of OPTICS module
+#- ###################################################
+
+#asynOctetSetInputEos( "$(PORT)", -1, "\r")
+#asynOctetSetOutputEos("$(PORT)", -1, "\r")
+
+epicsEnvSet("STREAM_PROTOCOL_PATH","$(STREAM_PROTOCOL_PATH):$(IP)/ipApp/Db")
+dbLoadRecords("$(IP)/ipApp/Db/XIA_pfcu_filters.db", "P=$(PREFIX),F=$(FILTERNAM=pfcu0),PORT=$(PORT),ADDR=$(ADDRESS=00)")
+ 
+
+
