@@ -824,6 +824,7 @@ static void devMPCCallback(asynUser *pasynUser)
 
     memset(pPvt->recBuf, 0, MPC_BUFFER_SIZE);
     pPvt->pasynUser->timeout = MPC_TIMEOUT;
+    pPvt->status = pPvt->pasynOctet->flush(pPvt->octetPvt, pasynUser);
     pPvt->status = pPvt->pasynOctet->write(pPvt->octetPvt, pasynUser, 
                                            pPvt->sendBuf, strlen(pPvt->sendBuf), 
                                            &nwrite);
