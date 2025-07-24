@@ -1,0 +1,719 @@
+record(fanout, "$(P)$(R)ReadAll") {
+    field(PINI, 1)
+    field(LNK0, "$(P)$(R)ReadVoltages.PROC")
+    field(LNK1, "$(P)$(R)ReadCurrents.PROC")
+    field(LNK2, "$(P)$(R)ReadPowerStates.PROC")
+    field(LNK3, "$(P)$(R)ReadRampUpRates.PROC")
+    field(LNK4, "$(P)$(R)ReadRampDownRates.PROC")
+    field(LNK5, "$(P)$(R)ReadPowerDownModes.PROC")
+    field(LNK6, "$(P)$(R)ReadIMonRanges.PROC")
+}
+record(bo, "$(P)$(R)ReadVoltages") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_voltages($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadCurrents") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_currents($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadPowerStates") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_power_states($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadRampUpRates") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_ramp_up_rates($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadRampDownRates") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_ramp_down_rates($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadPowerDownModes") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_power_down_modes($(P)$(R)) $(PORT)")
+}
+record(bo, "$(P)$(R)ReadIMonRanges") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto read_imon_ranges($(P)$(R)) $(PORT)")
+}
+record(seq, "$(P)$(R)sync_all") {
+    field(PINI, 1)
+    field(DLY0, 1)
+    field(DOL0, 1)
+    field(LNK0, "$(P)$(R)current_sync.PROC")
+    field(DOL1, 1)
+    field(LNK1, "$(P)$(R)voltage_sync.PROC")
+    field(DOL2, 1)
+    field(LNK2, "$(P)$(R)power_sync.PROC")
+    field(DOL3, 1)
+    field(LNK3, "$(P)$(R)ramp_up_sync.PROC")
+    field(DOL4, 1)
+    field(LNK4, "$(P)$(R)ramp_down_sync.PROC")
+    field(DOL5, 1)
+    field(LNK5, "$(P)$(R)power_down_mode_sync.PROC")
+    field(DOL6, 1)
+    field(LNK6, "$(P)$(R)imon_range_sync.PROC")
+}
+record(seq, "$(P)$(R)current_sync") {
+    field(DOL0, "$(P)$(R)CH0:Current_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:Current.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:Current_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:Current.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:Current_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:Current.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:Current_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:Current.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:Current_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:Current.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:Current_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:Current.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:Current_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:Current.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:Current_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:Current.VAL NPP")
+}
+record(seq, "$(P)$(R)voltage_sync") {
+    field(DOL0, "$(P)$(R)CH0:Voltage_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:Voltage.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:Voltage_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:Voltage.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:Voltage_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:Voltage.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:Voltage_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:Voltage.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:Voltage_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:Voltage.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:Voltage_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:Voltage.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:Voltage_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:Voltage.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:Voltage_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:Voltage.VAL NPP")
+}
+record(seq, "$(P)$(R)power_sync") {
+    field(DOL0, "$(P)$(R)CH0:Power_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:Power.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:Power_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:Power.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:Power_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:Power.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:Power_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:Power.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:Power_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:Power.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:Power_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:Power.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:Power_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:Power.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:Power_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:Power.VAL NPP")
+}
+record(seq, "$(P)$(R)ramp_up_sync") {
+    field(DOL0, "$(P)$(R)CH0:RampUpRate_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:RampUpRate.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:RampUpRate_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:RampUpRate.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:RampUpRate_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:RampUpRate.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:RampUpRate_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:RampUpRate.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:RampUpRate_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:RampUpRate.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:RampUpRate_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:RampUpRate.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:RampUpRate_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:RampUpRate.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:RampUpRate_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:RampUpRate.VAL NPP")
+}
+record(seq, "$(P)$(R)ramp_down_sync") {
+    field(DOL0, "$(P)$(R)CH0:RampDownRate_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:RampDownRate.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:RampDownRate_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:RampDownRate.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:RampDownRate_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:RampDownRate.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:RampDownRate_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:RampDownRate.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:RampDownRate_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:RampDownRate.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:RampDownRate_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:RampDownRate.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:RampDownRate_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:RampDownRate.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:RampDownRate_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:RampDownRate.VAL NPP")
+}
+record(seq, "$(P)$(R)power_down_mode_sync") {
+    field(DOL0, "$(P)$(R)CH0:PowerDownMode_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:PowerDownMode.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:PowerDownMode_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:PowerDownMode.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:PowerDownMode_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:PowerDownMode.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:PowerDownMode_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:PowerDownMode.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:PowerDownMode_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:PowerDownMode.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:PowerDownMode_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:PowerDownMode.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:PowerDownMode_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:PowerDownMode.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:PowerDownMode_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:PowerDownMode.VAL NPP")
+}
+record(seq, "$(P)$(R)imon_range_sync") {
+    field(DOL0, "$(P)$(R)CH0:IMonRange_RBV.VAL")
+    field(LNK0, "$(P)$(R)CH0:IMonRange.VAL NPP")
+    field(DOL1, "$(P)$(R)CH1:IMonRange_RBV.VAL")
+    field(LNK1, "$(P)$(R)CH1:IMonRange.VAL NPP")
+    field(DOL2, "$(P)$(R)CH2:IMonRange_RBV.VAL")
+    field(LNK2, "$(P)$(R)CH2:IMonRange.VAL NPP")
+    field(DOL3, "$(P)$(R)CH3:IMonRange_RBV.VAL")
+    field(LNK3, "$(P)$(R)CH3:IMonRange.VAL NPP")
+    field(DOL4, "$(P)$(R)CH4:IMonRange_RBV.VAL")
+    field(LNK4, "$(P)$(R)CH4:IMonRange.VAL NPP")
+    field(DOL5, "$(P)$(R)CH5:IMonRange_RBV.VAL")
+    field(LNK5, "$(P)$(R)CH5:IMonRange.VAL NPP")
+    field(DOL6, "$(P)$(R)CH6:IMonRange_RBV.VAL")
+    field(LNK6, "$(P)$(R)CH6:IMonRange.VAL NPP")
+    field(DOL7, "$(P)$(R)CH7:IMonRange_RBV.VAL")
+    field(LNK7, "$(P)$(R)CH7:IMonRange.VAL NPP")
+}
+
+
+record(ai, "$(P)$(R)CH0:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH1:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH2:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH3:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH4:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH5:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH6:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+record(ai, "$(P)$(R)CH7:Voltage_RBV") {
+    field(EGU, "Volts")
+    field(PREC, 2)
+}
+
+record(ai, "$(P)$(R)CH0:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH1:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH2:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH3:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH4:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH5:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH6:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+record(ai, "$(P)$(R)CH7:Current_RBV") {
+    field(EGU, "uA")
+    field(PREC, 3)
+}
+
+record(bi, "$(P)$(R)CH0:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH1:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH2:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH3:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH4:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH5:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH6:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bi, "$(P)$(R)CH7:Power_RBV") { 
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(longin, "$(P)$(R)CH0:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH1:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH2:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH3:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH4:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH5:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH6:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH7:RampUpRate_RBV") {
+    field(EGU, "Volt/s")
+}
+
+record(longin, "$(P)$(R)CH0:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH1:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH2:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH3:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH4:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH5:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH6:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+record(longin, "$(P)$(R)CH7:RampDownRate_RBV") {
+    field(EGU, "Volt/s")
+}
+
+record(bi, "$(P)$(R)CH0:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH1:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH2:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH3:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH4:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH5:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH6:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+record(bi, "$(P)$(R)CH7:PowerDownMode_RBV") { 
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+}
+
+record(bi, "$(P)$(R)CH0:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH1:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH2:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH3:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH4:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH5:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH6:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+record(bi, "$(P)$(R)CH7:IMonRange_RBV") { 
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+}
+
+record(bo, "$(P)$(R)CH0:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(0) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH1:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(1) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH2:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(2) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH3:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(3) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH4:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(4) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH5:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(5) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH6:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(6) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+record(bo, "$(P)$(R)CH7:Power") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power(7) $(PORT)")
+    field(ZNAM, "OFF")
+    field(ONAM, "ON")
+}
+
+record(ao, "$(P)$(R)CH0:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(0) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH1:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(1) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH2:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(2) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH3:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(3) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH4:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(4) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH5:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(5) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH6:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(6) $(PORT)")
+    field(PREC, 2)
+}
+record(ao, "$(P)$(R)CH7:Voltage") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_voltage(7) $(PORT)")
+    field(PREC, 2)
+}
+
+record(ao, "$(P)$(R)CH0:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(0) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH1:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(1) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH2:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(2) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH3:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(3) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH4:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(4) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH5:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(5) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH6:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(6) $(PORT)")
+    field(PREC, 3)
+}
+record(ao, "$(P)$(R)CH7:Current") {
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_current(7) $(PORT)")
+    field(PREC, 3)
+}
+
+record(longout, "$(P)$(R)CH0:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(0) $(PORT)")
+}
+record(longout, "$(P)$(R)CH1:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(1) $(PORT)")
+}
+record(longout, "$(P)$(R)CH2:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(2) $(PORT)")
+}
+record(longout, "$(P)$(R)CH3:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(3) $(PORT)")
+}
+record(longout, "$(P)$(R)CH4:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(4) $(PORT)")
+}
+record(longout, "$(P)$(R)CH5:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(5) $(PORT)")
+}
+record(longout, "$(P)$(R)CH6:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(6) $(PORT)")
+}
+record(longout, "$(P)$(R)CH7:RampUpRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_up(7) $(PORT)")
+}
+
+record(longout, "$(P)$(R)CH0:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(0) $(PORT)")
+}
+record(longout, "$(P)$(R)CH1:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(1) $(PORT)")
+}
+record(longout, "$(P)$(R)CH2:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(2) $(PORT)")
+}
+record(longout, "$(P)$(R)CH3:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(3) $(PORT)")
+}
+record(longout, "$(P)$(R)CH4:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(4) $(PORT)")
+}
+record(longout, "$(P)$(R)CH5:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(5) $(PORT)")
+}
+record(longout, "$(P)$(R)CH6:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(6) $(PORT)")
+}
+record(longout, "$(P)$(R)CH7:RampDownRate") {
+    field(EGU, "Volt/sec")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_ramp_down(7) $(PORT)")
+}
+
+record(bo, "$(P)$(R)CH0:PowerDownMode") {
+    field(VAL, 1)
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(0) $(PORT)")
+}
+record(bo, "$(P)$(R)CH1:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(1) $(PORT)")
+}
+record(bo, "$(P)$(R)CH2:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(2) $(PORT)")
+}
+record(bo, "$(P)$(R)CH3:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(3) $(PORT)")
+}
+record(bo, "$(P)$(R)CH4:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(4) $(PORT)")
+}
+record(bo, "$(P)$(R)CH5:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(5) $(PORT)")
+}
+record(bo, "$(P)$(R)CH6:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(6) $(PORT)")
+}
+record(bo, "$(P)$(R)CH7:PowerDownMode") {
+    field(ZNAM, "RAMP")
+    field(ONAM, "KILL")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_power_down_mode(7) $(PORT)")
+}
+
+record(bo, "$(P)$(R)CH0:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(0) $(PORT)")
+}
+record(bo, "$(P)$(R)CH1:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(1) $(PORT)")
+}
+record(bo, "$(P)$(R)CH2:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(2) $(PORT)")
+}
+record(bo, "$(P)$(R)CH3:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(3) $(PORT)")
+}
+record(bo, "$(P)$(R)CH4:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(4) $(PORT)")
+}
+record(bo, "$(P)$(R)CH5:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(5) $(PORT)")
+}
+record(bo, "$(P)$(R)CH6:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(6) $(PORT)")
+}
+record(bo, "$(P)$(R)CH7:IMonRange") {
+    field(ZNAM, "HIGH")
+    field(ONAM, "LOW")
+    field(DTYP, "stream")
+    field(OUT,  "@caen_N8031.proto set_imon_range(7) $(PORT)")
+}
+
+record(stringout, "$(P)$(R)CH0:Name") {}
+record(stringout, "$(P)$(R)CH1:Name") {}
+record(stringout, "$(P)$(R)CH2:Name") {}
+record(stringout, "$(P)$(R)CH3:Name") {}
+record(stringout, "$(P)$(R)CH4:Name") {}
+record(stringout, "$(P)$(R)CH5:Name") {}
+record(stringout, "$(P)$(R)CH6:Name") {}
+record(stringout, "$(P)$(R)CH7:Name") {}
