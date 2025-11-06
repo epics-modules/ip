@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-03-17 07:57:20 by epics-->
+<!--Saved on 2025-03-17 11:51:20 by epics-->
 <display version="2.0.0">
   <name>Rigol_DS1000Z_ChN</name>
   <x>848</x>
@@ -41,159 +41,154 @@
     </font>
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>composite #12</name>
+  <widget type="label" version="2.0.0">
+    <name>text #12</name>
+    <text>Offset</text>
     <x>235</x>
     <y>35</y>
-    <width>230</width>
-    <height>70</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>text #15</name>
-      <text>Offset</text>
-      <width>60</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textentry" version="3.0.0">
-      <name>text entry #18</name>
-      <pv_name>$(P)$(R)$(CH)Offset</pv_name>
-      <x>65</x>
-      <width>80</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textentry" version="3.0.0">
+    <name>text entry #15</name>
+    <pv_name>$(P)$(R)$(CH)Offset</pv_name>
+    <x>300</x>
+    <y>35</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <background_color>
-        <color red="115" green="223" blue="255">
-        </color>
-      </background_color>
-      <format>1</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>text #22</name>
-      <text>Probe</text>
-      <x>10</x>
-      <y>25</y>
-      <width>50</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
-      </font>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="combo" version="2.0.0">
-      <name>menu #25</name>
-      <pv_name>$(P)$(R)$(CH)Probe</pv_name>
-      <x>65</x>
-      <y>25</y>
-      <width>80</width>
-      <height>20</height>
-      <background_color>
-        <color red="115" green="223" blue="255">
-        </color>
-      </background_color>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>text #28</name>
-      <text>Scale</text>
-      <x>10</x>
-      <y>50</y>
-      <width>50</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
-      </font>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="combo" version="2.0.0">
-      <name>menu #31</name>
-      <pv_name>$(P)$(R)$(CH)Scale</pv_name>
-      <x>65</x>
-      <y>50</y>
-      <width>80</width>
-      <height>20</height>
-      <background_color>
-        <color red="115" green="223" blue="255">
-        </color>
-      </background_color>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #34</name>
-      <pv_name>$(P)$(R)$(CH)Offset_RBV</pv_name>
-      <x>150</x>
-      <width>80</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>1</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #38</name>
-      <pv_name>$(P)$(R)$(CH)Probe_RBV</pv_name>
-      <x>150</x>
-      <y>25</y>
-      <width>80</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #42</name>
-      <pv_name>$(P)$(R)$(CH)Scale_RBV</pv_name>
-      <x>150</x>
-      <y>50</y>
-      <width>80</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
-      </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
+    </font>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #46</name>
+    <name>text #19</name>
+    <text>Probe</text>
+    <x>245</x>
+    <y>60</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #22</name>
+    <pv_name>$(P)$(R)$(CH)Probe</pv_name>
+    <x>300</x>
+    <y>60</y>
+    <width>80</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #25</name>
+    <text>Scale</text>
+    <x>245</x>
+    <y>85</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #28</name>
+    <pv_name>$(P)$(R)$(CH)Scale</pv_name>
+    <x>300</x>
+    <y>85</y>
+    <width>80</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #31</name>
+    <pv_name>$(P)$(R)$(CH)Offset_RBV</pv_name>
+    <x>385</x>
+    <y>35</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #35</name>
+    <pv_name>$(P)$(R)$(CH)Probe_RBV</pv_name>
+    <x>385</x>
+    <y>60</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #39</name>
+    <pv_name>$(P)$(R)$(CH)Scale_RBV</pv_name>
+    <x>385</x>
+    <y>85</y>
+    <width>80</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #43</name>
     <text>Display</text>
     <x>25</x>
     <y>35</y>
@@ -205,7 +200,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>menu #49</name>
+    <name>menu #46</name>
     <pv_name>$(P)$(R)$(CH)Display</pv_name>
     <x>100</x>
     <y>35</y>
@@ -218,7 +213,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #52</name>
+    <name>text #49</name>
     <text>BW limit</text>
     <x>15</x>
     <y>60</y>
@@ -230,7 +225,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>menu #55</name>
+    <name>menu #52</name>
     <pv_name>$(P)$(R)$(CH)BWLimit</pv_name>
     <x>100</x>
     <y>60</y>
@@ -243,7 +238,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #58</name>
+    <name>text #55</name>
     <text>Coupling</text>
     <x>15</x>
     <y>85</y>
@@ -255,7 +250,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>menu #61</name>
+    <name>menu #58</name>
     <pv_name>$(P)$(R)$(CH)Coupling</pv_name>
     <x>100</x>
     <y>85</y>
@@ -268,7 +263,7 @@
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
   <widget type="label" version="2.0.0">
-    <name>text #64</name>
+    <name>text #61</name>
     <text>Invert</text>
     <x>35</x>
     <y>110</y>
@@ -280,7 +275,7 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="combo" version="2.0.0">
-    <name>menu #67</name>
+    <name>menu #64</name>
     <pv_name>$(P)$(R)$(CH)Invert</pv_name>
     <x>100</x>
     <y>110</y>
@@ -292,96 +287,92 @@
     </background_color>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>composite #70</name>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #67</name>
+    <pv_name>$(P)$(R)$(CH)Display_RBV</pv_name>
     <x>185</x>
     <y>35</y>
     <width>40</width>
-    <height>95</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #73</name>
-      <pv_name>$(P)$(R)$(CH)Display_RBV</pv_name>
-      <width>40</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #77</name>
-      <pv_name>$(P)$(R)$(CH)BWLimit_RBV</pv_name>
-      <y>25</y>
-      <width>40</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #71</name>
+    <pv_name>$(P)$(R)$(CH)BWLimit_RBV</pv_name>
+    <x>185</x>
+    <y>60</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #81</name>
-      <pv_name>$(P)$(R)$(CH)Coupling_RBV</pv_name>
-      <y>50</y>
-      <width>40</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #75</name>
+    <pv_name>$(P)$(R)$(CH)Coupling_RBV</pv_name>
+    <x>185</x>
+    <y>85</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #85</name>
-      <pv_name>$(P)$(R)$(CH)Invert_RBV</pv_name>
-      <y>75</y>
-      <width>40</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #79</name>
+    <pv_name>$(P)$(R)$(CH)Invert_RBV</pv_name>
+    <x>185</x>
+    <y>110</y>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>6</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>6</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
 </display>

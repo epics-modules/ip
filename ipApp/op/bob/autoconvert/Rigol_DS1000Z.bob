@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2025-03-17 10:18:14 by epics-->
+<!--Saved on 2025-05-02 15:16:06 by epics-->
 <display version="2.0.0">
   <name>Rigol_DS1000Z</name>
-  <x>382</x>
-  <y>179</y>
+  <x>556</x>
+  <y>173</y>
   <width>955</width>
   <height>950</height>
   <background_color>
@@ -490,7 +490,7 @@
     <pv_name>$(P)$(R)Model_RBV</pv_name>
     <x>75</x>
     <y>82</y>
-    <width>450</width>
+    <width>550</width>
     <height>18</height>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1049,10 +1049,70 @@
     <show_units>false</show_units>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #204</name>
+    <pv_name>$(P)$(R)ReadStatusScan.SCAN</pv_name>
+    <x>75</x>
+    <y>105</y>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
   <widget type="label" version="2.0.0">
-    <name>text #204</name>
+    <name>text #207</name>
+    <text>Status</text>
+    <x>10</x>
+    <y>105</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #210</name>
+    <pv_name>$(P)$(R)ReadTraces.SCAN</pv_name>
+    <x>255</x>
+    <y>105</y>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #213</name>
+    <text>Traces</text>
+    <x>190</x>
+    <y>105</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #216</name>
+    <text>Model</text>
+    <x>22</x>
+    <y>80</y>
+    <width>50</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
+      </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #219</name>
     <text>Last error</text>
-    <x>530</x>
+    <x>630</x>
     <y>80</y>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
@@ -1061,11 +1121,11 @@
     <horizontal_alignment>2</horizontal_alignment>
   </widget>
   <widget type="textupdate" version="2.0.0">
-    <name>text update #207</name>
+    <name>text update #222</name>
     <pv_name>$(P)$(R)Error_RBV</pv_name>
-    <x>635</x>
+    <x>735</x>
     <y>80</y>
-    <width>310</width>
+    <width>210</width>
     <font>
       <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
@@ -1082,107 +1142,51 @@
     <show_units>false</show_units>
     <border_alarm_sensitive>false</border_alarm_sensitive>
   </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>related display #211</name>
-    <actions>
-      <action type="open_display">
-        <file>asynRecord.opi</file>
-        <macros>
-          <R>$(R)Asyn</R>
-        </macros>
-        <target>tab</target>
-        <description>asyn record</description>
-      </action>
-    </actions>
-    <text>asyn record</text>
-    <x>650</x>
+  <widget type="group" version="2.0.0">
+    <name>composite #226</name>
+    <x>630</x>
     <y>105</y>
-    <width>110</width>
+    <width>230</width>
     <height>20</height>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-  </widget>
-  <widget type="action_button" version="3.0.0">
-    <name>message button #214</name>
-    <actions>
-      <action type="write_pv">
-        <pv_name>$(P)$(R)ClearStatus.PROC</pv_name>
-        <value>1</value>
-        <description>Write</description>
-      </action>
-    </actions>
-    <pv_name>$(P)$(R)ClearStatus.PROC</pv_name>
-    <text>Reset error</text>
-    <x>530</x>
-    <y>105</y>
-    <height>20</height>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>menu #217</name>
-    <pv_name>$(P)$(R)ReadStatusScan.SCAN</pv_name>
-    <x>75</x>
-    <y>105</y>
-    <width>80</width>
-    <height>20</height>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #220</name>
-    <text>Status</text>
-    <x>10</x>
-    <y>105</y>
-    <width>60</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="combo" version="2.0.0">
-    <name>menu #223</name>
-    <pv_name>$(P)$(R)ReadTraces.SCAN</pv_name>
-    <x>255</x>
-    <y>105</y>
-    <width>80</width>
-    <height>20</height>
-    <background_color>
-      <color red="115" green="223" blue="255">
-      </color>
-    </background_color>
-    <border_alarm_sensitive>false</border_alarm_sensitive>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #226</name>
-    <text>Traces</text>
-    <x>190</x>
-    <y>105</y>
-    <width>60</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>2</horizontal_alignment>
-  </widget>
-  <widget type="label" version="2.0.0">
-    <name>text #229</name>
-    <text>Model</text>
-    <x>22</x>
-    <y>80</y>
-    <width>50</width>
-    <font>
-      <font family="Liberation Sans" style="REGULAR" size="16.0">
-      </font>
-    </font>
-    <horizontal_alignment>2</horizontal_alignment>
+    <style>3</style>
+    <transparent>true</transparent>
+    <widget type="action_button" version="3.0.0">
+      <name>message button #229</name>
+      <actions>
+        <action type="write_pv">
+          <pv_name>$(P)$(R)ClearStatus.PROC</pv_name>
+          <value>1</value>
+          <description>Write</description>
+        </action>
+      </actions>
+      <pv_name>$(P)$(R)ClearStatus.PROC</pv_name>
+      <text>Reset error</text>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
+    <widget type="action_button" version="3.0.0">
+      <name>related display #232</name>
+      <actions>
+        <action type="open_display">
+          <file>asynRecord.opi</file>
+          <macros>
+            <R>$(R)Asyn</R>
+          </macros>
+          <target>tab</target>
+          <description>asyn record</description>
+        </action>
+      </actions>
+      <text>asyn record</text>
+      <x>120</x>
+      <width>110</width>
+      <height>20</height>
+      <background_color>
+        <color red="115" green="223" blue="255">
+        </color>
+      </background_color>
+    </widget>
   </widget>
 </display>

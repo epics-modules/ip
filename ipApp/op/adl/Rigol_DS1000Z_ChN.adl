@@ -112,142 +112,131 @@ text {
 	textix="Channel $(N)"
 	align="horiz. right"
 }
-composite {
+text {
 	object {
 		x=235
 		y=35
-		width=230
-		height=70
+		width=60
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=235
-				y=35
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Offset"
-			align="horiz. right"
-		}
-		"text entry" {
-			object {
-				x=300
-				y=35
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)$(CH)Offset"
-				clr=14
-				bclr=51
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=245
-				y=60
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Probe"
-			align="horiz. right"
-		}
-		menu {
-			object {
-				x=300
-				y=60
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)$(CH)Probe"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=245
-				y=85
-				width=50
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Scale"
-			align="horiz. right"
-		}
-		menu {
-			object {
-				x=300
-				y=85
-				width=80
-				height=20
-			}
-			control {
-				chan="$(P)$(R)$(CH)Scale"
-				clr=14
-				bclr=51
-			}
-		}
-		"text update" {
-			object {
-				x=385
-				y=35
-				width=80
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Offset_RBV"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=385
-				y=60
-				width=80
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Probe_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=385
-				y=85
-				width=80
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Scale_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Offset"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=300
+		y=35
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)$(CH)Offset"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=245
+		y=60
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Probe"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=300
+		y=60
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)$(CH)Probe"
+		clr=14
+		bclr=51
+	}
+}
+text {
+	object {
+		x=245
+		y=85
+		width=50
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Scale"
+	align="horiz. right"
+}
+menu {
+	object {
+		x=300
+		y=85
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)$(CH)Scale"
+		clr=14
+		bclr=51
+	}
+}
+"text update" {
+	object {
+		x=385
+		y=35
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)Offset_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=385
+		y=60
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)Probe_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=385
+		y=85
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)Scale_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
 	}
 }
 text {
@@ -354,78 +343,67 @@ menu {
 		bclr=51
 	}
 }
-composite {
+"text update" {
 	object {
 		x=185
 		y=35
 		width=40
-		height=95
+		height=20
 	}
-	"composite name"=""
-	children {
-		"text update" {
-			object {
-				x=185
-				y=35
-				width=40
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Display_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=185
-				y=60
-				width=40
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)BWLimit_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=185
-				y=85
-				width=40
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Coupling_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
-		"text update" {
-			object {
-				x=185
-				y=110
-				width=40
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)$(CH)Invert_RBV"
-				clr=53
-				bclr=4
-			}
-			format="string"
-			limits {
-			}
-		}
+	monitor {
+		chan="$(P)$(R)$(CH)Display_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=185
+		y=60
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)BWLimit_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=185
+		y=85
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)Coupling_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=185
+		y=110
+		width=40
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)$(CH)Invert_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
 	}
 }

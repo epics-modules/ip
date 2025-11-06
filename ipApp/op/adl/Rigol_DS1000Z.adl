@@ -5,8 +5,8 @@ file {
 }
 display {
 	object {
-		x=382
-		y=179
+		x=556
+		y=173
 		width=955
 		height=950
 	}
@@ -442,7 +442,7 @@ composite {
 	object {
 		x=75
 		y=82
-		width=450
+		width=550
 		height=18
 	}
 	monitor {
@@ -934,71 +934,11 @@ text {
 	limits {
 	}
 }
-text {
-	object {
-		x=530
-		y=80
-		width=100
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Last error"
-	align="horiz. right"
-}
-"text update" {
-	object {
-		x=635
-		y=80
-		width=310
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)Error_RBV"
-		clr=53
-		bclr=4
-	}
-	format="string"
-	limits {
-	}
-}
-"related display" {
-	object {
-		x=650
-		y=105
-		width=110
-		height=20
-	}
-	display[0] {
-		label="asyn record"
-		name="asynRecord.adl"
-		args="P=$(P), R=$(R)Asyn"
-	}
-	clr=14
-	bclr=51
-	label="asyn record"
-}
-"message button" {
-	object {
-		x=530
-		y=105
-		width=100
-		height=20
-	}
-	control {
-		chan="$(P)$(R)ClearStatus.PROC"
-		clr=14
-		bclr=51
-	}
-	label="Reset error"
-	press_msg="1"
-}
 menu {
 	object {
 		x=75
 		y=105
-		width=80
+		width=100
 		height=20
 	}
 	control {
@@ -1024,7 +964,7 @@ menu {
 	object {
 		x=255
 		y=105
-		width=80
+		width=100
 		height=20
 	}
 	control {
@@ -1058,4 +998,75 @@ text {
 	}
 	textix="Model"
 	align="horiz. right"
+}
+text {
+	object {
+		x=630
+		y=80
+		width=100
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Last error"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=735
+		y=80
+		width=210
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Error_RBV"
+		clr=53
+		bclr=4
+	}
+	format="string"
+	limits {
+	}
+}
+composite {
+	object {
+		x=630
+		y=105
+		width=230
+		height=20
+	}
+	"composite name"=""
+	children {
+		"message button" {
+			object {
+				x=630
+				y=105
+				width=100
+				height=20
+			}
+			control {
+				chan="$(P)$(R)ClearStatus.PROC"
+				clr=14
+				bclr=51
+			}
+			label="Reset error"
+			press_msg="1"
+		}
+		"related display" {
+			object {
+				x=750
+				y=105
+				width=110
+				height=20
+			}
+			display[0] {
+				label="asyn record"
+				name="asynRecord.adl"
+				args="P=$(P), R=$(R)Asyn"
+			}
+			clr=14
+			bclr=51
+			label="asyn record"
+		}
+	}
 }
