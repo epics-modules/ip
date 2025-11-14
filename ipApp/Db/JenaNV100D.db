@@ -1,0 +1,32 @@
+# Database for Piezosystems Jena NV 100/D
+# http://www.piezojena.com/en/site/piezo-controller-and-amplifier__183/
+
+#record(stringin, "$(P)$(C)error")
+#{
+#  field(DTYP, "stream")
+#  field(INP,  "@JenaNV100D.proto readError $(PORT)")
+#  field(PINI, "YES")
+#}
+
+record(ao, "$(P)$(C)write")
+{
+   field(DTYP, "stream")
+   field(OUT,  "@JenaNV100D.proto writeValue $(PORT)")
+   field(PREC, "3")
+}
+
+record(ai, "$(P)$(C)read")
+{
+   field(DTYP, "stream")
+   field(INP,  "@JenaNV100D.proto readValue $(PORT)")
+   field(PREC, "3")
+   field(PINI, "YES")
+}
+
+record(bo, "$(P)$(C)cl")
+{
+   field(DTYP, "stream")
+   field(OUT,  "@JenaNV100D.proto closedLoop $(PORT)")
+   field(ZNAM, "Off")
+   field(ONAM, "On")
+}

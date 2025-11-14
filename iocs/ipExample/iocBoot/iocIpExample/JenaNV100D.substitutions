@@ -1,0 +1,14 @@
+file "$(IP)/ipApp/Db/JenaNV100D.db"
+{
+pattern
+{P,         C,      PORT}
+{IOC:, jena1:, serial1}
+}
+
+file "$(STD)/stdApp/Db/genTweak.db"
+{
+pattern
+{P,       N, PREC,           PV}
+{IOC:, jena1:, 3, IOC:jena1:write}
+}
+
