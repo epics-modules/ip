@@ -1,7 +1,7 @@
 # Protocol file for Piezosystems Jena NV 100/D
 
 OutTerminator = CR;
-InTerminator = CR LF;
+#!InTerminator = CR LF;
 
 #readError {
 #  out "err";
@@ -10,14 +10,20 @@ InTerminator = CR LF;
 
 writeValue {
   out "set,%0.2f";
+  in "\x13\x11";
 }
 
 readValue {
   out "meas";
-  in "meas,%f";
+  in "\x13meas,%f\r\x0\n\x11";
 }
 
 closedLoop {
-  out "%{ol|cl}";
+  out "cl,%d";
+  in "\x13\x11";
 }
+
+# closed loop query
+#   out "cl";
+#   in "\x13cl,%*d\r\x0\n\x11";
 
