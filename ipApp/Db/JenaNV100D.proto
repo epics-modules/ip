@@ -1,7 +1,11 @@
 # Protocol file for Piezosystems Jena NV 100/D
+# Note: this protocol file requires the Flow Control
+#   setting of the controller to be in Xon/Xoff mode.
+#   Extra unprintable characters are sent when Flow
+#   Control is Off or Xon/Xoff Pass Chars to Host
 
 OutTerminator = CR;
-#!InTerminator = CR LF;
+InTerminator = LF;
 
 #readError {
 #  out "err";
@@ -10,20 +14,22 @@ OutTerminator = CR;
 
 writeValue {
   out "set,%0.2f";
-  in "\x13\x11";
+  #in "\x13\x11";
 }
 
 readValue {
   out "meas";
-  in "\x13meas,%f\r\x0\n\x11";
+  #in "meas,%f";
+  in "meas,%f\r\x0";
+  #in "\x13meas,%f\r\x0\n\x11";
+  @mismatch { in "error,%d"; }
 }
 
 closedLoop {
   out "cl,%d";
-  in "\x13\x11";
+  #in "\x13\x11";
 }
 
 # closed loop query
 #   out "cl";
 #   in "\x13cl,%*d\r\x0\n\x11";
-
