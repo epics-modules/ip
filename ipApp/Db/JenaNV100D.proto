@@ -33,3 +33,33 @@ closedLoop {
 # closed loop query
 #   out "cl";
 #   in "\x13cl,%*d\r\x0\n\x11";
+
+writeKp {
+  out "kp,%0.2f";
+}
+
+readKp {
+  out "kp";
+  in "kp,%f\r\x0";
+  @mismatch { in "error,%d"; }
+}
+
+writeKi {
+  out "ki,%0.2f";
+}
+
+readKi {
+  out "ki";
+  in "ki,%f\r\x0";
+  @mismatch { in "error,%d"; }
+}
+
+writeKd {
+  out "kd,%0.2f";
+}
+
+readKd {
+  out "kd";
+  in "kd,%f\r\x0";
+  @mismatch { in "error,%d"; }
+}

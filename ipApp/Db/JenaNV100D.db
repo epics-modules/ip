@@ -30,3 +30,51 @@ record(bo, "$(P)$(C)cl")
    field(ZNAM, "Off")
    field(ONAM, "On")
 }
+
+record(ao, "$(P)$(C)kp")
+{
+   field(DTYP, "stream")
+   field(OUT,  "@JenaNV100D.proto writeKp $(PORT)")
+   field(PREC, "3")
+}
+
+record(ai, "$(P)$(C)kp_RBV")
+{
+   field(DTYP, "stream")
+   field(INP,  "@JenaNV100D.proto readKp $(PORT)")
+   field(PREC, "3")
+   field(PINI, "YES")
+   field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(C)ki")
+{
+   field(DTYP, "stream")
+   field(OUT,  "@JenaNV100D.proto writeKi $(PORT)")
+   field(PREC, "3")
+}
+
+record(ai, "$(P)$(C)ki_RBV")
+{
+   field(DTYP, "stream")
+   field(INP,  "@JenaNV100D.proto readKi $(PORT)")
+   field(PREC, "3")
+   field(PINI, "YES")
+   field(SCAN, "1 second")
+}
+
+record(ao, "$(P)$(C)kd")
+{
+   field(DTYP, "stream")
+   field(OUT,  "@JenaNV100D.proto writeKd $(PORT)")
+   field(PREC, "3")
+}
+
+record(ai, "$(P)$(C)kd_RBV")
+{
+   field(DTYP, "stream")
+   field(INP,  "@JenaNV100D.proto readKd $(PORT)")
+   field(PREC, "3")
+   field(PINI, "YES")
+   field(SCAN, "1 second")
+}
