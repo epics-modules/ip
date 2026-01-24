@@ -1,0 +1,198 @@
+#  Database for MPC ion pump controller using Gamma Protocol for Ethernet
+#  Serial uses a different protocol 
+#
+#  Parameters
+#   $(P)        PV name prefix (e.g. 13IDA:)
+#   $(PUMP)     PV name for this specific ion pump (e.g. ip1:)
+#   $(PORT)     asyn PORT name
+#   $(PN)       Pump number (1 or 2)
+
+record(stringin,"$(P)$(PUMP):STAT") {
+    field(SCAN, "1 second")
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readString(OD,$(PN)) $(PORT)")
+    field(FLNK, "$(P)$(PUMP):PRES PP MS")
+}
+
+record(ai,"$(P)$(PUMP):PRES") {
+    field(PREC, "1")
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OB,$(PN)) $(PORT)")
+    field(FLNK, "$(P)$(PUMP):CUR PP MS")
+}
+
+record(ai,"$(P)$(PUMP):CUR") {
+    field(PREC, "1")
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OA,$(PN)) $(PORT)")
+    field(FLNK, "$(P)$(PUMP):VOLT PP MS")
+}
+
+record(ai,"$(P)$(PUMP):VOLT") {
+    field(PREC,"0")
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OC,$(PN)) $(PORT)")
+}
+
+record(ai,"$(P)$(PUMP):SIZE") {
+    field(SCAN, "5 second")
+    field(PREC, "0")
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readInt(11,$(PN)) $(PORT)")
+#    field(FLNK,"$(P)$(PUMP):SP1V PP MS")
+    field(FLNK,"$(P)$(PUMP):GAUTOS PP MS")
+}
+
+# Setpoints are not currently implemented.
+# The MPCq has a different syntax from the MPC, and we are not currently using them.
+record(ai,"$(P)$(PUMP):SP1V") {
+    field(DTYP, "stream")
+    field(PREC,"1")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OC,$(PN)) $(PORT)")
+    field(FLNK,"$(P)$(PUMP):SP1S PP MS")
+}
+
+record(bi,"$(P)$(PUMP):SP1S") {
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readInt(OC,$(PN)) $(PORT)")
+    field(ZSV,"MAJOR")
+    field(ZNAM,"Off")
+    field(ONAM,"On")
+    field(FLNK,"$(P)$(PUMP):SP2V PP MS")
+}
+
+record(ai,"$(P)$(PUMP):SP2V") {
+    field(DTYP, "stream")
+    field(PREC,"1")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OC,$(PN)) $(PORT)")
+    field(FLNK,"$(P)$(PUMP):SP2S PP MS")
+}
+
+record(bi,"$(P)$(PUMP):SP2S") {
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readInt(OC,$(PN)) $(PORT)")
+    field(ZSV,"MAJOR")
+    field(ZNAM,"Off")
+    field(ONAM,"On")
+    field(FLNK,"$(P)$(PUMP):SP3V PP MS")
+}
+
+record(ai,"$(P)$(PUMP):SP3V") {
+    field(DTYP, "stream")
+    field(PREC,"1")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OC,$(PN)) $(PORT)")
+    field(FLNK,"$(P)$(PUMP):SP3S PP MS")
+}
+
+record(bi,"$(P)$(PUMP):SP3S") {
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readInt(OC,$(PN)) $(PORT)")
+    field(ZSV,"MAJOR")
+    field(ZNAM,"Off")
+    field(ONAM,"On")
+    field(FLNK,"$(P)$(PUMP):SP4V PP MS")
+}
+
+record(ai,"$(P)$(PUMP):SP4V") {
+    field(DTYP, "stream")
+    field(PREC,"1")
+    field(INP,  "@MPC_Ethernet.proto readFloat(OC,$(PN)) $(PORT)")
+    field(FLNK,"$(P)$(PUMP):SP4S PP MS")
+}
+
+record(bi,"$(P)$(PUMP):SP4S") {
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readInt(OC,$(PN)) $(PORT)")
+    field(ZSV,"MAJOR")
+    field(ZNAM,"Off")
+    field(ONAM,"On")
+    field(FLNK,"$(P)$(PUMP):GAUTOS PP MS")
+}
+
+record(bi,"$(P)$(PUMP):GAUTOS") {
+    field(DTYP, "stream")
+    field(INP,  "@MPC_Ethernet.proto readAutoRestart($(PN)) $(PORT)")
+    field(OSV,  "MAJOR")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
+
+# The MPCq does not support this command since all values are displayed
+# Retain the record so the OPI screens are not white
+record(mbbo,"$(P)$(PUMP):DIS") {
+#    field(DTYP, "stream")
+#    field(OUT,  "@MPC_Ethernet.proto setString(25,$(PN)) $(PORT)")
+    field(ZRVL,"0")
+    field(ONVL,"1")
+    field(TWVL,"2")
+    field(ZRST,"Pressure")
+    field(ONST,"Current")
+    field(TWST,"Voltage")
+}
+
+record(ao,"$(P)$(PUMP):SSIZE") {
+    field(DTYP, "stream")
+    field(OMSL, "supervisory")
+    field(PREC, "0")
+    field(OUT,  "@MPC_Ethernet.proto writeInt(12,$(PN)) $(PORT)")
+    field(VAL,  "30")
+}
+
+# Setpoints are not currently implemented.
+# The MPCq has a different syntax from the MPC, and we are not currently using them.
+record(ao,"$(P)$(PUMP):SET1") {
+    field(DTYP, "stream")
+    field(OMSL, "supervisory")
+    field(PREC, "1")
+    field(OUT,  "@MPC_Ethernet.proto writeFloat(25,$(PN)) $(PORT)")
+    field(VAL,  "1.0E-06")
+}
+
+record(ao,"$(P)$(PUMP):SET2") {
+    field(DTYP,  "stream")
+    field(OMSL, "supervisory")
+    field(PREC, "1")
+    field(OUT,  "@MPC_Ethernet.proto writeFloat(25,$(PN)) $(PORT)")
+    field(VAL,  "1.0E-06")
+}
+
+record(ao,"$(P)$(PUMP):SET3") {
+    field(DTYP, "stream")
+    field(OMSL, "supervisory")
+    field(PREC, "1")
+    field(OUT,  "@MPC_Ethernet.proto writeFloat(25,$(PN)) $(PORT)")
+    field(VAL,  "1.0E-06")
+}
+
+record(ao,"$(P)$(PUMP):SET4") {
+    field(DTYP, "stream")
+    field(OMSL, "supervisory")
+    field(PREC, "1")
+    field(OUT,  "@MPC_Ethernet.proto writeFloat(25,$(PN)) $(PORT)")
+    field(VAL,  "1.0E-06")
+}
+
+record(bo,"$(P)$(PUMP):STOP") {
+    field(DTYP, "stream")
+    field(OUT,  "@MPC_Ethernet.proto writeHVOnOff($(PN)) $(PORT)")
+    field(OSV,  "MAJOR")
+    field(ZNAM, "START")
+    field(ONAM, "STOP")
+}
+
+# This function is not supported on the MPCq, keep the record for OPI displays
+record(bo,"$(P)$(PUMP):ULCK") {
+#    field(DTYP, "stream")
+#    field(OUT,  "@MPC_Ethernet.proto writeString(25,$(PN)) $(PORT)")
+    field(OSV,  "MAJOR")
+    field(ZNAM, "LOCK")
+    field(ONAM, "UNLOCK")
+}
+
+record(bo,"$(P)$(PUMP):SAUTOS") {
+    field(DTYP, "stream")
+    field(OUT,  "@MPC_Ethernet.proto writeAutoRestart($(PN)) $(PORT)")
+    field(OSV,  "MAJOR")
+    field(ZNAM, "No")
+    field(ONAM, "Yes")
+}
