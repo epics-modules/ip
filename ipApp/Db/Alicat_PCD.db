@@ -1,0 +1,137 @@
+# Alicat_PCD.db
+
+# Database file for Alicat PCD pressure controller
+
+# Mark Rivers
+# March 1, 2026
+
+record(stringin,"$(P)$(R)Firmware") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getFirmware($(ID)) $(PORT)")
+    field(PINI, "YES")
+}
+
+record(ao,"$(P)$(R)Setpoint") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setSetpoint($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+# These records are for tweaking the pressure setpoint
+record(ao,"$(P)$(R)TweakVal") {
+    field(VAL, "1")
+    field(PREC,"1")
+}
+
+record(calcout,"$(P)$(R)TweakDown") {
+    field(INPA,"$(P)$(R)TweakVal.VAL NPP NMS")
+    field(INPB,"$(P)$(R)Setpoint.VAL NPP NMS")
+    field(CALC,"B-A")
+    field(OUT, "$(P)$(R)Setpoint.VAL PP NMS")
+}
+
+record(calcout,"$(P)$(R)TweakUp") {
+    field(INPA,"$(P)$(R)TweakVal.VAL NPP NMS")
+    field(INPB,"$(P)$(R)Setpoint.VAL NPP NMS")
+    field(CALC,"B+A")
+    field(OUT, "$(P)$(R)Setpoint.VAL PP NMS")
+}
+
+record(ao,"$(P)$(R)RampRate") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setRamp($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+record(bo,"$(P)$(R)Vent") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setVent($(ID)) $(PORT)")
+}
+
+record(mbbo,"$(P)$(R)Units") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setUnits($(ID)) $(PORT)")
+    field(ZRVL, "2")
+    field(ZRST, "Pa")
+    field(ONVL, "4")
+    field(ONST, "KPa")
+    field(TWVL, "5")
+    field(TWST, "MPa")
+    field(THVL, "10")
+    field(THST, "PSI")
+}
+
+# Pause
+record(bo,"$(P)$(R)Pause") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setPause($(ID)) $(PORT)")
+}
+
+# Run
+record(bo,"$(P)$(R)Run") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setRun($(ID)) $(PORT)")
+}
+
+# Read settings
+record(bo,"$(P)$(R)ReadSettingsScan") {
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)ReadSettings.PROC")
+}
+
+record(bo,"$(P)$(R)ReadSettings") {
+    field(FLNK, "$(P)$(R)Pressure_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Pressure_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getPressure($(ID),$(P)$(R)Setpoint_RBV,$(P)$(R)Status) $(PORT)")
+    field(PREC, "3")
+    field(FLNK, "$(P)$(R)Units_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Setpoint_RBV") {
+    field(PREC, "3")
+    field(FLNK, "$(P)$(R)Units_RBV.PROC")
+}
+
+record(stringin,"$(P)$(R)Status") {
+}
+
+record(mbbi,"$(P)$(R)Units_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getUnits($(ID)) $(PORT)")
+    field(ZRVL, "2")
+    field(ZRST, "Pa")
+    field(ONVL, "4")
+    field(ONST, "KPa")
+    field(TWVL, "5")
+    field(TWST, "MPa")
+    field(THVL, "10")
+    field(THST, "PSI")
+    field(FLNK, "$(P)$(R)RampRate_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)RampRate_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getRamp($(ID)) $(PORT)")
+    field(PREC, "3")
+    field(FLNK, "$(P)$(R)Error_RBV.PROC")
+}
+
+record(asyn,"$(P)$(R)Asyn") {
+    field(PORT, "$(PORT)")
+}
+
+# These records set the HOPR and LOPR to the same values for Pressure and Setpoint
+# This simplifies the plot configuration
+record(dfanout, "$(P)$(R)PressureLOPR") {
+    field(OUTA, "$(P)$(R)Setpoint.LOPR")
+    field(OUTB, "$(P)$(R)Pressure_RBV.LOPR")
+}
+
+record(dfanout, "$(P)$(R)PressureHOPR") {
+    field(OUTA, "$(P)$(R)Setpoint.HOPR")
+    field(OUTB, "$(P)$(R)Pressure_RBV.HOPR")
+}
+
