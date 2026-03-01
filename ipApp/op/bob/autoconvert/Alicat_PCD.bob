@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--Saved on 2026-03-01 12:31:14 by epics-->
+<!--Saved on 2026-03-01 12:56:23 by epics-->
 <display version="2.0.0">
   <name>Alicat_PCD</name>
   <x>88</x>
@@ -415,134 +415,128 @@
       <auto_size>true</auto_size>
     </widget>
   </widget>
-  <widget type="group" version="2.0.0">
-    <name>composite #90</name>
-    <x>5</x>
+  <widget type="label" version="2.0.0">
+    <name>text #90</name>
+    <text>Vent</text>
+    <x>55</x>
     <y>240</y>
-    <width>288</width>
-    <height>70</height>
-    <style>3</style>
-    <transparent>true</transparent>
-    <widget type="label" version="2.0.0">
-      <name>text #93</name>
-      <text>Vent</text>
-      <x>50</x>
-      <width>40</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    <width>40</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="textupdate" version="2.0.0">
-      <name>text update #96</name>
-      <pv_name>$(P)$(R)Status</pv_name>
-      <x>95</x>
-      <y>25</y>
-      <width>90</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="textupdate" version="2.0.0">
+    <name>text update #93</name>
+    <pv_name>$(P)$(R)Status</pv_name>
+    <x>100</x>
+    <y>265</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <foreground_color>
-        <color red="42" green="99" blue="228">
-        </color>
-      </foreground_color>
-      <background_color>
-        <color red="187" green="187" blue="187">
-        </color>
-      </background_color>
-      <format>1</format>
-      <show_units>false</show_units>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>text #100</name>
-      <text>Status</text>
-      <x>30</x>
-      <y>25</y>
-      <width>60</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <foreground_color>
+      <color red="42" green="99" blue="228">
+      </color>
+    </foreground_color>
+    <background_color>
+      <color red="187" green="187" blue="187">
+      </color>
+    </background_color>
+    <format>1</format>
+    <show_units>false</show_units>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #97</name>
+    <text>Status</text>
+    <x>35</x>
+    <y>265</y>
+    <width>60</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <horizontal_alignment>2</horizontal_alignment>
-    </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>related display #103</name>
-      <actions>
-        <action type="open_display">
-          <file>asynRecord.opi</file>
-          <macros>
-            <R>$(R)Asyn</R>
-          </macros>
-          <target>tab</target>
-          <description>asyn record</description>
-        </action>
-        <action type="open_display">
-          <file>plot_2pvs.opi</file>
-          <macros>
-            <HOPR>$(P)$(R)PressureHOPR</HOPR>
-            <LOPR>$(P)$(R)PressureLOPR</LOPR>
-            <PV1>$(P)$(R)Setpoint</PV1>
-            <PV2>$(P)$(R)Pressure_RBV</PV2>
-          </macros>
-          <target>tab</target>
-          <description>Plot</description>
-        </action>
-      </actions>
-      <text>More</text>
-      <x>218</x>
-      <y>50</y>
-      <width>70</width>
-      <height>20</height>
-      <background_color>
-        <color red="115" green="223" blue="255">
-        </color>
-      </background_color>
-    </widget>
-    <widget type="combo" version="2.0.0">
-      <name>menu #107</name>
-      <pv_name>$(P)$(R)ReadSettingsScan.SCAN</pv_name>
-      <x>95</x>
-      <y>50</y>
-      <width>90</width>
-      <height>20</height>
-      <background_color>
-        <color red="115" green="223" blue="255">
-        </color>
-      </background_color>
-      <border_alarm_sensitive>false</border_alarm_sensitive>
-    </widget>
-    <widget type="label" version="2.0.0">
-      <name>text #110</name>
-      <text>Read Rate</text>
-      <y>50</y>
-      <width>90</width>
-      <font>
-        <font family="Liberation Sans" style="REGULAR" size="16.0">
-        </font>
+    </font>
+    <horizontal_alignment>2</horizontal_alignment>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>related display #100</name>
+    <actions>
+      <action type="open_display">
+        <file>asynRecord.opi</file>
+        <macros>
+          <R>$(R)Asyn</R>
+        </macros>
+        <target>tab</target>
+        <description>asyn record</description>
+      </action>
+      <action type="open_display">
+        <file>Alicat_PCD_plot_2pvs.opi</file>
+        <macros>
+          <HOPR>$(P)$(R)PressureHOPR</HOPR>
+          <LOPR>$(P)$(R)PressureLOPR</LOPR>
+          <PV1>$(P)$(R)Setpoint</PV1>
+          <PV2>$(P)$(R)Pressure_RBV</PV2>
+        </macros>
+        <target>tab</target>
+        <description>Plot setpoint and readback</description>
+      </action>
+    </actions>
+    <text>More</text>
+    <x>223</x>
+    <y>290</y>
+    <width>70</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+  </widget>
+  <widget type="combo" version="2.0.0">
+    <name>menu #104</name>
+    <pv_name>$(P)$(R)ReadSettingsScan.SCAN</pv_name>
+    <x>100</x>
+    <y>290</y>
+    <width>90</width>
+    <height>20</height>
+    <background_color>
+      <color red="115" green="223" blue="255">
+      </color>
+    </background_color>
+    <border_alarm_sensitive>false</border_alarm_sensitive>
+  </widget>
+  <widget type="label" version="2.0.0">
+    <name>text #107</name>
+    <text>Read Rate</text>
+    <x>5</x>
+    <y>290</y>
+    <width>90</width>
+    <font>
+      <font family="Liberation Sans" style="REGULAR" size="16.0">
       </font>
-      <auto_size>true</auto_size>
-    </widget>
-    <widget type="action_button" version="3.0.0">
-      <name>message button #113</name>
-      <actions>
-        <action type="write_pv">
-          <pv_name>$(P)$(R)Vent</pv_name>
-          <value>1</value>
-          <description>Write</description>
-        </action>
-      </actions>
-      <pv_name>$(P)$(R)Vent</pv_name>
-      <text>Vent</text>
-      <x>95</x>
-      <width>87</width>
-      <height>20</height>
-      <background_color>
-        <color red="253" green="0" blue="0">
-        </color>
-      </background_color>
-    </widget>
+    </font>
+    <auto_size>true</auto_size>
+  </widget>
+  <widget type="action_button" version="3.0.0">
+    <name>message button #110</name>
+    <actions>
+      <action type="write_pv">
+        <pv_name>$(P)$(R)Vent</pv_name>
+        <value>1</value>
+        <description>Write</description>
+      </action>
+    </actions>
+    <pv_name>$(P)$(R)Vent</pv_name>
+    <text>Vent</text>
+    <x>100</x>
+    <y>240</y>
+    <width>87</width>
+    <height>20</height>
+    <background_color>
+      <color red="253" green="0" blue="0">
+      </color>
+    </background_color>
   </widget>
 </display>

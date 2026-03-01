@@ -438,116 +438,105 @@ composite {
 		}
 	}
 }
-composite {
+text {
+	object {
+		x=55
+		y=240
+		width=40
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Vent"
+	align="horiz. right"
+}
+"text update" {
+	object {
+		x=100
+		y=265
+		width=90
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Status"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=35
+		y=265
+		width=60
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Status"
+	align="horiz. right"
+}
+"related display" {
+	object {
+		x=223
+		y=290
+		width=70
+		height=20
+	}
+	display[0] {
+		label="asyn record"
+		name="asynRecord.adl"
+		args="P=$(P), R=$(R)Asyn"
+	}
+	display[1] {
+		label="Plot setpoint and readback"
+		name="Alicat_PCD_plot_2pvs.adl"
+		args="PV1=$(P)$(R)Setpoint,PV2=$(P)$(R)Pressure_RBV,HOPR=$(P)$(R)PressureHOPR,LOPR=$(P)$(R)PressureLOPR"
+	}
+	clr=14
+	bclr=51
+	label="More"
+}
+menu {
+	object {
+		x=100
+		y=290
+		width=90
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ReadSettingsScan.SCAN"
+		clr=14
+		bclr=51
+	}
+}
+text {
 	object {
 		x=5
+		y=290
+		width=90
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Read Rate"
+}
+"message button" {
+	object {
+		x=100
 		y=240
-		width=288
-		height=70
+		width=87
+		height=20
 	}
-	"composite name"=""
-	children {
-		text {
-			object {
-				x=55
-				y=240
-				width=40
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Vent"
-			align="horiz. right"
-		}
-		"text update" {
-			object {
-				x=100
-				y=265
-				width=90
-				height=20
-			}
-			monitor {
-				chan="$(P)$(R)Status"
-				clr=53
-				bclr=4
-			}
-			limits {
-			}
-		}
-		text {
-			object {
-				x=35
-				y=265
-				width=60
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Status"
-			align="horiz. right"
-		}
-		"related display" {
-			object {
-				x=223
-				y=290
-				width=70
-				height=20
-			}
-			display[0] {
-				label="asyn record"
-				name="asynRecord.adl"
-				args="P=$(P), R=$(R)Asyn"
-			}
-			display[1] {
-				label="Plot"
-				name="plot_2pvs.adl"
-				args="PV1=$(P)$(R)Setpoint,PV2=$(P)$(R)Pressure_RBV,HOPR=$(P)$(R)PressureHOPR,LOPR=$(P)$(R)PressureLOPR"
-			}
-			clr=14
-			bclr=51
-			label="More"
-		}
-		menu {
-			object {
-				x=100
-				y=290
-				width=90
-				height=20
-			}
-			control {
-				chan="$(P)$(R)ReadSettingsScan.SCAN"
-				clr=14
-				bclr=51
-			}
-		}
-		text {
-			object {
-				x=5
-				y=290
-				width=90
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="Read Rate"
-		}
-		"message button" {
-			object {
-				x=100
-				y=240
-				width=87
-				height=20
-			}
-			control {
-				chan="$(P)$(R)Vent"
-				clr=14
-				bclr=20
-			}
-			label="Vent"
-			press_msg="1"
-		}
+	control {
+		chan="$(P)$(R)Vent"
+		clr=14
+		bclr=20
 	}
+	label="Vent"
+	press_msg="1"
 }
