@@ -37,6 +37,19 @@ getPressure {
    in  "\$1 %f %(\$2)f %(\$3)40c";
 }
 
+getMaxPressure {
+   out "\$1 LR";
+   in  "\$1 38 %*f %f";
+}
+setMaxPressure {
+   out "\$1 LR 38 0 0 %f";
+   in  "\$1 38 %*f %*f";
+   @init {
+       out "\$1 LR";
+       in  "\$1 38 %*f %f";
+   }
+}
+
 setSetpoint {
    out "\$1 LS %f";
    @init {
@@ -46,7 +59,7 @@ setSetpoint {
 }
 
 setPause {
-   out "\$1 HP";
+   out "\$1 HC";
 }
 
 setRun {
@@ -56,6 +69,11 @@ setRun {
 setVent {
    out "\$1 E";
    in  "\$1";
+}
+
+getValves {
+   out "\$1 VD";
+   in  "\$1 %f %(\$2)f";
 }
 
 getFirmware {

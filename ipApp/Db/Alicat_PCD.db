@@ -15,6 +15,8 @@ record(ao,"$(P)$(R)Setpoint") {
     field(DTYP, "stream")
     field(OUT,  "@Alicat_PCD.proto setSetpoint($(ID)) $(PORT)")
     field(PREC, "3")
+    field(SDIS, "$(P)$(R)Running_RBV")
+    field(DISV, "0")
 }
 
 # These records are for tweaking the pressure setpoint
@@ -37,6 +39,12 @@ record(calcout,"$(P)$(R)TweakUp") {
     field(OUT, "$(P)$(R)Setpoint.VAL PP NMS")
 }
 
+record(ao,"$(P)$(R)MaxPressure") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_PCD.proto setMaxPressure($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
 record(ao,"$(P)$(R)RampRate") {
     field(DTYP, "stream")
     field(OUT,  "@Alicat_PCD.proto setRamp($(ID)) $(PORT)")
@@ -57,8 +65,10 @@ record(mbbo,"$(P)$(R)Units") {
     field(ONST, "KPa")
     field(TWVL, "5")
     field(TWST, "MPa")
-    field(THVL, "10")
-    field(THST, "PSI")
+    field(THVL, "7")
+    field(THST, "Bar")
+    field(FRVL, "10")
+    field(FRST, "PSI")
 }
 
 # Pause
@@ -107,8 +117,10 @@ record(mbbi,"$(P)$(R)Units_RBV") {
     field(ONST, "KPa")
     field(TWVL, "5")
     field(TWST, "MPa")
-    field(THVL, "10")
-    field(THST, "PSI")
+    field(THVL, "7")
+    field(THST, "Bar")
+    field(FRVL, "10")
+    field(FRST, "PSI")
     field(FLNK, "$(P)$(R)RampRate_RBV.PROC")
 }
 
@@ -116,7 +128,38 @@ record(ai,"$(P)$(R)RampRate_RBV") {
     field(DTYP, "stream")
     field(INP,  "@Alicat_PCD.proto getRamp($(ID)) $(PORT)")
     field(PREC, "3")
-    field(FLNK, "$(P)$(R)Error_RBV.PROC")
+    field(FLNK, "$(P)$(R)MaxPressure_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)MaxPressure_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getMaxPressure($(ID)) $(PORT)")
+    field(PREC, "3")
+    field(FLNK, "$(P)$(R)UpstreamValve_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)UpstreamValve_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_PCD.proto getValves($(ID),$(P)$(R)DownstreamValve_RBV) $(PORT)")
+    field(PREC, "2")
+}
+
+record(ai,"$(P)$(R)DownstreamValve_RBV") {
+    field(PREC, "2")
+}
+
+# This record is 0 if the status contains the string HLD or EXH, which means it is not running
+record(scalcout,"$(P)$(R)ParseStatus") {
+    field(INAA, "$(P)$(R)Status CP")
+    field(CALC, "LEN(AA)=LEN(AA-'HLD'-'EXH')")
+}
+
+record(bi, "$(P)$(R)Running_RBV") {
+    field(INP, "$(P)$(R)ParseStatus CP")
+    field(ZNAM, "Paused")
+    field(ONAM, "Running")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MINOR")
 }
 
 record(asyn,"$(P)$(R)Asyn") {
