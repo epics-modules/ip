@@ -7,8 +7,8 @@ display {
 	object {
 		x=88
 		y=82
-		width=350
-		height=320
+		width=355
+		height=370
 	}
 	clr=14
 	bclr=4
@@ -141,19 +141,6 @@ text {
 	format="string"
 	limits {
 	}
-}
-text {
-	object {
-		x=25
-		y=190
-		width=70
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Control"
-	align="horiz. right"
 }
 "text update" {
 	object {
@@ -315,9 +302,9 @@ menu {
 }
 text {
 	object {
-		x=0
+		x=127
 		y=60
-		width=350
+		width=96
 		height=25
 	}
 	"basic attribute" {
@@ -326,11 +313,24 @@ text {
 	textix="$(P)$(R)"
 	align="horiz. centered"
 }
+text {
+	object {
+		x=25
+		y=215
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Control"
+	align="horiz. right"
+}
 "message button" {
 	object {
 		x=100
-		y=190
-		width=87
+		y=215
+		width=80
 		height=20
 	}
 	control {
@@ -343,9 +343,9 @@ text {
 }
 "message button" {
 	object {
-		x=190
-		y=190
-		width=87
+		x=185
+		y=215
+		width=80
 		height=20
 	}
 	control {
@@ -356,24 +356,141 @@ text {
 	label="Run"
 	press_msg="1"
 }
+text {
+	object {
+		x=325
+		y=240
+		width=20
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="/s"
+}
+text {
+	object {
+		x=55
+		y=265
+		width=40
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Vent"
+	align="horiz. right"
+}
+"message button" {
+	object {
+		x=100
+		y=265
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)Vent"
+		clr=14
+		bclr=20
+	}
+	label="Vent"
+	press_msg="1"
+}
+"text update" {
+	object {
+		x=185
+		y=190
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)MaxPressure_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+text {
+	object {
+		x=25
+		y=190
+		width=70
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="Maximum"
+	align="horiz. right"
+}
+"text entry" {
+	object {
+		x=100
+		y=190
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)MaxPressure"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=250
+		y=190
+		width=60
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Units_RBV"
+		clr=14
+		bclr=4
+	}
+	align="horiz. right"
+	limits {
+	}
+}
+"text update" {
+	object {
+		x=270
+		y=215
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Running_RBV"
+		clr=30
+		bclr=14
+	}
+	clrmod="alarm"
+	align="horiz. centered"
+	format="string"
+	limits {
+	}
+}
 composite {
 	object {
 		x=5
-		y=215
-		width=340
-		height=20
+		y=315
+		width=295
+		height=45
 	}
 	"composite name"=""
 	children {
 		"text update" {
 			object {
-				x=195
-				y=215
-				width=60
+				x=100
+				y=315
+				width=200
 				height=20
 			}
 			monitor {
-				chan="$(P)$(R)RampRate_RBV"
+				chan="$(P)$(R)Status"
 				clr=53
 				bclr=4
 			}
@@ -382,8 +499,78 @@ composite {
 		}
 		text {
 			object {
+				x=35
+				y=315
+				width=60
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Status"
+			align="horiz. right"
+		}
+		"related display" {
+			object {
+				x=223
+				y=340
+				width=70
+				height=20
+			}
+			display[0] {
+				label="asyn record"
+				name="asynRecord.adl"
+				args="P=$(P), R=$(R)Asyn"
+			}
+			display[1] {
+				label="Plot setpoint and readback"
+				name="Alicat_PCD_plot_2pvs.adl"
+				args="PV1=$(P)$(R)Setpoint,PV2=$(P)$(R)Pressure_RBV,HOPR=$(P)$(R)PressureHOPR,LOPR=$(P)$(R)PressureLOPR"
+			}
+			clr=14
+			bclr=51
+			label="More"
+		}
+		menu {
+			object {
+				x=100
+				y=340
+				width=80
+				height=20
+			}
+			control {
+				chan="$(P)$(R)ReadSettingsScan.SCAN"
+				clr=14
+				bclr=51
+			}
+		}
+		text {
+			object {
 				x=5
-				y=215
+				y=340
+				width=90
+				height=20
+			}
+			"basic attribute" {
+				clr=14
+			}
+			textix="Read Rate"
+		}
+	}
+}
+composite {
+	object {
+		x=5
+		y=240
+		width=315
+		height=20
+	}
+	"composite name"=""
+	children {
+		text {
+			object {
+				x=5
+				y=240
 				width=90
 				height=20
 			}
@@ -396,8 +583,8 @@ composite {
 		"text entry" {
 			object {
 				x=100
-				y=215
-				width=90
+				y=240
+				width=80
 				height=20
 			}
 			control {
@@ -410,8 +597,23 @@ composite {
 		}
 		"text update" {
 			object {
+				x=195
+				y=240
+				width=60
+				height=20
+			}
+			monitor {
+				chan="$(P)$(R)RampRate_RBV"
+				clr=53
+				bclr=4
+			}
+			limits {
+			}
+		}
+		"text update" {
+			object {
 				x=260
-				y=215
+				y=240
 				width=60
 				height=20
 			}
@@ -424,93 +626,6 @@ composite {
 			limits {
 			}
 		}
-		text {
-			object {
-				x=325
-				y=215
-				width=20
-				height=20
-			}
-			"basic attribute" {
-				clr=14
-			}
-			textix="/s"
-		}
-	}
-}
-text {
-	object {
-		x=55
-		y=240
-		width=40
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Vent"
-	align="horiz. right"
-}
-"text update" {
-	object {
-		x=100
-		y=265
-		width=90
-		height=20
-	}
-	monitor {
-		chan="$(P)$(R)Status"
-		clr=53
-		bclr=4
-	}
-	limits {
-	}
-}
-text {
-	object {
-		x=35
-		y=265
-		width=60
-		height=20
-	}
-	"basic attribute" {
-		clr=14
-	}
-	textix="Status"
-	align="horiz. right"
-}
-"related display" {
-	object {
-		x=223
-		y=290
-		width=70
-		height=20
-	}
-	display[0] {
-		label="asyn record"
-		name="asynRecord.adl"
-		args="P=$(P), R=$(R)Asyn"
-	}
-	display[1] {
-		label="Plot setpoint and readback"
-		name="Alicat_PCD_plot_2pvs.adl"
-		args="PV1=$(P)$(R)Setpoint,PV2=$(P)$(R)Pressure_RBV,HOPR=$(P)$(R)PressureHOPR,LOPR=$(P)$(R)PressureLOPR"
-	}
-	clr=14
-	bclr=51
-	label="More"
-}
-menu {
-	object {
-		x=100
-		y=290
-		width=90
-		height=20
-	}
-	control {
-		chan="$(P)$(R)ReadSettingsScan.SCAN"
-		clr=14
-		bclr=51
 	}
 }
 text {
@@ -523,20 +638,48 @@ text {
 	"basic attribute" {
 		clr=14
 	}
-	textix="Read Rate"
+	textix="Valves"
+	align="horiz. right"
 }
-"message button" {
+"text update" {
 	object {
-		x=100
-		y=240
-		width=87
+		x=185
+		y=290
+		width=80
 		height=20
 	}
-	control {
-		chan="$(P)$(R)Vent"
-		clr=14
-		bclr=20
+	monitor {
+		chan="$(P)$(R)DownstreamValve_RBV"
+		clr=53
+		bclr=4
 	}
-	label="Vent"
-	press_msg="1"
+	limits {
+	}
+}
+text {
+	object {
+		x=270
+		y=290
+		width=30
+		height=20
+	}
+	"basic attribute" {
+		clr=14
+	}
+	textix="(%)"
+}
+"text update" {
+	object {
+		x=100
+		y=290
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)UpstreamValve_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
 }
