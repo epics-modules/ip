@@ -1,0 +1,228 @@
+# Alicat_BC.db
+
+# Database file for Alicat BC flow controller
+
+# Mark Rivers
+# March 9, 2026
+
+record(stringin,"$(P)$(R)Firmware") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getFirmware($(ID)) $(PORT)")
+    field(PINI, "YES")
+}
+
+record(stringin,"$(P)$(R)SerialNumber") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getSerialNumber($(ID)) $(PORT)")
+    field(PINI, "YES")
+}
+
+record(ao,"$(P)$(R)Setpoint") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setSetpoint($(ID)) $(PORT)")
+    field(PREC, "3")
+    field(SDIS, "$(P)$(R)Running_RBV")
+    field(DISV, "0")
+}
+
+# These records are for tweaking the flow setpoint
+record(ao,"$(P)$(R)TweakVal") {
+    field(VAL, "1")
+    field(PREC,"1")
+}
+
+record(calcout,"$(P)$(R)TweakDown") {
+    field(INPA,"$(P)$(R)TweakVal.VAL NPP NMS")
+    field(INPB,"$(P)$(R)Setpoint.VAL NPP NMS")
+    field(CALC,"B-A")
+    field(OUT, "$(P)$(R)Setpoint.VAL PP NMS")
+}
+
+record(calcout,"$(P)$(R)TweakUp") {
+    field(INPA,"$(P)$(R)TweakVal.VAL NPP NMS")
+    field(INPB,"$(P)$(R)Setpoint.VAL NPP NMS")
+    field(CALC,"B+A")
+    field(OUT, "$(P)$(R)Setpoint.VAL PP NMS")
+}
+
+record(ao,"$(P)$(R)RampRate") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setRamp($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+# Hold valve at current %
+record(ao,"$(P)$(R)Hold") {
+    field(DOL,  "$(P)$(R)Valve_RBV")
+    field(OMSL, "closed_loop")
+    field(OUT,  "$(P)$(R)SetValve PP")
+}
+
+# Set valve %
+record(ao,"$(P)$(R)SetValve") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setValve($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+# Set total
+record(ao,"$(P)$(R)SetTotal") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setTotal($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+# Reset total
+record(bo,"$(P)$(R)ResetTotal") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto resetTotal($(ID)) $(PORT)")
+}
+
+# Set point source
+record(bo,"$(P)$(R)SetpointSource") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setSetpointSource($(ID)) $(PORT)")
+    field(ZNAM, "Digital")
+    field(ONAM, "Analog")
+    field(PINI, "YES")
+    field(FLNK, "$(P)$(R)SetpointSource_RBV")
+}
+
+record(bi,"$(P)$(R)SetpointSource_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getSetpointSource($(ID)) $(PORT)")
+    field(ZNAM, "Digital")
+    field(ONAM, "Analog")
+}
+
+# Run
+record(bo,"$(P)$(R)Run") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setRun($(ID)) $(PORT)")
+}
+
+# Read settings
+record(bo,"$(P)$(R)ReadSettingsScan") {
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)ReadSettings.PROC")
+}
+
+record(bo,"$(P)$(R)ReadSettings") {
+    field(FLNK, "$(P)$(R)Temperature_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Temperature_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getTemperature($(ID),$(P)$(R)Flow_RBV,$(P)$(R)Total_RBV,$(P)$(R)Setpoint_RBV,$(P)$(R)Valve_RBV,$(P)$(R)Gas_RBV,$(P)$(R)Status) $(PORT)")
+    field(PREC, "1")
+    field(FLNK, "$(P)$(R)RampRate_RBV.PROC")
+}
+
+record(ai,"$(P)$(R)Flow_RBV") {
+    field(PREC, "3")
+}
+
+record(ai,"$(P)$(R)Total_RBV") {
+    field(PREC, "3")
+}
+
+record(ai,"$(P)$(R)Setpoint_RBV") {
+    field(PREC, "3")
+}
+
+record(ai,"$(P)$(R)Valve_RBV") {
+    field(PREC, "3")
+}
+
+record(mbbi,"$(P)$(R)Gas_RBV") {
+    field(ZRVL, "0")
+    field(ZRST, "Air")
+    field(ONVL, "1")
+    field(ONST, "Ar")
+    field(TWVL, "2")
+    field(TWST, "CO2")
+    field(THVL, "3")
+    field(THST, "N2")
+    field(FRVL, "4")
+    field(FRST, "O2")
+    field(FVVL, "5")
+    field(FVST, "N2O")
+    field(SXVL, "6")
+    field(SXST, "H2")
+    field(SVVL, "7")
+    field(SVST, "He")
+    field(EIVL, "8")
+    field(EIST, "CH4")
+}
+
+record(stringin,"$(P)$(R)Status") {
+}
+
+record(ai,"$(P)$(R)RampRate_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getRamp($(ID)) $(PORT)")
+    field(PREC, "3")
+}
+
+record(mbbo,"$(P)$(R)SetGas") {
+    field(DTYP, "stream")
+    field(OUT,  "@Alicat_BC.proto setGas($(ID)) $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "Air")
+    field(ONVL, "1")
+    field(ONST, "Ar")
+    field(TWVL, "2")
+    field(TWST, "CO2")
+    field(THVL, "3")
+    field(THST, "N2")
+    field(FRVL, "4")
+    field(FRST, "O2")
+    field(FVVL, "5")
+    field(FVST, "N2O")
+    field(SXVL, "6")
+    field(SXST, "H2")
+    field(SVVL, "7")
+    field(SVST, "He")
+    field(EIVL, "8")
+    field(EIST, "CH4")
+}
+
+record(ai,"$(P)$(R)MaxFlow_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Alicat_BC.proto getMaxFlow($(ID),$(P)$(R)FlowUnits_RBV) $(PORT)")
+    field(PREC, "3")
+    field(PINI, "YES")
+}
+
+record(stringin, "$(P)$(R)FlowUnits_RBV") {
+}
+
+# This record is 0 if the status contains the string HLD or EXH, which means it is not running
+record(scalcout,"$(P)$(R)ParseStatus") {
+    field(INAA, "$(P)$(R)Status CP")
+    field(CALC, "LEN(AA)=LEN(AA-'HLD'-'EXH')")
+}
+
+record(bi, "$(P)$(R)Running_RBV") {
+    field(INP, "$(P)$(R)ParseStatus CP")
+    field(ZNAM, "Paused")
+    field(ONAM, "Running")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MINOR")
+}
+
+record(asyn,"$(P)$(R)Asyn") {
+    field(PORT, "$(PORT)")
+}
+
+# These records set the HOPR and LOPR to the same values for Flow and Setpoint
+# This simplifies the plot configuration
+record(dfanout, "$(P)$(R)FlowLOPR") {
+    field(OUTA, "$(P)$(R)Setpoint_RBV.LOPR")
+    field(OUTB, "$(P)$(R)Flow_RBV.LOPR")
+}
+
+record(dfanout, "$(P)$(R)FlowHOPR") {
+    field(OUTA, "$(P)$(R)Setpoint_RBV.HOPR")
+    field(OUTB, "$(P)$(R)Flow_RBV.HOPR")
+}
