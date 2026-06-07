@@ -1,18 +1,29 @@
 ---
 layout: default
 title: deviceCmdReply
-nav_order: 4
+parent: Supported Devices
+nav_order: 1
 ---
 
 
-deviceCmdReply
-==============
+# deviceCmdReply
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+- TOC
+{:toc}
 
 Introduction
 ------------
 
-deviceCmdReply is an EPICS database that can be programmed at run time to *integrate into EPICS* a *message based* device for which no EPICS support has been written. A single deviceCmdReply database can format and send one command string to a device and then read and parse one reply string. Strings are limited to 39 bytes, and may contain any ASCII characters, including the null character, They also may contain any checksum or CRC supported by the sCalcout record. > *Integrate into EPICS* means "provide an EPICS PV that represents a value in the device", so that if one writes to the EPICS PV, the value gets written to the device; or if one reads from the EPICS PV, one gets a value from the device. (Note that writing to an EPICS PV via channel access can cause the processing that gets the value out to the device, but reading from a PV via channel access will not cause processing to occur. If you want a PV to track some value in the device, you must arrange for that value to be read. For example, you might configure the deviceCmdReply database to process periodically.)
+deviceCmdReply is an EPICS database that can be programmed at run time to *integrate into EPICS* a *message based* device for which no EPICS support has been written. A single deviceCmdReply database can format and send one command string to a device and then read and parse one reply string. Strings are limited to 39 bytes, and may contain any ASCII characters, including the null character, They also may contain any checksum or CRC supported by the sCalcout record.
 
+{: .note }
+> *Integrate into EPICS* means "provide an EPICS PV that represents a value in the device", so that if one writes to the EPICS PV, the value gets written to the device; or if one reads from the EPICS PV, one gets a value from the device. (Note that writing to an EPICS PV via channel access can cause the processing that gets the value out to the device, but reading from a PV via channel access will not cause processing to occur. If you want a PV to track some value in the device, you must arrange for that value to be read. For example, you might configure the deviceCmdReply database to process periodically.)
+
+{: .note }
 > A *message based* device is one that communicates with its user via sequences of bytes -- typically, ASCII character strings. Message based devices typically communicate via serial, GPIB, or socket (TCP/IP or UDP/IP) interfaces.
 
 deviceCmdReply is essentially a wrapper around the EPICS [asyn record](https://epics-modules.github.io/asyn/asynRecord.html). The deviceCmdReply database consists essentially of two sCalcout (string-calc-and-output) records -- one to format the command, one to parse the reply -- and an asyn record, which performs the actual writing and reading. The asyn record provides most of the raw capabilities of deviceCmdReply. Among them are the following:
@@ -171,6 +182,7 @@ In the following tables, a one-byte binary value will be represented by *&lt;n&g
 
 - To embed variable binary numbers into an output string, you can use the sCalcout record's `WRITE(format,variable)` command, which may be abbreviated as `$W(format,variable)`. This function will encode its result as an escaped string, for transmission to the asyn record. The asyn record will translate the string into its raw, binary form before sending it to the device.
     
+    {: .note }
     > The format-indicator characters used with `WRITE()` are intended to be familiar from experience you may have had with the standard C library's `printf()` function, but they're used here to specify how *binary* numbers will be encoded, so any field-width or precision specifications will be ignored.
     
     | desired output | CALC expression | comment |
@@ -204,6 +216,7 @@ When the asyn record has received a reply from the device, it will cause the "..
 | VALUE1=1.23 | INT(AA\[7,-1\]) | move past "VALUE1=" and convert to float |
 | VALUE1=1.23 | $S(AA,"%\*7c%f") | skip 7 characters and convert to float |
     
+{: .note }
 > See the sCalcout record documentation for more information on the substring operator "`[]`". For purposes here, the syntax is `[<start>,<end>]`. If `<start>` is a number, it indicates the number of bytes to skip. `<end>` will always be -1 in this documentation.
 
 - If the uninteresting stuff is not of fixed length, but the variable-length part of it ends with some fixed string (or even the nth instance of some fixed string), we can skip to the *interesting stuff* as follows: 
@@ -214,6 +227,7 @@ When the asyn record has received a reply from the device, it will cause the "..
 | reg:2 *1.23* | $S(AA,"%\*s %f) | move past " " and convert to float |
 | R1=1.23 R32=R*7* | INT(AA\["=",-1\]\["=",-1\]) | move past two "=" characters, find an integer |
     
+{: .note }
 > In examples above, we've used the substring operator "`[<start>,<end>]`" with a string-valued first argument -- a pattern string -- and the usual second argument of -1. If the pattern is found, the result of the operation is the substring beginning just after the pattern, and continuing to the end of string. (If the pattern occurs more than once, only the first instance counts.)
 
 ### Parsing unprintable input

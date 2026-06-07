@@ -1,357 +1,735 @@
 ---
 layout: default
-title: Overview
-nav_order: 2
+title: Supported Devices
+nav_order: 3
+has_children: true
 ---
 
+# Supported Devices
+{: .no_toc}
 
-ip module Documentation
-=======================
+## Table of contents
+{: .no_toc .text-delta}
 
-The ip module contains support for specific message-based (e.g., serial) devices. To use the support in this module, include either `ip.dbd` or `ipSupport.dbd` in the `.dbd` file that will be loaded into the ioc. For a VME crate, also include either `ipVX.dbd` or `ipVXSupport.dbd`. In either case, link with the library `libip`. (EPICS has a separate lib directory for each target arch, but all target arches use the same dbd directory.)
+- TOC
+{:toc}
 
-[ipReleaseNotes.html](ipReleaseNotes.html)
+This page lists all devices supported by the ip module, grouped by
+category. Each entry lists the associated database, protocol, display,
+and source files. Devices with more detailed documentation have their
+own pages linked from the sidebar.
 
-Cole-Palmer Syringe Pump 
-- CPSyringe.db 
-- CPSyringe.proto 
-- CPSyringe\_settings.req 
-- CPSyringe.adl 
+## Temperature Controllers
 
-[BK Precision 9130 triple output power supply](BK9130.txt)
-- BK9130.db 
-- BK9130.proto 
-- BK9130\_settings.req 
-- BK9130\*.adl 
+### Eurotherm 800 and 2000 series
 
-[Agilent E3631A programmable power supply](Agilent_E3631A.txt)
-- Agilent\_E3631A.db 
-- Agilent\_E3631A\_settings.req 
-- Agilent\_settings.req 
-- Agilent\_E3631A.adl 
-- Agilent\_E3631A\_A.adl 
+Custom device support using asyn.
 
-[Federal encoder reader](Federal.txt)
-- Federal.st 
-- Federal.db 
-- Federal.adl 
-- Federal\_more.adl 
-- Federal\_setup.adl 
+- devXxEurotherm.c
+- Eurotherm.db
+- Eurotherm2k.db, Eurotherm2k_settings.req
+- Eurotherm.adl, Eurotherm2k.adl, Eurotherm2k_more.adl
 
-[devXxStrParm](devXxStrParm.README): Deprecated generic command build and parsing. (The stream module is better.) 
-- devXxStrParm.c 
-- serialFmt.db 
+### LakeShore 218
 
-[deviceCmdReply](deviceCmdReply.html): run-time support for building commands, sending them, and parsing replies 
-- deviceCmdReply.db 
-- deviceCmdReply\_settings.req 
-- deviceCmdReply.adl 
-- deviceCmdReply\_full.adl 
+StreamDevice support for the LakeShore 218 temperature monitor.
 
-[New Focus 8750 Picomotor controller](picoMotor.txt)
-- picoMotor.db 
-- picoMotor.substitutions 
-- picoMotor\_positions.req 
-- picoMotor\_settings.req 
-- picoStop12.db 
-- picoStop8.db 
-- picoMotor.adl 
-- picoMotor\_18.adl 
-- picoMotor\_9.adl 
-- picoMotor\_help.adl 
-- picoMotor\_more.adl 
-- picoTop\_example.adl 
-- pico\_small.adl 
-- topPicoMotors12.adl 
+- LakeShore218.vdb
 
-[US Digital AD4 Quadrature to Serial Adaptor](Encoder_AD4.README)
-- Encoder\_AD4.db 
-- Encoder\_AD4.proto 
-- Encoder\_AD4\_settings.req 
-- Encoder\_AD4.adl 
+### LakeShore 330
 
-[Omega DP41 Panel Meter](Omega_DP41.txt)
-- OmegaDP41.db 
-- Omega\_DP41.db 
-- Omega\_DP41.proto 
-- Omega\_DP41\_settings.req 
-- OmegaDP41.adl 
-- OmegaDP41\_more.adl 
-- Omega\_DP41.adl 
-- Omega\_DP41\_settings.adl 
+Custom device support using asyn.
 
-[US Digital X3 Multi-Axis Absolute MEMS Inclinometer](USdigital_X3.txt)
-- USdigital\_X3.proto 
-- USdigital\_X3.vdb 
-- USdigital\_X3\_settings.req 
-- USdigital\_X3.adl 
-- USdigital\_X3\_more.adl 
+- LakeShore330.db, LakeShore330_settings.req
+- LakeShore330.adl, LakeShore330_more.adl
 
-[Lakeshore 336 Temperature Controller](LakeShore_TC_336.txt)
-- LakeShore336.db 
-- LakeShore336.proto 
-- LakeShore336.req 
-- LakeShore336.adl 
-- LakeShore336\_full.adl 
-- LakeShore336\_more.adl 
+Serial connection uses a straight-through RJ-11 (6-conductor) cable
+with XM-Octal default jumpers. Pinout: pins 1,2 = RxD (to DB9 pin 3),
+pins 3,4 = GND (to DB9 pin 5), pins 5,6 = TxD (to DB9 pin 2).
+1200 or 300 baud, 7 data bits, 1 stop bit, odd parity.
 
-Keithley 2000 digital multimeter 
-- Keithley2kDMM.st 
-- Keithley2kDMM 
-- Keithley2kDMM.db 
-- Keithley2kDMM20.db 
-- Keithley2kDMM20\_settings.req 
-- Keithley2kDMM\_channelN\_settings.req 
-- Keithley2kDMM\_mf.db 
-- Keithley2kDMM\_mf10\_settings.req 
-- Keithley2kDMM\_mf20\_settings.req 
-- Keithley2kDMM\_mf22\_settings.req 
-- Keithley2kDMM\_mf40.db 
-- Keithley2kDMM\_mf40\_settings.req 
-- Keithley2kDMM\_10chan\_mf.adl 
-- Keithley2kDMM\_mf40.adl 
-- Keithley2kDMM\_mf40.st 
-- Keithley2kDMM\_mf\_channelN\_settings.req 
-- Keithley2kDMM\_settings.req 
-- Keithley\_10CH\_settings.req 
-- Keithley2kDMM.adl 
-- Keithley2kDMM20.adl 
-- Keithley2kDMM20\_full.adl 
-- Keithley2kDMM\_11\_22\_mf.adl 
-- Keithley2kDMM\_calc.adl 
-- Keithley2kDMM\_full.adl 
-- Keithley2kDMM\_full\_mf.adl 
-- Keithley2kDMM\_mf.adl 
-- Keithley2kDMM\_scpi.adl 
-- scpi\_commands.adl 
+### LakeShore 331
 
-Keithley65xx Electrometer 
-- Keithley65xxEM.st 
-- Keithley65xxEM.db 
-- Keithley65xxEM.adl 
+StreamDevice support.
 
-Heidenhain ND261 encoder reader 
-- devAiHeidND261.c 
-- heidND261.db 
-- HeidND261.adl 
+- LakeShore331.db, LakeShore331.req
+- LakeShore331.adl, LakeShore331_more.adl
 
-MKS 937 Vacuum Gauge Controller 
-- devAiMKS.c 
-- MKS.db 
-- MKS\_single.db 
+### LakeShore 335
 
-GP307 vacuum controller 
+StreamDevice support.
+
+- LakeShore335.db, LakeShore335.proto, LakeShore335.req
+- LakeShore335.adl
+
+### LakeShore 336
+
+StreamDevice support.
+
+- LakeShore336.db, LakeShore336.proto, LakeShore336.req
+- LakeShore336.adl, LakeShore336_full.adl, LakeShore336_more.adl
+
+IOC example (Ethernet):
+
+```
+drvAsynIPPortConfigure("ether1", "<TC336 IP>:7777", 0, 0, 0)
+asynOctetSetInputEos("ether1",0,"\n")
+asynOctetSetOutputEos("ether1",0,"\n")
+dbLoadRecords("$(IP)/db/LakeShore336.db", "P=xxx:,Q=TC1,PORT=ether1,ADDR=0")
+```
+
+{: .note}
+> The "Manual" setting (percentage override of the power output) sets
+> the output power in Open Loop mode; the SetPoint parameter is ignored.
+> Zone Mode is Closed Loop with an internal table that changes control
+> settings based on crossing setpoint thresholds. Loops 3 and 4 are
+> voltage outputs for external power supplies and do not perform closed
+> loop control.
+
+### LakeShore 340
+
+StreamDevice support.
+
+- LakeShore340.db, LakeShore340.req
+- LakeShore340.adl, LakeShore340_more.adl
+
+Serial connection uses a straight-through RJ-11 (6-conductor) cable
+with the same pinout as the LakeShore 330.
+
+### LakeShore DRC-93CA
+
+- LakeShoreDRC-93CA.db
+- LakeShore.adl
+
+### Oxford CryoStream 800
+
+SNL-based support for the Oxford CryoStream 800 cooler. See the
+[Oxford CryoStream 800](Oxford_CS800.md) page for full documentation.
+
+### Oxford ILM200 / ILM202
+
+Liquid level monitors.
+
+- Oxford_ILM202.db
+- Oxford_ILM202.adl
+
+### Oxford CryoJet
+
+StreamDevice support.
+
+- Oxford_CryoJet.db, Oxford_CryoJet.proto
+
+### Oxford Cyberstar X1000
+
+Scintillator detector.
+
+- Oxford_X1k.db, Oxford_X1k.adl
+- cyberAmp.db, cyberAmp.adl
+
+### Thermo Neslab EX
+
+StreamDevice support. Written by Kurt Goetze.
+
+- NeslabEX.db, NeslabEX.proto
+- NeslabEX.adl
+
+Serial: 19200 baud, 8N1. Set front panel to Computer mode.
+
+IOC example:
+
+```
+tyGSAsynInit("serial3", "UART_0", 2, 19200, 'N', 1, 8, 'N', "", "")
+dbLoadRecords("$(IP)/db/NeslabEX.db", "P=xxx:,S=1,PORT=serial3")
+```
+
+### SRS PTC10
+
+StreamDevice support for the Stanford Research Systems PTC10
+programmable temperature controller.
+
+- PTC10.db, PTC10.proto, PTC10_settings.req
+- PTC10_tc_chan.db, PTC10_rtd_chan.db, PTC10_aio_chan.db
+- PTC10_coldj_chan.db, PTC10_tec_in_chan.db, PTC10_tec_out_chan.db
+
+### Omega iSeries
+
+StreamDevice support.
+
+- iSeries.db, iSeries.proto
+
+### Advantech ADAM 4015
+
+6-channel RTD module.
+
+- ADAM_4015.db, ADAM_4015_chan.db
+- ADAM_4015.proto
+
+### Advantech ADAM 4018 / 4018+
+
+8-channel thermocouple input module. StreamDevice support.
+
+- ADAM_4018.db, ADAM_4018_chan.db
+- ADAM_4018.proto, ADAM_4018_settings.req, ADAM_4018_chan_settings.req
+- ADAM_4018.adl, ADAM_4018_chan.adl, ADAM_4018_setup.adl
+- ADAM_4018_temp.adl, ADAM_4018_temp_chan.adl
+
+## Vacuum Controllers
+
+### MKS 937 Vacuum Gauge Controller
+
+Custom device support using asyn.
+
+- devAiMKS.c
+- MKS.db, MKS_single.db
+
+### GP307 Vacuum Controller
+
+GPIB device support.
+
 - devGP307gpib.c
 
-MPC ion pump controller 
-- devMPC.c 
-- devMPC.h 
-- MPC.db 
-- MPC\_settings.req 
-- MPC.adl 
-- MPC\_TSP.adl 
+### MPC Ion Pump Controller
 
-Pfeiffer TPG261 Vacuum Controller 
-- devTPG261.c 
-- devTPG261.h 
-- TPG261.db 
-- TPG261.adl 
+Custom device support using asyn.
 
-Televac Vacuum Controller 
-- devTelevac.c 
-- devTelevac.h 
+- devMPC.c, devMPC.h
+- MPC.db, MPC_settings.req
+- MPC.adl, MPC_TSP.adl
 
-[Queensgate Piezo controller](pzt.txt)
-- devXxAX301.c 
-- pzt.db 
-- pzt.adl 
-- pzt\_1id.adl 
-- pzt\_3id.adl 
+### Pfeiffer TPG261 Vacuum Controller
 
-Eurotherm 800 and 2000 series temperature controllers 
-- devXxEurotherm.c 
-- Eurotherm.db 
-- Eurotherm2k 
-- Eurotherm2k.db 
-- Eurotherm2k.db.txt 
-- Eurotherm2k\_settings.req 
-- Eurotherm.adl 
-- Eurotherm2k.adl 
-- Eurotherm2k\_more.adl 
+Custom device support using asyn.
 
-Heidenhain AWE1024 encoder interpolator 
-- devXxHeidenhainGpib.c 
+- devTPG261.c, devTPG261.h
+- TPG261.db, TPG261.adl
 
-HeidAWE1024 
-- HeidAWE1024.db 
-- HeidEncoder.adl 
-- 2HeidEncoder.adl 
+### Televac Vacuum Controller
 
-Keithley DMM199 digital multimeter 
-- devXxKeithleyDMM199Gpib.c 
+Custom device support using asyn.
 
-KeithleyDMM 
-- KeithleyDMM.db 
-- KeithleyDMM.adl 
-- KeithleyDMM\_full.adl 
+- devTelevac.c, devTelevac.h
 
-tyGSAsynInit: shorthand for a common collection of asyn commands 
-- tyGSAsynInit.c 
+### Alcatel ACS 1000
 
-Alcatel ACS 1000 vacuum gauge controller 
-- Alcatel\_ACS1000.db 
-- Alcatel\_ACS1000.protocol 
+StreamDevice support.
 
-Alcatel ACS 2000 vacuum gauge controller 
-- Alcatel\_ACS2000.db 
-- Alcatel\_ACS2000.protocol 
+- Alcatel_ACS1000.db, Alcatel_ACS1000.protocol
 
-Physical Electronics Digitel 500/1500 ion pump controller 
-- Digitel.db 
+### Alcatel ACS 2000
 
-Heidenhain VRZ460 encoder reader 
-- HeidVRZ460\_encoder.db 
-- HeidVRZ460\_encoder.adl 
+StreamDevice support.
 
-Huber DMC9200 motor controller 
-- HuberDMC9200.db 
-- HuberDMC9200Init.db 
-- HuberDMC.adl 
+- Alcatel_ACS2000.db, Alcatel_ACS2000.protocol
 
-Piezosystems Jena NV 40/1 CLE piezo controller 
-- JenaNV40.db 
-- JenaNV40.proto 
-- jenaNV40.adl 
-- jenaNV40\_genTweak.adl 
+### Physical Electronics Digitel 500/1500
 
-[LakeShore 330 temperature controller](LakeShore330.txt)
-- LakeShore330.db 
-- LakeShore330\_settings.req 
-- LakeShore330.adl 
-- LakeShore330\_more.adl 
+Ion pump controller using generic serial record support.
 
-LakeShore 331 temperature controller 
-- LakeShore331.db 
-- LakeShore331.req 
-- LakeShore331.adl 
-- LakeShore331\_more.adl 
+- Digitel.db
 
-[LakeShore 340 temperature controller](LakeShore340.db.txt)
-- LakeShore340.db 
-- LakeShore340.req 
-- LakeShore340.adl 
-- LakeShore340\_more.adl 
+### TSP Ion Pump Controller
 
-LakeShore DRC-93CA temperature controller 
-- LakeShoreDRC-93CA.db 
-- LakeShore.adl 
+- TSP.db, TSP_settings.req
 
-Mitutoyo MIG2 multi input gathering unit 
-- MitutoyoMIG2.db 
-- MitutoyoMIG2.adl 
-- MitutoyoMIG2\_more.adl 
+### Varian Dual Ion Pump Controller
 
-NCD R2X series Single/Dual RS-232 Relay Controllers 
-- NCD\_R2X.db 
-- NCD\_R2X.proto 
-- NCD\_R2X.adl 
+- VarianDualIP.db, VarianDualIP.protocol
 
-Newport LAE500 autocollimator 
-- Newport\_LAE500.db 
-- Newport\_LAE500\_settings.req 
-- Newport\_LAE500.adl 
-- Newport\_LAE500\_help.adl 
+## Power Supplies
 
-Oxford ILM202 liquid nitrogen controller 
-- Oxford\_ILM202.db 
-- Oxford\_ILM202.adl 
+### BK Precision 9130
 
-Oxford Cyberstar X1000 scintillator detector 
-- Oxford\_X1k.db 
-- Oxford\_X1k.adl 
-- cyberAmp.db 
-- cyberAmp.adl 
+StreamDevice support for the BK Precision 9130 triple output power supply.
 
-PI 500 piezo controller 
-- PI500.db 
-- PI500.adl 
+- BK9130.db, BK9130.proto, BK9130_settings.req
+- BK9130.adl
 
-Pelco CM6700 video switch 
-- Pelco\_CM6700.db 
-- Pelco\_CM6700\_names.db 
-- Pelco\_CM6700\_settings.req 
-- Pelco\_CM6700.adl\* 
-- Pelco\_CM6700\_names.adl\* 
+Serial: 9600 baud, 8N1, LF terminator. The device's DB9 connector is
+TTL, not RS-232. An adapter from BK Precision is required; for
+low-power UARTs like the IP-Octal, supply +12 VDC to the adapter on
+DB9 pins 4 (+) and 5 (-).
 
-Stanford SR570 current preamplifier 
-- SR570.db 
-- SR570preamp\_settings.req 
-- SR570.adl 
-- SR570\_tiny.adl 
+IOC example:
 
-Stanford SR630 thermocouple reader 
-- SR630.db 
-- SR630\_settings.req 
-- SR630.adl 
+```
+dbLoadRecords("$(IP)/db/BK9130.db", "P=xxx:,PS=1,PORT=serial2")
+```
 
-Stanford SR810 lockin amplifier 
-- SR810.vdb 
-- SR810.adl 
+### BK Precision 9173B
 
-[Stanford SR830 lockin amplifier](SR830.txt)
-- SR830.vdb 
-- SR830\_settings.req 
-- SR830.adl 
+- BK9173B.db, BK9173B.proto
 
-TSP ion pump controller 
-- TSP.db 
-- TSP\_settings.req 
+### Agilent E3631A
 
-autosave settings file for the asyn record 
-- asynRecord\_settings.req 
+Programmable triple output power supply.
 
-Omega iSeries monitor/controller 
-- iSeries.db 
-- iSeries.proto 
+- Agilent_E3631A.db, Agilent_E3631A_settings.req, Agilent_settings.req
+- Agilent_E3631A.adl, Agilent_E3631A_A.adl
 
-Advantech ADAM 4018 8-ch Thermocouple Input Module 
-- ADAM\_4018.iocsh 
-- ADAM\_4018.proto 
-- ADAM\_4018.db 
-- ADAM\_4018\_settings.req 
-- ADAM\_4018\_chan.db 
-- ADAM\_4018\_chan\_settings.req 
-- ADAM\_4018.adl 
-- ADAM\_4018\_chan.adl 
-- ADAM\_4018\_setup.adl 
-- ADAM\_4018\_temp.adl 
-- ADAM\_4018\_temp\_chan.adl 
+Serial: 9600 baud, 8N2. Requires a jumper tying pin 6 (DSR) to
+Space (+12 V) on the XM-Octal breakout. Cable is straight-through
+with 2/3 swap and 7/8 swap. Messages terminate with CR (out) and
+LF (in).
 
-pico motor (?) 
-- picos.db 
+IOC example:
 
-Monochromator calibration (calc-record display) 
-- PSL\_calibration.adl 
+```
+tyGSAsynInit("serial1", 0, 0, 9600, 'N', 2, 8, 'N', "")
+dbLoadRecords("$(IP)/db/Agilent_E3631A.db", "P=xxx:,S=ps1,PORT=serial1")
+```
 
-Backward compatibility 
-- Serial\_IO.adl 
-- Serial\_Port\_Setup.adl 
-- love\_chain\_a.adl 
-- love\_controller.adl 
-- serial\_OI\_block.adl 
-- serial\_OI\_block\_full.adl 
+### HP/Agilent PS66xxA
 
-nanoradian encoder 
-- nanoradianEncoder.adl 
+- HP_Agilent_PS66xxA.db, HP_Agilent_PS66xxA.proto
 
-serial test 
-- serialtest.adl 
+### Instek GPP
 
-GE PACE5000 pressure controller 
-- PACE5000.db, 
-- PACE5000.proto, 
-- PACE5000\_settings.req, 
-- PACE5000.adl  
+- InstekGPP.db, InstekGPP.proto
 
-Suggestions and Comments to:   
- [Keenan Lang](mailto:klang@anl.gov): (klang@anl.gov)
+### Kepco BOP
+
+High-voltage power supply.
+
+- Kepco_BOP.db
+
+## Encoders and Position
+
+### Heidenhain ND261
+
+Serial encoder reader. Custom device support using asyn.
+
+- devAiHeidND261.c
+- heidND261.db, HeidND261.adl
+
+### Heidenhain AWE1024
+
+GPIB encoder interpolator (vxWorks only).
+
+- devXxHeidenhainGpib.c
+- HeidAWE1024.db
+- HeidEncoder.adl, 2HeidEncoder.adl
+
+### Heidenhain VRZ460
+
+Encoder reader using asyn.
+
+- HeidVRZ460_encoder.db, HeidVRZ460_encoder.adl
+
+### US Digital AD4
+
+Quadrature to serial adaptor. StreamDevice support.
+
+- Encoder_AD4.db, Encoder_AD4.proto, Encoder_AD4_settings.req
+- Encoder_AD4.adl
+
+Serial: 9600 baud, 8N1, no EOS (binary protocol).
+
+IOC example:
+
+```
+drvAsynSerialPortConfigure("serial1", "/dev/ttyS0", 0, 0, 1)
+asynSetOption(serial1, 0, baud, 9600)
+dbLoadRecords("$(IP)/db/Encoder_AD4.db", "P=xxx:,N=1,PORT=serial1")
+```
+
+### US Digital X3
+
+Multi-axis absolute MEMS inclinometer. StreamDevice support.
+
+- USdigital_X3.vdb, USdigital_X3.proto, USdigital_X3_settings.req
+- USdigital_X3.adl, USdigital_X3_more.adl
+
+Serial: 19200 baud (must be changed from default 115200 using the
+vendor's demo program). Straight-through cable with XM-Octal default
+jumpers.
+
+IOC example:
+
+```
+tyGSAsynInit("serial5", "UART_0", 4, 19200, 'N', 1, 8, 'N', "", "")
+dbLoadRecords("$(IP)/db/USdigital_X3.vdb", "P=xxx:,S=1,PORT=serial5")
+```
+
+### US Digital T7
+
+Single-axis absolute inclinometer. StreamDevice support.
+
+- USdigital_T7.vdb, USdigital_T7.proto, USdigital_T7_settings.req
+- USdigital_T7.adl, USdigital_T7_more.adl
+
+Use the vendor's "T7Demo" program to change the device address to 1
+and optionally change the baud rate from the default 115200.
+
+### Federal ERO-1071
+
+Digital encoder reader. SNL support.
+
+- Federal.st
+- Federal.db, Federal.adl, Federal_more.adl, Federal_setup.adl
+
+Serial: 19200 baud, even parity, 2 stop bits, 7 data bits. The device
+expects STX (0x02) for readings with no CR/LF terminator.
+
+Federal box settings: probe = "scan", x.xxx = match display precision,
+show = all "yes", units = "mm", rs232 = 19200/2/even/no/no.
+
+IOC example:
+
+```
+tyGSAsynInit("serial1", 0, 0, 19200, 'E', 2, 7, 'N', "")
+dbLoadRecords("$(IP)/db/Federal.db", "P=xxx:,S=s1,C=0,SERVER=serial1")
+```
+
+### New Focus 8750 Picomotor Controller
+
+- picoMotor.db, picoMotor.substitutions
+- picoMotor_positions.req, picoMotor_settings.req
+- picoStop12.db, picoStop8.db
+- picoMotor.adl, picoMotor_18.adl, picoMotor_9.adl
+- picoMotor_help.adl, picoMotor_more.adl
+- picoTop_example.adl, pico_small.adl, topPicoMotors12.adl
+
+Serial: 19200 baud, 8N1, 2-3 swap cable.
+
+{: .note}
+> Minimum velocity must be less than velocity. E-Stop causes the motor
+> to lose position. Joystick must be off and Driver must be on for EPICS
+> operation. If the controller is power-cycled while the IOC is running,
+> "joystick off" and "driver on" must be re-asserted, and dynamics
+> parameters must be re-sent if not hardware-saved.
+
+### Huber DMC9200
+
+Motor controller.
+
+- HuberDMC9200.db, HuberDMC9200Init.db
+- HuberDMC.adl
+
+### Newport LAE500
+
+Autocollimator.
+
+- Newport_LAE500.db, Newport_LAE500_settings.req
+- Newport_LAE500.adl, Newport_LAE500_help.adl
+
+### Protura P201
+
+BissC adapter.
+
+- Protura_P201.db, Protura_P201.proto
+
+### MicroE SS350
+
+- MicroE_SS350.vdb, MicroE_SS350.proto
+
+## Multimeters and Electrometers
+
+### Keithley 2000 / 2700
+
+SNL-based device support for the Keithley 2000 series digital
+multimeters. Supports standard and multifunction (per-channel
+function selection) modes.
+
+- Keithley2kDMM.st, Keithley2kDMM_mf40.st
+- Keithley2kDMM.db, Keithley2kDMM20.db, Keithley2kDMM_mf.db, Keithley2kDMM_mf40.db
+- Keithley2kDMM_settings.req, Keithley2kDMM20_settings.req
+- Keithley2kDMM_channelN_settings.req, Keithley_10CH_settings.req
+- Keithley2kDMM_mf10_settings.req, Keithley2kDMM_mf20_settings.req
+- Keithley2kDMM_mf22_settings.req, Keithley2kDMM_mf40_settings.req
+- Keithley2kDMM_mf_channelN_settings.req
+- Keithley2kDMM.adl, Keithley2kDMM20.adl, Keithley2kDMM20_full.adl
+- Keithley2kDMM_full.adl, Keithley2kDMM_mf.adl, Keithley2kDMM_full_mf.adl
+- Keithley2kDMM_mf40.adl, Keithley2kDMM_10chan_mf.adl
+- Keithley2kDMM_11_22_mf.adl, Keithley2kDMM_calc.adl
+- Keithley2kDMM_scpi.adl, scpi_commands.adl
+
+### Keithley 199
+
+GPIB digital multimeter (vxWorks only).
+
+- devXxKeithleyDMM199Gpib.c
+- KeithleyDMM.db
+- KeithleyDMM.adl, KeithleyDMM_full.adl
+
+### Keithley 65xx Electrometer
+
+SNL-based device support.
+
+- Keithley65xxEM.st, Keithley65xxEM.db
+- Keithley65xxEM.adl
+
+### Omega DP41 Panel Meter
+
+StreamDevice support. Written by Mark Rivers.
+
+- Omega_DP41.db, OmegaDP41.db
+- Omega_DP41.proto, Omega_DP41_settings.req
+- OmegaDP41.adl, OmegaDP41_more.adl
+- Omega_DP41.adl, Omega_DP41_settings.adl
+
+Serial: 9600 baud, 7 data bits, 2 stop bits. The device sets bit 7
+(MSB) = 1 on all output bytes; use 7 data bits and 2 stop bits on
+the terminal server as a workaround.
+
+{: .important}
+> The third bit of BUS FT ("ECHO response") must be on (1) for
+> StreamDevice support. Set it from the DP41 front panel under BUS FT.
+
+IOC example:
+
+```
+tyGSAsynInit("serial1", 0, 0, 9600, 'N', 2, 7, 'N', "\r", "\r")
+dbLoadTemplate("Omega_DP41.substitutions")
+```
+
+### Metis M322 Pyrometer
+
+- Metis_M322.db, Metis_M322.proto
+
+## Lock-in Amplifiers
+
+### Stanford SR810
+
+- SR810.vdb, SR810.adl
+
+### Stanford SR830
+
+StreamDevice support.
+
+- SR830.vdb, SR830.proto, SR830_settings.req
+- SR830.adl
+
+Serial: 9600 baud, 8 data bits, 2 stop bits, no parity, no
+handshaking. Terminators: CR in both directions.
+
+Cable: DB9 pin 3 to DB25 pin 2, DB9 pin 2 to DB25 pin 3, DB9 pin 5
+to DB25 pin 7.
+
+IOC example:
+
+```
+dbLoadRecords("$(IP)/db/SR830.vdb", "P=xxx:,N=1,PORT=serial9")
+```
+
+## Signal Generators and Waveform Generators
+
+### Stanford SRS SG390
+
+Vector signal generator.
+
+- SRS_SG390.db, SRS_SG390.proto
+
+### Tabor 8024
+
+Arbitrary waveform generator.
+
+- Tabor8024.db, Tabor8024_settings.req, Tabor8024.adl
+
+### Rigol DG4000
+
+Function/arbitrary waveform generator. StreamDevice support.
+
+- Rigol_DG4000.db, Rigol_DG4000_ChN.db
+- Rigol_DG4000.proto, Rigol_DG4000_settings.req, Rigol_DG4000_ChN_settings.req
+
+### Rigol DS1000Z
+
+Digital oscilloscope. StreamDevice support.
+
+- Rigol_DS1000Z.db, Rigol_DS1000Z_ChN.db
+- Rigol_DS1000Z.proto, Rigol_DS1000Z_settings.req, Rigol_DS1000Z_ChN_settings.req
+
+## Piezo Controllers
+
+### Queensgate AX301
+
+GPIB-based piezo controller. Custom device support.
+
+- devXxAX301.c
+- pzt.db, pzt.adl, pzt_1id.adl, pzt_3id.adl
+
+Serial cable: DB9 pin 2 to DB25 pin 2, DB9 pin 3 to DB25 pin 3,
+DB9 pin 5 to DB25 pin 7.
+
+### Piezosystems Jena NV 40/1 CLE
+
+StreamDevice support.
+
+- JenaNV40.db, JenaNV40.proto
+- jenaNV40.adl, jenaNV40_genTweak.adl
+
+### PI 500
+
+- PI500.db, PI500.adl
+
+## Syringe Pumps
+
+### Cole-Palmer Syringe Pump
+
+StreamDevice support.
+
+- CPSyringe.db, CPSyringe.proto, CPSyringe_settings.req
+- CPSyringe.adl
+
+### Harvard PHD 2000
+
+StreamDevice support.
+
+- PHD2000.db, PHD2000.proto
+
+### Teledyne Syringe Pump
+
+- teledynePumpD.db
+
+## Preamplifiers and Signal Conditioning
+
+### Stanford SR570
+
+Current preamplifier.
+
+- SR570.db, SR570preamp_settings.req
+- SR570.adl, SR570_tiny.adl
+
+### Stanford SR630
+
+Thermocouple reader. StreamDevice support.
+
+- SR630.db, SR630.proto, SR630_settings.req
+- SR630.adl
+
+## Pressure Controllers
+
+### GE PACE5000
+
+StreamDevice support.
+
+- PACE5000.db, PACE5000.proto, PACE5000_settings.req
+- PACE5000.adl
+
+### MKS 651C
+
+Valve system. StreamDevice support.
+
+- MKS651C.db, MKS651C.proto
+
+## Optical and Shutter Controls
+
+### Pelco CM6700
+
+Video switch.
+
+- Pelco_CM6700.db, Pelco_CM6700_names.db, Pelco_CM6700_settings.req
+- Pelco_CM6700.adl
+
+### Thorlabs SC10
+
+Shutter controller.
+
+- Thorlabs_SC10.db, Thorlabs_SC10.proto
+
+### Uniblitz D122 / VCM-D1
+
+Shutter controllers.
+
+- uniblitz_d122.db, uniblitz_vcm-d1.db, uniblitz.proto
+
+### XIA PFCU Filters
+
+- XIA_pfcu_filters.db, XIA_pfcu_filters.proto
+
+## Data Acquisition and I/O
+
+### Advantech ADAM 4018+
+
+See [Advantech ADAM 4018 / 4018+](#advantech-adam-4018--4018) in the
+Temperature Controllers section.
+
+### KeyenceCL3000
+
+- KeyenceCL3000_main.db, KeyenceCL3000_chan.db
+- KeyenceCL3000.proto
+
+### Mitutoyo MIG2
+
+Multi-input gathering unit.
+
+- MitutoyoMIG2.db
+- MitutoyoMIG2.adl, MitutoyoMIG2_more.adl
+
+### NCD R2X
+
+Single/Dual RS-232 relay controllers.
+
+- NCD_R2X.db, NCD_R2X.proto, NCD_R2X.adl
+
+### Synaccess NetBooter
+
+Network power switch.
+
+- Synaccess_np05b.db, Synaccess_np1601du.db
+- Synaccess_netBooter.proto
+
+### HG-100
+
+- HG-100.db, HG-100.proto
+
+### AMI 420
+
+- AMI420.vdb
+
+## Generic Support
+
+### deviceCmdReply
+
+Run-time programmable database for building commands, sending them to
+serial/GPIB/socket devices, and parsing replies without writing device
+support code. See the [deviceCmdReply](deviceCmdReply.md) page for
+full documentation.
+
+- deviceCmdReply.db, deviceCmdReply_settings.req
+- deviceCmdReply.adl, deviceCmdReply_full.adl
+
+### devXxStrParm (deprecated)
+
+Generic command build and parsing device support using the asyn
+`parm` string to specify format, terminators, timeout, and buffer
+size. StreamDevice is the preferred replacement.
+
+- devXxStrParm.c
+- serialFmt.db
+
+Supported record types: ai, ao, bi, longin, longout, stringin,
+stringout. Parameters are specified in the INP/OUT link parm field:
+
+```
+field(INP, "#C1 S0 @SERVER=serial1,TERM=0d0a,TO=100,FMT=%lf")
+```
+
+| Parameter | Description | Default |
+| - | - | - |
+| TERM | Terminator as hex bytes (e.g., `0d0a` = CR/LF) | `0d0a` |
+| IX | Input buffer index where conversion begins | signal element |
+| FMT | sprintf/sscanf format string (max 31 chars) | record DESC field |
+| TO | Timeout in milliseconds | 1000 (input), 3000 (output) |
+| N | Input buffer size | 100 |
+| 0STR | String interpreted as binary 0 (bi only) | empty |
+| 1STR | String interpreted as binary 1 (bi only) | empty |
+
+### tyGSAsynInit
+
+Shorthand for a common collection of asyn commands used to configure
+GreenSpring serial ports.
+
+- tyGSAsynInit.c (vxWorks only)
+
+### serial and GPIB utilities
+
+Backward-compatibility and test displays.
+
+- serial.db, serialFmt.db, serialtest.adl
+- Serial_IO.adl, Serial_Port_Setup.adl
+- serial_OI_block.adl, serial_OI_block_full.adl
+
+### Autosave request for asyn record
+
+- asynRecord_settings.req

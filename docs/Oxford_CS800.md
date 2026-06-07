@@ -1,26 +1,19 @@
 ---
 layout: default
 title: Oxford CryoStream 800
-nav_order: 5
+parent: Supported Devices
+nav_order: 2
 ---
 
 
-# Oxford CryoStream 800 cooler
+# Oxford CryoStream 800
+{: .no_toc}
 
-**Table of Contents**
+## Table of contents
+{: .no_toc .text-delta}
 
-- [Oxford CryoStream 800 cooler](#oxford-cryostream-800-cooler)
-  - [authors](#authors)
-  - [files](#files)
-  - [vendor](#vendor)
-  - [IOC configuration](#ioc-configuration)
-    - [IOC startup directory](#ioc-startup-directory)
-      - [`st.cmd`](#stcmd)
-      - [`auto_settings.req`](#autosettingsreq)
-  - [Display screens](#display-screens)
-    - [MEDM display](#medm-display)
-    - [caQtDM display](#caqtdm-display)
-    - [Example screens](#example-screens)
+- TOC
+{:toc}
 
 ## authors
 
@@ -82,15 +75,17 @@ an EPICS database and stream protocol.)  Since this UDP port cannot
 be opened by multiple processes on a single workstation, only one IOC on 
 a workstation can run the controller databases.
 
-NOTE:  A [request](https://github.com/epics-modules/asyn/issues/108) has 
-been made to the *asyn* repository to support the 
-[`SO_REUSEPORT`](https://lwn.net/Articles/542629/) socket option
-that allows multiple controllers to be run from the same IOC (and host).  If
-you received a message that `UDP&` is not supported when starting the IOC,
-you need the patch which provides the `SO_REUSEPORT` socket option.
+{: .note}
+> A [request](https://github.com/epics-modules/asyn/issues/108) has
+> been made to the asyn repository to support the
+> [`SO_REUSEPORT`](https://lwn.net/Articles/542629/) socket option
+> that allows multiple controllers to be run from the same IOC (and host).
+> If you received a message that `UDP&` is not supported when starting
+> the IOC, you need the patch which provides the `SO_REUSEPORT` socket option.
 
-SUGGESTION: Run the common status database and all controller databases 
-from the same IOC.
+{: .important}
+> Run the common status database and all controller databases
+> from the same IOC.
 
 ### IOC startup directory
 
@@ -195,9 +190,10 @@ note: some signals from controller are incorrect (raw value of 0xfffe)
 
 **administrative** : `Oxford_CS800_admin.ui`
 
-CAUTION: Controls on this screen can turn off or restart the 
-controller.  This screen can only be reached from the status 
-or full status screens.
+{: .warning}
+> Controls on this screen can turn off or restart the
+> controller. This screen can only be reached from the status
+> or full status screens.
 
 ![](images/Oxford_CS800_admin.jpg?raw=true)
 
