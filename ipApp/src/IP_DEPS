@@ -1,0 +1,6 @@
+IP_IOC_DBDS = ipSupport.dbd
+IP_IOC_LIBS = ip
+
+ifeq ($(OS_CLASS),vxWorks)
+IP_IOC_DBDS += ipVXSupport.dbd
+endif
