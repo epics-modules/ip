@@ -59,15 +59,28 @@ without writing any device support code.
 
 ## Building
 
-### DBD files
+The ip module provides cfg-based dependency declarations. IOC
+applications that list `IP` in their `configure/RELEASE` can use the
+`IP_IOC_DBDS` and `IP_IOC_LIBS` variables instead of hardcoding DBD
+and library names:
 
-Include `ipSupport.dbd` in the IOC's DBD file to get the compiled
-device support registrations. For vxWorks targets, also include
-`ipVXSupport.dbd` for additional GPIB device support.
+```makefile
+# IOC application Makefile
+$(PROD_NAME)_DBD  += $(IP_IOC_DBDS)
+$(PROD_NAME)_LIBS += $(IP_IOC_LIBS)
+```
 
-### Library
+On non-vxWorks targets this expands to `ipSupport.dbd` and `ip`. On
+vxWorks it also includes `ipVXSupport.dbd` for additional GPIB device
+support.
 
-Link the IOC against the `ip` library.
+If your build does not use cfg-based dependencies, include the DBD
+files and library explicitly:
+
+```makefile
+$(PROD_NAME)_DBD  += ipSupport.dbd
+$(PROD_NAME)_LIBS += ip
+```
 
 ### StreamDevice databases
 
