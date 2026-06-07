@@ -54,20 +54,36 @@ deviceCmdReply is part of the synApps __[ip](https://github.com/epics-modules/ip
 
 ### Building and installation
 
-The recommended way to build this software is to build synApps, which includes it, supports it, and provides an example ioc directory that deploys and uses it. It certainly is both possible and practical to build and install only the modules required for this particular piece of software, but we don't have the staff to write documentation that describes the building and installation of individual pieces of synApps. (The number of possible combinations of required modules is huge -- undoubtedly far larger than the number of custom installations that might actually occur -- and it changes as synApps develops. So if we did write such arrangement-specific documentation, *most* of it would never even be read.) ### Loading into an ioc
+The recommended way to build this software is to build
+[synApps](https://www.aps.anl.gov/BCDA/synApps), which includes it
+and provides an example IOC directory that deploys and uses it.
 
-The database is loaded into an ioc with the following example command:
+deviceCmdReply requires the
+[ip](https://github.com/epics-modules/ip),
+[asyn](https://github.com/epics-modules/asyn), and
+[calc](https://github.com/epics-modules/calc) modules.
+
+### Loading into an IOC
+
+The database is loaded into an IOC with the following command:
 
 ```
-dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db",
+dbLoadRecords("$(IP)/db/deviceCmdReply.db",
     "P=xxx:,N=1,PORT=serial1,ADDR=0,OMAX=40,IMAX=40")
 ```
 
-where `$(IP)` will be expanded to the value of the environment variable `IP` -- the full path to the __ip__ module. (The EPICS build will put this in the `cdCommands` file if `IP` is defined in the file `configure/RELEASE`.)
+The following macros configure each instance:
 
-The following macro arguments target or configure the database to a specific application:
+| Macro | Description |
+| - | - |
+| `P` | PV name prefix, distinguishes this IOC's records from others (e.g., `xxx:`). |
+| `N` | Instance number, distinguishes multiple deviceCmdReply databases in the same IOC. |
+| `PORT` | asyn port name to connect to initially. Can be changed at run time. |
+| `ADDR` | Device address on the port. Only needed for multi-device ports (GPIB, RS-485). Can be changed at run time. Default: 0. |
+| `OMAX` | Binary output buffer size (bytes). Only used when the asyn record's `OFMT` is set to "Binary" or "Hybrid". In "ASCII" mode (the default), the `AOUT` string field is used instead (fixed at 40 bytes). Default: 40. |
+| `IMAX` | Binary input buffer size (bytes). Only used when the asyn record's `IFMT` is set to "Binary" or "Hybrid". In "ASCII" mode (the default), the `AINP` string field is used instead (fixed at 40 bytes). Default: 40. |
 
-`P=xxx:` defines a short sequence of characters intended to distinguish record names in this ioc from the names of similar records loaded into some other ioc `N=1`defines another short sequence of characters intended to distinguish the different deviceCmdReply databases loaded into the same ioc from each other `PORT=serial1` defines the *port* to which the asyn record will connect initially. (The port can be changed at run time.) `ADDR=0`ignored unless the port to which the asyn record connects can communicate with more than one device. For example, if the port is a GPIB interface, or an RS485 serial interface, `ADDR` specifies which of several devices is to be written to or read from. (The address can be changed at run time.) `OMAX=40`tells the asyn record how much space to allocate for its binary output array `BOUT`. This matters only if `BOUT` is used, which happens only if the asyn record's `OFMT` field is set to "Binary" or "Hybrid". If `OFMT` is set to "ASCII" (the default), then the `AOUT` field is used instead of `BOUT`. `AOUT` is an EPICS string, with a fixed size of 40 bytes. `IMAX=40`tells the asyn record how much space to allocate for its binary input array `BINP`. This matters only if `BINP` is used, which happens only if the asyn record's `IFMT` field is set to "Binary" or "Hybrid". If `IFMT` is set to "ASCII" (the default), then the `AINP` field is used instead of `BINP`. `AINP` is an EPICS string, with a fixed size of 40 bytes. This database will contain the following records by which the user programs the device:
+This database creates the following records:
 
 | record name | record type | function |
 |---|---|---|
