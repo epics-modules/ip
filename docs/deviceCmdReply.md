@@ -29,19 +29,18 @@ deviceCmdReply is an EPICS database that can be programmed at run time to *integ
 deviceCmdReply is essentially a wrapper around the EPICS [asyn record](https://epics-modules.github.io/asyn/asynRecord.html). The deviceCmdReply database consists essentially of two sCalcout (string-calc-and-output) records -- one to format the command, one to parse the reply -- and an asyn record, which performs the actual writing and reading. The asyn record provides most of the raw capabilities of deviceCmdReply. Among them are the following:
 
 | write to and read from serial, GPIB, or socket interface | This allows deviceCmdReply to control a wide range of devices. |
-|---|---|
 | connect several asyn records to a single port | This allows multiple instances of deviceCmdReply to work together to control different aspects of a single device. Infrastructure supporting the asyn record keeps multiple intances of deviceCmdReply from interfering with each other, and with other asyn-based support talking to the same device. This capability also permits deviceCmdReply to *supplement* existing support for a message based device. |
 | disconnect from one port and connect to another port without interfering with ongoing port traffic | This permits one to load a small number of deviceCmdReply databases, whose eventual use may not even be known at load time, and to target as many of those databases as are needed at a particular device, to support the required set of commands. |
 | modify port configuration at run time | This allows the user to try, for example, different baud rates and handshaking arrangements, to find one that works. |
 | show commands and replies as they actually are sent and received | This allows the user quickly and efficiently to debug command formatting, reply parsing, and interface configuration. |
-|  |  |
-|  |  |
+
 
 Thus, several instances of deviceCmdReply can be targeted at a single device, to implement different commands, or read different values. For example, a single deviceCmdReply might periodically read the readback temperature from a controller, while another deviceCmdReply is used to write the temperature set point.
 
 ### Other ways to write device support
 
 deviceCmdReply is a quick way to get something running in a pinch, and it's a nice tool for prototyping -- for trying out commands and port configurations, to see how a device behaves. But it's not the best way to write real device support. Better strategies for writing message based device support include the following: | streamDevice | Connects standard EPICS record types directly to hardware, using a protocol file to specify the command formatting, reply parsing, etc. See [streamDevice 2](http://epics.web.psi.ch/software/streamdevice/)
+
 
 | devXxStrParm | Connects selected record types directly to hardware. Command formatting and reply parsing are specified with in the user-parameter section of output or input links. See devXxStrParm.README in the documentation directory of the synApps __ip__ module. |
 | SNL | Typically, SNL code monitors PV's and writes to/reads from hardware using an asyn record. |
@@ -50,7 +49,7 @@ deviceCmdReply is a quick way to get something running in a pinch, and it's a ni
 How to deploy deviceCmdReply
 ----------------------------
 
-deviceCmdReply is part of the synApps __[ip](https://github.com/epics-modules/ip)__ module, and it requires the EPICS __[asyn](https://github.com/epics-modules/asyn)__ module and the synApps __[calc](https://github.com/epics-modules/calc)__ module to operate. This documentation assumes version 2.7 of the __ip__module, version 4.6 or higher of __asyn__, and version 2.6.3 or higher of __calc__.
+deviceCmdReply is part of the synApps __[ip](https://github.com/epics-modules/ip)__ module, and it requires the EPICS __[asyn](https://github.com/epics-modules/asyn)__ module and the synApps __[calc](https://github.com/epics-modules/calc)__ module to operate. This documentation assumes version 2.7 of the __ip__ module, version 4.6 or higher of __asyn__, and version 2.6.3 or higher of __calc__.
 
 ### Building and installation
 
