@@ -15,6 +15,8 @@ DBD += ipVXSupport.dbd
 DBD += ip.dbd
 DBD += ipVX.dbd
 
+CFG += IP_DEPS
+
 USR_CFLAGS += -DUSE_TYPED_RSET
 
 ip_SRCS += devXxStrParm.c

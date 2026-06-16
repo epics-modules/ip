@@ -1,43 +1,40 @@
 ---
 layout: default
 title: Release Notes
-nav_order: 3
+nav_order: 2
 ---
 
+# ip Release Notes
+{: .no_toc}
 
-ip Release Notes
-================
+## Table of contents
+{: .no_toc .text-delta}
 
-Release 2-23 XXX, 2024
------------------------
+- TOC
+{:toc}
 
-- New Support for:
-  - Power supplies from Versatile Power (XR series) and Advanced Energy (iLS series)
-  - Power supplies from Instek (GPP series)
+## Release 2-23 (XXX, 2024)
 
-Release 2-22 June, 2023
------------------------
+- **Versatile Power XR and Advanced Energy iLS power supplies** -- New support added.
+- **Instek GPP power supplies** -- New support added.
 
-- New Support for:
-  - SRS PTC10 programmable temperature controller.
-  - Lakeshore 218
-  - Protura P201 BissC Adapter
-  - Oxford ILM 200 and Cryojet 2
-    
-- tyGSAsynInit function arguments 'parity' and 'handshake' changed to accept strings in IOC shell
-    
-- Documentation moved to github pages
+## Release 2-22 (June, 2023)
 
-Release 2-21-1 June, 2021
--------------------------
+- **SRS PTC10 programmable temperature controller** -- New support added.
+- **LakeShore 218** -- New support added.
+- **Protura P201 BissC Adapter** -- New support added.
+- **Oxford ILM 200 and CryoJet 2** -- New support added.
+- **tyGSAsynInit arguments changed** -- The 'parity' and 'handshake' arguments now accept strings in the IOC shell.
+- **Documentation** -- Moved to GitHub Pages.
+
+## Release 2-21-1 June, 2021
 
 - New Support for:
   - Teledyne Syringe Pump
   - HP Agilent Power Supplies
  
 
-Release 2-21 October, 2020
---------------------------
+## Release 2-21 October, 2020
 
 - Fixed 3 bugs in CPSyringe.db
 - Changing units (.EGU fields) did not update EGU readbacks. Fixed this by changing .EGU inputs in scalcout records from NPP to CP.
@@ -55,14 +52,12 @@ Release 2-21 October, 2020
  
 - CS800 Support updated to allow multiple devices on one subnet
 
-Release 2-20 May, 2019
-----------------------
+## Release 2-20 May, 2019
 
 - Fixed potential string buffer overflow and 0 termination problems in SNL programs
 - New Support for the BK 9173B Power Supply
 
-Release 2-19 Dec, 2017
-----------------------
+## Release 2-19 Dec, 2017
 
 - iocsh boot scripts
 - Added support for Lakeshore DRC 93CA and loading communications channels on serial ports.
@@ -73,29 +68,25 @@ Release 2-19 Dec, 2017
 - New version of \*Main.cpp file from base 3.15.5; contains epicsExit() after iocsh(NULL) which is needed for epicsAtExit() to work on Windows
 - Update CONFIG to use CONFIG\_SITE. Update RULES and Makefile.
 
-Release 2-18 Apr, 2016
-----------------------
+## Release 2-18 Apr, 2016
 
 - BK9130: BK Precision 9130 triple output power supply
 - LakeShore336: updated support for several new LS336 parameters
 - CPSyringe: Added ReadStatus; Read state and infusion volume at different rate from rest of settings; read rest of settings whenever any setting is changed so ReadSettings.SCAN can be Passive
 
-Release 2-17 Mar, 2015
-----------------------
+## Release 2-17 Mar, 2015
 
 - misc doc fixes
 - removed picos.db
 - SR830 improvements
 
-Release 2-16 Dec, 2014
-----------------------
+## Release 2-16 Dec, 2014
 
 - New support for Harvard PHD 2000 syringe pump
 - New caQtDM translations to fix related display buttons
 - Restructured the module so exported stuff is in ip, and example/test stuff is in ip/iocs/ipExample. Also, made ip.dbd and ipSupport.dbd the same. Ditto for ipVX.dbd and ipVXSupport.dbd.
 
-Release 2-15 Jul, 2014
-----------------------
+## Release 2-15 Jul, 2014
 
 - New support for Tabor 8024 aribtrary waveform generator
 - New support for USdigital T7 inclinometer
@@ -105,8 +96,7 @@ Release 2-15 Jul, 2014
 - New support for Kepco BOP HVPS
 - picoMotor.db: calc expression "a?b:c" syntax now requires both b and c
 
-Release 2-14 Apr, 2013
-----------------------
+## Release 2-14 Apr, 2013
 
 - supplied missing SR830.proto file
 - minor mods to deviceCmdReply.db
@@ -116,20 +106,17 @@ Release 2-14 Apr, 2013
 - Added support for GE PACE5000 pressure controller
 - devMPC.c - Added sanity checks for the response from the device; thanks to Larry Hoff from BNL
 
-Release 2-13 Nov 14, 2011
--------------------------
+## Release 2-13 Nov 14, 2011
 
 - devXxStrParm.c fixed for stringin records when device response is longer than 40 characters; previously was not null terminating.
 - Added jenaNV40 and NCD\_R2X databases and MEDM-display files.
 
-Release 2-12 Oct 25, 2011
--------------------------
+## Release 2-12 Oct 25, 2011
 
 - Added support for National Control Devices R2X series of RS-232 single/dual relay controllers.
 - Added support for Piezo Systems Jena NV40/1 CLE piezo controller
 
-Release 2-11 Aug. 25, 2011
---------------------------
+## Release 2-11 Aug. 25, 2011
 
 - Added support for LakeShore 336 TC
 - Added support for Alcatel 2000 vacuum controller
@@ -139,8 +126,7 @@ Release 2-11 Aug. 25, 2011
 - Modified RELEASE; deleted RELEASE.arch
 - Fixed Keithley2kDMM for 64-bit arch.
 
-Release 2-10 Mar. 30, 2010
---------------------------
+## Release 2-10 Mar. 30, 2010
 
 - devAiMKS - Don't print error messages on SYNTAX! or NotCMD! responses, since these seem to be due to a bug in the device (assuming we are really only sending good commands) and fill the log files.
 - Omega\_DP41.txt - docs for Omega DP41 panel meter
@@ -150,14 +136,12 @@ Release 2-10 Mar. 30, 2010
 - Agilent\_E3631A\_settings.req - renamed to agree with database
 - tyGSAsynInit.c - improved error reporting
 
-Release 2-9 Dec. 19, 2008
--------------------------
+## Release 2-9 Dec. 19, 2008
 
 - pico\_small.adl - use asyn record instead of serial
 - devMPC.c - increased timeout, and defend against timeout; fixed bug when reading volts and return string length &lt; 4
 
-Release 2-8 Sept. 10, 2008
---------------------------
+## Release 2-8 Sept. 10, 2008
 
 - new device US Digital Serial Encoder
 - new device Keithley 8517 Electrometer
@@ -169,8 +153,7 @@ Release 2-8 Sept. 10, 2008
 - Updated Eurotherm 2k support
 - ip/ipApp/op/adl/deviceCmdReply\_full.adl: asynRecord TMOT is in seconds, not ms.
 
-Release 2-7 Sept. 11, 2006
---------------------------
+## Release 2-7 Sept. 11, 2006
 
 - Added support for Newport LAE500 autocollimator
 - Added support for additional thermocouple types for Keithley 2700 multimeter
@@ -186,8 +169,7 @@ Release 2-7 Sept. 11, 2006
 - deviceCmdReply.db -- Now is useable for binary data (i.e., strings that may contain unprintable characters, including the null character), and for devices that require CRC's or checksums that are implemented in the string-calc software (in the calc module). However, the string-length limitation is still 39 bytes.
 - Added documentation for deviceCmdReply
 
-Release 2-6 Sept. 16, 2005
---------------------------
+## Release 2-6 Sept. 16, 2005
 
 Fixed bugs in devAiMKS.c. Number of characters to send and receive was incorrect since terminators no longer are counted.
 
@@ -202,15 +184,13 @@ Added support for Stanford Research Systems SR630 thermocouple scanner
 
 Fixed support for Agilent E3631A
 
-Release 2-5 March 29, 2005
---------------------------
+## Release 2-5 March 29, 2005
 
 Fixed bugs in devXxStrParm.c that prevented it working with the asyn address != 0. This meant the previous version would not work with GPIB. In previous versions the VME "signal" parameter was used to indicate a buffer start address for I/O. No existing databases seem to use this feature, and it will no longer work, since the address field is needed for device addressing.
 
 Minor change to appearance of Keithley2kDMM\_mf.adl.
 
-Release 2-4 December 21, 2004
------------------------------
+## Release 2-4 December 21, 2004
 
 Tested against base 3.14.7; asyn 4.1+; ipac 2.8; seq 2.0.8 This version of ip will not work with ipac versions lower than 2.8, or asyn versions lower than 4.0. Everything that used serial or GPIB records has been converted to use the asyn record. Everything that used MPF has been converted to use asyn. Some databases have been converted from gdct to VDCT.
 
@@ -224,8 +204,7 @@ serial\_OI\_block and GPIB\_OI\_block have been replaced by deviceCmdReply. Seve
 
  [cvs log](cvsLog.txt)
 
-Release 2-3, March 3, 2004
---------------------------
+## Release 2-3, March 3, 2004
 
 Tested against base 3.14.5; mpf 2.4.2; ipac 2.7a; seq 2.0.8 New support:
 
@@ -249,8 +228,7 @@ New documentation:
 - devXxStrParm.README
 - picoMotor.txt
 
-Release 1-2, March 6, 2002
---------------------------
+## Release 1-2, March 6, 2002
 
 Additions to ipApp/Db: - DAC.db
 - Eurotherm.db, Eurotherm
@@ -265,8 +243,7 @@ Modifications in ipApp/src: - Added Eurotherm to ipLIBOBJS and ipShare.dbd.
 
 Modification in ipApp/op/adl: - Updated PI500.adl
 
-December 4, 1999
-----------------
+## December 4, 1999
 
 Changes made to ipApp since synApps\_R3.13.1.1. The most important change is the addition of support for the Message Passing Facility, MPF.
 

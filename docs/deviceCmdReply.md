@@ -1,62 +1,86 @@
 ---
 layout: default
 title: deviceCmdReply
-nav_order: 4
+parent: Supported Devices
+nav_order: 1
 ---
 
 
-deviceCmdReply
-==============
+# deviceCmdReply
+{: .no_toc}
+
+## Table of contents
+{: .no_toc .text-delta}
+
+- TOC
+{:toc}
 
 Introduction
 ------------
 
-deviceCmdReply is an EPICS database that can be programmed at run time to *integrate into EPICS* a *message based* device for which no EPICS support has been written. A single deviceCmdReply database can format and send one command string to a device and then read and parse one reply string. Strings are limited to 39 bytes, and may contain any ASCII characters, including the null character, They also may contain any checksum or CRC supported by the sCalcout record. > *Integrate into EPICS* means "provide an EPICS PV that represents a value in the device", so that if one writes to the EPICS PV, the value gets written to the device; or if one reads from the EPICS PV, one gets a value from the device. (Note that writing to an EPICS PV via channel access can cause the processing that gets the value out to the device, but reading from a PV via channel access will not cause processing to occur. If you want a PV to track some value in the device, you must arrange for that value to be read. For example, you might configure the deviceCmdReply database to process periodically.)
+deviceCmdReply is an EPICS database that can be programmed at run time to *integrate into EPICS* a *message based* device for which no EPICS support has been written. A single deviceCmdReply database can format and send one command string to a device and then read and parse one reply string. Strings are limited to 39 bytes, and may contain any ASCII characters, including the null character, They also may contain any checksum or CRC supported by the sCalcout record.
 
+{: .note }
+> *Integrate into EPICS* means "provide an EPICS PV that represents a value in the device", so that if one writes to the EPICS PV, the value gets written to the device; or if one reads from the EPICS PV, one gets a value from the device. (Note that writing to an EPICS PV via channel access can cause the processing that gets the value out to the device, but reading from a PV via channel access will not cause processing to occur. If you want a PV to track some value in the device, you must arrange for that value to be read. For example, you might configure the deviceCmdReply database to process periodically.)
+
+{: .note }
 > A *message based* device is one that communicates with its user via sequences of bytes -- typically, ASCII character strings. Message based devices typically communicate via serial, GPIB, or socket (TCP/IP or UDP/IP) interfaces.
 
-deviceCmdReply is essentially a wrapper around the EPICS [asyn record](https://epics-modules.github.io/asyn/asynRecord.html). The deviceCmdReply database consists essentially of two sCalcout (string-calc-and-output) records -- one to format the command, one to parse the reply -- and an asyn record, which performs the actual writing and reading. The asyn record provides most of the raw capabilities of deviceCmdReply. Among them are the following:
+deviceCmdReply is essentially a wrapper around the EPICS [asyn record](https://epics-modules.github.io/asyn/asynRecord.html). The database consists of two sCalcout (string-calc-and-output) records -- one to format the command, one to parse the reply -- and an asyn record, which performs the actual writing and reading. The asyn record provides most of the raw capabilities of deviceCmdReply:
 
-| write to and read from serial, GPIB, or socket interface | This allows deviceCmdReply to control a wide range of devices. |
-|---|---|
-| connect several asyn records to a single port | This allows multiple instances of deviceCmdReply to work together to control different aspects of a single device. Infrastructure supporting the asyn record keeps multiple intances of deviceCmdReply from interfering with each other, and with other asyn-based support talking to the same device. This capability also permits deviceCmdReply to *supplement* existing support for a message based device. |
-| disconnect from one port and connect to another port without interfering with ongoing port traffic | This permits one to load a small number of deviceCmdReply databases, whose eventual use may not even be known at load time, and to target as many of those databases as are needed at a particular device, to support the required set of commands. |
-| modify port configuration at run time | This allows the user to try, for example, different baud rates and handshaking arrangements, to find one that works. |
-| show commands and replies as they actually are sent and received | This allows the user quickly and efficiently to debug command formatting, reply parsing, and interface configuration. |
-|  |  |
-|  |  |
+- **Serial, GPIB, and socket I/O** -- Write to and read from any asyn port, allowing deviceCmdReply to control a wide range of devices.
+- **Multiple instances per port** -- Several deviceCmdReply databases can share a single port without interfering with each other or with other asyn-based support. This also allows deviceCmdReply to *supplement* existing device support.
+- **Run-time port switching** -- Disconnect from one port and connect to another without interfering with ongoing traffic, so a small pool of databases can be retargeted as needed.
+- **Run-time port configuration** -- Change baud rate, handshaking, and other port parameters on the fly to find a working configuration.
+- **Trace output** -- Show commands and replies as they are actually sent and received, for efficient debugging of command formatting, reply parsing, and interface configuration.
 
-Thus, several instances of deviceCmdReply can be targeted at a single device, to implement different commands, or read different values. For example, a single deviceCmdReply might periodically read the readback temperature from a controller, while another deviceCmdReply is used to write the temperature set point.
+Several instances of deviceCmdReply can be targeted at a single device to implement different commands or read different values. For example, one instance might periodically read a temperature readback while another is used to write the temperature set point.
 
 ### Other ways to write device support
 
-deviceCmdReply is a quick way to get something running in a pinch, and it's a nice tool for prototyping -- for trying out commands and port configurations, to see how a device behaves. But it's not the best way to write real device support. Better strategies for writing message based device support include the following: | streamDevice | Connects standard EPICS record types directly to hardware, using a protocol file to specify the command formatting, reply parsing, etc. See [streamDevice 2](http://epics.web.psi.ch/software/streamdevice/)
+deviceCmdReply is a quick way to get something running in a pinch, and a useful tool for prototyping command and port configurations. For production device support, better strategies include:
 
-| devXxStrParm | Connects selected record types directly to hardware. Command formatting and reply parsing are specified with in the user-parameter section of output or input links. See devXxStrParm.README in the documentation directory of the synApps __ip__ module. |
-| SNL | Typically, SNL code monitors PV's and writes to/reads from hardware using an asyn record. |
-| Other | There are other approaches in use, but I don't know enough about them to describe how they work. |
+- **[StreamDevice](http://epics.web.psi.ch/software/streamdevice/)** -- Connects standard EPICS record types directly to hardware using a protocol file to specify command formatting and reply parsing.
+- **devXxStrParm** -- Connects selected record types directly to hardware with command formatting and reply parsing specified in the INP/OUT link parm field. See the [Supported Devices](ipDoc.md#devxxstrparm-deprecated) page.
+- **SNL** -- State Notation Language programs that monitor PVs and communicate with hardware via an asyn record.
 
 How to deploy deviceCmdReply
 ----------------------------
 
-deviceCmdReply is part of the synApps __[ip](https://github.com/epics-modules/ip)__ module, and it requires the EPICS __[asyn](https://github.com/epics-modules/asyn)__ module and the synApps __[calc](https://github.com/epics-modules/calc)__ module to operate. This documentation assumes version 2.7 of the __ip__module, version 4.6 or higher of __asyn__, and version 2.6.3 or higher of __calc__.
+deviceCmdReply is part of the synApps __[ip](https://github.com/epics-modules/ip)__ module, and it requires the EPICS __[asyn](https://github.com/epics-modules/asyn)__ module and the synApps __[calc](https://github.com/epics-modules/calc)__ module to operate. This documentation assumes version 2.7 of the __ip__ module, version 4.6 or higher of __asyn__, and version 2.6.3 or higher of __calc__.
 
 ### Building and installation
 
-The recommended way to build this software is to build synApps, which includes it, supports it, and provides an example ioc directory that deploys and uses it. It certainly is both possible and practical to build and install only the modules required for this particular piece of software, but we don't have the staff to write documentation that describes the building and installation of individual pieces of synApps. (The number of possible combinations of required modules is huge -- undoubtedly far larger than the number of custom installations that might actually occur -- and it changes as synApps develops. So if we did write such arrangement-specific documentation, *most* of it would never even be read.) ### Loading into an ioc
+The recommended way to build this software is to build
+[synApps](https://www.aps.anl.gov/BCDA/synApps), which includes it
+and provides an example IOC directory that deploys and uses it.
 
-The database is loaded into an ioc with the following example command:
+deviceCmdReply requires the
+[ip](https://github.com/epics-modules/ip),
+[asyn](https://github.com/epics-modules/asyn), and
+[calc](https://github.com/epics-modules/calc) modules.
+
+### Loading into an IOC
+
+The database is loaded into an IOC with the following command:
 
 ```
-dbLoadRecords("$(IP)/ipApp/Db/deviceCmdReply.db",
+dbLoadRecords("$(IP)/db/deviceCmdReply.db",
     "P=xxx:,N=1,PORT=serial1,ADDR=0,OMAX=40,IMAX=40")
 ```
 
-where `$(IP)` will be expanded to the value of the environment variable `IP` -- the full path to the __ip__ module. (The EPICS build will put this in the `cdCommands` file if `IP` is defined in the file `configure/RELEASE`.)
+The following macros configure each instance:
 
-The following macro arguments target or configure the database to a specific application:
+| Macro | Description |
+| - | - |
+| `P` | PV name prefix, distinguishes this IOC's records from others (e.g., `xxx:`). |
+| `N` | Instance number, distinguishes multiple deviceCmdReply databases in the same IOC. |
+| `PORT` | asyn port name to connect to initially. Can be changed at run time. |
+| `ADDR` | Device address on the port. Only needed for multi-device ports (GPIB, RS-485). Can be changed at run time. Default: 0. |
+| `OMAX` | Binary output buffer size (bytes). Only used when the asyn record's `OFMT` is set to "Binary" or "Hybrid". In "ASCII" mode (the default), the `AOUT` string field is used instead (fixed at 40 bytes). Default: 40. |
+| `IMAX` | Binary input buffer size (bytes). Only used when the asyn record's `IFMT` is set to "Binary" or "Hybrid". In "ASCII" mode (the default), the `AINP` string field is used instead (fixed at 40 bytes). Default: 40. |
 
-`P=xxx:` defines a short sequence of characters intended to distinguish record names in this ioc from the names of similar records loaded into some other ioc `N=1`defines another short sequence of characters intended to distinguish the different deviceCmdReply databases loaded into the same ioc from each other `PORT=serial1` defines the *port* to which the asyn record will connect initially. (The port can be changed at run time.) `ADDR=0`ignored unless the port to which the asyn record connects can communicate with more than one device. For example, if the port is a GPIB interface, or an RS485 serial interface, `ADDR` specifies which of several devices is to be written to or read from. (The address can be changed at run time.) `OMAX=40`tells the asyn record how much space to allocate for its binary output array `BOUT`. This matters only if `BOUT` is used, which happens only if the asyn record's `OFMT` field is set to "Binary" or "Hybrid". If `OFMT` is set to "ASCII" (the default), then the `AOUT` field is used instead of `BOUT`. `AOUT` is an EPICS string, with a fixed size of 40 bytes. `IMAX=40`tells the asyn record how much space to allocate for its binary input array `BINP`. This matters only if `BINP` is used, which happens only if the asyn record's `IFMT` field is set to "Binary" or "Hybrid". If `IFMT` is set to "ASCII" (the default), then the `AINP` field is used instead of `BINP`. `AINP` is an EPICS string, with a fixed size of 40 bytes. This database will contain the following records by which the user programs the device:
+This database creates the following records:
 
 | record name | record type | function |
 |---|---|---|
@@ -171,6 +195,7 @@ In the following tables, a one-byte binary value will be represented by *&lt;n&g
 
 - To embed variable binary numbers into an output string, you can use the sCalcout record's `WRITE(format,variable)` command, which may be abbreviated as `$W(format,variable)`. This function will encode its result as an escaped string, for transmission to the asyn record. The asyn record will translate the string into its raw, binary form before sending it to the device.
     
+    {: .note }
     > The format-indicator characters used with `WRITE()` are intended to be familiar from experience you may have had with the standard C library's `printf()` function, but they're used here to specify how *binary* numbers will be encoded, so any field-width or precision specifications will be ignored.
     
     | desired output | CALC expression | comment |
@@ -204,6 +229,7 @@ When the asyn record has received a reply from the device, it will cause the "..
 | VALUE1=1.23 | INT(AA\[7,-1\]) | move past "VALUE1=" and convert to float |
 | VALUE1=1.23 | $S(AA,"%\*7c%f") | skip 7 characters and convert to float |
     
+{: .note }
 > See the sCalcout record documentation for more information on the substring operator "`[]`". For purposes here, the syntax is `[<start>,<end>]`. If `<start>` is a number, it indicates the number of bytes to skip. `<end>` will always be -1 in this documentation.
 
 - If the uninteresting stuff is not of fixed length, but the variable-length part of it ends with some fixed string (or even the nth instance of some fixed string), we can skip to the *interesting stuff* as follows: 
@@ -214,6 +240,7 @@ When the asyn record has received a reply from the device, it will cause the "..
 | reg:2 *1.23* | $S(AA,"%\*s %f) | move past " " and convert to float |
 | R1=1.23 R32=R*7* | INT(AA\["=",-1\]\["=",-1\]) | move past two "=" characters, find an integer |
     
+{: .note }
 > In examples above, we've used the substring operator "`[<start>,<end>]`" with a string-valued first argument -- a pattern string -- and the usual second argument of -1. If the pattern is found, the result of the operation is the substring beginning just after the pattern, and continuing to the end of string. (If the pattern occurs more than once, only the first instance counts.)
 
 ### Parsing unprintable input

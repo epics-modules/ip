@@ -1,23 +1,16 @@
-# RELEASE - Location of external products
-#
-# (Architecture dependent declarations should go into RELEASE.<arch>)
-#
-# Note: This file will be scanned to automatically generate
-#       include path definitions etc.
-#       The order of the following declarations will be retained
-#       within those definitions.
-#
-# Add your declarations here
+# RELEASE - Location of external support modules
 
-SUPPORT=/home/oxygen/MOONEY/epics/synAppsSVN/support
+# Pull in EPICS_BASE and other paths from the parent module.
+# Use hardcoded $(TOP)/../.. paths instead of $(IP) because
+# the parent's RELEASE file may redefine IP to a different path.
+-include $(TOP)/../../configure/RELEASE
+-include $(TOP)/../../configure/RELEASE.local
 
-ASYN=$(SUPPORT)/asyn-4-24
-IPAC=$(SUPPORT)/ipac-2-12
-IP=$(SUPPORT)/ip-2-16
-SNCSEQ=$(SUPPORT)/seq-2-2-snapshot-2014-11-17
+# Override IP to point to the parent module (which was just
+# redefined by the parent's RELEASE file above).
+IP = $(TOP)/../..
 
-EPICS_BASE=/home/oxygen/MOONEY/epics/bazaar/base-3.14
--include $(TOP)/../../../RELEASE.local
--include $(TOP)/../../../RELEASE.$(EPICS_HOST_ARCH).local
+# These lines allow developers to override these RELEASE settings
+# without having to modify this file directly.
 -include $(TOP)/configure/RELEASE.local
 
