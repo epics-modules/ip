@@ -1,6 +1,6 @@
 
 file {
-	name="/home/epics/support/ip/ipApp/op/adl/Alicat_BC_N.adl"
+	name="/home/epics/support/ip-2-21-1/ipApp/op/adl/Alicat_BC_N.adl"
 	version=030117
 }
 display {
@@ -451,60 +451,19 @@ composite {
 		x=10
 		y=215
 		width=165
-		height=70
+		height=20
 	}
 	"composite name"=""
 	children {
-		composite {
-			object {
-				x=10
-				y=215
-				width=165
-				height=20
-			}
-			"composite name"=""
-			children {
-				"text update" {
-					object {
-						x=95
-						y=215
-						width=80
-						height=20
-					}
-					monitor {
-						chan="$(P)$(R)Valve_RBV"
-						clr=53
-						bclr=4
-					}
-					limits {
-					}
-				}
-				"text entry" {
-					object {
-						x=10
-						y=215
-						width=80
-						height=20
-					}
-					control {
-						chan="$(P)$(R)SetValve"
-						clr=14
-						bclr=51
-					}
-					limits {
-					}
-				}
-			}
-		}
 		"text update" {
 			object {
-				x=10
-				y=240
+				x=95
+				y=215
 				width=80
 				height=20
 			}
 			monitor {
-				chan="$(P)$(R)Total_RBV"
+				chan="$(P)$(R)Valve_RBV"
 				clr=53
 				bclr=4
 			}
@@ -514,34 +473,64 @@ composite {
 		"text entry" {
 			object {
 				x=10
-				y=265
+				y=215
 				width=80
 				height=20
 			}
 			control {
-				chan="$(P)$(R)SetTotal"
+				chan="$(P)$(R)SetValve"
 				clr=14
 				bclr=51
 			}
 			limits {
 			}
 		}
-		"message button" {
-			object {
-				x=95
-				y=265
-				width=55
-				height=20
-			}
-			control {
-				chan="$(P)$(R)ResetTotal"
-				clr=14
-				bclr=15
-			}
-			label="Reset"
-			press_msg="100"
-		}
 	}
+}
+"text update" {
+	object {
+		x=10
+		y=240
+		width=80
+		height=20
+	}
+	monitor {
+		chan="$(P)$(R)Total_RBV"
+		clr=53
+		bclr=4
+	}
+	limits {
+	}
+}
+"text entry" {
+	object {
+		x=10
+		y=265
+		width=80
+		height=20
+	}
+	control {
+		chan="$(P)$(R)SetTotal"
+		clr=14
+		bclr=51
+	}
+	limits {
+	}
+}
+"message button" {
+	object {
+		x=95
+		y=265
+		width=55
+		height=20
+	}
+	control {
+		chan="$(P)$(R)ResetTotal"
+		clr=14
+		bclr=15
+	}
+	label="Reset"
+	press_msg="1"
 }
 composite {
 	object {
