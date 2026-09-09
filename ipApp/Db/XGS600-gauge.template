@@ -1,0 +1,23 @@
+# 
+# Database to read gauge pressure from Agilent XGS600 controllers.
+#
+# Parameters:
+#   $(SYSTEM):     PV prefix
+#   $(CONTROLLER): Controller name from st.cmd
+#   $(CHANNEL):    Channel number
+#
+
+record(ai, "$(SYSTEM):getPressure")
+{
+	field(DESC, "Reads Cell $(CONTROLLER) Pressure")
+	field(SCAN, "1 second")
+	field(DTYP, "stream")
+	field(INP, "@XGS600.proto getPressure($(CHANNEL)) $(CONTROLLER)")
+	field(PINI, "YES")
+	field(EGU,  "mbar")
+	field(VAL, "0")
+	field(PREC, "3")
+	field(LOLO, "1.333E-12") field(LLSV, "MAJOR")
+	field(HIGH, "1E-7")		 field(HSV,  "MINOR")
+	field(HIHI, "1E-6")		 field(HHSV, "MAJOR")
+}

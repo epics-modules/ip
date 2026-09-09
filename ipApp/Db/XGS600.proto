@@ -1,0 +1,75 @@
+#
+# XGS600.proto 
+#
+# Stream device protocol file for Agilent XGS600 vacuum gauge controllers
+#
+# Abdalla Al-Dalleh
+# August 13, 2026
+# 
+
+Terminator = CR;
+
+# $1: Channel Number [1-5]
+getPressure
+{
+	out "#0002I\$1";
+	in "%*1c%E";
+
+	@mismatch {
+		in "%*1c%E";
+	}
+}
+
+# $1: Relay Number [1-8]
+getOffSetpoint
+{
+	out "#009\$1";
+	in  "%*1c%E";
+}
+
+getOnSetpoint
+{
+	out "#008\$1";
+	in  "%*1c%E";
+}
+
+# $1: Channel Number [1-5]
+# $2 $3: Relay Number [1-8]
+setRedundantOffSp
+{
+	out "#006\$2I\$1%(\$4.VAL)1.3E";
+	in  ">";
+	out "#007\$2I\$1%1.3E";
+	in  ">";
+
+	out "#006\$3I\$1%(\$4.VAL)1.3E";
+	in  ">";
+	out "#007\$3I\$1%1.3E";
+	in  ">";
+}
+
+setRedundantOnSp
+{
+	out "#006\$2I\$1%1.3E";
+	in  ">";
+	out "#006\$3I\$1%1.3E";
+	in  ">";
+}
+
+setSetpointState
+{
+	out "#005E%(\$1)u%d";
+}
+
+getSetpointState
+{
+	out "#005F\$1";
+	in  "%*1c%u";
+}
+
+debug
+{
+	ExtraInput = Ignore;
+	out "%s";
+	in  "%50c";
+}
