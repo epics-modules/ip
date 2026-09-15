@@ -1,0 +1,96 @@
+# 
+# Agilent XGS600 controllers setpoints control system.
+#
+# Description
+#   - Database designed to assign two relays setpoints to a single gauge.
+#   - Set both relays numbers to same value in case of single relay setup.
+#   - Off setpoint: pressure in which the gauge generates interlock signal.
+#   - On setpoint:  pressure in which the gauge clears the interlock
+#   - When pressure reaches OFF level, it must reach ON level so the interlock
+#     is cleared
+#   - OFF > ON
+#
+# Parameters:
+#   - $(SYSTEM): PV prefix.
+#   - $(CHANNEL): Channel number with regard to the IOC
+#   - $(CONTROLLER): Controller name from st.cmd
+#   - $(PORT): Channel number with regard to the controller
+#   - $(SP1): 1st setpoint relay 
+#   - $(SP2): 2nd setpoint relay
+# 
+
+record(ao, "$(SYSTEM):setOffSetpoint$(CHANNEL)")
+{
+	field(DESC, "Sets Cell  $(CONTROLLER) Off pressure setpoint")
+	field(DTYP, "stream")
+	field(OUT,  "@XGS600.proto setRedundantOffSp($(PORT),$(SP1),$(SP2),$(SYSTEM):setOnSetpoint$(CHANNEL)) $(CONTROLLER)")
+    field(PINI, "NO")
+    field(PREC, "3")
+	field(EGU,  "mbar")
+    field(LOLO, "") field(LLSV, "NO_ALARM")
+    field(HIHI, "") field(HHSV, "NO_ALARM")
+}
+
+record(ao, "$(SYSTEM):setOnSetpoint$(CHANNEL)")
+{
+	field(DESC, "Sets Cell  $(CONTROLLER) Off pressure setpoint")
+	field(DTYP, "stream")
+	field(OUT,  "@XGS600.proto setRedundantOnSp($(PORT),$(SP1),$(SP2)) $(CONTROLLER)")
+    field(PINI, "NO")
+    field(PREC, "3")
+	field(EGU,  "mbar")
+    field(LOLO, "") field(LLSV, "NO_ALARM")
+    field(HIHI, "") field(HHSV, "NO_ALARM")
+}
+
+record(ai, "$(SYSTEM):getOffSetpoint$(CHANNEL)")
+{
+	field(DESC, "Reads Cell  $(CONTROLLER) Off pressure setpoint")
+	field(SCAN, "1 second")
+	field(DTYP, "stream")
+	field(INP,  "@XGS600.proto getOffSetpoint($(SP1)) $(CONTROLLER)")
+	field(PINI, "YES")
+    field(PREC, "3")
+	field(EGU,  "mbar")
+    field(LOLO, "") field(LLSV, "NO_ALARM")
+    field(HIGH, "") field(HSV,  "NO_ALARM")
+    field(HIHI, "") field(HHSV, "NO_ALARM")
+}
+
+record(ai, "$(SYSTEM):getOnSetpoint$(CHANNEL)")
+{
+	field(DESC, "Reads Cell  $(CONTROLLER) Off pressure setpoint")
+	field(SCAN, "1 second")
+	field(DTYP, "stream")
+	field(INP,  "@XGS600.proto getOnSetpoint($(SP1)) $(CONTROLLER)")
+	field(PINI, "YES")
+    field(PREC, "3")
+	field(EGU,  "mbar")
+    field(LOLO, "") field(LLSV, "NO_ALARM")
+    field(HIGH, "") field(HSV,  "NO_ALARM")
+    field(HIHI, "") field(HHSV, "NO_ALARM")
+}
+
+record(mbbi, "$(SYSTEM):getChannel$(CHANNEL)Relay1State")
+{
+	field(DESC, "Read channel $(CHANNEL) relay 1 state")
+	field(DTYP, "stream")
+	field(INP,  "@XGS600.proto getSetpointState($(SP1)) $(CONTROLLER)")
+	field(SCAN, "1 second")
+	field(PINI, "YES")
+	field(ZRVL, "0") field(ZRST, "OFF")  field(ZRSV, "MAJOR")
+	field(ONVL, "1") field(ONST, "ON")   field(ONSV, "MAJOR")
+	field(TWVL, "3") field(TWST, "Auto") field(TWSV, "NO_ALARM")
+}
+
+record(mbbi, "$(SYSTEM):getChannel$(CHANNEL)Relay2State")
+{
+	field(DESC, "Read channel $(CHANNEL) relay 2 state")
+	field(DTYP, "stream")
+	field(INP,  "@XGS600.proto getSetpointState($(SP2)) $(CONTROLLER)")
+	field(SCAN, "1 second")
+	field(PINI, "YES")
+	field(ZRVL, "0") field(ZRST, "OFF")  field(ZRSV, "MAJOR")
+	field(ONVL, "1") field(ONST, "ON")   field(ONSV, "MAJOR")
+	field(TWVL, "3") field(TWST, "Auto") field(TWSV, "NO_ALARM")
+}
