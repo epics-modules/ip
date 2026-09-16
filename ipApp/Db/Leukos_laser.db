@@ -1,0 +1,172 @@
+# Leukos_laser.db
+
+# Database file for Leukos supercontinuum laser
+
+# Mark Rivers
+# September 15, 2026
+
+record(longin,"$(P)$(R)SerialNumber") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getSerialNumber() $(PORT)")
+    field(PINI, "YES")
+}
+
+record(bo,"$(P)$(R)LaserOn") {
+    field(DTYP, "stream")
+    field(OUT,  "@Leukos_laser.proto setOnOff() $(PORT)")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+}
+
+record(bi,"$(P)$(R)LaserOn_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getOnOff() $(PORT)")
+    field(ZNAM, "Off")
+    field(ONAM, "On")
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)LaserStandby_RBV")
+}
+
+record(bo,"$(P)$(R)LaserStandby") {
+    field(DTYP, "stream")
+    field(OUT,  "@Leukos_laser.proto setStandby() $(PORT)")
+    field(ZNAM, "Stand-by")
+    field(ONAM, "On")
+}
+
+record(bi,"$(P)$(R)LaserStandby_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getStandby() $(PORT)")
+    field(ZNAM, "Stand-by")
+    field(ONAM, "On")
+    field(FLNK, "$(P)$(R)TriggerMode_RBV")
+}
+
+record(mbbo,"$(P)$(R)TriggerMode") {
+    field(DTYP, "stream")
+    field(OUT,  "@Leukos_laser.proto setMode() $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "Free running")
+    field(ONVL, "1")
+    field(ONST, "Int. trigger")
+    field(TWVL, "2")
+    field(TWST, "Ext. trigger")
+    field(PINI, "YES")
+}
+
+record(mbbi,"$(P)$(R)TriggerMode_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getMode() $(PORT)")
+    field(ZRVL, "0")
+    field(ZRST, "Free running")
+    field(ONVL, "1")
+    field(ONST, "Int. trigger")
+    field(TWVL, "2")
+    field(TWST, "Ext. trigger")
+    field(FLNK, "$(P)$(R)Period_RBV")
+}
+
+record(ao,"$(P)$(R)Frequency") {
+    field(OUT, "$(P)$(R)CalcPeriod.A PP")
+    field(PINI, "YES")
+    field(VAL,  "1000")
+}
+
+record(calcout,"$(P)$(R)CalcPeriod") {
+    field(CALC, "1e6/A")
+    field(OUT,  "$(P)$(R)CalcWidth.A PP")
+}
+
+record(calcout,"$(P)$(R)CalcWidth") {
+    field(CALC, "A*0.9")
+    field(FLNK,  "$(P)$(R)Period PP")
+}
+
+record(ao,"$(P)$(R)Period") {
+    field(DOL,  "$(P)$(R)CalcPeriod")
+    field(OMSL, "closed_loop")
+    field(DTYP, "stream")
+    field(OUT,  "@Leukos_laser.proto setPeriod($(P)$(R)CalcWidth) $(PORT)")
+    field(PREC, "0")
+}
+
+record(ai,"$(P)$(R)Width_RBV") {
+}
+
+record(ai,"$(P)$(R)Period_RBV") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getPeriod($(P)$(R)Width_RBV) $(PORT)")
+    field(FLNK, "$(P)$(R)CalcFrequency")
+}
+
+record(calcout, "$(P)$(R)CalcFrequency") {
+    field(INPA, "$(P)$(R)Period_RBV")
+    field(CALC, "1e6/A")
+    field(OUT,  "$(P)$(R)Frequency_RBV PP")
+}
+
+record(ai,"$(P)$(R)Frequency_RBV") {
+    field(PREC, "0")
+    field(FLNK, "$(P)$(R)CrystalTemperature")
+}
+
+record(ai,"$(P)$(R)CrystalTemperature") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getTemperature($(P)$(R)LaserTemperature.RVAL) $(PORT)")
+    field(ASLO, ".01")
+    field(PREC, "2")
+    field(PINI, "YES")
+    field(FLNK, "$(P)$(R)Interlock")
+}
+
+record(ai,"$(P)$(R)LaserTemperature") {
+    field(DTYP, "Raw Soft Channel")
+    field(AOFF, "-45")
+    field(PREC, "1")
+}
+
+record(bi,"$(P)$(R)Interlock") {
+    field(DTYP, "stream")
+    field(INP,  "@Leukos_laser.proto getStatus($(P)$(R)HeadCommunication, $(P)$(R)TemperatureStatus, $(P)$(R)PeltierStatus, $(P)$(R)DiodeStatus.RVAL) $(PORT)")
+    field(ZNAM, "OK")
+    field(ONAM, "Fault")
+    field(PINI, "YES")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MAJOR")
+}
+record(bi,"$(P)$(R)HeadCommunication") {
+    field(ZNAM, "OK")
+    field(ONAM, "Fault")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MAJOR")
+}
+
+record(bi,"$(P)$(R)TemperatureStatus") {
+    field(ZNAM, "OK")
+    field(ONAM, "Fault")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MAJOR")
+}
+
+record(bi,"$(P)$(R)PeltierStatus") {
+    field(ZNAM, "OK")
+    field(ONAM, "Not thermalized")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MINOR")
+}
+
+record(mbbi,"$(P)$(R)DiodeStatus") {
+    field(DTYP, "Raw Soft Channel")
+    field(ZRVL, "00")
+    field(ZRST, "Off")
+    field(ZRSV, "NO_ALARM")
+    field(ONVL, "01")
+    field(ONST, "Computer Off")
+    field(ONSV, "MINOR")
+    field(TWVL, "10")
+    field(TWST, "Fully On")
+    field(TWSV, "MAJOR")
+    field(THVL, "11")
+    field(THST, "Modulation On")
+    field(THSV, "MAJOR")
+}

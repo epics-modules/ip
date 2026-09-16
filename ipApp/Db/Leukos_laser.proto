@@ -1,0 +1,63 @@
+# Leukos_laser.proto
+
+# stream protocol file for Leukos supercontinuum laser
+
+# Mark Rivers
+# September 15, 2026
+
+ExtraInput = Ignore;
+
+setOnOff {
+   out "*lase %d";
+   in  "";
+}
+
+getOnOff {
+   out "*lase";
+   in  "%d";
+}
+
+setStandby {
+   out "*copo %d";
+   in  "";
+}
+
+getStandby {
+   out "*copo";
+   in  "%d";
+}
+
+getSerialNumber {
+   out "*sern";
+   in  "%d";
+}
+
+getTemperature {
+   out "*mede";
+   in  "%d %(\$1)d";
+}
+
+getStatus {
+   out "*regi";
+   in  "%1d%(\$1)1d%(\$2)1d%(\$3)1d%(\$4)2d";
+}
+
+setMode {
+   out "*mode %d";
+   in  "";
+}
+
+getMode {
+   out "*mode";
+   in "%d";
+}
+
+setPeriod {
+   out "*tino %06d %(\$1)06d";
+   in  "";
+}
+
+getPeriod {
+   out "*tino";
+   in "%d %(\$1)d";
+}
