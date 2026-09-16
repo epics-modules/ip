@@ -11,6 +11,11 @@ record(longin,"$(P)$(R)SerialNumber") {
     field(PINI, "YES")
 }
 
+record(bo,"$(P)$(R)ReadSettings") {
+    field(SCAN, "1 second")
+    field(FLNK, "$(P)$(R)LaserOn_RBV")
+}
+
 record(bo,"$(P)$(R)LaserOn") {
     field(DTYP, "stream")
     field(OUT,  "@Leukos_laser.proto setOnOff() $(PORT)")
@@ -23,8 +28,9 @@ record(bi,"$(P)$(R)LaserOn_RBV") {
     field(INP,  "@Leukos_laser.proto getOnOff() $(PORT)")
     field(ZNAM, "Off")
     field(ONAM, "On")
-    field(SCAN, "1 second")
     field(FLNK, "$(P)$(R)LaserStandby_RBV")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MINOR")
 }
 
 record(bo,"$(P)$(R)LaserStandby") {
@@ -40,6 +46,8 @@ record(bi,"$(P)$(R)LaserStandby_RBV") {
     field(ZNAM, "Stand-by")
     field(ONAM, "On")
     field(FLNK, "$(P)$(R)TriggerMode_RBV")
+    field(ZSV,  "NO_ALARM")
+    field(OSV,  "MINOR")
 }
 
 record(mbbo,"$(P)$(R)TriggerMode") {
@@ -47,10 +55,13 @@ record(mbbo,"$(P)$(R)TriggerMode") {
     field(OUT,  "@Leukos_laser.proto setMode() $(PORT)")
     field(ZRVL, "0")
     field(ZRST, "Free running")
+    field(ZRSV, "NO_ALARM")
     field(ONVL, "1")
     field(ONST, "Int. trigger")
+    field(ONSV, "MINOR")
     field(TWVL, "2")
     field(TWST, "Ext. trigger")
+    field(TWSV, "MINOR")
     field(PINI, "YES")
 }
 
@@ -127,7 +138,7 @@ record(ai,"$(P)$(R)LaserTemperature") {
 
 record(bi,"$(P)$(R)Interlock") {
     field(DTYP, "stream")
-    field(INP,  "@Leukos_laser.proto getStatus($(P)$(R)HeadCommunication, $(P)$(R)TemperatureStatus, $(P)$(R)PeltierStatus, $(P)$(R)DiodeStatus.RVAL) $(PORT)")
+    field(INP,  "@Leukos_laser.proto getStatus($(P)$(R)HeadCommunication, $(P)$(R)TemperatureStatus, $(P)$(R)PeltierStatus, $(P)$(R)DiodeStatus) $(PORT)")
     field(ZNAM, "OK")
     field(ONAM, "Fault")
     field(PINI, "YES")
@@ -156,17 +167,16 @@ record(bi,"$(P)$(R)PeltierStatus") {
 }
 
 record(mbbi,"$(P)$(R)DiodeStatus") {
-    field(DTYP, "Raw Soft Channel")
-    field(ZRVL, "00")
+    field(ZRVL, "0")
     field(ZRST, "Off")
     field(ZRSV, "NO_ALARM")
-    field(ONVL, "01")
+    field(ONVL, "1")
     field(ONST, "Computer Off")
     field(ONSV, "MINOR")
-    field(TWVL, "10")
+    field(TWVL, "2")
     field(TWST, "Fully On")
     field(TWSV, "MAJOR")
-    field(THVL, "11")
+    field(THVL, "3")
     field(THST, "Modulation On")
     field(THSV, "MAJOR")
 }
