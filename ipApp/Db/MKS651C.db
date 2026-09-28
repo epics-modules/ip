@@ -1,4 +1,7 @@
-record(stringout, "$(P)$(R)DescA") {}
+record(stringout, "$(P)$(R)DescA") 
+{
+	field("VAL", "Setpoint A")
+}
 
 record(ao, "$(P)$(R)wSetpointA")
 {
@@ -97,7 +100,12 @@ record(ai, "$(P)$(R)rGainA")
 
 
 
-record(stringout, "$(P)$(R)DescB") {}
+record(stringout, "$(P)$(R)DescB")
+{
+	field("VAL", "Setpoint B")
+}
+
+
 record(ao, "$(P)$(R)wSetpointB")
 {
 	field(DTYP, "stream")
@@ -195,7 +203,12 @@ record(ai, "$(P)$(R)rGainB")
 
 
 
-record(stringout, "$(P)$(R)DescC") {}
+record(stringout, "$(P)$(R)DescC")
+{
+	field("VAL", "Setpoint C")
+}
+
+
 record(ao, "$(P)$(R)wSetpointC")
 {
 	field(DTYP, "stream")
@@ -293,7 +306,11 @@ record(ai, "$(P)$(R)rGainC")
 
 
 
-record(stringout, "$(P)$(R)DescD") {}
+record(stringout, "$(P)$(R)DescD")
+{
+	field("VAL", "Setpoint D")
+}
+
 record(ao, "$(P)$(R)wSetpointD")
 {
 	field(DTYP, "stream")
@@ -392,7 +409,10 @@ record(ai, "$(P)$(R)rGainD")
 
 
 
-record(stringout, "$(P)$(R)DescE") {}
+record(stringout, "$(P)$(R)DescE")
+{
+	field("VAL", "Setpoint E")
+}
 
 record(ao, "$(P)$(R)wSetpointE")
 {
@@ -566,4 +586,9 @@ record(fanout, "$(P)$(R)readAll")
 	field(LNK1, "$(P)$(R)rValvePosition")
 	field(LNK2, "$(P)$(R)rPressure")
 	field(LNK3, "$(P)$(R)rStatus")
+	field(LNK4, "$(P)$(R)rSetpointA")
+	field(LNK5, "$(P)$(R)rSetpointB")
+	field(LNK6, "$(P)$(R)rSetpointC")
+	field(LNK7, "$(P)$(R)rSetpointD")
+	field(LNK8, "$(P)$(R)rSetpointE")
 }
