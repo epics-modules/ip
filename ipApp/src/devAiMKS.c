@@ -101,7 +101,7 @@ static long initAi(aiRecord *pai);
 static long readAi(aiRecord *pai);
 static long convertAi(aiRecord *pai, int pass);
 static void callbackAi(asynUser *pasynUser);
-dsetAiMKS devAiMKS = {6, 0, 0, initAi, 0, readAi, convertAi};
+dsetAiMKS devAiMKS = {6, 0, 0, (DEVSUPFUN)initAi, 0, (DEVSUPFUN)readAi, (DEVSUPFUN)convertAi};
 
 epicsExportAddress(dset, devAiMKS);
 
@@ -357,7 +357,7 @@ static void callbackAi(asynUser *pasynUser)
    /* Process the record. This will result in the readAi routine
       being called again, but with pact=1 */
    dbScanLock((dbCommon *)pai);
-   (*prset->process)(pai);
+   (*(long(*)(dbCommon*))prset->process)((dbCommon*)pai);
    dbScanUnlock((dbCommon *)pai);
 }
 

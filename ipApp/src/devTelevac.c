@@ -93,10 +93,10 @@ static long readAi(aiRecord *pr);
 static long initBi(biRecord *pr);
 static long readBi(biRecord *pr);
 
-dsetTelevac devAiTelevac = {6,0,0,initAi,0,readAi,TelevacConvert};
+dsetTelevac devAiTelevac = {6,0,0,(DEVSUPFUN)initAi,0,(DEVSUPFUN)readAi,(DEVSUPFUN)TelevacConvert};
 epicsExportAddress(dset,devAiTelevac);
 
-dsetTelevac devBiTelevac = {6,0,0,initBi,0,readBi,0};
+dsetTelevac devBiTelevac = {6,0,0,(DEVSUPFUN)initBi,0,(DEVSUPFUN)readBi,0};
 epicsExportAddress(dset,devBiTelevac);
 
 
@@ -378,7 +378,7 @@ static void devTelevacCallback(asynUser *pasynUser)
     /* Process the record. This will result in the readX or writeX routine
        being called again, but with pact=1 */
     dbScanLock(pr);
-    (*prset->process)(pr);
+    (*(long(*)(dbCommon*))prset->process)(pr);
     dbScanUnlock(pr);
 }
 

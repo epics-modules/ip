@@ -92,21 +92,21 @@ static long initSi(stringinRecord *pr);
 static long readSi(stringinRecord *pr);
 static long initSo(stringoutRecord *pr);
 static long writeSo(stringoutRecord *pr);
-dsetStrParm devAiStrParm = {6,0,0,initAi,0,readAi,strParmConvert};
+dsetStrParm devAiStrParm = {6,0,0,(DEVSUPFUN)initAi,0,(DEVSUPFUN)readAi,(DEVSUPFUN)strParmConvert};
 epicsExportAddress(dset,devAiStrParm);
-dsetStrParm devAoStrParm = {6,0,0,initAo,0,writeAo, strParmConvert};
+dsetStrParm devAoStrParm = {6,0,0,(DEVSUPFUN)initAo,0,(DEVSUPFUN)writeAo, (DEVSUPFUN)strParmConvert};
 epicsExportAddress(dset,devAoStrParm);
-dsetStrParm devBiStrParm = {6,0,0,initBi,0,readBi,0};
+dsetStrParm devBiStrParm = {6,0,0,(DEVSUPFUN)initBi,0,(DEVSUPFUN)readBi,0};
 epicsExportAddress(dset,devBiStrParm);
-dsetStrParm devBoStrParm = {6,0,0,initBo,0,writeBo,0};
+dsetStrParm devBoStrParm = {6,0,0,(DEVSUPFUN)initBo,0,(DEVSUPFUN)writeBo,0};
 epicsExportAddress(dset,devBoStrParm);
-dsetStrParm devLiStrParm = {6,0,0,initLi,0,readLi,0};
+dsetStrParm devLiStrParm = {6,0,0,(DEVSUPFUN)initLi,0,(DEVSUPFUN)readLi,0};
 epicsExportAddress(dset,devLiStrParm);
-dsetStrParm devLoStrParm = {6,0,0,initLo,0,writeLo,0};
+dsetStrParm devLoStrParm = {6,0,0,(DEVSUPFUN)initLo,0,(DEVSUPFUN)writeLo,0};
 epicsExportAddress(dset,devLoStrParm);
-dsetStrParm devSiStrParm = {6,0,0,initSi,0,readSi,0};
+dsetStrParm devSiStrParm = {6,0,0,(DEVSUPFUN)initSi,0,(DEVSUPFUN)readSi,0};
 epicsExportAddress(dset,devSiStrParm);
-dsetStrParm devSoStrParm = {6,0,0,initSo,0,writeSo,0};
+dsetStrParm devSoStrParm = {6,0,0,(DEVSUPFUN)initSo,0,(DEVSUPFUN)writeSo,0};
 epicsExportAddress(dset,devSoStrParm);
 
 
@@ -412,7 +412,7 @@ static void devStrParmCallback(asynUser *pasynUser)
    /* Process the record. This will result in the readXi or writeXi routine
       being called again, but with pact=1 */
    dbScanLock(pr);
-   (*prset->process)(pr);
+   (*(long(*)(dbCommon*))prset->process)(pr);
    dbScanUnlock(pr);
 }
 

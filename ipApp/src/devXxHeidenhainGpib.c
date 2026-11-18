@@ -144,7 +144,7 @@ extern int ibSrqDebug;		/* declared in the GPIB driver */
  ******************************************************************************/
 
 /* forward declarations of some custom convert routines */
-static int convert();
+static int convert(struct gpibDpvt *pdpvt, int p1, int p2, char **p3);
 
 static struct gpibCmd gpibCmds[] = 
 {

@@ -76,9 +76,9 @@ static long initAo(aoRecord *pr);
 static long writeAo(aoRecord *pr);
 static long initSo(stringoutRecord *pr);
 static long writeSo(stringoutRecord *pr);
-dsetEurotherm devAoEurotherm = {6,0,0,initAo,0,writeAo, 0};
+dsetEurotherm devAoEurotherm = {6,0,0,(DEVSUPFUN)initAo,0,(DEVSUPFUN)writeAo, 0};
 epicsExportAddress(dset,devAoEurotherm);
-dsetEurotherm devSoEurotherm = {6,0,0,initSo,0,writeSo,0};
+dsetEurotherm devSoEurotherm = {6,0,0,(DEVSUPFUN)initSo,0,(DEVSUPFUN)writeSo,0};
 epicsExportAddress(dset,devSoEurotherm);
 
 
@@ -318,7 +318,7 @@ static void devEurothermCallback(asynUser *pasynUser)
 	 * being called again, but with pact=1
 	 */
 	dbScanLock(pr);
-	(*prset->process)(pr);
+	(*(long(*)(dbCommon*))prset->process)(pr);
 	dbScanUnlock(pr);
 }
 

@@ -177,19 +177,19 @@ static long initSi(stringinRecord *pr);
 static long readSi(stringinRecord *pr);
 static long initSo(stringoutRecord *pr);
 static long writeSo(stringoutRecord *pr);
-dsetMPC devAiMPC = {6,0,0,initAi,0,readAi,MPCConvert};
+dsetMPC devAiMPC = {6,0,0,(DEVSUPFUN)initAi,0,(DEVSUPFUN)readAi,(DEVSUPFUN)MPCConvert};
 epicsExportAddress(dset,devAiMPC);
-dsetMPC devAoMPC = {6,0,0,initAo,0,writeAo,MPCConvert};
+dsetMPC devAoMPC = {6,0,0,(DEVSUPFUN)initAo,0,(DEVSUPFUN)writeAo,(DEVSUPFUN)MPCConvert};
 epicsExportAddress(dset,devAoMPC);
-dsetMPC devBiMPC = {6,0,0,initBi,0,readBi,0};
+dsetMPC devBiMPC = {6,0,0,(DEVSUPFUN)initBi,0,(DEVSUPFUN)readBi,0};
 epicsExportAddress(dset,devBiMPC);
-dsetMPC devBoMPC = {6,0,0,initBo,0,writeBo,0};
+dsetMPC devBoMPC = {6,0,0,(DEVSUPFUN)initBo,0,(DEVSUPFUN)writeBo,0};
 epicsExportAddress(dset,devBoMPC);
-dsetMPC devMbboMPC = {6,0,0,initMbbo,0,writeMbbo,0};
+dsetMPC devMbboMPC = {6,0,0,(DEVSUPFUN)initMbbo,0,(DEVSUPFUN)writeMbbo,0};
 epicsExportAddress(dset,devMbboMPC);
-dsetMPC devSiMPC = {6,0,0,initSi,0,readSi,0};
+dsetMPC devSiMPC = {6,0,0,(DEVSUPFUN)initSi,0,(DEVSUPFUN)readSi,0};
 epicsExportAddress(dset,devSiMPC);
-dsetMPC devSoMPC = {6,0,0,initSo,0,writeSo,0};
+dsetMPC devSoMPC = {6,0,0,(DEVSUPFUN)initSo,0,(DEVSUPFUN)writeSo,0};
 epicsExportAddress(dset,devSoMPC);
 
 
@@ -904,7 +904,7 @@ static void devMPCCallback(asynUser *pasynUser)
     /* Process the record. This will result in the readX or writeX routine
        being called again, but with pact=1 */
     dbScanLock(pr);
-    (*prset->process)(pr);
+    (*(long(*)(dbCommon*))prset->process)(pr);
     dbScanUnlock(pr);
 }
 
