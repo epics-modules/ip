@@ -134,25 +134,25 @@ static long writeBo(boRecord *pr);
 static long initMbbo(mbboRecord *pr);
 static long writeMbbo(mbboRecord *pr);
 
-dsetTPG261 devAiTPG261 = {6,0,0,initAi,0,readAi,TPG261Convert};
+dsetTPG261 devAiTPG261 = {6,0,0,(DEVSUPFUN)initAi,0,(DEVSUPFUN)readAi,(DEVSUPFUN)TPG261Convert};
 epicsExportAddress(dset,devAiTPG261);
 
-dsetTPG261 devBiTPG261 = {6,0,0,initBi,0,readBi,0};
+dsetTPG261 devBiTPG261 = {6,0,0,(DEVSUPFUN)initBi,0,(DEVSUPFUN)readBi,0};
 epicsExportAddress(dset,devBiTPG261);
 
-dsetTPG261 devMbbiTPG261 = {6,0,0,initMbbi,0,readMbbi,0};
+dsetTPG261 devMbbiTPG261 = {6,0,0,(DEVSUPFUN)initMbbi,0,(DEVSUPFUN)readMbbi,0};
 epicsExportAddress(dset,devMbbiTPG261);
 
-dsetTPG261 devSiTPG261 = {6,0,0,initSi,0,readSi,0};
+dsetTPG261 devSiTPG261 = {6,0,0,(DEVSUPFUN)initSi,0,(DEVSUPFUN)readSi,0};
 epicsExportAddress(dset,devSiTPG261);
 
-dsetTPG261 devAoTPG261 = {6,0,0,initAo,0,writeAo,TPG261Convert};
+dsetTPG261 devAoTPG261 = {6,0,0,(DEVSUPFUN)initAo,0,(DEVSUPFUN)writeAo,(DEVSUPFUN)TPG261Convert};
 epicsExportAddress(dset,devAoTPG261);
 
-dsetTPG261 devBoTPG261 = {6,0,0,initBo,0,writeBo,0};
+dsetTPG261 devBoTPG261 = {6,0,0,(DEVSUPFUN)initBo,0,(DEVSUPFUN)writeBo,0};
 epicsExportAddress(dset,devBoTPG261);
 
-dsetTPG261 devMbboTPG261 = {6,0,0,initMbbo,0,writeMbbo,0};
+dsetTPG261 devMbboTPG261 = {6,0,0,(DEVSUPFUN)initMbbo,0,(DEVSUPFUN)writeMbbo,0};
 epicsExportAddress(dset,devMbboTPG261);
 
 
@@ -727,7 +727,7 @@ static void devTPG261Callback(asynUser *pasynUser)
        being called again, but with pact=1 */
 finish:
     dbScanLock(pr);
-    (*prset->process)(pr);
+    (*(long(*)(dbCommon*))prset->process)(pr);
     dbScanUnlock(pr);
 }
 

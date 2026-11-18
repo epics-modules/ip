@@ -78,7 +78,7 @@ typedef struct dsetAiHeidND261 {
 	DEVSUPFUN	convert;
 } dsetAiHeidND261;
 
-dsetAiHeidND261 devAiHeidND261 = {6,0,0,init_record,0,io,0};
+dsetAiHeidND261 devAiHeidND261 = {6,0,0,(DEVSUPFUN)init_record,0,(DEVSUPFUN)io,0};
 epicsExportAddress(dset,devAiHeidND261);
 
 static long init_record(void *pr)
@@ -171,7 +171,7 @@ static void devAiHeidND261Callback(asynUser *pasynUser)
     pai->udf = 0;
 
 	dbScanLock(pr);
-	(*prset->process)(pr);
+	(*(long(*)(dbCommon*))prset->process)(pr);
 	dbScanUnlock(pr);
 }
 
