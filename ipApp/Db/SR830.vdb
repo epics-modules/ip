@@ -1041,6 +1041,40 @@ record(asyn, "$(P)SR830:$(N):WriteLPFilter") {
   field(PORT, "$(PORT)")
 }
 
+record(bo, "$(P)SR830:$(N):SyncFilter") {
+  field(DTYP, "Soft Channel")
+  field(ZNAM, "Off")
+  field(ONAM, "On")
+}
+
+record(asyn, "$(P)SR830:$(N):WriteSyncFilter") {
+  field(DESC, "Write Command")
+  field(TMOD, "Write")
+  field(PORT, "$(PORT)")
+}
+
+record(scalcout, "$(P)SR830:$(N):SyncFilterCmd") {
+  field(CALC, "AA + printf(' %i',A)")
+  field(INPA, "$(P)SR830:$(N):SyncFilter.RVAL CP MS")
+  field(OUT, "$(P)SR830:$(N):WriteSyncFilter.AOUT PP MS")
+  field(AA, "SYNC")
+}
+
+record(asyn, "$(P)SR830:$(N):ReadSyncFilter") {
+  field(DESC, "Read Synchronous Filter")
+  field(FLNK, "$(P)SR830:$(N):SyncFilter_rbv")
+  field(AOUT, "SYNC?")
+  field(PORT, "$(PORT)")
+  field(SCAN, "1 second")
+  field(SDIS, "$(P)SR830:$(N):SlowRead")
+}
+
+record(scalcout, "$(P)SR830:$(N):SyncFilter_rbv") {
+  field(CALC, "INT(AA)")
+  field(INAA, "$(P)SR830:$(N):ReadSyncFilter.TINP")
+  field(PREC, "0")
+}
+
 #! Further lines contain data used by VisualDCT
 #! View(642,0,0.4)
 #! Record("$(P)SR830:$(N):SensCalc",2560,2910,0,0,"$(P)SR830:$(N):SensCalc")
